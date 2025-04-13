@@ -83,6 +83,7 @@ Name | Type | Description | Notes
 **Downloadable** | Pointer to **bool** | Defines whether the product is downloadable | [optional] [default to false]
 **Materials** | Pointer to **[]string** | A list of material strings for materials used in the product. | [optional] 
 **AutoRenew** | Pointer to **bool** | When true, automatically renews a listing upon its expiration. | [optional] [default to false]
+**OnSale** | Pointer to **bool** | Set whether the product on sale | [optional] [default to false]
 
 ## Methods
 
@@ -2077,6 +2078,31 @@ SetAutoRenew sets AutoRenew field to given value.
 `func (o *ProductUpdate) HasAutoRenew() bool`
 
 HasAutoRenew returns a boolean if a field has been set.
+
+### GetOnSale
+
+`func (o *ProductUpdate) GetOnSale() bool`
+
+GetOnSale returns the OnSale field if non-nil, zero value otherwise.
+
+### GetOnSaleOk
+
+`func (o *ProductUpdate) GetOnSaleOk() (*bool, bool)`
+
+GetOnSaleOk returns a tuple with the OnSale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnSale
+
+`func (o *ProductUpdate) SetOnSale(v bool)`
+
+SetOnSale sets OnSale field to given value.
+
+### HasOnSale
+
+`func (o *ProductUpdate) HasOnSale() bool`
+
+HasOnSale returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

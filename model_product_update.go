@@ -176,6 +176,8 @@ type ProductUpdate struct {
 	Materials []string `json:"materials,omitempty"`
 	// When true, automatically renews a listing upon its expiration.
 	AutoRenew *bool `json:"auto_renew,omitempty"`
+	// Set whether the product on sale
+	OnSale *bool `json:"on_sale,omitempty"`
 }
 
 // NewProductUpdate instantiates a new ProductUpdate object
@@ -208,6 +210,8 @@ func NewProductUpdate() *ProductUpdate {
 	this.Downloadable = &downloadable
 	var autoRenew bool = false
 	this.AutoRenew = &autoRenew
+	var onSale bool = false
+	this.OnSale = &onSale
 	return &this
 }
 
@@ -240,6 +244,8 @@ func NewProductUpdateWithDefaults() *ProductUpdate {
 	this.Downloadable = &downloadable
 	var autoRenew bool = false
 	this.AutoRenew = &autoRenew
+	var onSale bool = false
+	this.OnSale = &onSale
 	return &this
 }
 
@@ -2771,6 +2777,38 @@ func (o *ProductUpdate) SetAutoRenew(v bool) {
 	o.AutoRenew = &v
 }
 
+// GetOnSale returns the OnSale field value if set, zero value otherwise.
+func (o *ProductUpdate) GetOnSale() bool {
+	if o == nil || IsNil(o.OnSale) {
+		var ret bool
+		return ret
+	}
+	return *o.OnSale
+}
+
+// GetOnSaleOk returns a tuple with the OnSale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetOnSaleOk() (*bool, bool) {
+	if o == nil || IsNil(o.OnSale) {
+		return nil, false
+	}
+	return o.OnSale, true
+}
+
+// HasOnSale returns a boolean if a field has been set.
+func (o *ProductUpdate) HasOnSale() bool {
+	if o != nil && !IsNil(o.OnSale) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnSale gets a reference to the given bool and assigns it to the OnSale field.
+func (o *ProductUpdate) SetOnSale(v bool) {
+	o.OnSale = &v
+}
+
 func (o ProductUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -3017,6 +3055,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoRenew) {
 		toSerialize["auto_renew"] = o.AutoRenew
+	}
+	if !IsNil(o.OnSale) {
+		toSerialize["on_sale"] = o.OnSale
 	}
 	return toSerialize, nil
 }

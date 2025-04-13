@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **WeightUnit** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **int32** |  | [optional] 
 **InStock** | Pointer to **bool** |  | [optional] 
+**OnSale** | Pointer to **bool** |  | [optional] 
 **Backorders** | Pointer to **string** |  | [optional] 
 **ManageStock** | Pointer to **string** |  | [optional] 
 **IsStockManaged** | Pointer to **bool** |  | [optional] 
@@ -829,6 +830,31 @@ SetInStock sets InStock field to given value.
 `func (o *Product) HasInStock() bool`
 
 HasInStock returns a boolean if a field has been set.
+
+### GetOnSale
+
+`func (o *Product) GetOnSale() bool`
+
+GetOnSale returns the OnSale field if non-nil, zero value otherwise.
+
+### GetOnSaleOk
+
+`func (o *Product) GetOnSaleOk() (*bool, bool)`
+
+GetOnSaleOk returns a tuple with the OnSale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnSale
+
+`func (o *Product) SetOnSale(v bool)`
+
+SetOnSale sets OnSale field to given value.
+
+### HasOnSale
+
+`func (o *Product) HasOnSale() bool`
+
+HasOnSale returns a boolean if a field has been set.
 
 ### GetBackorders
 
