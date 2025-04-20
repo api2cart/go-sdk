@@ -154,6 +154,8 @@ type ProductAdd struct {
 	ImageUrl *string `json:"image_url,omitempty"`
 	// Defines image's name
 	ImageName *string `json:"image_name,omitempty"`
+	// Image Url
+	AdditionalImageUrls []string `json:"additional_image_urls,omitempty"`
 	// Defines reserve price value
 	ReservePrice *float32 `json:"reserve_price,omitempty"`
 	// Defines buy it now value
@@ -162,6 +164,8 @@ type ProductAdd struct {
 	ConditionDescription *string `json:"condition_description,omitempty"`
 	// This allows buyers to remain anonymous when the bid or buy an item.
 	AuctionConfidentialityLevel *string `json:"auction_confidentiality_level,omitempty"`
+	// Defines product's logistic channel settings
+	LogisticInfo []ProductAddLogisticInfoInner `json:"logistic_info,omitempty"`
 	// Allows to schedule a time in the future that the item becomes available. The value should be greater than the current date and time.
 	AvailFrom *string `json:"avail_from,omitempty"`
 	// Product tags
@@ -2473,6 +2477,38 @@ func (o *ProductAdd) SetImageName(v string) {
 	o.ImageName = &v
 }
 
+// GetAdditionalImageUrls returns the AdditionalImageUrls field value if set, zero value otherwise.
+func (o *ProductAdd) GetAdditionalImageUrls() []string {
+	if o == nil || IsNil(o.AdditionalImageUrls) {
+		var ret []string
+		return ret
+	}
+	return o.AdditionalImageUrls
+}
+
+// GetAdditionalImageUrlsOk returns a tuple with the AdditionalImageUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAdditionalImageUrlsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdditionalImageUrls) {
+		return nil, false
+	}
+	return o.AdditionalImageUrls, true
+}
+
+// HasAdditionalImageUrls returns a boolean if a field has been set.
+func (o *ProductAdd) HasAdditionalImageUrls() bool {
+	if o != nil && !IsNil(o.AdditionalImageUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalImageUrls gets a reference to the given []string and assigns it to the AdditionalImageUrls field.
+func (o *ProductAdd) SetAdditionalImageUrls(v []string) {
+	o.AdditionalImageUrls = v
+}
+
 // GetReservePrice returns the ReservePrice field value if set, zero value otherwise.
 func (o *ProductAdd) GetReservePrice() float32 {
 	if o == nil || IsNil(o.ReservePrice) {
@@ -2599,6 +2635,38 @@ func (o *ProductAdd) HasAuctionConfidentialityLevel() bool {
 // SetAuctionConfidentialityLevel gets a reference to the given string and assigns it to the AuctionConfidentialityLevel field.
 func (o *ProductAdd) SetAuctionConfidentialityLevel(v string) {
 	o.AuctionConfidentialityLevel = &v
+}
+
+// GetLogisticInfo returns the LogisticInfo field value if set, zero value otherwise.
+func (o *ProductAdd) GetLogisticInfo() []ProductAddLogisticInfoInner {
+	if o == nil || IsNil(o.LogisticInfo) {
+		var ret []ProductAddLogisticInfoInner
+		return ret
+	}
+	return o.LogisticInfo
+}
+
+// GetLogisticInfoOk returns a tuple with the LogisticInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetLogisticInfoOk() ([]ProductAddLogisticInfoInner, bool) {
+	if o == nil || IsNil(o.LogisticInfo) {
+		return nil, false
+	}
+	return o.LogisticInfo, true
+}
+
+// HasLogisticInfo returns a boolean if a field has been set.
+func (o *ProductAdd) HasLogisticInfo() bool {
+	if o != nil && !IsNil(o.LogisticInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogisticInfo gets a reference to the given []ProductAddLogisticInfoInner and assigns it to the LogisticInfo field.
+func (o *ProductAdd) SetLogisticInfo(v []ProductAddLogisticInfoInner) {
+	o.LogisticInfo = v
 }
 
 // GetAvailFrom returns the AvailFrom field value if set, zero value otherwise.
@@ -4023,6 +4091,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ImageName) {
 		toSerialize["image_name"] = o.ImageName
 	}
+	if !IsNil(o.AdditionalImageUrls) {
+		toSerialize["additional_image_urls"] = o.AdditionalImageUrls
+	}
 	if !IsNil(o.ReservePrice) {
 		toSerialize["reserve_price"] = o.ReservePrice
 	}
@@ -4034,6 +4105,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuctionConfidentialityLevel) {
 		toSerialize["auction_confidentiality_level"] = o.AuctionConfidentialityLevel
+	}
+	if !IsNil(o.LogisticInfo) {
+		toSerialize["logistic_info"] = o.LogisticInfo
 	}
 	if !IsNil(o.AvailFrom) {
 		toSerialize["avail_from"] = o.AvailFrom

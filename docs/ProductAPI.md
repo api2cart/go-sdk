@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ## ProductBrandList
 
-> ModelResponseProductBrandList ProductBrandList(ctx).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
+> ModelResponseProductBrandList ProductBrandList(ctx).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).CategoryId(categoryId).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
 
 product.brand.list
 
@@ -468,6 +468,7 @@ func main() {
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,short_description,active,url")
 	brandIds := "4,5" // string | Retrieves brands specified by brand ids (optional)
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	categoryId := "6" // string | Retrieves product brands specified by category id (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
@@ -481,7 +482,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductBrandList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductBrandList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).CategoryId(categoryId).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductBrandList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -508,6 +509,7 @@ Name | Type | Description  | Notes
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,short_description,active,url&quot;]
  **brandIds** | **string** | Retrieves brands specified by brand ids | 
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **categoryId** | **string** | Retrieves product brands specified by category id | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 

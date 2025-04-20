@@ -72,10 +72,12 @@ Name | Type | Description | Notes
 **Specifics** | Pointer to [**[]ProductAddSpecificsInner**](ProductAddSpecificsInner.md) | An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields-&gt;product_specifics).         &lt;b&gt;The structure of the parameter is different for specific platforms.&lt;/b&gt; | [optional] 
 **ImageUrl** | Pointer to **string** | Image Url | [optional] 
 **ImageName** | Pointer to **string** | Defines image&#39;s name | [optional] 
+**AdditionalImageUrls** | Pointer to **[]string** | Image Url | [optional] 
 **ReservePrice** | Pointer to **float32** | Defines reserve price value | [optional] 
 **BuyitnowPrice** | Pointer to **float32** | Defines buy it now value | [optional] 
 **ConditionDescription** | Pointer to **string** | Detailed description of the product condition. | [optional] 
 **AuctionConfidentialityLevel** | Pointer to **string** | This allows buyers to remain anonymous when the bid or buy an item. | [optional] 
+**LogisticInfo** | Pointer to [**[]ProductAddLogisticInfoInner**](ProductAddLogisticInfoInner.md) | Defines product&#39;s logistic channel settings | [optional] 
 **AvailFrom** | Pointer to **string** | Allows to schedule a time in the future that the item becomes available. The value should be greater than the current date and time. | [optional] 
 **Tags** | Pointer to **string** | Product tags | [optional] 
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
@@ -1814,6 +1816,31 @@ SetImageName sets ImageName field to given value.
 
 HasImageName returns a boolean if a field has been set.
 
+### GetAdditionalImageUrls
+
+`func (o *ProductAdd) GetAdditionalImageUrls() []string`
+
+GetAdditionalImageUrls returns the AdditionalImageUrls field if non-nil, zero value otherwise.
+
+### GetAdditionalImageUrlsOk
+
+`func (o *ProductAdd) GetAdditionalImageUrlsOk() (*[]string, bool)`
+
+GetAdditionalImageUrlsOk returns a tuple with the AdditionalImageUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalImageUrls
+
+`func (o *ProductAdd) SetAdditionalImageUrls(v []string)`
+
+SetAdditionalImageUrls sets AdditionalImageUrls field to given value.
+
+### HasAdditionalImageUrls
+
+`func (o *ProductAdd) HasAdditionalImageUrls() bool`
+
+HasAdditionalImageUrls returns a boolean if a field has been set.
+
 ### GetReservePrice
 
 `func (o *ProductAdd) GetReservePrice() float32`
@@ -1913,6 +1940,31 @@ SetAuctionConfidentialityLevel sets AuctionConfidentialityLevel field to given v
 `func (o *ProductAdd) HasAuctionConfidentialityLevel() bool`
 
 HasAuctionConfidentialityLevel returns a boolean if a field has been set.
+
+### GetLogisticInfo
+
+`func (o *ProductAdd) GetLogisticInfo() []ProductAddLogisticInfoInner`
+
+GetLogisticInfo returns the LogisticInfo field if non-nil, zero value otherwise.
+
+### GetLogisticInfoOk
+
+`func (o *ProductAdd) GetLogisticInfoOk() (*[]ProductAddLogisticInfoInner, bool)`
+
+GetLogisticInfoOk returns a tuple with the LogisticInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogisticInfo
+
+`func (o *ProductAdd) SetLogisticInfo(v []ProductAddLogisticInfoInner)`
+
+SetLogisticInfo sets LogisticInfo field to given value.
+
+### HasLogisticInfo
+
+`func (o *ProductAdd) HasLogisticInfo() bool`
+
+HasLogisticInfo returns a boolean if a field has been set.
 
 ### GetAvailFrom
 

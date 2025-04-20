@@ -1008,6 +1008,7 @@ type ApiProductBrandListRequest struct {
 	params *string
 	brandIds *string
 	exclude *string
+	categoryId *string
 	storeId *string
 	langId *string
 	createdFrom *string
@@ -1053,6 +1054,12 @@ func (r ApiProductBrandListRequest) BrandIds(brandIds string) ApiProductBrandLis
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductBrandListRequest) Exclude(exclude string) ApiProductBrandListRequest {
 	r.exclude = &exclude
+	return r
+}
+
+// Retrieves product brands specified by category id
+func (r ApiProductBrandListRequest) CategoryId(categoryId string) ApiProductBrandListRequest {
+	r.categoryId = &categoryId
 	return r
 }
 
@@ -1182,6 +1189,9 @@ func (a *ProductAPIService) ProductBrandListExecute(r ApiProductBrandListRequest
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	}
+	if r.categoryId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
