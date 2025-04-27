@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProductId** | Pointer to **string** | Defines product id where the variant image has to be added | [optional] 
 **ProductVariantId** | **string** | Defines product&#39;s variants specified by variant id | 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **ImageName** | **string** | Defines image&#39;s name | 
 **Type** | **string** | Defines image&#39;s types that are specified by comma-separated list | [default to "base"]
 **Url** | Pointer to **string** | Defines URL of the image that has to be added | [optional] 
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **Label** | Pointer to **string** | Defines alternative text that has to be attached to the picture | [optional] 
 **Mime** | Pointer to **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | [optional] 
 **Position** | Pointer to **int32** | Defines image’s position in the list | [optional] [default to 0]
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **OptionId** | Pointer to **string** | Defines option id of the product variant for which the image will be added | [optional] 
 
 ## Methods
@@ -79,6 +79,31 @@ and a boolean to check if the value has been set.
 
 SetProductVariantId sets ProductVariantId field to given value.
 
+
+### GetStoreId
+
+`func (o *ProductVariantImageAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *ProductVariantImageAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *ProductVariantImageAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *ProductVariantImageAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetImageName
 
@@ -244,31 +269,6 @@ SetPosition sets Position field to given value.
 `func (o *ProductVariantImageAdd) HasPosition() bool`
 
 HasPosition returns a boolean if a field has been set.
-
-### GetStoreId
-
-`func (o *ProductVariantImageAdd) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *ProductVariantImageAdd) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *ProductVariantImageAdd) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *ProductVariantImageAdd) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
 
 ### GetOptionId
 

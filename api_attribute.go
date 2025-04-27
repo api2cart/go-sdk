@@ -222,10 +222,10 @@ func (a *AttributeAPIService) AttributeAddExecute(r ApiAttributeAddRequest) (*At
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	if r.code != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "code", r.code, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
@@ -730,9 +730,9 @@ type ApiAttributeAttributesetListRequest struct {
 	ApiService *AttributeAPIService
 	start *int32
 	count *int32
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -748,6 +748,12 @@ func (r ApiAttributeAttributesetListRequest) Count(count int32) ApiAttributeAttr
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAttributeAttributesetListRequest) ResponseFields(responseFields string) ApiAttributeAttributesetListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiAttributeAttributesetListRequest) Params(params string) ApiAttributeAttributesetListRequest {
 	r.params = &params
 	return r
@@ -756,12 +762,6 @@ func (r ApiAttributeAttributesetListRequest) Params(params string) ApiAttributeA
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiAttributeAttributesetListRequest) Exclude(exclude string) ApiAttributeAttributesetListRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAttributeAttributesetListRequest) ResponseFields(responseFields string) ApiAttributeAttributesetListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -817,6 +817,9 @@ func (a *AttributeAPIService) AttributeAttributesetListExecute(r ApiAttributeAtt
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -825,9 +828,6 @@ func (a *AttributeAPIService) AttributeAttributesetListExecute(r ApiAttributeAtt
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1170,10 +1170,10 @@ func (a *AttributeAPIService) AttributeDeleteExecute(r ApiAttributeDeleteRequest
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1261,11 +1261,11 @@ type ApiAttributeGroupListRequest struct {
 	ApiService *AttributeAPIService
 	start *int32
 	count *int32
+	attributeSetId *string
 	langId *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
-	attributeSetId *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1280,9 +1280,21 @@ func (r ApiAttributeGroupListRequest) Count(count int32) ApiAttributeGroupListRe
 	return r
 }
 
+// Attribute set id
+func (r ApiAttributeGroupListRequest) AttributeSetId(attributeSetId string) ApiAttributeGroupListRequest {
+	r.attributeSetId = &attributeSetId
+	return r
+}
+
 // Language id
 func (r ApiAttributeGroupListRequest) LangId(langId string) ApiAttributeGroupListRequest {
 	r.langId = &langId
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAttributeGroupListRequest) ResponseFields(responseFields string) ApiAttributeGroupListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
@@ -1295,18 +1307,6 @@ func (r ApiAttributeGroupListRequest) Params(params string) ApiAttributeGroupLis
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiAttributeGroupListRequest) Exclude(exclude string) ApiAttributeGroupListRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAttributeGroupListRequest) ResponseFields(responseFields string) ApiAttributeGroupListRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Attribute set id
-func (r ApiAttributeGroupListRequest) AttributeSetId(attributeSetId string) ApiAttributeGroupListRequest {
-	r.attributeSetId = &attributeSetId
 	return r
 }
 
@@ -1362,8 +1362,14 @@ func (a *AttributeAPIService) AttributeGroupListExecute(r ApiAttributeGroupListR
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.attributeSetId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_set_id", r.attributeSetId, "form", "")
+	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
@@ -1373,12 +1379,6 @@ func (a *AttributeAPIService) AttributeGroupListExecute(r ApiAttributeGroupListR
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.attributeSetId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_set_id", r.attributeSetId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1469,9 +1469,9 @@ type ApiAttributeInfoRequest struct {
 	attributeSetId *string
 	storeId *string
 	langId *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // Entity id
@@ -1499,6 +1499,12 @@ func (r ApiAttributeInfoRequest) LangId(langId string) ApiAttributeInfoRequest {
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAttributeInfoRequest) ResponseFields(responseFields string) ApiAttributeInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiAttributeInfoRequest) Params(params string) ApiAttributeInfoRequest {
 	r.params = &params
 	return r
@@ -1507,12 +1513,6 @@ func (r ApiAttributeInfoRequest) Params(params string) ApiAttributeInfoRequest {
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiAttributeInfoRequest) Exclude(exclude string) ApiAttributeInfoRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAttributeInfoRequest) ResponseFields(responseFields string) ApiAttributeInfoRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -1569,6 +1569,9 @@ func (a *AttributeAPIService) AttributeInfoExecute(r ApiAttributeInfoRequest) (*
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -1577,9 +1580,6 @@ func (a *AttributeAPIService) AttributeInfoExecute(r ApiAttributeInfoRequest) (*
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1668,17 +1668,17 @@ type ApiAttributeListRequest struct {
 	ApiService *AttributeAPIService
 	start *int32
 	count *int32
-	type_ *string
 	attributeIds *string
 	attributeSetId *string
 	storeId *string
 	langId *string
-	params *string
-	exclude *string
-	responseFields *string
+	type_ *string
 	visible *bool
 	required *bool
 	system *bool
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1690,12 +1690,6 @@ func (r ApiAttributeListRequest) Start(start int32) ApiAttributeListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiAttributeListRequest) Count(count int32) ApiAttributeListRequest {
 	r.count = &count
-	return r
-}
-
-// Defines attribute&#39;s type
-func (r ApiAttributeListRequest) Type_(type_ string) ApiAttributeListRequest {
-	r.type_ = &type_
 	return r
 }
 
@@ -1723,21 +1717,9 @@ func (r ApiAttributeListRequest) LangId(langId string) ApiAttributeListRequest {
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAttributeListRequest) Params(params string) ApiAttributeListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiAttributeListRequest) Exclude(exclude string) ApiAttributeListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAttributeListRequest) ResponseFields(responseFields string) ApiAttributeListRequest {
-	r.responseFields = &responseFields
+// Defines attribute&#39;s type
+func (r ApiAttributeListRequest) Type_(type_ string) ApiAttributeListRequest {
+	r.type_ = &type_
 	return r
 }
 
@@ -1756,6 +1738,24 @@ func (r ApiAttributeListRequest) Required(required bool) ApiAttributeListRequest
 // True if attribute is system
 func (r ApiAttributeListRequest) System(system bool) ApiAttributeListRequest {
 	r.system = &system
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAttributeListRequest) ResponseFields(responseFields string) ApiAttributeListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAttributeListRequest) Params(params string) ApiAttributeListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiAttributeListRequest) Exclude(exclude string) ApiAttributeListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1811,9 +1811,6 @@ func (a *AttributeAPIService) AttributeListExecute(r ApiAttributeListRequest) (*
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
-	}
 	if r.attributeIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_ids", r.attributeIds, "form", "")
 	}
@@ -1826,17 +1823,8 @@ func (a *AttributeAPIService) AttributeListExecute(r ApiAttributeListRequest) (*
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,code,type"
-		r.params = &defaultValue
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	}
 	if r.visible != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "visible", r.visible, "form", "")
@@ -1846,6 +1834,18 @@ func (a *AttributeAPIService) AttributeListExecute(r ApiAttributeListRequest) (*
 	}
 	if r.system != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "system", r.system, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,code,type"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -28,9 +28,9 @@ type ApiBasketInfoRequest struct {
 	ApiService *BasketAPIService
 	id *string
 	storeId *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // Entity id
@@ -46,6 +46,12 @@ func (r ApiBasketInfoRequest) StoreId(storeId string) ApiBasketInfoRequest {
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiBasketInfoRequest) ResponseFields(responseFields string) ApiBasketInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiBasketInfoRequest) Params(params string) ApiBasketInfoRequest {
 	r.params = &params
 	return r
@@ -54,12 +60,6 @@ func (r ApiBasketInfoRequest) Params(params string) ApiBasketInfoRequest {
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiBasketInfoRequest) Exclude(exclude string) ApiBasketInfoRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiBasketInfoRequest) ResponseFields(responseFields string) ApiBasketInfoRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -110,6 +110,9 @@ func (a *BasketAPIService) BasketInfoExecute(r ApiBasketInfoRequest) (*BasketInf
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -118,9 +121,6 @@ func (a *BasketAPIService) BasketInfoExecute(r ApiBasketInfoRequest) (*BasketInf
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -458,11 +458,11 @@ func (a *BasketAPIService) BasketLiveShippingServiceCreateExecute(r ApiBasketLiv
 		return localVarReturnValue, nil, reportError("callback is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "callback", r.callback, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "callback", r.callback, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -686,15 +686,9 @@ func (a *BasketAPIService) BasketLiveShippingServiceDeleteExecute(r ApiBasketLiv
 type ApiBasketLiveShippingServiceListRequest struct {
 	ctx context.Context
 	ApiService *BasketAPIService
-	storeId *string
 	start *int32
 	count *int32
-}
-
-// Store Id
-func (r ApiBasketLiveShippingServiceListRequest) StoreId(storeId string) ApiBasketLiveShippingServiceListRequest {
-	r.storeId = &storeId
-	return r
+	storeId *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -706,6 +700,12 @@ func (r ApiBasketLiveShippingServiceListRequest) Start(start int32) ApiBasketLiv
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiBasketLiveShippingServiceListRequest) Count(count int32) ApiBasketLiveShippingServiceListRequest {
 	r.count = &count
+	return r
+}
+
+// Store Id
+func (r ApiBasketLiveShippingServiceListRequest) StoreId(storeId string) ApiBasketLiveShippingServiceListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -749,9 +749,6 @@ func (a *BasketAPIService) BasketLiveShippingServiceListExecute(r ApiBasketLiveS
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -763,6 +760,9 @@ func (a *BasketAPIService) BasketLiveShippingServiceListExecute(r ApiBasketLiveS
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

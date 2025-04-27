@@ -32,66 +32,12 @@ type OrderAdd struct {
 	ChannelId *string `json:"channel_id,omitempty"`
 	// Defines order status.
 	OrderStatus string `json:"order_status"`
-	// Send notifications to customer after order was created
-	SendNotifications *bool `json:"send_notifications,omitempty"`
-	// Notify admin when new order was created.
-	SendAdminNotifications *bool `json:"send_admin_notifications,omitempty"`
+	// Create order with fulfillment status
+	FulfillmentStatus *string `json:"fulfillment_status,omitempty"`
+	// Create order with financial status
+	FinancialStatus *string `json:"financial_status,omitempty"`
 	// Defines the customer specified by email for whom order has to be created
 	CustomerEmail string `json:"customer_email"`
-	// Specifies billing first name
-	BillFirstName string `json:"bill_first_name"`
-	// Specifies billing last name
-	BillLastName string `json:"bill_last_name"`
-	// Specifies first billing address
-	BillAddress1 string `json:"bill_address_1"`
-	// Specifies billing city
-	BillCity string `json:"bill_city"`
-	// Specifies billing postcode
-	BillPostcode string `json:"bill_postcode"`
-	// Specifies billing state code
-	BillState string `json:"bill_state"`
-	// Specifies billing country code
-	BillCountry string `json:"bill_country"`
-	// Specifies shipping first name
-	ShippFirstName *string `json:"shipp_first_name,omitempty"`
-	// Specifies shipping last name
-	ShippLastName *string `json:"shipp_last_name,omitempty"`
-	// Specifies first shipping address
-	ShippAddress1 *string `json:"shipp_address_1,omitempty"`
-	// Specifies shipping city
-	ShippCity *string `json:"shipp_city,omitempty"`
-	// Specifies shipping postcode
-	ShippPostcode *string `json:"shipp_postcode,omitempty"`
-	// Specifies shipping state code
-	ShippState *string `json:"shipp_state,omitempty"`
-	// Specifies shipping country code
-	ShippCountry *string `json:"shipp_country,omitempty"`
-	// Defines order's total price
-	TotalPrice *float32 `json:"total_price,omitempty"`
-	// Specifies an order creation date in format Y-m-d H:i:s
-	Date *string `json:"date,omitempty"`
-	// Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid'
-	OrderPaymentMethod *string `json:"order_payment_method,omitempty"`
-	// Payment transaction id
-	TransactionId *string `json:"transaction_id,omitempty"`
-	// Defines order shipping method
-	OrderShippingMethod *string `json:"order_shipping_method,omitempty"`
-	// Currency code of order
-	Currency *string `json:"currency,omitempty"`
-	// Specifies second billing address
-	BillAddress2 *string `json:"bill_address_2,omitempty"`
-	// Specifies billing company
-	BillCompany *string `json:"bill_company,omitempty"`
-	// Specifies billing phone
-	BillPhone *string `json:"bill_phone,omitempty"`
-	// Specifies billing fax
-	BillFax *string `json:"bill_fax,omitempty"`
-	// Specifies order comment
-	Comment *string `json:"comment,omitempty"`
-	// Specifies admin's order comment
-	AdminComment *string `json:"admin_comment,omitempty"`
-	// Specifies private admin's order comment
-	AdminPrivateComment *string `json:"admin_private_comment,omitempty"`
 	// Specifies customer's first name
 	CustomerFirstName *string `json:"customer_first_name,omitempty"`
 	// Specifies customer’s last name
@@ -104,58 +50,112 @@ type OrderAdd struct {
 	CustomerBirthday *string `json:"customer_birthday,omitempty"`
 	// Specifies customer’s fax
 	CustomerFax *string `json:"customer_fax,omitempty"`
+	// Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid'
+	OrderPaymentMethod *string `json:"order_payment_method,omitempty"`
+	// Payment transaction id
+	TransactionId *string `json:"transaction_id,omitempty"`
+	// Currency code of order
+	Currency *string `json:"currency,omitempty"`
+	// Specifies an order creation date in format Y-m-d H:i:s
+	Date *string `json:"date,omitempty"`
+	// Specifies order's  modification date
+	DateModified *string `json:"date_modified,omitempty"`
+	// Specifies order's  finished date
+	DateFinished *string `json:"date_finished,omitempty"`
+	// Specifies billing first name
+	BillFirstName string `json:"bill_first_name"`
+	// Specifies billing last name
+	BillLastName string `json:"bill_last_name"`
+	// Specifies first billing address
+	BillAddress1 string `json:"bill_address_1"`
+	// Specifies second billing address
+	BillAddress2 *string `json:"bill_address_2,omitempty"`
+	// Specifies billing city
+	BillCity string `json:"bill_city"`
+	// Specifies billing postcode
+	BillPostcode string `json:"bill_postcode"`
+	// Specifies billing state code
+	BillState string `json:"bill_state"`
+	// Specifies billing country code
+	BillCountry string `json:"bill_country"`
+	// Specifies billing company
+	BillCompany *string `json:"bill_company,omitempty"`
+	// Specifies billing phone
+	BillPhone *string `json:"bill_phone,omitempty"`
+	// Specifies billing fax
+	BillFax *string `json:"bill_fax,omitempty"`
+	// Specifies shipping first name
+	ShippFirstName *string `json:"shipp_first_name,omitempty"`
+	// Specifies shipping last name
+	ShippLastName *string `json:"shipp_last_name,omitempty"`
+	// Specifies first shipping address
+	ShippAddress1 *string `json:"shipp_address_1,omitempty"`
 	// Specifies second address line of a shipping street address
 	ShippAddress2 *string `json:"shipp_address_2,omitempty"`
+	// Specifies shipping city
+	ShippCity *string `json:"shipp_city,omitempty"`
+	// Specifies shipping postcode
+	ShippPostcode *string `json:"shipp_postcode,omitempty"`
+	// Specifies shipping state code
+	ShippState *string `json:"shipp_state,omitempty"`
+	// Specifies shipping country code
+	ShippCountry *string `json:"shipp_country,omitempty"`
 	// Specifies shipping company
 	ShippCompany *string `json:"shipp_company,omitempty"`
 	// Specifies shipping phone
 	ShippPhone *string `json:"shipp_phone,omitempty"`
 	// Specifies shipping fax
 	ShippFax *string `json:"shipp_fax,omitempty"`
-	// Specifies order's  modification date
-	DateModified *string `json:"date_modified,omitempty"`
-	// Specifies order's  finished date
-	DateFinished *string `json:"date_finished,omitempty"`
 	// Total price of all ordered products multiplied by their number, excluding tax, shipping price and discounts
 	SubtotalPrice *float32 `json:"subtotal_price,omitempty"`
 	// The value of tax cost for order
 	TaxPrice *float32 `json:"tax_price,omitempty"`
+	// Defines order's total price
+	TotalPrice *float32 `json:"total_price,omitempty"`
+	// Defines total paid amount for the order
+	TotalPaid *float32 `json:"total_paid,omitempty"`
+	// Defines the sum of all line item weights in grams for the order
+	TotalWeight *int32 `json:"total_weight,omitempty"`
 	// Indicates whether prices and subtotal includes tax.
 	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
 	// Specifies order's shipping price
 	ShippingPrice *float32 `json:"shipping_price,omitempty"`
 	// Specifies order's shipping price tax
 	ShippingTax *float32 `json:"shipping_tax,omitempty"`
-	// Defines tracking carrier id
-	CarrierId *string `json:"carrier_id,omitempty"`
-	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
-	WarehouseId *string `json:"warehouse_id,omitempty"`
 	// Specifies order's discount
 	Discount *float32 `json:"discount,omitempty"`
 	// Specifies order's coupon discount
 	CouponDiscount *float32 `json:"coupon_discount,omitempty"`
-	// Coupons that will be applied to order
-	Coupons []string `json:"coupons,omitempty"`
 	// Discounts for order with gift certificates
 	GiftCertificateDiscount *float32 `json:"gift_certificate_discount,omitempty"`
-	// Create order with fulfillment status
-	FulfillmentStatus *string `json:"fulfillment_status,omitempty"`
-	// Create order with financial status
-	FinancialStatus *string `json:"financial_status,omitempty"`
-	// Defines total paid amount for the order
-	TotalPaid *float32 `json:"total_paid,omitempty"`
-	// Identifying the system used to generate the order
-	ExternalSource *string `json:"external_source,omitempty"`
+	// Defines order shipping method
+	OrderShippingMethod *string `json:"order_shipping_method,omitempty"`
+	// Defines tracking carrier id
+	CarrierId *string `json:"carrier_id,omitempty"`
+	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
+	WarehouseId *string `json:"warehouse_id,omitempty"`
+	// Coupons that will be applied to order
+	Coupons []string `json:"coupons,omitempty"`
 	// Order tags
 	Tags *string `json:"tags,omitempty"`
+	// Specifies order comment
+	Comment *string `json:"comment,omitempty"`
+	// Specifies admin's order comment
+	AdminComment *string `json:"admin_comment,omitempty"`
+	// Specifies private admin's order comment
+	AdminPrivateComment *string `json:"admin_private_comment,omitempty"`
+	// Send notifications to customer after order was created
+	SendNotifications *bool `json:"send_notifications,omitempty"`
+	// Notify admin when new order was created.
+	SendAdminNotifications *bool `json:"send_admin_notifications,omitempty"`
+	// Identifying the system used to generate the order
+	ExternalSource *string `json:"external_source,omitempty"`
 	// The behaviour to use when updating inventory.<hr><div style=\"font-style:normal\">Values description:<div style=\"margin-left: 2%; padding-top: 2%\"><div style=\"font-size:85%\"><b>bypass</b> = Do not claim inventory </br></br><b>decrement_ignoring_policy</b> = Ignore the product's </br> inventory policy and claim amounts</br></br><b>decrement_obeying_policy</b> =  Obey the product's </br> inventory policy.</br></br></div></div></div>
 	InventoryBehaviour *string `json:"inventory_behaviour,omitempty"`
 	// Defines whether the invoice is created automatically along with the order
 	CreateInvoice *bool `json:"create_invoice,omitempty"`
 	// Defines note attributes
 	NoteAttributes []OrderAddNoteAttributesInner `json:"note_attributes,omitempty"`
-	// Defines the sum of all line item weights in grams for the order
-	TotalWeight *int32 `json:"total_weight,omitempty"`
 	// Is cache clear required
 	ClearCache *bool `json:"clear_cache,omitempty"`
 	// The source of the order
@@ -172,10 +172,6 @@ type _OrderAdd OrderAdd
 func NewOrderAdd(orderStatus string, customerEmail string, billFirstName string, billLastName string, billAddress1 string, billCity string, billPostcode string, billState string, billCountry string, orderItem []OrderAddOrderItemInner) *OrderAdd {
 	this := OrderAdd{}
 	this.OrderStatus = orderStatus
-	var sendNotifications bool = false
-	this.SendNotifications = &sendNotifications
-	var sendAdminNotifications bool = false
-	this.SendAdminNotifications = &sendAdminNotifications
 	this.CustomerEmail = customerEmail
 	this.BillFirstName = billFirstName
 	this.BillLastName = billLastName
@@ -190,6 +186,10 @@ func NewOrderAdd(orderStatus string, customerEmail string, billFirstName string,
 	this.PricesIncTax = &pricesIncTax
 	var shippingPrice float32 = 0
 	this.ShippingPrice = &shippingPrice
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
+	var sendAdminNotifications bool = false
+	this.SendAdminNotifications = &sendAdminNotifications
 	var inventoryBehaviour string = "bypass"
 	this.InventoryBehaviour = &inventoryBehaviour
 	var createInvoice bool = false
@@ -205,16 +205,16 @@ func NewOrderAdd(orderStatus string, customerEmail string, billFirstName string,
 // but it doesn't guarantee that properties required by API are set
 func NewOrderAddWithDefaults() *OrderAdd {
 	this := OrderAdd{}
-	var sendNotifications bool = false
-	this.SendNotifications = &sendNotifications
-	var sendAdminNotifications bool = false
-	this.SendAdminNotifications = &sendAdminNotifications
 	var taxPrice float32 = 0
 	this.TaxPrice = &taxPrice
 	var pricesIncTax bool = false
 	this.PricesIncTax = &pricesIncTax
 	var shippingPrice float32 = 0
 	this.ShippingPrice = &shippingPrice
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
+	var sendAdminNotifications bool = false
+	this.SendAdminNotifications = &sendAdminNotifications
 	var inventoryBehaviour string = "bypass"
 	this.InventoryBehaviour = &inventoryBehaviour
 	var createInvoice bool = false
@@ -376,68 +376,68 @@ func (o *OrderAdd) SetOrderStatus(v string) {
 	o.OrderStatus = v
 }
 
-// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
-func (o *OrderAdd) GetSendNotifications() bool {
-	if o == nil || IsNil(o.SendNotifications) {
-		var ret bool
+// GetFulfillmentStatus returns the FulfillmentStatus field value if set, zero value otherwise.
+func (o *OrderAdd) GetFulfillmentStatus() string {
+	if o == nil || IsNil(o.FulfillmentStatus) {
+		var ret string
 		return ret
 	}
-	return *o.SendNotifications
+	return *o.FulfillmentStatus
 }
 
-// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
+// GetFulfillmentStatusOk returns a tuple with the FulfillmentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderAdd) GetSendNotificationsOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendNotifications) {
+func (o *OrderAdd) GetFulfillmentStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.FulfillmentStatus) {
 		return nil, false
 	}
-	return o.SendNotifications, true
+	return o.FulfillmentStatus, true
 }
 
-// HasSendNotifications returns a boolean if a field has been set.
-func (o *OrderAdd) HasSendNotifications() bool {
-	if o != nil && !IsNil(o.SendNotifications) {
+// HasFulfillmentStatus returns a boolean if a field has been set.
+func (o *OrderAdd) HasFulfillmentStatus() bool {
+	if o != nil && !IsNil(o.FulfillmentStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
-func (o *OrderAdd) SetSendNotifications(v bool) {
-	o.SendNotifications = &v
+// SetFulfillmentStatus gets a reference to the given string and assigns it to the FulfillmentStatus field.
+func (o *OrderAdd) SetFulfillmentStatus(v string) {
+	o.FulfillmentStatus = &v
 }
 
-// GetSendAdminNotifications returns the SendAdminNotifications field value if set, zero value otherwise.
-func (o *OrderAdd) GetSendAdminNotifications() bool {
-	if o == nil || IsNil(o.SendAdminNotifications) {
-		var ret bool
+// GetFinancialStatus returns the FinancialStatus field value if set, zero value otherwise.
+func (o *OrderAdd) GetFinancialStatus() string {
+	if o == nil || IsNil(o.FinancialStatus) {
+		var ret string
 		return ret
 	}
-	return *o.SendAdminNotifications
+	return *o.FinancialStatus
 }
 
-// GetSendAdminNotificationsOk returns a tuple with the SendAdminNotifications field value if set, nil otherwise
+// GetFinancialStatusOk returns a tuple with the FinancialStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderAdd) GetSendAdminNotificationsOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendAdminNotifications) {
+func (o *OrderAdd) GetFinancialStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.FinancialStatus) {
 		return nil, false
 	}
-	return o.SendAdminNotifications, true
+	return o.FinancialStatus, true
 }
 
-// HasSendAdminNotifications returns a boolean if a field has been set.
-func (o *OrderAdd) HasSendAdminNotifications() bool {
-	if o != nil && !IsNil(o.SendAdminNotifications) {
+// HasFinancialStatus returns a boolean if a field has been set.
+func (o *OrderAdd) HasFinancialStatus() bool {
+	if o != nil && !IsNil(o.FinancialStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetSendAdminNotifications gets a reference to the given bool and assigns it to the SendAdminNotifications field.
-func (o *OrderAdd) SetSendAdminNotifications(v bool) {
-	o.SendAdminNotifications = &v
+// SetFinancialStatus gets a reference to the given string and assigns it to the FinancialStatus field.
+func (o *OrderAdd) SetFinancialStatus(v string) {
+	o.FinancialStatus = &v
 }
 
 // GetCustomerEmail returns the CustomerEmail field value
@@ -462,814 +462,6 @@ func (o *OrderAdd) GetCustomerEmailOk() (*string, bool) {
 // SetCustomerEmail sets field value
 func (o *OrderAdd) SetCustomerEmail(v string) {
 	o.CustomerEmail = v
-}
-
-// GetBillFirstName returns the BillFirstName field value
-func (o *OrderAdd) GetBillFirstName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillFirstName
-}
-
-// GetBillFirstNameOk returns a tuple with the BillFirstName field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillFirstNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillFirstName, true
-}
-
-// SetBillFirstName sets field value
-func (o *OrderAdd) SetBillFirstName(v string) {
-	o.BillFirstName = v
-}
-
-// GetBillLastName returns the BillLastName field value
-func (o *OrderAdd) GetBillLastName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillLastName
-}
-
-// GetBillLastNameOk returns a tuple with the BillLastName field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillLastNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillLastName, true
-}
-
-// SetBillLastName sets field value
-func (o *OrderAdd) SetBillLastName(v string) {
-	o.BillLastName = v
-}
-
-// GetBillAddress1 returns the BillAddress1 field value
-func (o *OrderAdd) GetBillAddress1() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillAddress1
-}
-
-// GetBillAddress1Ok returns a tuple with the BillAddress1 field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillAddress1Ok() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillAddress1, true
-}
-
-// SetBillAddress1 sets field value
-func (o *OrderAdd) SetBillAddress1(v string) {
-	o.BillAddress1 = v
-}
-
-// GetBillCity returns the BillCity field value
-func (o *OrderAdd) GetBillCity() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillCity
-}
-
-// GetBillCityOk returns a tuple with the BillCity field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillCityOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillCity, true
-}
-
-// SetBillCity sets field value
-func (o *OrderAdd) SetBillCity(v string) {
-	o.BillCity = v
-}
-
-// GetBillPostcode returns the BillPostcode field value
-func (o *OrderAdd) GetBillPostcode() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillPostcode
-}
-
-// GetBillPostcodeOk returns a tuple with the BillPostcode field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillPostcodeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillPostcode, true
-}
-
-// SetBillPostcode sets field value
-func (o *OrderAdd) SetBillPostcode(v string) {
-	o.BillPostcode = v
-}
-
-// GetBillState returns the BillState field value
-func (o *OrderAdd) GetBillState() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillState
-}
-
-// GetBillStateOk returns a tuple with the BillState field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillStateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillState, true
-}
-
-// SetBillState sets field value
-func (o *OrderAdd) SetBillState(v string) {
-	o.BillState = v
-}
-
-// GetBillCountry returns the BillCountry field value
-func (o *OrderAdd) GetBillCountry() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BillCountry
-}
-
-// GetBillCountryOk returns a tuple with the BillCountry field value
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillCountryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillCountry, true
-}
-
-// SetBillCountry sets field value
-func (o *OrderAdd) SetBillCountry(v string) {
-	o.BillCountry = v
-}
-
-// GetShippFirstName returns the ShippFirstName field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippFirstName() string {
-	if o == nil || IsNil(o.ShippFirstName) {
-		var ret string
-		return ret
-	}
-	return *o.ShippFirstName
-}
-
-// GetShippFirstNameOk returns a tuple with the ShippFirstName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippFirstNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippFirstName) {
-		return nil, false
-	}
-	return o.ShippFirstName, true
-}
-
-// HasShippFirstName returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippFirstName() bool {
-	if o != nil && !IsNil(o.ShippFirstName) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippFirstName gets a reference to the given string and assigns it to the ShippFirstName field.
-func (o *OrderAdd) SetShippFirstName(v string) {
-	o.ShippFirstName = &v
-}
-
-// GetShippLastName returns the ShippLastName field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippLastName() string {
-	if o == nil || IsNil(o.ShippLastName) {
-		var ret string
-		return ret
-	}
-	return *o.ShippLastName
-}
-
-// GetShippLastNameOk returns a tuple with the ShippLastName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippLastNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippLastName) {
-		return nil, false
-	}
-	return o.ShippLastName, true
-}
-
-// HasShippLastName returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippLastName() bool {
-	if o != nil && !IsNil(o.ShippLastName) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippLastName gets a reference to the given string and assigns it to the ShippLastName field.
-func (o *OrderAdd) SetShippLastName(v string) {
-	o.ShippLastName = &v
-}
-
-// GetShippAddress1 returns the ShippAddress1 field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippAddress1() string {
-	if o == nil || IsNil(o.ShippAddress1) {
-		var ret string
-		return ret
-	}
-	return *o.ShippAddress1
-}
-
-// GetShippAddress1Ok returns a tuple with the ShippAddress1 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippAddress1Ok() (*string, bool) {
-	if o == nil || IsNil(o.ShippAddress1) {
-		return nil, false
-	}
-	return o.ShippAddress1, true
-}
-
-// HasShippAddress1 returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippAddress1() bool {
-	if o != nil && !IsNil(o.ShippAddress1) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippAddress1 gets a reference to the given string and assigns it to the ShippAddress1 field.
-func (o *OrderAdd) SetShippAddress1(v string) {
-	o.ShippAddress1 = &v
-}
-
-// GetShippCity returns the ShippCity field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippCity() string {
-	if o == nil || IsNil(o.ShippCity) {
-		var ret string
-		return ret
-	}
-	return *o.ShippCity
-}
-
-// GetShippCityOk returns a tuple with the ShippCity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippCityOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippCity) {
-		return nil, false
-	}
-	return o.ShippCity, true
-}
-
-// HasShippCity returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippCity() bool {
-	if o != nil && !IsNil(o.ShippCity) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippCity gets a reference to the given string and assigns it to the ShippCity field.
-func (o *OrderAdd) SetShippCity(v string) {
-	o.ShippCity = &v
-}
-
-// GetShippPostcode returns the ShippPostcode field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippPostcode() string {
-	if o == nil || IsNil(o.ShippPostcode) {
-		var ret string
-		return ret
-	}
-	return *o.ShippPostcode
-}
-
-// GetShippPostcodeOk returns a tuple with the ShippPostcode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippPostcodeOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippPostcode) {
-		return nil, false
-	}
-	return o.ShippPostcode, true
-}
-
-// HasShippPostcode returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippPostcode() bool {
-	if o != nil && !IsNil(o.ShippPostcode) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippPostcode gets a reference to the given string and assigns it to the ShippPostcode field.
-func (o *OrderAdd) SetShippPostcode(v string) {
-	o.ShippPostcode = &v
-}
-
-// GetShippState returns the ShippState field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippState() string {
-	if o == nil || IsNil(o.ShippState) {
-		var ret string
-		return ret
-	}
-	return *o.ShippState
-}
-
-// GetShippStateOk returns a tuple with the ShippState field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippStateOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippState) {
-		return nil, false
-	}
-	return o.ShippState, true
-}
-
-// HasShippState returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippState() bool {
-	if o != nil && !IsNil(o.ShippState) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippState gets a reference to the given string and assigns it to the ShippState field.
-func (o *OrderAdd) SetShippState(v string) {
-	o.ShippState = &v
-}
-
-// GetShippCountry returns the ShippCountry field value if set, zero value otherwise.
-func (o *OrderAdd) GetShippCountry() string {
-	if o == nil || IsNil(o.ShippCountry) {
-		var ret string
-		return ret
-	}
-	return *o.ShippCountry
-}
-
-// GetShippCountryOk returns a tuple with the ShippCountry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetShippCountryOk() (*string, bool) {
-	if o == nil || IsNil(o.ShippCountry) {
-		return nil, false
-	}
-	return o.ShippCountry, true
-}
-
-// HasShippCountry returns a boolean if a field has been set.
-func (o *OrderAdd) HasShippCountry() bool {
-	if o != nil && !IsNil(o.ShippCountry) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippCountry gets a reference to the given string and assigns it to the ShippCountry field.
-func (o *OrderAdd) SetShippCountry(v string) {
-	o.ShippCountry = &v
-}
-
-// GetTotalPrice returns the TotalPrice field value if set, zero value otherwise.
-func (o *OrderAdd) GetTotalPrice() float32 {
-	if o == nil || IsNil(o.TotalPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.TotalPrice
-}
-
-// GetTotalPriceOk returns a tuple with the TotalPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetTotalPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.TotalPrice) {
-		return nil, false
-	}
-	return o.TotalPrice, true
-}
-
-// HasTotalPrice returns a boolean if a field has been set.
-func (o *OrderAdd) HasTotalPrice() bool {
-	if o != nil && !IsNil(o.TotalPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalPrice gets a reference to the given float32 and assigns it to the TotalPrice field.
-func (o *OrderAdd) SetTotalPrice(v float32) {
-	o.TotalPrice = &v
-}
-
-// GetDate returns the Date field value if set, zero value otherwise.
-func (o *OrderAdd) GetDate() string {
-	if o == nil || IsNil(o.Date) {
-		var ret string
-		return ret
-	}
-	return *o.Date
-}
-
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetDateOk() (*string, bool) {
-	if o == nil || IsNil(o.Date) {
-		return nil, false
-	}
-	return o.Date, true
-}
-
-// HasDate returns a boolean if a field has been set.
-func (o *OrderAdd) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given string and assigns it to the Date field.
-func (o *OrderAdd) SetDate(v string) {
-	o.Date = &v
-}
-
-// GetOrderPaymentMethod returns the OrderPaymentMethod field value if set, zero value otherwise.
-func (o *OrderAdd) GetOrderPaymentMethod() string {
-	if o == nil || IsNil(o.OrderPaymentMethod) {
-		var ret string
-		return ret
-	}
-	return *o.OrderPaymentMethod
-}
-
-// GetOrderPaymentMethodOk returns a tuple with the OrderPaymentMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetOrderPaymentMethodOk() (*string, bool) {
-	if o == nil || IsNil(o.OrderPaymentMethod) {
-		return nil, false
-	}
-	return o.OrderPaymentMethod, true
-}
-
-// HasOrderPaymentMethod returns a boolean if a field has been set.
-func (o *OrderAdd) HasOrderPaymentMethod() bool {
-	if o != nil && !IsNil(o.OrderPaymentMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderPaymentMethod gets a reference to the given string and assigns it to the OrderPaymentMethod field.
-func (o *OrderAdd) SetOrderPaymentMethod(v string) {
-	o.OrderPaymentMethod = &v
-}
-
-// GetTransactionId returns the TransactionId field value if set, zero value otherwise.
-func (o *OrderAdd) GetTransactionId() string {
-	if o == nil || IsNil(o.TransactionId) {
-		var ret string
-		return ret
-	}
-	return *o.TransactionId
-}
-
-// GetTransactionIdOk returns a tuple with the TransactionId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetTransactionIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TransactionId) {
-		return nil, false
-	}
-	return o.TransactionId, true
-}
-
-// HasTransactionId returns a boolean if a field has been set.
-func (o *OrderAdd) HasTransactionId() bool {
-	if o != nil && !IsNil(o.TransactionId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTransactionId gets a reference to the given string and assigns it to the TransactionId field.
-func (o *OrderAdd) SetTransactionId(v string) {
-	o.TransactionId = &v
-}
-
-// GetOrderShippingMethod returns the OrderShippingMethod field value if set, zero value otherwise.
-func (o *OrderAdd) GetOrderShippingMethod() string {
-	if o == nil || IsNil(o.OrderShippingMethod) {
-		var ret string
-		return ret
-	}
-	return *o.OrderShippingMethod
-}
-
-// GetOrderShippingMethodOk returns a tuple with the OrderShippingMethod field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetOrderShippingMethodOk() (*string, bool) {
-	if o == nil || IsNil(o.OrderShippingMethod) {
-		return nil, false
-	}
-	return o.OrderShippingMethod, true
-}
-
-// HasOrderShippingMethod returns a boolean if a field has been set.
-func (o *OrderAdd) HasOrderShippingMethod() bool {
-	if o != nil && !IsNil(o.OrderShippingMethod) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderShippingMethod gets a reference to the given string and assigns it to the OrderShippingMethod field.
-func (o *OrderAdd) SetOrderShippingMethod(v string) {
-	o.OrderShippingMethod = &v
-}
-
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *OrderAdd) GetCurrency() string {
-	if o == nil || IsNil(o.Currency) {
-		var ret string
-		return ret
-	}
-	return *o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetCurrencyOk() (*string, bool) {
-	if o == nil || IsNil(o.Currency) {
-		return nil, false
-	}
-	return o.Currency, true
-}
-
-// HasCurrency returns a boolean if a field has been set.
-func (o *OrderAdd) HasCurrency() bool {
-	if o != nil && !IsNil(o.Currency) {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *OrderAdd) SetCurrency(v string) {
-	o.Currency = &v
-}
-
-// GetBillAddress2 returns the BillAddress2 field value if set, zero value otherwise.
-func (o *OrderAdd) GetBillAddress2() string {
-	if o == nil || IsNil(o.BillAddress2) {
-		var ret string
-		return ret
-	}
-	return *o.BillAddress2
-}
-
-// GetBillAddress2Ok returns a tuple with the BillAddress2 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillAddress2Ok() (*string, bool) {
-	if o == nil || IsNil(o.BillAddress2) {
-		return nil, false
-	}
-	return o.BillAddress2, true
-}
-
-// HasBillAddress2 returns a boolean if a field has been set.
-func (o *OrderAdd) HasBillAddress2() bool {
-	if o != nil && !IsNil(o.BillAddress2) {
-		return true
-	}
-
-	return false
-}
-
-// SetBillAddress2 gets a reference to the given string and assigns it to the BillAddress2 field.
-func (o *OrderAdd) SetBillAddress2(v string) {
-	o.BillAddress2 = &v
-}
-
-// GetBillCompany returns the BillCompany field value if set, zero value otherwise.
-func (o *OrderAdd) GetBillCompany() string {
-	if o == nil || IsNil(o.BillCompany) {
-		var ret string
-		return ret
-	}
-	return *o.BillCompany
-}
-
-// GetBillCompanyOk returns a tuple with the BillCompany field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillCompanyOk() (*string, bool) {
-	if o == nil || IsNil(o.BillCompany) {
-		return nil, false
-	}
-	return o.BillCompany, true
-}
-
-// HasBillCompany returns a boolean if a field has been set.
-func (o *OrderAdd) HasBillCompany() bool {
-	if o != nil && !IsNil(o.BillCompany) {
-		return true
-	}
-
-	return false
-}
-
-// SetBillCompany gets a reference to the given string and assigns it to the BillCompany field.
-func (o *OrderAdd) SetBillCompany(v string) {
-	o.BillCompany = &v
-}
-
-// GetBillPhone returns the BillPhone field value if set, zero value otherwise.
-func (o *OrderAdd) GetBillPhone() string {
-	if o == nil || IsNil(o.BillPhone) {
-		var ret string
-		return ret
-	}
-	return *o.BillPhone
-}
-
-// GetBillPhoneOk returns a tuple with the BillPhone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.BillPhone) {
-		return nil, false
-	}
-	return o.BillPhone, true
-}
-
-// HasBillPhone returns a boolean if a field has been set.
-func (o *OrderAdd) HasBillPhone() bool {
-	if o != nil && !IsNil(o.BillPhone) {
-		return true
-	}
-
-	return false
-}
-
-// SetBillPhone gets a reference to the given string and assigns it to the BillPhone field.
-func (o *OrderAdd) SetBillPhone(v string) {
-	o.BillPhone = &v
-}
-
-// GetBillFax returns the BillFax field value if set, zero value otherwise.
-func (o *OrderAdd) GetBillFax() string {
-	if o == nil || IsNil(o.BillFax) {
-		var ret string
-		return ret
-	}
-	return *o.BillFax
-}
-
-// GetBillFaxOk returns a tuple with the BillFax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetBillFaxOk() (*string, bool) {
-	if o == nil || IsNil(o.BillFax) {
-		return nil, false
-	}
-	return o.BillFax, true
-}
-
-// HasBillFax returns a boolean if a field has been set.
-func (o *OrderAdd) HasBillFax() bool {
-	if o != nil && !IsNil(o.BillFax) {
-		return true
-	}
-
-	return false
-}
-
-// SetBillFax gets a reference to the given string and assigns it to the BillFax field.
-func (o *OrderAdd) SetBillFax(v string) {
-	o.BillFax = &v
-}
-
-// GetComment returns the Comment field value if set, zero value otherwise.
-func (o *OrderAdd) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
-		var ret string
-		return ret
-	}
-	return *o.Comment
-}
-
-// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
-		return nil, false
-	}
-	return o.Comment, true
-}
-
-// HasComment returns a boolean if a field has been set.
-func (o *OrderAdd) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
-		return true
-	}
-
-	return false
-}
-
-// SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *OrderAdd) SetComment(v string) {
-	o.Comment = &v
-}
-
-// GetAdminComment returns the AdminComment field value if set, zero value otherwise.
-func (o *OrderAdd) GetAdminComment() string {
-	if o == nil || IsNil(o.AdminComment) {
-		var ret string
-		return ret
-	}
-	return *o.AdminComment
-}
-
-// GetAdminCommentOk returns a tuple with the AdminComment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetAdminCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.AdminComment) {
-		return nil, false
-	}
-	return o.AdminComment, true
-}
-
-// HasAdminComment returns a boolean if a field has been set.
-func (o *OrderAdd) HasAdminComment() bool {
-	if o != nil && !IsNil(o.AdminComment) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminComment gets a reference to the given string and assigns it to the AdminComment field.
-func (o *OrderAdd) SetAdminComment(v string) {
-	o.AdminComment = &v
-}
-
-// GetAdminPrivateComment returns the AdminPrivateComment field value if set, zero value otherwise.
-func (o *OrderAdd) GetAdminPrivateComment() string {
-	if o == nil || IsNil(o.AdminPrivateComment) {
-		var ret string
-		return ret
-	}
-	return *o.AdminPrivateComment
-}
-
-// GetAdminPrivateCommentOk returns a tuple with the AdminPrivateComment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetAdminPrivateCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.AdminPrivateComment) {
-		return nil, false
-	}
-	return o.AdminPrivateComment, true
-}
-
-// HasAdminPrivateComment returns a boolean if a field has been set.
-func (o *OrderAdd) HasAdminPrivateComment() bool {
-	if o != nil && !IsNil(o.AdminPrivateComment) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminPrivateComment gets a reference to the given string and assigns it to the AdminPrivateComment field.
-func (o *OrderAdd) SetAdminPrivateComment(v string) {
-	o.AdminPrivateComment = &v
 }
 
 // GetCustomerFirstName returns the CustomerFirstName field value if set, zero value otherwise.
@@ -1464,6 +656,590 @@ func (o *OrderAdd) SetCustomerFax(v string) {
 	o.CustomerFax = &v
 }
 
+// GetOrderPaymentMethod returns the OrderPaymentMethod field value if set, zero value otherwise.
+func (o *OrderAdd) GetOrderPaymentMethod() string {
+	if o == nil || IsNil(o.OrderPaymentMethod) {
+		var ret string
+		return ret
+	}
+	return *o.OrderPaymentMethod
+}
+
+// GetOrderPaymentMethodOk returns a tuple with the OrderPaymentMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetOrderPaymentMethodOk() (*string, bool) {
+	if o == nil || IsNil(o.OrderPaymentMethod) {
+		return nil, false
+	}
+	return o.OrderPaymentMethod, true
+}
+
+// HasOrderPaymentMethod returns a boolean if a field has been set.
+func (o *OrderAdd) HasOrderPaymentMethod() bool {
+	if o != nil && !IsNil(o.OrderPaymentMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderPaymentMethod gets a reference to the given string and assigns it to the OrderPaymentMethod field.
+func (o *OrderAdd) SetOrderPaymentMethod(v string) {
+	o.OrderPaymentMethod = &v
+}
+
+// GetTransactionId returns the TransactionId field value if set, zero value otherwise.
+func (o *OrderAdd) GetTransactionId() string {
+	if o == nil || IsNil(o.TransactionId) {
+		var ret string
+		return ret
+	}
+	return *o.TransactionId
+}
+
+// GetTransactionIdOk returns a tuple with the TransactionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetTransactionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TransactionId) {
+		return nil, false
+	}
+	return o.TransactionId, true
+}
+
+// HasTransactionId returns a boolean if a field has been set.
+func (o *OrderAdd) HasTransactionId() bool {
+	if o != nil && !IsNil(o.TransactionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactionId gets a reference to the given string and assigns it to the TransactionId field.
+func (o *OrderAdd) SetTransactionId(v string) {
+	o.TransactionId = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *OrderAdd) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *OrderAdd) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *OrderAdd) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+// GetDate returns the Date field value if set, zero value otherwise.
+func (o *OrderAdd) GetDate() string {
+	if o == nil || IsNil(o.Date) {
+		var ret string
+		return ret
+	}
+	return *o.Date
+}
+
+// GetDateOk returns a tuple with the Date field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetDateOk() (*string, bool) {
+	if o == nil || IsNil(o.Date) {
+		return nil, false
+	}
+	return o.Date, true
+}
+
+// HasDate returns a boolean if a field has been set.
+func (o *OrderAdd) HasDate() bool {
+	if o != nil && !IsNil(o.Date) {
+		return true
+	}
+
+	return false
+}
+
+// SetDate gets a reference to the given string and assigns it to the Date field.
+func (o *OrderAdd) SetDate(v string) {
+	o.Date = &v
+}
+
+// GetDateModified returns the DateModified field value if set, zero value otherwise.
+func (o *OrderAdd) GetDateModified() string {
+	if o == nil || IsNil(o.DateModified) {
+		var ret string
+		return ret
+	}
+	return *o.DateModified
+}
+
+// GetDateModifiedOk returns a tuple with the DateModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetDateModifiedOk() (*string, bool) {
+	if o == nil || IsNil(o.DateModified) {
+		return nil, false
+	}
+	return o.DateModified, true
+}
+
+// HasDateModified returns a boolean if a field has been set.
+func (o *OrderAdd) HasDateModified() bool {
+	if o != nil && !IsNil(o.DateModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateModified gets a reference to the given string and assigns it to the DateModified field.
+func (o *OrderAdd) SetDateModified(v string) {
+	o.DateModified = &v
+}
+
+// GetDateFinished returns the DateFinished field value if set, zero value otherwise.
+func (o *OrderAdd) GetDateFinished() string {
+	if o == nil || IsNil(o.DateFinished) {
+		var ret string
+		return ret
+	}
+	return *o.DateFinished
+}
+
+// GetDateFinishedOk returns a tuple with the DateFinished field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetDateFinishedOk() (*string, bool) {
+	if o == nil || IsNil(o.DateFinished) {
+		return nil, false
+	}
+	return o.DateFinished, true
+}
+
+// HasDateFinished returns a boolean if a field has been set.
+func (o *OrderAdd) HasDateFinished() bool {
+	if o != nil && !IsNil(o.DateFinished) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateFinished gets a reference to the given string and assigns it to the DateFinished field.
+func (o *OrderAdd) SetDateFinished(v string) {
+	o.DateFinished = &v
+}
+
+// GetBillFirstName returns the BillFirstName field value
+func (o *OrderAdd) GetBillFirstName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillFirstName
+}
+
+// GetBillFirstNameOk returns a tuple with the BillFirstName field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillFirstNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillFirstName, true
+}
+
+// SetBillFirstName sets field value
+func (o *OrderAdd) SetBillFirstName(v string) {
+	o.BillFirstName = v
+}
+
+// GetBillLastName returns the BillLastName field value
+func (o *OrderAdd) GetBillLastName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillLastName
+}
+
+// GetBillLastNameOk returns a tuple with the BillLastName field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillLastNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillLastName, true
+}
+
+// SetBillLastName sets field value
+func (o *OrderAdd) SetBillLastName(v string) {
+	o.BillLastName = v
+}
+
+// GetBillAddress1 returns the BillAddress1 field value
+func (o *OrderAdd) GetBillAddress1() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillAddress1
+}
+
+// GetBillAddress1Ok returns a tuple with the BillAddress1 field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillAddress1Ok() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillAddress1, true
+}
+
+// SetBillAddress1 sets field value
+func (o *OrderAdd) SetBillAddress1(v string) {
+	o.BillAddress1 = v
+}
+
+// GetBillAddress2 returns the BillAddress2 field value if set, zero value otherwise.
+func (o *OrderAdd) GetBillAddress2() string {
+	if o == nil || IsNil(o.BillAddress2) {
+		var ret string
+		return ret
+	}
+	return *o.BillAddress2
+}
+
+// GetBillAddress2Ok returns a tuple with the BillAddress2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillAddress2Ok() (*string, bool) {
+	if o == nil || IsNil(o.BillAddress2) {
+		return nil, false
+	}
+	return o.BillAddress2, true
+}
+
+// HasBillAddress2 returns a boolean if a field has been set.
+func (o *OrderAdd) HasBillAddress2() bool {
+	if o != nil && !IsNil(o.BillAddress2) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillAddress2 gets a reference to the given string and assigns it to the BillAddress2 field.
+func (o *OrderAdd) SetBillAddress2(v string) {
+	o.BillAddress2 = &v
+}
+
+// GetBillCity returns the BillCity field value
+func (o *OrderAdd) GetBillCity() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillCity
+}
+
+// GetBillCityOk returns a tuple with the BillCity field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillCityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillCity, true
+}
+
+// SetBillCity sets field value
+func (o *OrderAdd) SetBillCity(v string) {
+	o.BillCity = v
+}
+
+// GetBillPostcode returns the BillPostcode field value
+func (o *OrderAdd) GetBillPostcode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillPostcode
+}
+
+// GetBillPostcodeOk returns a tuple with the BillPostcode field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillPostcodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillPostcode, true
+}
+
+// SetBillPostcode sets field value
+func (o *OrderAdd) SetBillPostcode(v string) {
+	o.BillPostcode = v
+}
+
+// GetBillState returns the BillState field value
+func (o *OrderAdd) GetBillState() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillState
+}
+
+// GetBillStateOk returns a tuple with the BillState field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillState, true
+}
+
+// SetBillState sets field value
+func (o *OrderAdd) SetBillState(v string) {
+	o.BillState = v
+}
+
+// GetBillCountry returns the BillCountry field value
+func (o *OrderAdd) GetBillCountry() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillCountry
+}
+
+// GetBillCountryOk returns a tuple with the BillCountry field value
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillCountryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillCountry, true
+}
+
+// SetBillCountry sets field value
+func (o *OrderAdd) SetBillCountry(v string) {
+	o.BillCountry = v
+}
+
+// GetBillCompany returns the BillCompany field value if set, zero value otherwise.
+func (o *OrderAdd) GetBillCompany() string {
+	if o == nil || IsNil(o.BillCompany) {
+		var ret string
+		return ret
+	}
+	return *o.BillCompany
+}
+
+// GetBillCompanyOk returns a tuple with the BillCompany field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillCompanyOk() (*string, bool) {
+	if o == nil || IsNil(o.BillCompany) {
+		return nil, false
+	}
+	return o.BillCompany, true
+}
+
+// HasBillCompany returns a boolean if a field has been set.
+func (o *OrderAdd) HasBillCompany() bool {
+	if o != nil && !IsNil(o.BillCompany) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillCompany gets a reference to the given string and assigns it to the BillCompany field.
+func (o *OrderAdd) SetBillCompany(v string) {
+	o.BillCompany = &v
+}
+
+// GetBillPhone returns the BillPhone field value if set, zero value otherwise.
+func (o *OrderAdd) GetBillPhone() string {
+	if o == nil || IsNil(o.BillPhone) {
+		var ret string
+		return ret
+	}
+	return *o.BillPhone
+}
+
+// GetBillPhoneOk returns a tuple with the BillPhone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillPhoneOk() (*string, bool) {
+	if o == nil || IsNil(o.BillPhone) {
+		return nil, false
+	}
+	return o.BillPhone, true
+}
+
+// HasBillPhone returns a boolean if a field has been set.
+func (o *OrderAdd) HasBillPhone() bool {
+	if o != nil && !IsNil(o.BillPhone) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillPhone gets a reference to the given string and assigns it to the BillPhone field.
+func (o *OrderAdd) SetBillPhone(v string) {
+	o.BillPhone = &v
+}
+
+// GetBillFax returns the BillFax field value if set, zero value otherwise.
+func (o *OrderAdd) GetBillFax() string {
+	if o == nil || IsNil(o.BillFax) {
+		var ret string
+		return ret
+	}
+	return *o.BillFax
+}
+
+// GetBillFaxOk returns a tuple with the BillFax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetBillFaxOk() (*string, bool) {
+	if o == nil || IsNil(o.BillFax) {
+		return nil, false
+	}
+	return o.BillFax, true
+}
+
+// HasBillFax returns a boolean if a field has been set.
+func (o *OrderAdd) HasBillFax() bool {
+	if o != nil && !IsNil(o.BillFax) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillFax gets a reference to the given string and assigns it to the BillFax field.
+func (o *OrderAdd) SetBillFax(v string) {
+	o.BillFax = &v
+}
+
+// GetShippFirstName returns the ShippFirstName field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippFirstName() string {
+	if o == nil || IsNil(o.ShippFirstName) {
+		var ret string
+		return ret
+	}
+	return *o.ShippFirstName
+}
+
+// GetShippFirstNameOk returns a tuple with the ShippFirstName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippFirstNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippFirstName) {
+		return nil, false
+	}
+	return o.ShippFirstName, true
+}
+
+// HasShippFirstName returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippFirstName() bool {
+	if o != nil && !IsNil(o.ShippFirstName) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippFirstName gets a reference to the given string and assigns it to the ShippFirstName field.
+func (o *OrderAdd) SetShippFirstName(v string) {
+	o.ShippFirstName = &v
+}
+
+// GetShippLastName returns the ShippLastName field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippLastName() string {
+	if o == nil || IsNil(o.ShippLastName) {
+		var ret string
+		return ret
+	}
+	return *o.ShippLastName
+}
+
+// GetShippLastNameOk returns a tuple with the ShippLastName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippLastNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippLastName) {
+		return nil, false
+	}
+	return o.ShippLastName, true
+}
+
+// HasShippLastName returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippLastName() bool {
+	if o != nil && !IsNil(o.ShippLastName) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippLastName gets a reference to the given string and assigns it to the ShippLastName field.
+func (o *OrderAdd) SetShippLastName(v string) {
+	o.ShippLastName = &v
+}
+
+// GetShippAddress1 returns the ShippAddress1 field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippAddress1() string {
+	if o == nil || IsNil(o.ShippAddress1) {
+		var ret string
+		return ret
+	}
+	return *o.ShippAddress1
+}
+
+// GetShippAddress1Ok returns a tuple with the ShippAddress1 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippAddress1Ok() (*string, bool) {
+	if o == nil || IsNil(o.ShippAddress1) {
+		return nil, false
+	}
+	return o.ShippAddress1, true
+}
+
+// HasShippAddress1 returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippAddress1() bool {
+	if o != nil && !IsNil(o.ShippAddress1) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippAddress1 gets a reference to the given string and assigns it to the ShippAddress1 field.
+func (o *OrderAdd) SetShippAddress1(v string) {
+	o.ShippAddress1 = &v
+}
+
 // GetShippAddress2 returns the ShippAddress2 field value if set, zero value otherwise.
 func (o *OrderAdd) GetShippAddress2() string {
 	if o == nil || IsNil(o.ShippAddress2) {
@@ -1494,6 +1270,134 @@ func (o *OrderAdd) HasShippAddress2() bool {
 // SetShippAddress2 gets a reference to the given string and assigns it to the ShippAddress2 field.
 func (o *OrderAdd) SetShippAddress2(v string) {
 	o.ShippAddress2 = &v
+}
+
+// GetShippCity returns the ShippCity field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippCity() string {
+	if o == nil || IsNil(o.ShippCity) {
+		var ret string
+		return ret
+	}
+	return *o.ShippCity
+}
+
+// GetShippCityOk returns a tuple with the ShippCity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippCityOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippCity) {
+		return nil, false
+	}
+	return o.ShippCity, true
+}
+
+// HasShippCity returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippCity() bool {
+	if o != nil && !IsNil(o.ShippCity) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippCity gets a reference to the given string and assigns it to the ShippCity field.
+func (o *OrderAdd) SetShippCity(v string) {
+	o.ShippCity = &v
+}
+
+// GetShippPostcode returns the ShippPostcode field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippPostcode() string {
+	if o == nil || IsNil(o.ShippPostcode) {
+		var ret string
+		return ret
+	}
+	return *o.ShippPostcode
+}
+
+// GetShippPostcodeOk returns a tuple with the ShippPostcode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippPostcodeOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippPostcode) {
+		return nil, false
+	}
+	return o.ShippPostcode, true
+}
+
+// HasShippPostcode returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippPostcode() bool {
+	if o != nil && !IsNil(o.ShippPostcode) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippPostcode gets a reference to the given string and assigns it to the ShippPostcode field.
+func (o *OrderAdd) SetShippPostcode(v string) {
+	o.ShippPostcode = &v
+}
+
+// GetShippState returns the ShippState field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippState() string {
+	if o == nil || IsNil(o.ShippState) {
+		var ret string
+		return ret
+	}
+	return *o.ShippState
+}
+
+// GetShippStateOk returns a tuple with the ShippState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippState) {
+		return nil, false
+	}
+	return o.ShippState, true
+}
+
+// HasShippState returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippState() bool {
+	if o != nil && !IsNil(o.ShippState) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippState gets a reference to the given string and assigns it to the ShippState field.
+func (o *OrderAdd) SetShippState(v string) {
+	o.ShippState = &v
+}
+
+// GetShippCountry returns the ShippCountry field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippCountry() string {
+	if o == nil || IsNil(o.ShippCountry) {
+		var ret string
+		return ret
+	}
+	return *o.ShippCountry
+}
+
+// GetShippCountryOk returns a tuple with the ShippCountry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippCountry) {
+		return nil, false
+	}
+	return o.ShippCountry, true
+}
+
+// HasShippCountry returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippCountry() bool {
+	if o != nil && !IsNil(o.ShippCountry) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippCountry gets a reference to the given string and assigns it to the ShippCountry field.
+func (o *OrderAdd) SetShippCountry(v string) {
+	o.ShippCountry = &v
 }
 
 // GetShippCompany returns the ShippCompany field value if set, zero value otherwise.
@@ -1592,70 +1496,6 @@ func (o *OrderAdd) SetShippFax(v string) {
 	o.ShippFax = &v
 }
 
-// GetDateModified returns the DateModified field value if set, zero value otherwise.
-func (o *OrderAdd) GetDateModified() string {
-	if o == nil || IsNil(o.DateModified) {
-		var ret string
-		return ret
-	}
-	return *o.DateModified
-}
-
-// GetDateModifiedOk returns a tuple with the DateModified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetDateModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.DateModified) {
-		return nil, false
-	}
-	return o.DateModified, true
-}
-
-// HasDateModified returns a boolean if a field has been set.
-func (o *OrderAdd) HasDateModified() bool {
-	if o != nil && !IsNil(o.DateModified) {
-		return true
-	}
-
-	return false
-}
-
-// SetDateModified gets a reference to the given string and assigns it to the DateModified field.
-func (o *OrderAdd) SetDateModified(v string) {
-	o.DateModified = &v
-}
-
-// GetDateFinished returns the DateFinished field value if set, zero value otherwise.
-func (o *OrderAdd) GetDateFinished() string {
-	if o == nil || IsNil(o.DateFinished) {
-		var ret string
-		return ret
-	}
-	return *o.DateFinished
-}
-
-// GetDateFinishedOk returns a tuple with the DateFinished field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetDateFinishedOk() (*string, bool) {
-	if o == nil || IsNil(o.DateFinished) {
-		return nil, false
-	}
-	return o.DateFinished, true
-}
-
-// HasDateFinished returns a boolean if a field has been set.
-func (o *OrderAdd) HasDateFinished() bool {
-	if o != nil && !IsNil(o.DateFinished) {
-		return true
-	}
-
-	return false
-}
-
-// SetDateFinished gets a reference to the given string and assigns it to the DateFinished field.
-func (o *OrderAdd) SetDateFinished(v string) {
-	o.DateFinished = &v
-}
-
 // GetSubtotalPrice returns the SubtotalPrice field value if set, zero value otherwise.
 func (o *OrderAdd) GetSubtotalPrice() float32 {
 	if o == nil || IsNil(o.SubtotalPrice) {
@@ -1718,6 +1558,102 @@ func (o *OrderAdd) HasTaxPrice() bool {
 // SetTaxPrice gets a reference to the given float32 and assigns it to the TaxPrice field.
 func (o *OrderAdd) SetTaxPrice(v float32) {
 	o.TaxPrice = &v
+}
+
+// GetTotalPrice returns the TotalPrice field value if set, zero value otherwise.
+func (o *OrderAdd) GetTotalPrice() float32 {
+	if o == nil || IsNil(o.TotalPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.TotalPrice
+}
+
+// GetTotalPriceOk returns a tuple with the TotalPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetTotalPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.TotalPrice) {
+		return nil, false
+	}
+	return o.TotalPrice, true
+}
+
+// HasTotalPrice returns a boolean if a field has been set.
+func (o *OrderAdd) HasTotalPrice() bool {
+	if o != nil && !IsNil(o.TotalPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPrice gets a reference to the given float32 and assigns it to the TotalPrice field.
+func (o *OrderAdd) SetTotalPrice(v float32) {
+	o.TotalPrice = &v
+}
+
+// GetTotalPaid returns the TotalPaid field value if set, zero value otherwise.
+func (o *OrderAdd) GetTotalPaid() float32 {
+	if o == nil || IsNil(o.TotalPaid) {
+		var ret float32
+		return ret
+	}
+	return *o.TotalPaid
+}
+
+// GetTotalPaidOk returns a tuple with the TotalPaid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetTotalPaidOk() (*float32, bool) {
+	if o == nil || IsNil(o.TotalPaid) {
+		return nil, false
+	}
+	return o.TotalPaid, true
+}
+
+// HasTotalPaid returns a boolean if a field has been set.
+func (o *OrderAdd) HasTotalPaid() bool {
+	if o != nil && !IsNil(o.TotalPaid) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPaid gets a reference to the given float32 and assigns it to the TotalPaid field.
+func (o *OrderAdd) SetTotalPaid(v float32) {
+	o.TotalPaid = &v
+}
+
+// GetTotalWeight returns the TotalWeight field value if set, zero value otherwise.
+func (o *OrderAdd) GetTotalWeight() int32 {
+	if o == nil || IsNil(o.TotalWeight) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalWeight
+}
+
+// GetTotalWeightOk returns a tuple with the TotalWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetTotalWeightOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalWeight) {
+		return nil, false
+	}
+	return o.TotalWeight, true
+}
+
+// HasTotalWeight returns a boolean if a field has been set.
+func (o *OrderAdd) HasTotalWeight() bool {
+	if o != nil && !IsNil(o.TotalWeight) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalWeight gets a reference to the given int32 and assigns it to the TotalWeight field.
+func (o *OrderAdd) SetTotalWeight(v int32) {
+	o.TotalWeight = &v
 }
 
 // GetPricesIncTax returns the PricesIncTax field value if set, zero value otherwise.
@@ -1816,70 +1752,6 @@ func (o *OrderAdd) SetShippingTax(v float32) {
 	o.ShippingTax = &v
 }
 
-// GetCarrierId returns the CarrierId field value if set, zero value otherwise.
-func (o *OrderAdd) GetCarrierId() string {
-	if o == nil || IsNil(o.CarrierId) {
-		var ret string
-		return ret
-	}
-	return *o.CarrierId
-}
-
-// GetCarrierIdOk returns a tuple with the CarrierId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetCarrierIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CarrierId) {
-		return nil, false
-	}
-	return o.CarrierId, true
-}
-
-// HasCarrierId returns a boolean if a field has been set.
-func (o *OrderAdd) HasCarrierId() bool {
-	if o != nil && !IsNil(o.CarrierId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCarrierId gets a reference to the given string and assigns it to the CarrierId field.
-func (o *OrderAdd) SetCarrierId(v string) {
-	o.CarrierId = &v
-}
-
-// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
-func (o *OrderAdd) GetWarehouseId() string {
-	if o == nil || IsNil(o.WarehouseId) {
-		var ret string
-		return ret
-	}
-	return *o.WarehouseId
-}
-
-// GetWarehouseIdOk returns a tuple with the WarehouseId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetWarehouseIdOk() (*string, bool) {
-	if o == nil || IsNil(o.WarehouseId) {
-		return nil, false
-	}
-	return o.WarehouseId, true
-}
-
-// HasWarehouseId returns a boolean if a field has been set.
-func (o *OrderAdd) HasWarehouseId() bool {
-	if o != nil && !IsNil(o.WarehouseId) {
-		return true
-	}
-
-	return false
-}
-
-// SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
-func (o *OrderAdd) SetWarehouseId(v string) {
-	o.WarehouseId = &v
-}
-
 // GetDiscount returns the Discount field value if set, zero value otherwise.
 func (o *OrderAdd) GetDiscount() float32 {
 	if o == nil || IsNil(o.Discount) {
@@ -1944,38 +1816,6 @@ func (o *OrderAdd) SetCouponDiscount(v float32) {
 	o.CouponDiscount = &v
 }
 
-// GetCoupons returns the Coupons field value if set, zero value otherwise.
-func (o *OrderAdd) GetCoupons() []string {
-	if o == nil || IsNil(o.Coupons) {
-		var ret []string
-		return ret
-	}
-	return o.Coupons
-}
-
-// GetCouponsOk returns a tuple with the Coupons field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetCouponsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Coupons) {
-		return nil, false
-	}
-	return o.Coupons, true
-}
-
-// HasCoupons returns a boolean if a field has been set.
-func (o *OrderAdd) HasCoupons() bool {
-	if o != nil && !IsNil(o.Coupons) {
-		return true
-	}
-
-	return false
-}
-
-// SetCoupons gets a reference to the given []string and assigns it to the Coupons field.
-func (o *OrderAdd) SetCoupons(v []string) {
-	o.Coupons = v
-}
-
 // GetGiftCertificateDiscount returns the GiftCertificateDiscount field value if set, zero value otherwise.
 func (o *OrderAdd) GetGiftCertificateDiscount() float32 {
 	if o == nil || IsNil(o.GiftCertificateDiscount) {
@@ -2008,132 +1848,132 @@ func (o *OrderAdd) SetGiftCertificateDiscount(v float32) {
 	o.GiftCertificateDiscount = &v
 }
 
-// GetFulfillmentStatus returns the FulfillmentStatus field value if set, zero value otherwise.
-func (o *OrderAdd) GetFulfillmentStatus() string {
-	if o == nil || IsNil(o.FulfillmentStatus) {
+// GetOrderShippingMethod returns the OrderShippingMethod field value if set, zero value otherwise.
+func (o *OrderAdd) GetOrderShippingMethod() string {
+	if o == nil || IsNil(o.OrderShippingMethod) {
 		var ret string
 		return ret
 	}
-	return *o.FulfillmentStatus
+	return *o.OrderShippingMethod
 }
 
-// GetFulfillmentStatusOk returns a tuple with the FulfillmentStatus field value if set, nil otherwise
+// GetOrderShippingMethodOk returns a tuple with the OrderShippingMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderAdd) GetFulfillmentStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.FulfillmentStatus) {
+func (o *OrderAdd) GetOrderShippingMethodOk() (*string, bool) {
+	if o == nil || IsNil(o.OrderShippingMethod) {
 		return nil, false
 	}
-	return o.FulfillmentStatus, true
+	return o.OrderShippingMethod, true
 }
 
-// HasFulfillmentStatus returns a boolean if a field has been set.
-func (o *OrderAdd) HasFulfillmentStatus() bool {
-	if o != nil && !IsNil(o.FulfillmentStatus) {
+// HasOrderShippingMethod returns a boolean if a field has been set.
+func (o *OrderAdd) HasOrderShippingMethod() bool {
+	if o != nil && !IsNil(o.OrderShippingMethod) {
 		return true
 	}
 
 	return false
 }
 
-// SetFulfillmentStatus gets a reference to the given string and assigns it to the FulfillmentStatus field.
-func (o *OrderAdd) SetFulfillmentStatus(v string) {
-	o.FulfillmentStatus = &v
+// SetOrderShippingMethod gets a reference to the given string and assigns it to the OrderShippingMethod field.
+func (o *OrderAdd) SetOrderShippingMethod(v string) {
+	o.OrderShippingMethod = &v
 }
 
-// GetFinancialStatus returns the FinancialStatus field value if set, zero value otherwise.
-func (o *OrderAdd) GetFinancialStatus() string {
-	if o == nil || IsNil(o.FinancialStatus) {
+// GetCarrierId returns the CarrierId field value if set, zero value otherwise.
+func (o *OrderAdd) GetCarrierId() string {
+	if o == nil || IsNil(o.CarrierId) {
 		var ret string
 		return ret
 	}
-	return *o.FinancialStatus
+	return *o.CarrierId
 }
 
-// GetFinancialStatusOk returns a tuple with the FinancialStatus field value if set, nil otherwise
+// GetCarrierIdOk returns a tuple with the CarrierId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderAdd) GetFinancialStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.FinancialStatus) {
+func (o *OrderAdd) GetCarrierIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CarrierId) {
 		return nil, false
 	}
-	return o.FinancialStatus, true
+	return o.CarrierId, true
 }
 
-// HasFinancialStatus returns a boolean if a field has been set.
-func (o *OrderAdd) HasFinancialStatus() bool {
-	if o != nil && !IsNil(o.FinancialStatus) {
+// HasCarrierId returns a boolean if a field has been set.
+func (o *OrderAdd) HasCarrierId() bool {
+	if o != nil && !IsNil(o.CarrierId) {
 		return true
 	}
 
 	return false
 }
 
-// SetFinancialStatus gets a reference to the given string and assigns it to the FinancialStatus field.
-func (o *OrderAdd) SetFinancialStatus(v string) {
-	o.FinancialStatus = &v
+// SetCarrierId gets a reference to the given string and assigns it to the CarrierId field.
+func (o *OrderAdd) SetCarrierId(v string) {
+	o.CarrierId = &v
 }
 
-// GetTotalPaid returns the TotalPaid field value if set, zero value otherwise.
-func (o *OrderAdd) GetTotalPaid() float32 {
-	if o == nil || IsNil(o.TotalPaid) {
-		var ret float32
-		return ret
-	}
-	return *o.TotalPaid
-}
-
-// GetTotalPaidOk returns a tuple with the TotalPaid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetTotalPaidOk() (*float32, bool) {
-	if o == nil || IsNil(o.TotalPaid) {
-		return nil, false
-	}
-	return o.TotalPaid, true
-}
-
-// HasTotalPaid returns a boolean if a field has been set.
-func (o *OrderAdd) HasTotalPaid() bool {
-	if o != nil && !IsNil(o.TotalPaid) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalPaid gets a reference to the given float32 and assigns it to the TotalPaid field.
-func (o *OrderAdd) SetTotalPaid(v float32) {
-	o.TotalPaid = &v
-}
-
-// GetExternalSource returns the ExternalSource field value if set, zero value otherwise.
-func (o *OrderAdd) GetExternalSource() string {
-	if o == nil || IsNil(o.ExternalSource) {
+// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
+func (o *OrderAdd) GetWarehouseId() string {
+	if o == nil || IsNil(o.WarehouseId) {
 		var ret string
 		return ret
 	}
-	return *o.ExternalSource
+	return *o.WarehouseId
 }
 
-// GetExternalSourceOk returns a tuple with the ExternalSource field value if set, nil otherwise
+// GetWarehouseIdOk returns a tuple with the WarehouseId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderAdd) GetExternalSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.ExternalSource) {
+func (o *OrderAdd) GetWarehouseIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WarehouseId) {
 		return nil, false
 	}
-	return o.ExternalSource, true
+	return o.WarehouseId, true
 }
 
-// HasExternalSource returns a boolean if a field has been set.
-func (o *OrderAdd) HasExternalSource() bool {
-	if o != nil && !IsNil(o.ExternalSource) {
+// HasWarehouseId returns a boolean if a field has been set.
+func (o *OrderAdd) HasWarehouseId() bool {
+	if o != nil && !IsNil(o.WarehouseId) {
 		return true
 	}
 
 	return false
 }
 
-// SetExternalSource gets a reference to the given string and assigns it to the ExternalSource field.
-func (o *OrderAdd) SetExternalSource(v string) {
-	o.ExternalSource = &v
+// SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
+func (o *OrderAdd) SetWarehouseId(v string) {
+	o.WarehouseId = &v
+}
+
+// GetCoupons returns the Coupons field value if set, zero value otherwise.
+func (o *OrderAdd) GetCoupons() []string {
+	if o == nil || IsNil(o.Coupons) {
+		var ret []string
+		return ret
+	}
+	return o.Coupons
+}
+
+// GetCouponsOk returns a tuple with the Coupons field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetCouponsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Coupons) {
+		return nil, false
+	}
+	return o.Coupons, true
+}
+
+// HasCoupons returns a boolean if a field has been set.
+func (o *OrderAdd) HasCoupons() bool {
+	if o != nil && !IsNil(o.Coupons) {
+		return true
+	}
+
+	return false
+}
+
+// SetCoupons gets a reference to the given []string and assigns it to the Coupons field.
+func (o *OrderAdd) SetCoupons(v []string) {
+	o.Coupons = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -2166,6 +2006,198 @@ func (o *OrderAdd) HasTags() bool {
 // SetTags gets a reference to the given string and assigns it to the Tags field.
 func (o *OrderAdd) SetTags(v string) {
 	o.Tags = &v
+}
+
+// GetComment returns the Comment field value if set, zero value otherwise.
+func (o *OrderAdd) GetComment() string {
+	if o == nil || IsNil(o.Comment) {
+		var ret string
+		return ret
+	}
+	return *o.Comment
+}
+
+// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.Comment) {
+		return nil, false
+	}
+	return o.Comment, true
+}
+
+// HasComment returns a boolean if a field has been set.
+func (o *OrderAdd) HasComment() bool {
+	if o != nil && !IsNil(o.Comment) {
+		return true
+	}
+
+	return false
+}
+
+// SetComment gets a reference to the given string and assigns it to the Comment field.
+func (o *OrderAdd) SetComment(v string) {
+	o.Comment = &v
+}
+
+// GetAdminComment returns the AdminComment field value if set, zero value otherwise.
+func (o *OrderAdd) GetAdminComment() string {
+	if o == nil || IsNil(o.AdminComment) {
+		var ret string
+		return ret
+	}
+	return *o.AdminComment
+}
+
+// GetAdminCommentOk returns a tuple with the AdminComment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetAdminCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.AdminComment) {
+		return nil, false
+	}
+	return o.AdminComment, true
+}
+
+// HasAdminComment returns a boolean if a field has been set.
+func (o *OrderAdd) HasAdminComment() bool {
+	if o != nil && !IsNil(o.AdminComment) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminComment gets a reference to the given string and assigns it to the AdminComment field.
+func (o *OrderAdd) SetAdminComment(v string) {
+	o.AdminComment = &v
+}
+
+// GetAdminPrivateComment returns the AdminPrivateComment field value if set, zero value otherwise.
+func (o *OrderAdd) GetAdminPrivateComment() string {
+	if o == nil || IsNil(o.AdminPrivateComment) {
+		var ret string
+		return ret
+	}
+	return *o.AdminPrivateComment
+}
+
+// GetAdminPrivateCommentOk returns a tuple with the AdminPrivateComment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetAdminPrivateCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.AdminPrivateComment) {
+		return nil, false
+	}
+	return o.AdminPrivateComment, true
+}
+
+// HasAdminPrivateComment returns a boolean if a field has been set.
+func (o *OrderAdd) HasAdminPrivateComment() bool {
+	if o != nil && !IsNil(o.AdminPrivateComment) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminPrivateComment gets a reference to the given string and assigns it to the AdminPrivateComment field.
+func (o *OrderAdd) SetAdminPrivateComment(v string) {
+	o.AdminPrivateComment = &v
+}
+
+// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
+func (o *OrderAdd) GetSendNotifications() bool {
+	if o == nil || IsNil(o.SendNotifications) {
+		var ret bool
+		return ret
+	}
+	return *o.SendNotifications
+}
+
+// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetSendNotificationsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendNotifications) {
+		return nil, false
+	}
+	return o.SendNotifications, true
+}
+
+// HasSendNotifications returns a boolean if a field has been set.
+func (o *OrderAdd) HasSendNotifications() bool {
+	if o != nil && !IsNil(o.SendNotifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
+func (o *OrderAdd) SetSendNotifications(v bool) {
+	o.SendNotifications = &v
+}
+
+// GetSendAdminNotifications returns the SendAdminNotifications field value if set, zero value otherwise.
+func (o *OrderAdd) GetSendAdminNotifications() bool {
+	if o == nil || IsNil(o.SendAdminNotifications) {
+		var ret bool
+		return ret
+	}
+	return *o.SendAdminNotifications
+}
+
+// GetSendAdminNotificationsOk returns a tuple with the SendAdminNotifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetSendAdminNotificationsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendAdminNotifications) {
+		return nil, false
+	}
+	return o.SendAdminNotifications, true
+}
+
+// HasSendAdminNotifications returns a boolean if a field has been set.
+func (o *OrderAdd) HasSendAdminNotifications() bool {
+	if o != nil && !IsNil(o.SendAdminNotifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendAdminNotifications gets a reference to the given bool and assigns it to the SendAdminNotifications field.
+func (o *OrderAdd) SetSendAdminNotifications(v bool) {
+	o.SendAdminNotifications = &v
+}
+
+// GetExternalSource returns the ExternalSource field value if set, zero value otherwise.
+func (o *OrderAdd) GetExternalSource() string {
+	if o == nil || IsNil(o.ExternalSource) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalSource
+}
+
+// GetExternalSourceOk returns a tuple with the ExternalSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetExternalSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalSource) {
+		return nil, false
+	}
+	return o.ExternalSource, true
+}
+
+// HasExternalSource returns a boolean if a field has been set.
+func (o *OrderAdd) HasExternalSource() bool {
+	if o != nil && !IsNil(o.ExternalSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalSource gets a reference to the given string and assigns it to the ExternalSource field.
+func (o *OrderAdd) SetExternalSource(v string) {
+	o.ExternalSource = &v
 }
 
 // GetInventoryBehaviour returns the InventoryBehaviour field value if set, zero value otherwise.
@@ -2262,38 +2294,6 @@ func (o *OrderAdd) HasNoteAttributes() bool {
 // SetNoteAttributes gets a reference to the given []OrderAddNoteAttributesInner and assigns it to the NoteAttributes field.
 func (o *OrderAdd) SetNoteAttributes(v []OrderAddNoteAttributesInner) {
 	o.NoteAttributes = v
-}
-
-// GetTotalWeight returns the TotalWeight field value if set, zero value otherwise.
-func (o *OrderAdd) GetTotalWeight() int32 {
-	if o == nil || IsNil(o.TotalWeight) {
-		var ret int32
-		return ret
-	}
-	return *o.TotalWeight
-}
-
-// GetTotalWeightOk returns a tuple with the TotalWeight field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAdd) GetTotalWeightOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalWeight) {
-		return nil, false
-	}
-	return o.TotalWeight, true
-}
-
-// HasTotalWeight returns a boolean if a field has been set.
-func (o *OrderAdd) HasTotalWeight() bool {
-	if o != nil && !IsNil(o.TotalWeight) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalWeight gets a reference to the given int32 and assigns it to the TotalWeight field.
-func (o *OrderAdd) SetTotalWeight(v int32) {
-	o.TotalWeight = &v
 }
 
 // GetClearCache returns the ClearCache field value if set, zero value otherwise.
@@ -2407,80 +2407,13 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 		toSerialize["channel_id"] = o.ChannelId
 	}
 	toSerialize["order_status"] = o.OrderStatus
-	if !IsNil(o.SendNotifications) {
-		toSerialize["send_notifications"] = o.SendNotifications
+	if !IsNil(o.FulfillmentStatus) {
+		toSerialize["fulfillment_status"] = o.FulfillmentStatus
 	}
-	if !IsNil(o.SendAdminNotifications) {
-		toSerialize["send_admin_notifications"] = o.SendAdminNotifications
+	if !IsNil(o.FinancialStatus) {
+		toSerialize["financial_status"] = o.FinancialStatus
 	}
 	toSerialize["customer_email"] = o.CustomerEmail
-	toSerialize["bill_first_name"] = o.BillFirstName
-	toSerialize["bill_last_name"] = o.BillLastName
-	toSerialize["bill_address_1"] = o.BillAddress1
-	toSerialize["bill_city"] = o.BillCity
-	toSerialize["bill_postcode"] = o.BillPostcode
-	toSerialize["bill_state"] = o.BillState
-	toSerialize["bill_country"] = o.BillCountry
-	if !IsNil(o.ShippFirstName) {
-		toSerialize["shipp_first_name"] = o.ShippFirstName
-	}
-	if !IsNil(o.ShippLastName) {
-		toSerialize["shipp_last_name"] = o.ShippLastName
-	}
-	if !IsNil(o.ShippAddress1) {
-		toSerialize["shipp_address_1"] = o.ShippAddress1
-	}
-	if !IsNil(o.ShippCity) {
-		toSerialize["shipp_city"] = o.ShippCity
-	}
-	if !IsNil(o.ShippPostcode) {
-		toSerialize["shipp_postcode"] = o.ShippPostcode
-	}
-	if !IsNil(o.ShippState) {
-		toSerialize["shipp_state"] = o.ShippState
-	}
-	if !IsNil(o.ShippCountry) {
-		toSerialize["shipp_country"] = o.ShippCountry
-	}
-	if !IsNil(o.TotalPrice) {
-		toSerialize["total_price"] = o.TotalPrice
-	}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
-	if !IsNil(o.OrderPaymentMethod) {
-		toSerialize["order_payment_method"] = o.OrderPaymentMethod
-	}
-	if !IsNil(o.TransactionId) {
-		toSerialize["transaction_id"] = o.TransactionId
-	}
-	if !IsNil(o.OrderShippingMethod) {
-		toSerialize["order_shipping_method"] = o.OrderShippingMethod
-	}
-	if !IsNil(o.Currency) {
-		toSerialize["currency"] = o.Currency
-	}
-	if !IsNil(o.BillAddress2) {
-		toSerialize["bill_address_2"] = o.BillAddress2
-	}
-	if !IsNil(o.BillCompany) {
-		toSerialize["bill_company"] = o.BillCompany
-	}
-	if !IsNil(o.BillPhone) {
-		toSerialize["bill_phone"] = o.BillPhone
-	}
-	if !IsNil(o.BillFax) {
-		toSerialize["bill_fax"] = o.BillFax
-	}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	if !IsNil(o.AdminComment) {
-		toSerialize["admin_comment"] = o.AdminComment
-	}
-	if !IsNil(o.AdminPrivateComment) {
-		toSerialize["admin_private_comment"] = o.AdminPrivateComment
-	}
 	if !IsNil(o.CustomerFirstName) {
 		toSerialize["customer_first_name"] = o.CustomerFirstName
 	}
@@ -2499,8 +2432,66 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomerFax) {
 		toSerialize["customer_fax"] = o.CustomerFax
 	}
+	if !IsNil(o.OrderPaymentMethod) {
+		toSerialize["order_payment_method"] = o.OrderPaymentMethod
+	}
+	if !IsNil(o.TransactionId) {
+		toSerialize["transaction_id"] = o.TransactionId
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.Date) {
+		toSerialize["date"] = o.Date
+	}
+	if !IsNil(o.DateModified) {
+		toSerialize["date_modified"] = o.DateModified
+	}
+	if !IsNil(o.DateFinished) {
+		toSerialize["date_finished"] = o.DateFinished
+	}
+	toSerialize["bill_first_name"] = o.BillFirstName
+	toSerialize["bill_last_name"] = o.BillLastName
+	toSerialize["bill_address_1"] = o.BillAddress1
+	if !IsNil(o.BillAddress2) {
+		toSerialize["bill_address_2"] = o.BillAddress2
+	}
+	toSerialize["bill_city"] = o.BillCity
+	toSerialize["bill_postcode"] = o.BillPostcode
+	toSerialize["bill_state"] = o.BillState
+	toSerialize["bill_country"] = o.BillCountry
+	if !IsNil(o.BillCompany) {
+		toSerialize["bill_company"] = o.BillCompany
+	}
+	if !IsNil(o.BillPhone) {
+		toSerialize["bill_phone"] = o.BillPhone
+	}
+	if !IsNil(o.BillFax) {
+		toSerialize["bill_fax"] = o.BillFax
+	}
+	if !IsNil(o.ShippFirstName) {
+		toSerialize["shipp_first_name"] = o.ShippFirstName
+	}
+	if !IsNil(o.ShippLastName) {
+		toSerialize["shipp_last_name"] = o.ShippLastName
+	}
+	if !IsNil(o.ShippAddress1) {
+		toSerialize["shipp_address_1"] = o.ShippAddress1
+	}
 	if !IsNil(o.ShippAddress2) {
 		toSerialize["shipp_address_2"] = o.ShippAddress2
+	}
+	if !IsNil(o.ShippCity) {
+		toSerialize["shipp_city"] = o.ShippCity
+	}
+	if !IsNil(o.ShippPostcode) {
+		toSerialize["shipp_postcode"] = o.ShippPostcode
+	}
+	if !IsNil(o.ShippState) {
+		toSerialize["shipp_state"] = o.ShippState
+	}
+	if !IsNil(o.ShippCountry) {
+		toSerialize["shipp_country"] = o.ShippCountry
 	}
 	if !IsNil(o.ShippCompany) {
 		toSerialize["shipp_company"] = o.ShippCompany
@@ -2511,17 +2502,20 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ShippFax) {
 		toSerialize["shipp_fax"] = o.ShippFax
 	}
-	if !IsNil(o.DateModified) {
-		toSerialize["date_modified"] = o.DateModified
-	}
-	if !IsNil(o.DateFinished) {
-		toSerialize["date_finished"] = o.DateFinished
-	}
 	if !IsNil(o.SubtotalPrice) {
 		toSerialize["subtotal_price"] = o.SubtotalPrice
 	}
 	if !IsNil(o.TaxPrice) {
 		toSerialize["tax_price"] = o.TaxPrice
+	}
+	if !IsNil(o.TotalPrice) {
+		toSerialize["total_price"] = o.TotalPrice
+	}
+	if !IsNil(o.TotalPaid) {
+		toSerialize["total_paid"] = o.TotalPaid
+	}
+	if !IsNil(o.TotalWeight) {
+		toSerialize["total_weight"] = o.TotalWeight
 	}
 	if !IsNil(o.PricesIncTax) {
 		toSerialize["prices_inc_tax"] = o.PricesIncTax
@@ -2532,38 +2526,47 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ShippingTax) {
 		toSerialize["shipping_tax"] = o.ShippingTax
 	}
-	if !IsNil(o.CarrierId) {
-		toSerialize["carrier_id"] = o.CarrierId
-	}
-	if !IsNil(o.WarehouseId) {
-		toSerialize["warehouse_id"] = o.WarehouseId
-	}
 	if !IsNil(o.Discount) {
 		toSerialize["discount"] = o.Discount
 	}
 	if !IsNil(o.CouponDiscount) {
 		toSerialize["coupon_discount"] = o.CouponDiscount
 	}
-	if !IsNil(o.Coupons) {
-		toSerialize["coupons"] = o.Coupons
-	}
 	if !IsNil(o.GiftCertificateDiscount) {
 		toSerialize["gift_certificate_discount"] = o.GiftCertificateDiscount
 	}
-	if !IsNil(o.FulfillmentStatus) {
-		toSerialize["fulfillment_status"] = o.FulfillmentStatus
+	if !IsNil(o.OrderShippingMethod) {
+		toSerialize["order_shipping_method"] = o.OrderShippingMethod
 	}
-	if !IsNil(o.FinancialStatus) {
-		toSerialize["financial_status"] = o.FinancialStatus
+	if !IsNil(o.CarrierId) {
+		toSerialize["carrier_id"] = o.CarrierId
 	}
-	if !IsNil(o.TotalPaid) {
-		toSerialize["total_paid"] = o.TotalPaid
+	if !IsNil(o.WarehouseId) {
+		toSerialize["warehouse_id"] = o.WarehouseId
 	}
-	if !IsNil(o.ExternalSource) {
-		toSerialize["external_source"] = o.ExternalSource
+	if !IsNil(o.Coupons) {
+		toSerialize["coupons"] = o.Coupons
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.AdminComment) {
+		toSerialize["admin_comment"] = o.AdminComment
+	}
+	if !IsNil(o.AdminPrivateComment) {
+		toSerialize["admin_private_comment"] = o.AdminPrivateComment
+	}
+	if !IsNil(o.SendNotifications) {
+		toSerialize["send_notifications"] = o.SendNotifications
+	}
+	if !IsNil(o.SendAdminNotifications) {
+		toSerialize["send_admin_notifications"] = o.SendAdminNotifications
+	}
+	if !IsNil(o.ExternalSource) {
+		toSerialize["external_source"] = o.ExternalSource
 	}
 	if !IsNil(o.InventoryBehaviour) {
 		toSerialize["inventory_behaviour"] = o.InventoryBehaviour
@@ -2573,9 +2576,6 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NoteAttributes) {
 		toSerialize["note_attributes"] = o.NoteAttributes
-	}
-	if !IsNil(o.TotalWeight) {
-		toSerialize["total_weight"] = o.TotalWeight
 	}
 	if !IsNil(o.ClearCache) {
 		toSerialize["clear_cache"] = o.ClearCache

@@ -22,24 +22,24 @@ var _ MappedNullable = &OrderShipmentUpdate{}
 
 // OrderShipmentUpdate struct for OrderShipmentUpdate
 type OrderShipmentUpdate struct {
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// Shipment id indicates the number of delivery
 	ShipmentId string `json:"shipment_id"`
 	// Defines the order that will be updated
 	OrderId *string `json:"order_id,omitempty"`
-	// Defines shipment's tracking numbers that have to be added</br> How set tracking numbers to appropriate carrier:<ul><li>tracking_numbers[]=a2c.demo1,a2c.demo2 - set default carrier</li><li>tracking_numbers[<b>carrier_id</b>]=a2c.demo - set appropriate carrier</li></ul>To get the list of carriers IDs that are available in your store, use the <a href = \"https://api2cart.com/docs/#/cart/CartInfo\">cart.info</a > method
-	TrackingNumbers []OrderShipmentAddTrackingNumbersInner `json:"tracking_numbers,omitempty"`
-	// Allows rewrite tracking numbers
-	Replace *bool `json:"replace,omitempty"`
-	// Defines shipment's status
-	IsShipped *bool `json:"is_shipped,omitempty"`
-	// Defines custom tracking link
-	TrackingLink *string `json:"tracking_link,omitempty"`
-	// Defines the date of delivery
-	DeliveredAt *string `json:"delivered_at,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Defines company name that provide tracking of shipment
 	ShipmentProvider *string `json:"shipment_provider,omitempty"`
+	// Defines shipment's tracking numbers that have to be added</br> How set tracking numbers to appropriate carrier:<ul><li>tracking_numbers[]=a2c.demo1,a2c.demo2 - set default carrier</li><li>tracking_numbers[<b>carrier_id</b>]=a2c.demo - set appropriate carrier</li></ul>To get the list of carriers IDs that are available in your store, use the <a href = \"https://api2cart.com/docs/#/cart/CartInfo\">cart.info</a > method
+	TrackingNumbers []OrderShipmentAddTrackingNumbersInner `json:"tracking_numbers,omitempty"`
+	// Defines custom tracking link
+	TrackingLink *string `json:"tracking_link,omitempty"`
+	// Defines shipment's status
+	IsShipped *bool `json:"is_shipped,omitempty"`
+	// Defines the date of delivery
+	DeliveredAt *string `json:"delivered_at,omitempty"`
+	// Allows rewrite tracking numbers
+	Replace *bool `json:"replace,omitempty"`
 }
 
 type _OrderShipmentUpdate OrderShipmentUpdate
@@ -51,10 +51,10 @@ type _OrderShipmentUpdate OrderShipmentUpdate
 func NewOrderShipmentUpdate(shipmentId string) *OrderShipmentUpdate {
 	this := OrderShipmentUpdate{}
 	this.ShipmentId = shipmentId
-	var replace bool = true
-	this.Replace = &replace
 	var isShipped bool = true
 	this.IsShipped = &isShipped
+	var replace bool = true
+	this.Replace = &replace
 	return &this
 }
 
@@ -63,43 +63,11 @@ func NewOrderShipmentUpdate(shipmentId string) *OrderShipmentUpdate {
 // but it doesn't guarantee that properties required by API are set
 func NewOrderShipmentUpdateWithDefaults() *OrderShipmentUpdate {
 	this := OrderShipmentUpdate{}
-	var replace bool = true
-	this.Replace = &replace
 	var isShipped bool = true
 	this.IsShipped = &isShipped
+	var replace bool = true
+	this.Replace = &replace
 	return &this
-}
-
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *OrderShipmentUpdate) SetStoreId(v string) {
-	o.StoreId = &v
 }
 
 // GetShipmentId returns the ShipmentId field value
@@ -158,164 +126,36 @@ func (o *OrderShipmentUpdate) SetOrderId(v string) {
 	o.OrderId = &v
 }
 
-// GetTrackingNumbers returns the TrackingNumbers field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetTrackingNumbers() []OrderShipmentAddTrackingNumbersInner {
-	if o == nil || IsNil(o.TrackingNumbers) {
-		var ret []OrderShipmentAddTrackingNumbersInner
-		return ret
-	}
-	return o.TrackingNumbers
-}
-
-// GetTrackingNumbersOk returns a tuple with the TrackingNumbers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetTrackingNumbersOk() ([]OrderShipmentAddTrackingNumbersInner, bool) {
-	if o == nil || IsNil(o.TrackingNumbers) {
-		return nil, false
-	}
-	return o.TrackingNumbers, true
-}
-
-// HasTrackingNumbers returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasTrackingNumbers() bool {
-	if o != nil && !IsNil(o.TrackingNumbers) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrackingNumbers gets a reference to the given []OrderShipmentAddTrackingNumbersInner and assigns it to the TrackingNumbers field.
-func (o *OrderShipmentUpdate) SetTrackingNumbers(v []OrderShipmentAddTrackingNumbersInner) {
-	o.TrackingNumbers = v
-}
-
-// GetReplace returns the Replace field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetReplace() bool {
-	if o == nil || IsNil(o.Replace) {
-		var ret bool
-		return ret
-	}
-	return *o.Replace
-}
-
-// GetReplaceOk returns a tuple with the Replace field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetReplaceOk() (*bool, bool) {
-	if o == nil || IsNil(o.Replace) {
-		return nil, false
-	}
-	return o.Replace, true
-}
-
-// HasReplace returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasReplace() bool {
-	if o != nil && !IsNil(o.Replace) {
-		return true
-	}
-
-	return false
-}
-
-// SetReplace gets a reference to the given bool and assigns it to the Replace field.
-func (o *OrderShipmentUpdate) SetReplace(v bool) {
-	o.Replace = &v
-}
-
-// GetIsShipped returns the IsShipped field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetIsShipped() bool {
-	if o == nil || IsNil(o.IsShipped) {
-		var ret bool
-		return ret
-	}
-	return *o.IsShipped
-}
-
-// GetIsShippedOk returns a tuple with the IsShipped field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetIsShippedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsShipped) {
-		return nil, false
-	}
-	return o.IsShipped, true
-}
-
-// HasIsShipped returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasIsShipped() bool {
-	if o != nil && !IsNil(o.IsShipped) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsShipped gets a reference to the given bool and assigns it to the IsShipped field.
-func (o *OrderShipmentUpdate) SetIsShipped(v bool) {
-	o.IsShipped = &v
-}
-
-// GetTrackingLink returns the TrackingLink field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetTrackingLink() string {
-	if o == nil || IsNil(o.TrackingLink) {
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
 		var ret string
 		return ret
 	}
-	return *o.TrackingLink
+	return *o.StoreId
 }
 
-// GetTrackingLinkOk returns a tuple with the TrackingLink field value if set, nil otherwise
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetTrackingLinkOk() (*string, bool) {
-	if o == nil || IsNil(o.TrackingLink) {
+func (o *OrderShipmentUpdate) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
 		return nil, false
 	}
-	return o.TrackingLink, true
+	return o.StoreId, true
 }
 
-// HasTrackingLink returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasTrackingLink() bool {
-	if o != nil && !IsNil(o.TrackingLink) {
+// HasStoreId returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingLink gets a reference to the given string and assigns it to the TrackingLink field.
-func (o *OrderShipmentUpdate) SetTrackingLink(v string) {
-	o.TrackingLink = &v
-}
-
-// GetDeliveredAt returns the DeliveredAt field value if set, zero value otherwise.
-func (o *OrderShipmentUpdate) GetDeliveredAt() string {
-	if o == nil || IsNil(o.DeliveredAt) {
-		var ret string
-		return ret
-	}
-	return *o.DeliveredAt
-}
-
-// GetDeliveredAtOk returns a tuple with the DeliveredAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentUpdate) GetDeliveredAtOk() (*string, bool) {
-	if o == nil || IsNil(o.DeliveredAt) {
-		return nil, false
-	}
-	return o.DeliveredAt, true
-}
-
-// HasDeliveredAt returns a boolean if a field has been set.
-func (o *OrderShipmentUpdate) HasDeliveredAt() bool {
-	if o != nil && !IsNil(o.DeliveredAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeliveredAt gets a reference to the given string and assigns it to the DeliveredAt field.
-func (o *OrderShipmentUpdate) SetDeliveredAt(v string) {
-	o.DeliveredAt = &v
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *OrderShipmentUpdate) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetShipmentProvider returns the ShipmentProvider field value if set, zero value otherwise.
@@ -350,6 +190,166 @@ func (o *OrderShipmentUpdate) SetShipmentProvider(v string) {
 	o.ShipmentProvider = &v
 }
 
+// GetTrackingNumbers returns the TrackingNumbers field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetTrackingNumbers() []OrderShipmentAddTrackingNumbersInner {
+	if o == nil || IsNil(o.TrackingNumbers) {
+		var ret []OrderShipmentAddTrackingNumbersInner
+		return ret
+	}
+	return o.TrackingNumbers
+}
+
+// GetTrackingNumbersOk returns a tuple with the TrackingNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetTrackingNumbersOk() ([]OrderShipmentAddTrackingNumbersInner, bool) {
+	if o == nil || IsNil(o.TrackingNumbers) {
+		return nil, false
+	}
+	return o.TrackingNumbers, true
+}
+
+// HasTrackingNumbers returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasTrackingNumbers() bool {
+	if o != nil && !IsNil(o.TrackingNumbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrackingNumbers gets a reference to the given []OrderShipmentAddTrackingNumbersInner and assigns it to the TrackingNumbers field.
+func (o *OrderShipmentUpdate) SetTrackingNumbers(v []OrderShipmentAddTrackingNumbersInner) {
+	o.TrackingNumbers = v
+}
+
+// GetTrackingLink returns the TrackingLink field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetTrackingLink() string {
+	if o == nil || IsNil(o.TrackingLink) {
+		var ret string
+		return ret
+	}
+	return *o.TrackingLink
+}
+
+// GetTrackingLinkOk returns a tuple with the TrackingLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetTrackingLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.TrackingLink) {
+		return nil, false
+	}
+	return o.TrackingLink, true
+}
+
+// HasTrackingLink returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasTrackingLink() bool {
+	if o != nil && !IsNil(o.TrackingLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrackingLink gets a reference to the given string and assigns it to the TrackingLink field.
+func (o *OrderShipmentUpdate) SetTrackingLink(v string) {
+	o.TrackingLink = &v
+}
+
+// GetIsShipped returns the IsShipped field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetIsShipped() bool {
+	if o == nil || IsNil(o.IsShipped) {
+		var ret bool
+		return ret
+	}
+	return *o.IsShipped
+}
+
+// GetIsShippedOk returns a tuple with the IsShipped field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetIsShippedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsShipped) {
+		return nil, false
+	}
+	return o.IsShipped, true
+}
+
+// HasIsShipped returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasIsShipped() bool {
+	if o != nil && !IsNil(o.IsShipped) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsShipped gets a reference to the given bool and assigns it to the IsShipped field.
+func (o *OrderShipmentUpdate) SetIsShipped(v bool) {
+	o.IsShipped = &v
+}
+
+// GetDeliveredAt returns the DeliveredAt field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetDeliveredAt() string {
+	if o == nil || IsNil(o.DeliveredAt) {
+		var ret string
+		return ret
+	}
+	return *o.DeliveredAt
+}
+
+// GetDeliveredAtOk returns a tuple with the DeliveredAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetDeliveredAtOk() (*string, bool) {
+	if o == nil || IsNil(o.DeliveredAt) {
+		return nil, false
+	}
+	return o.DeliveredAt, true
+}
+
+// HasDeliveredAt returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasDeliveredAt() bool {
+	if o != nil && !IsNil(o.DeliveredAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeliveredAt gets a reference to the given string and assigns it to the DeliveredAt field.
+func (o *OrderShipmentUpdate) SetDeliveredAt(v string) {
+	o.DeliveredAt = &v
+}
+
+// GetReplace returns the Replace field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetReplace() bool {
+	if o == nil || IsNil(o.Replace) {
+		var ret bool
+		return ret
+	}
+	return *o.Replace
+}
+
+// GetReplaceOk returns a tuple with the Replace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetReplaceOk() (*bool, bool) {
+	if o == nil || IsNil(o.Replace) {
+		return nil, false
+	}
+	return o.Replace, true
+}
+
+// HasReplace returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasReplace() bool {
+	if o != nil && !IsNil(o.Replace) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplace gets a reference to the given bool and assigns it to the Replace field.
+func (o *OrderShipmentUpdate) SetReplace(v bool) {
+	o.Replace = &v
+}
+
 func (o OrderShipmentUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -360,30 +360,30 @@ func (o OrderShipmentUpdate) MarshalJSON() ([]byte, error) {
 
 func (o OrderShipmentUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	toSerialize["shipment_id"] = o.ShipmentId
 	if !IsNil(o.OrderId) {
 		toSerialize["order_id"] = o.OrderId
 	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
+	}
+	if !IsNil(o.ShipmentProvider) {
+		toSerialize["shipment_provider"] = o.ShipmentProvider
+	}
 	if !IsNil(o.TrackingNumbers) {
 		toSerialize["tracking_numbers"] = o.TrackingNumbers
-	}
-	if !IsNil(o.Replace) {
-		toSerialize["replace"] = o.Replace
-	}
-	if !IsNil(o.IsShipped) {
-		toSerialize["is_shipped"] = o.IsShipped
 	}
 	if !IsNil(o.TrackingLink) {
 		toSerialize["tracking_link"] = o.TrackingLink
 	}
+	if !IsNil(o.IsShipped) {
+		toSerialize["is_shipped"] = o.IsShipped
+	}
 	if !IsNil(o.DeliveredAt) {
 		toSerialize["delivered_at"] = o.DeliveredAt
 	}
-	if !IsNil(o.ShipmentProvider) {
-		toSerialize["shipment_provider"] = o.ShipmentProvider
+	if !IsNil(o.Replace) {
+		toSerialize["replace"] = o.Replace
 	}
 	return toSerialize, nil
 }

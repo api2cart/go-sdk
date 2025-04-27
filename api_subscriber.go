@@ -28,17 +28,17 @@ type ApiSubscriberListRequest struct {
 	ApiService *SubscriberAPIService
 	start *int32
 	count *int32
+	pageCursor *string
 	subscribed *bool
 	storeId *string
 	email *string
-	params *string
-	exclude *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	pageCursor *string
 	responseFields *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -50,6 +50,12 @@ func (r ApiSubscriberListRequest) Start(start int32) ApiSubscriberListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiSubscriberListRequest) Count(count int32) ApiSubscriberListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiSubscriberListRequest) PageCursor(pageCursor string) ApiSubscriberListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -68,18 +74,6 @@ func (r ApiSubscriberListRequest) StoreId(storeId string) ApiSubscriberListReque
 // Filter subscribers by email
 func (r ApiSubscriberListRequest) Email(email string) ApiSubscriberListRequest {
 	r.email = &email
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiSubscriberListRequest) Params(params string) ApiSubscriberListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiSubscriberListRequest) Exclude(exclude string) ApiSubscriberListRequest {
-	r.exclude = &exclude
 	return r
 }
 
@@ -107,15 +101,21 @@ func (r ApiSubscriberListRequest) ModifiedTo(modifiedTo string) ApiSubscriberLis
 	return r
 }
 
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiSubscriberListRequest) PageCursor(pageCursor string) ApiSubscriberListRequest {
-	r.pageCursor = &pageCursor
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiSubscriberListRequest) ResponseFields(responseFields string) ApiSubscriberListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiSubscriberListRequest) ResponseFields(responseFields string) ApiSubscriberListRequest {
-	r.responseFields = &responseFields
+func (r ApiSubscriberListRequest) Params(params string) ApiSubscriberListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiSubscriberListRequest) Exclude(exclude string) ApiSubscriberListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -171,6 +171,9 @@ func (a *SubscriberAPIService) SubscriberListExecute(r ApiSubscriberListRequest)
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	if r.subscribed != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "subscribed", r.subscribed, "form", "")
 	}
@@ -179,15 +182,6 @@ func (a *SubscriberAPIService) SubscriberListExecute(r ApiSubscriberListRequest)
 	}
 	if r.email != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "email", r.email, "form", "")
-	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "force_all"
-		r.params = &defaultValue
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -201,11 +195,17 @@ func (a *SubscriberAPIService) SubscriberListExecute(r ApiSubscriberListRequest)
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "force_all"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -5,57 +5,57 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProductId** | Pointer to **string** | Defines product&#39;s id where the variant has to be added | [optional] 
+**Attributes** | Pointer to [**[]ProductVariantAddAttributesInner**](ProductVariantAddAttributesInner.md) | Defines variant&#39;s attributes list | [optional] 
 **Name** | Pointer to **string** | Defines variant&#39;s name that has to be added | [optional] 
 **Model** | **string** | Specifies variant&#39;s model that has to be added | 
-**Sku** | Pointer to **string** | Defines variant&#39;s sku that has to be added | [optional] 
-**Barcode** | Pointer to **string** | A barcode is a unique code composed of numbers used as a product identifier. | [optional] 
-**Gtin** | Pointer to **string** | Global Trade Item Number. An GTIN is an identifier for trade items. | [optional] 
+**Description** | Pointer to **string** | Specifies variant&#39;s description | [optional] 
+**ShortDescription** | Pointer to **string** | Defines short description | [optional] 
+**AvailableForView** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for users | [optional] [default to true]
+**AvailableForSale** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for sale | [optional] [default to true]
+**IsVirtual** | Pointer to **bool** | Defines whether the product is virtual | [optional] [default to false]
+**IsDefault** | Pointer to **bool** | Defines as a default variant | [optional] 
+**StoreId** | Pointer to **string** | Add variants specified by store id | [optional] 
+**StoresIds** | Pointer to **string** | Assign variant to the stores that is specified by comma-separated stores&#39; id | [optional] 
+**LangId** | Pointer to **string** | Language id | [optional] 
 **Price** | Pointer to **float32** | Defines new product&#39;s variant price | [optional] 
 **OldPrice** | Pointer to **float32** | Defines product&#39;s old price | [optional] 
 **CostPrice** | Pointer to **float32** | Defines new product&#39;s cost price | [optional] 
-**FixedCostShippingPrice** | Pointer to **float32** | Specifies fixed cost shipping price | [optional] 
-**Attributes** | Pointer to [**[]ProductVariantAddAttributesInner**](ProductVariantAddAttributesInner.md) | Defines variant&#39;s attributes list | [optional] 
-**Description** | Pointer to **string** | Specifies variant&#39;s description | [optional] 
 **SpecialPrice** | Pointer to **float32** | Specifies variant&#39;s model that has to be added | [optional] 
 **SpriceCreate** | Pointer to **string** | Defines the date of special price creation | [optional] 
 **SpriceModified** | Pointer to **string** | Defines the date of special price modification | [optional] 
 **SpriceExpire** | Pointer to **string** | Defines the term of special price offer duration | [optional] 
-**AvailableForView** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for users | [optional] [default to true]
-**AvailableForSale** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for sale | [optional] [default to true]
+**TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 
+**Quantity** | Pointer to **float32** | Defines product variant&#39;s quantity that has to be added | [optional] [default to 0]
+**WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
+**InStock** | Pointer to **bool** | Set stock status | [optional] 
+**BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
+**ManageStock** | Pointer to **bool** | Defines inventory tracking for product variant | [optional] 
 **Weight** | Pointer to **float32** | Weight | [optional] [default to 0]
 **Width** | Pointer to **float32** | Defines product&#39;s width | [optional] 
 **Height** | Pointer to **float32** | Defines product&#39;s height | [optional] 
 **Length** | Pointer to **float32** | Defines product&#39;s length | [optional] 
 **WeightUnit** | Pointer to **string** | Weight Unit | [optional] 
-**ShortDescription** | Pointer to **string** | Defines short description | [optional] 
-**WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
-**Quantity** | Pointer to **float32** | Defines product variant&#39;s quantity that has to be added | [optional] [default to 0]
-**CreatedAt** | Pointer to **string** | Defines the date of entity creation | [optional] 
+**Sku** | Pointer to **string** | Defines variant&#39;s sku that has to be added | [optional] 
+**Barcode** | Pointer to **string** | A barcode is a unique code composed of numbers used as a product identifier. | [optional] 
+**Gtin** | Pointer to **string** | Global Trade Item Number. An GTIN is an identifier for trade items. | [optional] 
+**Upc** | Pointer to **string** | Universal Product Code. A UPC (UPC-A) is a commonly used identifer for many different products. | [optional] 
+**Ean** | Pointer to **string** | European Article Number. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. | [optional] 
+**Mpn** | Pointer to **string** | Manufacturer Part Number. A MPN is an identifier of a particular part design or material used. | [optional] 
+**Isbn** | Pointer to **string** | International Standard Book Number. An ISBN is a unique identifier for books. | [optional] 
 **Manufacturer** | Pointer to **string** | Specifies the product variant&#39;s manufacturer | [optional] 
-**TaxClassId** | Pointer to **string** | Defines tax classes where entity has to be added | [optional] 
+**CreatedAt** | Pointer to **string** | Defines the date of entity creation | [optional] 
 **MetaTitle** | Pointer to **string** | Defines unique meta title for each entity | [optional] 
 **MetaKeywords** | Pointer to **string** | Defines unique meta keywords for each entity | [optional] 
 **MetaDescription** | Pointer to **string** | Defines unique meta description of a entity | [optional] 
 **Url** | Pointer to **string** | Defines unique product variant&#39;s URL | [optional] 
-**StoreId** | Pointer to **string** | Add variants specified by store id | [optional] 
-**LangId** | Pointer to **string** | Language id | [optional] 
-**ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
+**TaxClassId** | Pointer to **string** | Defines tax classes where entity has to be added | [optional] 
 **Taxable** | Pointer to **bool** | Specifies whether a tax is charged | [optional] [default to true]
-**HarmonizedSystemCode** | Pointer to **string** | Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes | [optional] 
-**CountryOfOrigin** | Pointer to **string** | The country where the inventory item was made | [optional] 
-**ManageStock** | Pointer to **bool** | Defines inventory tracking for product variant | [optional] 
-**Upc** | Pointer to **string** | Universal Product Code. A UPC (UPC-A) is a commonly used identifer for many different products. | [optional] 
-**Mpn** | Pointer to **string** | Manufacturer Part Number. A MPN is an identifier of a particular part design or material used. | [optional] 
-**Ean** | Pointer to **string** | European Article Number. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. | [optional] 
-**Isbn** | Pointer to **string** | International Standard Book Number. An ISBN is a unique identifier for books. | [optional] 
-**StoresIds** | Pointer to **string** | Assign variant to the stores that is specified by comma-separated stores&#39; id | [optional] 
-**IsDefault** | Pointer to **bool** | Defines as a default variant | [optional] 
+**FixedCostShippingPrice** | Pointer to **float32** | Specifies fixed cost shipping price | [optional] 
 **IsFreeShipping** | Pointer to **bool** | Specifies variant&#39;s free shipping flag that has to be added | [optional] 
+**CountryOfOrigin** | Pointer to **string** | The country where the inventory item was made | [optional] 
+**HarmonizedSystemCode** | Pointer to **string** | Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
-**InStock** | Pointer to **bool** | Set stock status | [optional] 
-**BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
-**TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 
-**IsVirtual** | Pointer to **bool** | Defines whether the product is virtual | [optional] [default to false]
+**ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 
 ## Methods
 
@@ -100,6 +100,31 @@ SetProductId sets ProductId field to given value.
 `func (o *ProductVariantAdd) HasProductId() bool`
 
 HasProductId returns a boolean if a field has been set.
+
+### GetAttributes
+
+`func (o *ProductVariantAdd) GetAttributes() []ProductVariantAddAttributesInner`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *ProductVariantAdd) GetAttributesOk() (*[]ProductVariantAddAttributesInner, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *ProductVariantAdd) SetAttributes(v []ProductVariantAddAttributesInner)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *ProductVariantAdd) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetName
 
@@ -146,80 +171,230 @@ and a boolean to check if the value has been set.
 SetModel sets Model field to given value.
 
 
-### GetSku
+### GetDescription
 
-`func (o *ProductVariantAdd) GetSku() string`
+`func (o *ProductVariantAdd) GetDescription() string`
 
-GetSku returns the Sku field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetSkuOk
+### GetDescriptionOk
 
-`func (o *ProductVariantAdd) GetSkuOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetDescriptionOk() (*string, bool)`
 
-GetSkuOk returns a tuple with the Sku field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSku
+### SetDescription
 
-`func (o *ProductVariantAdd) SetSku(v string)`
+`func (o *ProductVariantAdd) SetDescription(v string)`
 
-SetSku sets Sku field to given value.
+SetDescription sets Description field to given value.
 
-### HasSku
+### HasDescription
 
-`func (o *ProductVariantAdd) HasSku() bool`
+`func (o *ProductVariantAdd) HasDescription() bool`
 
-HasSku returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetBarcode
+### GetShortDescription
 
-`func (o *ProductVariantAdd) GetBarcode() string`
+`func (o *ProductVariantAdd) GetShortDescription() string`
 
-GetBarcode returns the Barcode field if non-nil, zero value otherwise.
+GetShortDescription returns the ShortDescription field if non-nil, zero value otherwise.
 
-### GetBarcodeOk
+### GetShortDescriptionOk
 
-`func (o *ProductVariantAdd) GetBarcodeOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetShortDescriptionOk() (*string, bool)`
 
-GetBarcodeOk returns a tuple with the Barcode field if it's non-nil, zero value otherwise
+GetShortDescriptionOk returns a tuple with the ShortDescription field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBarcode
+### SetShortDescription
 
-`func (o *ProductVariantAdd) SetBarcode(v string)`
+`func (o *ProductVariantAdd) SetShortDescription(v string)`
 
-SetBarcode sets Barcode field to given value.
+SetShortDescription sets ShortDescription field to given value.
 
-### HasBarcode
+### HasShortDescription
 
-`func (o *ProductVariantAdd) HasBarcode() bool`
+`func (o *ProductVariantAdd) HasShortDescription() bool`
 
-HasBarcode returns a boolean if a field has been set.
+HasShortDescription returns a boolean if a field has been set.
 
-### GetGtin
+### GetAvailableForView
 
-`func (o *ProductVariantAdd) GetGtin() string`
+`func (o *ProductVariantAdd) GetAvailableForView() bool`
 
-GetGtin returns the Gtin field if non-nil, zero value otherwise.
+GetAvailableForView returns the AvailableForView field if non-nil, zero value otherwise.
 
-### GetGtinOk
+### GetAvailableForViewOk
 
-`func (o *ProductVariantAdd) GetGtinOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetAvailableForViewOk() (*bool, bool)`
 
-GetGtinOk returns a tuple with the Gtin field if it's non-nil, zero value otherwise
+GetAvailableForViewOk returns a tuple with the AvailableForView field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGtin
+### SetAvailableForView
 
-`func (o *ProductVariantAdd) SetGtin(v string)`
+`func (o *ProductVariantAdd) SetAvailableForView(v bool)`
 
-SetGtin sets Gtin field to given value.
+SetAvailableForView sets AvailableForView field to given value.
 
-### HasGtin
+### HasAvailableForView
 
-`func (o *ProductVariantAdd) HasGtin() bool`
+`func (o *ProductVariantAdd) HasAvailableForView() bool`
 
-HasGtin returns a boolean if a field has been set.
+HasAvailableForView returns a boolean if a field has been set.
+
+### GetAvailableForSale
+
+`func (o *ProductVariantAdd) GetAvailableForSale() bool`
+
+GetAvailableForSale returns the AvailableForSale field if non-nil, zero value otherwise.
+
+### GetAvailableForSaleOk
+
+`func (o *ProductVariantAdd) GetAvailableForSaleOk() (*bool, bool)`
+
+GetAvailableForSaleOk returns a tuple with the AvailableForSale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailableForSale
+
+`func (o *ProductVariantAdd) SetAvailableForSale(v bool)`
+
+SetAvailableForSale sets AvailableForSale field to given value.
+
+### HasAvailableForSale
+
+`func (o *ProductVariantAdd) HasAvailableForSale() bool`
+
+HasAvailableForSale returns a boolean if a field has been set.
+
+### GetIsVirtual
+
+`func (o *ProductVariantAdd) GetIsVirtual() bool`
+
+GetIsVirtual returns the IsVirtual field if non-nil, zero value otherwise.
+
+### GetIsVirtualOk
+
+`func (o *ProductVariantAdd) GetIsVirtualOk() (*bool, bool)`
+
+GetIsVirtualOk returns a tuple with the IsVirtual field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsVirtual
+
+`func (o *ProductVariantAdd) SetIsVirtual(v bool)`
+
+SetIsVirtual sets IsVirtual field to given value.
+
+### HasIsVirtual
+
+`func (o *ProductVariantAdd) HasIsVirtual() bool`
+
+HasIsVirtual returns a boolean if a field has been set.
+
+### GetIsDefault
+
+`func (o *ProductVariantAdd) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *ProductVariantAdd) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *ProductVariantAdd) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *ProductVariantAdd) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *ProductVariantAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *ProductVariantAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *ProductVariantAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *ProductVariantAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
+
+### GetStoresIds
+
+`func (o *ProductVariantAdd) GetStoresIds() string`
+
+GetStoresIds returns the StoresIds field if non-nil, zero value otherwise.
+
+### GetStoresIdsOk
+
+`func (o *ProductVariantAdd) GetStoresIdsOk() (*string, bool)`
+
+GetStoresIdsOk returns a tuple with the StoresIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoresIds
+
+`func (o *ProductVariantAdd) SetStoresIds(v string)`
+
+SetStoresIds sets StoresIds field to given value.
+
+### HasStoresIds
+
+`func (o *ProductVariantAdd) HasStoresIds() bool`
+
+HasStoresIds returns a boolean if a field has been set.
+
+### GetLangId
+
+`func (o *ProductVariantAdd) GetLangId() string`
+
+GetLangId returns the LangId field if non-nil, zero value otherwise.
+
+### GetLangIdOk
+
+`func (o *ProductVariantAdd) GetLangIdOk() (*string, bool)`
+
+GetLangIdOk returns a tuple with the LangId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLangId
+
+`func (o *ProductVariantAdd) SetLangId(v string)`
+
+SetLangId sets LangId field to given value.
+
+### HasLangId
+
+`func (o *ProductVariantAdd) HasLangId() bool`
+
+HasLangId returns a boolean if a field has been set.
 
 ### GetPrice
 
@@ -295,81 +470,6 @@ SetCostPrice sets CostPrice field to given value.
 `func (o *ProductVariantAdd) HasCostPrice() bool`
 
 HasCostPrice returns a boolean if a field has been set.
-
-### GetFixedCostShippingPrice
-
-`func (o *ProductVariantAdd) GetFixedCostShippingPrice() float32`
-
-GetFixedCostShippingPrice returns the FixedCostShippingPrice field if non-nil, zero value otherwise.
-
-### GetFixedCostShippingPriceOk
-
-`func (o *ProductVariantAdd) GetFixedCostShippingPriceOk() (*float32, bool)`
-
-GetFixedCostShippingPriceOk returns a tuple with the FixedCostShippingPrice field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFixedCostShippingPrice
-
-`func (o *ProductVariantAdd) SetFixedCostShippingPrice(v float32)`
-
-SetFixedCostShippingPrice sets FixedCostShippingPrice field to given value.
-
-### HasFixedCostShippingPrice
-
-`func (o *ProductVariantAdd) HasFixedCostShippingPrice() bool`
-
-HasFixedCostShippingPrice returns a boolean if a field has been set.
-
-### GetAttributes
-
-`func (o *ProductVariantAdd) GetAttributes() []ProductVariantAddAttributesInner`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *ProductVariantAdd) GetAttributesOk() (*[]ProductVariantAddAttributesInner, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *ProductVariantAdd) SetAttributes(v []ProductVariantAddAttributesInner)`
-
-SetAttributes sets Attributes field to given value.
-
-### HasAttributes
-
-`func (o *ProductVariantAdd) HasAttributes() bool`
-
-HasAttributes returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *ProductVariantAdd) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *ProductVariantAdd) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *ProductVariantAdd) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *ProductVariantAdd) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetSpecialPrice
 
@@ -471,55 +571,155 @@ SetSpriceExpire sets SpriceExpire field to given value.
 
 HasSpriceExpire returns a boolean if a field has been set.
 
-### GetAvailableForView
+### GetTierPrices
 
-`func (o *ProductVariantAdd) GetAvailableForView() bool`
+`func (o *ProductVariantAdd) GetTierPrices() []ProductAddTierPricesInner`
 
-GetAvailableForView returns the AvailableForView field if non-nil, zero value otherwise.
+GetTierPrices returns the TierPrices field if non-nil, zero value otherwise.
 
-### GetAvailableForViewOk
+### GetTierPricesOk
 
-`func (o *ProductVariantAdd) GetAvailableForViewOk() (*bool, bool)`
+`func (o *ProductVariantAdd) GetTierPricesOk() (*[]ProductAddTierPricesInner, bool)`
 
-GetAvailableForViewOk returns a tuple with the AvailableForView field if it's non-nil, zero value otherwise
+GetTierPricesOk returns a tuple with the TierPrices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAvailableForView
+### SetTierPrices
 
-`func (o *ProductVariantAdd) SetAvailableForView(v bool)`
+`func (o *ProductVariantAdd) SetTierPrices(v []ProductAddTierPricesInner)`
 
-SetAvailableForView sets AvailableForView field to given value.
+SetTierPrices sets TierPrices field to given value.
 
-### HasAvailableForView
+### HasTierPrices
 
-`func (o *ProductVariantAdd) HasAvailableForView() bool`
+`func (o *ProductVariantAdd) HasTierPrices() bool`
 
-HasAvailableForView returns a boolean if a field has been set.
+HasTierPrices returns a boolean if a field has been set.
 
-### GetAvailableForSale
+### GetQuantity
 
-`func (o *ProductVariantAdd) GetAvailableForSale() bool`
+`func (o *ProductVariantAdd) GetQuantity() float32`
 
-GetAvailableForSale returns the AvailableForSale field if non-nil, zero value otherwise.
+GetQuantity returns the Quantity field if non-nil, zero value otherwise.
 
-### GetAvailableForSaleOk
+### GetQuantityOk
 
-`func (o *ProductVariantAdd) GetAvailableForSaleOk() (*bool, bool)`
+`func (o *ProductVariantAdd) GetQuantityOk() (*float32, bool)`
 
-GetAvailableForSaleOk returns a tuple with the AvailableForSale field if it's non-nil, zero value otherwise
+GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAvailableForSale
+### SetQuantity
 
-`func (o *ProductVariantAdd) SetAvailableForSale(v bool)`
+`func (o *ProductVariantAdd) SetQuantity(v float32)`
 
-SetAvailableForSale sets AvailableForSale field to given value.
+SetQuantity sets Quantity field to given value.
 
-### HasAvailableForSale
+### HasQuantity
 
-`func (o *ProductVariantAdd) HasAvailableForSale() bool`
+`func (o *ProductVariantAdd) HasQuantity() bool`
 
-HasAvailableForSale returns a boolean if a field has been set.
+HasQuantity returns a boolean if a field has been set.
+
+### GetWarehouseId
+
+`func (o *ProductVariantAdd) GetWarehouseId() string`
+
+GetWarehouseId returns the WarehouseId field if non-nil, zero value otherwise.
+
+### GetWarehouseIdOk
+
+`func (o *ProductVariantAdd) GetWarehouseIdOk() (*string, bool)`
+
+GetWarehouseIdOk returns a tuple with the WarehouseId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarehouseId
+
+`func (o *ProductVariantAdd) SetWarehouseId(v string)`
+
+SetWarehouseId sets WarehouseId field to given value.
+
+### HasWarehouseId
+
+`func (o *ProductVariantAdd) HasWarehouseId() bool`
+
+HasWarehouseId returns a boolean if a field has been set.
+
+### GetInStock
+
+`func (o *ProductVariantAdd) GetInStock() bool`
+
+GetInStock returns the InStock field if non-nil, zero value otherwise.
+
+### GetInStockOk
+
+`func (o *ProductVariantAdd) GetInStockOk() (*bool, bool)`
+
+GetInStockOk returns a tuple with the InStock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInStock
+
+`func (o *ProductVariantAdd) SetInStock(v bool)`
+
+SetInStock sets InStock field to given value.
+
+### HasInStock
+
+`func (o *ProductVariantAdd) HasInStock() bool`
+
+HasInStock returns a boolean if a field has been set.
+
+### GetBackorderStatus
+
+`func (o *ProductVariantAdd) GetBackorderStatus() string`
+
+GetBackorderStatus returns the BackorderStatus field if non-nil, zero value otherwise.
+
+### GetBackorderStatusOk
+
+`func (o *ProductVariantAdd) GetBackorderStatusOk() (*string, bool)`
+
+GetBackorderStatusOk returns a tuple with the BackorderStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackorderStatus
+
+`func (o *ProductVariantAdd) SetBackorderStatus(v string)`
+
+SetBackorderStatus sets BackorderStatus field to given value.
+
+### HasBackorderStatus
+
+`func (o *ProductVariantAdd) HasBackorderStatus() bool`
+
+HasBackorderStatus returns a boolean if a field has been set.
+
+### GetManageStock
+
+`func (o *ProductVariantAdd) GetManageStock() bool`
+
+GetManageStock returns the ManageStock field if non-nil, zero value otherwise.
+
+### GetManageStockOk
+
+`func (o *ProductVariantAdd) GetManageStockOk() (*bool, bool)`
+
+GetManageStockOk returns a tuple with the ManageStock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManageStock
+
+`func (o *ProductVariantAdd) SetManageStock(v bool)`
+
+SetManageStock sets ManageStock field to given value.
+
+### HasManageStock
+
+`func (o *ProductVariantAdd) HasManageStock() bool`
+
+HasManageStock returns a boolean if a field has been set.
 
 ### GetWeight
 
@@ -646,105 +846,180 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
-### GetShortDescription
+### GetSku
 
-`func (o *ProductVariantAdd) GetShortDescription() string`
+`func (o *ProductVariantAdd) GetSku() string`
 
-GetShortDescription returns the ShortDescription field if non-nil, zero value otherwise.
+GetSku returns the Sku field if non-nil, zero value otherwise.
 
-### GetShortDescriptionOk
+### GetSkuOk
 
-`func (o *ProductVariantAdd) GetShortDescriptionOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetSkuOk() (*string, bool)`
 
-GetShortDescriptionOk returns a tuple with the ShortDescription field if it's non-nil, zero value otherwise
+GetSkuOk returns a tuple with the Sku field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetShortDescription
+### SetSku
 
-`func (o *ProductVariantAdd) SetShortDescription(v string)`
+`func (o *ProductVariantAdd) SetSku(v string)`
 
-SetShortDescription sets ShortDescription field to given value.
+SetSku sets Sku field to given value.
 
-### HasShortDescription
+### HasSku
 
-`func (o *ProductVariantAdd) HasShortDescription() bool`
+`func (o *ProductVariantAdd) HasSku() bool`
 
-HasShortDescription returns a boolean if a field has been set.
+HasSku returns a boolean if a field has been set.
 
-### GetWarehouseId
+### GetBarcode
 
-`func (o *ProductVariantAdd) GetWarehouseId() string`
+`func (o *ProductVariantAdd) GetBarcode() string`
 
-GetWarehouseId returns the WarehouseId field if non-nil, zero value otherwise.
+GetBarcode returns the Barcode field if non-nil, zero value otherwise.
 
-### GetWarehouseIdOk
+### GetBarcodeOk
 
-`func (o *ProductVariantAdd) GetWarehouseIdOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetBarcodeOk() (*string, bool)`
 
-GetWarehouseIdOk returns a tuple with the WarehouseId field if it's non-nil, zero value otherwise
+GetBarcodeOk returns a tuple with the Barcode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWarehouseId
+### SetBarcode
 
-`func (o *ProductVariantAdd) SetWarehouseId(v string)`
+`func (o *ProductVariantAdd) SetBarcode(v string)`
 
-SetWarehouseId sets WarehouseId field to given value.
+SetBarcode sets Barcode field to given value.
 
-### HasWarehouseId
+### HasBarcode
 
-`func (o *ProductVariantAdd) HasWarehouseId() bool`
+`func (o *ProductVariantAdd) HasBarcode() bool`
 
-HasWarehouseId returns a boolean if a field has been set.
+HasBarcode returns a boolean if a field has been set.
 
-### GetQuantity
+### GetGtin
 
-`func (o *ProductVariantAdd) GetQuantity() float32`
+`func (o *ProductVariantAdd) GetGtin() string`
 
-GetQuantity returns the Quantity field if non-nil, zero value otherwise.
+GetGtin returns the Gtin field if non-nil, zero value otherwise.
 
-### GetQuantityOk
+### GetGtinOk
 
-`func (o *ProductVariantAdd) GetQuantityOk() (*float32, bool)`
+`func (o *ProductVariantAdd) GetGtinOk() (*string, bool)`
 
-GetQuantityOk returns a tuple with the Quantity field if it's non-nil, zero value otherwise
+GetGtinOk returns a tuple with the Gtin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetQuantity
+### SetGtin
 
-`func (o *ProductVariantAdd) SetQuantity(v float32)`
+`func (o *ProductVariantAdd) SetGtin(v string)`
 
-SetQuantity sets Quantity field to given value.
+SetGtin sets Gtin field to given value.
 
-### HasQuantity
+### HasGtin
 
-`func (o *ProductVariantAdd) HasQuantity() bool`
+`func (o *ProductVariantAdd) HasGtin() bool`
 
-HasQuantity returns a boolean if a field has been set.
+HasGtin returns a boolean if a field has been set.
 
-### GetCreatedAt
+### GetUpc
 
-`func (o *ProductVariantAdd) GetCreatedAt() string`
+`func (o *ProductVariantAdd) GetUpc() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetUpc returns the Upc field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetUpcOk
 
-`func (o *ProductVariantAdd) GetCreatedAtOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetUpcOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetUpcOk returns a tuple with the Upc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetUpc
 
-`func (o *ProductVariantAdd) SetCreatedAt(v string)`
+`func (o *ProductVariantAdd) SetUpc(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetUpc sets Upc field to given value.
 
-### HasCreatedAt
+### HasUpc
 
-`func (o *ProductVariantAdd) HasCreatedAt() bool`
+`func (o *ProductVariantAdd) HasUpc() bool`
 
-HasCreatedAt returns a boolean if a field has been set.
+HasUpc returns a boolean if a field has been set.
+
+### GetEan
+
+`func (o *ProductVariantAdd) GetEan() string`
+
+GetEan returns the Ean field if non-nil, zero value otherwise.
+
+### GetEanOk
+
+`func (o *ProductVariantAdd) GetEanOk() (*string, bool)`
+
+GetEanOk returns a tuple with the Ean field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEan
+
+`func (o *ProductVariantAdd) SetEan(v string)`
+
+SetEan sets Ean field to given value.
+
+### HasEan
+
+`func (o *ProductVariantAdd) HasEan() bool`
+
+HasEan returns a boolean if a field has been set.
+
+### GetMpn
+
+`func (o *ProductVariantAdd) GetMpn() string`
+
+GetMpn returns the Mpn field if non-nil, zero value otherwise.
+
+### GetMpnOk
+
+`func (o *ProductVariantAdd) GetMpnOk() (*string, bool)`
+
+GetMpnOk returns a tuple with the Mpn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMpn
+
+`func (o *ProductVariantAdd) SetMpn(v string)`
+
+SetMpn sets Mpn field to given value.
+
+### HasMpn
+
+`func (o *ProductVariantAdd) HasMpn() bool`
+
+HasMpn returns a boolean if a field has been set.
+
+### GetIsbn
+
+`func (o *ProductVariantAdd) GetIsbn() string`
+
+GetIsbn returns the Isbn field if non-nil, zero value otherwise.
+
+### GetIsbnOk
+
+`func (o *ProductVariantAdd) GetIsbnOk() (*string, bool)`
+
+GetIsbnOk returns a tuple with the Isbn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsbn
+
+`func (o *ProductVariantAdd) SetIsbn(v string)`
+
+SetIsbn sets Isbn field to given value.
+
+### HasIsbn
+
+`func (o *ProductVariantAdd) HasIsbn() bool`
+
+HasIsbn returns a boolean if a field has been set.
 
 ### GetManufacturer
 
@@ -771,30 +1046,30 @@ SetManufacturer sets Manufacturer field to given value.
 
 HasManufacturer returns a boolean if a field has been set.
 
-### GetTaxClassId
+### GetCreatedAt
 
-`func (o *ProductVariantAdd) GetTaxClassId() string`
+`func (o *ProductVariantAdd) GetCreatedAt() string`
 
-GetTaxClassId returns the TaxClassId field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetTaxClassIdOk
+### GetCreatedAtOk
 
-`func (o *ProductVariantAdd) GetTaxClassIdOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetCreatedAtOk() (*string, bool)`
 
-GetTaxClassIdOk returns a tuple with the TaxClassId field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTaxClassId
+### SetCreatedAt
 
-`func (o *ProductVariantAdd) SetTaxClassId(v string)`
+`func (o *ProductVariantAdd) SetCreatedAt(v string)`
 
-SetTaxClassId sets TaxClassId field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
-### HasTaxClassId
+### HasCreatedAt
 
-`func (o *ProductVariantAdd) HasTaxClassId() bool`
+`func (o *ProductVariantAdd) HasCreatedAt() bool`
 
-HasTaxClassId returns a boolean if a field has been set.
+HasCreatedAt returns a boolean if a field has been set.
 
 ### GetMetaTitle
 
@@ -896,80 +1171,30 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
-### GetStoreId
+### GetTaxClassId
 
-`func (o *ProductVariantAdd) GetStoreId() string`
+`func (o *ProductVariantAdd) GetTaxClassId() string`
 
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+GetTaxClassId returns the TaxClassId field if non-nil, zero value otherwise.
 
-### GetStoreIdOk
+### GetTaxClassIdOk
 
-`func (o *ProductVariantAdd) GetStoreIdOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetTaxClassIdOk() (*string, bool)`
 
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+GetTaxClassIdOk returns a tuple with the TaxClassId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStoreId
+### SetTaxClassId
 
-`func (o *ProductVariantAdd) SetStoreId(v string)`
+`func (o *ProductVariantAdd) SetTaxClassId(v string)`
 
-SetStoreId sets StoreId field to given value.
+SetTaxClassId sets TaxClassId field to given value.
 
-### HasStoreId
+### HasTaxClassId
 
-`func (o *ProductVariantAdd) HasStoreId() bool`
+`func (o *ProductVariantAdd) HasTaxClassId() bool`
 
-HasStoreId returns a boolean if a field has been set.
-
-### GetLangId
-
-`func (o *ProductVariantAdd) GetLangId() string`
-
-GetLangId returns the LangId field if non-nil, zero value otherwise.
-
-### GetLangIdOk
-
-`func (o *ProductVariantAdd) GetLangIdOk() (*string, bool)`
-
-GetLangIdOk returns a tuple with the LangId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLangId
-
-`func (o *ProductVariantAdd) SetLangId(v string)`
-
-SetLangId sets LangId field to given value.
-
-### HasLangId
-
-`func (o *ProductVariantAdd) HasLangId() bool`
-
-HasLangId returns a boolean if a field has been set.
-
-### GetClearCache
-
-`func (o *ProductVariantAdd) GetClearCache() bool`
-
-GetClearCache returns the ClearCache field if non-nil, zero value otherwise.
-
-### GetClearCacheOk
-
-`func (o *ProductVariantAdd) GetClearCacheOk() (*bool, bool)`
-
-GetClearCacheOk returns a tuple with the ClearCache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClearCache
-
-`func (o *ProductVariantAdd) SetClearCache(v bool)`
-
-SetClearCache sets ClearCache field to given value.
-
-### HasClearCache
-
-`func (o *ProductVariantAdd) HasClearCache() bool`
-
-HasClearCache returns a boolean if a field has been set.
+HasTaxClassId returns a boolean if a field has been set.
 
 ### GetTaxable
 
@@ -996,230 +1221,30 @@ SetTaxable sets Taxable field to given value.
 
 HasTaxable returns a boolean if a field has been set.
 
-### GetHarmonizedSystemCode
+### GetFixedCostShippingPrice
 
-`func (o *ProductVariantAdd) GetHarmonizedSystemCode() string`
+`func (o *ProductVariantAdd) GetFixedCostShippingPrice() float32`
 
-GetHarmonizedSystemCode returns the HarmonizedSystemCode field if non-nil, zero value otherwise.
+GetFixedCostShippingPrice returns the FixedCostShippingPrice field if non-nil, zero value otherwise.
 
-### GetHarmonizedSystemCodeOk
+### GetFixedCostShippingPriceOk
 
-`func (o *ProductVariantAdd) GetHarmonizedSystemCodeOk() (*string, bool)`
+`func (o *ProductVariantAdd) GetFixedCostShippingPriceOk() (*float32, bool)`
 
-GetHarmonizedSystemCodeOk returns a tuple with the HarmonizedSystemCode field if it's non-nil, zero value otherwise
+GetFixedCostShippingPriceOk returns a tuple with the FixedCostShippingPrice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHarmonizedSystemCode
+### SetFixedCostShippingPrice
 
-`func (o *ProductVariantAdd) SetHarmonizedSystemCode(v string)`
+`func (o *ProductVariantAdd) SetFixedCostShippingPrice(v float32)`
 
-SetHarmonizedSystemCode sets HarmonizedSystemCode field to given value.
+SetFixedCostShippingPrice sets FixedCostShippingPrice field to given value.
 
-### HasHarmonizedSystemCode
+### HasFixedCostShippingPrice
 
-`func (o *ProductVariantAdd) HasHarmonizedSystemCode() bool`
+`func (o *ProductVariantAdd) HasFixedCostShippingPrice() bool`
 
-HasHarmonizedSystemCode returns a boolean if a field has been set.
-
-### GetCountryOfOrigin
-
-`func (o *ProductVariantAdd) GetCountryOfOrigin() string`
-
-GetCountryOfOrigin returns the CountryOfOrigin field if non-nil, zero value otherwise.
-
-### GetCountryOfOriginOk
-
-`func (o *ProductVariantAdd) GetCountryOfOriginOk() (*string, bool)`
-
-GetCountryOfOriginOk returns a tuple with the CountryOfOrigin field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountryOfOrigin
-
-`func (o *ProductVariantAdd) SetCountryOfOrigin(v string)`
-
-SetCountryOfOrigin sets CountryOfOrigin field to given value.
-
-### HasCountryOfOrigin
-
-`func (o *ProductVariantAdd) HasCountryOfOrigin() bool`
-
-HasCountryOfOrigin returns a boolean if a field has been set.
-
-### GetManageStock
-
-`func (o *ProductVariantAdd) GetManageStock() bool`
-
-GetManageStock returns the ManageStock field if non-nil, zero value otherwise.
-
-### GetManageStockOk
-
-`func (o *ProductVariantAdd) GetManageStockOk() (*bool, bool)`
-
-GetManageStockOk returns a tuple with the ManageStock field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManageStock
-
-`func (o *ProductVariantAdd) SetManageStock(v bool)`
-
-SetManageStock sets ManageStock field to given value.
-
-### HasManageStock
-
-`func (o *ProductVariantAdd) HasManageStock() bool`
-
-HasManageStock returns a boolean if a field has been set.
-
-### GetUpc
-
-`func (o *ProductVariantAdd) GetUpc() string`
-
-GetUpc returns the Upc field if non-nil, zero value otherwise.
-
-### GetUpcOk
-
-`func (o *ProductVariantAdd) GetUpcOk() (*string, bool)`
-
-GetUpcOk returns a tuple with the Upc field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpc
-
-`func (o *ProductVariantAdd) SetUpc(v string)`
-
-SetUpc sets Upc field to given value.
-
-### HasUpc
-
-`func (o *ProductVariantAdd) HasUpc() bool`
-
-HasUpc returns a boolean if a field has been set.
-
-### GetMpn
-
-`func (o *ProductVariantAdd) GetMpn() string`
-
-GetMpn returns the Mpn field if non-nil, zero value otherwise.
-
-### GetMpnOk
-
-`func (o *ProductVariantAdd) GetMpnOk() (*string, bool)`
-
-GetMpnOk returns a tuple with the Mpn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMpn
-
-`func (o *ProductVariantAdd) SetMpn(v string)`
-
-SetMpn sets Mpn field to given value.
-
-### HasMpn
-
-`func (o *ProductVariantAdd) HasMpn() bool`
-
-HasMpn returns a boolean if a field has been set.
-
-### GetEan
-
-`func (o *ProductVariantAdd) GetEan() string`
-
-GetEan returns the Ean field if non-nil, zero value otherwise.
-
-### GetEanOk
-
-`func (o *ProductVariantAdd) GetEanOk() (*string, bool)`
-
-GetEanOk returns a tuple with the Ean field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEan
-
-`func (o *ProductVariantAdd) SetEan(v string)`
-
-SetEan sets Ean field to given value.
-
-### HasEan
-
-`func (o *ProductVariantAdd) HasEan() bool`
-
-HasEan returns a boolean if a field has been set.
-
-### GetIsbn
-
-`func (o *ProductVariantAdd) GetIsbn() string`
-
-GetIsbn returns the Isbn field if non-nil, zero value otherwise.
-
-### GetIsbnOk
-
-`func (o *ProductVariantAdd) GetIsbnOk() (*string, bool)`
-
-GetIsbnOk returns a tuple with the Isbn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsbn
-
-`func (o *ProductVariantAdd) SetIsbn(v string)`
-
-SetIsbn sets Isbn field to given value.
-
-### HasIsbn
-
-`func (o *ProductVariantAdd) HasIsbn() bool`
-
-HasIsbn returns a boolean if a field has been set.
-
-### GetStoresIds
-
-`func (o *ProductVariantAdd) GetStoresIds() string`
-
-GetStoresIds returns the StoresIds field if non-nil, zero value otherwise.
-
-### GetStoresIdsOk
-
-`func (o *ProductVariantAdd) GetStoresIdsOk() (*string, bool)`
-
-GetStoresIdsOk returns a tuple with the StoresIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoresIds
-
-`func (o *ProductVariantAdd) SetStoresIds(v string)`
-
-SetStoresIds sets StoresIds field to given value.
-
-### HasStoresIds
-
-`func (o *ProductVariantAdd) HasStoresIds() bool`
-
-HasStoresIds returns a boolean if a field has been set.
-
-### GetIsDefault
-
-`func (o *ProductVariantAdd) GetIsDefault() bool`
-
-GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
-
-### GetIsDefaultOk
-
-`func (o *ProductVariantAdd) GetIsDefaultOk() (*bool, bool)`
-
-GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsDefault
-
-`func (o *ProductVariantAdd) SetIsDefault(v bool)`
-
-SetIsDefault sets IsDefault field to given value.
-
-### HasIsDefault
-
-`func (o *ProductVariantAdd) HasIsDefault() bool`
-
-HasIsDefault returns a boolean if a field has been set.
+HasFixedCostShippingPrice returns a boolean if a field has been set.
 
 ### GetIsFreeShipping
 
@@ -1246,6 +1271,56 @@ SetIsFreeShipping sets IsFreeShipping field to given value.
 
 HasIsFreeShipping returns a boolean if a field has been set.
 
+### GetCountryOfOrigin
+
+`func (o *ProductVariantAdd) GetCountryOfOrigin() string`
+
+GetCountryOfOrigin returns the CountryOfOrigin field if non-nil, zero value otherwise.
+
+### GetCountryOfOriginOk
+
+`func (o *ProductVariantAdd) GetCountryOfOriginOk() (*string, bool)`
+
+GetCountryOfOriginOk returns a tuple with the CountryOfOrigin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountryOfOrigin
+
+`func (o *ProductVariantAdd) SetCountryOfOrigin(v string)`
+
+SetCountryOfOrigin sets CountryOfOrigin field to given value.
+
+### HasCountryOfOrigin
+
+`func (o *ProductVariantAdd) HasCountryOfOrigin() bool`
+
+HasCountryOfOrigin returns a boolean if a field has been set.
+
+### GetHarmonizedSystemCode
+
+`func (o *ProductVariantAdd) GetHarmonizedSystemCode() string`
+
+GetHarmonizedSystemCode returns the HarmonizedSystemCode field if non-nil, zero value otherwise.
+
+### GetHarmonizedSystemCodeOk
+
+`func (o *ProductVariantAdd) GetHarmonizedSystemCodeOk() (*string, bool)`
+
+GetHarmonizedSystemCodeOk returns a tuple with the HarmonizedSystemCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHarmonizedSystemCode
+
+`func (o *ProductVariantAdd) SetHarmonizedSystemCode(v string)`
+
+SetHarmonizedSystemCode sets HarmonizedSystemCode field to given value.
+
+### HasHarmonizedSystemCode
+
+`func (o *ProductVariantAdd) HasHarmonizedSystemCode() bool`
+
+HasHarmonizedSystemCode returns a boolean if a field has been set.
+
 ### GetMarketplaceItemProperties
 
 `func (o *ProductVariantAdd) GetMarketplaceItemProperties() string`
@@ -1271,105 +1346,30 @@ SetMarketplaceItemProperties sets MarketplaceItemProperties field to given value
 
 HasMarketplaceItemProperties returns a boolean if a field has been set.
 
-### GetInStock
+### GetClearCache
 
-`func (o *ProductVariantAdd) GetInStock() bool`
+`func (o *ProductVariantAdd) GetClearCache() bool`
 
-GetInStock returns the InStock field if non-nil, zero value otherwise.
+GetClearCache returns the ClearCache field if non-nil, zero value otherwise.
 
-### GetInStockOk
+### GetClearCacheOk
 
-`func (o *ProductVariantAdd) GetInStockOk() (*bool, bool)`
+`func (o *ProductVariantAdd) GetClearCacheOk() (*bool, bool)`
 
-GetInStockOk returns a tuple with the InStock field if it's non-nil, zero value otherwise
+GetClearCacheOk returns a tuple with the ClearCache field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInStock
+### SetClearCache
 
-`func (o *ProductVariantAdd) SetInStock(v bool)`
+`func (o *ProductVariantAdd) SetClearCache(v bool)`
 
-SetInStock sets InStock field to given value.
+SetClearCache sets ClearCache field to given value.
 
-### HasInStock
+### HasClearCache
 
-`func (o *ProductVariantAdd) HasInStock() bool`
+`func (o *ProductVariantAdd) HasClearCache() bool`
 
-HasInStock returns a boolean if a field has been set.
-
-### GetBackorderStatus
-
-`func (o *ProductVariantAdd) GetBackorderStatus() string`
-
-GetBackorderStatus returns the BackorderStatus field if non-nil, zero value otherwise.
-
-### GetBackorderStatusOk
-
-`func (o *ProductVariantAdd) GetBackorderStatusOk() (*string, bool)`
-
-GetBackorderStatusOk returns a tuple with the BackorderStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBackorderStatus
-
-`func (o *ProductVariantAdd) SetBackorderStatus(v string)`
-
-SetBackorderStatus sets BackorderStatus field to given value.
-
-### HasBackorderStatus
-
-`func (o *ProductVariantAdd) HasBackorderStatus() bool`
-
-HasBackorderStatus returns a boolean if a field has been set.
-
-### GetTierPrices
-
-`func (o *ProductVariantAdd) GetTierPrices() []ProductAddTierPricesInner`
-
-GetTierPrices returns the TierPrices field if non-nil, zero value otherwise.
-
-### GetTierPricesOk
-
-`func (o *ProductVariantAdd) GetTierPricesOk() (*[]ProductAddTierPricesInner, bool)`
-
-GetTierPricesOk returns a tuple with the TierPrices field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTierPrices
-
-`func (o *ProductVariantAdd) SetTierPrices(v []ProductAddTierPricesInner)`
-
-SetTierPrices sets TierPrices field to given value.
-
-### HasTierPrices
-
-`func (o *ProductVariantAdd) HasTierPrices() bool`
-
-HasTierPrices returns a boolean if a field has been set.
-
-### GetIsVirtual
-
-`func (o *ProductVariantAdd) GetIsVirtual() bool`
-
-GetIsVirtual returns the IsVirtual field if non-nil, zero value otherwise.
-
-### GetIsVirtualOk
-
-`func (o *ProductVariantAdd) GetIsVirtualOk() (*bool, bool)`
-
-GetIsVirtualOk returns a tuple with the IsVirtual field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsVirtual
-
-`func (o *ProductVariantAdd) SetIsVirtual(v bool)`
-
-SetIsVirtual sets IsVirtual field to given value.
-
-### HasIsVirtual
-
-`func (o *ProductVariantAdd) HasIsVirtual() bool`
-
-HasIsVirtual returns a boolean if a field has been set.
+HasClearCache returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

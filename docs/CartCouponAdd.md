@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **Code** | **string** | Coupon code | 
-**Name** | Pointer to **string** | Coupon name | [optional] 
-**Codes** | Pointer to **[]string** | Entity codes | [optional] 
 **ActionType** | **string** | Coupon discount type | 
 **ActionApplyTo** | **string** | Defines where discount should be applied | 
 **ActionScope** | **string** | Specify how discount should be applied. If scope&#x3D;matching_items, then discount will be applied to each of the items that match action conditions. Scope order means that discount will be applied once. | 
 **ActionAmount** | **float32** | Defines the discount amount value. | 
+**Codes** | Pointer to **[]string** | Entity codes | [optional] 
+**Name** | Pointer to **string** | Coupon name | [optional] 
 **DateStart** | Pointer to **string** | Date start | [optional] [default to "now"]
 **DateEnd** | Pointer to **string** | Defines when discount code will be expired. | [optional] 
 **UsageLimit** | Pointer to **int32** | Usage limit for coupon. | [optional] 
@@ -21,6 +20,7 @@ Name | Type | Description | Notes
 **ActionConditionOperator** | Pointer to **string** | Defines condition operator. | [optional] 
 **ActionConditionValue** | Pointer to **string** | Defines condition attribute value/s. Can be comma separated string. | [optional] 
 **IncludeTax** | Pointer to **bool** | Indicates whether to apply a discount for taxes. | [optional] [default to false]
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 
 ## Methods
 
@@ -41,31 +41,6 @@ NewCartCouponAddWithDefaults instantiates a new CartCouponAdd object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStoreId
-
-`func (o *CartCouponAdd) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *CartCouponAdd) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *CartCouponAdd) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *CartCouponAdd) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
-
 ### GetCode
 
 `func (o *CartCouponAdd) GetCode() string`
@@ -85,56 +60,6 @@ and a boolean to check if the value has been set.
 
 SetCode sets Code field to given value.
 
-
-### GetName
-
-`func (o *CartCouponAdd) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CartCouponAdd) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CartCouponAdd) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *CartCouponAdd) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetCodes
-
-`func (o *CartCouponAdd) GetCodes() []string`
-
-GetCodes returns the Codes field if non-nil, zero value otherwise.
-
-### GetCodesOk
-
-`func (o *CartCouponAdd) GetCodesOk() (*[]string, bool)`
-
-GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCodes
-
-`func (o *CartCouponAdd) SetCodes(v []string)`
-
-SetCodes sets Codes field to given value.
-
-### HasCodes
-
-`func (o *CartCouponAdd) HasCodes() bool`
-
-HasCodes returns a boolean if a field has been set.
 
 ### GetActionType
 
@@ -215,6 +140,56 @@ and a boolean to check if the value has been set.
 
 SetActionAmount sets ActionAmount field to given value.
 
+
+### GetCodes
+
+`func (o *CartCouponAdd) GetCodes() []string`
+
+GetCodes returns the Codes field if non-nil, zero value otherwise.
+
+### GetCodesOk
+
+`func (o *CartCouponAdd) GetCodesOk() (*[]string, bool)`
+
+GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCodes
+
+`func (o *CartCouponAdd) SetCodes(v []string)`
+
+SetCodes sets Codes field to given value.
+
+### HasCodes
+
+`func (o *CartCouponAdd) HasCodes() bool`
+
+HasCodes returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *CartCouponAdd) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *CartCouponAdd) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *CartCouponAdd) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *CartCouponAdd) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDateStart
 
@@ -440,6 +415,31 @@ SetIncludeTax sets IncludeTax field to given value.
 `func (o *CartCouponAdd) HasIncludeTax() bool`
 
 HasIncludeTax returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *CartCouponAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *CartCouponAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *CartCouponAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *CartCouponAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

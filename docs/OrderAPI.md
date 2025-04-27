@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 ## OrderAbandonedList
 
-> ModelResponseOrderAbandonedList OrderAbandonedList(ctx).CustomerId(customerId).CustomerEmail(customerEmail).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).SkipEmptyEmail(skipEmptyEmail).StoreId(storeId).PageCursor(pageCursor).Count(count).Start(start).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+> ModelResponseOrderAbandonedList OrderAbandonedList(ctx).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 order.abandoned.list
 
@@ -51,24 +51,24 @@ import (
 )
 
 func main() {
+	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
+	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	customerId := "5" // string | Retrieves orders specified by customer id (optional)
 	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	skipEmptyEmail := true // bool | Filter empty emails (optional) (default to false)
 	storeId := "1" // string | Store Id (optional)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	params := "force_all" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "customer,totals,items")
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
+	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	skipEmptyEmail := true // bool | Filter empty emails (optional) (default to false)
 	responseFields := "{return_code,pagination,result{order{id,customer{email},created_at,totals{total},order_products}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "force_all" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "customer,totals,items")
 	exclude := "customer" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderAbandonedList(context.Background()).CustomerId(customerId).CustomerEmail(customerEmail).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).SkipEmptyEmail(skipEmptyEmail).StoreId(storeId).PageCursor(pageCursor).Count(count).Start(start).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderAbandonedList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderAbandonedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -89,19 +89,19 @@ Other parameters are passed through a pointer to a apiOrderAbandonedListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
+ **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **customerId** | **string** | Retrieves orders specified by customer id | 
  **customerEmail** | **string** | Retrieves orders specified by customer email | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **skipEmptyEmail** | **bool** | Filter empty emails | [default to false]
  **storeId** | **string** | Store Id | 
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;customer,totals,items&quot;]
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **modifiedFrom** | **string** | Retrieve entities from their modification date | 
+ **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **skipEmptyEmail** | **bool** | Filter empty emails | [default to false]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;customer,totals,items&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 ## OrderCount
 
-> OrderCount200Response OrderCount(ctx).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).StoreId(storeId).Ids(ids).OrderIds(orderIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).Execute()
+> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 
 order.count
 
@@ -209,17 +209,13 @@ import (
 )
 
 func main() {
+	orderIds := "24,25" // string | Counts orders specified by order ids (optional)
+	ids := "24,25" // string | Counts orders specified by ids (optional)
 	customerId := "5" // string | Counts orders quantity specified by customer id (optional)
+	storeId := "1" // string | Counts orders quantity specified by store id (optional)
 	customerEmail := "jubari@hannsgroup.com" // string | Counts orders quantity specified by customer email (optional)
 	orderStatus := "Completed" // string | Counts orders quantity specified by order status (optional)
 	orderStatusIds := []string{"Inner_example"} // []string | Retrieves orders specified by order statuses (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	storeId := "1" // string | Counts orders quantity specified by store id (optional)
-	ids := "24,25" // string | Counts orders specified by ids (optional)
-	orderIds := "24,25" // string | Counts orders specified by order ids (optional)
 	ebayOrderStatus := "Active" // string | Counts orders quantity specified by order status (optional)
 	financialStatus := "paid" // string | Counts orders quantity specified by financial status (optional)
 	financialStatusIds := []string{"Inner_example"} // []string | Retrieves orders count specified by financial status ids (optional)
@@ -229,10 +225,14 @@ func main() {
 	deliveryMethod := "local" // string | Retrieves order with delivery method (optional)
 	tags := "tag1,tag2" // string | Order tags (optional)
 	shipNodeType := "SellerFulfilled" // string | Retrieves order with ship node type (optional)
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
+	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).StoreId(storeId).Ids(ids).OrderIds(orderIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -253,17 +253,13 @@ Other parameters are passed through a pointer to a apiOrderCountRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **orderIds** | **string** | Counts orders specified by order ids | 
+ **ids** | **string** | Counts orders specified by ids | 
  **customerId** | **string** | Counts orders quantity specified by customer id | 
+ **storeId** | **string** | Counts orders quantity specified by store id | 
  **customerEmail** | **string** | Counts orders quantity specified by customer email | 
  **orderStatus** | **string** | Counts orders quantity specified by order status | 
  **orderStatusIds** | **[]string** | Retrieves orders specified by order statuses | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **storeId** | **string** | Counts orders quantity specified by store id | 
- **ids** | **string** | Counts orders specified by ids | 
- **orderIds** | **string** | Counts orders specified by order ids | 
  **ebayOrderStatus** | **string** | Counts orders quantity specified by order status | 
  **financialStatus** | **string** | Counts orders quantity specified by financial status | 
  **financialStatusIds** | **[]string** | Retrieves orders count specified by financial status ids | 
@@ -273,6 +269,10 @@ Name | Type | Description  | Notes
  **deliveryMethod** | **string** | Retrieves order with delivery method | 
  **tags** | **string** | Order tags | 
  **shipNodeType** | **string** | Retrieves order with ship node type | 
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **modifiedFrom** | **string** | Retrieve entities from their modification date | 
+ **modifiedTo** | **string** | Retrieve entities to their modification date | 
 
 ### Return type
 
@@ -355,7 +355,7 @@ Other parameters are passed through a pointer to a apiOrderFinancialStatusListRe
 
 ## OrderFind
 
-> OrderFind200Response OrderFind(ctx).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).Start(start).Count(count).Params(params).Exclude(exclude).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).FinancialStatus(financialStatus).Execute()
+> OrderFind200Response OrderFind(ctx).Start(start).Count(count).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).FinancialStatus(financialStatus).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Params(params).Exclude(exclude).Execute()
 
 order.find
 
@@ -374,22 +374,22 @@ import (
 )
 
 func main() {
+	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
+	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	customerId := "5" // string | Retrieves orders specified by customer id (optional)
 	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
 	orderStatus := "Completed" // string | Retrieves orders specified by order status (optional)
-	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "order_id,customer,totals,address,items,bundles,status")
-	exclude := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	financialStatus := "paid" // string | Retrieves orders specified by financial status (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	financialStatus := "paid" // string | Retrieves orders specified by financial status (optional)
+	params := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "order_id,customer,totals,address,items,bundles,status")
+	exclude := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderFind(context.Background()).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).Start(start).Count(count).Params(params).Exclude(exclude).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).FinancialStatus(financialStatus).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderFind(context.Background()).Start(start).Count(count).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).FinancialStatus(financialStatus).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,18 +410,18 @@ Other parameters are passed through a pointer to a apiOrderFindRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
+ **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **customerId** | **string** | Retrieves orders specified by customer id | 
  **customerEmail** | **string** | Retrieves orders specified by customer email | 
  **orderStatus** | **string** | Retrieves orders specified by order status | 
- **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;order_id,customer,totals,address,items,bundles,status&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **financialStatus** | **string** | Retrieves orders specified by financial status | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **financialStatus** | **string** | Retrieves orders specified by financial status | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;order_id,customer,totals,address,items,bundles,status&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ## OrderInfo
 
-> OrderInfo200Response OrderInfo(ctx).OrderId(orderId).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+> OrderInfo200Response OrderInfo(ctx).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 order.info
 
@@ -528,18 +528,18 @@ import (
 )
 
 func main() {
-	orderId := "25" // string | Retrieves order’s info specified by order id (optional)
 	id := "10" // string | Retrieves order info specified by id (optional)
+	orderId := "25" // string | Retrieves order’s info specified by order id (optional)
+	storeId := "1" // string | Defines store id where the order should be found (optional)
 	params := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "order_id,customer,totals,address,items,bundles,status")
 	responseFields := "{result{order_id,customer,totals,address,items,bundles,status}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	exclude := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	storeId := "1" // string | Defines store id where the order should be found (optional)
 	enableCache := true // bool | If the value is 'true' and order exist in our cache, we will return order.info response from cache (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderInfo(context.Background()).OrderId(orderId).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderInfo(context.Background()).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -560,12 +560,12 @@ Other parameters are passed through a pointer to a apiOrderInfoRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **string** | Retrieves order’s info specified by order id | 
  **id** | **string** | Retrieves order info specified by id | 
+ **orderId** | **string** | Retrieves order’s info specified by order id | 
+ **storeId** | **string** | Defines store id where the order should be found | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;order_id,customer,totals,address,items,bundles,status&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **storeId** | **string** | Defines store id where the order should be found | 
  **enableCache** | **bool** | If the value is &#39;true&#39; and order exist in our cache, we will return order.info response from cache | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ## OrderList
 
-> ModelResponseOrderList OrderList(ctx).CustomerId(customerId).CustomerEmail(customerEmail).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).Start(start).Count(count).PageCursor(pageCursor).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).StoreId(storeId).Ids(ids).OrderIds(orderIds).EbayOrderStatus(ebayOrderStatus).BasketId(basketId).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).SinceId(sinceId).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).EnableCache(enableCache).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CurrencyId(currencyId).ReturnStatus(returnStatus).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ModelResponseOrderList OrderList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 order.list
 
@@ -608,48 +608,48 @@ import (
 )
 
 func main() {
-	customerId := "5" // string | Retrieves orders specified by customer id (optional)
-	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
-	phone := "56686868654" // string | Filter orders by customer's phone number (optional)
-	orderStatus := "Completed" // string | Retrieves orders specified by order status (optional)
-	orderStatusIds := []string{"Inner_example"} // []string | Retrieves orders specified by order statuses (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve orders via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	ids := "24,25" // string | Retrieves orders specified by ids (optional)
+	orderIds := "24,25" // string | Retrieves orders specified by order ids (optional)
+	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	storeId := "1" // string | Store Id (optional)
+	customerId := "5" // string | Retrieves orders specified by customer id (optional)
+	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
+	basketId := "1" // string | Retrieves order’s info specified by basket id. (optional)
+	currencyId := "usd" // string | Currency Id (optional)
+	phone := "56686868654" // string | Filter orders by customer's phone number (optional)
+	orderStatus := "Completed" // string | Retrieves orders specified by order status (optional)
+	orderStatusIds := []string{"Inner_example"} // []string | Retrieves orders specified by order statuses (optional)
+	ebayOrderStatus := "Active" // string | Retrieves orders specified by order status (optional)
+	financialStatus := "paid" // string | Retrieves orders specified by financial status (optional)
+	financialStatusIds := []string{"Inner_example"} // []string | Retrieves orders specified by financial status ids (optional)
+	fulfillmentStatus := "fulfilled" // string | Create order with fulfillment status (optional)
+	returnStatus := "RETURNED" // string | Retrieves orders specified by return status (optional)
+	fulfillmentChannel := "local" // string | Retrieves order with a fulfillment channel (optional)
+	shippingMethod := "flatrate_flatrate" // string | Retrieve entities according to shipping method (optional)
+	skipOrderIds := "24,25" // string | Skipped orders by ids (optional)
+	isDeleted := true // bool | Filter deleted orders (optional)
+	shippingCountryIso3 := "DEU" // string | Retrieve entities according to shipping country (optional)
+	deliveryMethod := "local" // string | Retrieves order with delivery method (optional)
+	shipNodeType := "SellerFulfilled" // string | Retrieves order with ship node type (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
+	tags := "tag1,tag2" // string | Order tags (optional)
 	sortBy := "modified_at" // string | Set field to sort by (optional) (default to "order_id")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
 	params := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "order_id,customer,totals,address,items,bundles,status")
 	responseFields := "{return_code,pagination,result{order{order_id,customer,totals,address,items,bundles,status}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	exclude := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	storeId := "1" // string | Store Id (optional)
-	ids := "24,25" // string | Retrieves orders specified by ids (optional)
-	orderIds := "24,25" // string | Retrieves orders specified by order ids (optional)
-	ebayOrderStatus := "Active" // string | Retrieves orders specified by order status (optional)
-	basketId := "1" // string | Retrieves order’s info specified by basket id. (optional)
-	financialStatus := "paid" // string | Retrieves orders specified by financial status (optional)
-	financialStatusIds := []string{"Inner_example"} // []string | Retrieves orders specified by financial status ids (optional)
-	fulfillmentStatus := "fulfilled" // string | Create order with fulfillment status (optional)
-	fulfillmentChannel := "local" // string | Retrieves order with a fulfillment channel (optional)
-	shippingMethod := "flatrate_flatrate" // string | Retrieve entities according to shipping method (optional)
-	skipOrderIds := "24,25" // string | Skipped orders by ids (optional)
-	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
-	isDeleted := true // bool | Filter deleted orders (optional)
-	shippingCountryIso3 := "DEU" // string | Retrieve entities according to shipping country (optional)
 	enableCache := true // bool | If the value is 'true', we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add) (optional) (default to false)
-	deliveryMethod := "local" // string | Retrieves order with delivery method (optional)
-	tags := "tag1,tag2" // string | Order tags (optional)
-	shipNodeType := "SellerFulfilled" // string | Retrieves order with ship node type (optional)
-	currencyId := "usd" // string | Currency Id (optional)
-	returnStatus := "RETURNED" // string | Retrieves orders specified by return status (optional)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).CustomerId(customerId).CustomerEmail(customerEmail).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).Start(start).Count(count).PageCursor(pageCursor).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).StoreId(storeId).Ids(ids).OrderIds(orderIds).EbayOrderStatus(ebayOrderStatus).BasketId(basketId).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).SinceId(sinceId).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).EnableCache(enableCache).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CurrencyId(currencyId).ReturnStatus(returnStatus).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -670,43 +670,43 @@ Other parameters are passed through a pointer to a apiOrderListRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | **string** | Retrieves orders specified by customer id | 
- **customerEmail** | **string** | Retrieves orders specified by customer email | 
- **phone** | **string** | Filter orders by customer&#39;s phone number | 
- **orderStatus** | **string** | Retrieves orders specified by order status | 
- **orderStatusIds** | **[]string** | Retrieves orders specified by order statuses | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve orders via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **ids** | **string** | Retrieves orders specified by ids | 
+ **orderIds** | **string** | Retrieves orders specified by order ids | 
+ **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **storeId** | **string** | Store Id | 
+ **customerId** | **string** | Retrieves orders specified by customer id | 
+ **customerEmail** | **string** | Retrieves orders specified by customer email | 
+ **basketId** | **string** | Retrieves order’s info specified by basket id. | 
+ **currencyId** | **string** | Currency Id | 
+ **phone** | **string** | Filter orders by customer&#39;s phone number | 
+ **orderStatus** | **string** | Retrieves orders specified by order status | 
+ **orderStatusIds** | **[]string** | Retrieves orders specified by order statuses | 
+ **ebayOrderStatus** | **string** | Retrieves orders specified by order status | 
+ **financialStatus** | **string** | Retrieves orders specified by financial status | 
+ **financialStatusIds** | **[]string** | Retrieves orders specified by financial status ids | 
+ **fulfillmentStatus** | **string** | Create order with fulfillment status | 
+ **returnStatus** | **string** | Retrieves orders specified by return status | 
+ **fulfillmentChannel** | **string** | Retrieves order with a fulfillment channel | 
+ **shippingMethod** | **string** | Retrieve entities according to shipping method | 
+ **skipOrderIds** | **string** | Skipped orders by ids | 
+ **isDeleted** | **bool** | Filter deleted orders | 
+ **shippingCountryIso3** | **string** | Retrieve entities according to shipping country | 
+ **deliveryMethod** | **string** | Retrieves order with delivery method | 
+ **shipNodeType** | **string** | Retrieves order with ship node type | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **modifiedFrom** | **string** | Retrieve entities from their modification date | 
+ **tags** | **string** | Order tags | 
  **sortBy** | **string** | Set field to sort by | [default to &quot;order_id&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;order_id,customer,totals,address,items,bundles,status&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **storeId** | **string** | Store Id | 
- **ids** | **string** | Retrieves orders specified by ids | 
- **orderIds** | **string** | Retrieves orders specified by order ids | 
- **ebayOrderStatus** | **string** | Retrieves orders specified by order status | 
- **basketId** | **string** | Retrieves order’s info specified by basket id. | 
- **financialStatus** | **string** | Retrieves orders specified by financial status | 
- **financialStatusIds** | **[]string** | Retrieves orders specified by financial status ids | 
- **fulfillmentStatus** | **string** | Create order with fulfillment status | 
- **fulfillmentChannel** | **string** | Retrieves order with a fulfillment channel | 
- **shippingMethod** | **string** | Retrieve entities according to shipping method | 
- **skipOrderIds** | **string** | Skipped orders by ids | 
- **sinceId** | **string** | Retrieve entities starting from the specified id. | 
- **isDeleted** | **bool** | Filter deleted orders | 
- **shippingCountryIso3** | **string** | Retrieve entities according to shipping country | 
  **enableCache** | **bool** | If the value is &#39;true&#39;, we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add) | [default to false]
- **deliveryMethod** | **string** | Retrieves order with delivery method | 
- **tags** | **string** | Order tags | 
- **shipNodeType** | **string** | Retrieves order with ship node type | 
- **currencyId** | **string** | Currency Id | 
- **returnStatus** | **string** | Retrieves orders specified by return status | 
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
@@ -1265,7 +1265,7 @@ Name | Type | Description  | Notes
 
 ## OrderShipmentInfo
 
-> OrderShipmentInfo200Response OrderShipmentInfo(ctx).Id(id).OrderId(orderId).Start(start).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).Execute()
+> OrderShipmentInfo200Response OrderShipmentInfo(ctx).Id(id).OrderId(orderId).Start(start).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 order.shipment.info
 
@@ -1287,14 +1287,14 @@ func main() {
 	id := "10" // string | Entity id
 	orderId := "25" // string | Defines the order id
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_id,items,tracking_numbers")
-	responseFields := "{result{id,order_id,shipment_provider,tracking_numbers{tracking_number},items{product_id,quantity}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	storeId := "1" // string | Store Id (optional)
+	responseFields := "{result{id,order_id,shipment_provider,tracking_numbers{tracking_number},items{product_id,quantity}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_id,items,tracking_numbers")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderShipmentInfo(context.Background()).Id(id).OrderId(orderId).Start(start).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderShipmentInfo(context.Background()).Id(id).OrderId(orderId).Start(start).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderShipmentInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1318,10 +1318,10 @@ Name | Type | Description  | Notes
  **id** | **string** | Entity id | 
  **orderId** | **string** | Defines the order id | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_id,items,tracking_numbers&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **storeId** | **string** | Store Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_id,items,tracking_numbers&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -1343,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ## OrderShipmentList
 
-> ModelResponseOrderShipmentList OrderShipmentList(ctx).OrderId(orderId).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).StoreId(storeId).Execute()
+> ModelResponseOrderShipmentList OrderShipmentList(ctx).OrderId(orderId).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 order.shipment.list
 
@@ -1363,21 +1363,21 @@ import (
 
 func main() {
 	orderId := "25" // string | Retrieves shipments specified by order id
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_id,items,tracking_numbers")
-	responseFields := "{status_code,pagination,result{shipment{id,order_id,shipment_provider,tracking_numbers{tracking_number},items{product_id,quantity}}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	storeId := "1" // string | Store Id (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	storeId := "1" // string | Store Id (optional)
+	responseFields := "{status_code,pagination,result{shipment{id,order_id,shipment_provider,tracking_numbers{tracking_number},items{product_id,quantity}}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_id,items,tracking_numbers")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderShipmentList(context.Background()).OrderId(orderId).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).StoreId(storeId).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderShipmentList(context.Background()).OrderId(orderId).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderShipmentList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1399,17 +1399,17 @@ Other parameters are passed through a pointer to a apiOrderShipmentListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string** | Retrieves shipments specified by order id | 
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_id,items,tracking_numbers&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **storeId** | **string** | Store Id | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **storeId** | **string** | Store Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_id,items,tracking_numbers&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -1633,7 +1633,7 @@ Name | Type | Description  | Notes
 
 ## OrderTransactionList
 
-> ModelResponseOrderTransactionList OrderTransactionList(ctx).OrderIds(orderIds).Count(count).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).PageCursor(pageCursor).Execute()
+> ModelResponseOrderTransactionList OrderTransactionList(ctx).OrderIds(orderIds).Count(count).PageCursor(pageCursor).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
 
 order.transaction.list
 
@@ -1654,15 +1654,15 @@ import (
 func main() {
 	orderIds := "24,25" // string | Retrieves order transactions specified by order ids
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	storeId := "1" // string | Store Id (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_id,amount,description")
 	responseFields := "{return_code,pagination,result{transactions_count,transactions{id,transaction_id,status,description,settlement_amount,gateway,card_brand,card_last_four}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderTransactionList(context.Background()).OrderIds(orderIds).Count(count).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).PageCursor(pageCursor).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderTransactionList(context.Background()).OrderIds(orderIds).Count(count).PageCursor(pageCursor).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderTransactionList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1685,11 +1685,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderIds** | **string** | Retrieves order transactions specified by order ids | 
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **storeId** | **string** | Store Id | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_id,amount,description&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
 
 ### Return type
 
@@ -1711,7 +1711,7 @@ Name | Type | Description  | Notes
 
 ## OrderUpdate
 
-> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).CancellationReason(cancellationReason).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).DateModified(dateModified).DateFinished(dateFinished).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).OrderPaymentMethod(orderPaymentMethod).SendNotifications(sendNotifications).Origin(origin).CreateInvoice(createInvoice).InvoiceAdminComment(invoiceAdminComment).Execute()
+> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Execute()
 
 order.update
 
@@ -1733,23 +1733,23 @@ func main() {
 	orderId := "25" // string | Defines the orders specified by order id
 	storeId := "1" // string | Defines store id where the order should be found (optional)
 	orderStatus := "Completed" // string | Defines new order's status (optional)
+	financialStatus := "paid" // string | Update order financial status to specified (optional)
+	fulfillmentStatus := "fulfilled" // string | Create order with fulfillment status (optional)
 	cancellationReason := "ORDER_UNPAID" // string | Defines the cancellation reason when the order will be canceled (optional)
+	orderPaymentMethod := "PayPal" // string | Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid' (optional)
 	comment := "This coole order" // string | Specifies order comment (optional)
 	adminComment := "Test admin comment" // string | Specifies admin's order comment (optional)
 	adminPrivateComment := "Test admin private comment" // string | Specifies private admin's order comment (optional)
+	invoiceAdminComment := "Test admin comment" // string | Specifies admin's order invoice comment (optional)
 	dateModified := "2014-05-05 05:05:00" // string | Specifies order's  modification date (optional)
 	dateFinished := "2014-06-05 05:05:00" // string | Specifies order's  finished date (optional)
-	financialStatus := "paid" // string | Update order financial status to specified (optional)
-	fulfillmentStatus := "fulfilled" // string | Create order with fulfillment status (optional)
-	orderPaymentMethod := "PayPal" // string | Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid' (optional)
 	sendNotifications := true // bool | Send notifications to customer after order was created (optional) (default to false)
-	origin := "newsletter" // string | The source of the order (optional)
 	createInvoice := true // bool | Determines whether an invoice should be created if it has not already been created (optional)
-	invoiceAdminComment := "Test admin comment" // string | Specifies admin's order invoice comment (optional)
+	origin := "newsletter" // string | The source of the order (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).CancellationReason(cancellationReason).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).DateModified(dateModified).DateFinished(dateFinished).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).OrderPaymentMethod(orderPaymentMethod).SendNotifications(sendNotifications).Origin(origin).CreateInvoice(createInvoice).InvoiceAdminComment(invoiceAdminComment).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1773,19 +1773,19 @@ Name | Type | Description  | Notes
  **orderId** | **string** | Defines the orders specified by order id | 
  **storeId** | **string** | Defines store id where the order should be found | 
  **orderStatus** | **string** | Defines new order&#39;s status | 
+ **financialStatus** | **string** | Update order financial status to specified | 
+ **fulfillmentStatus** | **string** | Create order with fulfillment status | 
  **cancellationReason** | **string** | Defines the cancellation reason when the order will be canceled | 
+ **orderPaymentMethod** | **string** | Defines order payment method.&lt;br/&gt;Setting order_payment_method on Shopify will also change financial_status field value to &#39;paid&#39; | 
  **comment** | **string** | Specifies order comment | 
  **adminComment** | **string** | Specifies admin&#39;s order comment | 
  **adminPrivateComment** | **string** | Specifies private admin&#39;s order comment | 
+ **invoiceAdminComment** | **string** | Specifies admin&#39;s order invoice comment | 
  **dateModified** | **string** | Specifies order&#39;s  modification date | 
  **dateFinished** | **string** | Specifies order&#39;s  finished date | 
- **financialStatus** | **string** | Update order financial status to specified | 
- **fulfillmentStatus** | **string** | Create order with fulfillment status | 
- **orderPaymentMethod** | **string** | Defines order payment method.&lt;br/&gt;Setting order_payment_method on Shopify will also change financial_status field value to &#39;paid&#39; | 
  **sendNotifications** | **bool** | Send notifications to customer after order was created | [default to false]
- **origin** | **string** | The source of the order | 
  **createInvoice** | **bool** | Determines whether an invoice should be created if it has not already been created | 
- **invoiceAdminComment** | **string** | Specifies admin&#39;s order invoice comment | 
+ **origin** | **string** | The source of the order | 
 
 ### Return type
 

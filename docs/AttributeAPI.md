@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ## AttributeAttributesetList
 
-> ModelResponseAttributeAttributesetList AttributeAttributesetList(ctx).Start(start).Count(count).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> ModelResponseAttributeAttributesetList AttributeAttributesetList(ctx).Start(start).Count(count).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 attribute.attributeset.list
 
@@ -292,13 +292,13 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name")
 	exclude := "id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeAttributesetList(context.Background()).Start(start).Count(count).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeAttributesetList(context.Background()).Start(start).Count(count).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeAttributesetList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -321,9 +321,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ## AttributeGroupList
 
-> ModelResponseAttributeGroupList AttributeGroupList(ctx).Start(start).Count(count).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).AttributeSetId(attributeSetId).Execute()
+> ModelResponseAttributeGroupList AttributeGroupList(ctx).Start(start).Count(count).AttributeSetId(attributeSetId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 attribute.group.list
 
@@ -512,15 +512,15 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	attributeSetId := "4" // string | Attribute set id (optional)
 	langId := "3" // string | Language id (optional)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name")
 	exclude := "id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	attributeSetId := "4" // string | Attribute set id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeGroupList(context.Background()).Start(start).Count(count).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).AttributeSetId(attributeSetId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeGroupList(context.Background()).Start(start).Count(count).AttributeSetId(attributeSetId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeGroupList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -543,11 +543,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **attributeSetId** | **string** | Attribute set id | 
  **langId** | **string** | Language id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **attributeSetId** | **string** | Attribute set id | 
 
 ### Return type
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 ## AttributeInfo
 
-> AttributeInfo200Response AttributeInfo(ctx).Id(id).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> AttributeInfo200Response AttributeInfo(ctx).Id(id).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 attribute.info
 
@@ -592,13 +592,13 @@ func main() {
 	attributeSetId := "4" // string | Attribute set id (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "force_all" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
 	exclude := "name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeInfo(context.Background()).Id(id).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeInfo(context.Background()).Id(id).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -623,9 +623,9 @@ Name | Type | Description  | Notes
  **attributeSetId** | **string** | Attribute set id | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -647,7 +647,7 @@ Name | Type | Description  | Notes
 
 ## AttributeList
 
-> ModelResponseAttributeList AttributeList(ctx).Start(start).Count(count).Type_(type_).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Visible(visible).Required(required).System(system).Execute()
+> ModelResponseAttributeList AttributeList(ctx).Start(start).Count(count).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 attribute.list
 
@@ -668,21 +668,21 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	type_ := "text" // string | Defines attribute's type (optional)
 	attributeIds := "1,2,3" // string | Filter attributes by ids (optional)
 	attributeSetId := "4" // string | Filter items by attribute set id (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Retrieves attributes on specified language id (optional)
-	params := "id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,code,type")
-	exclude := "id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	type_ := "text" // string | Defines attribute's type (optional)
 	visible := true // bool | Filter items by visibility status (optional)
 	required := true // bool | Defines if the option is required (optional)
 	system := false // bool | True if attribute is system (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,code,type")
+	exclude := "id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeList(context.Background()).Start(start).Count(count).Type_(type_).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Visible(visible).Required(required).System(system).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeList(context.Background()).Start(start).Count(count).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -705,17 +705,17 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **type_** | **string** | Defines attribute&#39;s type | 
  **attributeIds** | **string** | Filter attributes by ids | 
  **attributeSetId** | **string** | Filter items by attribute set id | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Retrieves attributes on specified language id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,code,type&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **type_** | **string** | Defines attribute&#39;s type | 
  **visible** | **bool** | Filter items by visibility status | 
  **required** | **bool** | Defines if the option is required | 
  **system** | **bool** | True if attribute is system | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,code,type&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 

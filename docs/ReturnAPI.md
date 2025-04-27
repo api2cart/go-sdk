@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## ReturnInfo
 
-> ReturnInfo200Response ReturnInfo(ctx).Id(id).OrderId(orderId).StoreId(storeId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> ReturnInfo200Response ReturnInfo(ctx).Id(id).OrderId(orderId).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 return.info
 
@@ -184,13 +184,13 @@ func main() {
 	id := "10" // string | Entity id
 	orderId := "25" // string | Defines the order id (optional)
 	storeId := "1" // string | Store Id (optional)
+	responseFields := "{return_code,return_message,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,order_products" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_products")
 	exclude := "id,order_id" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ReturnAPI.ReturnInfo(context.Background()).Id(id).OrderId(orderId).StoreId(storeId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.ReturnAPI.ReturnInfo(context.Background()).Id(id).OrderId(orderId).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -214,9 +214,9 @@ Name | Type | Description  | Notes
  **id** | **string** | Entity id | 
  **orderId** | **string** | Defines the order id | 
  **storeId** | **string** | Store Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_products&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## ReturnList
 
-> ModelResponseReturnList ReturnList(ctx).Start(start).Count(count).PageCursor(pageCursor).Params(params).Exclude(exclude).ResponseFields(responseFields).OrderId(orderId).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+> ModelResponseReturnList ReturnList(ctx).Start(start).Count(count).PageCursor(pageCursor).OrderId(orderId).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
 
 return.list
 
@@ -260,9 +260,6 @@ func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	params := "id,order_products" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_products")
-	exclude := "id,order_id" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	orderId := "25" // string | Defines the order id (optional)
 	orderIds := "24,25" // string | Retrieves return requests specified by order ids (optional)
 	customerId := "5" // string | Retrieves return requests specified by customer id (optional)
@@ -273,12 +270,15 @@ func main() {
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,order_products" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,order_products")
+	exclude := "id,order_id" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ReturnAPI.ReturnList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Params(params).Exclude(exclude).ResponseFields(responseFields).OrderId(orderId).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+	resp, r, err := apiClient.ReturnAPI.ReturnList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).OrderId(orderId).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -302,9 +302,6 @@ Name | Type | Description  | Notes
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_products&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **orderId** | **string** | Defines the order id | 
  **orderIds** | **string** | Retrieves return requests specified by order ids | 
  **customerId** | **string** | Retrieves return requests specified by customer id | 
@@ -315,6 +312,9 @@ Name | Type | Description  | Notes
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,order_products&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
 

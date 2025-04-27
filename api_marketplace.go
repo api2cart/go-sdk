@@ -26,26 +26,20 @@ type MarketplaceAPIService service
 type ApiMarketplaceProductFindRequest struct {
 	ctx context.Context
 	ApiService *MarketplaceAPIService
-	storeId *string
 	count *int32
 	pageCursor *string
-	categoriesIds *string
 	keyword *string
+	categoriesIds *string
+	storeId *string
 	asin *string
 	ean *string
 	gtin *string
 	upc *string
 	mpn *string
 	isbn *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
-}
-
-// Store Id
-func (r ApiMarketplaceProductFindRequest) StoreId(storeId string) ApiMarketplaceProductFindRequest {
-	r.storeId = &storeId
-	return r
 }
 
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
@@ -60,15 +54,21 @@ func (r ApiMarketplaceProductFindRequest) PageCursor(pageCursor string) ApiMarke
 	return r
 }
 
+// Defines search keyword
+func (r ApiMarketplaceProductFindRequest) Keyword(keyword string) ApiMarketplaceProductFindRequest {
+	r.keyword = &keyword
+	return r
+}
+
 // Defines product add that is specified by comma-separated categories id
 func (r ApiMarketplaceProductFindRequest) CategoriesIds(categoriesIds string) ApiMarketplaceProductFindRequest {
 	r.categoriesIds = &categoriesIds
 	return r
 }
 
-// Defines search keyword
-func (r ApiMarketplaceProductFindRequest) Keyword(keyword string) ApiMarketplaceProductFindRequest {
-	r.keyword = &keyword
+// Store Id
+func (r ApiMarketplaceProductFindRequest) StoreId(storeId string) ApiMarketplaceProductFindRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -109,6 +109,12 @@ func (r ApiMarketplaceProductFindRequest) Isbn(isbn string) ApiMarketplaceProduc
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiMarketplaceProductFindRequest) ResponseFields(responseFields string) ApiMarketplaceProductFindRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiMarketplaceProductFindRequest) Params(params string) ApiMarketplaceProductFindRequest {
 	r.params = &params
 	return r
@@ -117,12 +123,6 @@ func (r ApiMarketplaceProductFindRequest) Params(params string) ApiMarketplacePr
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiMarketplaceProductFindRequest) Exclude(exclude string) ApiMarketplaceProductFindRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiMarketplaceProductFindRequest) ResponseFields(responseFields string) ApiMarketplaceProductFindRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -166,9 +166,6 @@ func (a *MarketplaceAPIService) MarketplaceProductFindExecute(r ApiMarketplacePr
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
 	} else {
@@ -178,11 +175,14 @@ func (a *MarketplaceAPIService) MarketplaceProductFindExecute(r ApiMarketplacePr
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
+	if r.keyword != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "keyword", r.keyword, "form", "")
+	}
 	if r.categoriesIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "categories_ids", r.categoriesIds, "form", "")
 	}
-	if r.keyword != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "keyword", r.keyword, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.asin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "asin", r.asin, "form", "")
@@ -202,6 +202,9 @@ func (a *MarketplaceAPIService) MarketplaceProductFindExecute(r ApiMarketplacePr
 	if r.isbn != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "isbn", r.isbn, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -210,9 +213,6 @@ func (a *MarketplaceAPIService) MarketplaceProductFindExecute(r ApiMarketplacePr
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -304,43 +304,25 @@ type ApiProductAttributeListRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	productId *string
-	attributeId *string
-	variantId *string
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
+	attributeId *string
+	variantId *string
 	attributeGroupId *string
-	setName *string
 	langId *string
 	storeId *string
+	setName *string
 	sortBy *string
 	sortDirection *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
 }
 
 // Retrieves attributes specified by product id
 func (r ApiProductAttributeListRequest) ProductId(productId string) ApiProductAttributeListRequest {
 	r.productId = &productId
-	return r
-}
-
-// Retrieves info for specified attribute_id
-func (r ApiProductAttributeListRequest) AttributeId(attributeId string) ApiProductAttributeListRequest {
-	r.attributeId = &attributeId
-	return r
-}
-
-// Defines product&#39;s variants specified by variant id
-func (r ApiProductAttributeListRequest) VariantId(variantId string) ApiProductAttributeListRequest {
-	r.variantId = &variantId
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiProductAttributeListRequest) PageCursor(pageCursor string) ApiProductAttributeListRequest {
-	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -356,15 +338,27 @@ func (r ApiProductAttributeListRequest) Count(count int32) ApiProductAttributeLi
 	return r
 }
 
-// Filter by attribute_group_id
-func (r ApiProductAttributeListRequest) AttributeGroupId(attributeGroupId string) ApiProductAttributeListRequest {
-	r.attributeGroupId = &attributeGroupId
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiProductAttributeListRequest) PageCursor(pageCursor string) ApiProductAttributeListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
-// Retrieves attributes specified by set_name in Magento
-func (r ApiProductAttributeListRequest) SetName(setName string) ApiProductAttributeListRequest {
-	r.setName = &setName
+// Retrieves info for specified attribute_id
+func (r ApiProductAttributeListRequest) AttributeId(attributeId string) ApiProductAttributeListRequest {
+	r.attributeId = &attributeId
+	return r
+}
+
+// Defines product&#39;s variants specified by variant id
+func (r ApiProductAttributeListRequest) VariantId(variantId string) ApiProductAttributeListRequest {
+	r.variantId = &variantId
+	return r
+}
+
+// Filter by attribute_group_id
+func (r ApiProductAttributeListRequest) AttributeGroupId(attributeGroupId string) ApiProductAttributeListRequest {
+	r.attributeGroupId = &attributeGroupId
 	return r
 }
 
@@ -377,6 +371,12 @@ func (r ApiProductAttributeListRequest) LangId(langId string) ApiProductAttribut
 // Retrieves attributes specified by store id
 func (r ApiProductAttributeListRequest) StoreId(storeId string) ApiProductAttributeListRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Retrieves attributes specified by set_name in Magento
+func (r ApiProductAttributeListRequest) SetName(setName string) ApiProductAttributeListRequest {
+	r.setName = &setName
 	return r
 }
 
@@ -393,14 +393,14 @@ func (r ApiProductAttributeListRequest) SortDirection(sortDirection string) ApiP
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductAttributeListRequest) Params(params string) ApiProductAttributeListRequest {
-	r.params = &params
+func (r ApiProductAttributeListRequest) ResponseFields(responseFields string) ApiProductAttributeListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductAttributeListRequest) ResponseFields(responseFields string) ApiProductAttributeListRequest {
-	r.responseFields = &responseFields
+func (r ApiProductAttributeListRequest) Params(params string) ApiProductAttributeListRequest {
+	r.params = &params
 	return r
 }
 
@@ -453,16 +453,6 @@ func (a *ProductAPIService) ProductAttributeListExecute(r ApiProductAttributeLis
 		return localVarReturnValue, nil, reportError("productId is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
-	if r.attributeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_id", r.attributeId, "form", "")
-	}
-	if r.variantId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "variant_id", r.variantId, "form", "")
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -475,17 +465,27 @@ func (a *ProductAPIService) ProductAttributeListExecute(r ApiProductAttributeLis
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
+	if r.attributeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_id", r.attributeId, "form", "")
+	}
+	if r.variantId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "variant_id", r.variantId, "form", "")
+	}
 	if r.attributeGroupId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_group_id", r.attributeGroupId, "form", "")
-	}
-	if r.setName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "set_name", r.setName, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.setName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "set_name", r.setName, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
@@ -499,14 +499,14 @@ func (a *ProductAPIService) ProductAttributeListExecute(r ApiProductAttributeLis
 		var defaultValue string = "asc"
 		r.sortDirection = &defaultValue
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "attribute_id,name"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -1005,20 +1005,20 @@ type ApiProductBrandListRequest struct {
 	start *int32
 	count *int32
 	pageCursor *string
-	params *string
 	brandIds *string
-	exclude *string
 	categoryId *string
+	parentId *string
 	storeId *string
 	langId *string
+	findWhere *string
+	findValue *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	parentId *string
 	responseFields *string
-	findWhere *string
-	findValue *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1039,27 +1039,21 @@ func (r ApiProductBrandListRequest) PageCursor(pageCursor string) ApiProductBran
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductBrandListRequest) Params(params string) ApiProductBrandListRequest {
-	r.params = &params
-	return r
-}
-
 // Retrieves brands specified by brand ids
 func (r ApiProductBrandListRequest) BrandIds(brandIds string) ApiProductBrandListRequest {
 	r.brandIds = &brandIds
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductBrandListRequest) Exclude(exclude string) ApiProductBrandListRequest {
-	r.exclude = &exclude
-	return r
-}
-
 // Retrieves product brands specified by category id
 func (r ApiProductBrandListRequest) CategoryId(categoryId string) ApiProductBrandListRequest {
 	r.categoryId = &categoryId
+	return r
+}
+
+// Retrieves brands specified by parent id
+func (r ApiProductBrandListRequest) ParentId(parentId string) ApiProductBrandListRequest {
+	r.parentId = &parentId
 	return r
 }
 
@@ -1072,6 +1066,18 @@ func (r ApiProductBrandListRequest) StoreId(storeId string) ApiProductBrandListR
 // Language id
 func (r ApiProductBrandListRequest) LangId(langId string) ApiProductBrandListRequest {
 	r.langId = &langId
+	return r
+}
+
+// Entity search that is specified by the comma-separated unique fields
+func (r ApiProductBrandListRequest) FindWhere(findWhere string) ApiProductBrandListRequest {
+	r.findWhere = &findWhere
+	return r
+}
+
+// Entity search that is specified by some value
+func (r ApiProductBrandListRequest) FindValue(findValue string) ApiProductBrandListRequest {
+	r.findValue = &findValue
 	return r
 }
 
@@ -1099,27 +1105,21 @@ func (r ApiProductBrandListRequest) ModifiedTo(modifiedTo string) ApiProductBran
 	return r
 }
 
-// Retrieves brands specified by parent id
-func (r ApiProductBrandListRequest) ParentId(parentId string) ApiProductBrandListRequest {
-	r.parentId = &parentId
-	return r
-}
-
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductBrandListRequest) ResponseFields(responseFields string) ApiProductBrandListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Entity search that is specified by the comma-separated unique fields
-func (r ApiProductBrandListRequest) FindWhere(findWhere string) ApiProductBrandListRequest {
-	r.findWhere = &findWhere
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductBrandListRequest) Params(params string) ApiProductBrandListRequest {
+	r.params = &params
 	return r
 }
 
-// Entity search that is specified by some value
-func (r ApiProductBrandListRequest) FindValue(findValue string) ApiProductBrandListRequest {
-	r.findValue = &findValue
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductBrandListRequest) Exclude(exclude string) ApiProductBrandListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1178,26 +1178,26 @@ func (a *ProductAPIService) ProductBrandListExecute(r ApiProductBrandListRequest
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,short_description,active,url"
-		r.params = &defaultValue
-	}
 	if r.brandIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_ids", r.brandIds, "form", "")
 	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
 	if r.categoryId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	}
+	if r.parentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.findWhere != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
+	}
+	if r.findValue != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -1211,17 +1211,17 @@ func (a *ProductAPIService) ProductBrandListExecute(r ApiProductBrandListRequest
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.parentId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
-	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
-	if r.findWhere != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,short_description,active,url"
+		r.params = &defaultValue
 	}
-	if r.findValue != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1480,12 +1480,12 @@ type ApiProductChildItemInfoRequest struct {
 	ApiService *ProductAPIService
 	productId *string
 	id *string
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
 	langId *string
 	currencyId *string
+	responseFields *string
+	params *string
+	exclude *string
 	useLatestApiVersion *bool
 }
 
@@ -1498,24 +1498,6 @@ func (r ApiProductChildItemInfoRequest) ProductId(productId string) ApiProductCh
 // Entity id
 func (r ApiProductChildItemInfoRequest) Id(id string) ApiProductChildItemInfoRequest {
 	r.id = &id
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductChildItemInfoRequest) Params(params string) ApiProductChildItemInfoRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductChildItemInfoRequest) ResponseFields(responseFields string) ApiProductChildItemInfoRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductChildItemInfoRequest) Exclude(exclude string) ApiProductChildItemInfoRequest {
-	r.exclude = &exclude
 	return r
 }
 
@@ -1534,6 +1516,24 @@ func (r ApiProductChildItemInfoRequest) LangId(langId string) ApiProductChildIte
 // Currency Id
 func (r ApiProductChildItemInfoRequest) CurrencyId(currencyId string) ApiProductChildItemInfoRequest {
 	r.currencyId = &currencyId
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductChildItemInfoRequest) ResponseFields(responseFields string) ApiProductChildItemInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductChildItemInfoRequest) Params(params string) ApiProductChildItemInfoRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductChildItemInfoRequest) Exclude(exclude string) ApiProductChildItemInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1589,18 +1589,6 @@ func (a *ProductAPIService) ProductChildItemInfoExecute(r ApiProductChildItemInf
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "force_all"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	if r.storeId != nil {
@@ -1611,6 +1599,18 @@ func (a *ProductAPIService) ProductChildItemInfoExecute(r ApiProductChildItemInf
 	}
 	if r.currencyId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "force_all"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.useLatestApiVersion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
@@ -1703,16 +1703,9 @@ func (a *ProductAPIService) ProductChildItemInfoExecute(r ApiProductChildItemInf
 type ApiProductChildItemListRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	pageCursor *string
 	start *int32
 	count *int32
-	params *string
-	responseFields *string
-	exclude *string
-	createdFrom *string
-	createdTo *string
-	modifiedFrom *string
-	modifiedTo *string
+	pageCursor *string
 	productId *string
 	productIds *string
 	sku *string
@@ -1722,16 +1715,17 @@ type ApiProductChildItemListRequest struct {
 	availSale *bool
 	findValue *string
 	findWhere *string
+	createdFrom *string
+	createdTo *string
+	modifiedFrom *string
+	modifiedTo *string
+	returnGlobal *bool
+	responseFields *string
+	params *string
+	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
 	useLatestApiVersion *bool
-	returnGlobal *bool
-}
-
-// Used to retrieve products child items via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiProductChildItemListRequest) PageCursor(pageCursor string) ApiProductChildItemListRequest {
-	r.pageCursor = &pageCursor
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1746,45 +1740,9 @@ func (r ApiProductChildItemListRequest) Count(count int32) ApiProductChildItemLi
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductChildItemListRequest) Params(params string) ApiProductChildItemListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductChildItemListRequest) ResponseFields(responseFields string) ApiProductChildItemListRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductChildItemListRequest) Exclude(exclude string) ApiProductChildItemListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Retrieve entities from their creation date
-func (r ApiProductChildItemListRequest) CreatedFrom(createdFrom string) ApiProductChildItemListRequest {
-	r.createdFrom = &createdFrom
-	return r
-}
-
-// Retrieve entities to their creation date
-func (r ApiProductChildItemListRequest) CreatedTo(createdTo string) ApiProductChildItemListRequest {
-	r.createdTo = &createdTo
-	return r
-}
-
-// Retrieve entities from their modification date
-func (r ApiProductChildItemListRequest) ModifiedFrom(modifiedFrom string) ApiProductChildItemListRequest {
-	r.modifiedFrom = &modifiedFrom
-	return r
-}
-
-// Retrieve entities to their modification date
-func (r ApiProductChildItemListRequest) ModifiedTo(modifiedTo string) ApiProductChildItemListRequest {
-	r.modifiedTo = &modifiedTo
+// Used to retrieve products child items via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiProductChildItemListRequest) PageCursor(pageCursor string) ApiProductChildItemListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -1842,6 +1800,54 @@ func (r ApiProductChildItemListRequest) FindWhere(findWhere string) ApiProductCh
 	return r
 }
 
+// Retrieve entities from their creation date
+func (r ApiProductChildItemListRequest) CreatedFrom(createdFrom string) ApiProductChildItemListRequest {
+	r.createdFrom = &createdFrom
+	return r
+}
+
+// Retrieve entities to their creation date
+func (r ApiProductChildItemListRequest) CreatedTo(createdTo string) ApiProductChildItemListRequest {
+	r.createdTo = &createdTo
+	return r
+}
+
+// Retrieve entities from their modification date
+func (r ApiProductChildItemListRequest) ModifiedFrom(modifiedFrom string) ApiProductChildItemListRequest {
+	r.modifiedFrom = &modifiedFrom
+	return r
+}
+
+// Retrieve entities to their modification date
+func (r ApiProductChildItemListRequest) ModifiedTo(modifiedTo string) ApiProductChildItemListRequest {
+	r.modifiedTo = &modifiedTo
+	return r
+}
+
+// Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned.
+func (r ApiProductChildItemListRequest) ReturnGlobal(returnGlobal bool) ApiProductChildItemListRequest {
+	r.returnGlobal = &returnGlobal
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductChildItemListRequest) ResponseFields(responseFields string) ApiProductChildItemListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductChildItemListRequest) Params(params string) ApiProductChildItemListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductChildItemListRequest) Exclude(exclude string) ApiProductChildItemListRequest {
+	r.exclude = &exclude
+	return r
+}
+
 // Report request id
 func (r ApiProductChildItemListRequest) ReportRequestId(reportRequestId string) ApiProductChildItemListRequest {
 	r.reportRequestId = &reportRequestId
@@ -1857,12 +1863,6 @@ func (r ApiProductChildItemListRequest) DisableReportCache(disableReportCache bo
 // Use the latest platform API version
 func (r ApiProductChildItemListRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiProductChildItemListRequest {
 	r.useLatestApiVersion = &useLatestApiVersion
-	return r
-}
-
-// Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned.
-func (r ApiProductChildItemListRequest) ReturnGlobal(returnGlobal bool) ApiProductChildItemListRequest {
-	r.returnGlobal = &returnGlobal
 	return r
 }
 
@@ -1906,9 +1906,6 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -1921,29 +1918,8 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "force_all"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
-	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
-	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
 	if r.productId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
@@ -1972,6 +1948,36 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
 	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.returnGlobal != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_global", r.returnGlobal, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.returnGlobal = &defaultValue
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "force_all"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	}
 	if r.reportRequestId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
 	}
@@ -1986,12 +1992,6 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 	} else {
 		var defaultValue bool = false
 		r.useLatestApiVersion = &defaultValue
-	}
-	if r.returnGlobal != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_global", r.returnGlobal, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.returnGlobal = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2078,33 +2078,75 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 type ApiProductCountRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
+	productIds *string
+	sinceId *string
+	categoriesIds *string
 	categoryId *string
+	storeId *string
+	langId *string
+	availView *bool
+	availSale *bool
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	availView *bool
-	availSale *bool
-	storeId *string
-	langId *string
-	productIds *string
-	sinceId *string
-	reportRequestId *string
-	disableReportCache *bool
 	brandName *string
 	productAttributes *[]string
 	status *string
 	type_ *string
 	findValue *string
 	findWhere *string
-	useLatestApiVersion *bool
+	reportRequestId *string
 	returnGlobal *bool
-	categoriesIds *string
+	disableReportCache *bool
+	useLatestApiVersion *bool
+}
+
+// Counts products specified by product ids
+func (r ApiProductCountRequest) ProductIds(productIds string) ApiProductCountRequest {
+	r.productIds = &productIds
+	return r
+}
+
+// Retrieve entities starting from the specified id.
+func (r ApiProductCountRequest) SinceId(sinceId string) ApiProductCountRequest {
+	r.sinceId = &sinceId
+	return r
+}
+
+// Defines product add that is specified by comma-separated categories id
+func (r ApiProductCountRequest) CategoriesIds(categoriesIds string) ApiProductCountRequest {
+	r.categoriesIds = &categoriesIds
+	return r
 }
 
 // Counts products specified by category id
 func (r ApiProductCountRequest) CategoryId(categoryId string) ApiProductCountRequest {
 	r.categoryId = &categoryId
+	return r
+}
+
+// Counts products specified by store id
+func (r ApiProductCountRequest) StoreId(storeId string) ApiProductCountRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Counts products specified by language id
+func (r ApiProductCountRequest) LangId(langId string) ApiProductCountRequest {
+	r.langId = &langId
+	return r
+}
+
+// Specifies the set of visible/invisible products
+func (r ApiProductCountRequest) AvailView(availView bool) ApiProductCountRequest {
+	r.availView = &availView
+	return r
+}
+
+// Specifies the set of available/not available products for sale
+func (r ApiProductCountRequest) AvailSale(availSale bool) ApiProductCountRequest {
+	r.availSale = &availSale
 	return r
 }
 
@@ -2129,54 +2171,6 @@ func (r ApiProductCountRequest) ModifiedFrom(modifiedFrom string) ApiProductCoun
 // Retrieve entities to their modification date
 func (r ApiProductCountRequest) ModifiedTo(modifiedTo string) ApiProductCountRequest {
 	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Specifies the set of visible/invisible products
-func (r ApiProductCountRequest) AvailView(availView bool) ApiProductCountRequest {
-	r.availView = &availView
-	return r
-}
-
-// Specifies the set of available/not available products for sale
-func (r ApiProductCountRequest) AvailSale(availSale bool) ApiProductCountRequest {
-	r.availSale = &availSale
-	return r
-}
-
-// Counts products specified by store id
-func (r ApiProductCountRequest) StoreId(storeId string) ApiProductCountRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Counts products specified by language id
-func (r ApiProductCountRequest) LangId(langId string) ApiProductCountRequest {
-	r.langId = &langId
-	return r
-}
-
-// Counts products specified by product ids
-func (r ApiProductCountRequest) ProductIds(productIds string) ApiProductCountRequest {
-	r.productIds = &productIds
-	return r
-}
-
-// Retrieve entities starting from the specified id.
-func (r ApiProductCountRequest) SinceId(sinceId string) ApiProductCountRequest {
-	r.sinceId = &sinceId
-	return r
-}
-
-// Report request id
-func (r ApiProductCountRequest) ReportRequestId(reportRequestId string) ApiProductCountRequest {
-	r.reportRequestId = &reportRequestId
-	return r
-}
-
-// Disable report cache for current request
-func (r ApiProductCountRequest) DisableReportCache(disableReportCache bool) ApiProductCountRequest {
-	r.disableReportCache = &disableReportCache
 	return r
 }
 
@@ -2216,9 +2210,9 @@ func (r ApiProductCountRequest) FindWhere(findWhere string) ApiProductCountReque
 	return r
 }
 
-// Use the latest platform API version
-func (r ApiProductCountRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiProductCountRequest {
-	r.useLatestApiVersion = &useLatestApiVersion
+// Report request id
+func (r ApiProductCountRequest) ReportRequestId(reportRequestId string) ApiProductCountRequest {
+	r.reportRequestId = &reportRequestId
 	return r
 }
 
@@ -2228,9 +2222,15 @@ func (r ApiProductCountRequest) ReturnGlobal(returnGlobal bool) ApiProductCountR
 	return r
 }
 
-// Defines product add that is specified by comma-separated categories id
-func (r ApiProductCountRequest) CategoriesIds(categoriesIds string) ApiProductCountRequest {
-	r.categoriesIds = &categoriesIds
+// Disable report cache for current request
+func (r ApiProductCountRequest) DisableReportCache(disableReportCache bool) ApiProductCountRequest {
+	r.disableReportCache = &disableReportCache
+	return r
+}
+
+// Use the latest platform API version
+func (r ApiProductCountRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiProductCountRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
 	return r
 }
 
@@ -2274,8 +2274,29 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.productIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "product_ids", r.productIds, "form", "")
+	}
+	if r.sinceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
+	}
+	if r.categoriesIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "categories_ids", r.categoriesIds, "form", "")
+	}
 	if r.categoryId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.availView != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_view", r.availView, "form", "")
+	}
+	if r.availSale != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -2288,33 +2309,6 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.availView != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_view", r.availView, "form", "")
-	}
-	if r.availSale != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
-	}
-	if r.productIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "product_ids", r.productIds, "form", "")
-	}
-	if r.sinceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
-	}
-	if r.reportRequestId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
-	}
-	if r.disableReportCache != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_report_cache", r.disableReportCache, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.disableReportCache = &defaultValue
 	}
 	if r.brandName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_name", r.brandName, "form", "")
@@ -2342,11 +2336,8 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
 	}
-	if r.useLatestApiVersion != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.useLatestApiVersion = &defaultValue
+	if r.reportRequestId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
 	}
 	if r.returnGlobal != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "return_global", r.returnGlobal, "form", "")
@@ -2354,8 +2345,17 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 		var defaultValue bool = false
 		r.returnGlobal = &defaultValue
 	}
-	if r.categoriesIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "categories_ids", r.categoriesIds, "form", "")
+	if r.disableReportCache != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_report_cache", r.disableReportCache, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.disableReportCache = &defaultValue
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2649,12 +2649,12 @@ type ApiProductCurrencyListRequest struct {
 	ApiService *ProductAPIService
 	start *int32
 	count *int32
-	params *string
 	pageCursor *string
-	exclude *string
-	responseFields *string
 	default_ *bool
 	avail *bool
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -2669,27 +2669,9 @@ func (r ApiProductCurrencyListRequest) Count(count int32) ApiProductCurrencyList
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductCurrencyListRequest) Params(params string) ApiProductCurrencyListRequest {
-	r.params = &params
-	return r
-}
-
 // Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
 func (r ApiProductCurrencyListRequest) PageCursor(pageCursor string) ApiProductCurrencyListRequest {
 	r.pageCursor = &pageCursor
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductCurrencyListRequest) Exclude(exclude string) ApiProductCurrencyListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductCurrencyListRequest) ResponseFields(responseFields string) ApiProductCurrencyListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -2702,6 +2684,24 @@ func (r ApiProductCurrencyListRequest) Default_(default_ bool) ApiProductCurrenc
 // Specifies the set of available/not available currencies
 func (r ApiProductCurrencyListRequest) Avail(avail bool) ApiProductCurrencyListRequest {
 	r.avail = &avail
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductCurrencyListRequest) ResponseFields(responseFields string) ApiProductCurrencyListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductCurrencyListRequest) Params(params string) ApiProductCurrencyListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductCurrencyListRequest) Exclude(exclude string) ApiProductCurrencyListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -2757,26 +2757,26 @@ func (a *ProductAPIService) ProductCurrencyListExecute(r ApiProductCurrencyListR
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "name,iso3,default,avail"
-		r.params = &defaultValue
-	}
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.default_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "default", r.default_, "form", "")
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "name,iso3,default,avail"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3776,12 +3776,12 @@ type ApiProductImageUpdateRequest struct {
 	productId *string
 	id *string
 	variantIds *string
+	storeId *string
+	langId *string
 	imageName *string
 	type_ *string
 	label *string
 	position *int32
-	storeId *string
-	langId *string
 	hidden *bool
 }
 
@@ -3800,6 +3800,18 @@ func (r ApiProductImageUpdateRequest) Id(id string) ApiProductImageUpdateRequest
 // Defines product&#39;s variants ids
 func (r ApiProductImageUpdateRequest) VariantIds(variantIds string) ApiProductImageUpdateRequest {
 	r.variantIds = &variantIds
+	return r
+}
+
+// Store Id
+func (r ApiProductImageUpdateRequest) StoreId(storeId string) ApiProductImageUpdateRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Language id
+func (r ApiProductImageUpdateRequest) LangId(langId string) ApiProductImageUpdateRequest {
+	r.langId = &langId
 	return r
 }
 
@@ -3824,18 +3836,6 @@ func (r ApiProductImageUpdateRequest) Label(label string) ApiProductImageUpdateR
 // Defines image’s position in the list
 func (r ApiProductImageUpdateRequest) Position(position int32) ApiProductImageUpdateRequest {
 	r.position = &position
-	return r
-}
-
-// Store Id
-func (r ApiProductImageUpdateRequest) StoreId(storeId string) ApiProductImageUpdateRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Language id
-func (r ApiProductImageUpdateRequest) LangId(langId string) ApiProductImageUpdateRequest {
-	r.langId = &langId
 	return r
 }
 
@@ -3892,8 +3892,15 @@ func (a *ProductAPIService) ProductImageUpdateExecute(r ApiProductImageUpdateReq
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	if r.variantIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "variant_ids", r.variantIds, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	if r.imageName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "image_name", r.imageName, "form", "")
@@ -3909,13 +3916,6 @@ func (a *ProductAPIService) ProductImageUpdateExecute(r ApiProductImageUpdateReq
 	}
 	if r.position != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "position", r.position, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	if r.hidden != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "hidden", r.hidden, "form", "")
@@ -4006,12 +4006,12 @@ type ApiProductInfoRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id *string
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
 	langId *string
 	currencyId *string
+	responseFields *string
+	params *string
+	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
 	useLatestApiVersion *bool
@@ -4020,24 +4020,6 @@ type ApiProductInfoRequest struct {
 // Retrieves product&#39;s info specified by product id
 func (r ApiProductInfoRequest) Id(id string) ApiProductInfoRequest {
 	r.id = &id
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductInfoRequest) Params(params string) ApiProductInfoRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductInfoRequest) ResponseFields(responseFields string) ApiProductInfoRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductInfoRequest) Exclude(exclude string) ApiProductInfoRequest {
-	r.exclude = &exclude
 	return r
 }
 
@@ -4056,6 +4038,24 @@ func (r ApiProductInfoRequest) LangId(langId string) ApiProductInfoRequest {
 // Currency Id
 func (r ApiProductInfoRequest) CurrencyId(currencyId string) ApiProductInfoRequest {
 	r.currencyId = &currencyId
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductInfoRequest) ResponseFields(responseFields string) ApiProductInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductInfoRequest) Params(params string) ApiProductInfoRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductInfoRequest) Exclude(exclude string) ApiProductInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -4121,18 +4121,6 @@ func (a *ProductAPIService) ProductInfoExecute(r ApiProductInfoRequest) (*Produc
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,description,price,categories_ids"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
@@ -4141,6 +4129,18 @@ func (a *ProductAPIService) ProductInfoExecute(r ApiProductInfoRequest) (*Produc
 	}
 	if r.currencyId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,description,price,categories_ids"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.reportRequestId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
@@ -4242,45 +4242,39 @@ func (a *ProductAPIService) ProductInfoExecute(r ApiProductInfoRequest) (*Produc
 type ApiProductListRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
-	pageCursor *string
 	start *int32
 	count *int32
-	params *string
-	responseFields *string
-	exclude *string
+	pageCursor *string
+	productIds *string
+	sinceId *string
+	categoriesIds *string
 	categoryId *string
+	storeId *string
+	langId *string
+	currencyId *string
+	availView *bool
+	availSale *bool
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	availView *bool
-	availSale *bool
-	storeId *string
-	langId *string
-	currencyId *string
-	productIds *string
-	sinceId *string
-	reportRequestId *string
-	disableReportCache *bool
-	sortBy *string
-	sortDirection *string
 	sku *string
-	disableCache *bool
 	brandName *string
 	productAttributes *[]string
 	status *string
 	type_ *string
 	findValue *string
 	findWhere *string
-	useLatestApiVersion *bool
 	returnGlobal *bool
-	categoriesIds *string
-}
-
-// Used to retrieve products via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiProductListRequest) PageCursor(pageCursor string) ApiProductListRequest {
-	r.pageCursor = &pageCursor
-	return r
+	params *string
+	responseFields *string
+	exclude *string
+	sortBy *string
+	sortDirection *string
+	reportRequestId *string
+	disableCache *bool
+	disableReportCache *bool
+	useLatestApiVersion *bool
 }
 
 // This parameter sets the number from which you want to get entities
@@ -4295,27 +4289,63 @@ func (r ApiProductListRequest) Count(count int32) ApiProductListRequest {
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductListRequest) Params(params string) ApiProductListRequest {
-	r.params = &params
+// Used to retrieve products via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiProductListRequest) PageCursor(pageCursor string) ApiProductListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductListRequest) ResponseFields(responseFields string) ApiProductListRequest {
-	r.responseFields = &responseFields
+// Retrieves products specified by product ids
+func (r ApiProductListRequest) ProductIds(productIds string) ApiProductListRequest {
+	r.productIds = &productIds
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductListRequest) Exclude(exclude string) ApiProductListRequest {
-	r.exclude = &exclude
+// Retrieve entities starting from the specified id.
+func (r ApiProductListRequest) SinceId(sinceId string) ApiProductListRequest {
+	r.sinceId = &sinceId
+	return r
+}
+
+// Retrieves products specified by categories ids
+func (r ApiProductListRequest) CategoriesIds(categoriesIds string) ApiProductListRequest {
+	r.categoriesIds = &categoriesIds
 	return r
 }
 
 // Retrieves products specified by category id
 func (r ApiProductListRequest) CategoryId(categoryId string) ApiProductListRequest {
 	r.categoryId = &categoryId
+	return r
+}
+
+// Retrieves products specified by store id
+func (r ApiProductListRequest) StoreId(storeId string) ApiProductListRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Retrieves products specified by language id
+func (r ApiProductListRequest) LangId(langId string) ApiProductListRequest {
+	r.langId = &langId
+	return r
+}
+
+// Currency Id
+func (r ApiProductListRequest) CurrencyId(currencyId string) ApiProductListRequest {
+	r.currencyId = &currencyId
+	return r
+}
+
+// Specifies the set of visible/invisible products
+func (r ApiProductListRequest) AvailView(availView bool) ApiProductListRequest {
+	r.availView = &availView
+	return r
+}
+
+// Specifies the set of available/not available products for sale
+func (r ApiProductListRequest) AvailSale(availSale bool) ApiProductListRequest {
+	r.availSale = &availSale
 	return r
 }
 
@@ -4343,81 +4373,9 @@ func (r ApiProductListRequest) ModifiedTo(modifiedTo string) ApiProductListReque
 	return r
 }
 
-// Specifies the set of visible/invisible products
-func (r ApiProductListRequest) AvailView(availView bool) ApiProductListRequest {
-	r.availView = &availView
-	return r
-}
-
-// Specifies the set of available/not available products for sale
-func (r ApiProductListRequest) AvailSale(availSale bool) ApiProductListRequest {
-	r.availSale = &availSale
-	return r
-}
-
-// Retrieves products specified by store id
-func (r ApiProductListRequest) StoreId(storeId string) ApiProductListRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Retrieves products specified by language id
-func (r ApiProductListRequest) LangId(langId string) ApiProductListRequest {
-	r.langId = &langId
-	return r
-}
-
-// Currency Id
-func (r ApiProductListRequest) CurrencyId(currencyId string) ApiProductListRequest {
-	r.currencyId = &currencyId
-	return r
-}
-
-// Retrieves products specified by product ids
-func (r ApiProductListRequest) ProductIds(productIds string) ApiProductListRequest {
-	r.productIds = &productIds
-	return r
-}
-
-// Retrieve entities starting from the specified id.
-func (r ApiProductListRequest) SinceId(sinceId string) ApiProductListRequest {
-	r.sinceId = &sinceId
-	return r
-}
-
-// Report request id
-func (r ApiProductListRequest) ReportRequestId(reportRequestId string) ApiProductListRequest {
-	r.reportRequestId = &reportRequestId
-	return r
-}
-
-// Disable report cache for current request
-func (r ApiProductListRequest) DisableReportCache(disableReportCache bool) ApiProductListRequest {
-	r.disableReportCache = &disableReportCache
-	return r
-}
-
-// Set field to sort by
-func (r ApiProductListRequest) SortBy(sortBy string) ApiProductListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-// Set sorting direction
-func (r ApiProductListRequest) SortDirection(sortDirection string) ApiProductListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
 // Filter by product&#39;s sku
 func (r ApiProductListRequest) Sku(sku string) ApiProductListRequest {
 	r.sku = &sku
-	return r
-}
-
-// Disable cache for current request
-func (r ApiProductListRequest) DisableCache(disableCache bool) ApiProductListRequest {
-	r.disableCache = &disableCache
 	return r
 }
 
@@ -4457,21 +4415,63 @@ func (r ApiProductListRequest) FindWhere(findWhere string) ApiProductListRequest
 	return r
 }
 
-// Use the latest platform API version
-func (r ApiProductListRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiProductListRequest {
-	r.useLatestApiVersion = &useLatestApiVersion
-	return r
-}
-
 // Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned.
 func (r ApiProductListRequest) ReturnGlobal(returnGlobal bool) ApiProductListRequest {
 	r.returnGlobal = &returnGlobal
 	return r
 }
 
-// Retrieves products specified by categories ids
-func (r ApiProductListRequest) CategoriesIds(categoriesIds string) ApiProductListRequest {
-	r.categoriesIds = &categoriesIds
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductListRequest) Params(params string) ApiProductListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductListRequest) ResponseFields(responseFields string) ApiProductListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductListRequest) Exclude(exclude string) ApiProductListRequest {
+	r.exclude = &exclude
+	return r
+}
+
+// Set field to sort by
+func (r ApiProductListRequest) SortBy(sortBy string) ApiProductListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+// Set sorting direction
+func (r ApiProductListRequest) SortDirection(sortDirection string) ApiProductListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+// Report request id
+func (r ApiProductListRequest) ReportRequestId(reportRequestId string) ApiProductListRequest {
+	r.reportRequestId = &reportRequestId
+	return r
+}
+
+// Disable cache for current request
+func (r ApiProductListRequest) DisableCache(disableCache bool) ApiProductListRequest {
+	r.disableCache = &disableCache
+	return r
+}
+
+// Disable report cache for current request
+func (r ApiProductListRequest) DisableReportCache(disableReportCache bool) ApiProductListRequest {
+	r.disableReportCache = &disableReportCache
+	return r
+}
+
+// Use the latest platform API version
+func (r ApiProductListRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiProductListRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
 	return r
 }
 
@@ -4515,9 +4515,6 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -4530,20 +4527,35 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,description,price,categories_ids"
-		r.params = &defaultValue
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	if r.productIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "product_ids", r.productIds, "form", "")
 	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	if r.sinceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
+	}
+	if r.categoriesIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "categories_ids", r.categoriesIds, "form", "")
 	}
 	if r.categoryId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.currencyId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
+	}
+	if r.availView != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_view", r.availView, "form", "")
+	}
+	if r.availSale != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -4557,56 +4569,8 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.availView != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_view", r.availView, "form", "")
-	}
-	if r.availSale != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
-	}
-	if r.currencyId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
-	}
-	if r.productIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "product_ids", r.productIds, "form", "")
-	}
-	if r.sinceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
-	}
-	if r.reportRequestId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
-	}
-	if r.disableReportCache != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_report_cache", r.disableReportCache, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.disableReportCache = &defaultValue
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
-	} else {
-		var defaultValue string = "id"
-		r.sortBy = &defaultValue
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_direction", r.sortDirection, "form", "")
-	} else {
-		var defaultValue string = "asc"
-		r.sortDirection = &defaultValue
-	}
 	if r.sku != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sku", r.sku, "form", "")
-	}
-	if r.disableCache != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_cache", r.disableCache, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.disableCache = &defaultValue
 	}
 	if r.brandName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_name", r.brandName, "form", "")
@@ -4634,20 +4598,56 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
 	}
-	if r.useLatestApiVersion != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.useLatestApiVersion = &defaultValue
-	}
 	if r.returnGlobal != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "return_global", r.returnGlobal, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.returnGlobal = &defaultValue
 	}
-	if r.categoriesIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "categories_ids", r.categoriesIds, "form", "")
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,description,price,categories_ids"
+		r.params = &defaultValue
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
+	} else {
+		var defaultValue string = "id"
+		r.sortBy = &defaultValue
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_direction", r.sortDirection, "form", "")
+	} else {
+		var defaultValue string = "asc"
+		r.sortDirection = &defaultValue
+	}
+	if r.reportRequestId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
+	}
+	if r.disableCache != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_cache", r.disableCache, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.disableCache = &defaultValue
+	}
+	if r.disableReportCache != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_report_cache", r.disableReportCache, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.disableReportCache = &defaultValue
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5390,12 +5390,12 @@ type ApiProductOptionListRequest struct {
 	ApiService *ProductAPIService
 	start *int32
 	count *int32
-	params *string
-	exclude *string
-	responseFields *string
 	productId *string
 	langId *string
 	storeId *string
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -5407,24 +5407,6 @@ func (r ApiProductOptionListRequest) Start(start int32) ApiProductOptionListRequ
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiProductOptionListRequest) Count(count int32) ApiProductOptionListRequest {
 	r.count = &count
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductOptionListRequest) Params(params string) ApiProductOptionListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductOptionListRequest) Exclude(exclude string) ApiProductOptionListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductOptionListRequest) ResponseFields(responseFields string) ApiProductOptionListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -5443,6 +5425,24 @@ func (r ApiProductOptionListRequest) LangId(langId string) ApiProductOptionListR
 // Store Id
 func (r ApiProductOptionListRequest) StoreId(storeId string) ApiProductOptionListRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductOptionListRequest) ResponseFields(responseFields string) ApiProductOptionListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductOptionListRequest) Params(params string) ApiProductOptionListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductOptionListRequest) Exclude(exclude string) ApiProductOptionListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -5498,18 +5498,6 @@ func (a *ProductAPIService) ProductOptionListExecute(r ApiProductOptionListReque
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,description"
-		r.params = &defaultValue
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
 	if r.productId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	}
@@ -5518,6 +5506,18 @@ func (a *ProductAPIService) ProductOptionListExecute(r ApiProductOptionListReque
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,description"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6790,14 +6790,14 @@ type ApiProductReviewListRequest struct {
 	ApiService *ProductAPIService
 	productId *string
 	start *int32
-	pageCursor *string
 	count *int32
+	pageCursor *string
 	ids *string
 	storeId *string
 	status *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // Product id
@@ -6812,15 +6812,15 @@ func (r ApiProductReviewListRequest) Start(start int32) ApiProductReviewListRequ
 	return r
 }
 
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiProductReviewListRequest) PageCursor(pageCursor string) ApiProductReviewListRequest {
-	r.pageCursor = &pageCursor
-	return r
-}
-
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiProductReviewListRequest) Count(count int32) ApiProductReviewListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiProductReviewListRequest) PageCursor(pageCursor string) ApiProductReviewListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -6843,6 +6843,12 @@ func (r ApiProductReviewListRequest) Status(status string) ApiProductReviewListR
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductReviewListRequest) ResponseFields(responseFields string) ApiProductReviewListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductReviewListRequest) Params(params string) ApiProductReviewListRequest {
 	r.params = &params
 	return r
@@ -6851,12 +6857,6 @@ func (r ApiProductReviewListRequest) Params(params string) ApiProductReviewListR
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductReviewListRequest) Exclude(exclude string) ApiProductReviewListRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductReviewListRequest) ResponseFields(responseFields string) ApiProductReviewListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -6909,14 +6909,14 @@ func (a *ProductAPIService) ProductReviewListExecute(r ApiProductReviewListReque
 		var defaultValue int32 = 0
 		r.start = &defaultValue
 	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	if r.ids != nil {
@@ -6928,6 +6928,9 @@ func (a *ProductAPIService) ProductReviewListExecute(r ApiProductReviewListReque
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -6936,9 +6939,6 @@ func (a *ProductAPIService) ProductReviewListExecute(r ApiProductReviewListReque
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7865,17 +7865,29 @@ type ApiProductVariantCountRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	productId *string
+	categoryId *string
+	storeId *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	categoryId *string
-	storeId *string
 }
 
 // Retrieves products&#39; variants specified by product id
 func (r ApiProductVariantCountRequest) ProductId(productId string) ApiProductVariantCountRequest {
 	r.productId = &productId
+	return r
+}
+
+// Counts products’ variants specified by category id
+func (r ApiProductVariantCountRequest) CategoryId(categoryId string) ApiProductVariantCountRequest {
+	r.categoryId = &categoryId
+	return r
+}
+
+// Retrieves variants specified by store id
+func (r ApiProductVariantCountRequest) StoreId(storeId string) ApiProductVariantCountRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -7900,18 +7912,6 @@ func (r ApiProductVariantCountRequest) ModifiedFrom(modifiedFrom string) ApiProd
 // Retrieve entities to their modification date
 func (r ApiProductVariantCountRequest) ModifiedTo(modifiedTo string) ApiProductVariantCountRequest {
 	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Counts products’ variants specified by category id
-func (r ApiProductVariantCountRequest) CategoryId(categoryId string) ApiProductVariantCountRequest {
-	r.categoryId = &categoryId
-	return r
-}
-
-// Retrieves variants specified by store id
-func (r ApiProductVariantCountRequest) StoreId(storeId string) ApiProductVariantCountRequest {
-	r.storeId = &storeId
 	return r
 }
 
@@ -7961,6 +7961,13 @@ func (a *ProductAPIService) ProductVariantCountExecute(r ApiProductVariantCountR
 		return localVarReturnValue, nil, reportError("productId is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
+	if r.categoryId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
 	}
@@ -7972,13 +7979,6 @@ func (a *ProductAPIService) ProductVariantCountExecute(r ApiProductVariantCountR
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.categoryId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8671,14 +8671,20 @@ type ApiProductVariantInfoRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id *string
+	storeId *string
 	params *string
 	exclude *string
-	storeId *string
 }
 
 // Retrieves variant&#39;s info specified by variant id
 func (r ApiProductVariantInfoRequest) Id(id string) ApiProductVariantInfoRequest {
 	r.id = &id
+	return r
+}
+
+// Retrieves variant info specified by store id
+func (r ApiProductVariantInfoRequest) StoreId(storeId string) ApiProductVariantInfoRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -8691,12 +8697,6 @@ func (r ApiProductVariantInfoRequest) Params(params string) ApiProductVariantInf
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductVariantInfoRequest) Exclude(exclude string) ApiProductVariantInfoRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Retrieves variant info specified by store id
-func (r ApiProductVariantInfoRequest) StoreId(storeId string) ApiProductVariantInfoRequest {
-	r.storeId = &storeId
 	return r
 }
 
@@ -8746,6 +8746,10 @@ func (a *ProductAPIService) ProductVariantInfoExecute(r ApiProductVariantInfoReq
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -8754,10 +8758,6 @@ func (a *ProductAPIService) ProductVariantInfoExecute(r ApiProductVariantInfoReq
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8846,15 +8846,15 @@ type ApiProductVariantListRequest struct {
 	ApiService *ProductAPIService
 	start *int32
 	count *int32
-	params *string
-	exclude *string
+	productId *string
+	categoryId *string
+	storeId *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	categoryId *string
-	productId *string
-	storeId *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -8869,15 +8869,21 @@ func (r ApiProductVariantListRequest) Count(count int32) ApiProductVariantListRe
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiProductVariantListRequest) Params(params string) ApiProductVariantListRequest {
-	r.params = &params
+// Retrieves products&#39; variants specified by product id
+func (r ApiProductVariantListRequest) ProductId(productId string) ApiProductVariantListRequest {
+	r.productId = &productId
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiProductVariantListRequest) Exclude(exclude string) ApiProductVariantListRequest {
-	r.exclude = &exclude
+// Retrieves products’ variants specified by category id
+func (r ApiProductVariantListRequest) CategoryId(categoryId string) ApiProductVariantListRequest {
+	r.categoryId = &categoryId
+	return r
+}
+
+// Retrieves variants specified by store id
+func (r ApiProductVariantListRequest) StoreId(storeId string) ApiProductVariantListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -8905,21 +8911,15 @@ func (r ApiProductVariantListRequest) ModifiedTo(modifiedTo string) ApiProductVa
 	return r
 }
 
-// Retrieves products’ variants specified by category id
-func (r ApiProductVariantListRequest) CategoryId(categoryId string) ApiProductVariantListRequest {
-	r.categoryId = &categoryId
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiProductVariantListRequest) Params(params string) ApiProductVariantListRequest {
+	r.params = &params
 	return r
 }
 
-// Retrieves products&#39; variants specified by product id
-func (r ApiProductVariantListRequest) ProductId(productId string) ApiProductVariantListRequest {
-	r.productId = &productId
-	return r
-}
-
-// Retrieves variants specified by store id
-func (r ApiProductVariantListRequest) StoreId(storeId string) ApiProductVariantListRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiProductVariantListRequest) Exclude(exclude string) ApiProductVariantListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -8978,14 +8978,14 @@ func (a *ProductAPIService) ProductVariantListExecute(r ApiProductVariantListReq
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,name,description,price"
-		r.params = &defaultValue
+	if r.productId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	if r.categoryId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -8999,14 +8999,14 @@ func (a *ProductAPIService) ProductVariantListExecute(r ApiProductVariantListReq
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.categoryId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,name,description,price"
+		r.params = &defaultValue
 	}
-	if r.productId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

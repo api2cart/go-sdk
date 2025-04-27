@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | Pointer to **string** | Defines product id where the image should be added | [optional] 
-**ImageName** | **string** | Defines image&#39;s name | 
 **Type** | **string** | Defines image&#39;s types that are specified by comma-separated list | 
-**Url** | Pointer to **string** | Defines URL of the image that has to be added | [optional] 
-**Label** | Pointer to **string** | Defines alternative text that has to be attached to the picture | [optional] 
-**Mime** | Pointer to **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | [optional] 
-**Position** | Pointer to **int32** | Defines image’s position in the list | [optional] [default to 0]
-**Content** | Pointer to **string** | Content(body) encoded in base64 of image file | [optional] 
+**ImageName** | **string** | Defines image&#39;s name | 
+**ProductId** | Pointer to **string** | Defines product id where the image should be added | [optional] 
 **ProductVariantId** | Pointer to **string** | Defines product&#39;s variants specified by variant id | [optional] 
 **VariantIds** | Pointer to **string** | Defines product&#39;s variants ids | [optional] 
 **OptionValueIds** | Pointer to **string** | Defines product&#39;s option values ids | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **LangId** | Pointer to **string** | Add product image on specified language id | [optional] 
+**Url** | Pointer to **string** | Defines URL of the image that has to be added | [optional] 
+**Content** | Pointer to **string** | Content(body) encoded in base64 of image file | [optional] 
+**Label** | Pointer to **string** | Defines alternative text that has to be attached to the picture | [optional] 
+**Mime** | Pointer to **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | [optional] 
+**Position** | Pointer to **int32** | Defines image’s position in the list | [optional] [default to 0]
 **UseLatestApiVersion** | Pointer to **bool** | Use the latest platform API version | [optional] [default to false]
 
 ## Methods
 
 ### NewProductImageAdd
 
-`func NewProductImageAdd(imageName string, type_ string, ) *ProductImageAdd`
+`func NewProductImageAdd(type_ string, imageName string, ) *ProductImageAdd`
 
 NewProductImageAdd instantiates a new ProductImageAdd object
 This constructor will assign default values to properties that have it defined,
@@ -37,6 +37,46 @@ will change when the set of required properties is changed
 NewProductImageAddWithDefaults instantiates a new ProductImageAdd object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *ProductImageAdd) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ProductImageAdd) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ProductImageAdd) SetType(v string)`
+
+SetType sets Type field to given value.
+
+
+### GetImageName
+
+`func (o *ProductImageAdd) GetImageName() string`
+
+GetImageName returns the ImageName field if non-nil, zero value otherwise.
+
+### GetImageNameOk
+
+`func (o *ProductImageAdd) GetImageNameOk() (*string, bool)`
+
+GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageName
+
+`func (o *ProductImageAdd) SetImageName(v string)`
+
+SetImageName sets ImageName field to given value.
+
 
 ### GetProductId
 
@@ -62,171 +102,6 @@ SetProductId sets ProductId field to given value.
 `func (o *ProductImageAdd) HasProductId() bool`
 
 HasProductId returns a boolean if a field has been set.
-
-### GetImageName
-
-`func (o *ProductImageAdd) GetImageName() string`
-
-GetImageName returns the ImageName field if non-nil, zero value otherwise.
-
-### GetImageNameOk
-
-`func (o *ProductImageAdd) GetImageNameOk() (*string, bool)`
-
-GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImageName
-
-`func (o *ProductImageAdd) SetImageName(v string)`
-
-SetImageName sets ImageName field to given value.
-
-
-### GetType
-
-`func (o *ProductImageAdd) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *ProductImageAdd) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *ProductImageAdd) SetType(v string)`
-
-SetType sets Type field to given value.
-
-
-### GetUrl
-
-`func (o *ProductImageAdd) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *ProductImageAdd) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *ProductImageAdd) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
-### HasUrl
-
-`func (o *ProductImageAdd) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
-
-### GetLabel
-
-`func (o *ProductImageAdd) GetLabel() string`
-
-GetLabel returns the Label field if non-nil, zero value otherwise.
-
-### GetLabelOk
-
-`func (o *ProductImageAdd) GetLabelOk() (*string, bool)`
-
-GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLabel
-
-`func (o *ProductImageAdd) SetLabel(v string)`
-
-SetLabel sets Label field to given value.
-
-### HasLabel
-
-`func (o *ProductImageAdd) HasLabel() bool`
-
-HasLabel returns a boolean if a field has been set.
-
-### GetMime
-
-`func (o *ProductImageAdd) GetMime() string`
-
-GetMime returns the Mime field if non-nil, zero value otherwise.
-
-### GetMimeOk
-
-`func (o *ProductImageAdd) GetMimeOk() (*string, bool)`
-
-GetMimeOk returns a tuple with the Mime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMime
-
-`func (o *ProductImageAdd) SetMime(v string)`
-
-SetMime sets Mime field to given value.
-
-### HasMime
-
-`func (o *ProductImageAdd) HasMime() bool`
-
-HasMime returns a boolean if a field has been set.
-
-### GetPosition
-
-`func (o *ProductImageAdd) GetPosition() int32`
-
-GetPosition returns the Position field if non-nil, zero value otherwise.
-
-### GetPositionOk
-
-`func (o *ProductImageAdd) GetPositionOk() (*int32, bool)`
-
-GetPositionOk returns a tuple with the Position field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPosition
-
-`func (o *ProductImageAdd) SetPosition(v int32)`
-
-SetPosition sets Position field to given value.
-
-### HasPosition
-
-`func (o *ProductImageAdd) HasPosition() bool`
-
-HasPosition returns a boolean if a field has been set.
-
-### GetContent
-
-`func (o *ProductImageAdd) GetContent() string`
-
-GetContent returns the Content field if non-nil, zero value otherwise.
-
-### GetContentOk
-
-`func (o *ProductImageAdd) GetContentOk() (*string, bool)`
-
-GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContent
-
-`func (o *ProductImageAdd) SetContent(v string)`
-
-SetContent sets Content field to given value.
-
-### HasContent
-
-`func (o *ProductImageAdd) HasContent() bool`
-
-HasContent returns a boolean if a field has been set.
 
 ### GetProductVariantId
 
@@ -352,6 +227,131 @@ SetLangId sets LangId field to given value.
 `func (o *ProductImageAdd) HasLangId() bool`
 
 HasLangId returns a boolean if a field has been set.
+
+### GetUrl
+
+`func (o *ProductImageAdd) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *ProductImageAdd) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *ProductImageAdd) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *ProductImageAdd) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
+### GetContent
+
+`func (o *ProductImageAdd) GetContent() string`
+
+GetContent returns the Content field if non-nil, zero value otherwise.
+
+### GetContentOk
+
+`func (o *ProductImageAdd) GetContentOk() (*string, bool)`
+
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContent
+
+`func (o *ProductImageAdd) SetContent(v string)`
+
+SetContent sets Content field to given value.
+
+### HasContent
+
+`func (o *ProductImageAdd) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
+
+### GetLabel
+
+`func (o *ProductImageAdd) GetLabel() string`
+
+GetLabel returns the Label field if non-nil, zero value otherwise.
+
+### GetLabelOk
+
+`func (o *ProductImageAdd) GetLabelOk() (*string, bool)`
+
+GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabel
+
+`func (o *ProductImageAdd) SetLabel(v string)`
+
+SetLabel sets Label field to given value.
+
+### HasLabel
+
+`func (o *ProductImageAdd) HasLabel() bool`
+
+HasLabel returns a boolean if a field has been set.
+
+### GetMime
+
+`func (o *ProductImageAdd) GetMime() string`
+
+GetMime returns the Mime field if non-nil, zero value otherwise.
+
+### GetMimeOk
+
+`func (o *ProductImageAdd) GetMimeOk() (*string, bool)`
+
+GetMimeOk returns a tuple with the Mime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMime
+
+`func (o *ProductImageAdd) SetMime(v string)`
+
+SetMime sets Mime field to given value.
+
+### HasMime
+
+`func (o *ProductImageAdd) HasMime() bool`
+
+HasMime returns a boolean if a field has been set.
+
+### GetPosition
+
+`func (o *ProductImageAdd) GetPosition() int32`
+
+GetPosition returns the Position field if non-nil, zero value otherwise.
+
+### GetPositionOk
+
+`func (o *ProductImageAdd) GetPositionOk() (*int32, bool)`
+
+GetPositionOk returns a tuple with the Position field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPosition
+
+`func (o *ProductImageAdd) SetPosition(v int32)`
+
+SetPosition sets Position field to given value.
+
+### HasPosition
+
+`func (o *ProductImageAdd) HasPosition() bool`
+
+HasPosition returns a boolean if a field has been set.
 
 ### GetUseLatestApiVersion
 

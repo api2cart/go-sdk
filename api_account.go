@@ -151,23 +151,23 @@ func (a *AccountAPIService) AccountCartAddExecute(r ApiAccountCartAddRequest) (*
 type ApiAccountCartListRequest struct {
 	ctx context.Context
 	ApiService *AccountAPIService
-	params *string
-	exclude *string
-	requestFromDate *string
-	requestToDate *string
 	storeUrl *string
 	storeKey *string
+	requestFromDate *string
+	requestToDate *string
+	params *string
+	exclude *string
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiAccountCartListRequest) Params(params string) ApiAccountCartListRequest {
-	r.params = &params
+// A web address of a store
+func (r ApiAccountCartListRequest) StoreUrl(storeUrl string) ApiAccountCartListRequest {
+	r.storeUrl = &storeUrl
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiAccountCartListRequest) Exclude(exclude string) ApiAccountCartListRequest {
-	r.exclude = &exclude
+// Find store by store key
+func (r ApiAccountCartListRequest) StoreKey(storeKey string) ApiAccountCartListRequest {
+	r.storeKey = &storeKey
 	return r
 }
 
@@ -183,15 +183,15 @@ func (r ApiAccountCartListRequest) RequestToDate(requestToDate string) ApiAccoun
 	return r
 }
 
-// A web address of a store
-func (r ApiAccountCartListRequest) StoreUrl(storeUrl string) ApiAccountCartListRequest {
-	r.storeUrl = &storeUrl
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiAccountCartListRequest) Params(params string) ApiAccountCartListRequest {
+	r.params = &params
 	return r
 }
 
-// Find store by store key
-func (r ApiAccountCartListRequest) StoreKey(storeKey string) ApiAccountCartListRequest {
-	r.storeKey = &storeKey
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiAccountCartListRequest) Exclude(exclude string) ApiAccountCartListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -235,6 +235,18 @@ func (a *AccountAPIService) AccountCartListExecute(r ApiAccountCartListRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.storeUrl != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_url", r.storeUrl, "form", "")
+	}
+	if r.storeKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_key", r.storeKey, "form", "")
+	}
+	if r.requestFromDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request_from_date", r.requestFromDate, "form", "")
+	}
+	if r.requestToDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "request_to_date", r.requestToDate, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -243,18 +255,6 @@ func (a *AccountAPIService) AccountCartListExecute(r ApiAccountCartListRequest) 
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.requestFromDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "request_from_date", r.requestFromDate, "form", "")
-	}
-	if r.requestToDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "request_to_date", r.requestToDate, "form", "")
-	}
-	if r.storeUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_url", r.storeUrl, "form", "")
-	}
-	if r.storeKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_key", r.storeKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -386,6 +386,7 @@ type ApiAccountConfigUpdateRequest struct {
 	shoplineAccessToken *string
 	shoplineAppKey *string
 	shoplineAppSecret *string
+	shoplineSharedSecret *string
 	shopifyAccessToken *string
 	shopifyApiKey *string
 	shopifyApiPassword *string
@@ -821,6 +822,12 @@ func (r ApiAccountConfigUpdateRequest) ShoplineAppKey(shoplineAppKey string) Api
 // Shopline App Secret
 func (r ApiAccountConfigUpdateRequest) ShoplineAppSecret(shoplineAppSecret string) ApiAccountConfigUpdateRequest {
 	r.shoplineAppSecret = &shoplineAppSecret
+	return r
+}
+
+// Shopline Shared Secret
+func (r ApiAccountConfigUpdateRequest) ShoplineSharedSecret(shoplineSharedSecret string) ApiAccountConfigUpdateRequest {
+	r.shoplineSharedSecret = &shoplineSharedSecret
 	return r
 }
 
@@ -1539,6 +1546,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	if r.shoplineAppSecret != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopline_app_secret", r.shoplineAppSecret, "form", "")
 	}
+	if r.shoplineSharedSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopline_shared_secret", r.shoplineSharedSecret, "form", "")
+	}
 	if r.shopifyAccessToken != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopify_access_token", r.shopifyAccessToken, "form", "")
 	}
@@ -1887,20 +1897,20 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 type ApiAccountFailedWebhooksRequest struct {
 	ctx context.Context
 	ApiService *AccountAPIService
-	count *int32
 	start *int32
+	count *int32
 	ids *string
-}
-
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiAccountFailedWebhooksRequest) Count(count int32) ApiAccountFailedWebhooksRequest {
-	r.count = &count
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
 func (r ApiAccountFailedWebhooksRequest) Start(start int32) ApiAccountFailedWebhooksRequest {
 	r.start = &start
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiAccountFailedWebhooksRequest) Count(count int32) ApiAccountFailedWebhooksRequest {
+	r.count = &count
 	return r
 }
 
@@ -1950,17 +1960,17 @@ func (a *AccountAPIService) AccountFailedWebhooksExecute(r ApiAccountFailedWebho
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue int32 = 10
-		r.count = &defaultValue
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
 		var defaultValue int32 = 0
 		r.start = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
 	}
 	if r.ids != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")

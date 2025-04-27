@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ## ProductAttributeList
 
-> ModelResponseProductAttributeList ProductAttributeList(ctx).ProductId(productId).AttributeId(attributeId).VariantId(variantId).PageCursor(pageCursor).Start(start).Count(count).AttributeGroupId(attributeGroupId).SetName(setName).LangId(langId).StoreId(storeId).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+> ModelResponseProductAttributeList ProductAttributeList(ctx).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).AttributeId(attributeId).VariantId(variantId).AttributeGroupId(attributeGroupId).LangId(langId).StoreId(storeId).SetName(setName).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.attribute.list
 
@@ -213,24 +213,24 @@ import (
 
 func main() {
 	productId := "10" // string | Retrieves attributes specified by product id
-	attributeId := "156" // string | Retrieves info for specified attribute_id (optional)
-	variantId := "45" // string | Defines product's variants specified by variant id (optional)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	attributeId := "156" // string | Retrieves info for specified attribute_id (optional)
+	variantId := "45" // string | Defines product's variants specified by variant id (optional)
 	attributeGroupId := "202" // string | Filter by attribute_group_id (optional)
-	setName := "Shoes" // string | Retrieves attributes specified by set_name in Magento (optional)
 	langId := "3" // string | Retrieves attributes specified by language id (optional)
 	storeId := "1" // string | Retrieves attributes specified by store id (optional)
+	setName := "Shoes" // string | Retrieves attributes specified by set_name in Magento (optional)
 	sortBy := "value" // string | Set field to sort by (optional) (default to "attribute_id")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
-	params := "attribute_id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "attribute_id,name")
 	responseFields := "{pagination,result{attribute}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "attribute_id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "attribute_id,name")
 	exclude := "attribute_id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductAttributeList(context.Background()).ProductId(productId).AttributeId(attributeId).VariantId(variantId).PageCursor(pageCursor).Start(start).Count(count).AttributeGroupId(attributeGroupId).SetName(setName).LangId(langId).StoreId(storeId).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductAttributeList(context.Background()).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).AttributeId(attributeId).VariantId(variantId).AttributeGroupId(attributeGroupId).LangId(langId).StoreId(storeId).SetName(setName).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductAttributeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,19 +252,19 @@ Other parameters are passed through a pointer to a apiProductAttributeListReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **string** | Retrieves attributes specified by product id | 
- **attributeId** | **string** | Retrieves info for specified attribute_id | 
- **variantId** | **string** | Defines product&#39;s variants specified by variant id | 
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **attributeId** | **string** | Retrieves info for specified attribute_id | 
+ **variantId** | **string** | Defines product&#39;s variants specified by variant id | 
  **attributeGroupId** | **string** | Filter by attribute_group_id | 
- **setName** | **string** | Retrieves attributes specified by set_name in Magento | 
  **langId** | **string** | Retrieves attributes specified by language id | 
  **storeId** | **string** | Retrieves attributes specified by store id | 
+ **setName** | **string** | Retrieves attributes specified by set_name in Magento | 
  **sortBy** | **string** | Set field to sort by | [default to &quot;attribute_id&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;attribute_id,name&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;attribute_id,name&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ## ProductBrandList
 
-> ModelResponseProductBrandList ProductBrandList(ctx).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).CategoryId(categoryId).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
+> ModelResponseProductBrandList ProductBrandList(ctx).Start(start).Count(count).PageCursor(pageCursor).BrandIds(brandIds).CategoryId(categoryId).ParentId(parentId).StoreId(storeId).LangId(langId).FindWhere(findWhere).FindValue(findValue).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.brand.list
 
@@ -465,24 +465,24 @@ func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,short_description,active,url")
 	brandIds := "4,5" // string | Retrieves brands specified by brand ids (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	categoryId := "6" // string | Retrieves product brands specified by category id (optional)
+	parentId := "6" // string | Retrieves brands specified by parent id (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	findWhere := "name" // string | Entity search that is specified by the comma-separated unique fields (optional)
+	findValue := "Phone" // string | Entity search that is specified by some value (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	parentId := "6" // string | Retrieves brands specified by parent id (optional)
 	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	findWhere := "name" // string | Entity search that is specified by the comma-separated unique fields (optional)
-	findValue := "Phone" // string | Entity search that is specified by some value (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,short_description,active,url")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductBrandList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Params(params).BrandIds(brandIds).Exclude(exclude).CategoryId(categoryId).StoreId(storeId).LangId(langId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ParentId(parentId).ResponseFields(responseFields).FindWhere(findWhere).FindValue(findValue).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductBrandList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).BrandIds(brandIds).CategoryId(categoryId).ParentId(parentId).StoreId(storeId).LangId(langId).FindWhere(findWhere).FindValue(findValue).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductBrandList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -506,20 +506,20 @@ Name | Type | Description  | Notes
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,short_description,active,url&quot;]
  **brandIds** | **string** | Retrieves brands specified by brand ids | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **categoryId** | **string** | Retrieves product brands specified by category id | 
+ **parentId** | **string** | Retrieves brands specified by parent id | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **findWhere** | **string** | Entity search that is specified by the comma-separated unique fields | 
+ **findValue** | **string** | Entity search that is specified by some value | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **parentId** | **string** | Retrieves brands specified by parent id | 
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **findWhere** | **string** | Entity search that is specified by the comma-separated unique fields | 
- **findValue** | **string** | Entity search that is specified by some value | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,short_description,active,url&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 ## ProductChildItemInfo
 
-> ProductChildItemInfo200Response ProductChildItemInfo(ctx).ProductId(productId).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).LangId(langId).CurrencyId(currencyId).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ProductChildItemInfo200Response ProductChildItemInfo(ctx).ProductId(productId).Id(id).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ResponseFields(responseFields).Params(params).Exclude(exclude).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.child_item.info
 
@@ -634,17 +634,17 @@ import (
 func main() {
 	productId := "10" // string | Filter by parent product id
 	id := "10" // string | Entity id
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
-	responseFields := "{result{id,parent_id,sku,upc,images,combination}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
 	currencyId := "usd" // string | Currency Id (optional)
+	responseFields := "{result{id,parent_id,sku,upc,images,combination}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductChildItemInfo(context.Background()).ProductId(productId).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).LangId(langId).CurrencyId(currencyId).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductChildItemInfo(context.Background()).ProductId(productId).Id(id).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ResponseFields(responseFields).Params(params).Exclude(exclude).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductChildItemInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -667,12 +667,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **string** | Filter by parent product id | 
  **id** | **string** | Entity id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
  **currencyId** | **string** | Currency Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 
 ## ProductChildItemList
 
-> ModelResponseProductChildItemList ProductChildItemList(ctx).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ProductId(productId).ProductIds(productIds).Sku(sku).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailSale(availSale).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).Execute()
+> ModelResponseProductChildItemList ProductChildItemList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductId(productId).ProductIds(productIds).Sku(sku).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailSale(availSale).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReturnGlobal(returnGlobal).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.child_item.list
 
@@ -714,16 +714,9 @@ import (
 )
 
 func main() {
-	pageCursor := "pageCursor_example" // string | Used to retrieve products child items via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
-	responseFields := "{result{children{id,parent_id,sku,upc,images,combination}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	pageCursor := "pageCursor_example" // string | Used to retrieve products child items via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	productId := "10" // string | Filter by parent product id (optional)
 	productIds := "4,5" // string | Filter by parent product ids (optional)
 	sku := "bag_01" // string | Filter by products variant's sku (optional)
@@ -733,14 +726,21 @@ func main() {
 	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
 	findValue := "bundled-item-123-" // string | Entity search that is specified by some value (optional)
 	findWhere := "sku" // string | Child products search that is specified by field (optional)
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
+	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	returnGlobal := false // bool | Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned. (optional) (default to false)
+	responseFields := "{result{children{id,parent_id,sku,upc,images,combination}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
-	returnGlobal := false // bool | Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductChildItemList(context.Background()).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ProductId(productId).ProductIds(productIds).Sku(sku).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailSale(availSale).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductChildItemList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductId(productId).ProductIds(productIds).Sku(sku).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailSale(availSale).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReturnGlobal(returnGlobal).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductChildItemList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -761,16 +761,9 @@ Other parameters are passed through a pointer to a apiProductChildItemListReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageCursor** | **string** | Used to retrieve products child items via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **pageCursor** | **string** | Used to retrieve products child items via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **productId** | **string** | Filter by parent product id | 
  **productIds** | **string** | Filter by parent product ids | 
  **sku** | **string** | Filter by products variant&#39;s sku | 
@@ -780,10 +773,17 @@ Name | Type | Description  | Notes
  **availSale** | **bool** | Specifies the set of available/not available products for sale | 
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Child products search that is specified by field | 
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **modifiedFrom** | **string** | Retrieve entities from their modification date | 
+ **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **returnGlobal** | **bool** | Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned. | [default to false]
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
- **returnGlobal** | **bool** | Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned. | [default to false]
 
 ### Return type
 
@@ -805,7 +805,7 @@ Name | Type | Description  | Notes
 
 ## ProductCount
 
-> ProductCount200Response ProductCount(ctx).CategoryId(categoryId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).AvailView(availView).AvailSale(availSale).StoreId(storeId).LangId(langId).ProductIds(productIds).SinceId(sinceId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).CategoriesIds(categoriesIds).Execute()
+> ProductCount200Response ProductCount(ctx).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.count
 
@@ -824,32 +824,32 @@ import (
 )
 
 func main() {
+	productIds := "4,5" // string | Counts products specified by product ids (optional)
+	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	categoriesIds := "23,56" // string | Defines product add that is specified by comma-separated categories id (optional)
 	categoryId := "6" // string | Counts products specified by category id (optional)
+	storeId := "1" // string | Counts products specified by store id (optional)
+	langId := "3" // string | Counts products specified by language id (optional)
+	availView := true // bool | Specifies the set of visible/invisible products (optional)
+	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	availView := true // bool | Specifies the set of visible/invisible products (optional)
-	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
-	storeId := "1" // string | Counts products specified by store id (optional)
-	langId := "3" // string | Counts products specified by language id (optional)
-	productIds := "4,5" // string | Counts products specified by product ids (optional)
-	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
-	reportRequestId := "105245017661" // string | Report request id (optional)
-	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	brandName := "Abidas" // string | Retrieves brands specified by brand name (optional)
 	productAttributes := []string{"Inner_example"} // []string | Defines product attributes (optional)
 	status := "disabled" // string | Defines product's status (optional)
 	type_ := "simple" // string | Defines products's type (optional)
 	findValue := "Phone" // string | Entity search that is specified by some value (optional)
 	findWhere := "name" // string | Counts products that are searched specified by field (optional)
-	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
+	reportRequestId := "105245017661" // string | Report request id (optional)
 	returnGlobal := false // bool | Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned. (optional) (default to false)
-	categoriesIds := "23,56" // string | Defines product add that is specified by comma-separated categories id (optional)
+	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductCount(context.Background()).CategoryId(categoryId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).AvailView(availView).AvailSale(availSale).StoreId(storeId).LangId(langId).ProductIds(productIds).SinceId(sinceId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).CategoriesIds(categoriesIds).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductCount(context.Background()).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -870,28 +870,28 @@ Other parameters are passed through a pointer to a apiProductCountRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **productIds** | **string** | Counts products specified by product ids | 
+ **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **categoriesIds** | **string** | Defines product add that is specified by comma-separated categories id | 
  **categoryId** | **string** | Counts products specified by category id | 
+ **storeId** | **string** | Counts products specified by store id | 
+ **langId** | **string** | Counts products specified by language id | 
+ **availView** | **bool** | Specifies the set of visible/invisible products | 
+ **availSale** | **bool** | Specifies the set of available/not available products for sale | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **availView** | **bool** | Specifies the set of visible/invisible products | 
- **availSale** | **bool** | Specifies the set of available/not available products for sale | 
- **storeId** | **string** | Counts products specified by store id | 
- **langId** | **string** | Counts products specified by language id | 
- **productIds** | **string** | Counts products specified by product ids | 
- **sinceId** | **string** | Retrieve entities starting from the specified id. | 
- **reportRequestId** | **string** | Report request id | 
- **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **brandName** | **string** | Retrieves brands specified by brand name | 
  **productAttributes** | **[]string** | Defines product attributes | 
  **status** | **string** | Defines product&#39;s status | 
  **type_** | **string** | Defines products&#39;s type | 
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Counts products that are searched specified by field | 
- **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
+ **reportRequestId** | **string** | Report request id | 
  **returnGlobal** | **bool** | Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned. | [default to false]
- **categoriesIds** | **string** | Defines product add that is specified by comma-separated categories id | 
+ **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 
@@ -991,7 +991,7 @@ Name | Type | Description  | Notes
 
 ## ProductCurrencyList
 
-> ModelResponseProductCurrencyList ProductCurrencyList(ctx).Start(start).Count(count).Params(params).PageCursor(pageCursor).Exclude(exclude).ResponseFields(responseFields).Default_(default_).Avail(avail).Execute()
+> ModelResponseProductCurrencyList ProductCurrencyList(ctx).Start(start).Count(count).PageCursor(pageCursor).Default_(default_).Avail(avail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.currency.list
 
@@ -1012,16 +1012,16 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "name,iso3,default,avail" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "name,iso3,default,avail")
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	exclude := "name,iso3,default,avail" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_message,pagination,result{currency}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	default_ := true // bool | Specifies the set of default/not default currencies (optional)
 	avail := false // bool | Specifies the set of available/not available currencies (optional)
+	responseFields := "{return_message,pagination,result{currency}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "name,iso3,default,avail" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "name,iso3,default,avail")
+	exclude := "name,iso3,default,avail" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductCurrencyList(context.Background()).Start(start).Count(count).Params(params).PageCursor(pageCursor).Exclude(exclude).ResponseFields(responseFields).Default_(default_).Avail(avail).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductCurrencyList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Default_(default_).Avail(avail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductCurrencyList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1044,12 +1044,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;name,iso3,default,avail&quot;]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **default_** | **bool** | Specifies the set of default/not default currencies | 
  **avail** | **bool** | Specifies the set of available/not available currencies | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;name,iso3,default,avail&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -1361,7 +1361,7 @@ import (
 )
 
 func main() {
-	productImageAdd := *openapiclient.NewProductImageAdd("bag-gray.png", "base,small") // ProductImageAdd | 
+	productImageAdd := *openapiclient.NewProductImageAdd("base,small", "bag-gray.png") // ProductImageAdd | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1478,7 +1478,7 @@ Name | Type | Description  | Notes
 
 ## ProductImageUpdate
 
-> ProductImageUpdate200Response ProductImageUpdate(ctx).ProductId(productId).Id(id).VariantIds(variantIds).ImageName(imageName).Type_(type_).Label(label).Position(position).StoreId(storeId).LangId(langId).Hidden(hidden).Execute()
+> ProductImageUpdate200Response ProductImageUpdate(ctx).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).Execute()
 
 product.image.update
 
@@ -1500,17 +1500,17 @@ func main() {
 	productId := "10" // string | Defines product id where the image should be updated
 	id := "10" // string | Defines image update specified by image id
 	variantIds := "1,2,3,4,5" // string | Defines product's variants ids (optional)
+	storeId := "1" // string | Store Id (optional)
+	langId := "3" // string | Language id (optional)
 	imageName := "data/product/main/product_69_bag-gray.png" // string | Defines image's name (optional)
 	type_ := "thumbnail" // string | Defines image's types that are specified by comma-separated list (optional) (default to "additional")
 	label := "This cool image" // string | Defines alternative text that has to be attached to the picture (optional)
 	position := int32(5) // int32 | Defines image’s position in the list (optional)
-	storeId := "1" // string | Store Id (optional)
-	langId := "3" // string | Language id (optional)
 	hidden := true // bool | Define is hide image (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductImageUpdate(context.Background()).ProductId(productId).Id(id).VariantIds(variantIds).ImageName(imageName).Type_(type_).Label(label).Position(position).StoreId(storeId).LangId(langId).Hidden(hidden).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductImageUpdate(context.Background()).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductImageUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1534,12 +1534,12 @@ Name | Type | Description  | Notes
  **productId** | **string** | Defines product id where the image should be updated | 
  **id** | **string** | Defines image update specified by image id | 
  **variantIds** | **string** | Defines product&#39;s variants ids | 
+ **storeId** | **string** | Store Id | 
+ **langId** | **string** | Language id | 
  **imageName** | **string** | Defines image&#39;s name | 
  **type_** | **string** | Defines image&#39;s types that are specified by comma-separated list | [default to &quot;additional&quot;]
  **label** | **string** | Defines alternative text that has to be attached to the picture | 
  **position** | **int32** | Defines image’s position in the list | 
- **storeId** | **string** | Store Id | 
- **langId** | **string** | Language id | 
  **hidden** | **bool** | Define is hide image | 
 
 ### Return type
@@ -1562,7 +1562,7 @@ Name | Type | Description  | Notes
 
 ## ProductInfo
 
-> ProductInfo200Response ProductInfo(ctx).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ProductInfo200Response ProductInfo(ctx).Id(id).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.info
 
@@ -1582,19 +1582,19 @@ import (
 
 func main() {
 	id := "10" // string | Retrieves product's info specified by product id
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price,categories_ids")
-	responseFields := "{result{id,name,price,images}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	storeId := "1" // string | Retrieves product info specified by store id (optional)
 	langId := "3" // string | Retrieves product info specified by language id (optional)
 	currencyId := "usd" // string | Currency Id (optional)
+	responseFields := "{result{id,name,price,images}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price,categories_ids")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductInfo(context.Background()).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductInfo(context.Background()).Id(id).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1616,12 +1616,12 @@ Other parameters are passed through a pointer to a apiProductInfoRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Retrieves product&#39;s info specified by product id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price,categories_ids&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **storeId** | **string** | Retrieves product info specified by store id | 
  **langId** | **string** | Retrieves product info specified by language id | 
  **currencyId** | **string** | Currency Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price,categories_ids&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
@@ -1646,7 +1646,7 @@ Name | Type | Description  | Notes
 
 ## ProductList
 
-> ModelResponseProductList ProductList(ctx).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CategoryId(categoryId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).AvailView(availView).AvailSale(availSale).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ProductIds(productIds).SinceId(sinceId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).SortBy(sortBy).SortDirection(sortDirection).Sku(sku).DisableCache(disableCache).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).CategoriesIds(categoriesIds).Execute()
+> ModelResponseProductList ProductList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.list
 
@@ -1665,43 +1665,43 @@ import (
 )
 
 func main() {
-	pageCursor := "pageCursor_example" // string | Used to retrieve products via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price,categories_ids")
-	responseFields := "{return_code,pagination,result{product{id,name,price,images}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	pageCursor := "pageCursor_example" // string | Used to retrieve products via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	productIds := "4,5" // string | Retrieves products specified by product ids (optional)
+	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	categoriesIds := "23,56" // string | Retrieves products specified by categories ids (optional)
 	categoryId := "6" // string | Retrieves products specified by category id (optional)
+	storeId := "1" // string | Retrieves products specified by store id (optional)
+	langId := "3" // string | Retrieves products specified by language id (optional)
+	currencyId := "usd" // string | Currency Id (optional)
+	availView := true // bool | Specifies the set of visible/invisible products (optional)
+	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	availView := true // bool | Specifies the set of visible/invisible products (optional)
-	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
-	storeId := "1" // string | Retrieves products specified by store id (optional)
-	langId := "3" // string | Retrieves products specified by language id (optional)
-	currencyId := "usd" // string | Currency Id (optional)
-	productIds := "4,5" // string | Retrieves products specified by product ids (optional)
-	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
-	reportRequestId := "105245017661" // string | Report request id (optional)
-	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
-	sortBy := "value_id" // string | Set field to sort by (optional) (default to "id")
-	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
 	sku := "bag_01" // string | Filter by product's sku (optional)
-	disableCache := false // bool | Disable cache for current request (optional) (default to false)
 	brandName := "Abidas" // string | Retrieves brands specified by brand name (optional)
 	productAttributes := []string{"Inner_example"} // []string | Defines product attributes (optional)
 	status := "disabled" // string | Defines product's status (optional)
 	type_ := "simple" // string | Defines products's type (optional)
 	findValue := "Phone" // string | Entity search that is specified by some value (optional)
 	findWhere := "name" // string | Product search that is specified by field (optional)
-	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 	returnGlobal := false // bool | Determines the type of products to be returned. If set to 'true', only global products will be returned; if set to 'false', only local products will be returned. (optional) (default to false)
-	categoriesIds := "23,56" // string | Retrieves products specified by categories ids (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price,categories_ids")
+	responseFields := "{return_code,pagination,result{product{id,name,price,images}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	sortBy := "value_id" // string | Set field to sort by (optional) (default to "id")
+	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
+	reportRequestId := "105245017661" // string | Report request id (optional)
+	disableCache := false // bool | Disable cache for current request (optional) (default to false)
+	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).PageCursor(pageCursor).Start(start).Count(count).Params(params).ResponseFields(responseFields).Exclude(exclude).CategoryId(categoryId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).AvailView(availView).AvailSale(availSale).StoreId(storeId).LangId(langId).CurrencyId(currencyId).ProductIds(productIds).SinceId(sinceId).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).SortBy(sortBy).SortDirection(sortDirection).Sku(sku).DisableCache(disableCache).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).UseLatestApiVersion(useLatestApiVersion).ReturnGlobal(returnGlobal).CategoriesIds(categoriesIds).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1722,39 +1722,39 @@ Other parameters are passed through a pointer to a apiProductListRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageCursor** | **string** | Used to retrieve products via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price,categories_ids&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **pageCursor** | **string** | Used to retrieve products via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **productIds** | **string** | Retrieves products specified by product ids | 
+ **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **categoriesIds** | **string** | Retrieves products specified by categories ids | 
  **categoryId** | **string** | Retrieves products specified by category id | 
+ **storeId** | **string** | Retrieves products specified by store id | 
+ **langId** | **string** | Retrieves products specified by language id | 
+ **currencyId** | **string** | Currency Id | 
+ **availView** | **bool** | Specifies the set of visible/invisible products | 
+ **availSale** | **bool** | Specifies the set of available/not available products for sale | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **availView** | **bool** | Specifies the set of visible/invisible products | 
- **availSale** | **bool** | Specifies the set of available/not available products for sale | 
- **storeId** | **string** | Retrieves products specified by store id | 
- **langId** | **string** | Retrieves products specified by language id | 
- **currencyId** | **string** | Currency Id | 
- **productIds** | **string** | Retrieves products specified by product ids | 
- **sinceId** | **string** | Retrieve entities starting from the specified id. | 
- **reportRequestId** | **string** | Report request id | 
- **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
- **sortBy** | **string** | Set field to sort by | [default to &quot;id&quot;]
- **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
  **sku** | **string** | Filter by product&#39;s sku | 
- **disableCache** | **bool** | Disable cache for current request | [default to false]
  **brandName** | **string** | Retrieves brands specified by brand name | 
  **productAttributes** | **[]string** | Defines product attributes | 
  **status** | **string** | Defines product&#39;s status | 
  **type_** | **string** | Defines products&#39;s type | 
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Product search that is specified by field | 
- **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
  **returnGlobal** | **bool** | Determines the type of products to be returned. If set to &#39;true&#39;, only global products will be returned; if set to &#39;false&#39;, only local products will be returned. | [default to false]
- **categoriesIds** | **string** | Retrieves products specified by categories ids | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price,categories_ids&quot;]
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **sortBy** | **string** | Set field to sort by | [default to &quot;id&quot;]
+ **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
+ **reportRequestId** | **string** | Report request id | 
+ **disableCache** | **bool** | Disable cache for current request | [default to false]
+ **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 
@@ -2058,7 +2058,7 @@ Name | Type | Description  | Notes
 
 ## ProductOptionList
 
-> ModelResponseProductOptionList ProductOptionList(ctx).Start(start).Count(count).Params(params).Exclude(exclude).ResponseFields(responseFields).ProductId(productId).LangId(langId).StoreId(storeId).Execute()
+> ModelResponseProductOptionList ProductOptionList(ctx).Start(start).Count(count).ProductId(productId).LangId(langId).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.option.list
 
@@ -2079,16 +2079,16 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "id,name,sort_order" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description")
-	exclude := "id,name,sort_order" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	productId := "10" // string | Retrieves products' options specified by product id (optional)
 	langId := "3" // string | Language id (optional)
 	storeId := "1" // string | Store Id (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,name,sort_order" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description")
+	exclude := "id,name,sort_order" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductOptionList(context.Background()).Start(start).Count(count).Params(params).Exclude(exclude).ResponseFields(responseFields).ProductId(productId).LangId(langId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductOptionList(context.Background()).Start(start).Count(count).ProductId(productId).LangId(langId).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductOptionList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2111,12 +2111,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **productId** | **string** | Retrieves products&#39; options specified by product id | 
  **langId** | **string** | Language id | 
  **storeId** | **string** | Store Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -2640,7 +2640,7 @@ Name | Type | Description  | Notes
 
 ## ProductReviewList
 
-> ModelResponseProductReviewList ProductReviewList(ctx).ProductId(productId).Start(start).PageCursor(pageCursor).Count(count).Ids(ids).StoreId(storeId).Status(status).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> ModelResponseProductReviewList ProductReviewList(ctx).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).Status(status).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.review.list
 
@@ -2661,18 +2661,18 @@ import (
 func main() {
 	productId := "10" // string | Product id
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	ids := "24,25" // string | Retrieves reviews specified by ids (optional)
 	storeId := "1" // string | Store Id (optional)
 	status := "disabled" // string | Defines status (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,customer_id,email,message,status,product_id,nick_name,summary,rating,ratings,status,created_time")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductReviewList(context.Background()).ProductId(productId).Start(start).PageCursor(pageCursor).Count(count).Ids(ids).StoreId(storeId).Status(status).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductReviewList(context.Background()).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).Status(status).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductReviewList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2695,14 +2695,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **string** | Product id | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **ids** | **string** | Retrieves reviews specified by ids | 
  **storeId** | **string** | Store Id | 
  **status** | **string** | Defines status | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,customer_id,email,message,status,product_id,nick_name,summary,rating,ratings,status,created_time&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -3122,7 +3122,7 @@ Name | Type | Description  | Notes
 
 ## ProductVariantCount
 
-> ProductVariantCount200Response ProductVariantCount(ctx).ProductId(productId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).CategoryId(categoryId).StoreId(storeId).Execute()
+> ProductVariantCount200Response ProductVariantCount(ctx).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 
 product.variant.count
 
@@ -3142,16 +3142,16 @@ import (
 
 func main() {
 	productId := "10" // string | Retrieves products' variants specified by product id
+	categoryId := "6" // string | Counts products’ variants specified by category id (optional)
+	storeId := "1" // string | Retrieves variants specified by store id (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	categoryId := "6" // string | Counts products’ variants specified by category id (optional)
-	storeId := "1" // string | Retrieves variants specified by store id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantCount(context.Background()).ProductId(productId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).CategoryId(categoryId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductVariantCount(context.Background()).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3173,12 +3173,12 @@ Other parameters are passed through a pointer to a apiProductVariantCountRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **string** | Retrieves products&#39; variants specified by product id | 
+ **categoryId** | **string** | Counts products’ variants specified by category id | 
+ **storeId** | **string** | Retrieves variants specified by store id | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **categoryId** | **string** | Counts products’ variants specified by category id | 
- **storeId** | **string** | Retrieves variants specified by store id | 
 
 ### Return type
 
@@ -3474,7 +3474,7 @@ Name | Type | Description  | Notes
 
 ## ProductVariantInfo
 
-> ProductInfo200Response ProductVariantInfo(ctx).Id(id).Params(params).Exclude(exclude).StoreId(storeId).Execute()
+> ProductInfo200Response ProductVariantInfo(ctx).Id(id).StoreId(storeId).Params(params).Exclude(exclude).Execute()
 
 product.variant.info
 
@@ -3494,13 +3494,13 @@ import (
 
 func main() {
 	id := "10" // string | Retrieves variant's info specified by variant id
+	storeId := "1" // string | Retrieves variant info specified by store id (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	storeId := "1" // string | Retrieves variant info specified by store id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantInfo(context.Background()).Id(id).Params(params).Exclude(exclude).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductVariantInfo(context.Background()).Id(id).StoreId(storeId).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3522,9 +3522,9 @@ Other parameters are passed through a pointer to a apiProductVariantInfoRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Retrieves variant&#39;s info specified by variant id | 
+ **storeId** | **string** | Retrieves variant info specified by store id | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **storeId** | **string** | Retrieves variant info specified by store id | 
 
 ### Return type
 
@@ -3546,7 +3546,7 @@ Name | Type | Description  | Notes
 
 ## ProductVariantList
 
-> ProductVariantList200Response ProductVariantList(ctx).Start(start).Count(count).Params(params).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+> ProductVariantList200Response ProductVariantList(ctx).Start(start).Count(count).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).Exclude(exclude).Execute()
 
 product.variant.list
 
@@ -3567,19 +3567,19 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price")
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	productId := "10" // string | Retrieves products' variants specified by product id (optional)
+	categoryId := "6" // string | Retrieves products’ variants specified by category id (optional)
+	storeId := "1" // string | Retrieves variants specified by store id (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	categoryId := "6" // string | Retrieves products’ variants specified by category id (optional)
-	productId := "10" // string | Retrieves products' variants specified by product id (optional)
-	storeId := "1" // string | Retrieves variants specified by store id (optional)
+	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price")
+	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantList(context.Background()).Start(start).Count(count).Params(params).Exclude(exclude).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductVariantList(context.Background()).Start(start).Count(count).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3602,15 +3602,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **productId** | **string** | Retrieves products&#39; variants specified by product id | 
+ **categoryId** | **string** | Retrieves products’ variants specified by category id | 
+ **storeId** | **string** | Retrieves variants specified by store id | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **categoryId** | **string** | Retrieves products’ variants specified by category id | 
- **productId** | **string** | Retrieves products&#39; variants specified by product id | 
- **storeId** | **string** | Retrieves variants specified by store id | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 

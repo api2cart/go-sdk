@@ -29,8 +29,8 @@ type ApiTaxClassInfoRequest struct {
 	taxClassId *string
 	storeId *string
 	langId *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
 }
 
@@ -53,14 +53,14 @@ func (r ApiTaxClassInfoRequest) LangId(langId string) ApiTaxClassInfoRequest {
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiTaxClassInfoRequest) Params(params string) ApiTaxClassInfoRequest {
-	r.params = &params
+func (r ApiTaxClassInfoRequest) ResponseFields(responseFields string) ApiTaxClassInfoRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiTaxClassInfoRequest) ResponseFields(responseFields string) ApiTaxClassInfoRequest {
-	r.responseFields = &responseFields
+func (r ApiTaxClassInfoRequest) Params(params string) ApiTaxClassInfoRequest {
+	r.params = &params
 	return r
 }
 
@@ -120,14 +120,14 @@ func (a *TaxAPIService) TaxClassInfoExecute(r ApiTaxClassInfoRequest) (*ModelRes
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "tax_class_id,name,avail"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -217,16 +217,46 @@ func (a *TaxAPIService) TaxClassInfoExecute(r ApiTaxClassInfoRequest) (*ModelRes
 type ApiTaxClassListRequest struct {
 	ctx context.Context
 	ApiService *TaxAPIService
+	count *int32
+	pageCursor *string
+	storeId *string
+	findValue *string
+	findWhere *string
 	createdTo *string
 	createdFrom *string
 	modifiedTo *string
 	modifiedFrom *string
-	findValue *string
-	findWhere *string
-	storeId *string
-	count *int32
-	pageCursor *string
 	responseFields *string
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiTaxClassListRequest) Count(count int32) ApiTaxClassListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiTaxClassListRequest) PageCursor(pageCursor string) ApiTaxClassListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Store Id
+func (r ApiTaxClassListRequest) StoreId(storeId string) ApiTaxClassListRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Entity search that is specified by some value
+func (r ApiTaxClassListRequest) FindValue(findValue string) ApiTaxClassListRequest {
+	r.findValue = &findValue
+	return r
+}
+
+// Tax class search that is specified by field
+func (r ApiTaxClassListRequest) FindWhere(findWhere string) ApiTaxClassListRequest {
+	r.findWhere = &findWhere
+	return r
 }
 
 // Retrieve entities to their creation date
@@ -250,36 +280,6 @@ func (r ApiTaxClassListRequest) ModifiedTo(modifiedTo string) ApiTaxClassListReq
 // Retrieve entities from their modification date
 func (r ApiTaxClassListRequest) ModifiedFrom(modifiedFrom string) ApiTaxClassListRequest {
 	r.modifiedFrom = &modifiedFrom
-	return r
-}
-
-// Entity search that is specified by some value
-func (r ApiTaxClassListRequest) FindValue(findValue string) ApiTaxClassListRequest {
-	r.findValue = &findValue
-	return r
-}
-
-// Tax class search that is specified by field
-func (r ApiTaxClassListRequest) FindWhere(findWhere string) ApiTaxClassListRequest {
-	r.findWhere = &findWhere
-	return r
-}
-
-// Store Id
-func (r ApiTaxClassListRequest) StoreId(storeId string) ApiTaxClassListRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiTaxClassListRequest) Count(count int32) ApiTaxClassListRequest {
-	r.count = &count
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiTaxClassListRequest) PageCursor(pageCursor string) ApiTaxClassListRequest {
-	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -329,6 +329,24 @@ func (a *TaxAPIService) TaxClassListExecute(r ApiTaxClassListRequest) (*ModelRes
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.findValue != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
+	}
+	if r.findWhere != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
+	}
 	if r.createdTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
 	}
@@ -340,24 +358,6 @@ func (a *TaxAPIService) TaxClassListExecute(r ApiTaxClassListRequest) (*ModelRes
 	}
 	if r.modifiedFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.findValue != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
-	}
-	if r.findWhere != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue int32 = 10
-		r.count = &defaultValue
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")

@@ -22,14 +22,14 @@ var _ MappedNullable = &OrderShipmentTrackingAdd{}
 
 // OrderShipmentTrackingAdd struct for OrderShipmentTrackingAdd
 type OrderShipmentTrackingAdd struct {
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// Defines the order id
 	OrderId *string `json:"order_id,omitempty"`
 	// Shipment id indicates the number of delivery
 	ShipmentId string `json:"shipment_id"`
 	// Defines tracking carrier id
 	CarrierId *string `json:"carrier_id,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Defines name of the company which provides shipment tracking
 	TrackingProvider *string `json:"tracking_provider,omitempty"`
 	// Defines tracking number
@@ -63,38 +63,6 @@ func NewOrderShipmentTrackingAddWithDefaults() *OrderShipmentTrackingAdd {
 	var sendNotifications bool = false
 	this.SendNotifications = &sendNotifications
 	return &this
-}
-
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *OrderShipmentTrackingAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentTrackingAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *OrderShipmentTrackingAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *OrderShipmentTrackingAdd) SetStoreId(v string) {
-	o.StoreId = &v
 }
 
 // GetOrderId returns the OrderId field value if set, zero value otherwise.
@@ -183,6 +151,38 @@ func (o *OrderShipmentTrackingAdd) HasCarrierId() bool {
 // SetCarrierId gets a reference to the given string and assigns it to the CarrierId field.
 func (o *OrderShipmentTrackingAdd) SetCarrierId(v string) {
 	o.CarrierId = &v
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *OrderShipmentTrackingAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentTrackingAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *OrderShipmentTrackingAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *OrderShipmentTrackingAdd) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetTrackingProvider returns the TrackingProvider field value if set, zero value otherwise.
@@ -315,15 +315,15 @@ func (o OrderShipmentTrackingAdd) MarshalJSON() ([]byte, error) {
 
 func (o OrderShipmentTrackingAdd) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	if !IsNil(o.OrderId) {
 		toSerialize["order_id"] = o.OrderId
 	}
 	toSerialize["shipment_id"] = o.ShipmentId
 	if !IsNil(o.CarrierId) {
 		toSerialize["carrier_id"] = o.CarrierId
+	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.TrackingProvider) {
 		toSerialize["tracking_provider"] = o.TrackingProvider

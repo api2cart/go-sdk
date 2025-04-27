@@ -653,19 +653,13 @@ func (a *WebhookAPIService) WebhookEventsExecute(r ApiWebhookEventsRequest) (*We
 type ApiWebhookListRequest struct {
 	ctx context.Context
 	ApiService *WebhookAPIService
-	params *string
 	start *int32
 	count *int32
 	entity *string
 	action *string
 	active *bool
 	ids *string
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiWebhookListRequest) Params(params string) ApiWebhookListRequest {
-	r.params = &params
-	return r
+	params *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -701,6 +695,12 @@ func (r ApiWebhookListRequest) Active(active bool) ApiWebhookListRequest {
 // List of сomma-separated webhook ids
 func (r ApiWebhookListRequest) Ids(ids string) ApiWebhookListRequest {
 	r.ids = &ids
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiWebhookListRequest) Params(params string) ApiWebhookListRequest {
+	r.params = &params
 	return r
 }
 
@@ -744,12 +744,6 @@ func (a *WebhookAPIService) WebhookListExecute(r ApiWebhookListRequest) (*Webhoo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,entity,action,callback"
-		r.params = &defaultValue
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -773,6 +767,12 @@ func (a *WebhookAPIService) WebhookListExecute(r ApiWebhookListRequest) (*Webhoo
 	}
 	if r.ids != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,entity,action,callback"
+		r.params = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

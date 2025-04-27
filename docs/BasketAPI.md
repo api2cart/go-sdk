@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## BasketInfo
 
-> BasketInfo200Response BasketInfo(ctx).Id(id).StoreId(storeId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> BasketInfo200Response BasketInfo(ctx).Id(id).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 basket.info
 
@@ -35,13 +35,13 @@ import (
 func main() {
 	id := "10" // string | Entity id
 	storeId := "1" // string | Store Id (optional)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BasketAPI.BasketInfo(context.Background()).Id(id).StoreId(storeId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.BasketAPI.BasketInfo(context.Background()).Id(id).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BasketAPI.BasketInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,9 +64,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Entity id | 
  **storeId** | **string** | Store Id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## BasketLiveShippingServiceList
 
-> BasketLiveShippingServiceList200Response BasketLiveShippingServiceList(ctx).StoreId(storeId).Start(start).Count(count).Execute()
+> BasketLiveShippingServiceList200Response BasketLiveShippingServiceList(ctx).Start(start).Count(count).StoreId(storeId).Execute()
 
 basket.live_shipping_service.list
 
@@ -317,13 +317,13 @@ import (
 )
 
 func main() {
-	storeId := "1" // string | Store Id (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	storeId := "1" // string | Store Id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BasketAPI.BasketLiveShippingServiceList(context.Background()).StoreId(storeId).Start(start).Count(count).Execute()
+	resp, r, err := apiClient.BasketAPI.BasketLiveShippingServiceList(context.Background()).Start(start).Count(count).StoreId(storeId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BasketAPI.BasketLiveShippingServiceList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -344,9 +344,9 @@ Other parameters are passed through a pointer to a apiBasketLiveShippingServiceL
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **string** | Store Id | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **storeId** | **string** | Store Id | 
 
 ### Return type
 

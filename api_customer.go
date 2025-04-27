@@ -307,9 +307,9 @@ type ApiCustomerAttributeListRequest struct {
 	pageCursor *string
 	storeId *string
 	langId *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // Retrieves orders specified by customer id
@@ -343,6 +343,12 @@ func (r ApiCustomerAttributeListRequest) LangId(langId string) ApiCustomerAttrib
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCustomerAttributeListRequest) ResponseFields(responseFields string) ApiCustomerAttributeListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiCustomerAttributeListRequest) Params(params string) ApiCustomerAttributeListRequest {
 	r.params = &params
 	return r
@@ -351,12 +357,6 @@ func (r ApiCustomerAttributeListRequest) Params(params string) ApiCustomerAttrib
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiCustomerAttributeListRequest) Exclude(exclude string) ApiCustomerAttributeListRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCustomerAttributeListRequest) ResponseFields(responseFields string) ApiCustomerAttributeListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -419,6 +419,9 @@ func (a *CustomerAPIService) CustomerAttributeListExecute(r ApiCustomerAttribute
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -427,9 +430,6 @@ func (a *CustomerAPIService) CustomerAttributeListExecute(r ApiCustomerAttribute
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -516,23 +516,65 @@ func (a *CustomerAPIService) CustomerAttributeListExecute(r ApiCustomerAttribute
 type ApiCustomerCountRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
+	ids *string
+	sinceId *string
+	customerListId *string
 	groupId *string
+	storeId *string
+	avail *bool
+	findValue *string
+	findWhere *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	storeId *string
-	customerListId *string
-	avail *bool
-	findValue *string
-	findWhere *string
-	ids *string
-	sinceId *string
+}
+
+// Counts customers specified by ids
+func (r ApiCustomerCountRequest) Ids(ids string) ApiCustomerCountRequest {
+	r.ids = &ids
+	return r
+}
+
+// Retrieve entities starting from the specified id.
+func (r ApiCustomerCountRequest) SinceId(sinceId string) ApiCustomerCountRequest {
+	r.sinceId = &sinceId
+	return r
+}
+
+// The numeric ID of the customer list in Demandware.
+func (r ApiCustomerCountRequest) CustomerListId(customerListId string) ApiCustomerCountRequest {
+	r.customerListId = &customerListId
+	return r
 }
 
 // Customer group_id
 func (r ApiCustomerCountRequest) GroupId(groupId string) ApiCustomerCountRequest {
 	r.groupId = &groupId
+	return r
+}
+
+// Counts customer specified by store id
+func (r ApiCustomerCountRequest) StoreId(storeId string) ApiCustomerCountRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Defines category&#39;s visibility status
+func (r ApiCustomerCountRequest) Avail(avail bool) ApiCustomerCountRequest {
+	r.avail = &avail
+	return r
+}
+
+// Entity search that is specified by some value
+func (r ApiCustomerCountRequest) FindValue(findValue string) ApiCustomerCountRequest {
+	r.findValue = &findValue
+	return r
+}
+
+// Counts customers that are searched specified by field
+func (r ApiCustomerCountRequest) FindWhere(findWhere string) ApiCustomerCountRequest {
+	r.findWhere = &findWhere
 	return r
 }
 
@@ -557,48 +599,6 @@ func (r ApiCustomerCountRequest) ModifiedFrom(modifiedFrom string) ApiCustomerCo
 // Retrieve entities to their modification date
 func (r ApiCustomerCountRequest) ModifiedTo(modifiedTo string) ApiCustomerCountRequest {
 	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Counts customer specified by store id
-func (r ApiCustomerCountRequest) StoreId(storeId string) ApiCustomerCountRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// The numeric ID of the customer list in Demandware.
-func (r ApiCustomerCountRequest) CustomerListId(customerListId string) ApiCustomerCountRequest {
-	r.customerListId = &customerListId
-	return r
-}
-
-// Defines category&#39;s visibility status
-func (r ApiCustomerCountRequest) Avail(avail bool) ApiCustomerCountRequest {
-	r.avail = &avail
-	return r
-}
-
-// Entity search that is specified by some value
-func (r ApiCustomerCountRequest) FindValue(findValue string) ApiCustomerCountRequest {
-	r.findValue = &findValue
-	return r
-}
-
-// Counts customers that are searched specified by field
-func (r ApiCustomerCountRequest) FindWhere(findWhere string) ApiCustomerCountRequest {
-	r.findWhere = &findWhere
-	return r
-}
-
-// Counts customers specified by ids
-func (r ApiCustomerCountRequest) Ids(ids string) ApiCustomerCountRequest {
-	r.ids = &ids
-	return r
-}
-
-// Retrieve entities starting from the specified id.
-func (r ApiCustomerCountRequest) SinceId(sinceId string) ApiCustomerCountRequest {
-	r.sinceId = &sinceId
 	return r
 }
 
@@ -642,26 +642,20 @@ func (a *CustomerAPIService) CustomerCountExecute(r ApiCustomerCountRequest) (*C
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.groupId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
 	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
-	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
-	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	if r.sinceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
 	}
 	if r.customerListId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_list_id", r.customerListId, "form", "")
+	}
+	if r.groupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
@@ -675,11 +669,17 @@ func (a *CustomerAPIService) CustomerCountExecute(r ApiCustomerCountRequest) (*C
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
 	}
-	if r.ids != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
 	}
-	if r.sinceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1236,28 +1236,16 @@ func (a *CustomerAPIService) CustomerGroupAddExecute(r ApiCustomerGroupAddReques
 type ApiCustomerGroupListRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
-	disableCache *bool
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
+	groupIds *string
 	storeId *string
 	langId *string
-	groupIds *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
-}
-
-// Disable cache for current request
-func (r ApiCustomerGroupListRequest) DisableCache(disableCache bool) ApiCustomerGroupListRequest {
-	r.disableCache = &disableCache
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCustomerGroupListRequest) PageCursor(pageCursor string) ApiCustomerGroupListRequest {
-	r.pageCursor = &pageCursor
-	return r
+	disableCache *bool
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1269,6 +1257,18 @@ func (r ApiCustomerGroupListRequest) Start(start int32) ApiCustomerGroupListRequ
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiCustomerGroupListRequest) Count(count int32) ApiCustomerGroupListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCustomerGroupListRequest) PageCursor(pageCursor string) ApiCustomerGroupListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Groups that will be assigned to a customer
+func (r ApiCustomerGroupListRequest) GroupIds(groupIds string) ApiCustomerGroupListRequest {
+	r.groupIds = &groupIds
 	return r
 }
 
@@ -1284,9 +1284,9 @@ func (r ApiCustomerGroupListRequest) LangId(langId string) ApiCustomerGroupListR
 	return r
 }
 
-// Groups that will be assigned to a customer
-func (r ApiCustomerGroupListRequest) GroupIds(groupIds string) ApiCustomerGroupListRequest {
-	r.groupIds = &groupIds
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCustomerGroupListRequest) ResponseFields(responseFields string) ApiCustomerGroupListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
@@ -1302,9 +1302,9 @@ func (r ApiCustomerGroupListRequest) Exclude(exclude string) ApiCustomerGroupLis
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCustomerGroupListRequest) ResponseFields(responseFields string) ApiCustomerGroupListRequest {
-	r.responseFields = &responseFields
+// Disable cache for current request
+func (r ApiCustomerGroupListRequest) DisableCache(disableCache bool) ApiCustomerGroupListRequest {
+	r.disableCache = &disableCache
 	return r
 }
 
@@ -1348,15 +1348,6 @@ func (a *CustomerAPIService) CustomerGroupListExecute(r ApiCustomerGroupListRequ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.disableCache != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_cache", r.disableCache, "form", "")
-	} else {
-		var defaultValue bool = false
-		r.disableCache = &defaultValue
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -1369,14 +1360,20 @@ func (a *CustomerAPIService) CustomerGroupListExecute(r ApiCustomerGroupListRequ
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.groupIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "group_ids", r.groupIds, "form", "")
+	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
-	if r.groupIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "group_ids", r.groupIds, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
@@ -1387,8 +1384,11 @@ func (a *CustomerAPIService) CustomerGroupListExecute(r ApiCustomerGroupListRequ
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	if r.disableCache != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "disable_cache", r.disableCache, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.disableCache = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1476,10 +1476,10 @@ type ApiCustomerInfoRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id *string
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // Retrieves customer&#39;s info specified by customer id
@@ -1488,9 +1488,9 @@ func (r ApiCustomerInfoRequest) Id(id string) ApiCustomerInfoRequest {
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCustomerInfoRequest) Params(params string) ApiCustomerInfoRequest {
-	r.params = &params
+// Retrieves customer info specified by store id
+func (r ApiCustomerInfoRequest) StoreId(storeId string) ApiCustomerInfoRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -1500,15 +1500,15 @@ func (r ApiCustomerInfoRequest) ResponseFields(responseFields string) ApiCustome
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiCustomerInfoRequest) Exclude(exclude string) ApiCustomerInfoRequest {
-	r.exclude = &exclude
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCustomerInfoRequest) Params(params string) ApiCustomerInfoRequest {
+	r.params = &params
 	return r
 }
 
-// Retrieves customer info specified by store id
-func (r ApiCustomerInfoRequest) StoreId(storeId string) ApiCustomerInfoRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiCustomerInfoRequest) Exclude(exclude string) ApiCustomerInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1556,20 +1556,20 @@ func (a *CustomerAPIService) CustomerInfoExecute(r ApiCustomerInfoRequest) (*Cus
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,email,first_name,last_name"
 		r.params = &defaultValue
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1656,32 +1656,26 @@ func (a *CustomerAPIService) CustomerInfoExecute(r ApiCustomerInfoRequest) (*Cus
 type ApiCustomerListRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
+	ids *string
+	sinceId *string
+	customerListId *string
+	groupId *string
+	storeId *string
+	avail *bool
+	findValue *string
+	findWhere *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	params *string
-	responseFields *string
-	exclude *string
-	groupId *string
-	storeId *string
-	customerListId *string
-	avail *bool
-	findValue *string
-	findWhere *string
 	sortBy *string
 	sortDirection *string
-	ids *string
-	sinceId *string
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCustomerListRequest) PageCursor(pageCursor string) ApiCustomerListRequest {
-	r.pageCursor = &pageCursor
-	return r
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1693,6 +1687,60 @@ func (r ApiCustomerListRequest) Start(start int32) ApiCustomerListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiCustomerListRequest) Count(count int32) ApiCustomerListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCustomerListRequest) PageCursor(pageCursor string) ApiCustomerListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Retrieves customers specified by ids
+func (r ApiCustomerListRequest) Ids(ids string) ApiCustomerListRequest {
+	r.ids = &ids
+	return r
+}
+
+// Retrieve entities starting from the specified id.
+func (r ApiCustomerListRequest) SinceId(sinceId string) ApiCustomerListRequest {
+	r.sinceId = &sinceId
+	return r
+}
+
+// The numeric ID of the customer list in Demandware.
+func (r ApiCustomerListRequest) CustomerListId(customerListId string) ApiCustomerListRequest {
+	r.customerListId = &customerListId
+	return r
+}
+
+// Customer group_id
+func (r ApiCustomerListRequest) GroupId(groupId string) ApiCustomerListRequest {
+	r.groupId = &groupId
+	return r
+}
+
+// Retrieves customers specified by store id
+func (r ApiCustomerListRequest) StoreId(storeId string) ApiCustomerListRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Defines category&#39;s visibility status
+func (r ApiCustomerListRequest) Avail(avail bool) ApiCustomerListRequest {
+	r.avail = &avail
+	return r
+}
+
+// Entity search that is specified by some value
+func (r ApiCustomerListRequest) FindValue(findValue string) ApiCustomerListRequest {
+	r.findValue = &findValue
+	return r
+}
+
+// Customer search that is specified by field
+func (r ApiCustomerListRequest) FindWhere(findWhere string) ApiCustomerListRequest {
+	r.findWhere = &findWhere
 	return r
 }
 
@@ -1720,60 +1768,6 @@ func (r ApiCustomerListRequest) ModifiedTo(modifiedTo string) ApiCustomerListReq
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCustomerListRequest) Params(params string) ApiCustomerListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCustomerListRequest) ResponseFields(responseFields string) ApiCustomerListRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiCustomerListRequest) Exclude(exclude string) ApiCustomerListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Customer group_id
-func (r ApiCustomerListRequest) GroupId(groupId string) ApiCustomerListRequest {
-	r.groupId = &groupId
-	return r
-}
-
-// Retrieves customers specified by store id
-func (r ApiCustomerListRequest) StoreId(storeId string) ApiCustomerListRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// The numeric ID of the customer list in Demandware.
-func (r ApiCustomerListRequest) CustomerListId(customerListId string) ApiCustomerListRequest {
-	r.customerListId = &customerListId
-	return r
-}
-
-// Defines category&#39;s visibility status
-func (r ApiCustomerListRequest) Avail(avail bool) ApiCustomerListRequest {
-	r.avail = &avail
-	return r
-}
-
-// Entity search that is specified by some value
-func (r ApiCustomerListRequest) FindValue(findValue string) ApiCustomerListRequest {
-	r.findValue = &findValue
-	return r
-}
-
-// Customer search that is specified by field
-func (r ApiCustomerListRequest) FindWhere(findWhere string) ApiCustomerListRequest {
-	r.findWhere = &findWhere
-	return r
-}
-
 // Set field to sort by
 func (r ApiCustomerListRequest) SortBy(sortBy string) ApiCustomerListRequest {
 	r.sortBy = &sortBy
@@ -1786,15 +1780,21 @@ func (r ApiCustomerListRequest) SortDirection(sortDirection string) ApiCustomerL
 	return r
 }
 
-// Retrieves customers specified by ids
-func (r ApiCustomerListRequest) Ids(ids string) ApiCustomerListRequest {
-	r.ids = &ids
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCustomerListRequest) ResponseFields(responseFields string) ApiCustomerListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
-// Retrieve entities starting from the specified id.
-func (r ApiCustomerListRequest) SinceId(sinceId string) ApiCustomerListRequest {
-	r.sinceId = &sinceId
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCustomerListRequest) Params(params string) ApiCustomerListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiCustomerListRequest) Exclude(exclude string) ApiCustomerListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1838,9 +1838,6 @@ func (a *CustomerAPIService) CustomerListExecute(r ApiCustomerListRequest) (*Mod
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -1853,38 +1850,23 @@ func (a *CustomerAPIService) CustomerListExecute(r ApiCustomerListRequest) (*Mod
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
 	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	if r.sinceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
 	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,email,first_name,last_name"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	if r.customerListId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_list_id", r.customerListId, "form", "")
 	}
 	if r.groupId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.customerListId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_list_id", r.customerListId, "form", "")
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
@@ -1898,6 +1880,18 @@ func (a *CustomerAPIService) CustomerListExecute(r ApiCustomerListRequest) (*Mod
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
 	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
 	} else {
@@ -1910,11 +1904,17 @@ func (a *CustomerAPIService) CustomerListExecute(r ApiCustomerListRequest) (*Mod
 		var defaultValue string = "asc"
 		r.sortDirection = &defaultValue
 	}
-	if r.ids != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
-	if r.sinceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,email,first_name,last_name"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2140,29 +2140,17 @@ type ApiCustomerWishlistListRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerId *string
-	id *string
-	storeId *string
 	start *int32
 	count *int32
 	pageCursor *string
+	id *string
+	storeId *string
 	responseFields *string
 }
 
 // Retrieves orders specified by customer id
 func (r ApiCustomerWishlistListRequest) CustomerId(customerId string) ApiCustomerWishlistListRequest {
 	r.customerId = &customerId
-	return r
-}
-
-// Entity id
-func (r ApiCustomerWishlistListRequest) Id(id string) ApiCustomerWishlistListRequest {
-	r.id = &id
-	return r
-}
-
-// Store Id
-func (r ApiCustomerWishlistListRequest) StoreId(storeId string) ApiCustomerWishlistListRequest {
-	r.storeId = &storeId
 	return r
 }
 
@@ -2181,6 +2169,18 @@ func (r ApiCustomerWishlistListRequest) Count(count int32) ApiCustomerWishlistLi
 // Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
 func (r ApiCustomerWishlistListRequest) PageCursor(pageCursor string) ApiCustomerWishlistListRequest {
 	r.pageCursor = &pageCursor
+	return r
+}
+
+// Entity id
+func (r ApiCustomerWishlistListRequest) Id(id string) ApiCustomerWishlistListRequest {
+	r.id = &id
+	return r
+}
+
+// Store Id
+func (r ApiCustomerWishlistListRequest) StoreId(storeId string) ApiCustomerWishlistListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -2233,13 +2233,6 @@ func (a *CustomerAPIService) CustomerWishlistListExecute(r ApiCustomerWishlistLi
 		return localVarReturnValue, nil, reportError("customerId is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -2254,6 +2247,13 @@ func (a *CustomerAPIService) CustomerWishlistListExecute(r ApiCustomerWishlistLi
 	}
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")

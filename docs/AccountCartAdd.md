@@ -77,6 +77,7 @@ Name | Type | Description | Notes
 **ShoplineAccessToken** | Pointer to **string** | Shopline APP Key | [optional] 
 **ShoplineAppKey** | Pointer to **string** | Shopline APP Key | [optional] 
 **ShoplineAppSecret** | Pointer to **string** | Shopline App Secret | [optional] 
+**ShoplineSharedSecret** | Pointer to **string** | Shopline Shared Secret | [optional] 
 **ShopifyAccessToken** | Pointer to **string** | Access token authorizing the app to access resources on behalf of a user | [optional] 
 **ShopifyApiKey** | Pointer to **string** | Shopify API Key | [optional] 
 **ShopifyApiPassword** | Pointer to **string** | Shopify API Password | [optional] 
@@ -1991,6 +1992,31 @@ SetShoplineAppSecret sets ShoplineAppSecret field to given value.
 `func (o *AccountCartAdd) HasShoplineAppSecret() bool`
 
 HasShoplineAppSecret returns a boolean if a field has been set.
+
+### GetShoplineSharedSecret
+
+`func (o *AccountCartAdd) GetShoplineSharedSecret() string`
+
+GetShoplineSharedSecret returns the ShoplineSharedSecret field if non-nil, zero value otherwise.
+
+### GetShoplineSharedSecretOk
+
+`func (o *AccountCartAdd) GetShoplineSharedSecretOk() (*string, bool)`
+
+GetShoplineSharedSecretOk returns a tuple with the ShoplineSharedSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShoplineSharedSecret
+
+`func (o *AccountCartAdd) SetShoplineSharedSecret(v string)`
+
+SetShoplineSharedSecret sets ShoplineSharedSecret field to given value.
+
+### HasShoplineSharedSecret
+
+`func (o *AccountCartAdd) HasShoplineSharedSecret() bool`
+
+HasShoplineSharedSecret returns a boolean if a field has been set.
 
 ### GetShopifyAccessToken
 

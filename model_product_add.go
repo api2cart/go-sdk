@@ -26,36 +26,80 @@ type ProductAdd struct {
 	Name string `json:"name"`
 	// Defines product's model that has to be added
 	Model string `json:"model"`
-	// Defines product's sku that has to be added
-	Sku *string `json:"sku,omitempty"`
 	// Defines product's description that has to be added
 	Description string `json:"description"`
 	// Defines product's price that has to be added
 	Price float32 `json:"price"`
-	// Defines product's old price
-	OldPrice *float32 `json:"old_price,omitempty"`
-	// Defines product's model that has to be added
-	SpecialPrice *float32 `json:"special_price,omitempty"`
-	// Defines new product's cost price
-	CostPrice *float32 `json:"cost_price,omitempty"`
-	// Specifies product's fixed cost shipping price
-	FixedCostShippingPrice *float32 `json:"fixed_cost_shipping_price,omitempty"`
-	// Defines the date of special price creation
-	SpriceCreate *string `json:"sprice_create,omitempty"`
-	// Defines the date of special price modification
-	SpriceModified *string `json:"sprice_modified,omitempty"`
-	// Defines the term of special price offer duration
-	SpriceExpire *string `json:"sprice_expire,omitempty"`
-	// Defines product's tier prices
-	TierPrices []ProductAddTierPricesInner `json:"tier_prices,omitempty"`
-	// Defines product's group prices
-	GroupPrices []ProductAddGroupPricesInner `json:"group_prices,omitempty"`
+	// Defines product's sku that has to be added
+	Sku *string `json:"sku,omitempty"`
+	// Defines short description
+	ShortDescription *string `json:"short_description,omitempty"`
+	// Defines product's type
+	Type *string `json:"type,omitempty"`
+	// Defines product's status
+	Status *string `json:"status,omitempty"`
+	// Set visibility status
+	Visible *string `json:"visible,omitempty"`
+	// Defines product add that is specified by category id
+	CategoryId *string `json:"category_id,omitempty"`
+	// Defines product add that is specified by comma-separated categories id
+	CategoriesIds *string `json:"categories_ids,omitempty"`
+	// A categorization for the product
+	ProductClass *string `json:"product_class,omitempty"`
+	// A categorization for the product
+	ProductType *string `json:"product_type,omitempty"`
+	// Defines whether the product is virtual
+	IsVirtual *bool `json:"is_virtual,omitempty"`
+	// Defines whether the product is downloadable
+	Downloadable *bool `json:"downloadable,omitempty"`
+	// If true, it indicates the product as a supply, otherwise it indicates that it is a finished product.
+	IsSupply *bool `json:"is_supply,omitempty"`
 	// Specifies the set of visible/invisible products for users
 	AvailableForView *bool `json:"available_for_view,omitempty"`
 	// Specifies the set of visible/invisible products for sale
 	AvailableForSale *bool `json:"available_for_sale,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
+	// Assign product to the stores that is specified by comma-separated stores' id
+	StoresIds *string `json:"stores_ids,omitempty"`
+	// Language id
+	LangId *string `json:"lang_id,omitempty"`
+	// Defines product's old price
+	OldPrice *float32 `json:"old_price,omitempty"`
+	// Defines product's model that has to be added
+	SpecialPrice *float32 `json:"special_price,omitempty"`
+	// Defines product's sale price
+	WholesalePrice *float32 `json:"wholesale_price,omitempty"`
+	// Defines new product's cost price
+	CostPrice *float32 `json:"cost_price,omitempty"`
+	// Specifies product's fixed cost shipping price
+	FixedCostShippingPrice *float32 `json:"fixed_cost_shipping_price,omitempty"`
+	// Defines product's tier prices
+	TierPrices []ProductAddTierPricesInner `json:"tier_prices,omitempty"`
+	// Defines product's group prices
+	GroupPrices []ProductAddGroupPricesInner `json:"group_prices,omitempty"`
+	// Defines buy it now value
+	BuyitnowPrice *float32 `json:"buyitnow_price,omitempty"`
+	// Defines reserve price value
+	ReservePrice *float32 `json:"reserve_price,omitempty"`
+	// Defines product's quantity that has to be added
+	Quantity *float32 `json:"quantity,omitempty"`
+	// Set stock status
+	InStock *bool `json:"in_stock,omitempty"`
+	// Defines inventory tracking for product
+	ManageStock *bool `json:"manage_stock,omitempty"`
+	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
+	WarehouseId *string `json:"warehouse_id,omitempty"`
+	// Set backorder status
+	BackorderStatus *string `json:"backorder_status,omitempty"`
+	// The minimum quantity an order must contain, to be eligible to purchase this product.
+	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
+	// The maximum quantity an order can contain when purchasing the product.
+	MaxOrderQuantity *float32 `json:"max_order_quantity,omitempty"`
 	// Weight
 	Weight *float32 `json:"weight,omitempty"`
+	// Weight Unit
+	WeightUnit *string `json:"weight_unit,omitempty"`
 	// Defines product's width
 	Width *float32 `json:"width,omitempty"`
 	// Defines product's height
@@ -63,83 +107,7 @@ type ProductAdd struct {
 	// Defines product's length
 	Length *float32 `json:"length,omitempty"`
 	// Weight Unit
-	WeightUnit *string `json:"weight_unit,omitempty"`
-	// Weight Unit
 	DimensionsUnit *string `json:"dimensions_unit,omitempty"`
-	// Defines short description
-	ShortDescription *string `json:"short_description,omitempty"`
-	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
-	WarehouseId *string `json:"warehouse_id,omitempty"`
-	// Set backorder status
-	BackorderStatus *string `json:"backorder_status,omitempty"`
-	// Defines product's quantity that has to be added
-	Quantity *float32 `json:"quantity,omitempty"`
-	// Defines whether the product is downloadable
-	Downloadable *bool `json:"downloadable,omitempty"`
-	// Defines product's sale price
-	WholesalePrice *float32 `json:"wholesale_price,omitempty"`
-	// Defines the date of entity creation
-	CreatedAt *string `json:"created_at,omitempty"`
-	// Defines product's manufacturer
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	// Defines product's manufacturer by manufacturer_id
-	ManufacturerId *string `json:"manufacturer_id,omitempty"`
-	// Defines product add that is specified by comma-separated categories id
-	CategoriesIds *string `json:"categories_ids,omitempty"`
-	// Defines product's related products ids that has to be added
-	RelatedProductsIds *string `json:"related_products_ids,omitempty"`
-	// Defines product's up-sell products ids that has to be added
-	UpSellProductsIds *string `json:"up_sell_products_ids,omitempty"`
-	// Defines product's cross-sell products ids that has to be added
-	CrossSellProductsIds *string `json:"cross_sell_products_ids,omitempty"`
-	// Defines tax classes where entity has to be added
-	TaxClassId *string `json:"tax_class_id,omitempty"`
-	// Defines product's type
-	Type *string `json:"type,omitempty"`
-	// Defines unique meta title for each entity
-	MetaTitle *string `json:"meta_title,omitempty"`
-	// Defines unique meta keywords for each entity
-	MetaKeywords *string `json:"meta_keywords,omitempty"`
-	// Defines unique meta description of a entity
-	MetaDescription *string `json:"meta_description,omitempty"`
-	// Defines unique product's URL
-	Url *string `json:"url,omitempty"`
-	// Language id
-	LangId *string `json:"lang_id,omitempty"`
-	// Assign product to the stores that is specified by comma-separated stores' id
-	StoresIds *string `json:"stores_ids,omitempty"`
-	// Defines product add that is specified by category id
-	CategoryId *string `json:"category_id,omitempty"`
-	// Specifies the number of product's reviews
-	ViewedCount *int32 `json:"viewed_count,omitempty"`
-	// Defines how many times the product was ordered
-	OrderedCount *int32 `json:"ordered_count,omitempty"`
-	// Defines product’s attribute set name in Magento
-	AttributeSetName *string `json:"attribute_set_name,omitempty"`
-	// Defines product’s attribute name separated with a comma in Magento
-	AttributeName *string `json:"attribute_name,omitempty"`
-	// The numeric ID of the shipping template associated with the products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field shipping_zones[]->id.
-	ShippingTemplateId *int32 `json:"shipping_template_id,omitempty"`
-	// Defines product's production partner ids that has to be added
-	ProductionPartnerIds *string `json:"production_partner_ids,omitempty"`
-	// The human-readable label for the condition (e.g., \"New\").
-	Condition *string `json:"condition,omitempty"`
-	// Describes the number of days the seller wants the listing to be active. Look at cart.info method response for allowed values.
-	ListingDuration *string `json:"listing_duration,omitempty"`
-	// Indicates the selling format of the marketplace listing.
-	ListingType *string `json:"listing_type,omitempty"`
-	// Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the item. Look at cart.info method response for allowed values.<hr><div style=\"font-style:normal\">Param structure:<div style=\"margin-left: 2%;\"><code style=\"padding:0; background-color:#ffffff;font-size:85%;font-family:monospace;\">payment_methods[0] = string</br>payment_methods[1] = string</br></code></div></div>
-	PaymentMethods []string `json:"payment_methods,omitempty"`
-	// Indicates whether the seller allows the buyer to return the item.
-	ReturnAccepted *bool `json:"return_accepted,omitempty"`
-	// The shipping details, including flat and calculated shipping costs and shipping insurance costs. Look at cart.info method response for allowed values.<hr><div style=\"font-style:normal\">Param structure:<div style=\"margin-left: 2%;\"><code style=\"padding:0; background-color:#ffffff;font-size:85%;font-family:monospace;\">shipping_details[0][<b>shipping_type</b>] = string </br>shipping_details[0][<b>shipping_service</b>] = string</br>shipping_details[0][<b>shipping_cost</b>] = decimal</br>shipping_details[1][<b>shipping_type</b>] = string </br>shipping_details[1][<b>shipping_service</b>] = string</br>shipping_details[1][<b>shipping_cost</b>] = decimal</br></code></div></div>
-	ShippingDetails []ProductAddShippingDetailsInner `json:"shipping_details,omitempty"`
-	// Valid PayPal email address for the PayPal account that the seller will use if they offer PayPal as a payment method for the listing.
-	PaypalEmail *string `json:"paypal_email,omitempty"`
-	SellerProfiles *ProductAddSellerProfiles `json:"seller_profiles,omitempty"`
-	PackageDetails *ProductAddPackageDetails `json:"package_details,omitempty"`
-	BestOffer *ProductAddBestOffer `json:"best_offer,omitempty"`
-	SalesTax *ProductAddSalesTax `json:"sales_tax,omitempty"`
 	// A barcode is a unique code composed of numbers used as a product identifier.
 	Barcode *string `json:"barcode,omitempty"`
 	// Universal Product Code. A UPC (UPC-A) is a commonly used identifer for many different products.
@@ -148,98 +116,130 @@ type ProductAdd struct {
 	Ean *string `json:"ean,omitempty"`
 	// International Standard Book Number. An ISBN is a unique identifier for books.
 	Isbn *string `json:"isbn,omitempty"`
-	// An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields->product_specifics).         <b>The structure of the parameter is different for specific platforms.</b>
-	Specifics []ProductAddSpecificsInner `json:"specifics,omitempty"`
+	// Global Trade Item Number. An GTIN is an identifier for trade items.
+	Gtin *string `json:"gtin,omitempty"`
+	// Manufacturer Part Number. A MPN is an identifier of a particular part design or material used.
+	Mpn *string `json:"mpn,omitempty"`
+	// Amazon Standard Identification Number.
+	Asin *string `json:"asin,omitempty"`
+	// Groups all variations, that you want to combine into one product.
+	ProductReference *string `json:"product_reference,omitempty"`
+	// Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes
+	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
+	// The country where the inventory item was made
+	CountryOfOrigin *string `json:"country_of_origin,omitempty"`
+	// Defines product's manufacturer
+	Manufacturer *string `json:"manufacturer,omitempty"`
+	// Defines product's manufacturer by manufacturer_id
+	ManufacturerId *string `json:"manufacturer_id,omitempty"`
+	ManufacturerInfo *ProductAddManufacturerInfo `json:"manufacturer_info,omitempty"`
+	// Defines product brand name
+	BrandName *string `json:"brand_name,omitempty"`
 	// Image Url
 	ImageUrl *string `json:"image_url,omitempty"`
 	// Defines image's name
 	ImageName *string `json:"image_name,omitempty"`
 	// Image Url
 	AdditionalImageUrls []string `json:"additional_image_urls,omitempty"`
-	// Defines reserve price value
-	ReservePrice *float32 `json:"reserve_price,omitempty"`
-	// Defines buy it now value
-	BuyitnowPrice *float32 `json:"buyitnow_price,omitempty"`
-	// Detailed description of the product condition.
-	ConditionDescription *string `json:"condition_description,omitempty"`
-	// This allows buyers to remain anonymous when the bid or buy an item.
-	AuctionConfidentialityLevel *string `json:"auction_confidentiality_level,omitempty"`
-	// Defines product's logistic channel settings
-	LogisticInfo []ProductAddLogisticInfoInner `json:"logistic_info,omitempty"`
-	// Allows to schedule a time in the future that the item becomes available. The value should be greater than the current date and time.
-	AvailFrom *string `json:"avail_from,omitempty"`
-	// Product tags
-	Tags *string `json:"tags,omitempty"`
-	// Is cache clear required
-	ClearCache *bool `json:"clear_cache,omitempty"`
-	// Amazon Standard Identification Number.
-	Asin *string `json:"asin,omitempty"`
-	// Global Trade Item Number. An GTIN is an identifier for trade items.
-	Gtin *string `json:"gtin,omitempty"`
-	// Manufacturer Part Number. A MPN is an identifier of a particular part design or material used.
-	Mpn *string `json:"mpn,omitempty"`
-	// Specifies whether a tax is charged
-	Taxable *bool `json:"taxable,omitempty"`
-	// Set visibility status
-	Visible *string `json:"visible,omitempty"`
-	// Defines product's status
-	Status *string `json:"status,omitempty"`
-	// Defines unique URL for SEO
-	SeoUrl *string `json:"seo_url,omitempty"`
-	// A categorization for the product
-	ProductClass *string `json:"product_class,omitempty"`
-	// A categorization for the product
-	ProductType *string `json:"product_type,omitempty"`
-	// String containing the JSON representation of the supplied data
-	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
-	// Defines inventory tracking for product
-	ManageStock *bool `json:"manage_stock,omitempty"`
-	// Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes
-	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
-	// The country where the inventory item was made
-	CountryOfOrigin *string `json:"country_of_origin,omitempty"`
 	// File Url
 	Files []ProductAddFilesInner `json:"files,omitempty"`
+	SizeChart *ProductAddSizeChart `json:"size_chart,omitempty"`
+	// Defines product's related products ids that has to be added
+	RelatedProductsIds *string `json:"related_products_ids,omitempty"`
+	// Defines product's up-sell products ids that has to be added
+	UpSellProductsIds *string `json:"up_sell_products_ids,omitempty"`
+	// Defines product's cross-sell products ids that has to be added
+	CrossSellProductsIds *string `json:"cross_sell_products_ids,omitempty"`
+	// Defines product’s attribute set name in Magento
+	AttributeSetName *string `json:"attribute_set_name,omitempty"`
+	// Defines product’s attribute name separated with a comma in Magento
+	AttributeName *string `json:"attribute_name,omitempty"`
 	// Defines unique search keywords
 	SearchKeywords *string `json:"search_keywords,omitempty"`
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
-	// Defines product brand name
-	BrandName *string `json:"brand_name,omitempty"`
-	// Defines whether the product is virtual
-	IsVirtual *bool `json:"is_virtual,omitempty"`
+	// Product tags
+	Tags *string `json:"tags,omitempty"`
+	// A list of material strings for materials used in the product.
+	Materials []string `json:"materials,omitempty"`
+	// An array of product certifications. The list of possible certifications can be obtained using the \"<i>category.info</i>\" method (<i>additional_fields->rules->product_certifications</i>).
+	Certifications []ProductAddCertificationsInner `json:"certifications,omitempty"`
+	// An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields->product_specifics).         <b>The structure of the parameter is different for specific platforms.</b>
+	Specifics []ProductAddSpecificsInner `json:"specifics,omitempty"`
+	// Allows to schedule a time in the future that the item becomes available. The value should be greater than the current date and time.
+	AvailFrom *string `json:"avail_from,omitempty"`
+	// Defines the date of special price creation
+	SpriceCreate *string `json:"sprice_create,omitempty"`
+	// Defines the date of special price modification
+	SpriceModified *string `json:"sprice_modified,omitempty"`
+	// Defines the term of special price offer duration
+	SpriceExpire *string `json:"sprice_expire,omitempty"`
+	// Defines the date of entity creation
+	CreatedAt *string `json:"created_at,omitempty"`
+	// When true, automatically renews a listing upon its expiration.
+	AutoRenew *bool `json:"auto_renew,omitempty"`
+	// An enumerated string for the era in which the maker made the product.
+	WhenMade *string `json:"when_made,omitempty"`
+	// Defines unique meta title for each entity
+	MetaTitle *string `json:"meta_title,omitempty"`
+	// Defines unique meta keywords for each entity
+	MetaKeywords *string `json:"meta_keywords,omitempty"`
+	// Defines unique meta description of a entity
+	MetaDescription *string `json:"meta_description,omitempty"`
+	// Defines unique product's URL
+	Url *string `json:"url,omitempty"`
+	// Defines unique URL for SEO
+	SeoUrl *string `json:"seo_url,omitempty"`
+	// Defines tax classes where entity has to be added
+	TaxClassId *string `json:"tax_class_id,omitempty"`
+	// Specifies whether a tax is charged
+	Taxable *bool `json:"taxable,omitempty"`
+	SalesTax *ProductAddSalesTax `json:"sales_tax,omitempty"`
+	// The human-readable label for the condition (e.g., \"New\").
+	Condition *string `json:"condition,omitempty"`
+	// Detailed description of the product condition.
+	ConditionDescription *string `json:"condition_description,omitempty"`
+	// Flag used to determine whether the product condition is shown to the customer on the product page.
+	AllowDisplayCondition *bool `json:"allow_display_condition,omitempty"`
+	// Identifies the payment method (such as PayPal) that the seller will accept when the buyer pays for the item. Look at cart.info method response for allowed values.<hr><div style=\"font-style:normal\">Param structure:<div style=\"margin-left: 2%;\"><code style=\"padding:0; background-color:#ffffff;font-size:85%;font-family:monospace;\">payment_methods[0] = string</br>payment_methods[1] = string</br></code></div></div>
+	PaymentMethods []string `json:"payment_methods,omitempty"`
+	// Valid PayPal email address for the PayPal account that the seller will use if they offer PayPal as a payment method for the listing.
+	PaypalEmail *string `json:"paypal_email,omitempty"`
+	// The numeric ID of the shipping template associated with the products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field shipping_zones[]->id.
+	ShippingTemplateId *int32 `json:"shipping_template_id,omitempty"`
+	// The shipping details, including flat and calculated shipping costs and shipping insurance costs. Look at cart.info method response for allowed values.<hr><div style=\"font-style:normal\">Param structure:<div style=\"margin-left: 2%;\"><code style=\"padding:0; background-color:#ffffff;font-size:85%;font-family:monospace;\">shipping_details[0][<b>shipping_type</b>] = string </br>shipping_details[0][<b>shipping_service</b>] = string</br>shipping_details[0][<b>shipping_cost</b>] = decimal</br>shipping_details[1][<b>shipping_type</b>] = string </br>shipping_details[1][<b>shipping_service</b>] = string</br>shipping_details[1][<b>shipping_cost</b>] = decimal</br></code></div></div>
+	ShippingDetails []ProductAddShippingDetailsInner `json:"shipping_details,omitempty"`
 	// Specifies product's free shipping flag that has to be added
 	IsFreeShipping *bool `json:"is_free_shipping,omitempty"`
-	// Set stock status
-	InStock *bool `json:"in_stock,omitempty"`
 	// The delivery promise that applies to offer
 	DeliveryCode *string `json:"delivery_code,omitempty"`
-	// Groups all variations, that you want to combine into one product.
-	ProductReference *string `json:"product_reference,omitempty"`
 	// Defines the type of the delivery.
 	DeliveryType *string `json:"delivery_type,omitempty"`
 	// Defines delivery time in days.
 	DeliveryTime *int32 `json:"delivery_time,omitempty"`
-	SizeChart *ProductAddSizeChart `json:"size_chart,omitempty"`
-	// An array of product certifications. The list of possible certifications can be obtained using the \"<i>category.info</i>\" method (<i>additional_fields->rules->product_certifications</i>).
-	Certifications []ProductAddCertificationsInner `json:"certifications,omitempty"`
 	// Defines delivery options for product by ids.
 	DeliveryOptionIds *string `json:"delivery_option_ids,omitempty"`
-	ManufacturerInfo *ProductAddManufacturerInfo `json:"manufacturer_info,omitempty"`
-	// An enumerated string for the era in which the maker made the product.
-	WhenMade *string `json:"when_made,omitempty"`
-	// If true, it indicates the product as a supply, otherwise it indicates that it is a finished product.
-	IsSupply *bool `json:"is_supply,omitempty"`
-	// A list of material strings for materials used in the product.
-	Materials []string `json:"materials,omitempty"`
-	// When true, automatically renews a listing upon its expiration.
-	AutoRenew *bool `json:"auto_renew,omitempty"`
-	// Flag used to determine whether the product condition is shown to the customer on the product page.
-	AllowDisplayCondition *bool `json:"allow_display_condition,omitempty"`
-	// The minimum quantity an order must contain, to be eligible to purchase this product.
-	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
-	// The maximum quantity an order can contain when purchasing the product.
-	MaxOrderQuantity *float32 `json:"max_order_quantity,omitempty"`
+	PackageDetails *ProductAddPackageDetails `json:"package_details,omitempty"`
+	// Defines product's logistic channel settings
+	LogisticInfo []ProductAddLogisticInfoInner `json:"logistic_info,omitempty"`
+	// Describes the number of days the seller wants the listing to be active. Look at cart.info method response for allowed values.
+	ListingDuration *string `json:"listing_duration,omitempty"`
+	// Indicates the selling format of the marketplace listing.
+	ListingType *string `json:"listing_type,omitempty"`
+	// Indicates whether the seller allows the buyer to return the item.
+	ReturnAccepted *bool `json:"return_accepted,omitempty"`
+	SellerProfiles *ProductAddSellerProfiles `json:"seller_profiles,omitempty"`
+	// This allows buyers to remain anonymous when the bid or buy an item.
+	AuctionConfidentialityLevel *string `json:"auction_confidentiality_level,omitempty"`
+	BestOffer *ProductAddBestOffer `json:"best_offer,omitempty"`
+	// Defines product's production partner ids that has to be added
+	ProductionPartnerIds *string `json:"production_partner_ids,omitempty"`
+	// String containing the JSON representation of the supplied data
+	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
+	// Is cache clear required
+	ClearCache *bool `json:"clear_cache,omitempty"`
+	// Specifies the number of product's reviews
+	ViewedCount *int32 `json:"viewed_count,omitempty"`
+	// Defines how many times the product was ordered
+	OrderedCount *int32 `json:"ordered_count,omitempty"`
 }
 
 type _ProductAdd ProductAdd
@@ -254,40 +254,40 @@ func NewProductAdd(name string, model string, description string, price float32)
 	this.Model = model
 	this.Description = description
 	this.Price = price
+	var type_ string = "simple"
+	this.Type = &type_
+	var isVirtual bool = false
+	this.IsVirtual = &isVirtual
+	var downloadable bool = false
+	this.Downloadable = &downloadable
+	var isSupply bool = true
+	this.IsSupply = &isSupply
 	var availableForView bool = true
 	this.AvailableForView = &availableForView
 	var availableForSale bool = true
 	this.AvailableForSale = &availableForSale
-	var weight float32 = 0
-	this.Weight = &weight
 	var quantity float32 = 0
 	this.Quantity = &quantity
-	var downloadable bool = false
-	this.Downloadable = &downloadable
-	var type_ string = "simple"
-	this.Type = &type_
-	var viewedCount int32 = 0
-	this.ViewedCount = &viewedCount
-	var orderedCount int32 = 0
-	this.OrderedCount = &orderedCount
+	var weight float32 = 0
+	this.Weight = &weight
 	var attributeSetName string = "Default"
 	this.AttributeSetName = &attributeSetName
+	var autoRenew bool = false
+	this.AutoRenew = &autoRenew
+	var whenMade string = "made_to_order"
+	this.WhenMade = &whenMade
+	var taxable bool = true
+	this.Taxable = &taxable
 	var shippingTemplateId int32 = 0
 	this.ShippingTemplateId = &shippingTemplateId
 	var listingType string = "FixedPrice"
 	this.ListingType = &listingType
 	var clearCache bool = true
 	this.ClearCache = &clearCache
-	var taxable bool = true
-	this.Taxable = &taxable
-	var isVirtual bool = false
-	this.IsVirtual = &isVirtual
-	var whenMade string = "made_to_order"
-	this.WhenMade = &whenMade
-	var isSupply bool = true
-	this.IsSupply = &isSupply
-	var autoRenew bool = false
-	this.AutoRenew = &autoRenew
+	var viewedCount int32 = 0
+	this.ViewedCount = &viewedCount
+	var orderedCount int32 = 0
+	this.OrderedCount = &orderedCount
 	return &this
 }
 
@@ -296,40 +296,40 @@ func NewProductAdd(name string, model string, description string, price float32)
 // but it doesn't guarantee that properties required by API are set
 func NewProductAddWithDefaults() *ProductAdd {
 	this := ProductAdd{}
+	var type_ string = "simple"
+	this.Type = &type_
+	var isVirtual bool = false
+	this.IsVirtual = &isVirtual
+	var downloadable bool = false
+	this.Downloadable = &downloadable
+	var isSupply bool = true
+	this.IsSupply = &isSupply
 	var availableForView bool = true
 	this.AvailableForView = &availableForView
 	var availableForSale bool = true
 	this.AvailableForSale = &availableForSale
-	var weight float32 = 0
-	this.Weight = &weight
 	var quantity float32 = 0
 	this.Quantity = &quantity
-	var downloadable bool = false
-	this.Downloadable = &downloadable
-	var type_ string = "simple"
-	this.Type = &type_
-	var viewedCount int32 = 0
-	this.ViewedCount = &viewedCount
-	var orderedCount int32 = 0
-	this.OrderedCount = &orderedCount
+	var weight float32 = 0
+	this.Weight = &weight
 	var attributeSetName string = "Default"
 	this.AttributeSetName = &attributeSetName
+	var autoRenew bool = false
+	this.AutoRenew = &autoRenew
+	var whenMade string = "made_to_order"
+	this.WhenMade = &whenMade
+	var taxable bool = true
+	this.Taxable = &taxable
 	var shippingTemplateId int32 = 0
 	this.ShippingTemplateId = &shippingTemplateId
 	var listingType string = "FixedPrice"
 	this.ListingType = &listingType
 	var clearCache bool = true
 	this.ClearCache = &clearCache
-	var taxable bool = true
-	this.Taxable = &taxable
-	var isVirtual bool = false
-	this.IsVirtual = &isVirtual
-	var whenMade string = "made_to_order"
-	this.WhenMade = &whenMade
-	var isSupply bool = true
-	this.IsSupply = &isSupply
-	var autoRenew bool = false
-	this.AutoRenew = &autoRenew
+	var viewedCount int32 = 0
+	this.ViewedCount = &viewedCount
+	var orderedCount int32 = 0
+	this.OrderedCount = &orderedCount
 	return &this
 }
 
@@ -381,38 +381,6 @@ func (o *ProductAdd) SetModel(v string) {
 	o.Model = v
 }
 
-// GetSku returns the Sku field value if set, zero value otherwise.
-func (o *ProductAdd) GetSku() string {
-	if o == nil || IsNil(o.Sku) {
-		var ret string
-		return ret
-	}
-	return *o.Sku
-}
-
-// GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSkuOk() (*string, bool) {
-	if o == nil || IsNil(o.Sku) {
-		return nil, false
-	}
-	return o.Sku, true
-}
-
-// HasSku returns a boolean if a field has been set.
-func (o *ProductAdd) HasSku() bool {
-	if o != nil && !IsNil(o.Sku) {
-		return true
-	}
-
-	return false
-}
-
-// SetSku gets a reference to the given string and assigns it to the Sku field.
-func (o *ProductAdd) SetSku(v string) {
-	o.Sku = &v
-}
-
 // GetDescription returns the Description field value
 func (o *ProductAdd) GetDescription() string {
 	if o == nil {
@@ -461,292 +429,388 @@ func (o *ProductAdd) SetPrice(v float32) {
 	o.Price = v
 }
 
-// GetOldPrice returns the OldPrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetOldPrice() float32 {
-	if o == nil || IsNil(o.OldPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.OldPrice
-}
-
-// GetOldPriceOk returns a tuple with the OldPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetOldPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.OldPrice) {
-		return nil, false
-	}
-	return o.OldPrice, true
-}
-
-// HasOldPrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasOldPrice() bool {
-	if o != nil && !IsNil(o.OldPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetOldPrice gets a reference to the given float32 and assigns it to the OldPrice field.
-func (o *ProductAdd) SetOldPrice(v float32) {
-	o.OldPrice = &v
-}
-
-// GetSpecialPrice returns the SpecialPrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetSpecialPrice() float32 {
-	if o == nil || IsNil(o.SpecialPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.SpecialPrice
-}
-
-// GetSpecialPriceOk returns a tuple with the SpecialPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSpecialPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.SpecialPrice) {
-		return nil, false
-	}
-	return o.SpecialPrice, true
-}
-
-// HasSpecialPrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasSpecialPrice() bool {
-	if o != nil && !IsNil(o.SpecialPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpecialPrice gets a reference to the given float32 and assigns it to the SpecialPrice field.
-func (o *ProductAdd) SetSpecialPrice(v float32) {
-	o.SpecialPrice = &v
-}
-
-// GetCostPrice returns the CostPrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetCostPrice() float32 {
-	if o == nil || IsNil(o.CostPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.CostPrice
-}
-
-// GetCostPriceOk returns a tuple with the CostPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCostPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.CostPrice) {
-		return nil, false
-	}
-	return o.CostPrice, true
-}
-
-// HasCostPrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasCostPrice() bool {
-	if o != nil && !IsNil(o.CostPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetCostPrice gets a reference to the given float32 and assigns it to the CostPrice field.
-func (o *ProductAdd) SetCostPrice(v float32) {
-	o.CostPrice = &v
-}
-
-// GetFixedCostShippingPrice returns the FixedCostShippingPrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetFixedCostShippingPrice() float32 {
-	if o == nil || IsNil(o.FixedCostShippingPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.FixedCostShippingPrice
-}
-
-// GetFixedCostShippingPriceOk returns a tuple with the FixedCostShippingPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetFixedCostShippingPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.FixedCostShippingPrice) {
-		return nil, false
-	}
-	return o.FixedCostShippingPrice, true
-}
-
-// HasFixedCostShippingPrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasFixedCostShippingPrice() bool {
-	if o != nil && !IsNil(o.FixedCostShippingPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetFixedCostShippingPrice gets a reference to the given float32 and assigns it to the FixedCostShippingPrice field.
-func (o *ProductAdd) SetFixedCostShippingPrice(v float32) {
-	o.FixedCostShippingPrice = &v
-}
-
-// GetSpriceCreate returns the SpriceCreate field value if set, zero value otherwise.
-func (o *ProductAdd) GetSpriceCreate() string {
-	if o == nil || IsNil(o.SpriceCreate) {
+// GetSku returns the Sku field value if set, zero value otherwise.
+func (o *ProductAdd) GetSku() string {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
-	return *o.SpriceCreate
+	return *o.Sku
 }
 
-// GetSpriceCreateOk returns a tuple with the SpriceCreate field value if set, nil otherwise
+// GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSpriceCreateOk() (*string, bool) {
-	if o == nil || IsNil(o.SpriceCreate) {
+func (o *ProductAdd) GetSkuOk() (*string, bool) {
+	if o == nil || IsNil(o.Sku) {
 		return nil, false
 	}
-	return o.SpriceCreate, true
+	return o.Sku, true
 }
 
-// HasSpriceCreate returns a boolean if a field has been set.
-func (o *ProductAdd) HasSpriceCreate() bool {
-	if o != nil && !IsNil(o.SpriceCreate) {
+// HasSku returns a boolean if a field has been set.
+func (o *ProductAdd) HasSku() bool {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpriceCreate gets a reference to the given string and assigns it to the SpriceCreate field.
-func (o *ProductAdd) SetSpriceCreate(v string) {
-	o.SpriceCreate = &v
+// SetSku gets a reference to the given string and assigns it to the Sku field.
+func (o *ProductAdd) SetSku(v string) {
+	o.Sku = &v
 }
 
-// GetSpriceModified returns the SpriceModified field value if set, zero value otherwise.
-func (o *ProductAdd) GetSpriceModified() string {
-	if o == nil || IsNil(o.SpriceModified) {
+// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
+func (o *ProductAdd) GetShortDescription() string {
+	if o == nil || IsNil(o.ShortDescription) {
 		var ret string
 		return ret
 	}
-	return *o.SpriceModified
+	return *o.ShortDescription
 }
 
-// GetSpriceModifiedOk returns a tuple with the SpriceModified field value if set, nil otherwise
+// GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSpriceModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.SpriceModified) {
+func (o *ProductAdd) GetShortDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.ShortDescription) {
 		return nil, false
 	}
-	return o.SpriceModified, true
+	return o.ShortDescription, true
 }
 
-// HasSpriceModified returns a boolean if a field has been set.
-func (o *ProductAdd) HasSpriceModified() bool {
-	if o != nil && !IsNil(o.SpriceModified) {
+// HasShortDescription returns a boolean if a field has been set.
+func (o *ProductAdd) HasShortDescription() bool {
+	if o != nil && !IsNil(o.ShortDescription) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpriceModified gets a reference to the given string and assigns it to the SpriceModified field.
-func (o *ProductAdd) SetSpriceModified(v string) {
-	o.SpriceModified = &v
+// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
+func (o *ProductAdd) SetShortDescription(v string) {
+	o.ShortDescription = &v
 }
 
-// GetSpriceExpire returns the SpriceExpire field value if set, zero value otherwise.
-func (o *ProductAdd) GetSpriceExpire() string {
-	if o == nil || IsNil(o.SpriceExpire) {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ProductAdd) GetType() string {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.SpriceExpire
+	return *o.Type
 }
 
-// GetSpriceExpireOk returns a tuple with the SpriceExpire field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSpriceExpireOk() (*string, bool) {
-	if o == nil || IsNil(o.SpriceExpire) {
+func (o *ProductAdd) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.SpriceExpire, true
+	return o.Type, true
 }
 
-// HasSpriceExpire returns a boolean if a field has been set.
-func (o *ProductAdd) HasSpriceExpire() bool {
-	if o != nil && !IsNil(o.SpriceExpire) {
+// HasType returns a boolean if a field has been set.
+func (o *ProductAdd) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpriceExpire gets a reference to the given string and assigns it to the SpriceExpire field.
-func (o *ProductAdd) SetSpriceExpire(v string) {
-	o.SpriceExpire = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ProductAdd) SetType(v string) {
+	o.Type = &v
 }
 
-// GetTierPrices returns the TierPrices field value if set, zero value otherwise.
-func (o *ProductAdd) GetTierPrices() []ProductAddTierPricesInner {
-	if o == nil || IsNil(o.TierPrices) {
-		var ret []ProductAddTierPricesInner
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProductAdd) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
 		return ret
 	}
-	return o.TierPrices
+	return *o.Status
 }
 
-// GetTierPricesOk returns a tuple with the TierPrices field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetTierPricesOk() ([]ProductAddTierPricesInner, bool) {
-	if o == nil || IsNil(o.TierPrices) {
+func (o *ProductAdd) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.TierPrices, true
+	return o.Status, true
 }
 
-// HasTierPrices returns a boolean if a field has been set.
-func (o *ProductAdd) HasTierPrices() bool {
-	if o != nil && !IsNil(o.TierPrices) {
+// HasStatus returns a boolean if a field has been set.
+func (o *ProductAdd) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetTierPrices gets a reference to the given []ProductAddTierPricesInner and assigns it to the TierPrices field.
-func (o *ProductAdd) SetTierPrices(v []ProductAddTierPricesInner) {
-	o.TierPrices = v
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ProductAdd) SetStatus(v string) {
+	o.Status = &v
 }
 
-// GetGroupPrices returns the GroupPrices field value if set, zero value otherwise.
-func (o *ProductAdd) GetGroupPrices() []ProductAddGroupPricesInner {
-	if o == nil || IsNil(o.GroupPrices) {
-		var ret []ProductAddGroupPricesInner
+// GetVisible returns the Visible field value if set, zero value otherwise.
+func (o *ProductAdd) GetVisible() string {
+	if o == nil || IsNil(o.Visible) {
+		var ret string
 		return ret
 	}
-	return o.GroupPrices
+	return *o.Visible
 }
 
-// GetGroupPricesOk returns a tuple with the GroupPrices field value if set, nil otherwise
+// GetVisibleOk returns a tuple with the Visible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetGroupPricesOk() ([]ProductAddGroupPricesInner, bool) {
-	if o == nil || IsNil(o.GroupPrices) {
+func (o *ProductAdd) GetVisibleOk() (*string, bool) {
+	if o == nil || IsNil(o.Visible) {
 		return nil, false
 	}
-	return o.GroupPrices, true
+	return o.Visible, true
 }
 
-// HasGroupPrices returns a boolean if a field has been set.
-func (o *ProductAdd) HasGroupPrices() bool {
-	if o != nil && !IsNil(o.GroupPrices) {
+// HasVisible returns a boolean if a field has been set.
+func (o *ProductAdd) HasVisible() bool {
+	if o != nil && !IsNil(o.Visible) {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupPrices gets a reference to the given []ProductAddGroupPricesInner and assigns it to the GroupPrices field.
-func (o *ProductAdd) SetGroupPrices(v []ProductAddGroupPricesInner) {
-	o.GroupPrices = v
+// SetVisible gets a reference to the given string and assigns it to the Visible field.
+func (o *ProductAdd) SetVisible(v string) {
+	o.Visible = &v
+}
+
+// GetCategoryId returns the CategoryId field value if set, zero value otherwise.
+func (o *ProductAdd) GetCategoryId() string {
+	if o == nil || IsNil(o.CategoryId) {
+		var ret string
+		return ret
+	}
+	return *o.CategoryId
+}
+
+// GetCategoryIdOk returns a tuple with the CategoryId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCategoryIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CategoryId) {
+		return nil, false
+	}
+	return o.CategoryId, true
+}
+
+// HasCategoryId returns a boolean if a field has been set.
+func (o *ProductAdd) HasCategoryId() bool {
+	if o != nil && !IsNil(o.CategoryId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategoryId gets a reference to the given string and assigns it to the CategoryId field.
+func (o *ProductAdd) SetCategoryId(v string) {
+	o.CategoryId = &v
+}
+
+// GetCategoriesIds returns the CategoriesIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetCategoriesIds() string {
+	if o == nil || IsNil(o.CategoriesIds) {
+		var ret string
+		return ret
+	}
+	return *o.CategoriesIds
+}
+
+// GetCategoriesIdsOk returns a tuple with the CategoriesIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCategoriesIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.CategoriesIds) {
+		return nil, false
+	}
+	return o.CategoriesIds, true
+}
+
+// HasCategoriesIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasCategoriesIds() bool {
+	if o != nil && !IsNil(o.CategoriesIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategoriesIds gets a reference to the given string and assigns it to the CategoriesIds field.
+func (o *ProductAdd) SetCategoriesIds(v string) {
+	o.CategoriesIds = &v
+}
+
+// GetProductClass returns the ProductClass field value if set, zero value otherwise.
+func (o *ProductAdd) GetProductClass() string {
+	if o == nil || IsNil(o.ProductClass) {
+		var ret string
+		return ret
+	}
+	return *o.ProductClass
+}
+
+// GetProductClassOk returns a tuple with the ProductClass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetProductClassOk() (*string, bool) {
+	if o == nil || IsNil(o.ProductClass) {
+		return nil, false
+	}
+	return o.ProductClass, true
+}
+
+// HasProductClass returns a boolean if a field has been set.
+func (o *ProductAdd) HasProductClass() bool {
+	if o != nil && !IsNil(o.ProductClass) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductClass gets a reference to the given string and assigns it to the ProductClass field.
+func (o *ProductAdd) SetProductClass(v string) {
+	o.ProductClass = &v
+}
+
+// GetProductType returns the ProductType field value if set, zero value otherwise.
+func (o *ProductAdd) GetProductType() string {
+	if o == nil || IsNil(o.ProductType) {
+		var ret string
+		return ret
+	}
+	return *o.ProductType
+}
+
+// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetProductTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProductType) {
+		return nil, false
+	}
+	return o.ProductType, true
+}
+
+// HasProductType returns a boolean if a field has been set.
+func (o *ProductAdd) HasProductType() bool {
+	if o != nil && !IsNil(o.ProductType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductType gets a reference to the given string and assigns it to the ProductType field.
+func (o *ProductAdd) SetProductType(v string) {
+	o.ProductType = &v
+}
+
+// GetIsVirtual returns the IsVirtual field value if set, zero value otherwise.
+func (o *ProductAdd) GetIsVirtual() bool {
+	if o == nil || IsNil(o.IsVirtual) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtual
+}
+
+// GetIsVirtualOk returns a tuple with the IsVirtual field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetIsVirtualOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtual) {
+		return nil, false
+	}
+	return o.IsVirtual, true
+}
+
+// HasIsVirtual returns a boolean if a field has been set.
+func (o *ProductAdd) HasIsVirtual() bool {
+	if o != nil && !IsNil(o.IsVirtual) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtual gets a reference to the given bool and assigns it to the IsVirtual field.
+func (o *ProductAdd) SetIsVirtual(v bool) {
+	o.IsVirtual = &v
+}
+
+// GetDownloadable returns the Downloadable field value if set, zero value otherwise.
+func (o *ProductAdd) GetDownloadable() bool {
+	if o == nil || IsNil(o.Downloadable) {
+		var ret bool
+		return ret
+	}
+	return *o.Downloadable
+}
+
+// GetDownloadableOk returns a tuple with the Downloadable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetDownloadableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Downloadable) {
+		return nil, false
+	}
+	return o.Downloadable, true
+}
+
+// HasDownloadable returns a boolean if a field has been set.
+func (o *ProductAdd) HasDownloadable() bool {
+	if o != nil && !IsNil(o.Downloadable) {
+		return true
+	}
+
+	return false
+}
+
+// SetDownloadable gets a reference to the given bool and assigns it to the Downloadable field.
+func (o *ProductAdd) SetDownloadable(v bool) {
+	o.Downloadable = &v
+}
+
+// GetIsSupply returns the IsSupply field value if set, zero value otherwise.
+func (o *ProductAdd) GetIsSupply() bool {
+	if o == nil || IsNil(o.IsSupply) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSupply
+}
+
+// GetIsSupplyOk returns a tuple with the IsSupply field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetIsSupplyOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSupply) {
+		return nil, false
+	}
+	return o.IsSupply, true
+}
+
+// HasIsSupply returns a boolean if a field has been set.
+func (o *ProductAdd) HasIsSupply() bool {
+	if o != nil && !IsNil(o.IsSupply) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSupply gets a reference to the given bool and assigns it to the IsSupply field.
+func (o *ProductAdd) SetIsSupply(v bool) {
+	o.IsSupply = &v
 }
 
 // GetAvailableForView returns the AvailableForView field value if set, zero value otherwise.
@@ -813,6 +877,614 @@ func (o *ProductAdd) SetAvailableForSale(v bool) {
 	o.AvailableForSale = &v
 }
 
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *ProductAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *ProductAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *ProductAdd) SetStoreId(v string) {
+	o.StoreId = &v
+}
+
+// GetStoresIds returns the StoresIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetStoresIds() string {
+	if o == nil || IsNil(o.StoresIds) {
+		var ret string
+		return ret
+	}
+	return *o.StoresIds
+}
+
+// GetStoresIdsOk returns a tuple with the StoresIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetStoresIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.StoresIds) {
+		return nil, false
+	}
+	return o.StoresIds, true
+}
+
+// HasStoresIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasStoresIds() bool {
+	if o != nil && !IsNil(o.StoresIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoresIds gets a reference to the given string and assigns it to the StoresIds field.
+func (o *ProductAdd) SetStoresIds(v string) {
+	o.StoresIds = &v
+}
+
+// GetLangId returns the LangId field value if set, zero value otherwise.
+func (o *ProductAdd) GetLangId() string {
+	if o == nil || IsNil(o.LangId) {
+		var ret string
+		return ret
+	}
+	return *o.LangId
+}
+
+// GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetLangIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LangId) {
+		return nil, false
+	}
+	return o.LangId, true
+}
+
+// HasLangId returns a boolean if a field has been set.
+func (o *ProductAdd) HasLangId() bool {
+	if o != nil && !IsNil(o.LangId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLangId gets a reference to the given string and assigns it to the LangId field.
+func (o *ProductAdd) SetLangId(v string) {
+	o.LangId = &v
+}
+
+// GetOldPrice returns the OldPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetOldPrice() float32 {
+	if o == nil || IsNil(o.OldPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.OldPrice
+}
+
+// GetOldPriceOk returns a tuple with the OldPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetOldPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.OldPrice) {
+		return nil, false
+	}
+	return o.OldPrice, true
+}
+
+// HasOldPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasOldPrice() bool {
+	if o != nil && !IsNil(o.OldPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetOldPrice gets a reference to the given float32 and assigns it to the OldPrice field.
+func (o *ProductAdd) SetOldPrice(v float32) {
+	o.OldPrice = &v
+}
+
+// GetSpecialPrice returns the SpecialPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetSpecialPrice() float32 {
+	if o == nil || IsNil(o.SpecialPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.SpecialPrice
+}
+
+// GetSpecialPriceOk returns a tuple with the SpecialPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSpecialPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.SpecialPrice) {
+		return nil, false
+	}
+	return o.SpecialPrice, true
+}
+
+// HasSpecialPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasSpecialPrice() bool {
+	if o != nil && !IsNil(o.SpecialPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpecialPrice gets a reference to the given float32 and assigns it to the SpecialPrice field.
+func (o *ProductAdd) SetSpecialPrice(v float32) {
+	o.SpecialPrice = &v
+}
+
+// GetWholesalePrice returns the WholesalePrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetWholesalePrice() float32 {
+	if o == nil || IsNil(o.WholesalePrice) {
+		var ret float32
+		return ret
+	}
+	return *o.WholesalePrice
+}
+
+// GetWholesalePriceOk returns a tuple with the WholesalePrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetWholesalePriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.WholesalePrice) {
+		return nil, false
+	}
+	return o.WholesalePrice, true
+}
+
+// HasWholesalePrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasWholesalePrice() bool {
+	if o != nil && !IsNil(o.WholesalePrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetWholesalePrice gets a reference to the given float32 and assigns it to the WholesalePrice field.
+func (o *ProductAdd) SetWholesalePrice(v float32) {
+	o.WholesalePrice = &v
+}
+
+// GetCostPrice returns the CostPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetCostPrice() float32 {
+	if o == nil || IsNil(o.CostPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.CostPrice
+}
+
+// GetCostPriceOk returns a tuple with the CostPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCostPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.CostPrice) {
+		return nil, false
+	}
+	return o.CostPrice, true
+}
+
+// HasCostPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasCostPrice() bool {
+	if o != nil && !IsNil(o.CostPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetCostPrice gets a reference to the given float32 and assigns it to the CostPrice field.
+func (o *ProductAdd) SetCostPrice(v float32) {
+	o.CostPrice = &v
+}
+
+// GetFixedCostShippingPrice returns the FixedCostShippingPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetFixedCostShippingPrice() float32 {
+	if o == nil || IsNil(o.FixedCostShippingPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.FixedCostShippingPrice
+}
+
+// GetFixedCostShippingPriceOk returns a tuple with the FixedCostShippingPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetFixedCostShippingPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.FixedCostShippingPrice) {
+		return nil, false
+	}
+	return o.FixedCostShippingPrice, true
+}
+
+// HasFixedCostShippingPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasFixedCostShippingPrice() bool {
+	if o != nil && !IsNil(o.FixedCostShippingPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetFixedCostShippingPrice gets a reference to the given float32 and assigns it to the FixedCostShippingPrice field.
+func (o *ProductAdd) SetFixedCostShippingPrice(v float32) {
+	o.FixedCostShippingPrice = &v
+}
+
+// GetTierPrices returns the TierPrices field value if set, zero value otherwise.
+func (o *ProductAdd) GetTierPrices() []ProductAddTierPricesInner {
+	if o == nil || IsNil(o.TierPrices) {
+		var ret []ProductAddTierPricesInner
+		return ret
+	}
+	return o.TierPrices
+}
+
+// GetTierPricesOk returns a tuple with the TierPrices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetTierPricesOk() ([]ProductAddTierPricesInner, bool) {
+	if o == nil || IsNil(o.TierPrices) {
+		return nil, false
+	}
+	return o.TierPrices, true
+}
+
+// HasTierPrices returns a boolean if a field has been set.
+func (o *ProductAdd) HasTierPrices() bool {
+	if o != nil && !IsNil(o.TierPrices) {
+		return true
+	}
+
+	return false
+}
+
+// SetTierPrices gets a reference to the given []ProductAddTierPricesInner and assigns it to the TierPrices field.
+func (o *ProductAdd) SetTierPrices(v []ProductAddTierPricesInner) {
+	o.TierPrices = v
+}
+
+// GetGroupPrices returns the GroupPrices field value if set, zero value otherwise.
+func (o *ProductAdd) GetGroupPrices() []ProductAddGroupPricesInner {
+	if o == nil || IsNil(o.GroupPrices) {
+		var ret []ProductAddGroupPricesInner
+		return ret
+	}
+	return o.GroupPrices
+}
+
+// GetGroupPricesOk returns a tuple with the GroupPrices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetGroupPricesOk() ([]ProductAddGroupPricesInner, bool) {
+	if o == nil || IsNil(o.GroupPrices) {
+		return nil, false
+	}
+	return o.GroupPrices, true
+}
+
+// HasGroupPrices returns a boolean if a field has been set.
+func (o *ProductAdd) HasGroupPrices() bool {
+	if o != nil && !IsNil(o.GroupPrices) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupPrices gets a reference to the given []ProductAddGroupPricesInner and assigns it to the GroupPrices field.
+func (o *ProductAdd) SetGroupPrices(v []ProductAddGroupPricesInner) {
+	o.GroupPrices = v
+}
+
+// GetBuyitnowPrice returns the BuyitnowPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetBuyitnowPrice() float32 {
+	if o == nil || IsNil(o.BuyitnowPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.BuyitnowPrice
+}
+
+// GetBuyitnowPriceOk returns a tuple with the BuyitnowPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetBuyitnowPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.BuyitnowPrice) {
+		return nil, false
+	}
+	return o.BuyitnowPrice, true
+}
+
+// HasBuyitnowPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasBuyitnowPrice() bool {
+	if o != nil && !IsNil(o.BuyitnowPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyitnowPrice gets a reference to the given float32 and assigns it to the BuyitnowPrice field.
+func (o *ProductAdd) SetBuyitnowPrice(v float32) {
+	o.BuyitnowPrice = &v
+}
+
+// GetReservePrice returns the ReservePrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetReservePrice() float32 {
+	if o == nil || IsNil(o.ReservePrice) {
+		var ret float32
+		return ret
+	}
+	return *o.ReservePrice
+}
+
+// GetReservePriceOk returns a tuple with the ReservePrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetReservePriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.ReservePrice) {
+		return nil, false
+	}
+	return o.ReservePrice, true
+}
+
+// HasReservePrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasReservePrice() bool {
+	if o != nil && !IsNil(o.ReservePrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetReservePrice gets a reference to the given float32 and assigns it to the ReservePrice field.
+func (o *ProductAdd) SetReservePrice(v float32) {
+	o.ReservePrice = &v
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise.
+func (o *ProductAdd) GetQuantity() float32 {
+	if o == nil || IsNil(o.Quantity) {
+		var ret float32
+		return ret
+	}
+	return *o.Quantity
+}
+
+// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.Quantity) {
+		return nil, false
+	}
+	return o.Quantity, true
+}
+
+// HasQuantity returns a boolean if a field has been set.
+func (o *ProductAdd) HasQuantity() bool {
+	if o != nil && !IsNil(o.Quantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuantity gets a reference to the given float32 and assigns it to the Quantity field.
+func (o *ProductAdd) SetQuantity(v float32) {
+	o.Quantity = &v
+}
+
+// GetInStock returns the InStock field value if set, zero value otherwise.
+func (o *ProductAdd) GetInStock() bool {
+	if o == nil || IsNil(o.InStock) {
+		var ret bool
+		return ret
+	}
+	return *o.InStock
+}
+
+// GetInStockOk returns a tuple with the InStock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetInStockOk() (*bool, bool) {
+	if o == nil || IsNil(o.InStock) {
+		return nil, false
+	}
+	return o.InStock, true
+}
+
+// HasInStock returns a boolean if a field has been set.
+func (o *ProductAdd) HasInStock() bool {
+	if o != nil && !IsNil(o.InStock) {
+		return true
+	}
+
+	return false
+}
+
+// SetInStock gets a reference to the given bool and assigns it to the InStock field.
+func (o *ProductAdd) SetInStock(v bool) {
+	o.InStock = &v
+}
+
+// GetManageStock returns the ManageStock field value if set, zero value otherwise.
+func (o *ProductAdd) GetManageStock() bool {
+	if o == nil || IsNil(o.ManageStock) {
+		var ret bool
+		return ret
+	}
+	return *o.ManageStock
+}
+
+// GetManageStockOk returns a tuple with the ManageStock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetManageStockOk() (*bool, bool) {
+	if o == nil || IsNil(o.ManageStock) {
+		return nil, false
+	}
+	return o.ManageStock, true
+}
+
+// HasManageStock returns a boolean if a field has been set.
+func (o *ProductAdd) HasManageStock() bool {
+	if o != nil && !IsNil(o.ManageStock) {
+		return true
+	}
+
+	return false
+}
+
+// SetManageStock gets a reference to the given bool and assigns it to the ManageStock field.
+func (o *ProductAdd) SetManageStock(v bool) {
+	o.ManageStock = &v
+}
+
+// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
+func (o *ProductAdd) GetWarehouseId() string {
+	if o == nil || IsNil(o.WarehouseId) {
+		var ret string
+		return ret
+	}
+	return *o.WarehouseId
+}
+
+// GetWarehouseIdOk returns a tuple with the WarehouseId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetWarehouseIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WarehouseId) {
+		return nil, false
+	}
+	return o.WarehouseId, true
+}
+
+// HasWarehouseId returns a boolean if a field has been set.
+func (o *ProductAdd) HasWarehouseId() bool {
+	if o != nil && !IsNil(o.WarehouseId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
+func (o *ProductAdd) SetWarehouseId(v string) {
+	o.WarehouseId = &v
+}
+
+// GetBackorderStatus returns the BackorderStatus field value if set, zero value otherwise.
+func (o *ProductAdd) GetBackorderStatus() string {
+	if o == nil || IsNil(o.BackorderStatus) {
+		var ret string
+		return ret
+	}
+	return *o.BackorderStatus
+}
+
+// GetBackorderStatusOk returns a tuple with the BackorderStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetBackorderStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.BackorderStatus) {
+		return nil, false
+	}
+	return o.BackorderStatus, true
+}
+
+// HasBackorderStatus returns a boolean if a field has been set.
+func (o *ProductAdd) HasBackorderStatus() bool {
+	if o != nil && !IsNil(o.BackorderStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackorderStatus gets a reference to the given string and assigns it to the BackorderStatus field.
+func (o *ProductAdd) SetBackorderStatus(v string) {
+	o.BackorderStatus = &v
+}
+
+// GetMinOrderQuantity returns the MinOrderQuantity field value if set, zero value otherwise.
+func (o *ProductAdd) GetMinOrderQuantity() float32 {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		var ret float32
+		return ret
+	}
+	return *o.MinOrderQuantity
+}
+
+// GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMinOrderQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		return nil, false
+	}
+	return o.MinOrderQuantity, true
+}
+
+// HasMinOrderQuantity returns a boolean if a field has been set.
+func (o *ProductAdd) HasMinOrderQuantity() bool {
+	if o != nil && !IsNil(o.MinOrderQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinOrderQuantity gets a reference to the given float32 and assigns it to the MinOrderQuantity field.
+func (o *ProductAdd) SetMinOrderQuantity(v float32) {
+	o.MinOrderQuantity = &v
+}
+
+// GetMaxOrderQuantity returns the MaxOrderQuantity field value if set, zero value otherwise.
+func (o *ProductAdd) GetMaxOrderQuantity() float32 {
+	if o == nil || IsNil(o.MaxOrderQuantity) {
+		var ret float32
+		return ret
+	}
+	return *o.MaxOrderQuantity
+}
+
+// GetMaxOrderQuantityOk returns a tuple with the MaxOrderQuantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMaxOrderQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.MaxOrderQuantity) {
+		return nil, false
+	}
+	return o.MaxOrderQuantity, true
+}
+
+// HasMaxOrderQuantity returns a boolean if a field has been set.
+func (o *ProductAdd) HasMaxOrderQuantity() bool {
+	if o != nil && !IsNil(o.MaxOrderQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxOrderQuantity gets a reference to the given float32 and assigns it to the MaxOrderQuantity field.
+func (o *ProductAdd) SetMaxOrderQuantity(v float32) {
+	o.MaxOrderQuantity = &v
+}
+
 // GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *ProductAdd) GetWeight() float32 {
 	if o == nil || IsNil(o.Weight) {
@@ -843,6 +1515,38 @@ func (o *ProductAdd) HasWeight() bool {
 // SetWeight gets a reference to the given float32 and assigns it to the Weight field.
 func (o *ProductAdd) SetWeight(v float32) {
 	o.Weight = &v
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+func (o *ProductAdd) GetWeightUnit() string {
+	if o == nil || IsNil(o.WeightUnit) {
+		var ret string
+		return ret
+	}
+	return *o.WeightUnit
+}
+
+// GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetWeightUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.WeightUnit) {
+		return nil, false
+	}
+	return o.WeightUnit, true
+}
+
+// HasWeightUnit returns a boolean if a field has been set.
+func (o *ProductAdd) HasWeightUnit() bool {
+	if o != nil && !IsNil(o.WeightUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+func (o *ProductAdd) SetWeightUnit(v string) {
+	o.WeightUnit = &v
 }
 
 // GetWidth returns the Width field value if set, zero value otherwise.
@@ -941,38 +1645,6 @@ func (o *ProductAdd) SetLength(v float32) {
 	o.Length = &v
 }
 
-// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
-func (o *ProductAdd) GetWeightUnit() string {
-	if o == nil || IsNil(o.WeightUnit) {
-		var ret string
-		return ret
-	}
-	return *o.WeightUnit
-}
-
-// GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetWeightUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.WeightUnit) {
-		return nil, false
-	}
-	return o.WeightUnit, true
-}
-
-// HasWeightUnit returns a boolean if a field has been set.
-func (o *ProductAdd) HasWeightUnit() bool {
-	if o != nil && !IsNil(o.WeightUnit) {
-		return true
-	}
-
-	return false
-}
-
-// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
-func (o *ProductAdd) SetWeightUnit(v string) {
-	o.WeightUnit = &v
-}
-
 // GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise.
 func (o *ProductAdd) GetDimensionsUnit() string {
 	if o == nil || IsNil(o.DimensionsUnit) {
@@ -1003,1254 +1675,6 @@ func (o *ProductAdd) HasDimensionsUnit() bool {
 // SetDimensionsUnit gets a reference to the given string and assigns it to the DimensionsUnit field.
 func (o *ProductAdd) SetDimensionsUnit(v string) {
 	o.DimensionsUnit = &v
-}
-
-// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
-func (o *ProductAdd) GetShortDescription() string {
-	if o == nil || IsNil(o.ShortDescription) {
-		var ret string
-		return ret
-	}
-	return *o.ShortDescription
-}
-
-// GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetShortDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ShortDescription) {
-		return nil, false
-	}
-	return o.ShortDescription, true
-}
-
-// HasShortDescription returns a boolean if a field has been set.
-func (o *ProductAdd) HasShortDescription() bool {
-	if o != nil && !IsNil(o.ShortDescription) {
-		return true
-	}
-
-	return false
-}
-
-// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
-func (o *ProductAdd) SetShortDescription(v string) {
-	o.ShortDescription = &v
-}
-
-// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
-func (o *ProductAdd) GetWarehouseId() string {
-	if o == nil || IsNil(o.WarehouseId) {
-		var ret string
-		return ret
-	}
-	return *o.WarehouseId
-}
-
-// GetWarehouseIdOk returns a tuple with the WarehouseId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetWarehouseIdOk() (*string, bool) {
-	if o == nil || IsNil(o.WarehouseId) {
-		return nil, false
-	}
-	return o.WarehouseId, true
-}
-
-// HasWarehouseId returns a boolean if a field has been set.
-func (o *ProductAdd) HasWarehouseId() bool {
-	if o != nil && !IsNil(o.WarehouseId) {
-		return true
-	}
-
-	return false
-}
-
-// SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
-func (o *ProductAdd) SetWarehouseId(v string) {
-	o.WarehouseId = &v
-}
-
-// GetBackorderStatus returns the BackorderStatus field value if set, zero value otherwise.
-func (o *ProductAdd) GetBackorderStatus() string {
-	if o == nil || IsNil(o.BackorderStatus) {
-		var ret string
-		return ret
-	}
-	return *o.BackorderStatus
-}
-
-// GetBackorderStatusOk returns a tuple with the BackorderStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetBackorderStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.BackorderStatus) {
-		return nil, false
-	}
-	return o.BackorderStatus, true
-}
-
-// HasBackorderStatus returns a boolean if a field has been set.
-func (o *ProductAdd) HasBackorderStatus() bool {
-	if o != nil && !IsNil(o.BackorderStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetBackorderStatus gets a reference to the given string and assigns it to the BackorderStatus field.
-func (o *ProductAdd) SetBackorderStatus(v string) {
-	o.BackorderStatus = &v
-}
-
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *ProductAdd) GetQuantity() float32 {
-	if o == nil || IsNil(o.Quantity) {
-		var ret float32
-		return ret
-	}
-	return *o.Quantity
-}
-
-// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.Quantity) {
-		return nil, false
-	}
-	return o.Quantity, true
-}
-
-// HasQuantity returns a boolean if a field has been set.
-func (o *ProductAdd) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
-		return true
-	}
-
-	return false
-}
-
-// SetQuantity gets a reference to the given float32 and assigns it to the Quantity field.
-func (o *ProductAdd) SetQuantity(v float32) {
-	o.Quantity = &v
-}
-
-// GetDownloadable returns the Downloadable field value if set, zero value otherwise.
-func (o *ProductAdd) GetDownloadable() bool {
-	if o == nil || IsNil(o.Downloadable) {
-		var ret bool
-		return ret
-	}
-	return *o.Downloadable
-}
-
-// GetDownloadableOk returns a tuple with the Downloadable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetDownloadableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Downloadable) {
-		return nil, false
-	}
-	return o.Downloadable, true
-}
-
-// HasDownloadable returns a boolean if a field has been set.
-func (o *ProductAdd) HasDownloadable() bool {
-	if o != nil && !IsNil(o.Downloadable) {
-		return true
-	}
-
-	return false
-}
-
-// SetDownloadable gets a reference to the given bool and assigns it to the Downloadable field.
-func (o *ProductAdd) SetDownloadable(v bool) {
-	o.Downloadable = &v
-}
-
-// GetWholesalePrice returns the WholesalePrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetWholesalePrice() float32 {
-	if o == nil || IsNil(o.WholesalePrice) {
-		var ret float32
-		return ret
-	}
-	return *o.WholesalePrice
-}
-
-// GetWholesalePriceOk returns a tuple with the WholesalePrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetWholesalePriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.WholesalePrice) {
-		return nil, false
-	}
-	return o.WholesalePrice, true
-}
-
-// HasWholesalePrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasWholesalePrice() bool {
-	if o != nil && !IsNil(o.WholesalePrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetWholesalePrice gets a reference to the given float32 and assigns it to the WholesalePrice field.
-func (o *ProductAdd) SetWholesalePrice(v float32) {
-	o.WholesalePrice = &v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ProductAdd) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ProductAdd) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ProductAdd) SetCreatedAt(v string) {
-	o.CreatedAt = &v
-}
-
-// GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
-func (o *ProductAdd) GetManufacturer() string {
-	if o == nil || IsNil(o.Manufacturer) {
-		var ret string
-		return ret
-	}
-	return *o.Manufacturer
-}
-
-// GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetManufacturerOk() (*string, bool) {
-	if o == nil || IsNil(o.Manufacturer) {
-		return nil, false
-	}
-	return o.Manufacturer, true
-}
-
-// HasManufacturer returns a boolean if a field has been set.
-func (o *ProductAdd) HasManufacturer() bool {
-	if o != nil && !IsNil(o.Manufacturer) {
-		return true
-	}
-
-	return false
-}
-
-// SetManufacturer gets a reference to the given string and assigns it to the Manufacturer field.
-func (o *ProductAdd) SetManufacturer(v string) {
-	o.Manufacturer = &v
-}
-
-// GetManufacturerId returns the ManufacturerId field value if set, zero value otherwise.
-func (o *ProductAdd) GetManufacturerId() string {
-	if o == nil || IsNil(o.ManufacturerId) {
-		var ret string
-		return ret
-	}
-	return *o.ManufacturerId
-}
-
-// GetManufacturerIdOk returns a tuple with the ManufacturerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetManufacturerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ManufacturerId) {
-		return nil, false
-	}
-	return o.ManufacturerId, true
-}
-
-// HasManufacturerId returns a boolean if a field has been set.
-func (o *ProductAdd) HasManufacturerId() bool {
-	if o != nil && !IsNil(o.ManufacturerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetManufacturerId gets a reference to the given string and assigns it to the ManufacturerId field.
-func (o *ProductAdd) SetManufacturerId(v string) {
-	o.ManufacturerId = &v
-}
-
-// GetCategoriesIds returns the CategoriesIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetCategoriesIds() string {
-	if o == nil || IsNil(o.CategoriesIds) {
-		var ret string
-		return ret
-	}
-	return *o.CategoriesIds
-}
-
-// GetCategoriesIdsOk returns a tuple with the CategoriesIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCategoriesIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.CategoriesIds) {
-		return nil, false
-	}
-	return o.CategoriesIds, true
-}
-
-// HasCategoriesIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasCategoriesIds() bool {
-	if o != nil && !IsNil(o.CategoriesIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetCategoriesIds gets a reference to the given string and assigns it to the CategoriesIds field.
-func (o *ProductAdd) SetCategoriesIds(v string) {
-	o.CategoriesIds = &v
-}
-
-// GetRelatedProductsIds returns the RelatedProductsIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetRelatedProductsIds() string {
-	if o == nil || IsNil(o.RelatedProductsIds) {
-		var ret string
-		return ret
-	}
-	return *o.RelatedProductsIds
-}
-
-// GetRelatedProductsIdsOk returns a tuple with the RelatedProductsIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetRelatedProductsIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.RelatedProductsIds) {
-		return nil, false
-	}
-	return o.RelatedProductsIds, true
-}
-
-// HasRelatedProductsIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasRelatedProductsIds() bool {
-	if o != nil && !IsNil(o.RelatedProductsIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetRelatedProductsIds gets a reference to the given string and assigns it to the RelatedProductsIds field.
-func (o *ProductAdd) SetRelatedProductsIds(v string) {
-	o.RelatedProductsIds = &v
-}
-
-// GetUpSellProductsIds returns the UpSellProductsIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetUpSellProductsIds() string {
-	if o == nil || IsNil(o.UpSellProductsIds) {
-		var ret string
-		return ret
-	}
-	return *o.UpSellProductsIds
-}
-
-// GetUpSellProductsIdsOk returns a tuple with the UpSellProductsIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetUpSellProductsIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.UpSellProductsIds) {
-		return nil, false
-	}
-	return o.UpSellProductsIds, true
-}
-
-// HasUpSellProductsIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasUpSellProductsIds() bool {
-	if o != nil && !IsNil(o.UpSellProductsIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpSellProductsIds gets a reference to the given string and assigns it to the UpSellProductsIds field.
-func (o *ProductAdd) SetUpSellProductsIds(v string) {
-	o.UpSellProductsIds = &v
-}
-
-// GetCrossSellProductsIds returns the CrossSellProductsIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetCrossSellProductsIds() string {
-	if o == nil || IsNil(o.CrossSellProductsIds) {
-		var ret string
-		return ret
-	}
-	return *o.CrossSellProductsIds
-}
-
-// GetCrossSellProductsIdsOk returns a tuple with the CrossSellProductsIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCrossSellProductsIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.CrossSellProductsIds) {
-		return nil, false
-	}
-	return o.CrossSellProductsIds, true
-}
-
-// HasCrossSellProductsIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasCrossSellProductsIds() bool {
-	if o != nil && !IsNil(o.CrossSellProductsIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetCrossSellProductsIds gets a reference to the given string and assigns it to the CrossSellProductsIds field.
-func (o *ProductAdd) SetCrossSellProductsIds(v string) {
-	o.CrossSellProductsIds = &v
-}
-
-// GetTaxClassId returns the TaxClassId field value if set, zero value otherwise.
-func (o *ProductAdd) GetTaxClassId() string {
-	if o == nil || IsNil(o.TaxClassId) {
-		var ret string
-		return ret
-	}
-	return *o.TaxClassId
-}
-
-// GetTaxClassIdOk returns a tuple with the TaxClassId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetTaxClassIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxClassId) {
-		return nil, false
-	}
-	return o.TaxClassId, true
-}
-
-// HasTaxClassId returns a boolean if a field has been set.
-func (o *ProductAdd) HasTaxClassId() bool {
-	if o != nil && !IsNil(o.TaxClassId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTaxClassId gets a reference to the given string and assigns it to the TaxClassId field.
-func (o *ProductAdd) SetTaxClassId(v string) {
-	o.TaxClassId = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ProductAdd) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ProductAdd) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ProductAdd) SetType(v string) {
-	o.Type = &v
-}
-
-// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
-func (o *ProductAdd) GetMetaTitle() string {
-	if o == nil || IsNil(o.MetaTitle) {
-		var ret string
-		return ret
-	}
-	return *o.MetaTitle
-}
-
-// GetMetaTitleOk returns a tuple with the MetaTitle field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMetaTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaTitle) {
-		return nil, false
-	}
-	return o.MetaTitle, true
-}
-
-// HasMetaTitle returns a boolean if a field has been set.
-func (o *ProductAdd) HasMetaTitle() bool {
-	if o != nil && !IsNil(o.MetaTitle) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaTitle gets a reference to the given string and assigns it to the MetaTitle field.
-func (o *ProductAdd) SetMetaTitle(v string) {
-	o.MetaTitle = &v
-}
-
-// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise.
-func (o *ProductAdd) GetMetaKeywords() string {
-	if o == nil || IsNil(o.MetaKeywords) {
-		var ret string
-		return ret
-	}
-	return *o.MetaKeywords
-}
-
-// GetMetaKeywordsOk returns a tuple with the MetaKeywords field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMetaKeywordsOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaKeywords) {
-		return nil, false
-	}
-	return o.MetaKeywords, true
-}
-
-// HasMetaKeywords returns a boolean if a field has been set.
-func (o *ProductAdd) HasMetaKeywords() bool {
-	if o != nil && !IsNil(o.MetaKeywords) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaKeywords gets a reference to the given string and assigns it to the MetaKeywords field.
-func (o *ProductAdd) SetMetaKeywords(v string) {
-	o.MetaKeywords = &v
-}
-
-// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
-func (o *ProductAdd) GetMetaDescription() string {
-	if o == nil || IsNil(o.MetaDescription) {
-		var ret string
-		return ret
-	}
-	return *o.MetaDescription
-}
-
-// GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMetaDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaDescription) {
-		return nil, false
-	}
-	return o.MetaDescription, true
-}
-
-// HasMetaDescription returns a boolean if a field has been set.
-func (o *ProductAdd) HasMetaDescription() bool {
-	if o != nil && !IsNil(o.MetaDescription) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetaDescription gets a reference to the given string and assigns it to the MetaDescription field.
-func (o *ProductAdd) SetMetaDescription(v string) {
-	o.MetaDescription = &v
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *ProductAdd) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
-		var ret string
-		return ret
-	}
-	return *o.Url
-}
-
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
-		return nil, false
-	}
-	return o.Url, true
-}
-
-// HasUrl returns a boolean if a field has been set.
-func (o *ProductAdd) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *ProductAdd) SetUrl(v string) {
-	o.Url = &v
-}
-
-// GetLangId returns the LangId field value if set, zero value otherwise.
-func (o *ProductAdd) GetLangId() string {
-	if o == nil || IsNil(o.LangId) {
-		var ret string
-		return ret
-	}
-	return *o.LangId
-}
-
-// GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetLangIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LangId) {
-		return nil, false
-	}
-	return o.LangId, true
-}
-
-// HasLangId returns a boolean if a field has been set.
-func (o *ProductAdd) HasLangId() bool {
-	if o != nil && !IsNil(o.LangId) {
-		return true
-	}
-
-	return false
-}
-
-// SetLangId gets a reference to the given string and assigns it to the LangId field.
-func (o *ProductAdd) SetLangId(v string) {
-	o.LangId = &v
-}
-
-// GetStoresIds returns the StoresIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetStoresIds() string {
-	if o == nil || IsNil(o.StoresIds) {
-		var ret string
-		return ret
-	}
-	return *o.StoresIds
-}
-
-// GetStoresIdsOk returns a tuple with the StoresIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetStoresIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.StoresIds) {
-		return nil, false
-	}
-	return o.StoresIds, true
-}
-
-// HasStoresIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasStoresIds() bool {
-	if o != nil && !IsNil(o.StoresIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoresIds gets a reference to the given string and assigns it to the StoresIds field.
-func (o *ProductAdd) SetStoresIds(v string) {
-	o.StoresIds = &v
-}
-
-// GetCategoryId returns the CategoryId field value if set, zero value otherwise.
-func (o *ProductAdd) GetCategoryId() string {
-	if o == nil || IsNil(o.CategoryId) {
-		var ret string
-		return ret
-	}
-	return *o.CategoryId
-}
-
-// GetCategoryIdOk returns a tuple with the CategoryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCategoryIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CategoryId) {
-		return nil, false
-	}
-	return o.CategoryId, true
-}
-
-// HasCategoryId returns a boolean if a field has been set.
-func (o *ProductAdd) HasCategoryId() bool {
-	if o != nil && !IsNil(o.CategoryId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCategoryId gets a reference to the given string and assigns it to the CategoryId field.
-func (o *ProductAdd) SetCategoryId(v string) {
-	o.CategoryId = &v
-}
-
-// GetViewedCount returns the ViewedCount field value if set, zero value otherwise.
-func (o *ProductAdd) GetViewedCount() int32 {
-	if o == nil || IsNil(o.ViewedCount) {
-		var ret int32
-		return ret
-	}
-	return *o.ViewedCount
-}
-
-// GetViewedCountOk returns a tuple with the ViewedCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetViewedCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ViewedCount) {
-		return nil, false
-	}
-	return o.ViewedCount, true
-}
-
-// HasViewedCount returns a boolean if a field has been set.
-func (o *ProductAdd) HasViewedCount() bool {
-	if o != nil && !IsNil(o.ViewedCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetViewedCount gets a reference to the given int32 and assigns it to the ViewedCount field.
-func (o *ProductAdd) SetViewedCount(v int32) {
-	o.ViewedCount = &v
-}
-
-// GetOrderedCount returns the OrderedCount field value if set, zero value otherwise.
-func (o *ProductAdd) GetOrderedCount() int32 {
-	if o == nil || IsNil(o.OrderedCount) {
-		var ret int32
-		return ret
-	}
-	return *o.OrderedCount
-}
-
-// GetOrderedCountOk returns a tuple with the OrderedCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetOrderedCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrderedCount) {
-		return nil, false
-	}
-	return o.OrderedCount, true
-}
-
-// HasOrderedCount returns a boolean if a field has been set.
-func (o *ProductAdd) HasOrderedCount() bool {
-	if o != nil && !IsNil(o.OrderedCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderedCount gets a reference to the given int32 and assigns it to the OrderedCount field.
-func (o *ProductAdd) SetOrderedCount(v int32) {
-	o.OrderedCount = &v
-}
-
-// GetAttributeSetName returns the AttributeSetName field value if set, zero value otherwise.
-func (o *ProductAdd) GetAttributeSetName() string {
-	if o == nil || IsNil(o.AttributeSetName) {
-		var ret string
-		return ret
-	}
-	return *o.AttributeSetName
-}
-
-// GetAttributeSetNameOk returns a tuple with the AttributeSetName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAttributeSetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeSetName) {
-		return nil, false
-	}
-	return o.AttributeSetName, true
-}
-
-// HasAttributeSetName returns a boolean if a field has been set.
-func (o *ProductAdd) HasAttributeSetName() bool {
-	if o != nil && !IsNil(o.AttributeSetName) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributeSetName gets a reference to the given string and assigns it to the AttributeSetName field.
-func (o *ProductAdd) SetAttributeSetName(v string) {
-	o.AttributeSetName = &v
-}
-
-// GetAttributeName returns the AttributeName field value if set, zero value otherwise.
-func (o *ProductAdd) GetAttributeName() string {
-	if o == nil || IsNil(o.AttributeName) {
-		var ret string
-		return ret
-	}
-	return *o.AttributeName
-}
-
-// GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAttributeNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeName) {
-		return nil, false
-	}
-	return o.AttributeName, true
-}
-
-// HasAttributeName returns a boolean if a field has been set.
-func (o *ProductAdd) HasAttributeName() bool {
-	if o != nil && !IsNil(o.AttributeName) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributeName gets a reference to the given string and assigns it to the AttributeName field.
-func (o *ProductAdd) SetAttributeName(v string) {
-	o.AttributeName = &v
-}
-
-// GetShippingTemplateId returns the ShippingTemplateId field value if set, zero value otherwise.
-func (o *ProductAdd) GetShippingTemplateId() int32 {
-	if o == nil || IsNil(o.ShippingTemplateId) {
-		var ret int32
-		return ret
-	}
-	return *o.ShippingTemplateId
-}
-
-// GetShippingTemplateIdOk returns a tuple with the ShippingTemplateId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetShippingTemplateIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ShippingTemplateId) {
-		return nil, false
-	}
-	return o.ShippingTemplateId, true
-}
-
-// HasShippingTemplateId returns a boolean if a field has been set.
-func (o *ProductAdd) HasShippingTemplateId() bool {
-	if o != nil && !IsNil(o.ShippingTemplateId) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippingTemplateId gets a reference to the given int32 and assigns it to the ShippingTemplateId field.
-func (o *ProductAdd) SetShippingTemplateId(v int32) {
-	o.ShippingTemplateId = &v
-}
-
-// GetProductionPartnerIds returns the ProductionPartnerIds field value if set, zero value otherwise.
-func (o *ProductAdd) GetProductionPartnerIds() string {
-	if o == nil || IsNil(o.ProductionPartnerIds) {
-		var ret string
-		return ret
-	}
-	return *o.ProductionPartnerIds
-}
-
-// GetProductionPartnerIdsOk returns a tuple with the ProductionPartnerIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetProductionPartnerIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductionPartnerIds) {
-		return nil, false
-	}
-	return o.ProductionPartnerIds, true
-}
-
-// HasProductionPartnerIds returns a boolean if a field has been set.
-func (o *ProductAdd) HasProductionPartnerIds() bool {
-	if o != nil && !IsNil(o.ProductionPartnerIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductionPartnerIds gets a reference to the given string and assigns it to the ProductionPartnerIds field.
-func (o *ProductAdd) SetProductionPartnerIds(v string) {
-	o.ProductionPartnerIds = &v
-}
-
-// GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *ProductAdd) GetCondition() string {
-	if o == nil || IsNil(o.Condition) {
-		var ret string
-		return ret
-	}
-	return *o.Condition
-}
-
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetConditionOk() (*string, bool) {
-	if o == nil || IsNil(o.Condition) {
-		return nil, false
-	}
-	return o.Condition, true
-}
-
-// HasCondition returns a boolean if a field has been set.
-func (o *ProductAdd) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
-		return true
-	}
-
-	return false
-}
-
-// SetCondition gets a reference to the given string and assigns it to the Condition field.
-func (o *ProductAdd) SetCondition(v string) {
-	o.Condition = &v
-}
-
-// GetListingDuration returns the ListingDuration field value if set, zero value otherwise.
-func (o *ProductAdd) GetListingDuration() string {
-	if o == nil || IsNil(o.ListingDuration) {
-		var ret string
-		return ret
-	}
-	return *o.ListingDuration
-}
-
-// GetListingDurationOk returns a tuple with the ListingDuration field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetListingDurationOk() (*string, bool) {
-	if o == nil || IsNil(o.ListingDuration) {
-		return nil, false
-	}
-	return o.ListingDuration, true
-}
-
-// HasListingDuration returns a boolean if a field has been set.
-func (o *ProductAdd) HasListingDuration() bool {
-	if o != nil && !IsNil(o.ListingDuration) {
-		return true
-	}
-
-	return false
-}
-
-// SetListingDuration gets a reference to the given string and assigns it to the ListingDuration field.
-func (o *ProductAdd) SetListingDuration(v string) {
-	o.ListingDuration = &v
-}
-
-// GetListingType returns the ListingType field value if set, zero value otherwise.
-func (o *ProductAdd) GetListingType() string {
-	if o == nil || IsNil(o.ListingType) {
-		var ret string
-		return ret
-	}
-	return *o.ListingType
-}
-
-// GetListingTypeOk returns a tuple with the ListingType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetListingTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ListingType) {
-		return nil, false
-	}
-	return o.ListingType, true
-}
-
-// HasListingType returns a boolean if a field has been set.
-func (o *ProductAdd) HasListingType() bool {
-	if o != nil && !IsNil(o.ListingType) {
-		return true
-	}
-
-	return false
-}
-
-// SetListingType gets a reference to the given string and assigns it to the ListingType field.
-func (o *ProductAdd) SetListingType(v string) {
-	o.ListingType = &v
-}
-
-// GetPaymentMethods returns the PaymentMethods field value if set, zero value otherwise.
-func (o *ProductAdd) GetPaymentMethods() []string {
-	if o == nil || IsNil(o.PaymentMethods) {
-		var ret []string
-		return ret
-	}
-	return o.PaymentMethods
-}
-
-// GetPaymentMethodsOk returns a tuple with the PaymentMethods field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetPaymentMethodsOk() ([]string, bool) {
-	if o == nil || IsNil(o.PaymentMethods) {
-		return nil, false
-	}
-	return o.PaymentMethods, true
-}
-
-// HasPaymentMethods returns a boolean if a field has been set.
-func (o *ProductAdd) HasPaymentMethods() bool {
-	if o != nil && !IsNil(o.PaymentMethods) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaymentMethods gets a reference to the given []string and assigns it to the PaymentMethods field.
-func (o *ProductAdd) SetPaymentMethods(v []string) {
-	o.PaymentMethods = v
-}
-
-// GetReturnAccepted returns the ReturnAccepted field value if set, zero value otherwise.
-func (o *ProductAdd) GetReturnAccepted() bool {
-	if o == nil || IsNil(o.ReturnAccepted) {
-		var ret bool
-		return ret
-	}
-	return *o.ReturnAccepted
-}
-
-// GetReturnAcceptedOk returns a tuple with the ReturnAccepted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetReturnAcceptedOk() (*bool, bool) {
-	if o == nil || IsNil(o.ReturnAccepted) {
-		return nil, false
-	}
-	return o.ReturnAccepted, true
-}
-
-// HasReturnAccepted returns a boolean if a field has been set.
-func (o *ProductAdd) HasReturnAccepted() bool {
-	if o != nil && !IsNil(o.ReturnAccepted) {
-		return true
-	}
-
-	return false
-}
-
-// SetReturnAccepted gets a reference to the given bool and assigns it to the ReturnAccepted field.
-func (o *ProductAdd) SetReturnAccepted(v bool) {
-	o.ReturnAccepted = &v
-}
-
-// GetShippingDetails returns the ShippingDetails field value if set, zero value otherwise.
-func (o *ProductAdd) GetShippingDetails() []ProductAddShippingDetailsInner {
-	if o == nil || IsNil(o.ShippingDetails) {
-		var ret []ProductAddShippingDetailsInner
-		return ret
-	}
-	return o.ShippingDetails
-}
-
-// GetShippingDetailsOk returns a tuple with the ShippingDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetShippingDetailsOk() ([]ProductAddShippingDetailsInner, bool) {
-	if o == nil || IsNil(o.ShippingDetails) {
-		return nil, false
-	}
-	return o.ShippingDetails, true
-}
-
-// HasShippingDetails returns a boolean if a field has been set.
-func (o *ProductAdd) HasShippingDetails() bool {
-	if o != nil && !IsNil(o.ShippingDetails) {
-		return true
-	}
-
-	return false
-}
-
-// SetShippingDetails gets a reference to the given []ProductAddShippingDetailsInner and assigns it to the ShippingDetails field.
-func (o *ProductAdd) SetShippingDetails(v []ProductAddShippingDetailsInner) {
-	o.ShippingDetails = v
-}
-
-// GetPaypalEmail returns the PaypalEmail field value if set, zero value otherwise.
-func (o *ProductAdd) GetPaypalEmail() string {
-	if o == nil || IsNil(o.PaypalEmail) {
-		var ret string
-		return ret
-	}
-	return *o.PaypalEmail
-}
-
-// GetPaypalEmailOk returns a tuple with the PaypalEmail field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetPaypalEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.PaypalEmail) {
-		return nil, false
-	}
-	return o.PaypalEmail, true
-}
-
-// HasPaypalEmail returns a boolean if a field has been set.
-func (o *ProductAdd) HasPaypalEmail() bool {
-	if o != nil && !IsNil(o.PaypalEmail) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaypalEmail gets a reference to the given string and assigns it to the PaypalEmail field.
-func (o *ProductAdd) SetPaypalEmail(v string) {
-	o.PaypalEmail = &v
-}
-
-// GetSellerProfiles returns the SellerProfiles field value if set, zero value otherwise.
-func (o *ProductAdd) GetSellerProfiles() ProductAddSellerProfiles {
-	if o == nil || IsNil(o.SellerProfiles) {
-		var ret ProductAddSellerProfiles
-		return ret
-	}
-	return *o.SellerProfiles
-}
-
-// GetSellerProfilesOk returns a tuple with the SellerProfiles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSellerProfilesOk() (*ProductAddSellerProfiles, bool) {
-	if o == nil || IsNil(o.SellerProfiles) {
-		return nil, false
-	}
-	return o.SellerProfiles, true
-}
-
-// HasSellerProfiles returns a boolean if a field has been set.
-func (o *ProductAdd) HasSellerProfiles() bool {
-	if o != nil && !IsNil(o.SellerProfiles) {
-		return true
-	}
-
-	return false
-}
-
-// SetSellerProfiles gets a reference to the given ProductAddSellerProfiles and assigns it to the SellerProfiles field.
-func (o *ProductAdd) SetSellerProfiles(v ProductAddSellerProfiles) {
-	o.SellerProfiles = &v
-}
-
-// GetPackageDetails returns the PackageDetails field value if set, zero value otherwise.
-func (o *ProductAdd) GetPackageDetails() ProductAddPackageDetails {
-	if o == nil || IsNil(o.PackageDetails) {
-		var ret ProductAddPackageDetails
-		return ret
-	}
-	return *o.PackageDetails
-}
-
-// GetPackageDetailsOk returns a tuple with the PackageDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetPackageDetailsOk() (*ProductAddPackageDetails, bool) {
-	if o == nil || IsNil(o.PackageDetails) {
-		return nil, false
-	}
-	return o.PackageDetails, true
-}
-
-// HasPackageDetails returns a boolean if a field has been set.
-func (o *ProductAdd) HasPackageDetails() bool {
-	if o != nil && !IsNil(o.PackageDetails) {
-		return true
-	}
-
-	return false
-}
-
-// SetPackageDetails gets a reference to the given ProductAddPackageDetails and assigns it to the PackageDetails field.
-func (o *ProductAdd) SetPackageDetails(v ProductAddPackageDetails) {
-	o.PackageDetails = &v
-}
-
-// GetBestOffer returns the BestOffer field value if set, zero value otherwise.
-func (o *ProductAdd) GetBestOffer() ProductAddBestOffer {
-	if o == nil || IsNil(o.BestOffer) {
-		var ret ProductAddBestOffer
-		return ret
-	}
-	return *o.BestOffer
-}
-
-// GetBestOfferOk returns a tuple with the BestOffer field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetBestOfferOk() (*ProductAddBestOffer, bool) {
-	if o == nil || IsNil(o.BestOffer) {
-		return nil, false
-	}
-	return o.BestOffer, true
-}
-
-// HasBestOffer returns a boolean if a field has been set.
-func (o *ProductAdd) HasBestOffer() bool {
-	if o != nil && !IsNil(o.BestOffer) {
-		return true
-	}
-
-	return false
-}
-
-// SetBestOffer gets a reference to the given ProductAddBestOffer and assigns it to the BestOffer field.
-func (o *ProductAdd) SetBestOffer(v ProductAddBestOffer) {
-	o.BestOffer = &v
-}
-
-// GetSalesTax returns the SalesTax field value if set, zero value otherwise.
-func (o *ProductAdd) GetSalesTax() ProductAddSalesTax {
-	if o == nil || IsNil(o.SalesTax) {
-		var ret ProductAddSalesTax
-		return ret
-	}
-	return *o.SalesTax
-}
-
-// GetSalesTaxOk returns a tuple with the SalesTax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSalesTaxOk() (*ProductAddSalesTax, bool) {
-	if o == nil || IsNil(o.SalesTax) {
-		return nil, false
-	}
-	return o.SalesTax, true
-}
-
-// HasSalesTax returns a boolean if a field has been set.
-func (o *ProductAdd) HasSalesTax() bool {
-	if o != nil && !IsNil(o.SalesTax) {
-		return true
-	}
-
-	return false
-}
-
-// SetSalesTax gets a reference to the given ProductAddSalesTax and assigns it to the SalesTax field.
-func (o *ProductAdd) SetSalesTax(v ProductAddSalesTax) {
-	o.SalesTax = &v
 }
 
 // GetBarcode returns the Barcode field value if set, zero value otherwise.
@@ -2381,36 +1805,324 @@ func (o *ProductAdd) SetIsbn(v string) {
 	o.Isbn = &v
 }
 
-// GetSpecifics returns the Specifics field value if set, zero value otherwise.
-func (o *ProductAdd) GetSpecifics() []ProductAddSpecificsInner {
-	if o == nil || IsNil(o.Specifics) {
-		var ret []ProductAddSpecificsInner
+// GetGtin returns the Gtin field value if set, zero value otherwise.
+func (o *ProductAdd) GetGtin() string {
+	if o == nil || IsNil(o.Gtin) {
+		var ret string
 		return ret
 	}
-	return o.Specifics
+	return *o.Gtin
 }
 
-// GetSpecificsOk returns a tuple with the Specifics field value if set, nil otherwise
+// GetGtinOk returns a tuple with the Gtin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSpecificsOk() ([]ProductAddSpecificsInner, bool) {
-	if o == nil || IsNil(o.Specifics) {
+func (o *ProductAdd) GetGtinOk() (*string, bool) {
+	if o == nil || IsNil(o.Gtin) {
 		return nil, false
 	}
-	return o.Specifics, true
+	return o.Gtin, true
 }
 
-// HasSpecifics returns a boolean if a field has been set.
-func (o *ProductAdd) HasSpecifics() bool {
-	if o != nil && !IsNil(o.Specifics) {
+// HasGtin returns a boolean if a field has been set.
+func (o *ProductAdd) HasGtin() bool {
+	if o != nil && !IsNil(o.Gtin) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpecifics gets a reference to the given []ProductAddSpecificsInner and assigns it to the Specifics field.
-func (o *ProductAdd) SetSpecifics(v []ProductAddSpecificsInner) {
-	o.Specifics = v
+// SetGtin gets a reference to the given string and assigns it to the Gtin field.
+func (o *ProductAdd) SetGtin(v string) {
+	o.Gtin = &v
+}
+
+// GetMpn returns the Mpn field value if set, zero value otherwise.
+func (o *ProductAdd) GetMpn() string {
+	if o == nil || IsNil(o.Mpn) {
+		var ret string
+		return ret
+	}
+	return *o.Mpn
+}
+
+// GetMpnOk returns a tuple with the Mpn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMpnOk() (*string, bool) {
+	if o == nil || IsNil(o.Mpn) {
+		return nil, false
+	}
+	return o.Mpn, true
+}
+
+// HasMpn returns a boolean if a field has been set.
+func (o *ProductAdd) HasMpn() bool {
+	if o != nil && !IsNil(o.Mpn) {
+		return true
+	}
+
+	return false
+}
+
+// SetMpn gets a reference to the given string and assigns it to the Mpn field.
+func (o *ProductAdd) SetMpn(v string) {
+	o.Mpn = &v
+}
+
+// GetAsin returns the Asin field value if set, zero value otherwise.
+func (o *ProductAdd) GetAsin() string {
+	if o == nil || IsNil(o.Asin) {
+		var ret string
+		return ret
+	}
+	return *o.Asin
+}
+
+// GetAsinOk returns a tuple with the Asin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAsinOk() (*string, bool) {
+	if o == nil || IsNil(o.Asin) {
+		return nil, false
+	}
+	return o.Asin, true
+}
+
+// HasAsin returns a boolean if a field has been set.
+func (o *ProductAdd) HasAsin() bool {
+	if o != nil && !IsNil(o.Asin) {
+		return true
+	}
+
+	return false
+}
+
+// SetAsin gets a reference to the given string and assigns it to the Asin field.
+func (o *ProductAdd) SetAsin(v string) {
+	o.Asin = &v
+}
+
+// GetProductReference returns the ProductReference field value if set, zero value otherwise.
+func (o *ProductAdd) GetProductReference() string {
+	if o == nil || IsNil(o.ProductReference) {
+		var ret string
+		return ret
+	}
+	return *o.ProductReference
+}
+
+// GetProductReferenceOk returns a tuple with the ProductReference field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetProductReferenceOk() (*string, bool) {
+	if o == nil || IsNil(o.ProductReference) {
+		return nil, false
+	}
+	return o.ProductReference, true
+}
+
+// HasProductReference returns a boolean if a field has been set.
+func (o *ProductAdd) HasProductReference() bool {
+	if o != nil && !IsNil(o.ProductReference) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductReference gets a reference to the given string and assigns it to the ProductReference field.
+func (o *ProductAdd) SetProductReference(v string) {
+	o.ProductReference = &v
+}
+
+// GetHarmonizedSystemCode returns the HarmonizedSystemCode field value if set, zero value otherwise.
+func (o *ProductAdd) GetHarmonizedSystemCode() string {
+	if o == nil || IsNil(o.HarmonizedSystemCode) {
+		var ret string
+		return ret
+	}
+	return *o.HarmonizedSystemCode
+}
+
+// GetHarmonizedSystemCodeOk returns a tuple with the HarmonizedSystemCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetHarmonizedSystemCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.HarmonizedSystemCode) {
+		return nil, false
+	}
+	return o.HarmonizedSystemCode, true
+}
+
+// HasHarmonizedSystemCode returns a boolean if a field has been set.
+func (o *ProductAdd) HasHarmonizedSystemCode() bool {
+	if o != nil && !IsNil(o.HarmonizedSystemCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetHarmonizedSystemCode gets a reference to the given string and assigns it to the HarmonizedSystemCode field.
+func (o *ProductAdd) SetHarmonizedSystemCode(v string) {
+	o.HarmonizedSystemCode = &v
+}
+
+// GetCountryOfOrigin returns the CountryOfOrigin field value if set, zero value otherwise.
+func (o *ProductAdd) GetCountryOfOrigin() string {
+	if o == nil || IsNil(o.CountryOfOrigin) {
+		var ret string
+		return ret
+	}
+	return *o.CountryOfOrigin
+}
+
+// GetCountryOfOriginOk returns a tuple with the CountryOfOrigin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCountryOfOriginOk() (*string, bool) {
+	if o == nil || IsNil(o.CountryOfOrigin) {
+		return nil, false
+	}
+	return o.CountryOfOrigin, true
+}
+
+// HasCountryOfOrigin returns a boolean if a field has been set.
+func (o *ProductAdd) HasCountryOfOrigin() bool {
+	if o != nil && !IsNil(o.CountryOfOrigin) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryOfOrigin gets a reference to the given string and assigns it to the CountryOfOrigin field.
+func (o *ProductAdd) SetCountryOfOrigin(v string) {
+	o.CountryOfOrigin = &v
+}
+
+// GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
+func (o *ProductAdd) GetManufacturer() string {
+	if o == nil || IsNil(o.Manufacturer) {
+		var ret string
+		return ret
+	}
+	return *o.Manufacturer
+}
+
+// GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetManufacturerOk() (*string, bool) {
+	if o == nil || IsNil(o.Manufacturer) {
+		return nil, false
+	}
+	return o.Manufacturer, true
+}
+
+// HasManufacturer returns a boolean if a field has been set.
+func (o *ProductAdd) HasManufacturer() bool {
+	if o != nil && !IsNil(o.Manufacturer) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturer gets a reference to the given string and assigns it to the Manufacturer field.
+func (o *ProductAdd) SetManufacturer(v string) {
+	o.Manufacturer = &v
+}
+
+// GetManufacturerId returns the ManufacturerId field value if set, zero value otherwise.
+func (o *ProductAdd) GetManufacturerId() string {
+	if o == nil || IsNil(o.ManufacturerId) {
+		var ret string
+		return ret
+	}
+	return *o.ManufacturerId
+}
+
+// GetManufacturerIdOk returns a tuple with the ManufacturerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetManufacturerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ManufacturerId) {
+		return nil, false
+	}
+	return o.ManufacturerId, true
+}
+
+// HasManufacturerId returns a boolean if a field has been set.
+func (o *ProductAdd) HasManufacturerId() bool {
+	if o != nil && !IsNil(o.ManufacturerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturerId gets a reference to the given string and assigns it to the ManufacturerId field.
+func (o *ProductAdd) SetManufacturerId(v string) {
+	o.ManufacturerId = &v
+}
+
+// GetManufacturerInfo returns the ManufacturerInfo field value if set, zero value otherwise.
+func (o *ProductAdd) GetManufacturerInfo() ProductAddManufacturerInfo {
+	if o == nil || IsNil(o.ManufacturerInfo) {
+		var ret ProductAddManufacturerInfo
+		return ret
+	}
+	return *o.ManufacturerInfo
+}
+
+// GetManufacturerInfoOk returns a tuple with the ManufacturerInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetManufacturerInfoOk() (*ProductAddManufacturerInfo, bool) {
+	if o == nil || IsNil(o.ManufacturerInfo) {
+		return nil, false
+	}
+	return o.ManufacturerInfo, true
+}
+
+// HasManufacturerInfo returns a boolean if a field has been set.
+func (o *ProductAdd) HasManufacturerInfo() bool {
+	if o != nil && !IsNil(o.ManufacturerInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturerInfo gets a reference to the given ProductAddManufacturerInfo and assigns it to the ManufacturerInfo field.
+func (o *ProductAdd) SetManufacturerInfo(v ProductAddManufacturerInfo) {
+	o.ManufacturerInfo = &v
+}
+
+// GetBrandName returns the BrandName field value if set, zero value otherwise.
+func (o *ProductAdd) GetBrandName() string {
+	if o == nil || IsNil(o.BrandName) {
+		var ret string
+		return ret
+	}
+	return *o.BrandName
+}
+
+// GetBrandNameOk returns a tuple with the BrandName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetBrandNameOk() (*string, bool) {
+	if o == nil || IsNil(o.BrandName) {
+		return nil, false
+	}
+	return o.BrandName, true
+}
+
+// HasBrandName returns a boolean if a field has been set.
+func (o *ProductAdd) HasBrandName() bool {
+	if o != nil && !IsNil(o.BrandName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBrandName gets a reference to the given string and assigns it to the BrandName field.
+func (o *ProductAdd) SetBrandName(v string) {
+	o.BrandName = &v
 }
 
 // GetImageUrl returns the ImageUrl field value if set, zero value otherwise.
@@ -2509,678 +2221,6 @@ func (o *ProductAdd) SetAdditionalImageUrls(v []string) {
 	o.AdditionalImageUrls = v
 }
 
-// GetReservePrice returns the ReservePrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetReservePrice() float32 {
-	if o == nil || IsNil(o.ReservePrice) {
-		var ret float32
-		return ret
-	}
-	return *o.ReservePrice
-}
-
-// GetReservePriceOk returns a tuple with the ReservePrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetReservePriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.ReservePrice) {
-		return nil, false
-	}
-	return o.ReservePrice, true
-}
-
-// HasReservePrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasReservePrice() bool {
-	if o != nil && !IsNil(o.ReservePrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetReservePrice gets a reference to the given float32 and assigns it to the ReservePrice field.
-func (o *ProductAdd) SetReservePrice(v float32) {
-	o.ReservePrice = &v
-}
-
-// GetBuyitnowPrice returns the BuyitnowPrice field value if set, zero value otherwise.
-func (o *ProductAdd) GetBuyitnowPrice() float32 {
-	if o == nil || IsNil(o.BuyitnowPrice) {
-		var ret float32
-		return ret
-	}
-	return *o.BuyitnowPrice
-}
-
-// GetBuyitnowPriceOk returns a tuple with the BuyitnowPrice field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetBuyitnowPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.BuyitnowPrice) {
-		return nil, false
-	}
-	return o.BuyitnowPrice, true
-}
-
-// HasBuyitnowPrice returns a boolean if a field has been set.
-func (o *ProductAdd) HasBuyitnowPrice() bool {
-	if o != nil && !IsNil(o.BuyitnowPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetBuyitnowPrice gets a reference to the given float32 and assigns it to the BuyitnowPrice field.
-func (o *ProductAdd) SetBuyitnowPrice(v float32) {
-	o.BuyitnowPrice = &v
-}
-
-// GetConditionDescription returns the ConditionDescription field value if set, zero value otherwise.
-func (o *ProductAdd) GetConditionDescription() string {
-	if o == nil || IsNil(o.ConditionDescription) {
-		var ret string
-		return ret
-	}
-	return *o.ConditionDescription
-}
-
-// GetConditionDescriptionOk returns a tuple with the ConditionDescription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetConditionDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ConditionDescription) {
-		return nil, false
-	}
-	return o.ConditionDescription, true
-}
-
-// HasConditionDescription returns a boolean if a field has been set.
-func (o *ProductAdd) HasConditionDescription() bool {
-	if o != nil && !IsNil(o.ConditionDescription) {
-		return true
-	}
-
-	return false
-}
-
-// SetConditionDescription gets a reference to the given string and assigns it to the ConditionDescription field.
-func (o *ProductAdd) SetConditionDescription(v string) {
-	o.ConditionDescription = &v
-}
-
-// GetAuctionConfidentialityLevel returns the AuctionConfidentialityLevel field value if set, zero value otherwise.
-func (o *ProductAdd) GetAuctionConfidentialityLevel() string {
-	if o == nil || IsNil(o.AuctionConfidentialityLevel) {
-		var ret string
-		return ret
-	}
-	return *o.AuctionConfidentialityLevel
-}
-
-// GetAuctionConfidentialityLevelOk returns a tuple with the AuctionConfidentialityLevel field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAuctionConfidentialityLevelOk() (*string, bool) {
-	if o == nil || IsNil(o.AuctionConfidentialityLevel) {
-		return nil, false
-	}
-	return o.AuctionConfidentialityLevel, true
-}
-
-// HasAuctionConfidentialityLevel returns a boolean if a field has been set.
-func (o *ProductAdd) HasAuctionConfidentialityLevel() bool {
-	if o != nil && !IsNil(o.AuctionConfidentialityLevel) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuctionConfidentialityLevel gets a reference to the given string and assigns it to the AuctionConfidentialityLevel field.
-func (o *ProductAdd) SetAuctionConfidentialityLevel(v string) {
-	o.AuctionConfidentialityLevel = &v
-}
-
-// GetLogisticInfo returns the LogisticInfo field value if set, zero value otherwise.
-func (o *ProductAdd) GetLogisticInfo() []ProductAddLogisticInfoInner {
-	if o == nil || IsNil(o.LogisticInfo) {
-		var ret []ProductAddLogisticInfoInner
-		return ret
-	}
-	return o.LogisticInfo
-}
-
-// GetLogisticInfoOk returns a tuple with the LogisticInfo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetLogisticInfoOk() ([]ProductAddLogisticInfoInner, bool) {
-	if o == nil || IsNil(o.LogisticInfo) {
-		return nil, false
-	}
-	return o.LogisticInfo, true
-}
-
-// HasLogisticInfo returns a boolean if a field has been set.
-func (o *ProductAdd) HasLogisticInfo() bool {
-	if o != nil && !IsNil(o.LogisticInfo) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogisticInfo gets a reference to the given []ProductAddLogisticInfoInner and assigns it to the LogisticInfo field.
-func (o *ProductAdd) SetLogisticInfo(v []ProductAddLogisticInfoInner) {
-	o.LogisticInfo = v
-}
-
-// GetAvailFrom returns the AvailFrom field value if set, zero value otherwise.
-func (o *ProductAdd) GetAvailFrom() string {
-	if o == nil || IsNil(o.AvailFrom) {
-		var ret string
-		return ret
-	}
-	return *o.AvailFrom
-}
-
-// GetAvailFromOk returns a tuple with the AvailFrom field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAvailFromOk() (*string, bool) {
-	if o == nil || IsNil(o.AvailFrom) {
-		return nil, false
-	}
-	return o.AvailFrom, true
-}
-
-// HasAvailFrom returns a boolean if a field has been set.
-func (o *ProductAdd) HasAvailFrom() bool {
-	if o != nil && !IsNil(o.AvailFrom) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvailFrom gets a reference to the given string and assigns it to the AvailFrom field.
-func (o *ProductAdd) SetAvailFrom(v string) {
-	o.AvailFrom = &v
-}
-
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ProductAdd) GetTags() string {
-	if o == nil || IsNil(o.Tags) {
-		var ret string
-		return ret
-	}
-	return *o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetTagsOk() (*string, bool) {
-	if o == nil || IsNil(o.Tags) {
-		return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ProductAdd) HasTags() bool {
-	if o != nil && !IsNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given string and assigns it to the Tags field.
-func (o *ProductAdd) SetTags(v string) {
-	o.Tags = &v
-}
-
-// GetClearCache returns the ClearCache field value if set, zero value otherwise.
-func (o *ProductAdd) GetClearCache() bool {
-	if o == nil || IsNil(o.ClearCache) {
-		var ret bool
-		return ret
-	}
-	return *o.ClearCache
-}
-
-// GetClearCacheOk returns a tuple with the ClearCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetClearCacheOk() (*bool, bool) {
-	if o == nil || IsNil(o.ClearCache) {
-		return nil, false
-	}
-	return o.ClearCache, true
-}
-
-// HasClearCache returns a boolean if a field has been set.
-func (o *ProductAdd) HasClearCache() bool {
-	if o != nil && !IsNil(o.ClearCache) {
-		return true
-	}
-
-	return false
-}
-
-// SetClearCache gets a reference to the given bool and assigns it to the ClearCache field.
-func (o *ProductAdd) SetClearCache(v bool) {
-	o.ClearCache = &v
-}
-
-// GetAsin returns the Asin field value if set, zero value otherwise.
-func (o *ProductAdd) GetAsin() string {
-	if o == nil || IsNil(o.Asin) {
-		var ret string
-		return ret
-	}
-	return *o.Asin
-}
-
-// GetAsinOk returns a tuple with the Asin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAsinOk() (*string, bool) {
-	if o == nil || IsNil(o.Asin) {
-		return nil, false
-	}
-	return o.Asin, true
-}
-
-// HasAsin returns a boolean if a field has been set.
-func (o *ProductAdd) HasAsin() bool {
-	if o != nil && !IsNil(o.Asin) {
-		return true
-	}
-
-	return false
-}
-
-// SetAsin gets a reference to the given string and assigns it to the Asin field.
-func (o *ProductAdd) SetAsin(v string) {
-	o.Asin = &v
-}
-
-// GetGtin returns the Gtin field value if set, zero value otherwise.
-func (o *ProductAdd) GetGtin() string {
-	if o == nil || IsNil(o.Gtin) {
-		var ret string
-		return ret
-	}
-	return *o.Gtin
-}
-
-// GetGtinOk returns a tuple with the Gtin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetGtinOk() (*string, bool) {
-	if o == nil || IsNil(o.Gtin) {
-		return nil, false
-	}
-	return o.Gtin, true
-}
-
-// HasGtin returns a boolean if a field has been set.
-func (o *ProductAdd) HasGtin() bool {
-	if o != nil && !IsNil(o.Gtin) {
-		return true
-	}
-
-	return false
-}
-
-// SetGtin gets a reference to the given string and assigns it to the Gtin field.
-func (o *ProductAdd) SetGtin(v string) {
-	o.Gtin = &v
-}
-
-// GetMpn returns the Mpn field value if set, zero value otherwise.
-func (o *ProductAdd) GetMpn() string {
-	if o == nil || IsNil(o.Mpn) {
-		var ret string
-		return ret
-	}
-	return *o.Mpn
-}
-
-// GetMpnOk returns a tuple with the Mpn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMpnOk() (*string, bool) {
-	if o == nil || IsNil(o.Mpn) {
-		return nil, false
-	}
-	return o.Mpn, true
-}
-
-// HasMpn returns a boolean if a field has been set.
-func (o *ProductAdd) HasMpn() bool {
-	if o != nil && !IsNil(o.Mpn) {
-		return true
-	}
-
-	return false
-}
-
-// SetMpn gets a reference to the given string and assigns it to the Mpn field.
-func (o *ProductAdd) SetMpn(v string) {
-	o.Mpn = &v
-}
-
-// GetTaxable returns the Taxable field value if set, zero value otherwise.
-func (o *ProductAdd) GetTaxable() bool {
-	if o == nil || IsNil(o.Taxable) {
-		var ret bool
-		return ret
-	}
-	return *o.Taxable
-}
-
-// GetTaxableOk returns a tuple with the Taxable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetTaxableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Taxable) {
-		return nil, false
-	}
-	return o.Taxable, true
-}
-
-// HasTaxable returns a boolean if a field has been set.
-func (o *ProductAdd) HasTaxable() bool {
-	if o != nil && !IsNil(o.Taxable) {
-		return true
-	}
-
-	return false
-}
-
-// SetTaxable gets a reference to the given bool and assigns it to the Taxable field.
-func (o *ProductAdd) SetTaxable(v bool) {
-	o.Taxable = &v
-}
-
-// GetVisible returns the Visible field value if set, zero value otherwise.
-func (o *ProductAdd) GetVisible() string {
-	if o == nil || IsNil(o.Visible) {
-		var ret string
-		return ret
-	}
-	return *o.Visible
-}
-
-// GetVisibleOk returns a tuple with the Visible field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetVisibleOk() (*string, bool) {
-	if o == nil || IsNil(o.Visible) {
-		return nil, false
-	}
-	return o.Visible, true
-}
-
-// HasVisible returns a boolean if a field has been set.
-func (o *ProductAdd) HasVisible() bool {
-	if o != nil && !IsNil(o.Visible) {
-		return true
-	}
-
-	return false
-}
-
-// SetVisible gets a reference to the given string and assigns it to the Visible field.
-func (o *ProductAdd) SetVisible(v string) {
-	o.Visible = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ProductAdd) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ProductAdd) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ProductAdd) SetStatus(v string) {
-	o.Status = &v
-}
-
-// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise.
-func (o *ProductAdd) GetSeoUrl() string {
-	if o == nil || IsNil(o.SeoUrl) {
-		var ret string
-		return ret
-	}
-	return *o.SeoUrl
-}
-
-// GetSeoUrlOk returns a tuple with the SeoUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSeoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.SeoUrl) {
-		return nil, false
-	}
-	return o.SeoUrl, true
-}
-
-// HasSeoUrl returns a boolean if a field has been set.
-func (o *ProductAdd) HasSeoUrl() bool {
-	if o != nil && !IsNil(o.SeoUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetSeoUrl gets a reference to the given string and assigns it to the SeoUrl field.
-func (o *ProductAdd) SetSeoUrl(v string) {
-	o.SeoUrl = &v
-}
-
-// GetProductClass returns the ProductClass field value if set, zero value otherwise.
-func (o *ProductAdd) GetProductClass() string {
-	if o == nil || IsNil(o.ProductClass) {
-		var ret string
-		return ret
-	}
-	return *o.ProductClass
-}
-
-// GetProductClassOk returns a tuple with the ProductClass field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetProductClassOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductClass) {
-		return nil, false
-	}
-	return o.ProductClass, true
-}
-
-// HasProductClass returns a boolean if a field has been set.
-func (o *ProductAdd) HasProductClass() bool {
-	if o != nil && !IsNil(o.ProductClass) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductClass gets a reference to the given string and assigns it to the ProductClass field.
-func (o *ProductAdd) SetProductClass(v string) {
-	o.ProductClass = &v
-}
-
-// GetProductType returns the ProductType field value if set, zero value otherwise.
-func (o *ProductAdd) GetProductType() string {
-	if o == nil || IsNil(o.ProductType) {
-		var ret string
-		return ret
-	}
-	return *o.ProductType
-}
-
-// GetProductTypeOk returns a tuple with the ProductType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetProductTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductType) {
-		return nil, false
-	}
-	return o.ProductType, true
-}
-
-// HasProductType returns a boolean if a field has been set.
-func (o *ProductAdd) HasProductType() bool {
-	if o != nil && !IsNil(o.ProductType) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductType gets a reference to the given string and assigns it to the ProductType field.
-func (o *ProductAdd) SetProductType(v string) {
-	o.ProductType = &v
-}
-
-// GetMarketplaceItemProperties returns the MarketplaceItemProperties field value if set, zero value otherwise.
-func (o *ProductAdd) GetMarketplaceItemProperties() string {
-	if o == nil || IsNil(o.MarketplaceItemProperties) {
-		var ret string
-		return ret
-	}
-	return *o.MarketplaceItemProperties
-}
-
-// GetMarketplaceItemPropertiesOk returns a tuple with the MarketplaceItemProperties field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMarketplaceItemPropertiesOk() (*string, bool) {
-	if o == nil || IsNil(o.MarketplaceItemProperties) {
-		return nil, false
-	}
-	return o.MarketplaceItemProperties, true
-}
-
-// HasMarketplaceItemProperties returns a boolean if a field has been set.
-func (o *ProductAdd) HasMarketplaceItemProperties() bool {
-	if o != nil && !IsNil(o.MarketplaceItemProperties) {
-		return true
-	}
-
-	return false
-}
-
-// SetMarketplaceItemProperties gets a reference to the given string and assigns it to the MarketplaceItemProperties field.
-func (o *ProductAdd) SetMarketplaceItemProperties(v string) {
-	o.MarketplaceItemProperties = &v
-}
-
-// GetManageStock returns the ManageStock field value if set, zero value otherwise.
-func (o *ProductAdd) GetManageStock() bool {
-	if o == nil || IsNil(o.ManageStock) {
-		var ret bool
-		return ret
-	}
-	return *o.ManageStock
-}
-
-// GetManageStockOk returns a tuple with the ManageStock field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetManageStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.ManageStock) {
-		return nil, false
-	}
-	return o.ManageStock, true
-}
-
-// HasManageStock returns a boolean if a field has been set.
-func (o *ProductAdd) HasManageStock() bool {
-	if o != nil && !IsNil(o.ManageStock) {
-		return true
-	}
-
-	return false
-}
-
-// SetManageStock gets a reference to the given bool and assigns it to the ManageStock field.
-func (o *ProductAdd) SetManageStock(v bool) {
-	o.ManageStock = &v
-}
-
-// GetHarmonizedSystemCode returns the HarmonizedSystemCode field value if set, zero value otherwise.
-func (o *ProductAdd) GetHarmonizedSystemCode() string {
-	if o == nil || IsNil(o.HarmonizedSystemCode) {
-		var ret string
-		return ret
-	}
-	return *o.HarmonizedSystemCode
-}
-
-// GetHarmonizedSystemCodeOk returns a tuple with the HarmonizedSystemCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetHarmonizedSystemCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.HarmonizedSystemCode) {
-		return nil, false
-	}
-	return o.HarmonizedSystemCode, true
-}
-
-// HasHarmonizedSystemCode returns a boolean if a field has been set.
-func (o *ProductAdd) HasHarmonizedSystemCode() bool {
-	if o != nil && !IsNil(o.HarmonizedSystemCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetHarmonizedSystemCode gets a reference to the given string and assigns it to the HarmonizedSystemCode field.
-func (o *ProductAdd) SetHarmonizedSystemCode(v string) {
-	o.HarmonizedSystemCode = &v
-}
-
-// GetCountryOfOrigin returns the CountryOfOrigin field value if set, zero value otherwise.
-func (o *ProductAdd) GetCountryOfOrigin() string {
-	if o == nil || IsNil(o.CountryOfOrigin) {
-		var ret string
-		return ret
-	}
-	return *o.CountryOfOrigin
-}
-
-// GetCountryOfOriginOk returns a tuple with the CountryOfOrigin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCountryOfOriginOk() (*string, bool) {
-	if o == nil || IsNil(o.CountryOfOrigin) {
-		return nil, false
-	}
-	return o.CountryOfOrigin, true
-}
-
-// HasCountryOfOrigin returns a boolean if a field has been set.
-func (o *ProductAdd) HasCountryOfOrigin() bool {
-	if o != nil && !IsNil(o.CountryOfOrigin) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountryOfOrigin gets a reference to the given string and assigns it to the CountryOfOrigin field.
-func (o *ProductAdd) SetCountryOfOrigin(v string) {
-	o.CountryOfOrigin = &v
-}
-
 // GetFiles returns the Files field value if set, zero value otherwise.
 func (o *ProductAdd) GetFiles() []ProductAddFilesInner {
 	if o == nil || IsNil(o.Files) {
@@ -3211,6 +2251,198 @@ func (o *ProductAdd) HasFiles() bool {
 // SetFiles gets a reference to the given []ProductAddFilesInner and assigns it to the Files field.
 func (o *ProductAdd) SetFiles(v []ProductAddFilesInner) {
 	o.Files = v
+}
+
+// GetSizeChart returns the SizeChart field value if set, zero value otherwise.
+func (o *ProductAdd) GetSizeChart() ProductAddSizeChart {
+	if o == nil || IsNil(o.SizeChart) {
+		var ret ProductAddSizeChart
+		return ret
+	}
+	return *o.SizeChart
+}
+
+// GetSizeChartOk returns a tuple with the SizeChart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSizeChartOk() (*ProductAddSizeChart, bool) {
+	if o == nil || IsNil(o.SizeChart) {
+		return nil, false
+	}
+	return o.SizeChart, true
+}
+
+// HasSizeChart returns a boolean if a field has been set.
+func (o *ProductAdd) HasSizeChart() bool {
+	if o != nil && !IsNil(o.SizeChart) {
+		return true
+	}
+
+	return false
+}
+
+// SetSizeChart gets a reference to the given ProductAddSizeChart and assigns it to the SizeChart field.
+func (o *ProductAdd) SetSizeChart(v ProductAddSizeChart) {
+	o.SizeChart = &v
+}
+
+// GetRelatedProductsIds returns the RelatedProductsIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetRelatedProductsIds() string {
+	if o == nil || IsNil(o.RelatedProductsIds) {
+		var ret string
+		return ret
+	}
+	return *o.RelatedProductsIds
+}
+
+// GetRelatedProductsIdsOk returns a tuple with the RelatedProductsIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetRelatedProductsIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.RelatedProductsIds) {
+		return nil, false
+	}
+	return o.RelatedProductsIds, true
+}
+
+// HasRelatedProductsIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasRelatedProductsIds() bool {
+	if o != nil && !IsNil(o.RelatedProductsIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelatedProductsIds gets a reference to the given string and assigns it to the RelatedProductsIds field.
+func (o *ProductAdd) SetRelatedProductsIds(v string) {
+	o.RelatedProductsIds = &v
+}
+
+// GetUpSellProductsIds returns the UpSellProductsIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetUpSellProductsIds() string {
+	if o == nil || IsNil(o.UpSellProductsIds) {
+		var ret string
+		return ret
+	}
+	return *o.UpSellProductsIds
+}
+
+// GetUpSellProductsIdsOk returns a tuple with the UpSellProductsIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetUpSellProductsIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.UpSellProductsIds) {
+		return nil, false
+	}
+	return o.UpSellProductsIds, true
+}
+
+// HasUpSellProductsIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasUpSellProductsIds() bool {
+	if o != nil && !IsNil(o.UpSellProductsIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpSellProductsIds gets a reference to the given string and assigns it to the UpSellProductsIds field.
+func (o *ProductAdd) SetUpSellProductsIds(v string) {
+	o.UpSellProductsIds = &v
+}
+
+// GetCrossSellProductsIds returns the CrossSellProductsIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetCrossSellProductsIds() string {
+	if o == nil || IsNil(o.CrossSellProductsIds) {
+		var ret string
+		return ret
+	}
+	return *o.CrossSellProductsIds
+}
+
+// GetCrossSellProductsIdsOk returns a tuple with the CrossSellProductsIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCrossSellProductsIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.CrossSellProductsIds) {
+		return nil, false
+	}
+	return o.CrossSellProductsIds, true
+}
+
+// HasCrossSellProductsIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasCrossSellProductsIds() bool {
+	if o != nil && !IsNil(o.CrossSellProductsIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetCrossSellProductsIds gets a reference to the given string and assigns it to the CrossSellProductsIds field.
+func (o *ProductAdd) SetCrossSellProductsIds(v string) {
+	o.CrossSellProductsIds = &v
+}
+
+// GetAttributeSetName returns the AttributeSetName field value if set, zero value otherwise.
+func (o *ProductAdd) GetAttributeSetName() string {
+	if o == nil || IsNil(o.AttributeSetName) {
+		var ret string
+		return ret
+	}
+	return *o.AttributeSetName
+}
+
+// GetAttributeSetNameOk returns a tuple with the AttributeSetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAttributeSetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AttributeSetName) {
+		return nil, false
+	}
+	return o.AttributeSetName, true
+}
+
+// HasAttributeSetName returns a boolean if a field has been set.
+func (o *ProductAdd) HasAttributeSetName() bool {
+	if o != nil && !IsNil(o.AttributeSetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributeSetName gets a reference to the given string and assigns it to the AttributeSetName field.
+func (o *ProductAdd) SetAttributeSetName(v string) {
+	o.AttributeSetName = &v
+}
+
+// GetAttributeName returns the AttributeName field value if set, zero value otherwise.
+func (o *ProductAdd) GetAttributeName() string {
+	if o == nil || IsNil(o.AttributeName) {
+		var ret string
+		return ret
+	}
+	return *o.AttributeName
+}
+
+// GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAttributeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AttributeName) {
+		return nil, false
+	}
+	return o.AttributeName, true
+}
+
+// HasAttributeName returns a boolean if a field has been set.
+func (o *ProductAdd) HasAttributeName() bool {
+	if o != nil && !IsNil(o.AttributeName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributeName gets a reference to the given string and assigns it to the AttributeName field.
+func (o *ProductAdd) SetAttributeName(v string) {
+	o.AttributeName = &v
 }
 
 // GetSearchKeywords returns the SearchKeywords field value if set, zero value otherwise.
@@ -3245,100 +2477,836 @@ func (o *ProductAdd) SetSearchKeywords(v string) {
 	o.SearchKeywords = &v
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *ProductAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *ProductAdd) GetTags() string {
+	if o == nil || IsNil(o.Tags) {
 		var ret string
 		return ret
 	}
-	return *o.StoreId
+	return *o.Tags
 }
 
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
+func (o *ProductAdd) GetTagsOk() (*string, bool) {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
-	return o.StoreId, true
+	return o.Tags, true
 }
 
-// HasStoreId returns a boolean if a field has been set.
-func (o *ProductAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
+// HasTags returns a boolean if a field has been set.
+func (o *ProductAdd) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
 
 	return false
 }
 
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *ProductAdd) SetStoreId(v string) {
-	o.StoreId = &v
+// SetTags gets a reference to the given string and assigns it to the Tags field.
+func (o *ProductAdd) SetTags(v string) {
+	o.Tags = &v
 }
 
-// GetBrandName returns the BrandName field value if set, zero value otherwise.
-func (o *ProductAdd) GetBrandName() string {
-	if o == nil || IsNil(o.BrandName) {
-		var ret string
+// GetMaterials returns the Materials field value if set, zero value otherwise.
+func (o *ProductAdd) GetMaterials() []string {
+	if o == nil || IsNil(o.Materials) {
+		var ret []string
 		return ret
 	}
-	return *o.BrandName
+	return o.Materials
 }
 
-// GetBrandNameOk returns a tuple with the BrandName field value if set, nil otherwise
+// GetMaterialsOk returns a tuple with the Materials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetBrandNameOk() (*string, bool) {
-	if o == nil || IsNil(o.BrandName) {
+func (o *ProductAdd) GetMaterialsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Materials) {
 		return nil, false
 	}
-	return o.BrandName, true
+	return o.Materials, true
 }
 
-// HasBrandName returns a boolean if a field has been set.
-func (o *ProductAdd) HasBrandName() bool {
-	if o != nil && !IsNil(o.BrandName) {
+// HasMaterials returns a boolean if a field has been set.
+func (o *ProductAdd) HasMaterials() bool {
+	if o != nil && !IsNil(o.Materials) {
 		return true
 	}
 
 	return false
 }
 
-// SetBrandName gets a reference to the given string and assigns it to the BrandName field.
-func (o *ProductAdd) SetBrandName(v string) {
-	o.BrandName = &v
+// SetMaterials gets a reference to the given []string and assigns it to the Materials field.
+func (o *ProductAdd) SetMaterials(v []string) {
+	o.Materials = v
 }
 
-// GetIsVirtual returns the IsVirtual field value if set, zero value otherwise.
-func (o *ProductAdd) GetIsVirtual() bool {
-	if o == nil || IsNil(o.IsVirtual) {
+// GetCertifications returns the Certifications field value if set, zero value otherwise.
+func (o *ProductAdd) GetCertifications() []ProductAddCertificationsInner {
+	if o == nil || IsNil(o.Certifications) {
+		var ret []ProductAddCertificationsInner
+		return ret
+	}
+	return o.Certifications
+}
+
+// GetCertificationsOk returns a tuple with the Certifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCertificationsOk() ([]ProductAddCertificationsInner, bool) {
+	if o == nil || IsNil(o.Certifications) {
+		return nil, false
+	}
+	return o.Certifications, true
+}
+
+// HasCertifications returns a boolean if a field has been set.
+func (o *ProductAdd) HasCertifications() bool {
+	if o != nil && !IsNil(o.Certifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertifications gets a reference to the given []ProductAddCertificationsInner and assigns it to the Certifications field.
+func (o *ProductAdd) SetCertifications(v []ProductAddCertificationsInner) {
+	o.Certifications = v
+}
+
+// GetSpecifics returns the Specifics field value if set, zero value otherwise.
+func (o *ProductAdd) GetSpecifics() []ProductAddSpecificsInner {
+	if o == nil || IsNil(o.Specifics) {
+		var ret []ProductAddSpecificsInner
+		return ret
+	}
+	return o.Specifics
+}
+
+// GetSpecificsOk returns a tuple with the Specifics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSpecificsOk() ([]ProductAddSpecificsInner, bool) {
+	if o == nil || IsNil(o.Specifics) {
+		return nil, false
+	}
+	return o.Specifics, true
+}
+
+// HasSpecifics returns a boolean if a field has been set.
+func (o *ProductAdd) HasSpecifics() bool {
+	if o != nil && !IsNil(o.Specifics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpecifics gets a reference to the given []ProductAddSpecificsInner and assigns it to the Specifics field.
+func (o *ProductAdd) SetSpecifics(v []ProductAddSpecificsInner) {
+	o.Specifics = v
+}
+
+// GetAvailFrom returns the AvailFrom field value if set, zero value otherwise.
+func (o *ProductAdd) GetAvailFrom() string {
+	if o == nil || IsNil(o.AvailFrom) {
+		var ret string
+		return ret
+	}
+	return *o.AvailFrom
+}
+
+// GetAvailFromOk returns a tuple with the AvailFrom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAvailFromOk() (*string, bool) {
+	if o == nil || IsNil(o.AvailFrom) {
+		return nil, false
+	}
+	return o.AvailFrom, true
+}
+
+// HasAvailFrom returns a boolean if a field has been set.
+func (o *ProductAdd) HasAvailFrom() bool {
+	if o != nil && !IsNil(o.AvailFrom) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailFrom gets a reference to the given string and assigns it to the AvailFrom field.
+func (o *ProductAdd) SetAvailFrom(v string) {
+	o.AvailFrom = &v
+}
+
+// GetSpriceCreate returns the SpriceCreate field value if set, zero value otherwise.
+func (o *ProductAdd) GetSpriceCreate() string {
+	if o == nil || IsNil(o.SpriceCreate) {
+		var ret string
+		return ret
+	}
+	return *o.SpriceCreate
+}
+
+// GetSpriceCreateOk returns a tuple with the SpriceCreate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSpriceCreateOk() (*string, bool) {
+	if o == nil || IsNil(o.SpriceCreate) {
+		return nil, false
+	}
+	return o.SpriceCreate, true
+}
+
+// HasSpriceCreate returns a boolean if a field has been set.
+func (o *ProductAdd) HasSpriceCreate() bool {
+	if o != nil && !IsNil(o.SpriceCreate) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpriceCreate gets a reference to the given string and assigns it to the SpriceCreate field.
+func (o *ProductAdd) SetSpriceCreate(v string) {
+	o.SpriceCreate = &v
+}
+
+// GetSpriceModified returns the SpriceModified field value if set, zero value otherwise.
+func (o *ProductAdd) GetSpriceModified() string {
+	if o == nil || IsNil(o.SpriceModified) {
+		var ret string
+		return ret
+	}
+	return *o.SpriceModified
+}
+
+// GetSpriceModifiedOk returns a tuple with the SpriceModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSpriceModifiedOk() (*string, bool) {
+	if o == nil || IsNil(o.SpriceModified) {
+		return nil, false
+	}
+	return o.SpriceModified, true
+}
+
+// HasSpriceModified returns a boolean if a field has been set.
+func (o *ProductAdd) HasSpriceModified() bool {
+	if o != nil && !IsNil(o.SpriceModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpriceModified gets a reference to the given string and assigns it to the SpriceModified field.
+func (o *ProductAdd) SetSpriceModified(v string) {
+	o.SpriceModified = &v
+}
+
+// GetSpriceExpire returns the SpriceExpire field value if set, zero value otherwise.
+func (o *ProductAdd) GetSpriceExpire() string {
+	if o == nil || IsNil(o.SpriceExpire) {
+		var ret string
+		return ret
+	}
+	return *o.SpriceExpire
+}
+
+// GetSpriceExpireOk returns a tuple with the SpriceExpire field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSpriceExpireOk() (*string, bool) {
+	if o == nil || IsNil(o.SpriceExpire) {
+		return nil, false
+	}
+	return o.SpriceExpire, true
+}
+
+// HasSpriceExpire returns a boolean if a field has been set.
+func (o *ProductAdd) HasSpriceExpire() bool {
+	if o != nil && !IsNil(o.SpriceExpire) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpriceExpire gets a reference to the given string and assigns it to the SpriceExpire field.
+func (o *ProductAdd) SetSpriceExpire(v string) {
+	o.SpriceExpire = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *ProductAdd) GetCreatedAt() string {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret string
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCreatedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *ProductAdd) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *ProductAdd) SetCreatedAt(v string) {
+	o.CreatedAt = &v
+}
+
+// GetAutoRenew returns the AutoRenew field value if set, zero value otherwise.
+func (o *ProductAdd) GetAutoRenew() bool {
+	if o == nil || IsNil(o.AutoRenew) {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtual
+	return *o.AutoRenew
 }
 
-// GetIsVirtualOk returns a tuple with the IsVirtual field value if set, nil otherwise
+// GetAutoRenewOk returns a tuple with the AutoRenew field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetIsVirtualOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtual) {
+func (o *ProductAdd) GetAutoRenewOk() (*bool, bool) {
+	if o == nil || IsNil(o.AutoRenew) {
 		return nil, false
 	}
-	return o.IsVirtual, true
+	return o.AutoRenew, true
 }
 
-// HasIsVirtual returns a boolean if a field has been set.
-func (o *ProductAdd) HasIsVirtual() bool {
-	if o != nil && !IsNil(o.IsVirtual) {
+// HasAutoRenew returns a boolean if a field has been set.
+func (o *ProductAdd) HasAutoRenew() bool {
+	if o != nil && !IsNil(o.AutoRenew) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsVirtual gets a reference to the given bool and assigns it to the IsVirtual field.
-func (o *ProductAdd) SetIsVirtual(v bool) {
-	o.IsVirtual = &v
+// SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
+func (o *ProductAdd) SetAutoRenew(v bool) {
+	o.AutoRenew = &v
+}
+
+// GetWhenMade returns the WhenMade field value if set, zero value otherwise.
+func (o *ProductAdd) GetWhenMade() string {
+	if o == nil || IsNil(o.WhenMade) {
+		var ret string
+		return ret
+	}
+	return *o.WhenMade
+}
+
+// GetWhenMadeOk returns a tuple with the WhenMade field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetWhenMadeOk() (*string, bool) {
+	if o == nil || IsNil(o.WhenMade) {
+		return nil, false
+	}
+	return o.WhenMade, true
+}
+
+// HasWhenMade returns a boolean if a field has been set.
+func (o *ProductAdd) HasWhenMade() bool {
+	if o != nil && !IsNil(o.WhenMade) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhenMade gets a reference to the given string and assigns it to the WhenMade field.
+func (o *ProductAdd) SetWhenMade(v string) {
+	o.WhenMade = &v
+}
+
+// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
+func (o *ProductAdd) GetMetaTitle() string {
+	if o == nil || IsNil(o.MetaTitle) {
+		var ret string
+		return ret
+	}
+	return *o.MetaTitle
+}
+
+// GetMetaTitleOk returns a tuple with the MetaTitle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMetaTitleOk() (*string, bool) {
+	if o == nil || IsNil(o.MetaTitle) {
+		return nil, false
+	}
+	return o.MetaTitle, true
+}
+
+// HasMetaTitle returns a boolean if a field has been set.
+func (o *ProductAdd) HasMetaTitle() bool {
+	if o != nil && !IsNil(o.MetaTitle) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaTitle gets a reference to the given string and assigns it to the MetaTitle field.
+func (o *ProductAdd) SetMetaTitle(v string) {
+	o.MetaTitle = &v
+}
+
+// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise.
+func (o *ProductAdd) GetMetaKeywords() string {
+	if o == nil || IsNil(o.MetaKeywords) {
+		var ret string
+		return ret
+	}
+	return *o.MetaKeywords
+}
+
+// GetMetaKeywordsOk returns a tuple with the MetaKeywords field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMetaKeywordsOk() (*string, bool) {
+	if o == nil || IsNil(o.MetaKeywords) {
+		return nil, false
+	}
+	return o.MetaKeywords, true
+}
+
+// HasMetaKeywords returns a boolean if a field has been set.
+func (o *ProductAdd) HasMetaKeywords() bool {
+	if o != nil && !IsNil(o.MetaKeywords) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaKeywords gets a reference to the given string and assigns it to the MetaKeywords field.
+func (o *ProductAdd) SetMetaKeywords(v string) {
+	o.MetaKeywords = &v
+}
+
+// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
+func (o *ProductAdd) GetMetaDescription() string {
+	if o == nil || IsNil(o.MetaDescription) {
+		var ret string
+		return ret
+	}
+	return *o.MetaDescription
+}
+
+// GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMetaDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.MetaDescription) {
+		return nil, false
+	}
+	return o.MetaDescription, true
+}
+
+// HasMetaDescription returns a boolean if a field has been set.
+func (o *ProductAdd) HasMetaDescription() bool {
+	if o != nil && !IsNil(o.MetaDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetaDescription gets a reference to the given string and assigns it to the MetaDescription field.
+func (o *ProductAdd) SetMetaDescription(v string) {
+	o.MetaDescription = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *ProductAdd) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *ProductAdd) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *ProductAdd) SetUrl(v string) {
+	o.Url = &v
+}
+
+// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise.
+func (o *ProductAdd) GetSeoUrl() string {
+	if o == nil || IsNil(o.SeoUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SeoUrl
+}
+
+// GetSeoUrlOk returns a tuple with the SeoUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSeoUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SeoUrl) {
+		return nil, false
+	}
+	return o.SeoUrl, true
+}
+
+// HasSeoUrl returns a boolean if a field has been set.
+func (o *ProductAdd) HasSeoUrl() bool {
+	if o != nil && !IsNil(o.SeoUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeoUrl gets a reference to the given string and assigns it to the SeoUrl field.
+func (o *ProductAdd) SetSeoUrl(v string) {
+	o.SeoUrl = &v
+}
+
+// GetTaxClassId returns the TaxClassId field value if set, zero value otherwise.
+func (o *ProductAdd) GetTaxClassId() string {
+	if o == nil || IsNil(o.TaxClassId) {
+		var ret string
+		return ret
+	}
+	return *o.TaxClassId
+}
+
+// GetTaxClassIdOk returns a tuple with the TaxClassId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetTaxClassIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TaxClassId) {
+		return nil, false
+	}
+	return o.TaxClassId, true
+}
+
+// HasTaxClassId returns a boolean if a field has been set.
+func (o *ProductAdd) HasTaxClassId() bool {
+	if o != nil && !IsNil(o.TaxClassId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaxClassId gets a reference to the given string and assigns it to the TaxClassId field.
+func (o *ProductAdd) SetTaxClassId(v string) {
+	o.TaxClassId = &v
+}
+
+// GetTaxable returns the Taxable field value if set, zero value otherwise.
+func (o *ProductAdd) GetTaxable() bool {
+	if o == nil || IsNil(o.Taxable) {
+		var ret bool
+		return ret
+	}
+	return *o.Taxable
+}
+
+// GetTaxableOk returns a tuple with the Taxable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetTaxableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Taxable) {
+		return nil, false
+	}
+	return o.Taxable, true
+}
+
+// HasTaxable returns a boolean if a field has been set.
+func (o *ProductAdd) HasTaxable() bool {
+	if o != nil && !IsNil(o.Taxable) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaxable gets a reference to the given bool and assigns it to the Taxable field.
+func (o *ProductAdd) SetTaxable(v bool) {
+	o.Taxable = &v
+}
+
+// GetSalesTax returns the SalesTax field value if set, zero value otherwise.
+func (o *ProductAdd) GetSalesTax() ProductAddSalesTax {
+	if o == nil || IsNil(o.SalesTax) {
+		var ret ProductAddSalesTax
+		return ret
+	}
+	return *o.SalesTax
+}
+
+// GetSalesTaxOk returns a tuple with the SalesTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetSalesTaxOk() (*ProductAddSalesTax, bool) {
+	if o == nil || IsNil(o.SalesTax) {
+		return nil, false
+	}
+	return o.SalesTax, true
+}
+
+// HasSalesTax returns a boolean if a field has been set.
+func (o *ProductAdd) HasSalesTax() bool {
+	if o != nil && !IsNil(o.SalesTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetSalesTax gets a reference to the given ProductAddSalesTax and assigns it to the SalesTax field.
+func (o *ProductAdd) SetSalesTax(v ProductAddSalesTax) {
+	o.SalesTax = &v
+}
+
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *ProductAdd) GetCondition() string {
+	if o == nil || IsNil(o.Condition) {
+		var ret string
+		return ret
+	}
+	return *o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetConditionOk() (*string, bool) {
+	if o == nil || IsNil(o.Condition) {
+		return nil, false
+	}
+	return o.Condition, true
+}
+
+// HasCondition returns a boolean if a field has been set.
+func (o *ProductAdd) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given string and assigns it to the Condition field.
+func (o *ProductAdd) SetCondition(v string) {
+	o.Condition = &v
+}
+
+// GetConditionDescription returns the ConditionDescription field value if set, zero value otherwise.
+func (o *ProductAdd) GetConditionDescription() string {
+	if o == nil || IsNil(o.ConditionDescription) {
+		var ret string
+		return ret
+	}
+	return *o.ConditionDescription
+}
+
+// GetConditionDescriptionOk returns a tuple with the ConditionDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetConditionDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.ConditionDescription) {
+		return nil, false
+	}
+	return o.ConditionDescription, true
+}
+
+// HasConditionDescription returns a boolean if a field has been set.
+func (o *ProductAdd) HasConditionDescription() bool {
+	if o != nil && !IsNil(o.ConditionDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetConditionDescription gets a reference to the given string and assigns it to the ConditionDescription field.
+func (o *ProductAdd) SetConditionDescription(v string) {
+	o.ConditionDescription = &v
+}
+
+// GetAllowDisplayCondition returns the AllowDisplayCondition field value if set, zero value otherwise.
+func (o *ProductAdd) GetAllowDisplayCondition() bool {
+	if o == nil || IsNil(o.AllowDisplayCondition) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowDisplayCondition
+}
+
+// GetAllowDisplayConditionOk returns a tuple with the AllowDisplayCondition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAllowDisplayConditionOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowDisplayCondition) {
+		return nil, false
+	}
+	return o.AllowDisplayCondition, true
+}
+
+// HasAllowDisplayCondition returns a boolean if a field has been set.
+func (o *ProductAdd) HasAllowDisplayCondition() bool {
+	if o != nil && !IsNil(o.AllowDisplayCondition) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowDisplayCondition gets a reference to the given bool and assigns it to the AllowDisplayCondition field.
+func (o *ProductAdd) SetAllowDisplayCondition(v bool) {
+	o.AllowDisplayCondition = &v
+}
+
+// GetPaymentMethods returns the PaymentMethods field value if set, zero value otherwise.
+func (o *ProductAdd) GetPaymentMethods() []string {
+	if o == nil || IsNil(o.PaymentMethods) {
+		var ret []string
+		return ret
+	}
+	return o.PaymentMethods
+}
+
+// GetPaymentMethodsOk returns a tuple with the PaymentMethods field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetPaymentMethodsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PaymentMethods) {
+		return nil, false
+	}
+	return o.PaymentMethods, true
+}
+
+// HasPaymentMethods returns a boolean if a field has been set.
+func (o *ProductAdd) HasPaymentMethods() bool {
+	if o != nil && !IsNil(o.PaymentMethods) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentMethods gets a reference to the given []string and assigns it to the PaymentMethods field.
+func (o *ProductAdd) SetPaymentMethods(v []string) {
+	o.PaymentMethods = v
+}
+
+// GetPaypalEmail returns the PaypalEmail field value if set, zero value otherwise.
+func (o *ProductAdd) GetPaypalEmail() string {
+	if o == nil || IsNil(o.PaypalEmail) {
+		var ret string
+		return ret
+	}
+	return *o.PaypalEmail
+}
+
+// GetPaypalEmailOk returns a tuple with the PaypalEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetPaypalEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.PaypalEmail) {
+		return nil, false
+	}
+	return o.PaypalEmail, true
+}
+
+// HasPaypalEmail returns a boolean if a field has been set.
+func (o *ProductAdd) HasPaypalEmail() bool {
+	if o != nil && !IsNil(o.PaypalEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaypalEmail gets a reference to the given string and assigns it to the PaypalEmail field.
+func (o *ProductAdd) SetPaypalEmail(v string) {
+	o.PaypalEmail = &v
+}
+
+// GetShippingTemplateId returns the ShippingTemplateId field value if set, zero value otherwise.
+func (o *ProductAdd) GetShippingTemplateId() int32 {
+	if o == nil || IsNil(o.ShippingTemplateId) {
+		var ret int32
+		return ret
+	}
+	return *o.ShippingTemplateId
+}
+
+// GetShippingTemplateIdOk returns a tuple with the ShippingTemplateId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetShippingTemplateIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ShippingTemplateId) {
+		return nil, false
+	}
+	return o.ShippingTemplateId, true
+}
+
+// HasShippingTemplateId returns a boolean if a field has been set.
+func (o *ProductAdd) HasShippingTemplateId() bool {
+	if o != nil && !IsNil(o.ShippingTemplateId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingTemplateId gets a reference to the given int32 and assigns it to the ShippingTemplateId field.
+func (o *ProductAdd) SetShippingTemplateId(v int32) {
+	o.ShippingTemplateId = &v
+}
+
+// GetShippingDetails returns the ShippingDetails field value if set, zero value otherwise.
+func (o *ProductAdd) GetShippingDetails() []ProductAddShippingDetailsInner {
+	if o == nil || IsNil(o.ShippingDetails) {
+		var ret []ProductAddShippingDetailsInner
+		return ret
+	}
+	return o.ShippingDetails
+}
+
+// GetShippingDetailsOk returns a tuple with the ShippingDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetShippingDetailsOk() ([]ProductAddShippingDetailsInner, bool) {
+	if o == nil || IsNil(o.ShippingDetails) {
+		return nil, false
+	}
+	return o.ShippingDetails, true
+}
+
+// HasShippingDetails returns a boolean if a field has been set.
+func (o *ProductAdd) HasShippingDetails() bool {
+	if o != nil && !IsNil(o.ShippingDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingDetails gets a reference to the given []ProductAddShippingDetailsInner and assigns it to the ShippingDetails field.
+func (o *ProductAdd) SetShippingDetails(v []ProductAddShippingDetailsInner) {
+	o.ShippingDetails = v
 }
 
 // GetIsFreeShipping returns the IsFreeShipping field value if set, zero value otherwise.
@@ -3373,38 +3341,6 @@ func (o *ProductAdd) SetIsFreeShipping(v bool) {
 	o.IsFreeShipping = &v
 }
 
-// GetInStock returns the InStock field value if set, zero value otherwise.
-func (o *ProductAdd) GetInStock() bool {
-	if o == nil || IsNil(o.InStock) {
-		var ret bool
-		return ret
-	}
-	return *o.InStock
-}
-
-// GetInStockOk returns a tuple with the InStock field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetInStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.InStock) {
-		return nil, false
-	}
-	return o.InStock, true
-}
-
-// HasInStock returns a boolean if a field has been set.
-func (o *ProductAdd) HasInStock() bool {
-	if o != nil && !IsNil(o.InStock) {
-		return true
-	}
-
-	return false
-}
-
-// SetInStock gets a reference to the given bool and assigns it to the InStock field.
-func (o *ProductAdd) SetInStock(v bool) {
-	o.InStock = &v
-}
-
 // GetDeliveryCode returns the DeliveryCode field value if set, zero value otherwise.
 func (o *ProductAdd) GetDeliveryCode() string {
 	if o == nil || IsNil(o.DeliveryCode) {
@@ -3435,38 +3371,6 @@ func (o *ProductAdd) HasDeliveryCode() bool {
 // SetDeliveryCode gets a reference to the given string and assigns it to the DeliveryCode field.
 func (o *ProductAdd) SetDeliveryCode(v string) {
 	o.DeliveryCode = &v
-}
-
-// GetProductReference returns the ProductReference field value if set, zero value otherwise.
-func (o *ProductAdd) GetProductReference() string {
-	if o == nil || IsNil(o.ProductReference) {
-		var ret string
-		return ret
-	}
-	return *o.ProductReference
-}
-
-// GetProductReferenceOk returns a tuple with the ProductReference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetProductReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductReference) {
-		return nil, false
-	}
-	return o.ProductReference, true
-}
-
-// HasProductReference returns a boolean if a field has been set.
-func (o *ProductAdd) HasProductReference() bool {
-	if o != nil && !IsNil(o.ProductReference) {
-		return true
-	}
-
-	return false
-}
-
-// SetProductReference gets a reference to the given string and assigns it to the ProductReference field.
-func (o *ProductAdd) SetProductReference(v string) {
-	o.ProductReference = &v
 }
 
 // GetDeliveryType returns the DeliveryType field value if set, zero value otherwise.
@@ -3533,70 +3437,6 @@ func (o *ProductAdd) SetDeliveryTime(v int32) {
 	o.DeliveryTime = &v
 }
 
-// GetSizeChart returns the SizeChart field value if set, zero value otherwise.
-func (o *ProductAdd) GetSizeChart() ProductAddSizeChart {
-	if o == nil || IsNil(o.SizeChart) {
-		var ret ProductAddSizeChart
-		return ret
-	}
-	return *o.SizeChart
-}
-
-// GetSizeChartOk returns a tuple with the SizeChart field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetSizeChartOk() (*ProductAddSizeChart, bool) {
-	if o == nil || IsNil(o.SizeChart) {
-		return nil, false
-	}
-	return o.SizeChart, true
-}
-
-// HasSizeChart returns a boolean if a field has been set.
-func (o *ProductAdd) HasSizeChart() bool {
-	if o != nil && !IsNil(o.SizeChart) {
-		return true
-	}
-
-	return false
-}
-
-// SetSizeChart gets a reference to the given ProductAddSizeChart and assigns it to the SizeChart field.
-func (o *ProductAdd) SetSizeChart(v ProductAddSizeChart) {
-	o.SizeChart = &v
-}
-
-// GetCertifications returns the Certifications field value if set, zero value otherwise.
-func (o *ProductAdd) GetCertifications() []ProductAddCertificationsInner {
-	if o == nil || IsNil(o.Certifications) {
-		var ret []ProductAddCertificationsInner
-		return ret
-	}
-	return o.Certifications
-}
-
-// GetCertificationsOk returns a tuple with the Certifications field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetCertificationsOk() ([]ProductAddCertificationsInner, bool) {
-	if o == nil || IsNil(o.Certifications) {
-		return nil, false
-	}
-	return o.Certifications, true
-}
-
-// HasCertifications returns a boolean if a field has been set.
-func (o *ProductAdd) HasCertifications() bool {
-	if o != nil && !IsNil(o.Certifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetCertifications gets a reference to the given []ProductAddCertificationsInner and assigns it to the Certifications field.
-func (o *ProductAdd) SetCertifications(v []ProductAddCertificationsInner) {
-	o.Certifications = v
-}
-
 // GetDeliveryOptionIds returns the DeliveryOptionIds field value if set, zero value otherwise.
 func (o *ProductAdd) GetDeliveryOptionIds() string {
 	if o == nil || IsNil(o.DeliveryOptionIds) {
@@ -3629,260 +3469,420 @@ func (o *ProductAdd) SetDeliveryOptionIds(v string) {
 	o.DeliveryOptionIds = &v
 }
 
-// GetManufacturerInfo returns the ManufacturerInfo field value if set, zero value otherwise.
-func (o *ProductAdd) GetManufacturerInfo() ProductAddManufacturerInfo {
-	if o == nil || IsNil(o.ManufacturerInfo) {
-		var ret ProductAddManufacturerInfo
+// GetPackageDetails returns the PackageDetails field value if set, zero value otherwise.
+func (o *ProductAdd) GetPackageDetails() ProductAddPackageDetails {
+	if o == nil || IsNil(o.PackageDetails) {
+		var ret ProductAddPackageDetails
 		return ret
 	}
-	return *o.ManufacturerInfo
+	return *o.PackageDetails
 }
 
-// GetManufacturerInfoOk returns a tuple with the ManufacturerInfo field value if set, nil otherwise
+// GetPackageDetailsOk returns a tuple with the PackageDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetManufacturerInfoOk() (*ProductAddManufacturerInfo, bool) {
-	if o == nil || IsNil(o.ManufacturerInfo) {
+func (o *ProductAdd) GetPackageDetailsOk() (*ProductAddPackageDetails, bool) {
+	if o == nil || IsNil(o.PackageDetails) {
 		return nil, false
 	}
-	return o.ManufacturerInfo, true
+	return o.PackageDetails, true
 }
 
-// HasManufacturerInfo returns a boolean if a field has been set.
-func (o *ProductAdd) HasManufacturerInfo() bool {
-	if o != nil && !IsNil(o.ManufacturerInfo) {
+// HasPackageDetails returns a boolean if a field has been set.
+func (o *ProductAdd) HasPackageDetails() bool {
+	if o != nil && !IsNil(o.PackageDetails) {
 		return true
 	}
 
 	return false
 }
 
-// SetManufacturerInfo gets a reference to the given ProductAddManufacturerInfo and assigns it to the ManufacturerInfo field.
-func (o *ProductAdd) SetManufacturerInfo(v ProductAddManufacturerInfo) {
-	o.ManufacturerInfo = &v
+// SetPackageDetails gets a reference to the given ProductAddPackageDetails and assigns it to the PackageDetails field.
+func (o *ProductAdd) SetPackageDetails(v ProductAddPackageDetails) {
+	o.PackageDetails = &v
 }
 
-// GetWhenMade returns the WhenMade field value if set, zero value otherwise.
-func (o *ProductAdd) GetWhenMade() string {
-	if o == nil || IsNil(o.WhenMade) {
+// GetLogisticInfo returns the LogisticInfo field value if set, zero value otherwise.
+func (o *ProductAdd) GetLogisticInfo() []ProductAddLogisticInfoInner {
+	if o == nil || IsNil(o.LogisticInfo) {
+		var ret []ProductAddLogisticInfoInner
+		return ret
+	}
+	return o.LogisticInfo
+}
+
+// GetLogisticInfoOk returns a tuple with the LogisticInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetLogisticInfoOk() ([]ProductAddLogisticInfoInner, bool) {
+	if o == nil || IsNil(o.LogisticInfo) {
+		return nil, false
+	}
+	return o.LogisticInfo, true
+}
+
+// HasLogisticInfo returns a boolean if a field has been set.
+func (o *ProductAdd) HasLogisticInfo() bool {
+	if o != nil && !IsNil(o.LogisticInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogisticInfo gets a reference to the given []ProductAddLogisticInfoInner and assigns it to the LogisticInfo field.
+func (o *ProductAdd) SetLogisticInfo(v []ProductAddLogisticInfoInner) {
+	o.LogisticInfo = v
+}
+
+// GetListingDuration returns the ListingDuration field value if set, zero value otherwise.
+func (o *ProductAdd) GetListingDuration() string {
+	if o == nil || IsNil(o.ListingDuration) {
 		var ret string
 		return ret
 	}
-	return *o.WhenMade
+	return *o.ListingDuration
 }
 
-// GetWhenMadeOk returns a tuple with the WhenMade field value if set, nil otherwise
+// GetListingDurationOk returns a tuple with the ListingDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetWhenMadeOk() (*string, bool) {
-	if o == nil || IsNil(o.WhenMade) {
+func (o *ProductAdd) GetListingDurationOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingDuration) {
 		return nil, false
 	}
-	return o.WhenMade, true
+	return o.ListingDuration, true
 }
 
-// HasWhenMade returns a boolean if a field has been set.
-func (o *ProductAdd) HasWhenMade() bool {
-	if o != nil && !IsNil(o.WhenMade) {
+// HasListingDuration returns a boolean if a field has been set.
+func (o *ProductAdd) HasListingDuration() bool {
+	if o != nil && !IsNil(o.ListingDuration) {
 		return true
 	}
 
 	return false
 }
 
-// SetWhenMade gets a reference to the given string and assigns it to the WhenMade field.
-func (o *ProductAdd) SetWhenMade(v string) {
-	o.WhenMade = &v
+// SetListingDuration gets a reference to the given string and assigns it to the ListingDuration field.
+func (o *ProductAdd) SetListingDuration(v string) {
+	o.ListingDuration = &v
 }
 
-// GetIsSupply returns the IsSupply field value if set, zero value otherwise.
-func (o *ProductAdd) GetIsSupply() bool {
-	if o == nil || IsNil(o.IsSupply) {
+// GetListingType returns the ListingType field value if set, zero value otherwise.
+func (o *ProductAdd) GetListingType() string {
+	if o == nil || IsNil(o.ListingType) {
+		var ret string
+		return ret
+	}
+	return *o.ListingType
+}
+
+// GetListingTypeOk returns a tuple with the ListingType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetListingTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingType) {
+		return nil, false
+	}
+	return o.ListingType, true
+}
+
+// HasListingType returns a boolean if a field has been set.
+func (o *ProductAdd) HasListingType() bool {
+	if o != nil && !IsNil(o.ListingType) {
+		return true
+	}
+
+	return false
+}
+
+// SetListingType gets a reference to the given string and assigns it to the ListingType field.
+func (o *ProductAdd) SetListingType(v string) {
+	o.ListingType = &v
+}
+
+// GetReturnAccepted returns the ReturnAccepted field value if set, zero value otherwise.
+func (o *ProductAdd) GetReturnAccepted() bool {
+	if o == nil || IsNil(o.ReturnAccepted) {
 		var ret bool
 		return ret
 	}
-	return *o.IsSupply
+	return *o.ReturnAccepted
 }
 
-// GetIsSupplyOk returns a tuple with the IsSupply field value if set, nil otherwise
+// GetReturnAcceptedOk returns a tuple with the ReturnAccepted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetIsSupplyOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSupply) {
+func (o *ProductAdd) GetReturnAcceptedOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReturnAccepted) {
 		return nil, false
 	}
-	return o.IsSupply, true
+	return o.ReturnAccepted, true
 }
 
-// HasIsSupply returns a boolean if a field has been set.
-func (o *ProductAdd) HasIsSupply() bool {
-	if o != nil && !IsNil(o.IsSupply) {
+// HasReturnAccepted returns a boolean if a field has been set.
+func (o *ProductAdd) HasReturnAccepted() bool {
+	if o != nil && !IsNil(o.ReturnAccepted) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsSupply gets a reference to the given bool and assigns it to the IsSupply field.
-func (o *ProductAdd) SetIsSupply(v bool) {
-	o.IsSupply = &v
+// SetReturnAccepted gets a reference to the given bool and assigns it to the ReturnAccepted field.
+func (o *ProductAdd) SetReturnAccepted(v bool) {
+	o.ReturnAccepted = &v
 }
 
-// GetMaterials returns the Materials field value if set, zero value otherwise.
-func (o *ProductAdd) GetMaterials() []string {
-	if o == nil || IsNil(o.Materials) {
-		var ret []string
+// GetSellerProfiles returns the SellerProfiles field value if set, zero value otherwise.
+func (o *ProductAdd) GetSellerProfiles() ProductAddSellerProfiles {
+	if o == nil || IsNil(o.SellerProfiles) {
+		var ret ProductAddSellerProfiles
 		return ret
 	}
-	return o.Materials
+	return *o.SellerProfiles
 }
 
-// GetMaterialsOk returns a tuple with the Materials field value if set, nil otherwise
+// GetSellerProfilesOk returns a tuple with the SellerProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMaterialsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Materials) {
+func (o *ProductAdd) GetSellerProfilesOk() (*ProductAddSellerProfiles, bool) {
+	if o == nil || IsNil(o.SellerProfiles) {
 		return nil, false
 	}
-	return o.Materials, true
+	return o.SellerProfiles, true
 }
 
-// HasMaterials returns a boolean if a field has been set.
-func (o *ProductAdd) HasMaterials() bool {
-	if o != nil && !IsNil(o.Materials) {
+// HasSellerProfiles returns a boolean if a field has been set.
+func (o *ProductAdd) HasSellerProfiles() bool {
+	if o != nil && !IsNil(o.SellerProfiles) {
 		return true
 	}
 
 	return false
 }
 
-// SetMaterials gets a reference to the given []string and assigns it to the Materials field.
-func (o *ProductAdd) SetMaterials(v []string) {
-	o.Materials = v
+// SetSellerProfiles gets a reference to the given ProductAddSellerProfiles and assigns it to the SellerProfiles field.
+func (o *ProductAdd) SetSellerProfiles(v ProductAddSellerProfiles) {
+	o.SellerProfiles = &v
 }
 
-// GetAutoRenew returns the AutoRenew field value if set, zero value otherwise.
-func (o *ProductAdd) GetAutoRenew() bool {
-	if o == nil || IsNil(o.AutoRenew) {
+// GetAuctionConfidentialityLevel returns the AuctionConfidentialityLevel field value if set, zero value otherwise.
+func (o *ProductAdd) GetAuctionConfidentialityLevel() string {
+	if o == nil || IsNil(o.AuctionConfidentialityLevel) {
+		var ret string
+		return ret
+	}
+	return *o.AuctionConfidentialityLevel
+}
+
+// GetAuctionConfidentialityLevelOk returns a tuple with the AuctionConfidentialityLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetAuctionConfidentialityLevelOk() (*string, bool) {
+	if o == nil || IsNil(o.AuctionConfidentialityLevel) {
+		return nil, false
+	}
+	return o.AuctionConfidentialityLevel, true
+}
+
+// HasAuctionConfidentialityLevel returns a boolean if a field has been set.
+func (o *ProductAdd) HasAuctionConfidentialityLevel() bool {
+	if o != nil && !IsNil(o.AuctionConfidentialityLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuctionConfidentialityLevel gets a reference to the given string and assigns it to the AuctionConfidentialityLevel field.
+func (o *ProductAdd) SetAuctionConfidentialityLevel(v string) {
+	o.AuctionConfidentialityLevel = &v
+}
+
+// GetBestOffer returns the BestOffer field value if set, zero value otherwise.
+func (o *ProductAdd) GetBestOffer() ProductAddBestOffer {
+	if o == nil || IsNil(o.BestOffer) {
+		var ret ProductAddBestOffer
+		return ret
+	}
+	return *o.BestOffer
+}
+
+// GetBestOfferOk returns a tuple with the BestOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetBestOfferOk() (*ProductAddBestOffer, bool) {
+	if o == nil || IsNil(o.BestOffer) {
+		return nil, false
+	}
+	return o.BestOffer, true
+}
+
+// HasBestOffer returns a boolean if a field has been set.
+func (o *ProductAdd) HasBestOffer() bool {
+	if o != nil && !IsNil(o.BestOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetBestOffer gets a reference to the given ProductAddBestOffer and assigns it to the BestOffer field.
+func (o *ProductAdd) SetBestOffer(v ProductAddBestOffer) {
+	o.BestOffer = &v
+}
+
+// GetProductionPartnerIds returns the ProductionPartnerIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetProductionPartnerIds() string {
+	if o == nil || IsNil(o.ProductionPartnerIds) {
+		var ret string
+		return ret
+	}
+	return *o.ProductionPartnerIds
+}
+
+// GetProductionPartnerIdsOk returns a tuple with the ProductionPartnerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetProductionPartnerIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.ProductionPartnerIds) {
+		return nil, false
+	}
+	return o.ProductionPartnerIds, true
+}
+
+// HasProductionPartnerIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasProductionPartnerIds() bool {
+	if o != nil && !IsNil(o.ProductionPartnerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductionPartnerIds gets a reference to the given string and assigns it to the ProductionPartnerIds field.
+func (o *ProductAdd) SetProductionPartnerIds(v string) {
+	o.ProductionPartnerIds = &v
+}
+
+// GetMarketplaceItemProperties returns the MarketplaceItemProperties field value if set, zero value otherwise.
+func (o *ProductAdd) GetMarketplaceItemProperties() string {
+	if o == nil || IsNil(o.MarketplaceItemProperties) {
+		var ret string
+		return ret
+	}
+	return *o.MarketplaceItemProperties
+}
+
+// GetMarketplaceItemPropertiesOk returns a tuple with the MarketplaceItemProperties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMarketplaceItemPropertiesOk() (*string, bool) {
+	if o == nil || IsNil(o.MarketplaceItemProperties) {
+		return nil, false
+	}
+	return o.MarketplaceItemProperties, true
+}
+
+// HasMarketplaceItemProperties returns a boolean if a field has been set.
+func (o *ProductAdd) HasMarketplaceItemProperties() bool {
+	if o != nil && !IsNil(o.MarketplaceItemProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceItemProperties gets a reference to the given string and assigns it to the MarketplaceItemProperties field.
+func (o *ProductAdd) SetMarketplaceItemProperties(v string) {
+	o.MarketplaceItemProperties = &v
+}
+
+// GetClearCache returns the ClearCache field value if set, zero value otherwise.
+func (o *ProductAdd) GetClearCache() bool {
+	if o == nil || IsNil(o.ClearCache) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoRenew
+	return *o.ClearCache
 }
 
-// GetAutoRenewOk returns a tuple with the AutoRenew field value if set, nil otherwise
+// GetClearCacheOk returns a tuple with the ClearCache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAutoRenewOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoRenew) {
+func (o *ProductAdd) GetClearCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.ClearCache) {
 		return nil, false
 	}
-	return o.AutoRenew, true
+	return o.ClearCache, true
 }
 
-// HasAutoRenew returns a boolean if a field has been set.
-func (o *ProductAdd) HasAutoRenew() bool {
-	if o != nil && !IsNil(o.AutoRenew) {
+// HasClearCache returns a boolean if a field has been set.
+func (o *ProductAdd) HasClearCache() bool {
+	if o != nil && !IsNil(o.ClearCache) {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
-func (o *ProductAdd) SetAutoRenew(v bool) {
-	o.AutoRenew = &v
+// SetClearCache gets a reference to the given bool and assigns it to the ClearCache field.
+func (o *ProductAdd) SetClearCache(v bool) {
+	o.ClearCache = &v
 }
 
-// GetAllowDisplayCondition returns the AllowDisplayCondition field value if set, zero value otherwise.
-func (o *ProductAdd) GetAllowDisplayCondition() bool {
-	if o == nil || IsNil(o.AllowDisplayCondition) {
-		var ret bool
+// GetViewedCount returns the ViewedCount field value if set, zero value otherwise.
+func (o *ProductAdd) GetViewedCount() int32 {
+	if o == nil || IsNil(o.ViewedCount) {
+		var ret int32
 		return ret
 	}
-	return *o.AllowDisplayCondition
+	return *o.ViewedCount
 }
 
-// GetAllowDisplayConditionOk returns a tuple with the AllowDisplayCondition field value if set, nil otherwise
+// GetViewedCountOk returns a tuple with the ViewedCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetAllowDisplayConditionOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowDisplayCondition) {
+func (o *ProductAdd) GetViewedCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.ViewedCount) {
 		return nil, false
 	}
-	return o.AllowDisplayCondition, true
+	return o.ViewedCount, true
 }
 
-// HasAllowDisplayCondition returns a boolean if a field has been set.
-func (o *ProductAdd) HasAllowDisplayCondition() bool {
-	if o != nil && !IsNil(o.AllowDisplayCondition) {
+// HasViewedCount returns a boolean if a field has been set.
+func (o *ProductAdd) HasViewedCount() bool {
+	if o != nil && !IsNil(o.ViewedCount) {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowDisplayCondition gets a reference to the given bool and assigns it to the AllowDisplayCondition field.
-func (o *ProductAdd) SetAllowDisplayCondition(v bool) {
-	o.AllowDisplayCondition = &v
+// SetViewedCount gets a reference to the given int32 and assigns it to the ViewedCount field.
+func (o *ProductAdd) SetViewedCount(v int32) {
+	o.ViewedCount = &v
 }
 
-// GetMinOrderQuantity returns the MinOrderQuantity field value if set, zero value otherwise.
-func (o *ProductAdd) GetMinOrderQuantity() float32 {
-	if o == nil || IsNil(o.MinOrderQuantity) {
-		var ret float32
+// GetOrderedCount returns the OrderedCount field value if set, zero value otherwise.
+func (o *ProductAdd) GetOrderedCount() int32 {
+	if o == nil || IsNil(o.OrderedCount) {
+		var ret int32
 		return ret
 	}
-	return *o.MinOrderQuantity
+	return *o.OrderedCount
 }
 
-// GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field value if set, nil otherwise
+// GetOrderedCountOk returns a tuple with the OrderedCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMinOrderQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.MinOrderQuantity) {
+func (o *ProductAdd) GetOrderedCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.OrderedCount) {
 		return nil, false
 	}
-	return o.MinOrderQuantity, true
+	return o.OrderedCount, true
 }
 
-// HasMinOrderQuantity returns a boolean if a field has been set.
-func (o *ProductAdd) HasMinOrderQuantity() bool {
-	if o != nil && !IsNil(o.MinOrderQuantity) {
+// HasOrderedCount returns a boolean if a field has been set.
+func (o *ProductAdd) HasOrderedCount() bool {
+	if o != nil && !IsNil(o.OrderedCount) {
 		return true
 	}
 
 	return false
 }
 
-// SetMinOrderQuantity gets a reference to the given float32 and assigns it to the MinOrderQuantity field.
-func (o *ProductAdd) SetMinOrderQuantity(v float32) {
-	o.MinOrderQuantity = &v
-}
-
-// GetMaxOrderQuantity returns the MaxOrderQuantity field value if set, zero value otherwise.
-func (o *ProductAdd) GetMaxOrderQuantity() float32 {
-	if o == nil || IsNil(o.MaxOrderQuantity) {
-		var ret float32
-		return ret
-	}
-	return *o.MaxOrderQuantity
-}
-
-// GetMaxOrderQuantityOk returns a tuple with the MaxOrderQuantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductAdd) GetMaxOrderQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.MaxOrderQuantity) {
-		return nil, false
-	}
-	return o.MaxOrderQuantity, true
-}
-
-// HasMaxOrderQuantity returns a boolean if a field has been set.
-func (o *ProductAdd) HasMaxOrderQuantity() bool {
-	if o != nil && !IsNil(o.MaxOrderQuantity) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxOrderQuantity gets a reference to the given float32 and assigns it to the MaxOrderQuantity field.
-func (o *ProductAdd) SetMaxOrderQuantity(v float32) {
-	o.MaxOrderQuantity = &v
+// SetOrderedCount gets a reference to the given int32 and assigns it to the OrderedCount field.
+func (o *ProductAdd) SetOrderedCount(v int32) {
+	o.OrderedCount = &v
 }
 
 func (o ProductAdd) MarshalJSON() ([]byte, error) {
@@ -3897,37 +3897,43 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["model"] = o.Model
+	toSerialize["description"] = o.Description
+	toSerialize["price"] = o.Price
 	if !IsNil(o.Sku) {
 		toSerialize["sku"] = o.Sku
 	}
-	toSerialize["description"] = o.Description
-	toSerialize["price"] = o.Price
-	if !IsNil(o.OldPrice) {
-		toSerialize["old_price"] = o.OldPrice
+	if !IsNil(o.ShortDescription) {
+		toSerialize["short_description"] = o.ShortDescription
 	}
-	if !IsNil(o.SpecialPrice) {
-		toSerialize["special_price"] = o.SpecialPrice
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.CostPrice) {
-		toSerialize["cost_price"] = o.CostPrice
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.FixedCostShippingPrice) {
-		toSerialize["fixed_cost_shipping_price"] = o.FixedCostShippingPrice
+	if !IsNil(o.Visible) {
+		toSerialize["visible"] = o.Visible
 	}
-	if !IsNil(o.SpriceCreate) {
-		toSerialize["sprice_create"] = o.SpriceCreate
+	if !IsNil(o.CategoryId) {
+		toSerialize["category_id"] = o.CategoryId
 	}
-	if !IsNil(o.SpriceModified) {
-		toSerialize["sprice_modified"] = o.SpriceModified
+	if !IsNil(o.CategoriesIds) {
+		toSerialize["categories_ids"] = o.CategoriesIds
 	}
-	if !IsNil(o.SpriceExpire) {
-		toSerialize["sprice_expire"] = o.SpriceExpire
+	if !IsNil(o.ProductClass) {
+		toSerialize["product_class"] = o.ProductClass
 	}
-	if !IsNil(o.TierPrices) {
-		toSerialize["tier_prices"] = o.TierPrices
+	if !IsNil(o.ProductType) {
+		toSerialize["product_type"] = o.ProductType
 	}
-	if !IsNil(o.GroupPrices) {
-		toSerialize["group_prices"] = o.GroupPrices
+	if !IsNil(o.IsVirtual) {
+		toSerialize["is_virtual"] = o.IsVirtual
+	}
+	if !IsNil(o.Downloadable) {
+		toSerialize["downloadable"] = o.Downloadable
+	}
+	if !IsNil(o.IsSupply) {
+		toSerialize["is_supply"] = o.IsSupply
 	}
 	if !IsNil(o.AvailableForView) {
 		toSerialize["available_for_view"] = o.AvailableForView
@@ -3935,8 +3941,68 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AvailableForSale) {
 		toSerialize["available_for_sale"] = o.AvailableForSale
 	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
+	}
+	if !IsNil(o.StoresIds) {
+		toSerialize["stores_ids"] = o.StoresIds
+	}
+	if !IsNil(o.LangId) {
+		toSerialize["lang_id"] = o.LangId
+	}
+	if !IsNil(o.OldPrice) {
+		toSerialize["old_price"] = o.OldPrice
+	}
+	if !IsNil(o.SpecialPrice) {
+		toSerialize["special_price"] = o.SpecialPrice
+	}
+	if !IsNil(o.WholesalePrice) {
+		toSerialize["wholesale_price"] = o.WholesalePrice
+	}
+	if !IsNil(o.CostPrice) {
+		toSerialize["cost_price"] = o.CostPrice
+	}
+	if !IsNil(o.FixedCostShippingPrice) {
+		toSerialize["fixed_cost_shipping_price"] = o.FixedCostShippingPrice
+	}
+	if !IsNil(o.TierPrices) {
+		toSerialize["tier_prices"] = o.TierPrices
+	}
+	if !IsNil(o.GroupPrices) {
+		toSerialize["group_prices"] = o.GroupPrices
+	}
+	if !IsNil(o.BuyitnowPrice) {
+		toSerialize["buyitnow_price"] = o.BuyitnowPrice
+	}
+	if !IsNil(o.ReservePrice) {
+		toSerialize["reserve_price"] = o.ReservePrice
+	}
+	if !IsNil(o.Quantity) {
+		toSerialize["quantity"] = o.Quantity
+	}
+	if !IsNil(o.InStock) {
+		toSerialize["in_stock"] = o.InStock
+	}
+	if !IsNil(o.ManageStock) {
+		toSerialize["manage_stock"] = o.ManageStock
+	}
+	if !IsNil(o.WarehouseId) {
+		toSerialize["warehouse_id"] = o.WarehouseId
+	}
+	if !IsNil(o.BackorderStatus) {
+		toSerialize["backorder_status"] = o.BackorderStatus
+	}
+	if !IsNil(o.MinOrderQuantity) {
+		toSerialize["min_order_quantity"] = o.MinOrderQuantity
+	}
+	if !IsNil(o.MaxOrderQuantity) {
+		toSerialize["max_order_quantity"] = o.MaxOrderQuantity
+	}
 	if !IsNil(o.Weight) {
 		toSerialize["weight"] = o.Weight
+	}
+	if !IsNil(o.WeightUnit) {
+		toSerialize["weight_unit"] = o.WeightUnit
 	}
 	if !IsNil(o.Width) {
 		toSerialize["width"] = o.Width
@@ -3947,128 +4013,8 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Length) {
 		toSerialize["length"] = o.Length
 	}
-	if !IsNil(o.WeightUnit) {
-		toSerialize["weight_unit"] = o.WeightUnit
-	}
 	if !IsNil(o.DimensionsUnit) {
 		toSerialize["dimensions_unit"] = o.DimensionsUnit
-	}
-	if !IsNil(o.ShortDescription) {
-		toSerialize["short_description"] = o.ShortDescription
-	}
-	if !IsNil(o.WarehouseId) {
-		toSerialize["warehouse_id"] = o.WarehouseId
-	}
-	if !IsNil(o.BackorderStatus) {
-		toSerialize["backorder_status"] = o.BackorderStatus
-	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
-	}
-	if !IsNil(o.Downloadable) {
-		toSerialize["downloadable"] = o.Downloadable
-	}
-	if !IsNil(o.WholesalePrice) {
-		toSerialize["wholesale_price"] = o.WholesalePrice
-	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if !IsNil(o.Manufacturer) {
-		toSerialize["manufacturer"] = o.Manufacturer
-	}
-	if !IsNil(o.ManufacturerId) {
-		toSerialize["manufacturer_id"] = o.ManufacturerId
-	}
-	if !IsNil(o.CategoriesIds) {
-		toSerialize["categories_ids"] = o.CategoriesIds
-	}
-	if !IsNil(o.RelatedProductsIds) {
-		toSerialize["related_products_ids"] = o.RelatedProductsIds
-	}
-	if !IsNil(o.UpSellProductsIds) {
-		toSerialize["up_sell_products_ids"] = o.UpSellProductsIds
-	}
-	if !IsNil(o.CrossSellProductsIds) {
-		toSerialize["cross_sell_products_ids"] = o.CrossSellProductsIds
-	}
-	if !IsNil(o.TaxClassId) {
-		toSerialize["tax_class_id"] = o.TaxClassId
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.MetaTitle) {
-		toSerialize["meta_title"] = o.MetaTitle
-	}
-	if !IsNil(o.MetaKeywords) {
-		toSerialize["meta_keywords"] = o.MetaKeywords
-	}
-	if !IsNil(o.MetaDescription) {
-		toSerialize["meta_description"] = o.MetaDescription
-	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
-	if !IsNil(o.LangId) {
-		toSerialize["lang_id"] = o.LangId
-	}
-	if !IsNil(o.StoresIds) {
-		toSerialize["stores_ids"] = o.StoresIds
-	}
-	if !IsNil(o.CategoryId) {
-		toSerialize["category_id"] = o.CategoryId
-	}
-	if !IsNil(o.ViewedCount) {
-		toSerialize["viewed_count"] = o.ViewedCount
-	}
-	if !IsNil(o.OrderedCount) {
-		toSerialize["ordered_count"] = o.OrderedCount
-	}
-	if !IsNil(o.AttributeSetName) {
-		toSerialize["attribute_set_name"] = o.AttributeSetName
-	}
-	if !IsNil(o.AttributeName) {
-		toSerialize["attribute_name"] = o.AttributeName
-	}
-	if !IsNil(o.ShippingTemplateId) {
-		toSerialize["shipping_template_id"] = o.ShippingTemplateId
-	}
-	if !IsNil(o.ProductionPartnerIds) {
-		toSerialize["production_partner_ids"] = o.ProductionPartnerIds
-	}
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
-	}
-	if !IsNil(o.ListingDuration) {
-		toSerialize["listing_duration"] = o.ListingDuration
-	}
-	if !IsNil(o.ListingType) {
-		toSerialize["listing_type"] = o.ListingType
-	}
-	if !IsNil(o.PaymentMethods) {
-		toSerialize["payment_methods"] = o.PaymentMethods
-	}
-	if !IsNil(o.ReturnAccepted) {
-		toSerialize["return_accepted"] = o.ReturnAccepted
-	}
-	if !IsNil(o.ShippingDetails) {
-		toSerialize["shipping_details"] = o.ShippingDetails
-	}
-	if !IsNil(o.PaypalEmail) {
-		toSerialize["paypal_email"] = o.PaypalEmail
-	}
-	if !IsNil(o.SellerProfiles) {
-		toSerialize["seller_profiles"] = o.SellerProfiles
-	}
-	if !IsNil(o.PackageDetails) {
-		toSerialize["package_details"] = o.PackageDetails
-	}
-	if !IsNil(o.BestOffer) {
-		toSerialize["best_offer"] = o.BestOffer
-	}
-	if !IsNil(o.SalesTax) {
-		toSerialize["sales_tax"] = o.SalesTax
 	}
 	if !IsNil(o.Barcode) {
 		toSerialize["barcode"] = o.Barcode
@@ -4082,8 +4028,35 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Isbn) {
 		toSerialize["isbn"] = o.Isbn
 	}
-	if !IsNil(o.Specifics) {
-		toSerialize["specifics"] = o.Specifics
+	if !IsNil(o.Gtin) {
+		toSerialize["gtin"] = o.Gtin
+	}
+	if !IsNil(o.Mpn) {
+		toSerialize["mpn"] = o.Mpn
+	}
+	if !IsNil(o.Asin) {
+		toSerialize["asin"] = o.Asin
+	}
+	if !IsNil(o.ProductReference) {
+		toSerialize["product_reference"] = o.ProductReference
+	}
+	if !IsNil(o.HarmonizedSystemCode) {
+		toSerialize["harmonized_system_code"] = o.HarmonizedSystemCode
+	}
+	if !IsNil(o.CountryOfOrigin) {
+		toSerialize["country_of_origin"] = o.CountryOfOrigin
+	}
+	if !IsNil(o.Manufacturer) {
+		toSerialize["manufacturer"] = o.Manufacturer
+	}
+	if !IsNil(o.ManufacturerId) {
+		toSerialize["manufacturer_id"] = o.ManufacturerId
+	}
+	if !IsNil(o.ManufacturerInfo) {
+		toSerialize["manufacturer_info"] = o.ManufacturerInfo
+	}
+	if !IsNil(o.BrandName) {
+		toSerialize["brand_name"] = o.BrandName
 	}
 	if !IsNil(o.ImageUrl) {
 		toSerialize["image_url"] = o.ImageUrl
@@ -4094,95 +4067,113 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdditionalImageUrls) {
 		toSerialize["additional_image_urls"] = o.AdditionalImageUrls
 	}
-	if !IsNil(o.ReservePrice) {
-		toSerialize["reserve_price"] = o.ReservePrice
-	}
-	if !IsNil(o.BuyitnowPrice) {
-		toSerialize["buyitnow_price"] = o.BuyitnowPrice
-	}
-	if !IsNil(o.ConditionDescription) {
-		toSerialize["condition_description"] = o.ConditionDescription
-	}
-	if !IsNil(o.AuctionConfidentialityLevel) {
-		toSerialize["auction_confidentiality_level"] = o.AuctionConfidentialityLevel
-	}
-	if !IsNil(o.LogisticInfo) {
-		toSerialize["logistic_info"] = o.LogisticInfo
-	}
-	if !IsNil(o.AvailFrom) {
-		toSerialize["avail_from"] = o.AvailFrom
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.ClearCache) {
-		toSerialize["clear_cache"] = o.ClearCache
-	}
-	if !IsNil(o.Asin) {
-		toSerialize["asin"] = o.Asin
-	}
-	if !IsNil(o.Gtin) {
-		toSerialize["gtin"] = o.Gtin
-	}
-	if !IsNil(o.Mpn) {
-		toSerialize["mpn"] = o.Mpn
-	}
-	if !IsNil(o.Taxable) {
-		toSerialize["taxable"] = o.Taxable
-	}
-	if !IsNil(o.Visible) {
-		toSerialize["visible"] = o.Visible
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.SeoUrl) {
-		toSerialize["seo_url"] = o.SeoUrl
-	}
-	if !IsNil(o.ProductClass) {
-		toSerialize["product_class"] = o.ProductClass
-	}
-	if !IsNil(o.ProductType) {
-		toSerialize["product_type"] = o.ProductType
-	}
-	if !IsNil(o.MarketplaceItemProperties) {
-		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
-	}
-	if !IsNil(o.ManageStock) {
-		toSerialize["manage_stock"] = o.ManageStock
-	}
-	if !IsNil(o.HarmonizedSystemCode) {
-		toSerialize["harmonized_system_code"] = o.HarmonizedSystemCode
-	}
-	if !IsNil(o.CountryOfOrigin) {
-		toSerialize["country_of_origin"] = o.CountryOfOrigin
-	}
 	if !IsNil(o.Files) {
 		toSerialize["files"] = o.Files
+	}
+	if !IsNil(o.SizeChart) {
+		toSerialize["size_chart"] = o.SizeChart
+	}
+	if !IsNil(o.RelatedProductsIds) {
+		toSerialize["related_products_ids"] = o.RelatedProductsIds
+	}
+	if !IsNil(o.UpSellProductsIds) {
+		toSerialize["up_sell_products_ids"] = o.UpSellProductsIds
+	}
+	if !IsNil(o.CrossSellProductsIds) {
+		toSerialize["cross_sell_products_ids"] = o.CrossSellProductsIds
+	}
+	if !IsNil(o.AttributeSetName) {
+		toSerialize["attribute_set_name"] = o.AttributeSetName
+	}
+	if !IsNil(o.AttributeName) {
+		toSerialize["attribute_name"] = o.AttributeName
 	}
 	if !IsNil(o.SearchKeywords) {
 		toSerialize["search_keywords"] = o.SearchKeywords
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
-	if !IsNil(o.BrandName) {
-		toSerialize["brand_name"] = o.BrandName
+	if !IsNil(o.Materials) {
+		toSerialize["materials"] = o.Materials
 	}
-	if !IsNil(o.IsVirtual) {
-		toSerialize["is_virtual"] = o.IsVirtual
+	if !IsNil(o.Certifications) {
+		toSerialize["certifications"] = o.Certifications
+	}
+	if !IsNil(o.Specifics) {
+		toSerialize["specifics"] = o.Specifics
+	}
+	if !IsNil(o.AvailFrom) {
+		toSerialize["avail_from"] = o.AvailFrom
+	}
+	if !IsNil(o.SpriceCreate) {
+		toSerialize["sprice_create"] = o.SpriceCreate
+	}
+	if !IsNil(o.SpriceModified) {
+		toSerialize["sprice_modified"] = o.SpriceModified
+	}
+	if !IsNil(o.SpriceExpire) {
+		toSerialize["sprice_expire"] = o.SpriceExpire
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.AutoRenew) {
+		toSerialize["auto_renew"] = o.AutoRenew
+	}
+	if !IsNil(o.WhenMade) {
+		toSerialize["when_made"] = o.WhenMade
+	}
+	if !IsNil(o.MetaTitle) {
+		toSerialize["meta_title"] = o.MetaTitle
+	}
+	if !IsNil(o.MetaKeywords) {
+		toSerialize["meta_keywords"] = o.MetaKeywords
+	}
+	if !IsNil(o.MetaDescription) {
+		toSerialize["meta_description"] = o.MetaDescription
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.SeoUrl) {
+		toSerialize["seo_url"] = o.SeoUrl
+	}
+	if !IsNil(o.TaxClassId) {
+		toSerialize["tax_class_id"] = o.TaxClassId
+	}
+	if !IsNil(o.Taxable) {
+		toSerialize["taxable"] = o.Taxable
+	}
+	if !IsNil(o.SalesTax) {
+		toSerialize["sales_tax"] = o.SalesTax
+	}
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
+	}
+	if !IsNil(o.ConditionDescription) {
+		toSerialize["condition_description"] = o.ConditionDescription
+	}
+	if !IsNil(o.AllowDisplayCondition) {
+		toSerialize["allow_display_condition"] = o.AllowDisplayCondition
+	}
+	if !IsNil(o.PaymentMethods) {
+		toSerialize["payment_methods"] = o.PaymentMethods
+	}
+	if !IsNil(o.PaypalEmail) {
+		toSerialize["paypal_email"] = o.PaypalEmail
+	}
+	if !IsNil(o.ShippingTemplateId) {
+		toSerialize["shipping_template_id"] = o.ShippingTemplateId
+	}
+	if !IsNil(o.ShippingDetails) {
+		toSerialize["shipping_details"] = o.ShippingDetails
 	}
 	if !IsNil(o.IsFreeShipping) {
 		toSerialize["is_free_shipping"] = o.IsFreeShipping
 	}
-	if !IsNil(o.InStock) {
-		toSerialize["in_stock"] = o.InStock
-	}
 	if !IsNil(o.DeliveryCode) {
 		toSerialize["delivery_code"] = o.DeliveryCode
-	}
-	if !IsNil(o.ProductReference) {
-		toSerialize["product_reference"] = o.ProductReference
 	}
 	if !IsNil(o.DeliveryType) {
 		toSerialize["delivery_type"] = o.DeliveryType
@@ -4190,38 +4181,47 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeliveryTime) {
 		toSerialize["delivery_time"] = o.DeliveryTime
 	}
-	if !IsNil(o.SizeChart) {
-		toSerialize["size_chart"] = o.SizeChart
-	}
-	if !IsNil(o.Certifications) {
-		toSerialize["certifications"] = o.Certifications
-	}
 	if !IsNil(o.DeliveryOptionIds) {
 		toSerialize["delivery_option_ids"] = o.DeliveryOptionIds
 	}
-	if !IsNil(o.ManufacturerInfo) {
-		toSerialize["manufacturer_info"] = o.ManufacturerInfo
+	if !IsNil(o.PackageDetails) {
+		toSerialize["package_details"] = o.PackageDetails
 	}
-	if !IsNil(o.WhenMade) {
-		toSerialize["when_made"] = o.WhenMade
+	if !IsNil(o.LogisticInfo) {
+		toSerialize["logistic_info"] = o.LogisticInfo
 	}
-	if !IsNil(o.IsSupply) {
-		toSerialize["is_supply"] = o.IsSupply
+	if !IsNil(o.ListingDuration) {
+		toSerialize["listing_duration"] = o.ListingDuration
 	}
-	if !IsNil(o.Materials) {
-		toSerialize["materials"] = o.Materials
+	if !IsNil(o.ListingType) {
+		toSerialize["listing_type"] = o.ListingType
 	}
-	if !IsNil(o.AutoRenew) {
-		toSerialize["auto_renew"] = o.AutoRenew
+	if !IsNil(o.ReturnAccepted) {
+		toSerialize["return_accepted"] = o.ReturnAccepted
 	}
-	if !IsNil(o.AllowDisplayCondition) {
-		toSerialize["allow_display_condition"] = o.AllowDisplayCondition
+	if !IsNil(o.SellerProfiles) {
+		toSerialize["seller_profiles"] = o.SellerProfiles
 	}
-	if !IsNil(o.MinOrderQuantity) {
-		toSerialize["min_order_quantity"] = o.MinOrderQuantity
+	if !IsNil(o.AuctionConfidentialityLevel) {
+		toSerialize["auction_confidentiality_level"] = o.AuctionConfidentialityLevel
 	}
-	if !IsNil(o.MaxOrderQuantity) {
-		toSerialize["max_order_quantity"] = o.MaxOrderQuantity
+	if !IsNil(o.BestOffer) {
+		toSerialize["best_offer"] = o.BestOffer
+	}
+	if !IsNil(o.ProductionPartnerIds) {
+		toSerialize["production_partner_ids"] = o.ProductionPartnerIds
+	}
+	if !IsNil(o.MarketplaceItemProperties) {
+		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
+	}
+	if !IsNil(o.ClearCache) {
+		toSerialize["clear_cache"] = o.ClearCache
+	}
+	if !IsNil(o.ViewedCount) {
+		toSerialize["viewed_count"] = o.ViewedCount
+	}
+	if !IsNil(o.OrderedCount) {
+		toSerialize["ordered_count"] = o.OrderedCount
 	}
 	return toSerialize, nil
 }

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## TaxClassInfo
 
-> ModelResponseTaxClassInfo TaxClassInfo(ctx).TaxClassId(taxClassId).StoreId(storeId).LangId(langId).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+> ModelResponseTaxClassInfo TaxClassInfo(ctx).TaxClassId(taxClassId).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 tax.class.info
 
@@ -33,13 +33,13 @@ func main() {
 	taxClassId := "9" // string | Retrieves taxes specified by class id
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
-	params := "tax_class_id,tax" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "tax_class_id,name,avail")
 	responseFields := "{result{id,name,tax,tax_rates{id,countries{id,name,states},cities,address,zip_codes{is_range,range,fields}}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "tax_class_id,tax" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "tax_class_id,name,avail")
 	exclude := "tax_class_id,tax" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TaxAPI.TaxClassInfo(context.Background()).TaxClassId(taxClassId).StoreId(storeId).LangId(langId).Params(params).ResponseFields(responseFields).Exclude(exclude).Execute()
+	resp, r, err := apiClient.TaxAPI.TaxClassInfo(context.Background()).TaxClassId(taxClassId).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaxAPI.TaxClassInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,8 +63,8 @@ Name | Type | Description  | Notes
  **taxClassId** | **string** | Retrieves taxes specified by class id | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;tax_class_id,name,avail&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;tax_class_id,name,avail&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## TaxClassList
 
-> ModelResponseTaxClassList TaxClassList(ctx).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).FindValue(findValue).FindWhere(findWhere).StoreId(storeId).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+> ModelResponseTaxClassList TaxClassList(ctx).Count(count).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
 
 tax.class.list
 
@@ -106,20 +106,20 @@ import (
 )
 
 func main() {
+	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	storeId := "1" // string | Store Id (optional)
+	findValue := "tax" // string | Entity search that is specified by some value (optional)
+	findWhere := "name" // string | Tax class search that is specified by field (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	findValue := "tax" // string | Entity search that is specified by some value (optional)
-	findWhere := "name" // string | Tax class search that is specified by field (optional)
-	storeId := "1" // string | Store Id (optional)
-	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "{return_code,return_message,pagination,result}")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TaxAPI.TaxClassList(context.Background()).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).FindValue(findValue).FindWhere(findWhere).StoreId(storeId).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.TaxAPI.TaxClassList(context.Background()).Count(count).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaxAPI.TaxClassList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -140,15 +140,15 @@ Other parameters are passed through a pointer to a apiTaxClassListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **storeId** | **string** | Store Id | 
+ **findValue** | **string** | Entity search that is specified by some value | 
+ **findWhere** | **string** | Tax class search that is specified by field | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **findValue** | **string** | Entity search that is specified by some value | 
- **findWhere** | **string** | Tax class search that is specified by field | 
- **storeId** | **string** | Store Id | 
- **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;{return_code,return_message,pagination,result}&quot;]
 
 ### Return type

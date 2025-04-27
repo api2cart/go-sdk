@@ -26,6 +26,8 @@ type ProductVariantImageAdd struct {
 	ProductId *string `json:"product_id,omitempty"`
 	// Defines product's variants specified by variant id
 	ProductVariantId string `json:"product_variant_id"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Defines image's name
 	ImageName string `json:"image_name"`
 	// Defines image's types that are specified by comma-separated list
@@ -40,8 +42,6 @@ type ProductVariantImageAdd struct {
 	Mime *string `json:"mime,omitempty"`
 	// Defines image’s position in the list
 	Position *int32 `json:"position,omitempty"`
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// Defines option id of the product variant for which the image will be added
 	OptionId *string `json:"option_id,omitempty"`
 }
@@ -128,6 +128,38 @@ func (o *ProductVariantImageAdd) GetProductVariantIdOk() (*string, bool) {
 // SetProductVariantId sets field value
 func (o *ProductVariantImageAdd) SetProductVariantId(v string) {
 	o.ProductVariantId = v
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *ProductVariantImageAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantImageAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *ProductVariantImageAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *ProductVariantImageAdd) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetImageName returns the ImageName field value
@@ -338,38 +370,6 @@ func (o *ProductVariantImageAdd) SetPosition(v int32) {
 	o.Position = &v
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *ProductVariantImageAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductVariantImageAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *ProductVariantImageAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *ProductVariantImageAdd) SetStoreId(v string) {
-	o.StoreId = &v
-}
-
 // GetOptionId returns the OptionId field value if set, zero value otherwise.
 func (o *ProductVariantImageAdd) GetOptionId() string {
 	if o == nil || IsNil(o.OptionId) {
@@ -416,6 +416,9 @@ func (o ProductVariantImageAdd) ToMap() (map[string]interface{}, error) {
 		toSerialize["product_id"] = o.ProductId
 	}
 	toSerialize["product_variant_id"] = o.ProductVariantId
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
+	}
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Url) {
@@ -432,9 +435,6 @@ func (o ProductVariantImageAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Position) {
 		toSerialize["position"] = o.Position
-	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.OptionId) {
 		toSerialize["option_id"] = o.OptionId

@@ -25,15 +25,17 @@ type CustomerAdd struct {
 	// Defines customer's email
 	Email string `json:"email"`
 	// Defines customer's first name
-	FirstName string `json:"first_name"`
+	FirstName *string `json:"first_name,omitempty"`
 	// Defines customer's last name
-	LastName string `json:"last_name"`
+	LastName *string `json:"last_name,omitempty"`
 	// Defines customer's unique password
 	Password *string `json:"password,omitempty"`
 	// Defines the group where the customer
 	Group *string `json:"group,omitempty"`
 	// Groups that will be assigned to a customer
 	GroupIds *string `json:"group_ids,omitempty"`
+	// Defines customer's status
+	Status *string `json:"status,omitempty"`
 	// Entity's date creation
 	CreatedTime *string `json:"created_time,omitempty"`
 	// Entity's date modification
@@ -44,8 +46,6 @@ type CustomerAdd struct {
 	LastLogin *string `json:"last_login,omitempty"`
 	// Defines customer's birthday
 	BirthDay *string `json:"birth_day,omitempty"`
-	// Defines customer's status
-	Status *string `json:"status,omitempty"`
 	// Defines whether the newsletter subscription is available for the user
 	NewsLetterSubscription *bool `json:"news_letter_subscription,omitempty"`
 	// Defines consents to notifications
@@ -54,8 +54,6 @@ type CustomerAdd struct {
 	Gender *string `json:"gender,omitempty"`
 	// Link to customer website
 	Website *string `json:"website,omitempty"`
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// Defines customer's fax
 	Fax *string `json:"fax,omitempty"`
 	// Defines customer's company
@@ -66,6 +64,8 @@ type CustomerAdd struct {
 	Note *string `json:"note,omitempty"`
 	// Specifies ISO code or name of country
 	Country *string `json:"country,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	Address []CustomerAddAddressInner `json:"address,omitempty"`
 }
 
@@ -75,15 +75,11 @@ type _CustomerAdd CustomerAdd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomerAdd(email string, firstName string, lastName string) *CustomerAdd {
+func NewCustomerAdd(email string) *CustomerAdd {
 	this := CustomerAdd{}
 	this.Email = email
-	this.FirstName = firstName
-	this.LastName = lastName
 	var status string = "enabled"
 	this.Status = &status
-	var newsLetterSubscription bool = false
-	this.NewsLetterSubscription = &newsLetterSubscription
 	return &this
 }
 
@@ -94,8 +90,6 @@ func NewCustomerAddWithDefaults() *CustomerAdd {
 	this := CustomerAdd{}
 	var status string = "enabled"
 	this.Status = &status
-	var newsLetterSubscription bool = false
-	this.NewsLetterSubscription = &newsLetterSubscription
 	return &this
 }
 
@@ -123,52 +117,68 @@ func (o *CustomerAdd) SetEmail(v string) {
 	o.Email = v
 }
 
-// GetFirstName returns the FirstName field value
+// GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *CustomerAdd) GetFirstName() string {
-	if o == nil {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
-
-	return o.FirstName
+	return *o.FirstName
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value
+// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAdd) GetFirstNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
-	return &o.FirstName, true
+	return o.FirstName, true
 }
 
-// SetFirstName sets field value
+// HasFirstName returns a boolean if a field has been set.
+func (o *CustomerAdd) HasFirstName() bool {
+	if o != nil && !IsNil(o.FirstName) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
 func (o *CustomerAdd) SetFirstName(v string) {
-	o.FirstName = v
+	o.FirstName = &v
 }
 
-// GetLastName returns the LastName field value
+// GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *CustomerAdd) GetLastName() string {
-	if o == nil {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
-
-	return o.LastName
+	return *o.LastName
 }
 
-// GetLastNameOk returns a tuple with the LastName field value
+// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomerAdd) GetLastNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
-	return &o.LastName, true
+	return o.LastName, true
 }
 
-// SetLastName sets field value
+// HasLastName returns a boolean if a field has been set.
+func (o *CustomerAdd) HasLastName() bool {
+	if o != nil && !IsNil(o.LastName) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastName gets a reference to the given string and assigns it to the LastName field.
 func (o *CustomerAdd) SetLastName(v string) {
-	o.LastName = v
+	o.LastName = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -265,6 +275,38 @@ func (o *CustomerAdd) HasGroupIds() bool {
 // SetGroupIds gets a reference to the given string and assigns it to the GroupIds field.
 func (o *CustomerAdd) SetGroupIds(v string) {
 	o.GroupIds = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CustomerAdd) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CustomerAdd) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *CustomerAdd) SetStatus(v string) {
+	o.Status = &v
 }
 
 // GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
@@ -427,38 +469,6 @@ func (o *CustomerAdd) SetBirthDay(v string) {
 	o.BirthDay = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CustomerAdd) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerAdd) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *CustomerAdd) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *CustomerAdd) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetNewsLetterSubscription returns the NewsLetterSubscription field value if set, zero value otherwise.
 func (o *CustomerAdd) GetNewsLetterSubscription() bool {
 	if o == nil || IsNil(o.NewsLetterSubscription) {
@@ -585,38 +595,6 @@ func (o *CustomerAdd) HasWebsite() bool {
 // SetWebsite gets a reference to the given string and assigns it to the Website field.
 func (o *CustomerAdd) SetWebsite(v string) {
 	o.Website = &v
-}
-
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *CustomerAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *CustomerAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *CustomerAdd) SetStoreId(v string) {
-	o.StoreId = &v
 }
 
 // GetFax returns the Fax field value if set, zero value otherwise.
@@ -779,6 +757,38 @@ func (o *CustomerAdd) SetCountry(v string) {
 	o.Country = &v
 }
 
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *CustomerAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *CustomerAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *CustomerAdd) SetStoreId(v string) {
+	o.StoreId = &v
+}
+
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CustomerAdd) GetAddress() []CustomerAddAddressInner {
 	if o == nil || IsNil(o.Address) {
@@ -822,8 +832,12 @@ func (o CustomerAdd) MarshalJSON() ([]byte, error) {
 func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["email"] = o.Email
-	toSerialize["first_name"] = o.FirstName
-	toSerialize["last_name"] = o.LastName
+	if !IsNil(o.FirstName) {
+		toSerialize["first_name"] = o.FirstName
+	}
+	if !IsNil(o.LastName) {
+		toSerialize["last_name"] = o.LastName
+	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
@@ -832,6 +846,9 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GroupIds) {
 		toSerialize["group_ids"] = o.GroupIds
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime
@@ -848,9 +865,6 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BirthDay) {
 		toSerialize["birth_day"] = o.BirthDay
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.NewsLetterSubscription) {
 		toSerialize["news_letter_subscription"] = o.NewsLetterSubscription
 	}
@@ -862,9 +876,6 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Website) {
 		toSerialize["website"] = o.Website
-	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.Fax) {
 		toSerialize["fax"] = o.Fax
@@ -881,6 +892,9 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -893,8 +907,6 @@ func (o *CustomerAdd) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"email",
-		"first_name",
-		"last_name",
 	}
 
 	allProperties := make(map[string]interface{})

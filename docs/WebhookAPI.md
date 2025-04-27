@@ -290,7 +290,7 @@ Other parameters are passed through a pointer to a apiWebhookEventsRequest struc
 
 ## WebhookList
 
-> WebhookList200Response WebhookList(ctx).Params(params).Start(start).Count(count).Entity(entity).Action(action).Active(active).Ids(ids).Execute()
+> WebhookList200Response WebhookList(ctx).Start(start).Count(count).Entity(entity).Action(action).Active(active).Ids(ids).Params(params).Execute()
 
 webhook.list
 
@@ -309,17 +309,17 @@ import (
 )
 
 func main() {
-	params := "id,entity,callback,fields" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,entity,action,callback")
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	entity := "product" // string | The entity you want to filter webhooks by (e.g. order or product) (optional)
 	action := "add" // string | The action you want to filter webhooks by (e.g. add, update, or delete) (optional)
 	active := true // bool | The webhook status you want to filter webhooks by (optional)
 	ids := "3,14,25" // string | List of сomma-separated webhook ids (optional)
+	params := "id,entity,callback,fields" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,entity,action,callback")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookList(context.Background()).Params(params).Start(start).Count(count).Entity(entity).Action(action).Active(active).Ids(ids).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookList(context.Background()).Start(start).Count(count).Entity(entity).Action(action).Active(active).Ids(ids).Params(params).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,13 +340,13 @@ Other parameters are passed through a pointer to a apiWebhookListRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,entity,action,callback&quot;]
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **entity** | **string** | The entity you want to filter webhooks by (e.g. order or product) | 
  **action** | **string** | The action you want to filter webhooks by (e.g. add, update, or delete) | 
  **active** | **bool** | The webhook status you want to filter webhooks by | 
  **ids** | **string** | List of сomma-separated webhook ids | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,entity,action,callback&quot;]
 
 ### Return type
 

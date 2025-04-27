@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OrderId** | Pointer to **string** | Defines the order for which the shipment will be created | [optional] 
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **ShipmentProvider** | Pointer to **string** | Defines company name that provide tracking of shipment | [optional] 
 **ShippingMethod** | Pointer to **string** | Define shipping method | [optional] 
 **Items** | Pointer to [**[]OrderShipmentAddItemsInner**](OrderShipmentAddItemsInner.md) | Defines items in the order that will be shipped | [optional] 
-**SendNotifications** | Pointer to **bool** | Send notifications to customer after shipment was created | [optional] [default to false]
 **TrackingNumbers** | Pointer to [**[]OrderShipmentAddTrackingNumbersInner**](OrderShipmentAddTrackingNumbersInner.md) | Defines shipment&#39;s tracking numbers that have to be added&lt;/br&gt; How set tracking numbers to appropriate carrier:&lt;ul&gt;&lt;li&gt;tracking_numbers[]&#x3D;a2c.demo1,a2c.demo2 - set default carrier&lt;/li&gt;&lt;li&gt;tracking_numbers[&lt;b&gt;carrier_id&lt;/b&gt;]&#x3D;a2c.demo - set appropriate carrier&lt;/li&gt;&lt;/ul&gt;To get the list of carriers IDs that are available in your store, use the &lt;a href &#x3D; \&quot;https://api2cart.com/docs/#/cart/CartInfo\&quot;&gt;cart.info&lt;/a &gt; method | [optional] 
-**AdjustStock** | Pointer to **bool** | This parameter is used for adjust stock. | [optional] [default to false]
-**EnableCache** | Pointer to **bool** | If the value is &#39;true&#39; and order exist in our cache, we will use order.info from cache to prepare shipment items. | [optional] [default to false]
 **TrackingLink** | Pointer to **string** | Defines custom tracking link | [optional] 
 **IsShipped** | Pointer to **bool** | Defines shipment&#39;s status | [optional] [default to true]
+**SendNotifications** | Pointer to **bool** | Send notifications to customer after shipment was created | [optional] [default to false]
+**AdjustStock** | Pointer to **bool** | This parameter is used for adjust stock. | [optional] [default to false]
+**EnableCache** | Pointer to **bool** | If the value is &#39;true&#39; and order exist in our cache, we will use order.info from cache to prepare shipment items. | [optional] [default to false]
 **CheckProcessStatus** | Pointer to **bool** | Disable or enable check process status. Please note that the response will be slower due to additional requests to the store. | [optional] [default to false]
 **UseLatestApiVersion** | Pointer to **bool** | Use the latest platform API version | [optional] [default to false]
 
@@ -63,31 +63,6 @@ SetOrderId sets OrderId field to given value.
 
 HasOrderId returns a boolean if a field has been set.
 
-### GetStoreId
-
-`func (o *OrderShipmentAdd) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *OrderShipmentAdd) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *OrderShipmentAdd) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *OrderShipmentAdd) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
-
 ### GetWarehouseId
 
 `func (o *OrderShipmentAdd) GetWarehouseId() string`
@@ -112,6 +87,31 @@ SetWarehouseId sets WarehouseId field to given value.
 `func (o *OrderShipmentAdd) HasWarehouseId() bool`
 
 HasWarehouseId returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *OrderShipmentAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *OrderShipmentAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *OrderShipmentAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *OrderShipmentAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetShipmentProvider
 
@@ -188,31 +188,6 @@ SetItems sets Items field to given value.
 
 HasItems returns a boolean if a field has been set.
 
-### GetSendNotifications
-
-`func (o *OrderShipmentAdd) GetSendNotifications() bool`
-
-GetSendNotifications returns the SendNotifications field if non-nil, zero value otherwise.
-
-### GetSendNotificationsOk
-
-`func (o *OrderShipmentAdd) GetSendNotificationsOk() (*bool, bool)`
-
-GetSendNotificationsOk returns a tuple with the SendNotifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSendNotifications
-
-`func (o *OrderShipmentAdd) SetSendNotifications(v bool)`
-
-SetSendNotifications sets SendNotifications field to given value.
-
-### HasSendNotifications
-
-`func (o *OrderShipmentAdd) HasSendNotifications() bool`
-
-HasSendNotifications returns a boolean if a field has been set.
-
 ### GetTrackingNumbers
 
 `func (o *OrderShipmentAdd) GetTrackingNumbers() []OrderShipmentAddTrackingNumbersInner`
@@ -237,56 +212,6 @@ SetTrackingNumbers sets TrackingNumbers field to given value.
 `func (o *OrderShipmentAdd) HasTrackingNumbers() bool`
 
 HasTrackingNumbers returns a boolean if a field has been set.
-
-### GetAdjustStock
-
-`func (o *OrderShipmentAdd) GetAdjustStock() bool`
-
-GetAdjustStock returns the AdjustStock field if non-nil, zero value otherwise.
-
-### GetAdjustStockOk
-
-`func (o *OrderShipmentAdd) GetAdjustStockOk() (*bool, bool)`
-
-GetAdjustStockOk returns a tuple with the AdjustStock field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdjustStock
-
-`func (o *OrderShipmentAdd) SetAdjustStock(v bool)`
-
-SetAdjustStock sets AdjustStock field to given value.
-
-### HasAdjustStock
-
-`func (o *OrderShipmentAdd) HasAdjustStock() bool`
-
-HasAdjustStock returns a boolean if a field has been set.
-
-### GetEnableCache
-
-`func (o *OrderShipmentAdd) GetEnableCache() bool`
-
-GetEnableCache returns the EnableCache field if non-nil, zero value otherwise.
-
-### GetEnableCacheOk
-
-`func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool)`
-
-GetEnableCacheOk returns a tuple with the EnableCache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableCache
-
-`func (o *OrderShipmentAdd) SetEnableCache(v bool)`
-
-SetEnableCache sets EnableCache field to given value.
-
-### HasEnableCache
-
-`func (o *OrderShipmentAdd) HasEnableCache() bool`
-
-HasEnableCache returns a boolean if a field has been set.
 
 ### GetTrackingLink
 
@@ -337,6 +262,81 @@ SetIsShipped sets IsShipped field to given value.
 `func (o *OrderShipmentAdd) HasIsShipped() bool`
 
 HasIsShipped returns a boolean if a field has been set.
+
+### GetSendNotifications
+
+`func (o *OrderShipmentAdd) GetSendNotifications() bool`
+
+GetSendNotifications returns the SendNotifications field if non-nil, zero value otherwise.
+
+### GetSendNotificationsOk
+
+`func (o *OrderShipmentAdd) GetSendNotificationsOk() (*bool, bool)`
+
+GetSendNotificationsOk returns a tuple with the SendNotifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendNotifications
+
+`func (o *OrderShipmentAdd) SetSendNotifications(v bool)`
+
+SetSendNotifications sets SendNotifications field to given value.
+
+### HasSendNotifications
+
+`func (o *OrderShipmentAdd) HasSendNotifications() bool`
+
+HasSendNotifications returns a boolean if a field has been set.
+
+### GetAdjustStock
+
+`func (o *OrderShipmentAdd) GetAdjustStock() bool`
+
+GetAdjustStock returns the AdjustStock field if non-nil, zero value otherwise.
+
+### GetAdjustStockOk
+
+`func (o *OrderShipmentAdd) GetAdjustStockOk() (*bool, bool)`
+
+GetAdjustStockOk returns a tuple with the AdjustStock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdjustStock
+
+`func (o *OrderShipmentAdd) SetAdjustStock(v bool)`
+
+SetAdjustStock sets AdjustStock field to given value.
+
+### HasAdjustStock
+
+`func (o *OrderShipmentAdd) HasAdjustStock() bool`
+
+HasAdjustStock returns a boolean if a field has been set.
+
+### GetEnableCache
+
+`func (o *OrderShipmentAdd) GetEnableCache() bool`
+
+GetEnableCache returns the EnableCache field if non-nil, zero value otherwise.
+
+### GetEnableCacheOk
+
+`func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool)`
+
+GetEnableCacheOk returns a tuple with the EnableCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCache
+
+`func (o *OrderShipmentAdd) SetEnableCache(v bool)`
+
+SetEnableCache sets EnableCache field to given value.
+
+### HasEnableCache
+
+`func (o *OrderShipmentAdd) HasEnableCache() bool`
+
+HasEnableCache returns a boolean if a field has been set.
 
 ### GetCheckProcessStatus
 

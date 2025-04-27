@@ -22,28 +22,28 @@ var _ MappedNullable = &OrderShipmentAdd{}
 type OrderShipmentAdd struct {
 	// Defines the order for which the shipment will be created
 	OrderId *string `json:"order_id,omitempty"`
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
 	WarehouseId *string `json:"warehouse_id,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Defines company name that provide tracking of shipment
 	ShipmentProvider *string `json:"shipment_provider,omitempty"`
 	// Define shipping method
 	ShippingMethod *string `json:"shipping_method,omitempty"`
 	// Defines items in the order that will be shipped
 	Items []OrderShipmentAddItemsInner `json:"items,omitempty"`
-	// Send notifications to customer after shipment was created
-	SendNotifications *bool `json:"send_notifications,omitempty"`
 	// Defines shipment's tracking numbers that have to be added</br> How set tracking numbers to appropriate carrier:<ul><li>tracking_numbers[]=a2c.demo1,a2c.demo2 - set default carrier</li><li>tracking_numbers[<b>carrier_id</b>]=a2c.demo - set appropriate carrier</li></ul>To get the list of carriers IDs that are available in your store, use the <a href = \"https://api2cart.com/docs/#/cart/CartInfo\">cart.info</a > method
 	TrackingNumbers []OrderShipmentAddTrackingNumbersInner `json:"tracking_numbers,omitempty"`
-	// This parameter is used for adjust stock.
-	AdjustStock *bool `json:"adjust_stock,omitempty"`
-	// If the value is 'true' and order exist in our cache, we will use order.info from cache to prepare shipment items.
-	EnableCache *bool `json:"enable_cache,omitempty"`
 	// Defines custom tracking link
 	TrackingLink *string `json:"tracking_link,omitempty"`
 	// Defines shipment's status
 	IsShipped *bool `json:"is_shipped,omitempty"`
+	// Send notifications to customer after shipment was created
+	SendNotifications *bool `json:"send_notifications,omitempty"`
+	// This parameter is used for adjust stock.
+	AdjustStock *bool `json:"adjust_stock,omitempty"`
+	// If the value is 'true' and order exist in our cache, we will use order.info from cache to prepare shipment items.
+	EnableCache *bool `json:"enable_cache,omitempty"`
 	// Disable or enable check process status. Please note that the response will be slower due to additional requests to the store.
 	CheckProcessStatus *bool `json:"check_process_status,omitempty"`
 	// Use the latest platform API version
@@ -56,14 +56,14 @@ type OrderShipmentAdd struct {
 // will change when the set of required properties is changed
 func NewOrderShipmentAdd() *OrderShipmentAdd {
 	this := OrderShipmentAdd{}
+	var isShipped bool = true
+	this.IsShipped = &isShipped
 	var sendNotifications bool = false
 	this.SendNotifications = &sendNotifications
 	var adjustStock bool = false
 	this.AdjustStock = &adjustStock
 	var enableCache bool = false
 	this.EnableCache = &enableCache
-	var isShipped bool = true
-	this.IsShipped = &isShipped
 	var checkProcessStatus bool = false
 	this.CheckProcessStatus = &checkProcessStatus
 	var useLatestApiVersion bool = false
@@ -76,14 +76,14 @@ func NewOrderShipmentAdd() *OrderShipmentAdd {
 // but it doesn't guarantee that properties required by API are set
 func NewOrderShipmentAddWithDefaults() *OrderShipmentAdd {
 	this := OrderShipmentAdd{}
+	var isShipped bool = true
+	this.IsShipped = &isShipped
 	var sendNotifications bool = false
 	this.SendNotifications = &sendNotifications
 	var adjustStock bool = false
 	this.AdjustStock = &adjustStock
 	var enableCache bool = false
 	this.EnableCache = &enableCache
-	var isShipped bool = true
-	this.IsShipped = &isShipped
 	var checkProcessStatus bool = false
 	this.CheckProcessStatus = &checkProcessStatus
 	var useLatestApiVersion bool = false
@@ -123,38 +123,6 @@ func (o *OrderShipmentAdd) SetOrderId(v string) {
 	o.OrderId = &v
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *OrderShipmentAdd) SetStoreId(v string) {
-	o.StoreId = &v
-}
-
 // GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
 func (o *OrderShipmentAdd) GetWarehouseId() string {
 	if o == nil || IsNil(o.WarehouseId) {
@@ -185,6 +153,38 @@ func (o *OrderShipmentAdd) HasWarehouseId() bool {
 // SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
 func (o *OrderShipmentAdd) SetWarehouseId(v string) {
 	o.WarehouseId = &v
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *OrderShipmentAdd) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetShipmentProvider returns the ShipmentProvider field value if set, zero value otherwise.
@@ -283,38 +283,6 @@ func (o *OrderShipmentAdd) SetItems(v []OrderShipmentAddItemsInner) {
 	o.Items = v
 }
 
-// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetSendNotifications() bool {
-	if o == nil || IsNil(o.SendNotifications) {
-		var ret bool
-		return ret
-	}
-	return *o.SendNotifications
-}
-
-// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetSendNotificationsOk() (*bool, bool) {
-	if o == nil || IsNil(o.SendNotifications) {
-		return nil, false
-	}
-	return o.SendNotifications, true
-}
-
-// HasSendNotifications returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasSendNotifications() bool {
-	if o != nil && !IsNil(o.SendNotifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
-func (o *OrderShipmentAdd) SetSendNotifications(v bool) {
-	o.SendNotifications = &v
-}
-
 // GetTrackingNumbers returns the TrackingNumbers field value if set, zero value otherwise.
 func (o *OrderShipmentAdd) GetTrackingNumbers() []OrderShipmentAddTrackingNumbersInner {
 	if o == nil || IsNil(o.TrackingNumbers) {
@@ -345,70 +313,6 @@ func (o *OrderShipmentAdd) HasTrackingNumbers() bool {
 // SetTrackingNumbers gets a reference to the given []OrderShipmentAddTrackingNumbersInner and assigns it to the TrackingNumbers field.
 func (o *OrderShipmentAdd) SetTrackingNumbers(v []OrderShipmentAddTrackingNumbersInner) {
 	o.TrackingNumbers = v
-}
-
-// GetAdjustStock returns the AdjustStock field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetAdjustStock() bool {
-	if o == nil || IsNil(o.AdjustStock) {
-		var ret bool
-		return ret
-	}
-	return *o.AdjustStock
-}
-
-// GetAdjustStockOk returns a tuple with the AdjustStock field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetAdjustStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.AdjustStock) {
-		return nil, false
-	}
-	return o.AdjustStock, true
-}
-
-// HasAdjustStock returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasAdjustStock() bool {
-	if o != nil && !IsNil(o.AdjustStock) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdjustStock gets a reference to the given bool and assigns it to the AdjustStock field.
-func (o *OrderShipmentAdd) SetAdjustStock(v bool) {
-	o.AdjustStock = &v
-}
-
-// GetEnableCache returns the EnableCache field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetEnableCache() bool {
-	if o == nil || IsNil(o.EnableCache) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableCache
-}
-
-// GetEnableCacheOk returns a tuple with the EnableCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableCache) {
-		return nil, false
-	}
-	return o.EnableCache, true
-}
-
-// HasEnableCache returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasEnableCache() bool {
-	if o != nil && !IsNil(o.EnableCache) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableCache gets a reference to the given bool and assigns it to the EnableCache field.
-func (o *OrderShipmentAdd) SetEnableCache(v bool) {
-	o.EnableCache = &v
 }
 
 // GetTrackingLink returns the TrackingLink field value if set, zero value otherwise.
@@ -473,6 +377,102 @@ func (o *OrderShipmentAdd) HasIsShipped() bool {
 // SetIsShipped gets a reference to the given bool and assigns it to the IsShipped field.
 func (o *OrderShipmentAdd) SetIsShipped(v bool) {
 	o.IsShipped = &v
+}
+
+// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetSendNotifications() bool {
+	if o == nil || IsNil(o.SendNotifications) {
+		var ret bool
+		return ret
+	}
+	return *o.SendNotifications
+}
+
+// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetSendNotificationsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendNotifications) {
+		return nil, false
+	}
+	return o.SendNotifications, true
+}
+
+// HasSendNotifications returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasSendNotifications() bool {
+	if o != nil && !IsNil(o.SendNotifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
+func (o *OrderShipmentAdd) SetSendNotifications(v bool) {
+	o.SendNotifications = &v
+}
+
+// GetAdjustStock returns the AdjustStock field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetAdjustStock() bool {
+	if o == nil || IsNil(o.AdjustStock) {
+		var ret bool
+		return ret
+	}
+	return *o.AdjustStock
+}
+
+// GetAdjustStockOk returns a tuple with the AdjustStock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetAdjustStockOk() (*bool, bool) {
+	if o == nil || IsNil(o.AdjustStock) {
+		return nil, false
+	}
+	return o.AdjustStock, true
+}
+
+// HasAdjustStock returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasAdjustStock() bool {
+	if o != nil && !IsNil(o.AdjustStock) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdjustStock gets a reference to the given bool and assigns it to the AdjustStock field.
+func (o *OrderShipmentAdd) SetAdjustStock(v bool) {
+	o.AdjustStock = &v
+}
+
+// GetEnableCache returns the EnableCache field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetEnableCache() bool {
+	if o == nil || IsNil(o.EnableCache) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCache
+}
+
+// GetEnableCacheOk returns a tuple with the EnableCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableCache) {
+		return nil, false
+	}
+	return o.EnableCache, true
+}
+
+// HasEnableCache returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasEnableCache() bool {
+	if o != nil && !IsNil(o.EnableCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCache gets a reference to the given bool and assigns it to the EnableCache field.
+func (o *OrderShipmentAdd) SetEnableCache(v bool) {
+	o.EnableCache = &v
 }
 
 // GetCheckProcessStatus returns the CheckProcessStatus field value if set, zero value otherwise.
@@ -552,11 +552,11 @@ func (o OrderShipmentAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderId) {
 		toSerialize["order_id"] = o.OrderId
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	if !IsNil(o.WarehouseId) {
 		toSerialize["warehouse_id"] = o.WarehouseId
+	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.ShipmentProvider) {
 		toSerialize["shipment_provider"] = o.ShipmentProvider
@@ -567,23 +567,23 @@ func (o OrderShipmentAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-	if !IsNil(o.SendNotifications) {
-		toSerialize["send_notifications"] = o.SendNotifications
-	}
 	if !IsNil(o.TrackingNumbers) {
 		toSerialize["tracking_numbers"] = o.TrackingNumbers
-	}
-	if !IsNil(o.AdjustStock) {
-		toSerialize["adjust_stock"] = o.AdjustStock
-	}
-	if !IsNil(o.EnableCache) {
-		toSerialize["enable_cache"] = o.EnableCache
 	}
 	if !IsNil(o.TrackingLink) {
 		toSerialize["tracking_link"] = o.TrackingLink
 	}
 	if !IsNil(o.IsShipped) {
 		toSerialize["is_shipped"] = o.IsShipped
+	}
+	if !IsNil(o.SendNotifications) {
+		toSerialize["send_notifications"] = o.SendNotifications
+	}
+	if !IsNil(o.AdjustStock) {
+		toSerialize["adjust_stock"] = o.AdjustStock
+	}
+	if !IsNil(o.EnableCache) {
+		toSerialize["enable_cache"] = o.EnableCache
 	}
 	if !IsNil(o.CheckProcessStatus) {
 		toSerialize["check_process_status"] = o.CheckProcessStatus

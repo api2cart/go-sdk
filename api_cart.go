@@ -269,19 +269,13 @@ func (a *CartAPIService) CartCatalogPriceRulesCountExecute(r ApiCartCatalogPrice
 type ApiCartCatalogPriceRulesListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
 	ids *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCartCatalogPriceRulesListRequest) PageCursor(pageCursor string) ApiCartCatalogPriceRulesListRequest {
-	r.pageCursor = &pageCursor
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -296,6 +290,12 @@ func (r ApiCartCatalogPriceRulesListRequest) Count(count int32) ApiCartCatalogPr
 	return r
 }
 
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCartCatalogPriceRulesListRequest) PageCursor(pageCursor string) ApiCartCatalogPriceRulesListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
 // Retrieves  catalog_price_rules by ids
 func (r ApiCartCatalogPriceRulesListRequest) Ids(ids string) ApiCartCatalogPriceRulesListRequest {
 	r.ids = &ids
@@ -303,14 +303,14 @@ func (r ApiCartCatalogPriceRulesListRequest) Ids(ids string) ApiCartCatalogPrice
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartCatalogPriceRulesListRequest) Params(params string) ApiCartCatalogPriceRulesListRequest {
-	r.params = &params
+func (r ApiCartCatalogPriceRulesListRequest) ResponseFields(responseFields string) ApiCartCatalogPriceRulesListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartCatalogPriceRulesListRequest) ResponseFields(responseFields string) ApiCartCatalogPriceRulesListRequest {
-	r.responseFields = &responseFields
+func (r ApiCartCatalogPriceRulesListRequest) Params(params string) ApiCartCatalogPriceRulesListRequest {
+	r.params = &params
 	return r
 }
 
@@ -360,9 +360,6 @@ func (a *CartAPIService) CartCatalogPriceRulesListExecute(r ApiCartCatalogPriceR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -375,17 +372,20 @@ func (a *CartAPIService) CartCatalogPriceRulesListExecute(r ApiCartCatalogPriceR
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	if r.ids != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,name,description"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -1053,10 +1053,10 @@ type ApiCartCouponConditionAddRequest struct {
 	key *string
 	operator *string
 	value *string
-	storeId *string
 	target *string
 	includeTax *bool
 	includeShipping *bool
+	storeId *string
 }
 
 // Coupon Id
@@ -1089,12 +1089,6 @@ func (r ApiCartCouponConditionAddRequest) Value(value string) ApiCartCouponCondi
 	return r
 }
 
-// Store Id
-func (r ApiCartCouponConditionAddRequest) StoreId(storeId string) ApiCartCouponConditionAddRequest {
-	r.storeId = &storeId
-	return r
-}
-
 // Defines condition operator
 func (r ApiCartCouponConditionAddRequest) Target(target string) ApiCartCouponConditionAddRequest {
 	r.target = &target
@@ -1110,6 +1104,12 @@ func (r ApiCartCouponConditionAddRequest) IncludeTax(includeTax bool) ApiCartCou
 // Indicates whether to apply a discount for shipping.
 func (r ApiCartCouponConditionAddRequest) IncludeShipping(includeShipping bool) ApiCartCouponConditionAddRequest {
 	r.includeShipping = &includeShipping
+	return r
+}
+
+// Store Id
+func (r ApiCartCouponConditionAddRequest) StoreId(storeId string) ApiCartCouponConditionAddRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -1168,20 +1168,17 @@ func (a *CartAPIService) CartCouponConditionAddExecute(r ApiCartCouponConditionA
 		return localVarReturnValue, nil, reportError("value is required and must be specified")
 	}
 
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "coupon_id", r.couponId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "operator", r.operator, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "value", r.value, "form", "")
 	if r.target != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "target", r.target, "form", "")
 	} else {
 		var defaultValue string = "coupon_prerequisite"
 		r.target = &defaultValue
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "operator", r.operator, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "value", r.value, "form", "")
 	if r.includeTax != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_tax", r.includeTax, "form", "")
 	} else {
@@ -1193,6 +1190,9 @@ func (a *CartAPIService) CartCouponConditionAddExecute(r ApiCartCouponConditionA
 	} else {
 		var defaultValue bool = false
 		r.includeShipping = &defaultValue
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1280,16 +1280,22 @@ type ApiCartCouponCountRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
 	storeId *string
+	avail *bool
 	dateStartFrom *string
 	dateStartTo *string
 	dateEndFrom *string
 	dateEndTo *string
-	avail *bool
 }
 
 // Store Id
 func (r ApiCartCouponCountRequest) StoreId(storeId string) ApiCartCouponCountRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Defines category&#39;s visibility status
+func (r ApiCartCouponCountRequest) Avail(avail bool) ApiCartCouponCountRequest {
+	r.avail = &avail
 	return r
 }
 
@@ -1314,12 +1320,6 @@ func (r ApiCartCouponCountRequest) DateEndFrom(dateEndFrom string) ApiCartCoupon
 // Filter entity by date_end (less or equal)
 func (r ApiCartCouponCountRequest) DateEndTo(dateEndTo string) ApiCartCouponCountRequest {
 	r.dateEndTo = &dateEndTo
-	return r
-}
-
-// Defines category&#39;s visibility status
-func (r ApiCartCouponCountRequest) Avail(avail bool) ApiCartCouponCountRequest {
-	r.avail = &avail
 	return r
 }
 
@@ -1366,6 +1366,12 @@ func (a *CartAPIService) CartCouponCountExecute(r ApiCartCouponCountRequest) (*C
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
+	if r.avail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.avail = &defaultValue
+	}
 	if r.dateStartFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_start_from", r.dateStartFrom, "form", "")
 	}
@@ -1377,12 +1383,6 @@ func (a *CartAPIService) CartCouponCountExecute(r ApiCartCouponCountRequest) (*C
 	}
 	if r.dateEndTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_end_to", r.dateEndTo, "form", "")
-	}
-	if r.avail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
-	} else {
-		var defaultValue bool = true
-		r.avail = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1617,26 +1617,20 @@ func (a *CartAPIService) CartCouponDeleteExecute(r ApiCartCouponDeleteRequest) (
 type ApiCartCouponListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
 	couponsIds *string
 	storeId *string
+	langId *string
+	avail *bool
 	dateStartFrom *string
 	dateStartTo *string
 	dateEndFrom *string
 	dateEndTo *string
-	avail *bool
-	langId *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCartCouponListRequest) PageCursor(pageCursor string) ApiCartCouponListRequest {
-	r.pageCursor = &pageCursor
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1651,6 +1645,12 @@ func (r ApiCartCouponListRequest) Count(count int32) ApiCartCouponListRequest {
 	return r
 }
 
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCartCouponListRequest) PageCursor(pageCursor string) ApiCartCouponListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
 // Filter coupons by ids
 func (r ApiCartCouponListRequest) CouponsIds(couponsIds string) ApiCartCouponListRequest {
 	r.couponsIds = &couponsIds
@@ -1660,6 +1660,18 @@ func (r ApiCartCouponListRequest) CouponsIds(couponsIds string) ApiCartCouponLis
 // Filter coupons by store id
 func (r ApiCartCouponListRequest) StoreId(storeId string) ApiCartCouponListRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Language id
+func (r ApiCartCouponListRequest) LangId(langId string) ApiCartCouponListRequest {
+	r.langId = &langId
+	return r
+}
+
+// Filter coupons by avail status
+func (r ApiCartCouponListRequest) Avail(avail bool) ApiCartCouponListRequest {
+	r.avail = &avail
 	return r
 }
 
@@ -1687,27 +1699,15 @@ func (r ApiCartCouponListRequest) DateEndTo(dateEndTo string) ApiCartCouponListR
 	return r
 }
 
-// Filter coupons by avail status
-func (r ApiCartCouponListRequest) Avail(avail bool) ApiCartCouponListRequest {
-	r.avail = &avail
-	return r
-}
-
-// Language id
-func (r ApiCartCouponListRequest) LangId(langId string) ApiCartCouponListRequest {
-	r.langId = &langId
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCartCouponListRequest) ResponseFields(responseFields string) ApiCartCouponListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiCartCouponListRequest) Params(params string) ApiCartCouponListRequest {
 	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartCouponListRequest) ResponseFields(responseFields string) ApiCartCouponListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -1757,9 +1757,6 @@ func (a *CartAPIService) CartCouponListExecute(r ApiCartCouponListRequest) (*Mod
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -1772,11 +1769,20 @@ func (a *CartAPIService) CartCouponListExecute(r ApiCartCouponListRequest) (*Mod
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	if r.couponsIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "coupons_ids", r.couponsIds, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.avail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
 	}
 	if r.dateStartFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_start_from", r.dateStartFrom, "form", "")
@@ -1790,20 +1796,14 @@ func (a *CartAPIService) CartCouponListExecute(r ApiCartCouponListRequest) (*Mod
 	if r.dateEndTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_end_to", r.dateEndTo, "form", "")
 	}
-	if r.avail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,code,name,description"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -2766,19 +2766,13 @@ func (a *CartAPIService) CartGiftcardDeleteExecute(r ApiCartGiftcardDeleteReques
 type ApiCartGiftcardListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
 	storeId *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCartGiftcardListRequest) PageCursor(pageCursor string) ApiCartGiftcardListRequest {
-	r.pageCursor = &pageCursor
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -2793,6 +2787,12 @@ func (r ApiCartGiftcardListRequest) Count(count int32) ApiCartGiftcardListReques
 	return r
 }
 
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCartGiftcardListRequest) PageCursor(pageCursor string) ApiCartGiftcardListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
 // Store Id
 func (r ApiCartGiftcardListRequest) StoreId(storeId string) ApiCartGiftcardListRequest {
 	r.storeId = &storeId
@@ -2800,14 +2800,14 @@ func (r ApiCartGiftcardListRequest) StoreId(storeId string) ApiCartGiftcardListR
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartGiftcardListRequest) Params(params string) ApiCartGiftcardListRequest {
-	r.params = &params
+func (r ApiCartGiftcardListRequest) ResponseFields(responseFields string) ApiCartGiftcardListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartGiftcardListRequest) ResponseFields(responseFields string) ApiCartGiftcardListRequest {
-	r.responseFields = &responseFields
+func (r ApiCartGiftcardListRequest) Params(params string) ApiCartGiftcardListRequest {
+	r.params = &params
 	return r
 }
 
@@ -2857,9 +2857,6 @@ func (a *CartAPIService) CartGiftcardListExecute(r ApiCartGiftcardListRequest) (
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -2872,17 +2869,20 @@ func (a *CartAPIService) CartGiftcardListExecute(r ApiCartGiftcardListRequest) (
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,code,name"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -2972,15 +2972,15 @@ func (a *CartAPIService) CartGiftcardListExecute(r ApiCartGiftcardListRequest) (
 type ApiCartInfoRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
+	responseFields *string
+	params *string
+	exclude *string
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartInfoRequest) Params(params string) ApiCartInfoRequest {
-	r.params = &params
+// Store Id
+func (r ApiCartInfoRequest) StoreId(storeId string) ApiCartInfoRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -2990,15 +2990,15 @@ func (r ApiCartInfoRequest) ResponseFields(responseFields string) ApiCartInfoReq
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiCartInfoRequest) Exclude(exclude string) ApiCartInfoRequest {
-	r.exclude = &exclude
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCartInfoRequest) Params(params string) ApiCartInfoRequest {
+	r.params = &params
 	return r
 }
 
-// Store Id
-func (r ApiCartInfoRequest) StoreId(storeId string) ApiCartInfoRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiCartInfoRequest) Exclude(exclude string) ApiCartInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -3042,20 +3042,20 @@ func (a *CartAPIService) CartInfoExecute(r ApiCartInfoRequest) (*CartInfo200Resp
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "store_name,store_url,db_prefix"
 		r.params = &defaultValue
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3259,20 +3259,32 @@ type ApiCartMetaDataListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
 	entityId *string
+	count *int32
+	pageCursor *string
 	entity *string
 	storeId *string
 	langId *string
 	key *string
-	count *int32
-	pageCursor *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
 }
 
 // Entity Id
 func (r ApiCartMetaDataListRequest) EntityId(entityId string) ApiCartMetaDataListRequest {
 	r.entityId = &entityId
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiCartMetaDataListRequest) Count(count int32) ApiCartMetaDataListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCartMetaDataListRequest) PageCursor(pageCursor string) ApiCartMetaDataListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -3300,27 +3312,15 @@ func (r ApiCartMetaDataListRequest) Key(key string) ApiCartMetaDataListRequest {
 	return r
 }
 
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiCartMetaDataListRequest) Count(count int32) ApiCartMetaDataListRequest {
-	r.count = &count
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCartMetaDataListRequest) PageCursor(pageCursor string) ApiCartMetaDataListRequest {
-	r.pageCursor = &pageCursor
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCartMetaDataListRequest) ResponseFields(responseFields string) ApiCartMetaDataListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiCartMetaDataListRequest) Params(params string) ApiCartMetaDataListRequest {
 	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartMetaDataListRequest) ResponseFields(responseFields string) ApiCartMetaDataListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -3373,6 +3373,15 @@ func (a *CartAPIService) CartMetaDataListExecute(r ApiCartMetaDataListRequest) (
 		return localVarReturnValue, nil, reportError("entityId is required and must be specified")
 	}
 
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "entity_id", r.entityId, "form", "")
 	if r.entity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
@@ -3389,23 +3398,14 @@ func (a *CartAPIService) CartMetaDataListExecute(r ApiCartMetaDataListRequest) (
 	if r.key != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue int32 = 10
-		r.count = &defaultValue
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "key,value"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -3599,6 +3599,9 @@ func (a *CartAPIService) CartMetaDataSetExecute(r ApiCartMetaDataSetRequest) (*A
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "entity_id", r.entityId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "value", r.value, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "namespace", r.namespace, "form", "")
 	if r.entity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
 	} else {
@@ -3611,9 +3614,6 @@ func (a *CartAPIService) CartMetaDataSetExecute(r ApiCartMetaDataSetRequest) (*A
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "value", r.value, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "namespace", r.namespace, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3786,6 +3786,8 @@ func (a *CartAPIService) CartMetaDataUnsetExecute(r ApiCartMetaDataUnsetRequest)
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "entity_id", r.entityId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	if r.entity != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
 	} else {
@@ -3795,8 +3797,6 @@ func (a *CartAPIService) CartMetaDataUnsetExecute(r ApiCartMetaDataUnsetRequest)
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4009,15 +4009,9 @@ func (a *CartAPIService) CartMethodsExecute(r ApiCartMethodsRequest) (*CartMetho
 type ApiCartPluginListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	storeId *string
 	start *int32
 	count *int32
-}
-
-// Store Id
-func (r ApiCartPluginListRequest) StoreId(storeId string) ApiCartPluginListRequest {
-	r.storeId = &storeId
-	return r
+	storeId *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -4029,6 +4023,12 @@ func (r ApiCartPluginListRequest) Start(start int32) ApiCartPluginListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiCartPluginListRequest) Count(count int32) ApiCartPluginListRequest {
 	r.count = &count
+	return r
+}
+
+// Store Id
+func (r ApiCartPluginListRequest) StoreId(storeId string) ApiCartPluginListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -4072,9 +4072,6 @@ func (a *CartAPIService) CartPluginListExecute(r ApiCartPluginListRequest) (*Car
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -4086,6 +4083,9 @@ func (a *CartAPIService) CartPluginListExecute(r ApiCartPluginListRequest) (*Car
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4530,24 +4530,18 @@ func (a *CartAPIService) CartScriptDeleteExecute(r ApiCartScriptDeleteRequest) (
 type ApiCartScriptListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	pageCursor *string
 	start *int32
 	count *int32
+	pageCursor *string
+	scriptIds *string
+	storeId *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	scriptIds *string
-	storeId *string
-	params *string
 	responseFields *string
+	params *string
 	exclude *string
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiCartScriptListRequest) PageCursor(pageCursor string) ApiCartScriptListRequest {
-	r.pageCursor = &pageCursor
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -4559,6 +4553,24 @@ func (r ApiCartScriptListRequest) Start(start int32) ApiCartScriptListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiCartScriptListRequest) Count(count int32) ApiCartScriptListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiCartScriptListRequest) PageCursor(pageCursor string) ApiCartScriptListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Retrieves only scripts with specific ids
+func (r ApiCartScriptListRequest) ScriptIds(scriptIds string) ApiCartScriptListRequest {
+	r.scriptIds = &scriptIds
+	return r
+}
+
+// Store Id
+func (r ApiCartScriptListRequest) StoreId(storeId string) ApiCartScriptListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -4586,27 +4598,15 @@ func (r ApiCartScriptListRequest) ModifiedTo(modifiedTo string) ApiCartScriptLis
 	return r
 }
 
-// Retrieves only scripts with specific ids
-func (r ApiCartScriptListRequest) ScriptIds(scriptIds string) ApiCartScriptListRequest {
-	r.scriptIds = &scriptIds
-	return r
-}
-
-// Store Id
-func (r ApiCartScriptListRequest) StoreId(storeId string) ApiCartScriptListRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCartScriptListRequest) ResponseFields(responseFields string) ApiCartScriptListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiCartScriptListRequest) Params(params string) ApiCartScriptListRequest {
 	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartScriptListRequest) ResponseFields(responseFields string) ApiCartScriptListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -4656,9 +4656,6 @@ func (a *CartAPIService) CartScriptListExecute(r ApiCartScriptListRequest) (*Mod
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -4670,6 +4667,15 @@ func (a *CartAPIService) CartScriptListExecute(r ApiCartScriptListRequest) (*Mod
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.scriptIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "script_ids", r.scriptIds, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -4683,20 +4689,14 @@ func (a *CartAPIService) CartScriptListExecute(r ApiCartScriptListRequest) (*Mod
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.scriptIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "script_ids", r.scriptIds, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,name,description"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -4786,18 +4786,12 @@ func (a *CartAPIService) CartScriptListExecute(r ApiCartScriptListRequest) (*Mod
 type ApiCartShippingZonesListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
-	storeId *string
 	start *int32
 	count *int32
-	params *string
+	storeId *string
 	responseFields *string
+	params *string
 	exclude *string
-}
-
-// Store Id
-func (r ApiCartShippingZonesListRequest) StoreId(storeId string) ApiCartShippingZonesListRequest {
-	r.storeId = &storeId
-	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -4812,15 +4806,21 @@ func (r ApiCartShippingZonesListRequest) Count(count int32) ApiCartShippingZones
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCartShippingZonesListRequest) Params(params string) ApiCartShippingZonesListRequest {
-	r.params = &params
+// Store Id
+func (r ApiCartShippingZonesListRequest) StoreId(storeId string) ApiCartShippingZonesListRequest {
+	r.storeId = &storeId
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiCartShippingZonesListRequest) ResponseFields(responseFields string) ApiCartShippingZonesListRequest {
 	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCartShippingZonesListRequest) Params(params string) ApiCartShippingZonesListRequest {
+	r.params = &params
 	return r
 }
 
@@ -4870,9 +4870,6 @@ func (a *CartAPIService) CartShippingZonesListExecute(r ApiCartShippingZonesList
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -4885,14 +4882,17 @@ func (a *CartAPIService) CartShippingZonesListExecute(r ApiCartShippingZonesList
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "id,name,enabled"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")

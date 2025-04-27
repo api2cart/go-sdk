@@ -5,34 +5,34 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Email** | **string** | Defines customer&#39;s email | 
-**FirstName** | **string** | Defines customer&#39;s first name | 
-**LastName** | **string** | Defines customer&#39;s last name | 
+**FirstName** | Pointer to **string** | Defines customer&#39;s first name | [optional] 
+**LastName** | Pointer to **string** | Defines customer&#39;s last name | [optional] 
 **Password** | Pointer to **string** | Defines customer&#39;s unique password | [optional] 
 **Group** | Pointer to **string** | Defines the group where the customer | [optional] 
 **GroupIds** | Pointer to **string** | Groups that will be assigned to a customer | [optional] 
+**Status** | Pointer to **string** | Defines customer&#39;s status | [optional] [default to "enabled"]
 **CreatedTime** | Pointer to **string** | Entity&#39;s date creation | [optional] 
 **ModifiedTime** | Pointer to **string** | Entity&#39;s date modification | [optional] 
 **Login** | Pointer to **string** | Specifies customer&#39;s login name | [optional] 
 **LastLogin** | Pointer to **string** | Defines customer&#39;s last login time | [optional] 
 **BirthDay** | Pointer to **string** | Defines customer&#39;s birthday | [optional] 
-**Status** | Pointer to **string** | Defines customer&#39;s status | [optional] [default to "enabled"]
-**NewsLetterSubscription** | Pointer to **bool** | Defines whether the newsletter subscription is available for the user | [optional] [default to false]
+**NewsLetterSubscription** | Pointer to **bool** | Defines whether the newsletter subscription is available for the user | [optional] 
 **Consents** | Pointer to [**[]CustomerAddConsentsInner**](CustomerAddConsentsInner.md) | Defines consents to notifications | [optional] 
 **Gender** | Pointer to **string** | Defines customer&#39;s gender | [optional] 
 **Website** | Pointer to **string** | Link to customer website | [optional] 
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **Fax** | Pointer to **string** | Defines customer&#39;s fax | [optional] 
 **Company** | Pointer to **string** | Defines customer&#39;s company | [optional] 
 **Phone** | Pointer to **string** | Defines customer&#39;s phone number | [optional] 
 **Note** | Pointer to **string** | The customer note. | [optional] 
 **Country** | Pointer to **string** | Specifies ISO code or name of country | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **Address** | Pointer to [**[]CustomerAddAddressInner**](CustomerAddAddressInner.md) |  | [optional] 
 
 ## Methods
 
 ### NewCustomerAdd
 
-`func NewCustomerAdd(email string, firstName string, lastName string, ) *CustomerAdd`
+`func NewCustomerAdd(email string, ) *CustomerAdd`
 
 NewCustomerAdd instantiates a new CustomerAdd object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +86,11 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
+### HasFirstName
+
+`func (o *CustomerAdd) HasFirstName() bool`
+
+HasFirstName returns a boolean if a field has been set.
 
 ### GetLastName
 
@@ -106,6 +111,11 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
+### HasLastName
+
+`func (o *CustomerAdd) HasLastName() bool`
+
+HasLastName returns a boolean if a field has been set.
 
 ### GetPassword
 
@@ -181,6 +191,31 @@ SetGroupIds sets GroupIds field to given value.
 `func (o *CustomerAdd) HasGroupIds() bool`
 
 HasGroupIds returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *CustomerAdd) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *CustomerAdd) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *CustomerAdd) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *CustomerAdd) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetCreatedTime
 
@@ -307,31 +342,6 @@ SetBirthDay sets BirthDay field to given value.
 
 HasBirthDay returns a boolean if a field has been set.
 
-### GetStatus
-
-`func (o *CustomerAdd) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *CustomerAdd) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *CustomerAdd) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *CustomerAdd) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetNewsLetterSubscription
 
 `func (o *CustomerAdd) GetNewsLetterSubscription() bool`
@@ -431,31 +441,6 @@ SetWebsite sets Website field to given value.
 `func (o *CustomerAdd) HasWebsite() bool`
 
 HasWebsite returns a boolean if a field has been set.
-
-### GetStoreId
-
-`func (o *CustomerAdd) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *CustomerAdd) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *CustomerAdd) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *CustomerAdd) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
 
 ### GetFax
 
@@ -581,6 +566,31 @@ SetCountry sets Country field to given value.
 `func (o *CustomerAdd) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *CustomerAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *CustomerAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *CustomerAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *CustomerAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetAddress
 

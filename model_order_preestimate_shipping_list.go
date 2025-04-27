@@ -22,14 +22,14 @@ var _ MappedNullable = &OrderPreestimateShippingList{}
 
 // OrderPreestimateShippingList struct for OrderPreestimateShippingList
 type OrderPreestimateShippingList struct {
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
 	WarehouseId *string `json:"warehouse_id,omitempty"`
-	// Retrieves orders specified by customer email
-	CustomerEmail *string `json:"customer_email,omitempty"`
 	// Retrieves orders specified by customer id
 	CustomerId *string `json:"customer_id,omitempty"`
+	// Retrieves orders specified by customer email
+	CustomerEmail *string `json:"customer_email,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Specifies first shipping address
 	ShippAddress1 *string `json:"shipp_address_1,omitempty"`
 	// Specifies shipping city
@@ -72,38 +72,6 @@ func NewOrderPreestimateShippingListWithDefaults() *OrderPreestimateShippingList
 	return &this
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *OrderPreestimateShippingList) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderPreestimateShippingList) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *OrderPreestimateShippingList) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *OrderPreestimateShippingList) SetStoreId(v string) {
-	o.StoreId = &v
-}
-
 // GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
 func (o *OrderPreestimateShippingList) GetWarehouseId() string {
 	if o == nil || IsNil(o.WarehouseId) {
@@ -134,6 +102,38 @@ func (o *OrderPreestimateShippingList) HasWarehouseId() bool {
 // SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
 func (o *OrderPreestimateShippingList) SetWarehouseId(v string) {
 	o.WarehouseId = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *OrderPreestimateShippingList) GetCustomerId() string {
+	if o == nil || IsNil(o.CustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderPreestimateShippingList) GetCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *OrderPreestimateShippingList) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *OrderPreestimateShippingList) SetCustomerId(v string) {
+	o.CustomerId = &v
 }
 
 // GetCustomerEmail returns the CustomerEmail field value if set, zero value otherwise.
@@ -168,36 +168,36 @@ func (o *OrderPreestimateShippingList) SetCustomerEmail(v string) {
 	o.CustomerEmail = &v
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
-func (o *OrderPreestimateShippingList) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *OrderPreestimateShippingList) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId
+	return *o.StoreId
 }
 
-// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderPreestimateShippingList) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
+func (o *OrderPreestimateShippingList) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
 		return nil, false
 	}
-	return o.CustomerId, true
+	return o.StoreId, true
 }
 
-// HasCustomerId returns a boolean if a field has been set.
-func (o *OrderPreestimateShippingList) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+// HasStoreId returns a boolean if a field has been set.
+func (o *OrderPreestimateShippingList) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
-func (o *OrderPreestimateShippingList) SetCustomerId(v string) {
-	o.CustomerId = &v
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *OrderPreestimateShippingList) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetShippAddress1 returns the ShippAddress1 field value if set, zero value otherwise.
@@ -450,17 +450,17 @@ func (o OrderPreestimateShippingList) MarshalJSON() ([]byte, error) {
 
 func (o OrderPreestimateShippingList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	if !IsNil(o.WarehouseId) {
 		toSerialize["warehouse_id"] = o.WarehouseId
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	if !IsNil(o.CustomerEmail) {
 		toSerialize["customer_email"] = o.CustomerEmail
 	}
-	if !IsNil(o.CustomerId) {
-		toSerialize["customer_id"] = o.CustomerId
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.ShippAddress1) {
 		toSerialize["shipp_address_1"] = o.ShippAddress1

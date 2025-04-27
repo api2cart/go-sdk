@@ -46,12 +46,12 @@ type CustomerUpdate struct {
 	Tags *string `json:"tags,omitempty"`
 	// Defines customer's gender
 	Gender *string `json:"gender,omitempty"`
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// The customer note.
 	Note *string `json:"note,omitempty"`
 	// Defines customer's status
 	Status *string `json:"status,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	Address []CustomerUpdateAddressInner `json:"address,omitempty"`
 }
 
@@ -488,38 +488,6 @@ func (o *CustomerUpdate) SetGender(v string) {
 	o.Gender = &v
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *CustomerUpdate) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomerUpdate) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *CustomerUpdate) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *CustomerUpdate) SetStoreId(v string) {
-	o.StoreId = &v
-}
-
 // GetNote returns the Note field value if set, zero value otherwise.
 func (o *CustomerUpdate) GetNote() string {
 	if o == nil || IsNil(o.Note) {
@@ -582,6 +550,38 @@ func (o *CustomerUpdate) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CustomerUpdate) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *CustomerUpdate) SetStoreId(v string) {
+	o.StoreId = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -665,14 +665,14 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Gender) {
 		toSerialize["gender"] = o.Gender
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	if !IsNil(o.Note) {
 		toSerialize["note"] = o.Note
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address

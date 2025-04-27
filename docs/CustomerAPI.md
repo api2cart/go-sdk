@@ -40,7 +40,7 @@ import (
 )
 
 func main() {
-	customerAdd := *openapiclient.NewCustomerAdd("mail@example.com", "John", "Smith") // CustomerAdd | 
+	customerAdd := *openapiclient.NewCustomerAdd("mail@example.com") // CustomerAdd | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## CustomerAttributeList
 
-> ModelResponseCustomerAttributeList CustomerAttributeList(ctx).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> ModelResponseCustomerAttributeList CustomerAttributeList(ctx).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 customer.attribute.list
 
@@ -177,13 +177,13 @@ func main() {
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerAttributeList(context.Background()).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerAttributeList(context.Background()).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerAttributeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,9 +209,9 @@ Name | Type | Description  | Notes
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## CustomerCount
 
-> CustomerCount200Response CustomerCount(ctx).GroupId(groupId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).StoreId(storeId).CustomerListId(customerListId).Avail(avail).FindValue(findValue).FindWhere(findWhere).Ids(ids).SinceId(sinceId).Execute()
+> CustomerCount200Response CustomerCount(ctx).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 
 customer.count
 
@@ -252,22 +252,22 @@ import (
 )
 
 func main() {
+	ids := "24,25" // string | Counts customers specified by ids (optional)
+	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	customerListId := "exampleListId" // string | The numeric ID of the customer list in Demandware. (optional)
 	groupId := "3" // string | Customer group_id (optional)
+	storeId := "1" // string | Counts customer specified by store id (optional)
+	avail := false // bool | Defines category's visibility status (optional) (default to true)
+	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
+	findWhere := "email" // string | Counts customers that are searched specified by field (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	storeId := "1" // string | Counts customer specified by store id (optional)
-	customerListId := "exampleListId" // string | The numeric ID of the customer list in Demandware. (optional)
-	avail := false // bool | Defines category's visibility status (optional) (default to true)
-	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
-	findWhere := "email" // string | Counts customers that are searched specified by field (optional)
-	ids := "24,25" // string | Counts customers specified by ids (optional)
-	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerCount(context.Background()).GroupId(groupId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).StoreId(storeId).CustomerListId(customerListId).Avail(avail).FindValue(findValue).FindWhere(findWhere).Ids(ids).SinceId(sinceId).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerCount(context.Background()).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -288,18 +288,18 @@ Other parameters are passed through a pointer to a apiCustomerCountRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ids** | **string** | Counts customers specified by ids | 
+ **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **customerListId** | **string** | The numeric ID of the customer list in Demandware. | 
  **groupId** | **string** | Customer group_id | 
+ **storeId** | **string** | Counts customer specified by store id | 
+ **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
+ **findValue** | **string** | Entity search that is specified by some value | 
+ **findWhere** | **string** | Counts customers that are searched specified by field | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **storeId** | **string** | Counts customer specified by store id | 
- **customerListId** | **string** | The numeric ID of the customer list in Demandware. | 
- **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
- **findValue** | **string** | Entity search that is specified by some value | 
- **findWhere** | **string** | Counts customers that are searched specified by field | 
- **ids** | **string** | Counts customers specified by ids | 
- **sinceId** | **string** | Retrieve entities starting from the specified id. | 
 
 ### Return type
 
@@ -529,7 +529,7 @@ Name | Type | Description  | Notes
 
 ## CustomerGroupList
 
-> ModelResponseCustomerGroupList CustomerGroupList(ctx).DisableCache(disableCache).PageCursor(pageCursor).Start(start).Count(count).StoreId(storeId).LangId(langId).GroupIds(groupIds).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+> ModelResponseCustomerGroupList CustomerGroupList(ctx).Start(start).Count(count).PageCursor(pageCursor).GroupIds(groupIds).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).DisableCache(disableCache).Execute()
 
 customer.group.list
 
@@ -548,20 +548,20 @@ import (
 )
 
 func main() {
-	disableCache := false // bool | Disable cache for current request (optional) (default to false)
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	groupIds := "1,2,3" // string | Groups that will be assigned to a customer (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
-	groupIds := "1,2,3" // string | Groups that will be assigned to a customer (optional)
+	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,additional_fields")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	disableCache := false // bool | Disable cache for current request (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerGroupList(context.Background()).DisableCache(disableCache).PageCursor(pageCursor).Start(start).Count(count).StoreId(storeId).LangId(langId).GroupIds(groupIds).Params(params).Exclude(exclude).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerGroupList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).GroupIds(groupIds).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).DisableCache(disableCache).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerGroupList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -582,16 +582,16 @@ Other parameters are passed through a pointer to a apiCustomerGroupListRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **disableCache** | **bool** | Disable cache for current request | [default to false]
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **groupIds** | **string** | Groups that will be assigned to a customer | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
- **groupIds** | **string** | Groups that will be assigned to a customer | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,additional_fields&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **disableCache** | **bool** | Disable cache for current request | [default to false]
 
 ### Return type
 
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 ## CustomerInfo
 
-> CustomerInfo200Response CustomerInfo(ctx).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).Execute()
+> CustomerInfo200Response CustomerInfo(ctx).Id(id).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 customer.info
 
@@ -633,14 +633,14 @@ import (
 
 func main() {
 	id := "10" // string | Retrieves customer's info specified by customer id
-	params := "id,email" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,email,first_name,last_name")
-	responseFields := "{result{id,parent_id,sku,upc,images,combination}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "id,email" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	storeId := "1" // string | Retrieves customer info specified by store id (optional)
+	responseFields := "{result{id,parent_id,sku,upc,images,combination}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,email" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,email,first_name,last_name")
+	exclude := "id,email" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerInfo(context.Background()).Id(id).Params(params).ResponseFields(responseFields).Exclude(exclude).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerInfo(context.Background()).Id(id).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -662,10 +662,10 @@ Other parameters are passed through a pointer to a apiCustomerInfoRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Retrieves customer&#39;s info specified by customer id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,email,first_name,last_name&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **storeId** | **string** | Retrieves customer info specified by store id | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,email,first_name,last_name&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -687,7 +687,7 @@ Name | Type | Description  | Notes
 
 ## CustomerList
 
-> ModelResponseCustomerList CustomerList(ctx).PageCursor(pageCursor).Start(start).Count(count).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).ResponseFields(responseFields).Exclude(exclude).GroupId(groupId).StoreId(storeId).CustomerListId(customerListId).Avail(avail).FindValue(findValue).FindWhere(findWhere).SortBy(sortBy).SortDirection(sortDirection).Ids(ids).SinceId(sinceId).Execute()
+> ModelResponseCustomerList CustomerList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 customer.list
 
@@ -706,30 +706,30 @@ import (
 )
 
 func main() {
-	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	ids := "24,25" // string | Retrieves customers specified by ids (optional)
+	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	customerListId := "exampleListId" // string | The numeric ID of the customer list in Demandware. (optional)
+	groupId := "3" // string | Customer group_id (optional)
+	storeId := "1" // string | Retrieves customers specified by store id (optional)
+	avail := false // bool | Defines category's visibility status (optional) (default to true)
+	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
+	findWhere := "email" // string | Customer search that is specified by field (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	params := "id,email" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,email,first_name,last_name")
-	responseFields := "{result{customer}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	exclude := "id,email" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-	groupId := "3" // string | Customer group_id (optional)
-	storeId := "1" // string | Retrieves customers specified by store id (optional)
-	customerListId := "exampleListId" // string | The numeric ID of the customer list in Demandware. (optional)
-	avail := false // bool | Defines category's visibility status (optional) (default to true)
-	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
-	findWhere := "email" // string | Customer search that is specified by field (optional)
 	sortBy := "value_id" // string | Set field to sort by (optional) (default to "created_time")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
-	ids := "24,25" // string | Retrieves customers specified by ids (optional)
-	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
+	responseFields := "{result{customer}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	params := "id,email" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,email,first_name,last_name")
+	exclude := "id,email" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerList(context.Background()).PageCursor(pageCursor).Start(start).Count(count).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).ResponseFields(responseFields).Exclude(exclude).GroupId(groupId).StoreId(storeId).CustomerListId(customerListId).Avail(avail).FindValue(findValue).FindWhere(findWhere).SortBy(sortBy).SortDirection(sortDirection).Ids(ids).SinceId(sinceId).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -750,26 +750,26 @@ Other parameters are passed through a pointer to a apiCustomerListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **ids** | **string** | Retrieves customers specified by ids | 
+ **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **customerListId** | **string** | The numeric ID of the customer list in Demandware. | 
+ **groupId** | **string** | Customer group_id | 
+ **storeId** | **string** | Retrieves customers specified by store id | 
+ **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
+ **findValue** | **string** | Entity search that is specified by some value | 
+ **findWhere** | **string** | Customer search that is specified by field | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,email,first_name,last_name&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
- **groupId** | **string** | Customer group_id | 
- **storeId** | **string** | Retrieves customers specified by store id | 
- **customerListId** | **string** | The numeric ID of the customer list in Demandware. | 
- **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
- **findValue** | **string** | Entity search that is specified by some value | 
- **findWhere** | **string** | Customer search that is specified by field | 
  **sortBy** | **string** | Set field to sort by | [default to &quot;created_time&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
- **ids** | **string** | Retrieves customers specified by ids | 
- **sinceId** | **string** | Retrieve entities starting from the specified id. | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,email,first_name,last_name&quot;]
+ **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -857,7 +857,7 @@ Name | Type | Description  | Notes
 
 ## CustomerWishlistList
 
-> ModelResponseCustomerWishlistList CustomerWishlistList(ctx).CustomerId(customerId).Id(id).StoreId(storeId).Start(start).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+> ModelResponseCustomerWishlistList CustomerWishlistList(ctx).CustomerId(customerId).Start(start).Count(count).PageCursor(pageCursor).Id(id).StoreId(storeId).ResponseFields(responseFields).Execute()
 
 customer.wishlist.list
 
@@ -877,16 +877,16 @@ import (
 
 func main() {
 	customerId := "5" // string | Retrieves orders specified by customer id
-	id := "10" // string | Entity id (optional)
-	storeId := "1" // string | Store Id (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	id := "10" // string | Entity id (optional)
+	storeId := "1" // string | Store Id (optional)
 	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "{return_code,return_message,pagination,result}")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerWishlistList(context.Background()).CustomerId(customerId).Id(id).StoreId(storeId).Start(start).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerWishlistList(context.Background()).CustomerId(customerId).Start(start).Count(count).PageCursor(pageCursor).Id(id).StoreId(storeId).ResponseFields(responseFields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerWishlistList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -908,11 +908,11 @@ Other parameters are passed through a pointer to a apiCustomerWishlistListReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerId** | **string** | Retrieves orders specified by customer id | 
- **id** | **string** | Entity id | 
- **storeId** | **string** | Store Id | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **id** | **string** | Entity id | 
+ **storeId** | **string** | Store Id | 
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;{return_code,return_message,pagination,result}&quot;]
 
 ### Return type

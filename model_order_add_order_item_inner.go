@@ -38,6 +38,8 @@ type OrderAddOrderItemInner struct {
 	OrderItemVariantId *string `json:"order_item_variant_id,omitempty"`
 	// Percentage of tax for product order
 	OrderItemTax *float32 `json:"order_item_tax,omitempty"`
+	// Defines if item price includes tax
+	OrderItemPriceIncludesTax *bool `json:"order_item_price_includes_tax,omitempty"`
 	// Index of the parent grouped/bundle product
 	OrderItemParent *int32 `json:"order_item_parent,omitempty"`
 	// Option name of the parent grouped/bundle product
@@ -46,8 +48,6 @@ type OrderAddOrderItemInner struct {
 	OrderItemAllowRefundItemsSeparately *bool `json:"order_item_allow_refund_items_separately,omitempty"`
 	// Indicates whether subitems of the grouped/bundle product can be shipped separately
 	OrderItemAllowShipItemsSeparately *bool `json:"order_item_allow_ship_items_separately,omitempty"`
-	// Defines if item price includes tax
-	OrderItemPriceIncludesTax *bool `json:"order_item_price_includes_tax,omitempty"`
 	OrderItemOption []OrderAddOrderItemInnerOrderItemOptionInner `json:"order_item_option,omitempty"`
 	OrderItemProperty []OrderAddOrderItemInnerOrderItemPropertyInner `json:"order_item_property,omitempty"`
 }
@@ -307,6 +307,38 @@ func (o *OrderAddOrderItemInner) SetOrderItemTax(v float32) {
 	o.OrderItemTax = &v
 }
 
+// GetOrderItemPriceIncludesTax returns the OrderItemPriceIncludesTax field value if set, zero value otherwise.
+func (o *OrderAddOrderItemInner) GetOrderItemPriceIncludesTax() bool {
+	if o == nil || IsNil(o.OrderItemPriceIncludesTax) {
+		var ret bool
+		return ret
+	}
+	return *o.OrderItemPriceIncludesTax
+}
+
+// GetOrderItemPriceIncludesTaxOk returns a tuple with the OrderItemPriceIncludesTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAddOrderItemInner) GetOrderItemPriceIncludesTaxOk() (*bool, bool) {
+	if o == nil || IsNil(o.OrderItemPriceIncludesTax) {
+		return nil, false
+	}
+	return o.OrderItemPriceIncludesTax, true
+}
+
+// HasOrderItemPriceIncludesTax returns a boolean if a field has been set.
+func (o *OrderAddOrderItemInner) HasOrderItemPriceIncludesTax() bool {
+	if o != nil && !IsNil(o.OrderItemPriceIncludesTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderItemPriceIncludesTax gets a reference to the given bool and assigns it to the OrderItemPriceIncludesTax field.
+func (o *OrderAddOrderItemInner) SetOrderItemPriceIncludesTax(v bool) {
+	o.OrderItemPriceIncludesTax = &v
+}
+
 // GetOrderItemParent returns the OrderItemParent field value if set, zero value otherwise.
 func (o *OrderAddOrderItemInner) GetOrderItemParent() int32 {
 	if o == nil || IsNil(o.OrderItemParent) {
@@ -435,38 +467,6 @@ func (o *OrderAddOrderItemInner) SetOrderItemAllowShipItemsSeparately(v bool) {
 	o.OrderItemAllowShipItemsSeparately = &v
 }
 
-// GetOrderItemPriceIncludesTax returns the OrderItemPriceIncludesTax field value if set, zero value otherwise.
-func (o *OrderAddOrderItemInner) GetOrderItemPriceIncludesTax() bool {
-	if o == nil || IsNil(o.OrderItemPriceIncludesTax) {
-		var ret bool
-		return ret
-	}
-	return *o.OrderItemPriceIncludesTax
-}
-
-// GetOrderItemPriceIncludesTaxOk returns a tuple with the OrderItemPriceIncludesTax field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderAddOrderItemInner) GetOrderItemPriceIncludesTaxOk() (*bool, bool) {
-	if o == nil || IsNil(o.OrderItemPriceIncludesTax) {
-		return nil, false
-	}
-	return o.OrderItemPriceIncludesTax, true
-}
-
-// HasOrderItemPriceIncludesTax returns a boolean if a field has been set.
-func (o *OrderAddOrderItemInner) HasOrderItemPriceIncludesTax() bool {
-	if o != nil && !IsNil(o.OrderItemPriceIncludesTax) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrderItemPriceIncludesTax gets a reference to the given bool and assigns it to the OrderItemPriceIncludesTax field.
-func (o *OrderAddOrderItemInner) SetOrderItemPriceIncludesTax(v bool) {
-	o.OrderItemPriceIncludesTax = &v
-}
-
 // GetOrderItemOption returns the OrderItemOption field value if set, zero value otherwise.
 func (o *OrderAddOrderItemInner) GetOrderItemOption() []OrderAddOrderItemInnerOrderItemOptionInner {
 	if o == nil || IsNil(o.OrderItemOption) {
@@ -557,6 +557,9 @@ func (o OrderAddOrderItemInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderItemTax) {
 		toSerialize["order_item_tax"] = o.OrderItemTax
 	}
+	if !IsNil(o.OrderItemPriceIncludesTax) {
+		toSerialize["order_item_price_includes_tax"] = o.OrderItemPriceIncludesTax
+	}
 	if !IsNil(o.OrderItemParent) {
 		toSerialize["order_item_parent"] = o.OrderItemParent
 	}
@@ -568,9 +571,6 @@ func (o OrderAddOrderItemInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrderItemAllowShipItemsSeparately) {
 		toSerialize["order_item_allow_ship_items_separately"] = o.OrderItemAllowShipItemsSeparately
-	}
-	if !IsNil(o.OrderItemPriceIncludesTax) {
-		toSerialize["order_item_price_includes_tax"] = o.OrderItemPriceIncludesTax
 	}
 	if !IsNil(o.OrderItemOption) {
 		toSerialize["order_item_option"] = o.OrderItemOption

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **OrderId** | Pointer to **string** | Defines the order id | [optional] 
 **ShipmentId** | **string** | Shipment id indicates the number of delivery | 
 **CarrierId** | Pointer to **string** | Defines tracking carrier id | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **TrackingProvider** | Pointer to **string** | Defines name of the company which provides shipment tracking | [optional] 
 **TrackingNumber** | **string** | Defines tracking number | 
 **TrackingLink** | Pointer to **string** | Defines custom tracking link | [optional] 
@@ -31,31 +31,6 @@ will change when the set of required properties is changed
 NewOrderShipmentTrackingAddWithDefaults instantiates a new OrderShipmentTrackingAdd object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetStoreId
-
-`func (o *OrderShipmentTrackingAdd) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *OrderShipmentTrackingAdd) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *OrderShipmentTrackingAdd) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *OrderShipmentTrackingAdd) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
 
 ### GetOrderId
 
@@ -126,6 +101,31 @@ SetCarrierId sets CarrierId field to given value.
 `func (o *OrderShipmentTrackingAdd) HasCarrierId() bool`
 
 HasCarrierId returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *OrderShipmentTrackingAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *OrderShipmentTrackingAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *OrderShipmentTrackingAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *OrderShipmentTrackingAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetTrackingProvider
 

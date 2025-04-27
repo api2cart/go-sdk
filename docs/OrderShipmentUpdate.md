@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **ShipmentId** | **string** | Shipment id indicates the number of delivery | 
 **OrderId** | Pointer to **string** | Defines the order that will be updated | [optional] 
-**TrackingNumbers** | Pointer to [**[]OrderShipmentAddTrackingNumbersInner**](OrderShipmentAddTrackingNumbersInner.md) | Defines shipment&#39;s tracking numbers that have to be added&lt;/br&gt; How set tracking numbers to appropriate carrier:&lt;ul&gt;&lt;li&gt;tracking_numbers[]&#x3D;a2c.demo1,a2c.demo2 - set default carrier&lt;/li&gt;&lt;li&gt;tracking_numbers[&lt;b&gt;carrier_id&lt;/b&gt;]&#x3D;a2c.demo - set appropriate carrier&lt;/li&gt;&lt;/ul&gt;To get the list of carriers IDs that are available in your store, use the &lt;a href &#x3D; \&quot;https://api2cart.com/docs/#/cart/CartInfo\&quot;&gt;cart.info&lt;/a &gt; method | [optional] 
-**Replace** | Pointer to **bool** | Allows rewrite tracking numbers | [optional] [default to true]
-**IsShipped** | Pointer to **bool** | Defines shipment&#39;s status | [optional] [default to true]
-**TrackingLink** | Pointer to **string** | Defines custom tracking link | [optional] 
-**DeliveredAt** | Pointer to **string** | Defines the date of delivery | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **ShipmentProvider** | Pointer to **string** | Defines company name that provide tracking of shipment | [optional] 
+**TrackingNumbers** | Pointer to [**[]OrderShipmentAddTrackingNumbersInner**](OrderShipmentAddTrackingNumbersInner.md) | Defines shipment&#39;s tracking numbers that have to be added&lt;/br&gt; How set tracking numbers to appropriate carrier:&lt;ul&gt;&lt;li&gt;tracking_numbers[]&#x3D;a2c.demo1,a2c.demo2 - set default carrier&lt;/li&gt;&lt;li&gt;tracking_numbers[&lt;b&gt;carrier_id&lt;/b&gt;]&#x3D;a2c.demo - set appropriate carrier&lt;/li&gt;&lt;/ul&gt;To get the list of carriers IDs that are available in your store, use the &lt;a href &#x3D; \&quot;https://api2cart.com/docs/#/cart/CartInfo\&quot;&gt;cart.info&lt;/a &gt; method | [optional] 
+**TrackingLink** | Pointer to **string** | Defines custom tracking link | [optional] 
+**IsShipped** | Pointer to **bool** | Defines shipment&#39;s status | [optional] [default to true]
+**DeliveredAt** | Pointer to **string** | Defines the date of delivery | [optional] 
+**Replace** | Pointer to **bool** | Allows rewrite tracking numbers | [optional] [default to true]
 
 ## Methods
 
@@ -32,31 +32,6 @@ will change when the set of required properties is changed
 NewOrderShipmentUpdateWithDefaults instantiates a new OrderShipmentUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetStoreId
-
-`func (o *OrderShipmentUpdate) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *OrderShipmentUpdate) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *OrderShipmentUpdate) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *OrderShipmentUpdate) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
 
 ### GetShipmentId
 
@@ -103,6 +78,56 @@ SetOrderId sets OrderId field to given value.
 
 HasOrderId returns a boolean if a field has been set.
 
+### GetStoreId
+
+`func (o *OrderShipmentUpdate) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *OrderShipmentUpdate) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *OrderShipmentUpdate) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *OrderShipmentUpdate) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
+
+### GetShipmentProvider
+
+`func (o *OrderShipmentUpdate) GetShipmentProvider() string`
+
+GetShipmentProvider returns the ShipmentProvider field if non-nil, zero value otherwise.
+
+### GetShipmentProviderOk
+
+`func (o *OrderShipmentUpdate) GetShipmentProviderOk() (*string, bool)`
+
+GetShipmentProviderOk returns a tuple with the ShipmentProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShipmentProvider
+
+`func (o *OrderShipmentUpdate) SetShipmentProvider(v string)`
+
+SetShipmentProvider sets ShipmentProvider field to given value.
+
+### HasShipmentProvider
+
+`func (o *OrderShipmentUpdate) HasShipmentProvider() bool`
+
+HasShipmentProvider returns a boolean if a field has been set.
+
 ### GetTrackingNumbers
 
 `func (o *OrderShipmentUpdate) GetTrackingNumbers() []OrderShipmentAddTrackingNumbersInner`
@@ -127,56 +152,6 @@ SetTrackingNumbers sets TrackingNumbers field to given value.
 `func (o *OrderShipmentUpdate) HasTrackingNumbers() bool`
 
 HasTrackingNumbers returns a boolean if a field has been set.
-
-### GetReplace
-
-`func (o *OrderShipmentUpdate) GetReplace() bool`
-
-GetReplace returns the Replace field if non-nil, zero value otherwise.
-
-### GetReplaceOk
-
-`func (o *OrderShipmentUpdate) GetReplaceOk() (*bool, bool)`
-
-GetReplaceOk returns a tuple with the Replace field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReplace
-
-`func (o *OrderShipmentUpdate) SetReplace(v bool)`
-
-SetReplace sets Replace field to given value.
-
-### HasReplace
-
-`func (o *OrderShipmentUpdate) HasReplace() bool`
-
-HasReplace returns a boolean if a field has been set.
-
-### GetIsShipped
-
-`func (o *OrderShipmentUpdate) GetIsShipped() bool`
-
-GetIsShipped returns the IsShipped field if non-nil, zero value otherwise.
-
-### GetIsShippedOk
-
-`func (o *OrderShipmentUpdate) GetIsShippedOk() (*bool, bool)`
-
-GetIsShippedOk returns a tuple with the IsShipped field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsShipped
-
-`func (o *OrderShipmentUpdate) SetIsShipped(v bool)`
-
-SetIsShipped sets IsShipped field to given value.
-
-### HasIsShipped
-
-`func (o *OrderShipmentUpdate) HasIsShipped() bool`
-
-HasIsShipped returns a boolean if a field has been set.
 
 ### GetTrackingLink
 
@@ -203,6 +178,31 @@ SetTrackingLink sets TrackingLink field to given value.
 
 HasTrackingLink returns a boolean if a field has been set.
 
+### GetIsShipped
+
+`func (o *OrderShipmentUpdate) GetIsShipped() bool`
+
+GetIsShipped returns the IsShipped field if non-nil, zero value otherwise.
+
+### GetIsShippedOk
+
+`func (o *OrderShipmentUpdate) GetIsShippedOk() (*bool, bool)`
+
+GetIsShippedOk returns a tuple with the IsShipped field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsShipped
+
+`func (o *OrderShipmentUpdate) SetIsShipped(v bool)`
+
+SetIsShipped sets IsShipped field to given value.
+
+### HasIsShipped
+
+`func (o *OrderShipmentUpdate) HasIsShipped() bool`
+
+HasIsShipped returns a boolean if a field has been set.
+
 ### GetDeliveredAt
 
 `func (o *OrderShipmentUpdate) GetDeliveredAt() string`
@@ -228,30 +228,30 @@ SetDeliveredAt sets DeliveredAt field to given value.
 
 HasDeliveredAt returns a boolean if a field has been set.
 
-### GetShipmentProvider
+### GetReplace
 
-`func (o *OrderShipmentUpdate) GetShipmentProvider() string`
+`func (o *OrderShipmentUpdate) GetReplace() bool`
 
-GetShipmentProvider returns the ShipmentProvider field if non-nil, zero value otherwise.
+GetReplace returns the Replace field if non-nil, zero value otherwise.
 
-### GetShipmentProviderOk
+### GetReplaceOk
 
-`func (o *OrderShipmentUpdate) GetShipmentProviderOk() (*string, bool)`
+`func (o *OrderShipmentUpdate) GetReplaceOk() (*bool, bool)`
 
-GetShipmentProviderOk returns a tuple with the ShipmentProvider field if it's non-nil, zero value otherwise
+GetReplaceOk returns a tuple with the Replace field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetShipmentProvider
+### SetReplace
 
-`func (o *OrderShipmentUpdate) SetShipmentProvider(v string)`
+`func (o *OrderShipmentUpdate) SetReplace(v bool)`
 
-SetShipmentProvider sets ShipmentProvider field to given value.
+SetReplace sets Replace field to given value.
 
-### HasShipmentProvider
+### HasReplace
 
-`func (o *OrderShipmentUpdate) HasShipmentProvider() bool`
+`func (o *OrderShipmentUpdate) HasReplace() bool`
 
-HasShipmentProvider returns a boolean if a field has been set.
+HasReplace returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

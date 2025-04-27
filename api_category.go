@@ -27,25 +27,37 @@ type ApiCategoryAddRequest struct {
 	ctx context.Context
 	ApiService *CategoryAPIService
 	name *string
-	parentId *string
-	storesIds *string
-	storeId *string
-	langId *string
-	avail *bool
-	sortOrder *int32
-	createdTime *string
-	modifiedTime *string
 	description *string
 	shortDescription *string
+	parentId *string
+	avail *bool
+	createdTime *string
+	modifiedTime *string
+	sortOrder *int32
 	metaTitle *string
 	metaDescription *string
 	metaKeywords *string
 	seoUrl *string
+	storeId *string
+	storesIds *string
+	langId *string
 }
 
 // Defines category&#39;s name that has to be added
 func (r ApiCategoryAddRequest) Name(name string) ApiCategoryAddRequest {
 	r.name = &name
+	return r
+}
+
+// Defines category&#39;s description
+func (r ApiCategoryAddRequest) Description(description string) ApiCategoryAddRequest {
+	r.description = &description
+	return r
+}
+
+// Defines short description
+func (r ApiCategoryAddRequest) ShortDescription(shortDescription string) ApiCategoryAddRequest {
+	r.shortDescription = &shortDescription
 	return r
 }
 
@@ -55,33 +67,9 @@ func (r ApiCategoryAddRequest) ParentId(parentId string) ApiCategoryAddRequest {
 	return r
 }
 
-// Create category in the stores that is specified by comma-separated stores&#39; id
-func (r ApiCategoryAddRequest) StoresIds(storesIds string) ApiCategoryAddRequest {
-	r.storesIds = &storesIds
-	return r
-}
-
-// Store Id
-func (r ApiCategoryAddRequest) StoreId(storeId string) ApiCategoryAddRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Language id
-func (r ApiCategoryAddRequest) LangId(langId string) ApiCategoryAddRequest {
-	r.langId = &langId
-	return r
-}
-
 // Defines category&#39;s visibility status
 func (r ApiCategoryAddRequest) Avail(avail bool) ApiCategoryAddRequest {
 	r.avail = &avail
-	return r
-}
-
-// Sort number in the list
-func (r ApiCategoryAddRequest) SortOrder(sortOrder int32) ApiCategoryAddRequest {
-	r.sortOrder = &sortOrder
 	return r
 }
 
@@ -97,15 +85,9 @@ func (r ApiCategoryAddRequest) ModifiedTime(modifiedTime string) ApiCategoryAddR
 	return r
 }
 
-// Defines category&#39;s description
-func (r ApiCategoryAddRequest) Description(description string) ApiCategoryAddRequest {
-	r.description = &description
-	return r
-}
-
-// Defines short description
-func (r ApiCategoryAddRequest) ShortDescription(shortDescription string) ApiCategoryAddRequest {
-	r.shortDescription = &shortDescription
+// Sort number in the list
+func (r ApiCategoryAddRequest) SortOrder(sortOrder int32) ApiCategoryAddRequest {
+	r.sortOrder = &sortOrder
 	return r
 }
 
@@ -130,6 +112,24 @@ func (r ApiCategoryAddRequest) MetaKeywords(metaKeywords string) ApiCategoryAddR
 // Defines unique category&#39;s URL for SEO
 func (r ApiCategoryAddRequest) SeoUrl(seoUrl string) ApiCategoryAddRequest {
 	r.seoUrl = &seoUrl
+	return r
+}
+
+// Store Id
+func (r ApiCategoryAddRequest) StoreId(storeId string) ApiCategoryAddRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Create category in the stores that is specified by comma-separated stores&#39; id
+func (r ApiCategoryAddRequest) StoresIds(storesIds string) ApiCategoryAddRequest {
+	r.storesIds = &storesIds
+	return r
+}
+
+// Language id
+func (r ApiCategoryAddRequest) LangId(langId string) ApiCategoryAddRequest {
+	r.langId = &langId
 	return r
 }
 
@@ -177,17 +177,14 @@ func (a *CategoryAPIService) CategoryAddExecute(r ApiCategoryAddRequest) (*Categ
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
+	}
+	if r.shortDescription != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "short_description", r.shortDescription, "form", "")
+	}
 	if r.parentId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
-	}
-	if r.storesIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stores_ids", r.storesIds, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
@@ -195,23 +192,17 @@ func (a *CategoryAPIService) CategoryAddExecute(r ApiCategoryAddRequest) (*Categ
 		var defaultValue bool = true
 		r.avail = &defaultValue
 	}
-	if r.sortOrder != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_order", r.sortOrder, "form", "")
-	} else {
-		var defaultValue int32 = 0
-		r.sortOrder = &defaultValue
-	}
 	if r.createdTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_time", r.createdTime, "form", "")
 	}
 	if r.modifiedTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_time", r.modifiedTime, "form", "")
 	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
-	}
-	if r.shortDescription != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "short_description", r.shortDescription, "form", "")
+	if r.sortOrder != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_order", r.sortOrder, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.sortOrder = &defaultValue
 	}
 	if r.metaTitle != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_title", r.metaTitle, "form", "")
@@ -224,6 +215,15 @@ func (a *CategoryAPIService) CategoryAddExecute(r ApiCategoryAddRequest) (*Categ
 	}
 	if r.seoUrl != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "seo_url", r.seoUrl, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.storesIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stores_ids", r.storesIds, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -448,20 +448,20 @@ func (a *CategoryAPIService) CategoryAddBatchExecute(r ApiCategoryAddBatchReques
 type ApiCategoryAssignRequest struct {
 	ctx context.Context
 	ApiService *CategoryAPIService
-	productId *string
 	categoryId *string
+	productId *string
 	storeId *string
-}
-
-// Defines category assign to the product, specified by product id
-func (r ApiCategoryAssignRequest) ProductId(productId string) ApiCategoryAssignRequest {
-	r.productId = &productId
-	return r
 }
 
 // Defines category assign, specified by category id
 func (r ApiCategoryAssignRequest) CategoryId(categoryId string) ApiCategoryAssignRequest {
 	r.categoryId = &categoryId
+	return r
+}
+
+// Defines category assign to the product, specified by product id
+func (r ApiCategoryAssignRequest) ProductId(productId string) ApiCategoryAssignRequest {
+	r.productId = &productId
 	return r
 }
 
@@ -510,15 +510,15 @@ func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.productId == nil {
-		return localVarReturnValue, nil, reportError("productId is required and must be specified")
-	}
 	if r.categoryId == nil {
 		return localVarReturnValue, nil, reportError("categoryId is required and must be specified")
 	}
+	if r.productId == nil {
+		return localVarReturnValue, nil, reportError("productId is required and must be specified")
+	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
@@ -610,11 +610,11 @@ type ApiCategoryCountRequest struct {
 	parentId *string
 	storeId *string
 	langId *string
+	avail *bool
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	avail *bool
 	productType *string
 	findValue *string
 	findWhere *string
@@ -640,6 +640,12 @@ func (r ApiCategoryCountRequest) LangId(langId string) ApiCategoryCountRequest {
 	return r
 }
 
+// Defines category&#39;s visibility status
+func (r ApiCategoryCountRequest) Avail(avail bool) ApiCategoryCountRequest {
+	r.avail = &avail
+	return r
+}
+
 // Retrieve entities from their creation date
 func (r ApiCategoryCountRequest) CreatedFrom(createdFrom string) ApiCategoryCountRequest {
 	r.createdFrom = &createdFrom
@@ -661,12 +667,6 @@ func (r ApiCategoryCountRequest) ModifiedFrom(modifiedFrom string) ApiCategoryCo
 // Retrieve entities to their modification date
 func (r ApiCategoryCountRequest) ModifiedTo(modifiedTo string) ApiCategoryCountRequest {
 	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Defines category&#39;s visibility status
-func (r ApiCategoryCountRequest) Avail(avail bool) ApiCategoryCountRequest {
-	r.avail = &avail
 	return r
 }
 
@@ -749,6 +749,12 @@ func (a *CategoryAPIService) CategoryCountExecute(r ApiCategoryCountRequest) (*C
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
+	if r.avail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.avail = &defaultValue
+	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
 	}
@@ -760,12 +766,6 @@ func (a *CategoryAPIService) CategoryCountExecute(r ApiCategoryCountRequest) (*C
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.avail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
-	} else {
-		var defaultValue bool = true
-		r.avail = &defaultValue
 	}
 	if r.productType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "product_type", r.productType, "form", "")
@@ -1206,10 +1206,10 @@ type ApiCategoryImageAddRequest struct {
 	imageName *string
 	url *string
 	type_ *string
+	storeId *string
 	label *string
 	mime *string
 	position *int32
-	storeId *string
 }
 
 // Defines category id where the image should be added
@@ -1236,6 +1236,12 @@ func (r ApiCategoryImageAddRequest) Type_(type_ string) ApiCategoryImageAddReque
 	return r
 }
 
+// Store Id
+func (r ApiCategoryImageAddRequest) StoreId(storeId string) ApiCategoryImageAddRequest {
+	r.storeId = &storeId
+	return r
+}
+
 // Defines alternative text that has to be attached to the picture
 func (r ApiCategoryImageAddRequest) Label(label string) ApiCategoryImageAddRequest {
 	r.label = &label
@@ -1251,12 +1257,6 @@ func (r ApiCategoryImageAddRequest) Mime(mime string) ApiCategoryImageAddRequest
 // Defines image’s position in the list
 func (r ApiCategoryImageAddRequest) Position(position int32) ApiCategoryImageAddRequest {
 	r.position = &position
-	return r
-}
-
-// Store Id
-func (r ApiCategoryImageAddRequest) StoreId(storeId string) ApiCategoryImageAddRequest {
-	r.storeId = &storeId
 	return r
 }
 
@@ -1315,21 +1315,21 @@ func (a *CategoryAPIService) CategoryImageAddExecute(r ApiCategoryImageAddReques
 	parameterAddToHeaderOrQuery(localVarQueryParams, "category_id", r.categoryId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "image_name", r.imageName, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "url", r.url, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	if r.label != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "label", r.label, "form", "")
 	}
 	if r.mime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "mime", r.mime, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
 	if r.position != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "position", r.position, "form", "")
 	} else {
 		var defaultValue int32 = 0
 		r.position = &defaultValue
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1576,12 +1576,12 @@ type ApiCategoryInfoRequest struct {
 	ctx context.Context
 	ApiService *CategoryAPIService
 	id *string
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
 	langId *string
 	schemaType *string
+	responseFields *string
+	params *string
+	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
 }
@@ -1589,24 +1589,6 @@ type ApiCategoryInfoRequest struct {
 // Retrieves category&#39;s info specified by category id
 func (r ApiCategoryInfoRequest) Id(id string) ApiCategoryInfoRequest {
 	r.id = &id
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCategoryInfoRequest) Params(params string) ApiCategoryInfoRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCategoryInfoRequest) ResponseFields(responseFields string) ApiCategoryInfoRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiCategoryInfoRequest) Exclude(exclude string) ApiCategoryInfoRequest {
-	r.exclude = &exclude
 	return r
 }
 
@@ -1625,6 +1607,24 @@ func (r ApiCategoryInfoRequest) LangId(langId string) ApiCategoryInfoRequest {
 // The name of the requirements set for the provided schema.
 func (r ApiCategoryInfoRequest) SchemaType(schemaType string) ApiCategoryInfoRequest {
 	r.schemaType = &schemaType
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCategoryInfoRequest) ResponseFields(responseFields string) ApiCategoryInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCategoryInfoRequest) Params(params string) ApiCategoryInfoRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiCategoryInfoRequest) Exclude(exclude string) ApiCategoryInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1684,18 +1684,6 @@ func (a *CategoryAPIService) CategoryInfoExecute(r ApiCategoryInfoRequest) (*Cat
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,parent_id,name,description"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
@@ -1704,6 +1692,18 @@ func (a *CategoryAPIService) CategoryInfoExecute(r ApiCategoryInfoRequest) (*Cat
 	}
 	if r.schemaType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "schema_type", r.schemaType, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,parent_id,name,description"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.reportRequestId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
@@ -1802,20 +1802,20 @@ type ApiCategoryListRequest struct {
 	start *int32
 	count *int32
 	pageCursor *string
-	parentId *string
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
 	langId *string
+	parentId *string
+	avail *bool
+	productType *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	avail *bool
-	productType *string
 	findValue *string
 	findWhere *string
+	responseFields *string
+	params *string
+	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
 	disableCache *bool
@@ -1839,30 +1839,6 @@ func (r ApiCategoryListRequest) PageCursor(pageCursor string) ApiCategoryListReq
 	return r
 }
 
-// Retrieves categories specified by parent id
-func (r ApiCategoryListRequest) ParentId(parentId string) ApiCategoryListRequest {
-	r.parentId = &parentId
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCategoryListRequest) Params(params string) ApiCategoryListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiCategoryListRequest) ResponseFields(responseFields string) ApiCategoryListRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiCategoryListRequest) Exclude(exclude string) ApiCategoryListRequest {
-	r.exclude = &exclude
-	return r
-}
-
 // Retrieves categories specified by store id
 func (r ApiCategoryListRequest) StoreId(storeId string) ApiCategoryListRequest {
 	r.storeId = &storeId
@@ -1872,6 +1848,24 @@ func (r ApiCategoryListRequest) StoreId(storeId string) ApiCategoryListRequest {
 // Retrieves categorys specified by language id
 func (r ApiCategoryListRequest) LangId(langId string) ApiCategoryListRequest {
 	r.langId = &langId
+	return r
+}
+
+// Retrieves categories specified by parent id
+func (r ApiCategoryListRequest) ParentId(parentId string) ApiCategoryListRequest {
+	r.parentId = &parentId
+	return r
+}
+
+// Defines category&#39;s visibility status
+func (r ApiCategoryListRequest) Avail(avail bool) ApiCategoryListRequest {
+	r.avail = &avail
+	return r
+}
+
+// A categorization for the product
+func (r ApiCategoryListRequest) ProductType(productType string) ApiCategoryListRequest {
+	r.productType = &productType
 	return r
 }
 
@@ -1899,18 +1893,6 @@ func (r ApiCategoryListRequest) ModifiedTo(modifiedTo string) ApiCategoryListReq
 	return r
 }
 
-// Defines category&#39;s visibility status
-func (r ApiCategoryListRequest) Avail(avail bool) ApiCategoryListRequest {
-	r.avail = &avail
-	return r
-}
-
-// A categorization for the product
-func (r ApiCategoryListRequest) ProductType(productType string) ApiCategoryListRequest {
-	r.productType = &productType
-	return r
-}
-
 // Entity search that is specified by some value
 func (r ApiCategoryListRequest) FindValue(findValue string) ApiCategoryListRequest {
 	r.findValue = &findValue
@@ -1920,6 +1902,24 @@ func (r ApiCategoryListRequest) FindValue(findValue string) ApiCategoryListReque
 // Category search that is specified by field
 func (r ApiCategoryListRequest) FindWhere(findWhere string) ApiCategoryListRequest {
 	r.findWhere = &findWhere
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCategoryListRequest) ResponseFields(responseFields string) ApiCategoryListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiCategoryListRequest) Params(params string) ApiCategoryListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiCategoryListRequest) Exclude(exclude string) ApiCategoryListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1996,26 +1996,23 @@ func (a *CategoryAPIService) CategoryListExecute(r ApiCategoryListRequest) (*Mod
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.parentId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
-	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,parent_id,name,description"
-		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.parentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
+	}
+	if r.avail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.avail = &defaultValue
+	}
+	if r.productType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "product_type", r.productType, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -2029,20 +2026,23 @@ func (a *CategoryAPIService) CategoryListExecute(r ApiCategoryListRequest) (*Mod
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.avail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
-	} else {
-		var defaultValue bool = true
-		r.avail = &defaultValue
-	}
-	if r.productType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "product_type", r.productType, "form", "")
-	}
 	if r.findValue != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
 	}
 	if r.findWhere != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_where", r.findWhere, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,parent_id,name,description"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.reportRequestId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")
@@ -2305,19 +2305,19 @@ type ApiCategoryUpdateRequest struct {
 	ApiService *CategoryAPIService
 	id *string
 	name *string
+	description *string
+	shortDescription *string
 	parentId *string
-	storesIds *string
 	avail *bool
 	sortOrder *int32
 	modifiedTime *string
-	description *string
-	shortDescription *string
 	metaTitle *string
 	metaDescription *string
 	metaKeywords *string
 	seoUrl *string
-	langId *string
 	storeId *string
+	storesIds *string
+	langId *string
 }
 
 // Defines category update specified by category id
@@ -2332,15 +2332,21 @@ func (r ApiCategoryUpdateRequest) Name(name string) ApiCategoryUpdateRequest {
 	return r
 }
 
-// Defines new parent category id
-func (r ApiCategoryUpdateRequest) ParentId(parentId string) ApiCategoryUpdateRequest {
-	r.parentId = &parentId
+// Defines new category&#39;s description
+func (r ApiCategoryUpdateRequest) Description(description string) ApiCategoryUpdateRequest {
+	r.description = &description
 	return r
 }
 
-// Update category in the stores that is specified by comma-separated stores&#39; id
-func (r ApiCategoryUpdateRequest) StoresIds(storesIds string) ApiCategoryUpdateRequest {
-	r.storesIds = &storesIds
+// Defines short description
+func (r ApiCategoryUpdateRequest) ShortDescription(shortDescription string) ApiCategoryUpdateRequest {
+	r.shortDescription = &shortDescription
+	return r
+}
+
+// Defines new parent category id
+func (r ApiCategoryUpdateRequest) ParentId(parentId string) ApiCategoryUpdateRequest {
+	r.parentId = &parentId
 	return r
 }
 
@@ -2359,18 +2365,6 @@ func (r ApiCategoryUpdateRequest) SortOrder(sortOrder int32) ApiCategoryUpdateRe
 // Entity&#39;s date modification
 func (r ApiCategoryUpdateRequest) ModifiedTime(modifiedTime string) ApiCategoryUpdateRequest {
 	r.modifiedTime = &modifiedTime
-	return r
-}
-
-// Defines new category&#39;s description
-func (r ApiCategoryUpdateRequest) Description(description string) ApiCategoryUpdateRequest {
-	r.description = &description
-	return r
-}
-
-// Defines short description
-func (r ApiCategoryUpdateRequest) ShortDescription(shortDescription string) ApiCategoryUpdateRequest {
-	r.shortDescription = &shortDescription
 	return r
 }
 
@@ -2398,15 +2392,21 @@ func (r ApiCategoryUpdateRequest) SeoUrl(seoUrl string) ApiCategoryUpdateRequest
 	return r
 }
 
-// Language id
-func (r ApiCategoryUpdateRequest) LangId(langId string) ApiCategoryUpdateRequest {
-	r.langId = &langId
-	return r
-}
-
 // Store Id
 func (r ApiCategoryUpdateRequest) StoreId(storeId string) ApiCategoryUpdateRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Update category in the stores that is specified by comma-separated stores&#39; id
+func (r ApiCategoryUpdateRequest) StoresIds(storesIds string) ApiCategoryUpdateRequest {
+	r.storesIds = &storesIds
+	return r
+}
+
+// Language id
+func (r ApiCategoryUpdateRequest) LangId(langId string) ApiCategoryUpdateRequest {
+	r.langId = &langId
 	return r
 }
 
@@ -2457,11 +2457,14 @@ func (a *CategoryAPIService) CategoryUpdateExecute(r ApiCategoryUpdateRequest) (
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
 	}
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
+	}
+	if r.shortDescription != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "short_description", r.shortDescription, "form", "")
+	}
 	if r.parentId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "form", "")
-	}
-	if r.storesIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "stores_ids", r.storesIds, "form", "")
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
@@ -2471,12 +2474,6 @@ func (a *CategoryAPIService) CategoryUpdateExecute(r ApiCategoryUpdateRequest) (
 	}
 	if r.modifiedTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_time", r.modifiedTime, "form", "")
-	}
-	if r.description != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
-	}
-	if r.shortDescription != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "short_description", r.shortDescription, "form", "")
 	}
 	if r.metaTitle != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_title", r.metaTitle, "form", "")
@@ -2490,11 +2487,14 @@ func (a *CategoryAPIService) CategoryUpdateExecute(r ApiCategoryUpdateRequest) (
 	if r.seoUrl != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "seo_url", r.seoUrl, "form", "")
 	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
-	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.storesIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stores_ids", r.storesIds, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

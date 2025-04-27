@@ -168,6 +168,8 @@ type AccountCartAdd struct {
 	ShoplineAppKey *string `json:"shopline_app_key,omitempty"`
 	// Shopline App Secret
 	ShoplineAppSecret *string `json:"shopline_app_secret,omitempty"`
+	// Shopline Shared Secret
+	ShoplineSharedSecret *string `json:"shopline_shared_secret,omitempty"`
 	// Access token authorizing the app to access resources on behalf of a user
 	ShopifyAccessToken *string `json:"shopify_access_token,omitempty"`
 	// Shopify API Key
@@ -2704,6 +2706,38 @@ func (o *AccountCartAdd) HasShoplineAppSecret() bool {
 // SetShoplineAppSecret gets a reference to the given string and assigns it to the ShoplineAppSecret field.
 func (o *AccountCartAdd) SetShoplineAppSecret(v string) {
 	o.ShoplineAppSecret = &v
+}
+
+// GetShoplineSharedSecret returns the ShoplineSharedSecret field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetShoplineSharedSecret() string {
+	if o == nil || IsNil(o.ShoplineSharedSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ShoplineSharedSecret
+}
+
+// GetShoplineSharedSecretOk returns a tuple with the ShoplineSharedSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetShoplineSharedSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.ShoplineSharedSecret) {
+		return nil, false
+	}
+	return o.ShoplineSharedSecret, true
+}
+
+// HasShoplineSharedSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasShoplineSharedSecret() bool {
+	if o != nil && !IsNil(o.ShoplineSharedSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetShoplineSharedSecret gets a reference to the given string and assigns it to the ShoplineSharedSecret field.
+func (o *AccountCartAdd) SetShoplineSharedSecret(v string) {
+	o.ShoplineSharedSecret = &v
 }
 
 // GetShopifyAccessToken returns the ShopifyAccessToken field value if set, zero value otherwise.
@@ -5316,6 +5350,9 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShoplineAppSecret) {
 		toSerialize["shopline_app_secret"] = o.ShoplineAppSecret
+	}
+	if !IsNil(o.ShoplineSharedSecret) {
+		toSerialize["shopline_shared_secret"] = o.ShoplineSharedSecret
 	}
 	if !IsNil(o.ShopifyAccessToken) {
 		toSerialize["shopify_access_token"] = o.ShopifyAccessToken

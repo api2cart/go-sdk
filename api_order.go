@@ -27,20 +27,38 @@ type OrderAPIService service
 type ApiOrderAbandonedListRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
+	start *int32
+	count *int32
+	pageCursor *string
 	customerId *string
 	customerEmail *string
-	createdTo *string
-	createdFrom *string
-	modifiedTo *string
-	modifiedFrom *string
-	skipEmptyEmail *bool
 	storeId *string
-	pageCursor *string
-	count *int32
-	start *int32
-	params *string
+	createdFrom *string
+	createdTo *string
+	modifiedFrom *string
+	modifiedTo *string
+	skipEmptyEmail *bool
 	responseFields *string
+	params *string
 	exclude *string
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiOrderAbandonedListRequest) Start(start int32) ApiOrderAbandonedListRequest {
+	r.start = &start
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiOrderAbandonedListRequest) Count(count int32) ApiOrderAbandonedListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderAbandonedListRequest) PageCursor(pageCursor string) ApiOrderAbandonedListRequest {
+	r.pageCursor = &pageCursor
+	return r
 }
 
 // Retrieves orders specified by customer id
@@ -55,9 +73,9 @@ func (r ApiOrderAbandonedListRequest) CustomerEmail(customerEmail string) ApiOrd
 	return r
 }
 
-// Retrieve entities to their creation date
-func (r ApiOrderAbandonedListRequest) CreatedTo(createdTo string) ApiOrderAbandonedListRequest {
-	r.createdTo = &createdTo
+// Store Id
+func (r ApiOrderAbandonedListRequest) StoreId(storeId string) ApiOrderAbandonedListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -67,9 +85,9 @@ func (r ApiOrderAbandonedListRequest) CreatedFrom(createdFrom string) ApiOrderAb
 	return r
 }
 
-// Retrieve entities to their modification date
-func (r ApiOrderAbandonedListRequest) ModifiedTo(modifiedTo string) ApiOrderAbandonedListRequest {
-	r.modifiedTo = &modifiedTo
+// Retrieve entities to their creation date
+func (r ApiOrderAbandonedListRequest) CreatedTo(createdTo string) ApiOrderAbandonedListRequest {
+	r.createdTo = &createdTo
 	return r
 }
 
@@ -79,45 +97,27 @@ func (r ApiOrderAbandonedListRequest) ModifiedFrom(modifiedFrom string) ApiOrder
 	return r
 }
 
+// Retrieve entities to their modification date
+func (r ApiOrderAbandonedListRequest) ModifiedTo(modifiedTo string) ApiOrderAbandonedListRequest {
+	r.modifiedTo = &modifiedTo
+	return r
+}
+
 // Filter empty emails
 func (r ApiOrderAbandonedListRequest) SkipEmptyEmail(skipEmptyEmail bool) ApiOrderAbandonedListRequest {
 	r.skipEmptyEmail = &skipEmptyEmail
 	return r
 }
 
-// Store Id
-func (r ApiOrderAbandonedListRequest) StoreId(storeId string) ApiOrderAbandonedListRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiOrderAbandonedListRequest) PageCursor(pageCursor string) ApiOrderAbandonedListRequest {
-	r.pageCursor = &pageCursor
-	return r
-}
-
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiOrderAbandonedListRequest) Count(count int32) ApiOrderAbandonedListRequest {
-	r.count = &count
-	return r
-}
-
-// This parameter sets the number from which you want to get entities
-func (r ApiOrderAbandonedListRequest) Start(start int32) ApiOrderAbandonedListRequest {
-	r.start = &start
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderAbandonedListRequest) ResponseFields(responseFields string) ApiOrderAbandonedListRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiOrderAbandonedListRequest) Params(params string) ApiOrderAbandonedListRequest {
 	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiOrderAbandonedListRequest) ResponseFields(responseFields string) ApiOrderAbandonedListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -167,35 +167,11 @@ func (a *OrderAPIService) OrderAbandonedListExecute(r ApiOrderAbandonedListReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.customerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
-	}
-	if r.customerEmail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
-	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
-	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
-	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.skipEmptyEmail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "skip_empty_email", r.skipEmptyEmail, "form", "")
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.skipEmptyEmail = &defaultValue
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+		var defaultValue int32 = 0
+		r.start = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
@@ -203,20 +179,44 @@ func (a *OrderAPIService) OrderAbandonedListExecute(r ApiOrderAbandonedListReque
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.customerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
+	}
+	if r.customerEmail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.skipEmptyEmail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skip_empty_email", r.skipEmptyEmail, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.start = &defaultValue
+		var defaultValue bool = false
+		r.skipEmptyEmail = &defaultValue
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
 		var defaultValue string = "customer,totals,items"
 		r.params = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
@@ -444,17 +444,13 @@ func (a *OrderAPIService) OrderAddExecute(r ApiOrderAddRequest) (*OrderAdd200Res
 type ApiOrderCountRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
+	orderIds *string
+	ids *string
 	customerId *string
+	storeId *string
 	customerEmail *string
 	orderStatus *string
 	orderStatusIds *[]string
-	createdTo *string
-	createdFrom *string
-	modifiedTo *string
-	modifiedFrom *string
-	storeId *string
-	ids *string
-	orderIds *string
 	ebayOrderStatus *string
 	financialStatus *string
 	financialStatusIds *[]string
@@ -464,11 +460,33 @@ type ApiOrderCountRequest struct {
 	deliveryMethod *string
 	tags *string
 	shipNodeType *string
+	createdFrom *string
+	createdTo *string
+	modifiedFrom *string
+	modifiedTo *string
+}
+
+// Counts orders specified by order ids
+func (r ApiOrderCountRequest) OrderIds(orderIds string) ApiOrderCountRequest {
+	r.orderIds = &orderIds
+	return r
+}
+
+// Counts orders specified by ids
+func (r ApiOrderCountRequest) Ids(ids string) ApiOrderCountRequest {
+	r.ids = &ids
+	return r
 }
 
 // Counts orders quantity specified by customer id
 func (r ApiOrderCountRequest) CustomerId(customerId string) ApiOrderCountRequest {
 	r.customerId = &customerId
+	return r
+}
+
+// Counts orders quantity specified by store id
+func (r ApiOrderCountRequest) StoreId(storeId string) ApiOrderCountRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -487,48 +505,6 @@ func (r ApiOrderCountRequest) OrderStatus(orderStatus string) ApiOrderCountReque
 // Retrieves orders specified by order statuses
 func (r ApiOrderCountRequest) OrderStatusIds(orderStatusIds []string) ApiOrderCountRequest {
 	r.orderStatusIds = &orderStatusIds
-	return r
-}
-
-// Retrieve entities to their creation date
-func (r ApiOrderCountRequest) CreatedTo(createdTo string) ApiOrderCountRequest {
-	r.createdTo = &createdTo
-	return r
-}
-
-// Retrieve entities from their creation date
-func (r ApiOrderCountRequest) CreatedFrom(createdFrom string) ApiOrderCountRequest {
-	r.createdFrom = &createdFrom
-	return r
-}
-
-// Retrieve entities to their modification date
-func (r ApiOrderCountRequest) ModifiedTo(modifiedTo string) ApiOrderCountRequest {
-	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Retrieve entities from their modification date
-func (r ApiOrderCountRequest) ModifiedFrom(modifiedFrom string) ApiOrderCountRequest {
-	r.modifiedFrom = &modifiedFrom
-	return r
-}
-
-// Counts orders quantity specified by store id
-func (r ApiOrderCountRequest) StoreId(storeId string) ApiOrderCountRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Counts orders specified by ids
-func (r ApiOrderCountRequest) Ids(ids string) ApiOrderCountRequest {
-	r.ids = &ids
-	return r
-}
-
-// Counts orders specified by order ids
-func (r ApiOrderCountRequest) OrderIds(orderIds string) ApiOrderCountRequest {
-	r.orderIds = &orderIds
 	return r
 }
 
@@ -586,6 +562,30 @@ func (r ApiOrderCountRequest) ShipNodeType(shipNodeType string) ApiOrderCountReq
 	return r
 }
 
+// Retrieve entities from their creation date
+func (r ApiOrderCountRequest) CreatedFrom(createdFrom string) ApiOrderCountRequest {
+	r.createdFrom = &createdFrom
+	return r
+}
+
+// Retrieve entities to their creation date
+func (r ApiOrderCountRequest) CreatedTo(createdTo string) ApiOrderCountRequest {
+	r.createdTo = &createdTo
+	return r
+}
+
+// Retrieve entities from their modification date
+func (r ApiOrderCountRequest) ModifiedFrom(modifiedFrom string) ApiOrderCountRequest {
+	r.modifiedFrom = &modifiedFrom
+	return r
+}
+
+// Retrieve entities to their modification date
+func (r ApiOrderCountRequest) ModifiedTo(modifiedTo string) ApiOrderCountRequest {
+	r.modifiedTo = &modifiedTo
+	return r
+}
+
 func (r ApiOrderCountRequest) Execute() (*OrderCount200Response, *http.Response, error) {
 	return r.ApiService.OrderCountExecute(r)
 }
@@ -626,8 +626,17 @@ func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.orderIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
+	}
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
 	if r.customerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.customerEmail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
@@ -645,27 +654,6 @@ func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "order_status_ids", t, "form", "multi")
 		}
-	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
-	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
-	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.ids != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
-	}
-	if r.orderIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
 	}
 	if r.ebayOrderStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ebay_order_status", r.ebayOrderStatus, "form", "")
@@ -701,6 +689,18 @@ func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount
 	}
 	if r.shipNodeType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ship_node_type", r.shipNodeType, "form", "")
+	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -914,18 +914,30 @@ func (a *OrderAPIService) OrderFinancialStatusListExecute(r ApiOrderFinancialSta
 type ApiOrderFindRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
+	start *int32
+	count *int32
 	customerId *string
 	customerEmail *string
 	orderStatus *string
-	start *int32
-	count *int32
-	params *string
-	exclude *string
+	financialStatus *string
 	createdTo *string
 	createdFrom *string
 	modifiedTo *string
 	modifiedFrom *string
-	financialStatus *string
+	params *string
+	exclude *string
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiOrderFindRequest) Start(start int32) ApiOrderFindRequest {
+	r.start = &start
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiOrderFindRequest) Count(count int32) ApiOrderFindRequest {
+	r.count = &count
+	return r
 }
 
 // Retrieves orders specified by customer id
@@ -946,27 +958,9 @@ func (r ApiOrderFindRequest) OrderStatus(orderStatus string) ApiOrderFindRequest
 	return r
 }
 
-// This parameter sets the number from which you want to get entities
-func (r ApiOrderFindRequest) Start(start int32) ApiOrderFindRequest {
-	r.start = &start
-	return r
-}
-
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiOrderFindRequest) Count(count int32) ApiOrderFindRequest {
-	r.count = &count
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiOrderFindRequest) Params(params string) ApiOrderFindRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiOrderFindRequest) Exclude(exclude string) ApiOrderFindRequest {
-	r.exclude = &exclude
+// Retrieves orders specified by financial status
+func (r ApiOrderFindRequest) FinancialStatus(financialStatus string) ApiOrderFindRequest {
+	r.financialStatus = &financialStatus
 	return r
 }
 
@@ -994,9 +988,15 @@ func (r ApiOrderFindRequest) ModifiedFrom(modifiedFrom string) ApiOrderFindReque
 	return r
 }
 
-// Retrieves orders specified by financial status
-func (r ApiOrderFindRequest) FinancialStatus(financialStatus string) ApiOrderFindRequest {
-	r.financialStatus = &financialStatus
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderFindRequest) Params(params string) ApiOrderFindRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiOrderFindRequest) Exclude(exclude string) ApiOrderFindRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -1043,15 +1043,6 @@ func (a *OrderAPIService) OrderFindExecute(r ApiOrderFindRequest) (*OrderFind200
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.customerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
-	}
-	if r.customerEmail != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
-	}
-	if r.orderStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order_status", r.orderStatus, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -1064,14 +1055,17 @@ func (a *OrderAPIService) OrderFindExecute(r ApiOrderFindRequest) (*OrderFind200
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "order_id,customer,totals,address,items,bundles,status"
-		r.params = &defaultValue
+	if r.customerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
 	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	if r.customerEmail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
+	}
+	if r.orderStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_status", r.orderStatus, "form", "")
+	}
+	if r.financialStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
 	}
 	if r.createdTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
@@ -1085,8 +1079,14 @@ func (a *OrderAPIService) OrderFindExecute(r ApiOrderFindRequest) (*OrderFind200
 	if r.modifiedFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
 	}
-	if r.financialStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "order_id,customer,totals,address,items,bundles,status"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1310,14 +1310,20 @@ func (a *OrderAPIService) OrderFulfillmentStatusListExecute(r ApiOrderFulfillmen
 type ApiOrderInfoRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
-	orderId *string
 	id *string
+	orderId *string
+	storeId *string
 	params *string
 	responseFields *string
 	exclude *string
-	storeId *string
 	enableCache *bool
 	useLatestApiVersion *bool
+}
+
+// Retrieves order info specified by id
+func (r ApiOrderInfoRequest) Id(id string) ApiOrderInfoRequest {
+	r.id = &id
+	return r
 }
 
 // Retrieves order’s info specified by order id
@@ -1326,9 +1332,9 @@ func (r ApiOrderInfoRequest) OrderId(orderId string) ApiOrderInfoRequest {
 	return r
 }
 
-// Retrieves order info specified by id
-func (r ApiOrderInfoRequest) Id(id string) ApiOrderInfoRequest {
-	r.id = &id
+// Defines store id where the order should be found
+func (r ApiOrderInfoRequest) StoreId(storeId string) ApiOrderInfoRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -1347,12 +1353,6 @@ func (r ApiOrderInfoRequest) ResponseFields(responseFields string) ApiOrderInfoR
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiOrderInfoRequest) Exclude(exclude string) ApiOrderInfoRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Defines store id where the order should be found
-func (r ApiOrderInfoRequest) StoreId(storeId string) ApiOrderInfoRequest {
-	r.storeId = &storeId
 	return r
 }
 
@@ -1408,11 +1408,14 @@ func (a *OrderAPIService) OrderInfoExecute(r ApiOrderInfoRequest) (*OrderInfo200
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
 	if r.orderId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
 	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
@@ -1425,9 +1428,6 @@ func (a *OrderAPIService) OrderInfoExecute(r ApiOrderInfoRequest) (*OrderInfo200
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.enableCache != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "enable_cache", r.enableCache, "form", "")
@@ -1526,44 +1526,86 @@ func (a *OrderAPIService) OrderInfoExecute(r ApiOrderInfoRequest) (*OrderInfo200
 type ApiOrderListRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
-	customerId *string
-	customerEmail *string
-	phone *string
-	orderStatus *string
-	orderStatusIds *[]string
 	start *int32
 	count *int32
 	pageCursor *string
+	ids *string
+	orderIds *string
+	sinceId *string
+	storeId *string
+	customerId *string
+	customerEmail *string
+	basketId *string
+	currencyId *string
+	phone *string
+	orderStatus *string
+	orderStatusIds *[]string
+	ebayOrderStatus *string
+	financialStatus *string
+	financialStatusIds *[]string
+	fulfillmentStatus *string
+	returnStatus *string
+	fulfillmentChannel *string
+	shippingMethod *string
+	skipOrderIds *string
+	isDeleted *bool
+	shippingCountryIso3 *string
+	deliveryMethod *string
+	shipNodeType *string
+	createdTo *string
+	createdFrom *string
+	modifiedTo *string
+	modifiedFrom *string
+	tags *string
 	sortBy *string
 	sortDirection *string
 	params *string
 	responseFields *string
 	exclude *string
-	createdTo *string
-	createdFrom *string
-	modifiedTo *string
-	modifiedFrom *string
-	storeId *string
-	ids *string
-	orderIds *string
-	ebayOrderStatus *string
-	basketId *string
-	financialStatus *string
-	financialStatusIds *[]string
-	fulfillmentStatus *string
-	fulfillmentChannel *string
-	shippingMethod *string
-	skipOrderIds *string
-	sinceId *string
-	isDeleted *bool
-	shippingCountryIso3 *string
 	enableCache *bool
-	deliveryMethod *string
-	tags *string
-	shipNodeType *string
-	currencyId *string
-	returnStatus *string
 	useLatestApiVersion *bool
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiOrderListRequest) Start(start int32) ApiOrderListRequest {
+	r.start = &start
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiOrderListRequest) Count(count int32) ApiOrderListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve orders via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderListRequest) PageCursor(pageCursor string) ApiOrderListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Retrieves orders specified by ids
+func (r ApiOrderListRequest) Ids(ids string) ApiOrderListRequest {
+	r.ids = &ids
+	return r
+}
+
+// Retrieves orders specified by order ids
+func (r ApiOrderListRequest) OrderIds(orderIds string) ApiOrderListRequest {
+	r.orderIds = &orderIds
+	return r
+}
+
+// Retrieve entities starting from the specified id.
+func (r ApiOrderListRequest) SinceId(sinceId string) ApiOrderListRequest {
+	r.sinceId = &sinceId
+	return r
+}
+
+// Store Id
+func (r ApiOrderListRequest) StoreId(storeId string) ApiOrderListRequest {
+	r.storeId = &storeId
+	return r
 }
 
 // Retrieves orders specified by customer id
@@ -1575,6 +1617,18 @@ func (r ApiOrderListRequest) CustomerId(customerId string) ApiOrderListRequest {
 // Retrieves orders specified by customer email
 func (r ApiOrderListRequest) CustomerEmail(customerEmail string) ApiOrderListRequest {
 	r.customerEmail = &customerEmail
+	return r
+}
+
+// Retrieves order’s info specified by basket id.
+func (r ApiOrderListRequest) BasketId(basketId string) ApiOrderListRequest {
+	r.basketId = &basketId
+	return r
+}
+
+// Currency Id
+func (r ApiOrderListRequest) CurrencyId(currencyId string) ApiOrderListRequest {
+	r.currencyId = &currencyId
 	return r
 }
 
@@ -1596,21 +1650,105 @@ func (r ApiOrderListRequest) OrderStatusIds(orderStatusIds []string) ApiOrderLis
 	return r
 }
 
-// This parameter sets the number from which you want to get entities
-func (r ApiOrderListRequest) Start(start int32) ApiOrderListRequest {
-	r.start = &start
+// Retrieves orders specified by order status
+func (r ApiOrderListRequest) EbayOrderStatus(ebayOrderStatus string) ApiOrderListRequest {
+	r.ebayOrderStatus = &ebayOrderStatus
 	return r
 }
 
-// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
-func (r ApiOrderListRequest) Count(count int32) ApiOrderListRequest {
-	r.count = &count
+// Retrieves orders specified by financial status
+func (r ApiOrderListRequest) FinancialStatus(financialStatus string) ApiOrderListRequest {
+	r.financialStatus = &financialStatus
 	return r
 }
 
-// Used to retrieve orders via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiOrderListRequest) PageCursor(pageCursor string) ApiOrderListRequest {
-	r.pageCursor = &pageCursor
+// Retrieves orders specified by financial status ids
+func (r ApiOrderListRequest) FinancialStatusIds(financialStatusIds []string) ApiOrderListRequest {
+	r.financialStatusIds = &financialStatusIds
+	return r
+}
+
+// Create order with fulfillment status
+func (r ApiOrderListRequest) FulfillmentStatus(fulfillmentStatus string) ApiOrderListRequest {
+	r.fulfillmentStatus = &fulfillmentStatus
+	return r
+}
+
+// Retrieves orders specified by return status
+func (r ApiOrderListRequest) ReturnStatus(returnStatus string) ApiOrderListRequest {
+	r.returnStatus = &returnStatus
+	return r
+}
+
+// Retrieves order with a fulfillment channel
+func (r ApiOrderListRequest) FulfillmentChannel(fulfillmentChannel string) ApiOrderListRequest {
+	r.fulfillmentChannel = &fulfillmentChannel
+	return r
+}
+
+// Retrieve entities according to shipping method
+func (r ApiOrderListRequest) ShippingMethod(shippingMethod string) ApiOrderListRequest {
+	r.shippingMethod = &shippingMethod
+	return r
+}
+
+// Skipped orders by ids
+func (r ApiOrderListRequest) SkipOrderIds(skipOrderIds string) ApiOrderListRequest {
+	r.skipOrderIds = &skipOrderIds
+	return r
+}
+
+// Filter deleted orders
+func (r ApiOrderListRequest) IsDeleted(isDeleted bool) ApiOrderListRequest {
+	r.isDeleted = &isDeleted
+	return r
+}
+
+// Retrieve entities according to shipping country
+func (r ApiOrderListRequest) ShippingCountryIso3(shippingCountryIso3 string) ApiOrderListRequest {
+	r.shippingCountryIso3 = &shippingCountryIso3
+	return r
+}
+
+// Retrieves order with delivery method
+func (r ApiOrderListRequest) DeliveryMethod(deliveryMethod string) ApiOrderListRequest {
+	r.deliveryMethod = &deliveryMethod
+	return r
+}
+
+// Retrieves order with ship node type
+func (r ApiOrderListRequest) ShipNodeType(shipNodeType string) ApiOrderListRequest {
+	r.shipNodeType = &shipNodeType
+	return r
+}
+
+// Retrieve entities to their creation date
+func (r ApiOrderListRequest) CreatedTo(createdTo string) ApiOrderListRequest {
+	r.createdTo = &createdTo
+	return r
+}
+
+// Retrieve entities from their creation date
+func (r ApiOrderListRequest) CreatedFrom(createdFrom string) ApiOrderListRequest {
+	r.createdFrom = &createdFrom
+	return r
+}
+
+// Retrieve entities to their modification date
+func (r ApiOrderListRequest) ModifiedTo(modifiedTo string) ApiOrderListRequest {
+	r.modifiedTo = &modifiedTo
+	return r
+}
+
+// Retrieve entities from their modification date
+func (r ApiOrderListRequest) ModifiedFrom(modifiedFrom string) ApiOrderListRequest {
+	r.modifiedFrom = &modifiedFrom
+	return r
+}
+
+// Order tags
+func (r ApiOrderListRequest) Tags(tags string) ApiOrderListRequest {
+	r.tags = &tags
 	return r
 }
 
@@ -1644,147 +1782,9 @@ func (r ApiOrderListRequest) Exclude(exclude string) ApiOrderListRequest {
 	return r
 }
 
-// Retrieve entities to their creation date
-func (r ApiOrderListRequest) CreatedTo(createdTo string) ApiOrderListRequest {
-	r.createdTo = &createdTo
-	return r
-}
-
-// Retrieve entities from their creation date
-func (r ApiOrderListRequest) CreatedFrom(createdFrom string) ApiOrderListRequest {
-	r.createdFrom = &createdFrom
-	return r
-}
-
-// Retrieve entities to their modification date
-func (r ApiOrderListRequest) ModifiedTo(modifiedTo string) ApiOrderListRequest {
-	r.modifiedTo = &modifiedTo
-	return r
-}
-
-// Retrieve entities from their modification date
-func (r ApiOrderListRequest) ModifiedFrom(modifiedFrom string) ApiOrderListRequest {
-	r.modifiedFrom = &modifiedFrom
-	return r
-}
-
-// Store Id
-func (r ApiOrderListRequest) StoreId(storeId string) ApiOrderListRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// Retrieves orders specified by ids
-func (r ApiOrderListRequest) Ids(ids string) ApiOrderListRequest {
-	r.ids = &ids
-	return r
-}
-
-// Retrieves orders specified by order ids
-func (r ApiOrderListRequest) OrderIds(orderIds string) ApiOrderListRequest {
-	r.orderIds = &orderIds
-	return r
-}
-
-// Retrieves orders specified by order status
-func (r ApiOrderListRequest) EbayOrderStatus(ebayOrderStatus string) ApiOrderListRequest {
-	r.ebayOrderStatus = &ebayOrderStatus
-	return r
-}
-
-// Retrieves order’s info specified by basket id.
-func (r ApiOrderListRequest) BasketId(basketId string) ApiOrderListRequest {
-	r.basketId = &basketId
-	return r
-}
-
-// Retrieves orders specified by financial status
-func (r ApiOrderListRequest) FinancialStatus(financialStatus string) ApiOrderListRequest {
-	r.financialStatus = &financialStatus
-	return r
-}
-
-// Retrieves orders specified by financial status ids
-func (r ApiOrderListRequest) FinancialStatusIds(financialStatusIds []string) ApiOrderListRequest {
-	r.financialStatusIds = &financialStatusIds
-	return r
-}
-
-// Create order with fulfillment status
-func (r ApiOrderListRequest) FulfillmentStatus(fulfillmentStatus string) ApiOrderListRequest {
-	r.fulfillmentStatus = &fulfillmentStatus
-	return r
-}
-
-// Retrieves order with a fulfillment channel
-func (r ApiOrderListRequest) FulfillmentChannel(fulfillmentChannel string) ApiOrderListRequest {
-	r.fulfillmentChannel = &fulfillmentChannel
-	return r
-}
-
-// Retrieve entities according to shipping method
-func (r ApiOrderListRequest) ShippingMethod(shippingMethod string) ApiOrderListRequest {
-	r.shippingMethod = &shippingMethod
-	return r
-}
-
-// Skipped orders by ids
-func (r ApiOrderListRequest) SkipOrderIds(skipOrderIds string) ApiOrderListRequest {
-	r.skipOrderIds = &skipOrderIds
-	return r
-}
-
-// Retrieve entities starting from the specified id.
-func (r ApiOrderListRequest) SinceId(sinceId string) ApiOrderListRequest {
-	r.sinceId = &sinceId
-	return r
-}
-
-// Filter deleted orders
-func (r ApiOrderListRequest) IsDeleted(isDeleted bool) ApiOrderListRequest {
-	r.isDeleted = &isDeleted
-	return r
-}
-
-// Retrieve entities according to shipping country
-func (r ApiOrderListRequest) ShippingCountryIso3(shippingCountryIso3 string) ApiOrderListRequest {
-	r.shippingCountryIso3 = &shippingCountryIso3
-	return r
-}
-
 // If the value is &#39;true&#39;, we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add)
 func (r ApiOrderListRequest) EnableCache(enableCache bool) ApiOrderListRequest {
 	r.enableCache = &enableCache
-	return r
-}
-
-// Retrieves order with delivery method
-func (r ApiOrderListRequest) DeliveryMethod(deliveryMethod string) ApiOrderListRequest {
-	r.deliveryMethod = &deliveryMethod
-	return r
-}
-
-// Order tags
-func (r ApiOrderListRequest) Tags(tags string) ApiOrderListRequest {
-	r.tags = &tags
-	return r
-}
-
-// Retrieves order with ship node type
-func (r ApiOrderListRequest) ShipNodeType(shipNodeType string) ApiOrderListRequest {
-	r.shipNodeType = &shipNodeType
-	return r
-}
-
-// Currency Id
-func (r ApiOrderListRequest) CurrencyId(currencyId string) ApiOrderListRequest {
-	r.currencyId = &currencyId
-	return r
-}
-
-// Retrieves orders specified by return status
-func (r ApiOrderListRequest) ReturnStatus(returnStatus string) ApiOrderListRequest {
-	r.returnStatus = &returnStatus
 	return r
 }
 
@@ -1834,11 +1834,44 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.start = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
+	if r.orderIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
+	}
+	if r.sinceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	if r.customerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
 	}
 	if r.customerEmail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_email", r.customerEmail, "form", "")
+	}
+	if r.basketId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "basket_id", r.basketId, "form", "")
+	}
+	if r.currencyId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
 	}
 	if r.phone != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "phone", r.phone, "form", "")
@@ -1857,20 +1890,64 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 			parameterAddToHeaderOrQuery(localVarQueryParams, "order_status_ids", t, "form", "multi")
 		}
 	}
-	if r.start != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
-	} else {
-		var defaultValue int32 = 0
-		r.start = &defaultValue
+	if r.ebayOrderStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ebay_order_status", r.ebayOrderStatus, "form", "")
 	}
-	if r.count != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
-	} else {
-		var defaultValue int32 = 10
-		r.count = &defaultValue
+	if r.financialStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
 	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	if r.financialStatusIds != nil {
+		t := *r.financialStatusIds
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status_ids", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status_ids", t, "form", "multi")
+		}
+	}
+	if r.fulfillmentStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_status", r.fulfillmentStatus, "form", "")
+	}
+	if r.returnStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "return_status", r.returnStatus, "form", "")
+	}
+	if r.fulfillmentChannel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_channel", r.fulfillmentChannel, "form", "")
+	}
+	if r.shippingMethod != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shipping_method", r.shippingMethod, "form", "")
+	}
+	if r.skipOrderIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skip_order_ids", r.skipOrderIds, "form", "")
+	}
+	if r.isDeleted != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_deleted", r.isDeleted, "form", "")
+	}
+	if r.shippingCountryIso3 != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shipping_country_iso3", r.shippingCountryIso3, "form", "")
+	}
+	if r.deliveryMethod != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "delivery_method", r.deliveryMethod, "form", "")
+	}
+	if r.shipNodeType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ship_node_type", r.shipNodeType, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.tags != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
@@ -1896,88 +1973,11 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
-	if r.createdTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
-	}
-	if r.createdFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
-	}
-	if r.modifiedTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
-	}
-	if r.modifiedFrom != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.ids != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
-	}
-	if r.orderIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
-	}
-	if r.ebayOrderStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ebay_order_status", r.ebayOrderStatus, "form", "")
-	}
-	if r.basketId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "basket_id", r.basketId, "form", "")
-	}
-	if r.financialStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
-	}
-	if r.financialStatusIds != nil {
-		t := *r.financialStatusIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status_ids", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status_ids", t, "form", "multi")
-		}
-	}
-	if r.fulfillmentStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_status", r.fulfillmentStatus, "form", "")
-	}
-	if r.fulfillmentChannel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_channel", r.fulfillmentChannel, "form", "")
-	}
-	if r.shippingMethod != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "shipping_method", r.shippingMethod, "form", "")
-	}
-	if r.skipOrderIds != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "skip_order_ids", r.skipOrderIds, "form", "")
-	}
-	if r.sinceId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "since_id", r.sinceId, "form", "")
-	}
-	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "is_deleted", r.isDeleted, "form", "")
-	}
-	if r.shippingCountryIso3 != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "shipping_country_iso3", r.shippingCountryIso3, "form", "")
-	}
 	if r.enableCache != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "enable_cache", r.enableCache, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.enableCache = &defaultValue
-	}
-	if r.deliveryMethod != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "delivery_method", r.deliveryMethod, "form", "")
-	}
-	if r.tags != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "")
-	}
-	if r.shipNodeType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ship_node_type", r.shipNodeType, "form", "")
-	}
-	if r.currencyId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "currency_id", r.currencyId, "form", "")
-	}
-	if r.returnStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "return_status", r.returnStatus, "form", "")
 	}
 	if r.useLatestApiVersion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
@@ -3219,10 +3219,10 @@ type ApiOrderShipmentInfoRequest struct {
 	id *string
 	orderId *string
 	start *int32
-	params *string
-	responseFields *string
-	exclude *string
 	storeId *string
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // Entity id
@@ -3243,9 +3243,9 @@ func (r ApiOrderShipmentInfoRequest) Start(start int32) ApiOrderShipmentInfoRequ
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiOrderShipmentInfoRequest) Params(params string) ApiOrderShipmentInfoRequest {
-	r.params = &params
+// Store Id
+func (r ApiOrderShipmentInfoRequest) StoreId(storeId string) ApiOrderShipmentInfoRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -3255,15 +3255,15 @@ func (r ApiOrderShipmentInfoRequest) ResponseFields(responseFields string) ApiOr
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiOrderShipmentInfoRequest) Exclude(exclude string) ApiOrderShipmentInfoRequest {
-	r.exclude = &exclude
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderShipmentInfoRequest) Params(params string) ApiOrderShipmentInfoRequest {
+	r.params = &params
 	return r
 }
 
-// Store Id
-func (r ApiOrderShipmentInfoRequest) StoreId(storeId string) ApiOrderShipmentInfoRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiOrderShipmentInfoRequest) Exclude(exclude string) ApiOrderShipmentInfoRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -3313,13 +3313,19 @@ func (a *OrderAPIService) OrderShipmentInfoExecute(r ApiOrderShipmentInfoRequest
 		return localVarReturnValue, nil, reportError("orderId is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
 		var defaultValue int32 = 0
 		r.start = &defaultValue
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
@@ -3327,14 +3333,8 @@ func (a *OrderAPIService) OrderShipmentInfoExecute(r ApiOrderShipmentInfoRequest
 		var defaultValue string = "id,order_id,items,tracking_numbers"
 		r.params = &defaultValue
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3422,28 +3422,22 @@ type ApiOrderShipmentListRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	orderId *string
-	pageCursor *string
 	start *int32
 	count *int32
-	params *string
-	responseFields *string
-	exclude *string
+	pageCursor *string
+	storeId *string
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
-	storeId *string
+	responseFields *string
+	params *string
+	exclude *string
 }
 
 // Retrieves shipments specified by order id
 func (r ApiOrderShipmentListRequest) OrderId(orderId string) ApiOrderShipmentListRequest {
 	r.orderId = &orderId
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiOrderShipmentListRequest) PageCursor(pageCursor string) ApiOrderShipmentListRequest {
-	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -3459,21 +3453,15 @@ func (r ApiOrderShipmentListRequest) Count(count int32) ApiOrderShipmentListRequ
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiOrderShipmentListRequest) Params(params string) ApiOrderShipmentListRequest {
-	r.params = &params
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderShipmentListRequest) PageCursor(pageCursor string) ApiOrderShipmentListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiOrderShipmentListRequest) ResponseFields(responseFields string) ApiOrderShipmentListRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiOrderShipmentListRequest) Exclude(exclude string) ApiOrderShipmentListRequest {
-	r.exclude = &exclude
+// Store Id
+func (r ApiOrderShipmentListRequest) StoreId(storeId string) ApiOrderShipmentListRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -3501,9 +3489,21 @@ func (r ApiOrderShipmentListRequest) ModifiedTo(modifiedTo string) ApiOrderShipm
 	return r
 }
 
-// Store Id
-func (r ApiOrderShipmentListRequest) StoreId(storeId string) ApiOrderShipmentListRequest {
-	r.storeId = &storeId
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderShipmentListRequest) ResponseFields(responseFields string) ApiOrderShipmentListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderShipmentListRequest) Params(params string) ApiOrderShipmentListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiOrderShipmentListRequest) Exclude(exclude string) ApiOrderShipmentListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -3550,10 +3550,6 @@ func (a *OrderAPIService) OrderShipmentListExecute(r ApiOrderShipmentListRequest
 		return localVarReturnValue, nil, reportError("orderId is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
-	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -3566,17 +3562,12 @@ func (a *OrderAPIService) OrderShipmentListExecute(r ApiOrderShipmentListRequest
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,order_id,items,tracking_numbers"
-		r.params = &defaultValue
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -3590,8 +3581,17 @@ func (a *OrderAPIService) OrderShipmentListExecute(r ApiOrderShipmentListRequest
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
 	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,order_id,items,tracking_numbers"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4113,11 +4113,11 @@ type ApiOrderTransactionListRequest struct {
 	ApiService *OrderAPIService
 	orderIds *string
 	count *int32
+	pageCursor *string
 	storeId *string
 	params *string
 	responseFields *string
 	exclude *string
-	pageCursor *string
 }
 
 // Retrieves order transactions specified by order ids
@@ -4129,6 +4129,12 @@ func (r ApiOrderTransactionListRequest) OrderIds(orderIds string) ApiOrderTransa
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiOrderTransactionListRequest) Count(count int32) ApiOrderTransactionListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderTransactionListRequest) PageCursor(pageCursor string) ApiOrderTransactionListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -4153,12 +4159,6 @@ func (r ApiOrderTransactionListRequest) ResponseFields(responseFields string) Ap
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiOrderTransactionListRequest) Exclude(exclude string) ApiOrderTransactionListRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
-func (r ApiOrderTransactionListRequest) PageCursor(pageCursor string) ApiOrderTransactionListRequest {
-	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -4211,6 +4211,9 @@ func (a *OrderAPIService) OrderTransactionListExecute(r ApiOrderTransactionListR
 		var defaultValue int32 = 10
 		r.count = &defaultValue
 	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
@@ -4226,9 +4229,6 @@ func (a *OrderAPIService) OrderTransactionListExecute(r ApiOrderTransactionListR
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.pageCursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4318,19 +4318,19 @@ type ApiOrderUpdateRequest struct {
 	orderId *string
 	storeId *string
 	orderStatus *string
+	financialStatus *string
+	fulfillmentStatus *string
 	cancellationReason *string
+	orderPaymentMethod *string
 	comment *string
 	adminComment *string
 	adminPrivateComment *string
+	invoiceAdminComment *string
 	dateModified *string
 	dateFinished *string
-	financialStatus *string
-	fulfillmentStatus *string
-	orderPaymentMethod *string
 	sendNotifications *bool
-	origin *string
 	createInvoice *bool
-	invoiceAdminComment *string
+	origin *string
 }
 
 // Defines the orders specified by order id
@@ -4351,9 +4351,27 @@ func (r ApiOrderUpdateRequest) OrderStatus(orderStatus string) ApiOrderUpdateReq
 	return r
 }
 
+// Update order financial status to specified
+func (r ApiOrderUpdateRequest) FinancialStatus(financialStatus string) ApiOrderUpdateRequest {
+	r.financialStatus = &financialStatus
+	return r
+}
+
+// Create order with fulfillment status
+func (r ApiOrderUpdateRequest) FulfillmentStatus(fulfillmentStatus string) ApiOrderUpdateRequest {
+	r.fulfillmentStatus = &fulfillmentStatus
+	return r
+}
+
 // Defines the cancellation reason when the order will be canceled
 func (r ApiOrderUpdateRequest) CancellationReason(cancellationReason string) ApiOrderUpdateRequest {
 	r.cancellationReason = &cancellationReason
+	return r
+}
+
+// Defines order payment method.&lt;br/&gt;Setting order_payment_method on Shopify will also change financial_status field value to &#39;paid&#39;
+func (r ApiOrderUpdateRequest) OrderPaymentMethod(orderPaymentMethod string) ApiOrderUpdateRequest {
+	r.orderPaymentMethod = &orderPaymentMethod
 	return r
 }
 
@@ -4375,6 +4393,12 @@ func (r ApiOrderUpdateRequest) AdminPrivateComment(adminPrivateComment string) A
 	return r
 }
 
+// Specifies admin&#39;s order invoice comment
+func (r ApiOrderUpdateRequest) InvoiceAdminComment(invoiceAdminComment string) ApiOrderUpdateRequest {
+	r.invoiceAdminComment = &invoiceAdminComment
+	return r
+}
+
 // Specifies order&#39;s  modification date
 func (r ApiOrderUpdateRequest) DateModified(dateModified string) ApiOrderUpdateRequest {
 	r.dateModified = &dateModified
@@ -4387,33 +4411,9 @@ func (r ApiOrderUpdateRequest) DateFinished(dateFinished string) ApiOrderUpdateR
 	return r
 }
 
-// Update order financial status to specified
-func (r ApiOrderUpdateRequest) FinancialStatus(financialStatus string) ApiOrderUpdateRequest {
-	r.financialStatus = &financialStatus
-	return r
-}
-
-// Create order with fulfillment status
-func (r ApiOrderUpdateRequest) FulfillmentStatus(fulfillmentStatus string) ApiOrderUpdateRequest {
-	r.fulfillmentStatus = &fulfillmentStatus
-	return r
-}
-
-// Defines order payment method.&lt;br/&gt;Setting order_payment_method on Shopify will also change financial_status field value to &#39;paid&#39;
-func (r ApiOrderUpdateRequest) OrderPaymentMethod(orderPaymentMethod string) ApiOrderUpdateRequest {
-	r.orderPaymentMethod = &orderPaymentMethod
-	return r
-}
-
 // Send notifications to customer after order was created
 func (r ApiOrderUpdateRequest) SendNotifications(sendNotifications bool) ApiOrderUpdateRequest {
 	r.sendNotifications = &sendNotifications
-	return r
-}
-
-// The source of the order
-func (r ApiOrderUpdateRequest) Origin(origin string) ApiOrderUpdateRequest {
-	r.origin = &origin
 	return r
 }
 
@@ -4423,9 +4423,9 @@ func (r ApiOrderUpdateRequest) CreateInvoice(createInvoice bool) ApiOrderUpdateR
 	return r
 }
 
-// Specifies admin&#39;s order invoice comment
-func (r ApiOrderUpdateRequest) InvoiceAdminComment(invoiceAdminComment string) ApiOrderUpdateRequest {
-	r.invoiceAdminComment = &invoiceAdminComment
+// The source of the order
+func (r ApiOrderUpdateRequest) Origin(origin string) ApiOrderUpdateRequest {
+	r.origin = &origin
 	return r
 }
 
@@ -4479,8 +4479,17 @@ func (a *OrderAPIService) OrderUpdateExecute(r ApiOrderUpdateRequest) (*AccountC
 	if r.orderStatus != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order_status", r.orderStatus, "form", "")
 	}
+	if r.financialStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
+	}
+	if r.fulfillmentStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_status", r.fulfillmentStatus, "form", "")
+	}
 	if r.cancellationReason != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cancellation_reason", r.cancellationReason, "form", "")
+	}
+	if r.orderPaymentMethod != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_payment_method", r.orderPaymentMethod, "form", "")
 	}
 	if r.comment != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "comment", r.comment, "form", "")
@@ -4491,20 +4500,14 @@ func (a *OrderAPIService) OrderUpdateExecute(r ApiOrderUpdateRequest) (*AccountC
 	if r.adminPrivateComment != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "admin_private_comment", r.adminPrivateComment, "form", "")
 	}
+	if r.invoiceAdminComment != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "invoice_admin_comment", r.invoiceAdminComment, "form", "")
+	}
 	if r.dateModified != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_modified", r.dateModified, "form", "")
 	}
 	if r.dateFinished != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_finished", r.dateFinished, "form", "")
-	}
-	if r.financialStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "financial_status", r.financialStatus, "form", "")
-	}
-	if r.fulfillmentStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fulfillment_status", r.fulfillmentStatus, "form", "")
-	}
-	if r.orderPaymentMethod != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order_payment_method", r.orderPaymentMethod, "form", "")
 	}
 	if r.sendNotifications != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "send_notifications", r.sendNotifications, "form", "")
@@ -4512,14 +4515,11 @@ func (a *OrderAPIService) OrderUpdateExecute(r ApiOrderUpdateRequest) (*AccountC
 		var defaultValue bool = false
 		r.sendNotifications = &defaultValue
 	}
-	if r.origin != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "form", "")
-	}
 	if r.createInvoice != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "create_invoice", r.createInvoice, "form", "")
 	}
-	if r.invoiceAdminComment != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "invoice_admin_comment", r.invoiceAdminComment, "form", "")
+	if r.origin != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

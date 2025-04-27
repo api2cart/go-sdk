@@ -28,11 +28,11 @@ type ApiBatchJobListRequest struct {
 	ApiService *BatchAPIService
 	count *int32
 	pageCursor *string
+	ids *string
 	createdFrom *string
 	createdTo *string
 	processedFrom *string
 	processedTo *string
-	ids *string
 	responseFields *string
 }
 
@@ -45,6 +45,12 @@ func (r ApiBatchJobListRequest) Count(count int32) ApiBatchJobListRequest {
 // Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
 func (r ApiBatchJobListRequest) PageCursor(pageCursor string) ApiBatchJobListRequest {
 	r.pageCursor = &pageCursor
+	return r
+}
+
+// Filter batch jobs by ids
+func (r ApiBatchJobListRequest) Ids(ids string) ApiBatchJobListRequest {
+	r.ids = &ids
 	return r
 }
 
@@ -69,12 +75,6 @@ func (r ApiBatchJobListRequest) ProcessedFrom(processedFrom string) ApiBatchJobL
 // Retrieve entities according to their processing datetime
 func (r ApiBatchJobListRequest) ProcessedTo(processedTo string) ApiBatchJobListRequest {
 	r.processedTo = &processedTo
-	return r
-}
-
-// Filter batch jobs by ids
-func (r ApiBatchJobListRequest) Ids(ids string) ApiBatchJobListRequest {
-	r.ids = &ids
 	return r
 }
 
@@ -133,6 +133,9 @@ func (a *BatchAPIService) BatchJobListExecute(r ApiBatchJobListRequest) (*ModelR
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
 	}
@@ -144,9 +147,6 @@ func (a *BatchAPIService) BatchJobListExecute(r ApiBatchJobListRequest) (*ModelR
 	}
 	if r.processedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "processed_to", r.processedTo, "form", "")
-	}
-	if r.ids != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")

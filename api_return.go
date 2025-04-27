@@ -396,9 +396,9 @@ type ApiReturnInfoRequest struct {
 	id *string
 	orderId *string
 	storeId *string
+	responseFields *string
 	params *string
 	exclude *string
-	responseFields *string
 }
 
 // Entity id
@@ -420,6 +420,12 @@ func (r ApiReturnInfoRequest) StoreId(storeId string) ApiReturnInfoRequest {
 }
 
 // Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiReturnInfoRequest) ResponseFields(responseFields string) ApiReturnInfoRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiReturnInfoRequest) Params(params string) ApiReturnInfoRequest {
 	r.params = &params
 	return r
@@ -428,12 +434,6 @@ func (r ApiReturnInfoRequest) Params(params string) ApiReturnInfoRequest {
 // Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiReturnInfoRequest) Exclude(exclude string) ApiReturnInfoRequest {
 	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiReturnInfoRequest) ResponseFields(responseFields string) ApiReturnInfoRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -487,6 +487,9 @@ func (a *ReturnAPIService) ReturnInfoExecute(r ApiReturnInfoRequest) (*ReturnInf
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
 	} else {
@@ -495,9 +498,6 @@ func (a *ReturnAPIService) ReturnInfoExecute(r ApiReturnInfoRequest) (*ReturnInf
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -587,9 +587,6 @@ type ApiReturnListRequest struct {
 	start *int32
 	count *int32
 	pageCursor *string
-	params *string
-	exclude *string
-	responseFields *string
 	orderId *string
 	orderIds *string
 	customerId *string
@@ -600,6 +597,9 @@ type ApiReturnListRequest struct {
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
+	responseFields *string
+	params *string
+	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
 }
@@ -619,24 +619,6 @@ func (r ApiReturnListRequest) Count(count int32) ApiReturnListRequest {
 // Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
 func (r ApiReturnListRequest) PageCursor(pageCursor string) ApiReturnListRequest {
 	r.pageCursor = &pageCursor
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiReturnListRequest) Params(params string) ApiReturnListRequest {
-	r.params = &params
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
-func (r ApiReturnListRequest) Exclude(exclude string) ApiReturnListRequest {
-	r.exclude = &exclude
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiReturnListRequest) ResponseFields(responseFields string) ApiReturnListRequest {
-	r.responseFields = &responseFields
 	return r
 }
 
@@ -697,6 +679,24 @@ func (r ApiReturnListRequest) ModifiedFrom(modifiedFrom string) ApiReturnListReq
 // Retrieve entities to their modification date
 func (r ApiReturnListRequest) ModifiedTo(modifiedTo string) ApiReturnListRequest {
 	r.modifiedTo = &modifiedTo
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiReturnListRequest) ResponseFields(responseFields string) ApiReturnListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiReturnListRequest) Params(params string) ApiReturnListRequest {
+	r.params = &params
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+func (r ApiReturnListRequest) Exclude(exclude string) ApiReturnListRequest {
+	r.exclude = &exclude
 	return r
 }
 
@@ -767,18 +767,6 @@ func (a *ReturnAPIService) ReturnListExecute(r ApiReturnListRequest) (*ModelResp
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
-	if r.params != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
-	} else {
-		var defaultValue string = "id,order_products"
-		r.params = &defaultValue
-	}
-	if r.exclude != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
 	if r.orderId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
 	}
@@ -808,6 +796,18 @@ func (a *ReturnAPIService) ReturnListExecute(r ApiReturnListRequest) (*ModelResp
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	if r.params != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
+	} else {
+		var defaultValue string = "id,order_products"
+		r.params = &defaultValue
+	}
+	if r.exclude != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
 	}
 	if r.reportRequestId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "report_request_id", r.reportRequestId, "form", "")

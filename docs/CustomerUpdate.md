@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **Consents** | Pointer to [**[]CustomerAddConsentsInner**](CustomerAddConsentsInner.md) | Defines consents to notifications | [optional] 
 **Tags** | Pointer to **string** | Customer tags | [optional] 
 **Gender** | Pointer to **string** | Defines customer&#39;s gender | [optional] 
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **Note** | Pointer to **string** | The customer note. | [optional] 
 **Status** | Pointer to **string** | Defines customer&#39;s status | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **Address** | Pointer to [**[]CustomerUpdateAddressInner**](CustomerUpdateAddressInner.md) |  | [optional] 
 
 ## Methods
@@ -366,31 +366,6 @@ SetGender sets Gender field to given value.
 
 HasGender returns a boolean if a field has been set.
 
-### GetStoreId
-
-`func (o *CustomerUpdate) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *CustomerUpdate) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *CustomerUpdate) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *CustomerUpdate) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
-
 ### GetNote
 
 `func (o *CustomerUpdate) GetNote() string`
@@ -440,6 +415,31 @@ SetStatus sets Status field to given value.
 `func (o *CustomerUpdate) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *CustomerUpdate) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *CustomerUpdate) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *CustomerUpdate) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *CustomerUpdate) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetAddress
 

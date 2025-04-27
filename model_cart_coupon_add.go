@@ -22,14 +22,8 @@ var _ MappedNullable = &CartCouponAdd{}
 
 // CartCouponAdd struct for CartCouponAdd
 type CartCouponAdd struct {
-	// Store Id
-	StoreId *string `json:"store_id,omitempty"`
 	// Coupon code
 	Code string `json:"code"`
-	// Coupon name
-	Name *string `json:"name,omitempty"`
-	// Entity codes
-	Codes []string `json:"codes,omitempty"`
 	// Coupon discount type
 	ActionType string `json:"action_type"`
 	// Defines where discount should be applied
@@ -38,6 +32,10 @@ type CartCouponAdd struct {
 	ActionScope string `json:"action_scope"`
 	// Defines the discount amount value.
 	ActionAmount float32 `json:"action_amount"`
+	// Entity codes
+	Codes []string `json:"codes,omitempty"`
+	// Coupon name
+	Name *string `json:"name,omitempty"`
 	// Date start
 	DateStart *string `json:"date_start,omitempty"`
 	// Defines when discount code will be expired.
@@ -56,6 +54,8 @@ type CartCouponAdd struct {
 	ActionConditionValue *string `json:"action_condition_value,omitempty"`
 	// Indicates whether to apply a discount for taxes.
 	IncludeTax *bool `json:"include_tax,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 }
 
 type _CartCouponAdd CartCouponAdd
@@ -90,38 +90,6 @@ func NewCartCouponAddWithDefaults() *CartCouponAdd {
 	return &this
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
-func (o *CartCouponAdd) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
-		var ret string
-		return ret
-	}
-	return *o.StoreId
-}
-
-// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CartCouponAdd) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
-		return nil, false
-	}
-	return o.StoreId, true
-}
-
-// HasStoreId returns a boolean if a field has been set.
-func (o *CartCouponAdd) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
-		return true
-	}
-
-	return false
-}
-
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
-func (o *CartCouponAdd) SetStoreId(v string) {
-	o.StoreId = &v
-}
-
 // GetCode returns the Code field value
 func (o *CartCouponAdd) GetCode() string {
 	if o == nil {
@@ -144,70 +112,6 @@ func (o *CartCouponAdd) GetCodeOk() (*string, bool) {
 // SetCode sets field value
 func (o *CartCouponAdd) SetCode(v string) {
 	o.Code = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CartCouponAdd) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CartCouponAdd) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CartCouponAdd) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CartCouponAdd) SetName(v string) {
-	o.Name = &v
-}
-
-// GetCodes returns the Codes field value if set, zero value otherwise.
-func (o *CartCouponAdd) GetCodes() []string {
-	if o == nil || IsNil(o.Codes) {
-		var ret []string
-		return ret
-	}
-	return o.Codes
-}
-
-// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CartCouponAdd) GetCodesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Codes) {
-		return nil, false
-	}
-	return o.Codes, true
-}
-
-// HasCodes returns a boolean if a field has been set.
-func (o *CartCouponAdd) HasCodes() bool {
-	if o != nil && !IsNil(o.Codes) {
-		return true
-	}
-
-	return false
-}
-
-// SetCodes gets a reference to the given []string and assigns it to the Codes field.
-func (o *CartCouponAdd) SetCodes(v []string) {
-	o.Codes = v
 }
 
 // GetActionType returns the ActionType field value
@@ -304,6 +208,70 @@ func (o *CartCouponAdd) GetActionAmountOk() (*float32, bool) {
 // SetActionAmount sets field value
 func (o *CartCouponAdd) SetActionAmount(v float32) {
 	o.ActionAmount = v
+}
+
+// GetCodes returns the Codes field value if set, zero value otherwise.
+func (o *CartCouponAdd) GetCodes() []string {
+	if o == nil || IsNil(o.Codes) {
+		var ret []string
+		return ret
+	}
+	return o.Codes
+}
+
+// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartCouponAdd) GetCodesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Codes) {
+		return nil, false
+	}
+	return o.Codes, true
+}
+
+// HasCodes returns a boolean if a field has been set.
+func (o *CartCouponAdd) HasCodes() bool {
+	if o != nil && !IsNil(o.Codes) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodes gets a reference to the given []string and assigns it to the Codes field.
+func (o *CartCouponAdd) SetCodes(v []string) {
+	o.Codes = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CartCouponAdd) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartCouponAdd) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CartCouponAdd) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CartCouponAdd) SetName(v string) {
+	o.Name = &v
 }
 
 // GetDateStart returns the DateStart field value if set, zero value otherwise.
@@ -594,6 +562,38 @@ func (o *CartCouponAdd) SetIncludeTax(v bool) {
 	o.IncludeTax = &v
 }
 
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *CartCouponAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartCouponAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *CartCouponAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *CartCouponAdd) SetStoreId(v string) {
+	o.StoreId = &v
+}
+
 func (o CartCouponAdd) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -604,20 +604,17 @@ func (o CartCouponAdd) MarshalJSON() ([]byte, error) {
 
 func (o CartCouponAdd) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
-	}
 	toSerialize["code"] = o.Code
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Codes) {
-		toSerialize["codes"] = o.Codes
-	}
 	toSerialize["action_type"] = o.ActionType
 	toSerialize["action_apply_to"] = o.ActionApplyTo
 	toSerialize["action_scope"] = o.ActionScope
 	toSerialize["action_amount"] = o.ActionAmount
+	if !IsNil(o.Codes) {
+		toSerialize["codes"] = o.Codes
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.DateStart) {
 		toSerialize["date_start"] = o.DateStart
 	}
@@ -644,6 +641,9 @@ func (o CartCouponAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IncludeTax) {
 		toSerialize["include_tax"] = o.IncludeTax
+	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	return toSerialize, nil
 }

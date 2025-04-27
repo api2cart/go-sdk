@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StoreId** | Pointer to **string** | Store Id | [optional] 
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
-**CustomerEmail** | Pointer to **string** | Retrieves orders specified by customer email | [optional] 
 **CustomerId** | Pointer to **string** | Retrieves orders specified by customer id | [optional] 
+**CustomerEmail** | Pointer to **string** | Retrieves orders specified by customer email | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **ShippAddress1** | Pointer to **string** | Specifies first shipping address | [optional] 
 **ShippCity** | Pointer to **string** | Specifies shipping city | [optional] 
 **ShippPostcode** | Pointer to **string** | Specifies shipping postcode | [optional] 
@@ -36,31 +36,6 @@ NewOrderPreestimateShippingListWithDefaults instantiates a new OrderPreestimateS
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStoreId
-
-`func (o *OrderPreestimateShippingList) GetStoreId() string`
-
-GetStoreId returns the StoreId field if non-nil, zero value otherwise.
-
-### GetStoreIdOk
-
-`func (o *OrderPreestimateShippingList) GetStoreIdOk() (*string, bool)`
-
-GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreId
-
-`func (o *OrderPreestimateShippingList) SetStoreId(v string)`
-
-SetStoreId sets StoreId field to given value.
-
-### HasStoreId
-
-`func (o *OrderPreestimateShippingList) HasStoreId() bool`
-
-HasStoreId returns a boolean if a field has been set.
-
 ### GetWarehouseId
 
 `func (o *OrderPreestimateShippingList) GetWarehouseId() string`
@@ -85,6 +60,31 @@ SetWarehouseId sets WarehouseId field to given value.
 `func (o *OrderPreestimateShippingList) HasWarehouseId() bool`
 
 HasWarehouseId returns a boolean if a field has been set.
+
+### GetCustomerId
+
+`func (o *OrderPreestimateShippingList) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *OrderPreestimateShippingList) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *OrderPreestimateShippingList) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *OrderPreestimateShippingList) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
 
 ### GetCustomerEmail
 
@@ -111,30 +111,30 @@ SetCustomerEmail sets CustomerEmail field to given value.
 
 HasCustomerEmail returns a boolean if a field has been set.
 
-### GetCustomerId
+### GetStoreId
 
-`func (o *OrderPreestimateShippingList) GetCustomerId() string`
+`func (o *OrderPreestimateShippingList) GetStoreId() string`
 
-GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
 
-### GetCustomerIdOk
+### GetStoreIdOk
 
-`func (o *OrderPreestimateShippingList) GetCustomerIdOk() (*string, bool)`
+`func (o *OrderPreestimateShippingList) GetStoreIdOk() (*string, bool)`
 
-GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCustomerId
+### SetStoreId
 
-`func (o *OrderPreestimateShippingList) SetCustomerId(v string)`
+`func (o *OrderPreestimateShippingList) SetStoreId(v string)`
 
-SetCustomerId sets CustomerId field to given value.
+SetStoreId sets StoreId field to given value.
 
-### HasCustomerId
+### HasStoreId
 
-`func (o *OrderPreestimateShippingList) HasCustomerId() bool`
+`func (o *OrderPreestimateShippingList) HasStoreId() bool`
 
-HasCustomerId returns a boolean if a field has been set.
+HasStoreId returns a boolean if a field has been set.
 
 ### GetShippAddress1
 
