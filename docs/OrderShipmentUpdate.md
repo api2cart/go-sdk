@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **IsShipped** | Pointer to **bool** | Defines shipment&#39;s status | [optional] [default to true]
 **DeliveredAt** | Pointer to **string** | Defines the date of delivery | [optional] 
 **Replace** | Pointer to **bool** | Allows rewrite tracking numbers | [optional] [default to true]
+**SendNotifications** | Pointer to **bool** | Send notifications to customer after order was created | [optional] [default to false]
+**TrackingProvider** | Pointer to **string** | Defines name of the company which provides shipment tracking | [optional] 
+**Items** | Pointer to [**[]OrderShipmentAddItemsInner**](OrderShipmentAddItemsInner.md) | Defines items in the order that will be shipped | [optional] 
 
 ## Methods
 
@@ -252,6 +255,81 @@ SetReplace sets Replace field to given value.
 `func (o *OrderShipmentUpdate) HasReplace() bool`
 
 HasReplace returns a boolean if a field has been set.
+
+### GetSendNotifications
+
+`func (o *OrderShipmentUpdate) GetSendNotifications() bool`
+
+GetSendNotifications returns the SendNotifications field if non-nil, zero value otherwise.
+
+### GetSendNotificationsOk
+
+`func (o *OrderShipmentUpdate) GetSendNotificationsOk() (*bool, bool)`
+
+GetSendNotificationsOk returns a tuple with the SendNotifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendNotifications
+
+`func (o *OrderShipmentUpdate) SetSendNotifications(v bool)`
+
+SetSendNotifications sets SendNotifications field to given value.
+
+### HasSendNotifications
+
+`func (o *OrderShipmentUpdate) HasSendNotifications() bool`
+
+HasSendNotifications returns a boolean if a field has been set.
+
+### GetTrackingProvider
+
+`func (o *OrderShipmentUpdate) GetTrackingProvider() string`
+
+GetTrackingProvider returns the TrackingProvider field if non-nil, zero value otherwise.
+
+### GetTrackingProviderOk
+
+`func (o *OrderShipmentUpdate) GetTrackingProviderOk() (*string, bool)`
+
+GetTrackingProviderOk returns a tuple with the TrackingProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrackingProvider
+
+`func (o *OrderShipmentUpdate) SetTrackingProvider(v string)`
+
+SetTrackingProvider sets TrackingProvider field to given value.
+
+### HasTrackingProvider
+
+`func (o *OrderShipmentUpdate) HasTrackingProvider() bool`
+
+HasTrackingProvider returns a boolean if a field has been set.
+
+### GetItems
+
+`func (o *OrderShipmentUpdate) GetItems() []OrderShipmentAddItemsInner`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *OrderShipmentUpdate) GetItemsOk() (*[]OrderShipmentAddItemsInner, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *OrderShipmentUpdate) SetItems(v []OrderShipmentAddItemsInner)`
+
+SetItems sets Items field to given value.
+
+### HasItems
+
+`func (o *OrderShipmentUpdate) HasItems() bool`
+
+HasItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

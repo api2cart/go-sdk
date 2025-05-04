@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **AdjustStock** | Pointer to **bool** | This parameter is used for adjust stock. | [optional] [default to false]
 **EnableCache** | Pointer to **bool** | If the value is &#39;true&#39; and order exist in our cache, we will use order.info from cache to prepare shipment items. | [optional] [default to false]
 **CheckProcessStatus** | Pointer to **bool** | Disable or enable check process status. Please note that the response will be slower due to additional requests to the store. | [optional] [default to false]
+**TrackingProvider** | Pointer to **string** | Defines name of the company which provides shipment tracking | [optional] 
 **UseLatestApiVersion** | Pointer to **bool** | Use the latest platform API version | [optional] [default to false]
 
 ## Methods
@@ -362,6 +363,31 @@ SetCheckProcessStatus sets CheckProcessStatus field to given value.
 `func (o *OrderShipmentAdd) HasCheckProcessStatus() bool`
 
 HasCheckProcessStatus returns a boolean if a field has been set.
+
+### GetTrackingProvider
+
+`func (o *OrderShipmentAdd) GetTrackingProvider() string`
+
+GetTrackingProvider returns the TrackingProvider field if non-nil, zero value otherwise.
+
+### GetTrackingProviderOk
+
+`func (o *OrderShipmentAdd) GetTrackingProviderOk() (*string, bool)`
+
+GetTrackingProviderOk returns a tuple with the TrackingProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrackingProvider
+
+`func (o *OrderShipmentAdd) SetTrackingProvider(v string)`
+
+SetTrackingProvider sets TrackingProvider field to given value.
+
+### HasTrackingProvider
+
+`func (o *OrderShipmentAdd) HasTrackingProvider() bool`
+
+HasTrackingProvider returns a boolean if a field has been set.
 
 ### GetUseLatestApiVersion
 

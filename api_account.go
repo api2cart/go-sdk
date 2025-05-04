@@ -398,6 +398,8 @@ type ApiAccountConfigUpdateRequest struct {
 	shopwareAccessKey *string
 	shopwareApiKey *string
 	shopwareApiSecret *string
+	bigcartelUserName *string
+	bigcartelPassword *string
 	volusionLogin *string
 	volusionPassword *string
 	walmartClientId *string
@@ -894,6 +896,18 @@ func (r ApiAccountConfigUpdateRequest) ShopwareApiKey(shopwareApiKey string) Api
 // Shopware client secret access key
 func (r ApiAccountConfigUpdateRequest) ShopwareApiSecret(shopwareApiSecret string) ApiAccountConfigUpdateRequest {
 	r.shopwareApiSecret = &shopwareApiSecret
+	return r
+}
+
+// Subdomain of store
+func (r ApiAccountConfigUpdateRequest) BigcartelUserName(bigcartelUserName string) ApiAccountConfigUpdateRequest {
+	r.bigcartelUserName = &bigcartelUserName
+	return r
+}
+
+// BigCartel account password
+func (r ApiAccountConfigUpdateRequest) BigcartelPassword(bigcartelPassword string) ApiAccountConfigUpdateRequest {
+	r.bigcartelPassword = &bigcartelPassword
 	return r
 }
 
@@ -1581,6 +1595,12 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.shopwareApiSecret != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopware_api_secret", r.shopwareApiSecret, "form", "")
+	}
+	if r.bigcartelUserName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bigcartel_user_name", r.bigcartelUserName, "form", "")
+	}
+	if r.bigcartelPassword != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bigcartel_password", r.bigcartelPassword, "form", "")
 	}
 	if r.volusionLogin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "volusion_login", r.volusionLogin, "form", "")

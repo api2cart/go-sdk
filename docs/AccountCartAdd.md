@@ -38,6 +38,8 @@ Name | Type | Description | Notes
 **BolApiKey** | Pointer to **string** | Bol API Key | [optional] 
 **BolApiSecret** | Pointer to **string** | Bol API Secret | [optional] 
 **BolRetailerId** | Pointer to **int32** | Bol Retailer ID | [optional] 
+**BigcartelUserName** | **string** | Subdomain of store | 
+**BigcartelPassword** | **string** | BigCartel account password | 
 **DemandwareClientId** | Pointer to **string** | Demandware client id | [optional] 
 **DemandwareApiPassword** | Pointer to **string** | Demandware api password | [optional] 
 **DemandwareUserName** | Pointer to **string** | Demandware user name | [optional] 
@@ -158,7 +160,7 @@ Name | Type | Description | Notes
 
 ### NewAccountCartAdd
 
-`func NewAccountCartAdd(cartId string, wixAppId string, wixAppSecretKey string, ) *AccountCartAdd`
+`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, ) *AccountCartAdd`
 
 NewAccountCartAdd instantiates a new AccountCartAdd object
 This constructor will assign default values to properties that have it defined,
@@ -1017,6 +1019,46 @@ SetBolRetailerId sets BolRetailerId field to given value.
 `func (o *AccountCartAdd) HasBolRetailerId() bool`
 
 HasBolRetailerId returns a boolean if a field has been set.
+
+### GetBigcartelUserName
+
+`func (o *AccountCartAdd) GetBigcartelUserName() string`
+
+GetBigcartelUserName returns the BigcartelUserName field if non-nil, zero value otherwise.
+
+### GetBigcartelUserNameOk
+
+`func (o *AccountCartAdd) GetBigcartelUserNameOk() (*string, bool)`
+
+GetBigcartelUserNameOk returns a tuple with the BigcartelUserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBigcartelUserName
+
+`func (o *AccountCartAdd) SetBigcartelUserName(v string)`
+
+SetBigcartelUserName sets BigcartelUserName field to given value.
+
+
+### GetBigcartelPassword
+
+`func (o *AccountCartAdd) GetBigcartelPassword() string`
+
+GetBigcartelPassword returns the BigcartelPassword field if non-nil, zero value otherwise.
+
+### GetBigcartelPasswordOk
+
+`func (o *AccountCartAdd) GetBigcartelPasswordOk() (*string, bool)`
+
+GetBigcartelPasswordOk returns a tuple with the BigcartelPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBigcartelPassword
+
+`func (o *AccountCartAdd) SetBigcartelPassword(v string)`
+
+SetBigcartelPassword sets BigcartelPassword field to given value.
+
 
 ### GetDemandwareClientId
 

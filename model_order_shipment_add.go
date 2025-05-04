@@ -46,6 +46,8 @@ type OrderShipmentAdd struct {
 	EnableCache *bool `json:"enable_cache,omitempty"`
 	// Disable or enable check process status. Please note that the response will be slower due to additional requests to the store.
 	CheckProcessStatus *bool `json:"check_process_status,omitempty"`
+	// Defines name of the company which provides shipment tracking
+	TrackingProvider *string `json:"tracking_provider,omitempty"`
 	// Use the latest platform API version
 	UseLatestApiVersion *bool `json:"use_latest_api_version,omitempty"`
 }
@@ -507,6 +509,38 @@ func (o *OrderShipmentAdd) SetCheckProcessStatus(v bool) {
 	o.CheckProcessStatus = &v
 }
 
+// GetTrackingProvider returns the TrackingProvider field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetTrackingProvider() string {
+	if o == nil || IsNil(o.TrackingProvider) {
+		var ret string
+		return ret
+	}
+	return *o.TrackingProvider
+}
+
+// GetTrackingProviderOk returns a tuple with the TrackingProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetTrackingProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.TrackingProvider) {
+		return nil, false
+	}
+	return o.TrackingProvider, true
+}
+
+// HasTrackingProvider returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasTrackingProvider() bool {
+	if o != nil && !IsNil(o.TrackingProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrackingProvider gets a reference to the given string and assigns it to the TrackingProvider field.
+func (o *OrderShipmentAdd) SetTrackingProvider(v string) {
+	o.TrackingProvider = &v
+}
+
 // GetUseLatestApiVersion returns the UseLatestApiVersion field value if set, zero value otherwise.
 func (o *OrderShipmentAdd) GetUseLatestApiVersion() bool {
 	if o == nil || IsNil(o.UseLatestApiVersion) {
@@ -587,6 +621,9 @@ func (o OrderShipmentAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CheckProcessStatus) {
 		toSerialize["check_process_status"] = o.CheckProcessStatus
+	}
+	if !IsNil(o.TrackingProvider) {
+		toSerialize["tracking_provider"] = o.TrackingProvider
 	}
 	if !IsNil(o.UseLatestApiVersion) {
 		toSerialize["use_latest_api_version"] = o.UseLatestApiVersion

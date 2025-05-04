@@ -40,6 +40,12 @@ type OrderShipmentUpdate struct {
 	DeliveredAt *string `json:"delivered_at,omitempty"`
 	// Allows rewrite tracking numbers
 	Replace *bool `json:"replace,omitempty"`
+	// Send notifications to customer after order was created
+	SendNotifications *bool `json:"send_notifications,omitempty"`
+	// Defines name of the company which provides shipment tracking
+	TrackingProvider *string `json:"tracking_provider,omitempty"`
+	// Defines items in the order that will be shipped
+	Items []OrderShipmentAddItemsInner `json:"items,omitempty"`
 }
 
 type _OrderShipmentUpdate OrderShipmentUpdate
@@ -55,6 +61,8 @@ func NewOrderShipmentUpdate(shipmentId string) *OrderShipmentUpdate {
 	this.IsShipped = &isShipped
 	var replace bool = true
 	this.Replace = &replace
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
 	return &this
 }
 
@@ -67,6 +75,8 @@ func NewOrderShipmentUpdateWithDefaults() *OrderShipmentUpdate {
 	this.IsShipped = &isShipped
 	var replace bool = true
 	this.Replace = &replace
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
 	return &this
 }
 
@@ -350,6 +360,102 @@ func (o *OrderShipmentUpdate) SetReplace(v bool) {
 	o.Replace = &v
 }
 
+// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetSendNotifications() bool {
+	if o == nil || IsNil(o.SendNotifications) {
+		var ret bool
+		return ret
+	}
+	return *o.SendNotifications
+}
+
+// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetSendNotificationsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendNotifications) {
+		return nil, false
+	}
+	return o.SendNotifications, true
+}
+
+// HasSendNotifications returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasSendNotifications() bool {
+	if o != nil && !IsNil(o.SendNotifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
+func (o *OrderShipmentUpdate) SetSendNotifications(v bool) {
+	o.SendNotifications = &v
+}
+
+// GetTrackingProvider returns the TrackingProvider field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetTrackingProvider() string {
+	if o == nil || IsNil(o.TrackingProvider) {
+		var ret string
+		return ret
+	}
+	return *o.TrackingProvider
+}
+
+// GetTrackingProviderOk returns a tuple with the TrackingProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetTrackingProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.TrackingProvider) {
+		return nil, false
+	}
+	return o.TrackingProvider, true
+}
+
+// HasTrackingProvider returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasTrackingProvider() bool {
+	if o != nil && !IsNil(o.TrackingProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrackingProvider gets a reference to the given string and assigns it to the TrackingProvider field.
+func (o *OrderShipmentUpdate) SetTrackingProvider(v string) {
+	o.TrackingProvider = &v
+}
+
+// GetItems returns the Items field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetItems() []OrderShipmentAddItemsInner {
+	if o == nil || IsNil(o.Items) {
+		var ret []OrderShipmentAddItemsInner
+		return ret
+	}
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetItemsOk() ([]OrderShipmentAddItemsInner, bool) {
+	if o == nil || IsNil(o.Items) {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// HasItems returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasItems() bool {
+	if o != nil && !IsNil(o.Items) {
+		return true
+	}
+
+	return false
+}
+
+// SetItems gets a reference to the given []OrderShipmentAddItemsInner and assigns it to the Items field.
+func (o *OrderShipmentUpdate) SetItems(v []OrderShipmentAddItemsInner) {
+	o.Items = v
+}
+
 func (o OrderShipmentUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -384,6 +490,15 @@ func (o OrderShipmentUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Replace) {
 		toSerialize["replace"] = o.Replace
+	}
+	if !IsNil(o.SendNotifications) {
+		toSerialize["send_notifications"] = o.SendNotifications
+	}
+	if !IsNil(o.TrackingProvider) {
+		toSerialize["tracking_provider"] = o.TrackingProvider
+	}
+	if !IsNil(o.Items) {
+		toSerialize["items"] = o.Items
 	}
 	return toSerialize, nil
 }

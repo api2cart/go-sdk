@@ -90,6 +90,10 @@ type AccountCartAdd struct {
 	BolApiSecret *string `json:"bol_api_secret,omitempty"`
 	// Bol Retailer ID
 	BolRetailerId *int32 `json:"bol_retailer_id,omitempty"`
+	// Subdomain of store
+	BigcartelUserName string `json:"bigcartel_user_name"`
+	// BigCartel account password
+	BigcartelPassword string `json:"bigcartel_password"`
 	// Demandware client id
 	DemandwareClientId *string `json:"demandware_client_id,omitempty"`
 	// Demandware api password
@@ -328,7 +332,7 @@ type _AccountCartAdd AccountCartAdd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCartAdd(cartId string, wixAppId string, wixAppSecretKey string) *AccountCartAdd {
+func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string) *AccountCartAdd {
 	this := AccountCartAdd{}
 	this.CartId = cartId
 	var validateVersion bool = false
@@ -337,6 +341,8 @@ func NewAccountCartAdd(cartId string, wixAppId string, wixAppSecretKey string) *
 	this.Verify = &verify
 	var amazonSpApiEnvironment string = "production"
 	this.AmazonSpApiEnvironment = &amazonSpApiEnvironment
+	this.BigcartelUserName = bigcartelUserName
+	this.BigcartelPassword = bigcartelPassword
 	var ebayEnvironment string = "production"
 	this.EbayEnvironment = &ebayEnvironment
 	var ebaySiteId int32 = 0
@@ -1458,6 +1464,54 @@ func (o *AccountCartAdd) HasBolRetailerId() bool {
 // SetBolRetailerId gets a reference to the given int32 and assigns it to the BolRetailerId field.
 func (o *AccountCartAdd) SetBolRetailerId(v int32) {
 	o.BolRetailerId = &v
+}
+
+// GetBigcartelUserName returns the BigcartelUserName field value
+func (o *AccountCartAdd) GetBigcartelUserName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BigcartelUserName
+}
+
+// GetBigcartelUserNameOk returns a tuple with the BigcartelUserName field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBigcartelUserNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BigcartelUserName, true
+}
+
+// SetBigcartelUserName sets field value
+func (o *AccountCartAdd) SetBigcartelUserName(v string) {
+	o.BigcartelUserName = v
+}
+
+// GetBigcartelPassword returns the BigcartelPassword field value
+func (o *AccountCartAdd) GetBigcartelPassword() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BigcartelPassword
+}
+
+// GetBigcartelPasswordOk returns a tuple with the BigcartelPassword field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBigcartelPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BigcartelPassword, true
+}
+
+// SetBigcartelPassword sets field value
+func (o *AccountCartAdd) SetBigcartelPassword(v string) {
+	o.BigcartelPassword = v
 }
 
 // GetDemandwareClientId returns the DemandwareClientId field value if set, zero value otherwise.
@@ -5234,6 +5288,8 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BolRetailerId) {
 		toSerialize["bol_retailer_id"] = o.BolRetailerId
 	}
+	toSerialize["bigcartel_user_name"] = o.BigcartelUserName
+	toSerialize["bigcartel_password"] = o.BigcartelPassword
 	if !IsNil(o.DemandwareClientId) {
 		toSerialize["demandware_client_id"] = o.DemandwareClientId
 	}
@@ -5584,6 +5640,8 @@ func (o *AccountCartAdd) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"cart_id",
+		"bigcartel_user_name",
+		"bigcartel_password",
 		"wix_app_id",
 		"wix_app_secret_key",
 	}
