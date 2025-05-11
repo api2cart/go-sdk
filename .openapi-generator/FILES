@@ -304,6 +304,7 @@ docs/ProductAddGroupPricesInner.md
 docs/ProductAddLogisticInfoInner.md
 docs/ProductAddManufacturerInfo.md
 docs/ProductAddPackageDetails.md
+docs/ProductAddPersonalizationDetails.md
 docs/ProductAddSalesTax.md
 docs/ProductAddSellerProfiles.md
 docs/ProductAddShippingDetailsInner.md
@@ -748,6 +749,7 @@ model_product_add_group_prices_inner.go
 model_product_add_logistic_info_inner.go
 model_product_add_manufacturer_info.go
 model_product_add_package_details.go
+model_product_add_personalization_details.go
 model_product_add_sales_tax.go
 model_product_add_seller_profiles.go
 model_product_add_shipping_details_inner.go

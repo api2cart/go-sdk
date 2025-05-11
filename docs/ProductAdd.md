@@ -116,6 +116,9 @@ Name | Type | Description | Notes
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **ViewedCount** | Pointer to **int32** | Specifies the number of product&#39;s reviews | [optional] [default to 0]
 **OrderedCount** | Pointer to **int32** | Defines how many times the product was ordered | [optional] [default to 0]
+**ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
+**ReturnPolicyId** | Pointer to **int32** | Add Return Policy Id | [optional] 
+**PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -2915,6 +2918,81 @@ SetOrderedCount sets OrderedCount field to given value.
 `func (o *ProductAdd) HasOrderedCount() bool`
 
 HasOrderedCount returns a boolean if a field has been set.
+
+### GetShopSectionId
+
+`func (o *ProductAdd) GetShopSectionId() int32`
+
+GetShopSectionId returns the ShopSectionId field if non-nil, zero value otherwise.
+
+### GetShopSectionIdOk
+
+`func (o *ProductAdd) GetShopSectionIdOk() (*int32, bool)`
+
+GetShopSectionIdOk returns a tuple with the ShopSectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopSectionId
+
+`func (o *ProductAdd) SetShopSectionId(v int32)`
+
+SetShopSectionId sets ShopSectionId field to given value.
+
+### HasShopSectionId
+
+`func (o *ProductAdd) HasShopSectionId() bool`
+
+HasShopSectionId returns a boolean if a field has been set.
+
+### GetReturnPolicyId
+
+`func (o *ProductAdd) GetReturnPolicyId() int32`
+
+GetReturnPolicyId returns the ReturnPolicyId field if non-nil, zero value otherwise.
+
+### GetReturnPolicyIdOk
+
+`func (o *ProductAdd) GetReturnPolicyIdOk() (*int32, bool)`
+
+GetReturnPolicyIdOk returns a tuple with the ReturnPolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnPolicyId
+
+`func (o *ProductAdd) SetReturnPolicyId(v int32)`
+
+SetReturnPolicyId sets ReturnPolicyId field to given value.
+
+### HasReturnPolicyId
+
+`func (o *ProductAdd) HasReturnPolicyId() bool`
+
+HasReturnPolicyId returns a boolean if a field has been set.
+
+### GetPersonalizationDetails
+
+`func (o *ProductAdd) GetPersonalizationDetails() ProductAddPersonalizationDetails`
+
+GetPersonalizationDetails returns the PersonalizationDetails field if non-nil, zero value otherwise.
+
+### GetPersonalizationDetailsOk
+
+`func (o *ProductAdd) GetPersonalizationDetailsOk() (*ProductAddPersonalizationDetails, bool)`
+
+GetPersonalizationDetailsOk returns a tuple with the PersonalizationDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalizationDetails
+
+`func (o *ProductAdd) SetPersonalizationDetails(v ProductAddPersonalizationDetails)`
+
+SetPersonalizationDetails sets PersonalizationDetails field to given value.
+
+### HasPersonalizationDetails
+
+`func (o *ProductAdd) HasPersonalizationDetails() bool`
+
+HasPersonalizationDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

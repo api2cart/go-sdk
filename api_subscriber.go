@@ -26,6 +26,7 @@ type SubscriberAPIService service
 type ApiSubscriberListRequest struct {
 	ctx context.Context
 	ApiService *SubscriberAPIService
+	ids *string
 	start *int32
 	count *int32
 	pageCursor *string
@@ -39,6 +40,12 @@ type ApiSubscriberListRequest struct {
 	responseFields *string
 	params *string
 	exclude *string
+}
+
+// Retrieves subscribers specified by ids
+func (r ApiSubscriberListRequest) Ids(ids string) ApiSubscriberListRequest {
+	r.ids = &ids
+	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -159,6 +166,9 @@ func (a *SubscriberAPIService) SubscriberListExecute(r ApiSubscriberListRequest)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {

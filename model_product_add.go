@@ -240,6 +240,11 @@ type ProductAdd struct {
 	ViewedCount *int32 `json:"viewed_count,omitempty"`
 	// Defines how many times the product was ordered
 	OrderedCount *int32 `json:"ordered_count,omitempty"`
+	// Add Shop Section Id
+	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
+	// Add Return Policy Id
+	ReturnPolicyId *int32 `json:"return_policy_id,omitempty"`
+	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
 }
 
 type _ProductAdd ProductAdd
@@ -3885,6 +3890,102 @@ func (o *ProductAdd) SetOrderedCount(v int32) {
 	o.OrderedCount = &v
 }
 
+// GetShopSectionId returns the ShopSectionId field value if set, zero value otherwise.
+func (o *ProductAdd) GetShopSectionId() int32 {
+	if o == nil || IsNil(o.ShopSectionId) {
+		var ret int32
+		return ret
+	}
+	return *o.ShopSectionId
+}
+
+// GetShopSectionIdOk returns a tuple with the ShopSectionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetShopSectionIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ShopSectionId) {
+		return nil, false
+	}
+	return o.ShopSectionId, true
+}
+
+// HasShopSectionId returns a boolean if a field has been set.
+func (o *ProductAdd) HasShopSectionId() bool {
+	if o != nil && !IsNil(o.ShopSectionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShopSectionId gets a reference to the given int32 and assigns it to the ShopSectionId field.
+func (o *ProductAdd) SetShopSectionId(v int32) {
+	o.ShopSectionId = &v
+}
+
+// GetReturnPolicyId returns the ReturnPolicyId field value if set, zero value otherwise.
+func (o *ProductAdd) GetReturnPolicyId() int32 {
+	if o == nil || IsNil(o.ReturnPolicyId) {
+		var ret int32
+		return ret
+	}
+	return *o.ReturnPolicyId
+}
+
+// GetReturnPolicyIdOk returns a tuple with the ReturnPolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetReturnPolicyIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ReturnPolicyId) {
+		return nil, false
+	}
+	return o.ReturnPolicyId, true
+}
+
+// HasReturnPolicyId returns a boolean if a field has been set.
+func (o *ProductAdd) HasReturnPolicyId() bool {
+	if o != nil && !IsNil(o.ReturnPolicyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetReturnPolicyId gets a reference to the given int32 and assigns it to the ReturnPolicyId field.
+func (o *ProductAdd) SetReturnPolicyId(v int32) {
+	o.ReturnPolicyId = &v
+}
+
+// GetPersonalizationDetails returns the PersonalizationDetails field value if set, zero value otherwise.
+func (o *ProductAdd) GetPersonalizationDetails() ProductAddPersonalizationDetails {
+	if o == nil || IsNil(o.PersonalizationDetails) {
+		var ret ProductAddPersonalizationDetails
+		return ret
+	}
+	return *o.PersonalizationDetails
+}
+
+// GetPersonalizationDetailsOk returns a tuple with the PersonalizationDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetPersonalizationDetailsOk() (*ProductAddPersonalizationDetails, bool) {
+	if o == nil || IsNil(o.PersonalizationDetails) {
+		return nil, false
+	}
+	return o.PersonalizationDetails, true
+}
+
+// HasPersonalizationDetails returns a boolean if a field has been set.
+func (o *ProductAdd) HasPersonalizationDetails() bool {
+	if o != nil && !IsNil(o.PersonalizationDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalizationDetails gets a reference to the given ProductAddPersonalizationDetails and assigns it to the PersonalizationDetails field.
+func (o *ProductAdd) SetPersonalizationDetails(v ProductAddPersonalizationDetails) {
+	o.PersonalizationDetails = &v
+}
+
 func (o ProductAdd) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -4222,6 +4323,15 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrderedCount) {
 		toSerialize["ordered_count"] = o.OrderedCount
+	}
+	if !IsNil(o.ShopSectionId) {
+		toSerialize["shop_section_id"] = o.ShopSectionId
+	}
+	if !IsNil(o.ReturnPolicyId) {
+		toSerialize["return_policy_id"] = o.ReturnPolicyId
+	}
+	if !IsNil(o.PersonalizationDetails) {
+		toSerialize["personalization_details"] = o.PersonalizationDetails
 	}
 	return toSerialize, nil
 }

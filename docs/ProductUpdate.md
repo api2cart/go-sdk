@@ -86,6 +86,9 @@ Name | Type | Description | Notes
 **Reindex** | Pointer to **bool** | Is reindex required | [optional] [default to true]
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **CheckProcessStatus** | Pointer to **bool** | Disable or enable check process status. Please note that the response will be slower due to additional requests to the store. | [optional] [default to false]
+**Specifics** | Pointer to [**[]ProductAddSpecificsInner**](ProductAddSpecificsInner.md) | An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields-&gt;product_specifics).         &lt;b&gt;The structure of the parameter is different for specific platforms.&lt;/b&gt; | [optional] 
+**ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
+**PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -2155,6 +2158,81 @@ SetCheckProcessStatus sets CheckProcessStatus field to given value.
 `func (o *ProductUpdate) HasCheckProcessStatus() bool`
 
 HasCheckProcessStatus returns a boolean if a field has been set.
+
+### GetSpecifics
+
+`func (o *ProductUpdate) GetSpecifics() []ProductAddSpecificsInner`
+
+GetSpecifics returns the Specifics field if non-nil, zero value otherwise.
+
+### GetSpecificsOk
+
+`func (o *ProductUpdate) GetSpecificsOk() (*[]ProductAddSpecificsInner, bool)`
+
+GetSpecificsOk returns a tuple with the Specifics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpecifics
+
+`func (o *ProductUpdate) SetSpecifics(v []ProductAddSpecificsInner)`
+
+SetSpecifics sets Specifics field to given value.
+
+### HasSpecifics
+
+`func (o *ProductUpdate) HasSpecifics() bool`
+
+HasSpecifics returns a boolean if a field has been set.
+
+### GetShopSectionId
+
+`func (o *ProductUpdate) GetShopSectionId() int32`
+
+GetShopSectionId returns the ShopSectionId field if non-nil, zero value otherwise.
+
+### GetShopSectionIdOk
+
+`func (o *ProductUpdate) GetShopSectionIdOk() (*int32, bool)`
+
+GetShopSectionIdOk returns a tuple with the ShopSectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopSectionId
+
+`func (o *ProductUpdate) SetShopSectionId(v int32)`
+
+SetShopSectionId sets ShopSectionId field to given value.
+
+### HasShopSectionId
+
+`func (o *ProductUpdate) HasShopSectionId() bool`
+
+HasShopSectionId returns a boolean if a field has been set.
+
+### GetPersonalizationDetails
+
+`func (o *ProductUpdate) GetPersonalizationDetails() ProductAddPersonalizationDetails`
+
+GetPersonalizationDetails returns the PersonalizationDetails field if non-nil, zero value otherwise.
+
+### GetPersonalizationDetailsOk
+
+`func (o *ProductUpdate) GetPersonalizationDetailsOk() (*ProductAddPersonalizationDetails, bool)`
+
+GetPersonalizationDetailsOk returns a tuple with the PersonalizationDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalizationDetails
+
+`func (o *ProductUpdate) SetPersonalizationDetails(v ProductAddPersonalizationDetails)`
+
+SetPersonalizationDetails sets PersonalizationDetails field to given value.
+
+### HasPersonalizationDetails
+
+`func (o *ProductUpdate) HasPersonalizationDetails() bool`
+
+HasPersonalizationDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

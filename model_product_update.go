@@ -182,6 +182,11 @@ type ProductUpdate struct {
 	ClearCache *bool `json:"clear_cache,omitempty"`
 	// Disable or enable check process status. Please note that the response will be slower due to additional requests to the store.
 	CheckProcessStatus *bool `json:"check_process_status,omitempty"`
+	// An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields->product_specifics).         <b>The structure of the parameter is different for specific platforms.</b>
+	Specifics []ProductAddSpecificsInner `json:"specifics,omitempty"`
+	// Add Shop Section Id
+	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
+	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
 }
 
 // NewProductUpdate instantiates a new ProductUpdate object
@@ -2877,6 +2882,102 @@ func (o *ProductUpdate) SetCheckProcessStatus(v bool) {
 	o.CheckProcessStatus = &v
 }
 
+// GetSpecifics returns the Specifics field value if set, zero value otherwise.
+func (o *ProductUpdate) GetSpecifics() []ProductAddSpecificsInner {
+	if o == nil || IsNil(o.Specifics) {
+		var ret []ProductAddSpecificsInner
+		return ret
+	}
+	return o.Specifics
+}
+
+// GetSpecificsOk returns a tuple with the Specifics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetSpecificsOk() ([]ProductAddSpecificsInner, bool) {
+	if o == nil || IsNil(o.Specifics) {
+		return nil, false
+	}
+	return o.Specifics, true
+}
+
+// HasSpecifics returns a boolean if a field has been set.
+func (o *ProductUpdate) HasSpecifics() bool {
+	if o != nil && !IsNil(o.Specifics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpecifics gets a reference to the given []ProductAddSpecificsInner and assigns it to the Specifics field.
+func (o *ProductUpdate) SetSpecifics(v []ProductAddSpecificsInner) {
+	o.Specifics = v
+}
+
+// GetShopSectionId returns the ShopSectionId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetShopSectionId() int32 {
+	if o == nil || IsNil(o.ShopSectionId) {
+		var ret int32
+		return ret
+	}
+	return *o.ShopSectionId
+}
+
+// GetShopSectionIdOk returns a tuple with the ShopSectionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetShopSectionIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ShopSectionId) {
+		return nil, false
+	}
+	return o.ShopSectionId, true
+}
+
+// HasShopSectionId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasShopSectionId() bool {
+	if o != nil && !IsNil(o.ShopSectionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShopSectionId gets a reference to the given int32 and assigns it to the ShopSectionId field.
+func (o *ProductUpdate) SetShopSectionId(v int32) {
+	o.ShopSectionId = &v
+}
+
+// GetPersonalizationDetails returns the PersonalizationDetails field value if set, zero value otherwise.
+func (o *ProductUpdate) GetPersonalizationDetails() ProductAddPersonalizationDetails {
+	if o == nil || IsNil(o.PersonalizationDetails) {
+		var ret ProductAddPersonalizationDetails
+		return ret
+	}
+	return *o.PersonalizationDetails
+}
+
+// GetPersonalizationDetailsOk returns a tuple with the PersonalizationDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetPersonalizationDetailsOk() (*ProductAddPersonalizationDetails, bool) {
+	if o == nil || IsNil(o.PersonalizationDetails) {
+		return nil, false
+	}
+	return o.PersonalizationDetails, true
+}
+
+// HasPersonalizationDetails returns a boolean if a field has been set.
+func (o *ProductUpdate) HasPersonalizationDetails() bool {
+	if o != nil && !IsNil(o.PersonalizationDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalizationDetails gets a reference to the given ProductAddPersonalizationDetails and assigns it to the PersonalizationDetails field.
+func (o *ProductUpdate) SetPersonalizationDetails(v ProductAddPersonalizationDetails) {
+	o.PersonalizationDetails = &v
+}
+
 func (o ProductUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -3132,6 +3233,15 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CheckProcessStatus) {
 		toSerialize["check_process_status"] = o.CheckProcessStatus
+	}
+	if !IsNil(o.Specifics) {
+		toSerialize["specifics"] = o.Specifics
+	}
+	if !IsNil(o.ShopSectionId) {
+		toSerialize["shop_section_id"] = o.ShopSectionId
+	}
+	if !IsNil(o.PersonalizationDetails) {
+		toSerialize["personalization_details"] = o.PersonalizationDetails
 	}
 	return toSerialize, nil
 }

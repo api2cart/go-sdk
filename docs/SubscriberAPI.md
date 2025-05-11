@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## SubscriberList
 
-> ModelResponseSubscriberList SubscriberList(ctx).Start(start).Count(count).PageCursor(pageCursor).Subscribed(subscribed).StoreId(storeId).Email(email).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseSubscriberList SubscriberList(ctx).Ids(ids).Start(start).Count(count).PageCursor(pageCursor).Subscribed(subscribed).StoreId(storeId).Email(email).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 subscriber.list
 
@@ -29,6 +29,7 @@ import (
 )
 
 func main() {
+	ids := "24,25" // string | Retrieves subscribers specified by ids (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
@@ -45,7 +46,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SubscriberAPI.SubscriberList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Subscribed(subscribed).StoreId(storeId).Email(email).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.SubscriberAPI.SubscriberList(context.Background()).Ids(ids).Start(start).Count(count).PageCursor(pageCursor).Subscribed(subscribed).StoreId(storeId).Email(email).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SubscriberAPI.SubscriberList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,6 +67,7 @@ Other parameters are passed through a pointer to a apiSubscriberListRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ids** | **string** | Retrieves subscribers specified by ids | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
