@@ -4331,6 +4331,7 @@ type ApiOrderUpdateRequest struct {
 	sendNotifications *bool
 	createInvoice *bool
 	origin *string
+	tags *string
 }
 
 // Defines the orders specified by order id
@@ -4429,6 +4430,12 @@ func (r ApiOrderUpdateRequest) Origin(origin string) ApiOrderUpdateRequest {
 	return r
 }
 
+// Order tags
+func (r ApiOrderUpdateRequest) Tags(tags string) ApiOrderUpdateRequest {
+	r.tags = &tags
+	return r
+}
+
 func (r ApiOrderUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.OrderUpdateExecute(r)
 }
@@ -4520,6 +4527,9 @@ func (a *OrderAPIService) OrderUpdateExecute(r ApiOrderUpdateRequest) (*AccountC
 	}
 	if r.origin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "form", "")
+	}
+	if r.tags != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

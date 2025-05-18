@@ -1711,7 +1711,7 @@ Name | Type | Description  | Notes
 
 ## OrderUpdate
 
-> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Execute()
+> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).Execute()
 
 order.update
 
@@ -1746,10 +1746,11 @@ func main() {
 	sendNotifications := true // bool | Send notifications to customer after order was created (optional) (default to false)
 	createInvoice := true // bool | Determines whether an invoice should be created if it has not already been created (optional)
 	origin := "newsletter" // string | The source of the order (optional)
+	tags := "tag1,tag2" // string | Order tags (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1786,6 +1787,7 @@ Name | Type | Description  | Notes
  **sendNotifications** | **bool** | Send notifications to customer after order was created | [default to false]
  **createInvoice** | **bool** | Determines whether an invoice should be created if it has not already been created | 
  **origin** | **string** | The source of the order | 
+ **tags** | **string** | Order tags | 
 
 ### Return type
 
