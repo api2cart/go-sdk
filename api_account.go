@@ -391,6 +391,12 @@ type ApiAccountConfigUpdateRequest struct {
 	shopifyApiKey *string
 	shopifyApiPassword *string
 	shopifySharedSecret *string
+	shopeePartnerId *string
+	shopeePartnerKey *string
+	shopeeShopId *string
+	shopeeRefreshToken *string
+	shopeeRegion *string
+	shopeeEnvironment *string
 	shoplazzaAccessToken *string
 	shoplazzaSharedSecret *string
 	mivaAccessToken *string
@@ -471,6 +477,10 @@ type ApiAccountConfigUpdateRequest struct {
 	sallaClientSecret *string
 	sallaRefreshToken *string
 	sallaAccessToken *string
+	temuAppKey *string
+	temuAppSecret *string
+	temuAccessToken *string
+	temuRegion *string
 }
 
 // Identifies if there is a necessity to replace parameters
@@ -854,6 +864,42 @@ func (r ApiAccountConfigUpdateRequest) ShopifyApiPassword(shopifyApiPassword str
 // Shared secret
 func (r ApiAccountConfigUpdateRequest) ShopifySharedSecret(shopifySharedSecret string) ApiAccountConfigUpdateRequest {
 	r.shopifySharedSecret = &shopifySharedSecret
+	return r
+}
+
+// Shopee Partner ID
+func (r ApiAccountConfigUpdateRequest) ShopeePartnerId(shopeePartnerId string) ApiAccountConfigUpdateRequest {
+	r.shopeePartnerId = &shopeePartnerId
+	return r
+}
+
+// Shopee Partner Key
+func (r ApiAccountConfigUpdateRequest) ShopeePartnerKey(shopeePartnerKey string) ApiAccountConfigUpdateRequest {
+	r.shopeePartnerKey = &shopeePartnerKey
+	return r
+}
+
+// Shopee SHOP ID
+func (r ApiAccountConfigUpdateRequest) ShopeeShopId(shopeeShopId string) ApiAccountConfigUpdateRequest {
+	r.shopeeShopId = &shopeeShopId
+	return r
+}
+
+// Shopee Refresh Token
+func (r ApiAccountConfigUpdateRequest) ShopeeRefreshToken(shopeeRefreshToken string) ApiAccountConfigUpdateRequest {
+	r.shopeeRefreshToken = &shopeeRefreshToken
+	return r
+}
+
+// Shopee API endpoint Region. Use for Chinese Mainland or Brazil.
+func (r ApiAccountConfigUpdateRequest) ShopeeRegion(shopeeRegion string) ApiAccountConfigUpdateRequest {
+	r.shopeeRegion = &shopeeRegion
+	return r
+}
+
+// Shopee Environment
+func (r ApiAccountConfigUpdateRequest) ShopeeEnvironment(shopeeEnvironment string) ApiAccountConfigUpdateRequest {
+	r.shopeeEnvironment = &shopeeEnvironment
 	return r
 }
 
@@ -1337,6 +1383,30 @@ func (r ApiAccountConfigUpdateRequest) SallaAccessToken(sallaAccessToken string)
 	return r
 }
 
+// Temu App Key
+func (r ApiAccountConfigUpdateRequest) TemuAppKey(temuAppKey string) ApiAccountConfigUpdateRequest {
+	r.temuAppKey = &temuAppKey
+	return r
+}
+
+// Temu App Secret
+func (r ApiAccountConfigUpdateRequest) TemuAppSecret(temuAppSecret string) ApiAccountConfigUpdateRequest {
+	r.temuAppSecret = &temuAppSecret
+	return r
+}
+
+// Temu Access Token
+func (r ApiAccountConfigUpdateRequest) TemuAccessToken(temuAccessToken string) ApiAccountConfigUpdateRequest {
+	r.temuAccessToken = &temuAccessToken
+	return r
+}
+
+// Temu API endpoint Region.
+func (r ApiAccountConfigUpdateRequest) TemuRegion(temuRegion string) ApiAccountConfigUpdateRequest {
+	r.temuRegion = &temuRegion
+	return r
+}
+
 func (r ApiAccountConfigUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.AccountConfigUpdateExecute(r)
 }
@@ -1574,6 +1644,24 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.shopifySharedSecret != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopify_shared_secret", r.shopifySharedSecret, "form", "")
+	}
+	if r.shopeePartnerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_partner_id", r.shopeePartnerId, "form", "")
+	}
+	if r.shopeePartnerKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_partner_key", r.shopeePartnerKey, "form", "")
+	}
+	if r.shopeeShopId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_shop_id", r.shopeeShopId, "form", "")
+	}
+	if r.shopeeRefreshToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_refresh_token", r.shopeeRefreshToken, "form", "")
+	}
+	if r.shopeeRegion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_region", r.shopeeRegion, "form", "")
+	}
+	if r.shopeeEnvironment != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopee_environment", r.shopeeEnvironment, "form", "")
 	}
 	if r.shoplazzaAccessToken != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shoplazza_access_token", r.shoplazzaAccessToken, "form", "")
@@ -1831,6 +1919,21 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.sallaAccessToken != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "salla_access_token", r.sallaAccessToken, "form", "")
+	}
+	if r.temuAppKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_app_key", r.temuAppKey, "form", "")
+	}
+	if r.temuAppSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_app_secret", r.temuAppSecret, "form", "")
+	}
+	if r.temuAccessToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_access_token", r.temuAccessToken, "form", "")
+	}
+	if r.temuRegion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_region", r.temuRegion, "form", "")
+	} else {
+		var defaultValue string = "US"
+		r.temuRegion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

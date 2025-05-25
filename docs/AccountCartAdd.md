@@ -84,6 +84,12 @@ Name | Type | Description | Notes
 **ShopifyApiKey** | Pointer to **string** | Shopify API Key | [optional] 
 **ShopifyApiPassword** | Pointer to **string** | Shopify API Password | [optional] 
 **ShopifySharedSecret** | Pointer to **string** | Shared secret | [optional] 
+**ShopeePartnerId** | Pointer to **string** | Shopee Partner ID | [optional] 
+**ShopeePartnerKey** | Pointer to **string** | Shopee Partner Key | [optional] 
+**ShopeeShopId** | Pointer to **string** | Shopee SHOP ID | [optional] 
+**ShopeeRefreshToken** | Pointer to **string** | Shopee Refresh Token | [optional] 
+**ShopeeRegion** | Pointer to **string** | Shopee API endpoint Region. Use for Chinese Mainland or Brazil. | [optional] 
+**ShopeeEnvironment** | Pointer to **string** | Shopee Environment | [optional] [default to "production"]
 **ShoplazzaAccessToken** | Pointer to **string** | Access token authorizing the app to access resources on behalf of a user | [optional] 
 **ShoplazzaSharedSecret** | Pointer to **string** | Shared secret | [optional] 
 **ShopwareAccessKey** | Pointer to **string** | Shopware access key | [optional] 
@@ -155,12 +161,16 @@ Name | Type | Description | Notes
 **SallaClientSecret** | Pointer to **string** | Salla Client Secret | [optional] 
 **SallaRefreshToken** | Pointer to **string** | Salla Refresh Token | [optional] 
 **SallaAccessToken** | Pointer to **string** | Salla Access Token | [optional] 
+**TemuAppKey** | Pointer to **string** | Temu App Key | [optional] 
+**TemuAppSecret** | Pointer to **string** | Temu App Secret | [optional] 
+**TemuAccessToken** | **string** | Temu Access Token | 
+**TemuRegion** | Pointer to **string** | Temu API endpoint Region. | [optional] [default to "US"]
 
 ## Methods
 
 ### NewAccountCartAdd
 
-`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, ) *AccountCartAdd`
+`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, ) *AccountCartAdd`
 
 NewAccountCartAdd instantiates a new AccountCartAdd object
 This constructor will assign default values to properties that have it defined,
@@ -2160,6 +2170,156 @@ SetShopifySharedSecret sets ShopifySharedSecret field to given value.
 
 HasShopifySharedSecret returns a boolean if a field has been set.
 
+### GetShopeePartnerId
+
+`func (o *AccountCartAdd) GetShopeePartnerId() string`
+
+GetShopeePartnerId returns the ShopeePartnerId field if non-nil, zero value otherwise.
+
+### GetShopeePartnerIdOk
+
+`func (o *AccountCartAdd) GetShopeePartnerIdOk() (*string, bool)`
+
+GetShopeePartnerIdOk returns a tuple with the ShopeePartnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeePartnerId
+
+`func (o *AccountCartAdd) SetShopeePartnerId(v string)`
+
+SetShopeePartnerId sets ShopeePartnerId field to given value.
+
+### HasShopeePartnerId
+
+`func (o *AccountCartAdd) HasShopeePartnerId() bool`
+
+HasShopeePartnerId returns a boolean if a field has been set.
+
+### GetShopeePartnerKey
+
+`func (o *AccountCartAdd) GetShopeePartnerKey() string`
+
+GetShopeePartnerKey returns the ShopeePartnerKey field if non-nil, zero value otherwise.
+
+### GetShopeePartnerKeyOk
+
+`func (o *AccountCartAdd) GetShopeePartnerKeyOk() (*string, bool)`
+
+GetShopeePartnerKeyOk returns a tuple with the ShopeePartnerKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeePartnerKey
+
+`func (o *AccountCartAdd) SetShopeePartnerKey(v string)`
+
+SetShopeePartnerKey sets ShopeePartnerKey field to given value.
+
+### HasShopeePartnerKey
+
+`func (o *AccountCartAdd) HasShopeePartnerKey() bool`
+
+HasShopeePartnerKey returns a boolean if a field has been set.
+
+### GetShopeeShopId
+
+`func (o *AccountCartAdd) GetShopeeShopId() string`
+
+GetShopeeShopId returns the ShopeeShopId field if non-nil, zero value otherwise.
+
+### GetShopeeShopIdOk
+
+`func (o *AccountCartAdd) GetShopeeShopIdOk() (*string, bool)`
+
+GetShopeeShopIdOk returns a tuple with the ShopeeShopId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeeShopId
+
+`func (o *AccountCartAdd) SetShopeeShopId(v string)`
+
+SetShopeeShopId sets ShopeeShopId field to given value.
+
+### HasShopeeShopId
+
+`func (o *AccountCartAdd) HasShopeeShopId() bool`
+
+HasShopeeShopId returns a boolean if a field has been set.
+
+### GetShopeeRefreshToken
+
+`func (o *AccountCartAdd) GetShopeeRefreshToken() string`
+
+GetShopeeRefreshToken returns the ShopeeRefreshToken field if non-nil, zero value otherwise.
+
+### GetShopeeRefreshTokenOk
+
+`func (o *AccountCartAdd) GetShopeeRefreshTokenOk() (*string, bool)`
+
+GetShopeeRefreshTokenOk returns a tuple with the ShopeeRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeeRefreshToken
+
+`func (o *AccountCartAdd) SetShopeeRefreshToken(v string)`
+
+SetShopeeRefreshToken sets ShopeeRefreshToken field to given value.
+
+### HasShopeeRefreshToken
+
+`func (o *AccountCartAdd) HasShopeeRefreshToken() bool`
+
+HasShopeeRefreshToken returns a boolean if a field has been set.
+
+### GetShopeeRegion
+
+`func (o *AccountCartAdd) GetShopeeRegion() string`
+
+GetShopeeRegion returns the ShopeeRegion field if non-nil, zero value otherwise.
+
+### GetShopeeRegionOk
+
+`func (o *AccountCartAdd) GetShopeeRegionOk() (*string, bool)`
+
+GetShopeeRegionOk returns a tuple with the ShopeeRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeeRegion
+
+`func (o *AccountCartAdd) SetShopeeRegion(v string)`
+
+SetShopeeRegion sets ShopeeRegion field to given value.
+
+### HasShopeeRegion
+
+`func (o *AccountCartAdd) HasShopeeRegion() bool`
+
+HasShopeeRegion returns a boolean if a field has been set.
+
+### GetShopeeEnvironment
+
+`func (o *AccountCartAdd) GetShopeeEnvironment() string`
+
+GetShopeeEnvironment returns the ShopeeEnvironment field if non-nil, zero value otherwise.
+
+### GetShopeeEnvironmentOk
+
+`func (o *AccountCartAdd) GetShopeeEnvironmentOk() (*string, bool)`
+
+GetShopeeEnvironmentOk returns a tuple with the ShopeeEnvironment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopeeEnvironment
+
+`func (o *AccountCartAdd) SetShopeeEnvironment(v string)`
+
+SetShopeeEnvironment sets ShopeeEnvironment field to given value.
+
+### HasShopeeEnvironment
+
+`func (o *AccountCartAdd) HasShopeeEnvironment() bool`
+
+HasShopeeEnvironment returns a boolean if a field has been set.
+
 ### GetShoplazzaAccessToken
 
 `func (o *AccountCartAdd) GetShoplazzaAccessToken() string`
@@ -3924,6 +4084,101 @@ SetSallaAccessToken sets SallaAccessToken field to given value.
 `func (o *AccountCartAdd) HasSallaAccessToken() bool`
 
 HasSallaAccessToken returns a boolean if a field has been set.
+
+### GetTemuAppKey
+
+`func (o *AccountCartAdd) GetTemuAppKey() string`
+
+GetTemuAppKey returns the TemuAppKey field if non-nil, zero value otherwise.
+
+### GetTemuAppKeyOk
+
+`func (o *AccountCartAdd) GetTemuAppKeyOk() (*string, bool)`
+
+GetTemuAppKeyOk returns a tuple with the TemuAppKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemuAppKey
+
+`func (o *AccountCartAdd) SetTemuAppKey(v string)`
+
+SetTemuAppKey sets TemuAppKey field to given value.
+
+### HasTemuAppKey
+
+`func (o *AccountCartAdd) HasTemuAppKey() bool`
+
+HasTemuAppKey returns a boolean if a field has been set.
+
+### GetTemuAppSecret
+
+`func (o *AccountCartAdd) GetTemuAppSecret() string`
+
+GetTemuAppSecret returns the TemuAppSecret field if non-nil, zero value otherwise.
+
+### GetTemuAppSecretOk
+
+`func (o *AccountCartAdd) GetTemuAppSecretOk() (*string, bool)`
+
+GetTemuAppSecretOk returns a tuple with the TemuAppSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemuAppSecret
+
+`func (o *AccountCartAdd) SetTemuAppSecret(v string)`
+
+SetTemuAppSecret sets TemuAppSecret field to given value.
+
+### HasTemuAppSecret
+
+`func (o *AccountCartAdd) HasTemuAppSecret() bool`
+
+HasTemuAppSecret returns a boolean if a field has been set.
+
+### GetTemuAccessToken
+
+`func (o *AccountCartAdd) GetTemuAccessToken() string`
+
+GetTemuAccessToken returns the TemuAccessToken field if non-nil, zero value otherwise.
+
+### GetTemuAccessTokenOk
+
+`func (o *AccountCartAdd) GetTemuAccessTokenOk() (*string, bool)`
+
+GetTemuAccessTokenOk returns a tuple with the TemuAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemuAccessToken
+
+`func (o *AccountCartAdd) SetTemuAccessToken(v string)`
+
+SetTemuAccessToken sets TemuAccessToken field to given value.
+
+
+### GetTemuRegion
+
+`func (o *AccountCartAdd) GetTemuRegion() string`
+
+GetTemuRegion returns the TemuRegion field if non-nil, zero value otherwise.
+
+### GetTemuRegionOk
+
+`func (o *AccountCartAdd) GetTemuRegionOk() (*string, bool)`
+
+GetTemuRegionOk returns a tuple with the TemuRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemuRegion
+
+`func (o *AccountCartAdd) SetTemuRegion(v string)`
+
+SetTemuRegion sets TemuRegion field to given value.
+
+### HasTemuRegion
+
+`func (o *AccountCartAdd) HasTemuRegion() bool`
+
+HasTemuRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
