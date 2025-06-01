@@ -343,7 +343,7 @@ type AccountCartAdd struct {
 	// Temu Access Token
 	TemuAccessToken string `json:"temu_access_token"`
 	// Temu API endpoint Region.
-	TemuRegion *string `json:"temu_region,omitempty"`
+	TemuRegion string `json:"temu_region"`
 }
 
 type _AccountCartAdd AccountCartAdd
@@ -352,7 +352,7 @@ type _AccountCartAdd AccountCartAdd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string) *AccountCartAdd {
+func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string) *AccountCartAdd {
 	this := AccountCartAdd{}
 	this.CartId = cartId
 	var validateVersion bool = false
@@ -380,8 +380,7 @@ func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPasswor
 	var ottoEnvironment string = "production"
 	this.OttoEnvironment = &ottoEnvironment
 	this.TemuAccessToken = temuAccessToken
-	var temuRegion string = "US"
-	this.TemuRegion = &temuRegion
+	this.TemuRegion = temuRegion
 	return &this
 }
 
@@ -410,8 +409,6 @@ func NewAccountCartAddWithDefaults() *AccountCartAdd {
 	this.AllegroEnvironment = &allegroEnvironment
 	var ottoEnvironment string = "production"
 	this.OttoEnvironment = &ottoEnvironment
-	var temuRegion string = "US"
-	this.TemuRegion = &temuRegion
 	return &this
 }
 
@@ -5487,36 +5484,28 @@ func (o *AccountCartAdd) SetTemuAccessToken(v string) {
 	o.TemuAccessToken = v
 }
 
-// GetTemuRegion returns the TemuRegion field value if set, zero value otherwise.
+// GetTemuRegion returns the TemuRegion field value
 func (o *AccountCartAdd) GetTemuRegion() string {
-	if o == nil || IsNil(o.TemuRegion) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TemuRegion
+
+	return o.TemuRegion
 }
 
-// GetTemuRegionOk returns a tuple with the TemuRegion field value if set, nil otherwise
+// GetTemuRegionOk returns a tuple with the TemuRegion field value
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetTemuRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.TemuRegion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TemuRegion, true
+	return &o.TemuRegion, true
 }
 
-// HasTemuRegion returns a boolean if a field has been set.
-func (o *AccountCartAdd) HasTemuRegion() bool {
-	if o != nil && !IsNil(o.TemuRegion) {
-		return true
-	}
-
-	return false
-}
-
-// SetTemuRegion gets a reference to the given string and assigns it to the TemuRegion field.
+// SetTemuRegion sets field value
 func (o *AccountCartAdd) SetTemuRegion(v string) {
-	o.TemuRegion = &v
+	o.TemuRegion = v
 }
 
 func (o AccountCartAdd) MarshalJSON() ([]byte, error) {
@@ -5997,9 +5986,7 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 		toSerialize["temu_app_secret"] = o.TemuAppSecret
 	}
 	toSerialize["temu_access_token"] = o.TemuAccessToken
-	if !IsNil(o.TemuRegion) {
-		toSerialize["temu_region"] = o.TemuRegion
-	}
+	toSerialize["temu_region"] = o.TemuRegion
 	return toSerialize, nil
 }
 
@@ -6014,6 +6001,7 @@ func (o *AccountCartAdd) UnmarshalJSON(data []byte) (err error) {
 		"wix_app_id",
 		"wix_app_secret_key",
 		"temu_access_token",
+		"temu_region",
 	}
 
 	allProperties := make(map[string]interface{})

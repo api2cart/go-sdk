@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	accountCartAdd := *openapiclient.NewAccountCartAdd("Opencart14", "subdomain", "4GrrZCLNNoSUuhAjesKuchxo9SL", "6b0b5b7b-7d87-45b5-bf34-ac6b438e63da", "316c0a09-f195-42be-74f6-a02cebb9cae6", "uplv3hfyt5kcwoymrgnajnbl1ow5qxlz4sqhev6hl3xosz5dejrtyl2jre6") // AccountCartAdd | 
+	accountCartAdd := *openapiclient.NewAccountCartAdd("Opencart14", "subdomain", "4GrrZCLNNoSUuhAjesKuchxo9SL", "6b0b5b7b-7d87-45b5-bf34-ac6b438e63da", "316c0a09-f195-42be-74f6-a02cebb9cae6", "uplv3hfyt5kcwoymrgnajnbl1ow5qxlz4sqhev6hl3xosz5dejrtyl2jre6", "US") // AccountCartAdd | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -333,7 +333,7 @@ func main() {
 	temuAppKey := "4ebbc9190ae410443d65b4c2faca9811" // string | Temu App Key (optional)
 	temuAppSecret := "4782d2d827276688bf4758bed55dbdd4bbe79a78" // string | Temu App Secret (optional)
 	temuAccessToken := "uplv3hfyt5kcwoymrgnajnbl1ow5qxlz4sqhev6hl3xosz5dejrtyl2jre6" // string | Temu Access Token (optional)
-	temuRegion := "US" // string | Temu API endpoint Region. (optional) (default to "US")
+	temuRegion := "US" // string | Temu API endpoint Region. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
  **temuAppKey** | **string** | Temu App Key | 
  **temuAppSecret** | **string** | Temu App Secret | 
  **temuAccessToken** | **string** | Temu Access Token | 
- **temuRegion** | **string** | Temu API endpoint Region. | [default to &quot;US&quot;]
+ **temuRegion** | **string** | Temu API endpoint Region. | 
 
 ### Return type
 

@@ -1931,9 +1931,6 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.temuRegion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_region", r.temuRegion, "form", "")
-	} else {
-		var defaultValue string = "US"
-		r.temuRegion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

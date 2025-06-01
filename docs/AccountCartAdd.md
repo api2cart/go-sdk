@@ -164,13 +164,13 @@ Name | Type | Description | Notes
 **TemuAppKey** | Pointer to **string** | Temu App Key | [optional] 
 **TemuAppSecret** | Pointer to **string** | Temu App Secret | [optional] 
 **TemuAccessToken** | **string** | Temu Access Token | 
-**TemuRegion** | Pointer to **string** | Temu API endpoint Region. | [optional] [default to "US"]
+**TemuRegion** | **string** | Temu API endpoint Region. | 
 
 ## Methods
 
 ### NewAccountCartAdd
 
-`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, ) *AccountCartAdd`
+`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string, ) *AccountCartAdd`
 
 NewAccountCartAdd instantiates a new AccountCartAdd object
 This constructor will assign default values to properties that have it defined,
@@ -4174,11 +4174,6 @@ and a boolean to check if the value has been set.
 
 SetTemuRegion sets TemuRegion field to given value.
 
-### HasTemuRegion
-
-`func (o *AccountCartAdd) HasTemuRegion() bool`
-
-HasTemuRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
