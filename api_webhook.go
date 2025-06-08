@@ -189,6 +189,7 @@ type ApiWebhookCreateRequest struct {
 	label *string
 	fields *string
 	active *bool
+	langId *string
 	storeId *string
 }
 
@@ -225,6 +226,12 @@ func (r ApiWebhookCreateRequest) Fields(fields string) ApiWebhookCreateRequest {
 // Webhook status
 func (r ApiWebhookCreateRequest) Active(active bool) ApiWebhookCreateRequest {
 	r.active = &active
+	return r
+}
+
+// Language id
+func (r ApiWebhookCreateRequest) LangId(langId string) ApiWebhookCreateRequest {
+	r.langId = &langId
 	return r
 }
 
@@ -299,6 +306,9 @@ func (a *WebhookAPIService) WebhookCreateExecute(r ApiWebhookCreateRequest) (*Ba
 	} else {
 		var defaultValue bool = true
 		r.active = &defaultValue
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
@@ -864,6 +874,7 @@ type ApiWebhookUpdateRequest struct {
 	label *string
 	fields *string
 	active *bool
+	langId *string
 }
 
 // Webhook id
@@ -893,6 +904,12 @@ func (r ApiWebhookUpdateRequest) Fields(fields string) ApiWebhookUpdateRequest {
 // Webhook status
 func (r ApiWebhookUpdateRequest) Active(active bool) ApiWebhookUpdateRequest {
 	r.active = &active
+	return r
+}
+
+// Language id
+func (r ApiWebhookUpdateRequest) LangId(langId string) ApiWebhookUpdateRequest {
+	r.langId = &langId
 	return r
 }
 
@@ -951,6 +968,9 @@ func (a *WebhookAPIService) WebhookUpdateExecute(r ApiWebhookUpdateRequest) (*Pr
 	}
 	if r.active != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
+	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

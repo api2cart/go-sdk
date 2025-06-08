@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **int32** |  | [optional] 
 **Label** | Pointer to **string** |  | [optional] 
 **StoreId** | Pointer to **string** |  | [optional] 
+**LangId** | Pointer to **string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **Callback** | Pointer to **string** |  | [optional] 
 **Fields** | Pointer to **string** |  | [optional] 
@@ -110,6 +111,31 @@ SetStoreId sets StoreId field to given value.
 `func (o *Webhook) HasStoreId() bool`
 
 HasStoreId returns a boolean if a field has been set.
+
+### GetLangId
+
+`func (o *Webhook) GetLangId() string`
+
+GetLangId returns the LangId field if non-nil, zero value otherwise.
+
+### GetLangIdOk
+
+`func (o *Webhook) GetLangIdOk() (*string, bool)`
+
+GetLangIdOk returns a tuple with the LangId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLangId
+
+`func (o *Webhook) SetLangId(v string)`
+
+SetLangId sets LangId field to given value.
+
+### HasLangId
+
+`func (o *Webhook) HasLangId() bool`
+
+HasLangId returns a boolean if a field has been set.
 
 ### GetActive
 

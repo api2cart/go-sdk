@@ -23,6 +23,7 @@ type Webhook struct {
 	Id *int32 `json:"id,omitempty"`
 	Label *string `json:"label,omitempty"`
 	StoreId *string `json:"store_id,omitempty"`
+	LangId *string `json:"lang_id,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Callback *string `json:"callback,omitempty"`
 	Fields *string `json:"fields,omitempty"`
@@ -145,6 +146,38 @@ func (o *Webhook) HasStoreId() bool {
 // SetStoreId gets a reference to the given string and assigns it to the StoreId field.
 func (o *Webhook) SetStoreId(v string) {
 	o.StoreId = &v
+}
+
+// GetLangId returns the LangId field value if set, zero value otherwise.
+func (o *Webhook) GetLangId() string {
+	if o == nil || IsNil(o.LangId) {
+		var ret string
+		return ret
+	}
+	return *o.LangId
+}
+
+// GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Webhook) GetLangIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LangId) {
+		return nil, false
+	}
+	return o.LangId, true
+}
+
+// HasLangId returns a boolean if a field has been set.
+func (o *Webhook) HasLangId() bool {
+	if o != nil && !IsNil(o.LangId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLangId gets a reference to the given string and assigns it to the LangId field.
+func (o *Webhook) SetLangId(v string) {
+	o.LangId = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -453,6 +486,9 @@ func (o Webhook) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId
+	}
+	if !IsNil(o.LangId) {
+		toSerialize["lang_id"] = o.LangId
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active

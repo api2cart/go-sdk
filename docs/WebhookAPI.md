@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## WebhookCreate
 
-> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).StoreId(storeId).Execute()
+> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).StoreId(storeId).Execute()
 
 webhook.create
 
@@ -110,11 +110,12 @@ func main() {
 	label := "Super webhook" // string | The name you give to the webhook (optional)
 	fields := "id, name, description" // string | Fields the webhook should send (optional) (default to "force_all")
 	active := true // bool | Webhook status (optional) (default to true)
+	langId := "3" // string | Language id (optional)
 	storeId := "1" // string | Defines store id where the webhook should be assigned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).StoreId(storeId).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).StoreId(storeId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +142,7 @@ Name | Type | Description  | Notes
  **label** | **string** | The name you give to the webhook | 
  **fields** | **string** | Fields the webhook should send | [default to &quot;force_all&quot;]
  **active** | **bool** | Webhook status | [default to true]
+ **langId** | **string** | Language id | 
  **storeId** | **string** | Defines store id where the webhook should be assigned | 
 
 ### Return type
@@ -368,7 +370,7 @@ Name | Type | Description  | Notes
 
 ## WebhookUpdate
 
-> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).Execute()
+> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).Execute()
 
 webhook.update
 
@@ -392,10 +394,11 @@ func main() {
 	label := "Super webhook" // string | The name you give to the webhook (optional)
 	fields := "id, name, description" // string | Fields the webhook should send (optional)
 	active := true // bool | Webhook status (optional)
+	langId := "3" // string | Language id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -421,6 +424,7 @@ Name | Type | Description  | Notes
  **label** | **string** | The name you give to the webhook | 
  **fields** | **string** | Fields the webhook should send | 
  **active** | **bool** | Webhook status | 
+ **langId** | **string** | Language id | 
 
 ### Return type
 
