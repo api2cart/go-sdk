@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## WebhookCreate
 
-> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).StoreId(storeId).Execute()
+> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).Execute()
 
 webhook.create
 
@@ -109,13 +109,14 @@ func main() {
 	callback := "https://example.com/callback" // string | Callback url that returns shipping rates. It should be able to accept POST requests with json data. (optional)
 	label := "Super webhook" // string | The name you give to the webhook (optional)
 	fields := "id, name, description" // string | Fields the webhook should send (optional) (default to "force_all")
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	active := true // bool | Webhook status (optional) (default to true)
 	langId := "3" // string | Language id (optional)
 	storeId := "1" // string | Defines store id where the webhook should be assigned (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +142,7 @@ Name | Type | Description  | Notes
  **callback** | **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | 
  **label** | **string** | The name you give to the webhook | 
  **fields** | **string** | Fields the webhook should send | [default to &quot;force_all&quot;]
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **active** | **bool** | Webhook status | [default to true]
  **langId** | **string** | Language id | 
  **storeId** | **string** | Defines store id where the webhook should be assigned | 
@@ -370,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## WebhookUpdate
 
-> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).Execute()
+> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).Execute()
 
 webhook.update
 
@@ -393,12 +395,13 @@ func main() {
 	callback := "https://example.com/callback" // string | Callback url that returns shipping rates. It should be able to accept POST requests with json data. (optional)
 	label := "Super webhook" // string | The name you give to the webhook (optional)
 	fields := "id, name, description" // string | Fields the webhook should send (optional)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	active := true // bool | Webhook status (optional)
 	langId := "3" // string | Language id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).Active(active).LangId(langId).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -423,6 +426,7 @@ Name | Type | Description  | Notes
  **callback** | **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | 
  **label** | **string** | The name you give to the webhook | 
  **fields** | **string** | Fields the webhook should send | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **active** | **bool** | Webhook status | 
  **langId** | **string** | Language id | 
 

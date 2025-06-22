@@ -27,6 +27,7 @@ type Webhook struct {
 	Active *bool `json:"active,omitempty"`
 	Callback *string `json:"callback,omitempty"`
 	Fields *string `json:"fields,omitempty"`
+	ResponseFields *string `json:"response_fields,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	Entity *string `json:"entity,omitempty"`
@@ -276,6 +277,38 @@ func (o *Webhook) SetFields(v string) {
 	o.Fields = &v
 }
 
+// GetResponseFields returns the ResponseFields field value if set, zero value otherwise.
+func (o *Webhook) GetResponseFields() string {
+	if o == nil || IsNil(o.ResponseFields) {
+		var ret string
+		return ret
+	}
+	return *o.ResponseFields
+}
+
+// GetResponseFieldsOk returns a tuple with the ResponseFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Webhook) GetResponseFieldsOk() (*string, bool) {
+	if o == nil || IsNil(o.ResponseFields) {
+		return nil, false
+	}
+	return o.ResponseFields, true
+}
+
+// HasResponseFields returns a boolean if a field has been set.
+func (o *Webhook) HasResponseFields() bool {
+	if o != nil && !IsNil(o.ResponseFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponseFields gets a reference to the given string and assigns it to the ResponseFields field.
+func (o *Webhook) SetResponseFields(v string) {
+	o.ResponseFields = &v
+}
+
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Webhook) GetCreatedAt() string {
 	if o == nil || IsNil(o.CreatedAt) {
@@ -498,6 +531,9 @@ func (o Webhook) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields
+	}
+	if !IsNil(o.ResponseFields) {
+		toSerialize["response_fields"] = o.ResponseFields
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt

@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **AvailForSale** | Pointer to **bool** |  | [optional] 
 **AllowBackorders** | Pointer to **bool** |  | [optional] 
 **InStock** | Pointer to **bool** |  | [optional] 
+**OnSale** | Pointer to **bool** |  | [optional] 
 **ManageStock** | Pointer to **bool** |  | [optional] 
 **InventoryLevel** | Pointer to **float32** |  | [optional] 
 **Inventory** | Pointer to [**[]ProductInventory**](ProductInventory.md) |  | [optional] 
@@ -744,6 +745,31 @@ SetInStock sets InStock field to given value.
 `func (o *Child) HasInStock() bool`
 
 HasInStock returns a boolean if a field has been set.
+
+### GetOnSale
+
+`func (o *Child) GetOnSale() bool`
+
+GetOnSale returns the OnSale field if non-nil, zero value otherwise.
+
+### GetOnSaleOk
+
+`func (o *Child) GetOnSaleOk() (*bool, bool)`
+
+GetOnSaleOk returns a tuple with the OnSale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnSale
+
+`func (o *Child) SetOnSale(v bool)`
+
+SetOnSale sets OnSale field to given value.
+
+### HasOnSale
+
+`func (o *Child) HasOnSale() bool`
+
+HasOnSale returns a boolean if a field has been set.
 
 ### GetManageStock
 

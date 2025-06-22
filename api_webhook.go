@@ -188,6 +188,7 @@ type ApiWebhookCreateRequest struct {
 	callback *string
 	label *string
 	fields *string
+	responseFields *string
 	active *bool
 	langId *string
 	storeId *string
@@ -220,6 +221,12 @@ func (r ApiWebhookCreateRequest) Label(label string) ApiWebhookCreateRequest {
 // Fields the webhook should send
 func (r ApiWebhookCreateRequest) Fields(fields string) ApiWebhookCreateRequest {
 	r.fields = &fields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiWebhookCreateRequest) ResponseFields(responseFields string) ApiWebhookCreateRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
@@ -300,6 +307,9 @@ func (a *WebhookAPIService) WebhookCreateExecute(r ApiWebhookCreateRequest) (*Ba
 	} else {
 		var defaultValue string = "force_all"
 		r.fields = &defaultValue
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.active != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
@@ -873,6 +883,7 @@ type ApiWebhookUpdateRequest struct {
 	callback *string
 	label *string
 	fields *string
+	responseFields *string
 	active *bool
 	langId *string
 }
@@ -898,6 +909,12 @@ func (r ApiWebhookUpdateRequest) Label(label string) ApiWebhookUpdateRequest {
 // Fields the webhook should send
 func (r ApiWebhookUpdateRequest) Fields(fields string) ApiWebhookUpdateRequest {
 	r.fields = &fields
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiWebhookUpdateRequest) ResponseFields(responseFields string) ApiWebhookUpdateRequest {
+	r.responseFields = &responseFields
 	return r
 }
 
@@ -965,6 +982,9 @@ func (a *WebhookAPIService) WebhookUpdateExecute(r ApiWebhookUpdateRequest) (*Pr
 	}
 	if r.fields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
 	}
 	if r.active != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")

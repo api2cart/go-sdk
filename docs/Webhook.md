@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Active** | Pointer to **bool** |  | [optional] 
 **Callback** | Pointer to **string** |  | [optional] 
 **Fields** | Pointer to **string** |  | [optional] 
+**ResponseFields** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
 **Entity** | Pointer to **string** |  | [optional] 
@@ -211,6 +212,31 @@ SetFields sets Fields field to given value.
 `func (o *Webhook) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
+
+### GetResponseFields
+
+`func (o *Webhook) GetResponseFields() string`
+
+GetResponseFields returns the ResponseFields field if non-nil, zero value otherwise.
+
+### GetResponseFieldsOk
+
+`func (o *Webhook) GetResponseFieldsOk() (*string, bool)`
+
+GetResponseFieldsOk returns a tuple with the ResponseFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponseFields
+
+`func (o *Webhook) SetResponseFields(v string)`
+
+SetResponseFields sets ResponseFields field to given value.
+
+### HasResponseFields
+
+`func (o *Webhook) HasResponseFields() bool`
+
+HasResponseFields returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

@@ -47,6 +47,7 @@ type Child struct {
 	AvailForSale *bool `json:"avail_for_sale,omitempty"`
 	AllowBackorders *bool `json:"allow_backorders,omitempty"`
 	InStock *bool `json:"in_stock,omitempty"`
+	OnSale *bool `json:"on_sale,omitempty"`
 	ManageStock *bool `json:"manage_stock,omitempty"`
 	InventoryLevel *float32 `json:"inventory_level,omitempty"`
 	Inventory []ProductInventory `json:"inventory,omitempty"`
@@ -949,6 +950,38 @@ func (o *Child) SetInStock(v bool) {
 	o.InStock = &v
 }
 
+// GetOnSale returns the OnSale field value if set, zero value otherwise.
+func (o *Child) GetOnSale() bool {
+	if o == nil || IsNil(o.OnSale) {
+		var ret bool
+		return ret
+	}
+	return *o.OnSale
+}
+
+// GetOnSaleOk returns a tuple with the OnSale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Child) GetOnSaleOk() (*bool, bool) {
+	if o == nil || IsNil(o.OnSale) {
+		return nil, false
+	}
+	return o.OnSale, true
+}
+
+// HasOnSale returns a boolean if a field has been set.
+func (o *Child) HasOnSale() bool {
+	if o != nil && !IsNil(o.OnSale) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnSale gets a reference to the given bool and assigns it to the OnSale field.
+func (o *Child) SetOnSale(v bool) {
+	o.OnSale = &v
+}
+
 // GetManageStock returns the ManageStock field value if set, zero value otherwise.
 func (o *Child) GetManageStock() bool {
 	if o == nil || IsNil(o.ManageStock) {
@@ -1647,6 +1680,9 @@ func (o Child) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.InStock) {
 		toSerialize["in_stock"] = o.InStock
+	}
+	if !IsNil(o.OnSale) {
+		toSerialize["on_sale"] = o.OnSale
 	}
 	if !IsNil(o.ManageStock) {
 		toSerialize["manage_stock"] = o.ManageStock
