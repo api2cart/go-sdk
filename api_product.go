@@ -2094,6 +2094,7 @@ type ApiProductCountRequest struct {
 	productAttributes *[]string
 	status *string
 	type_ *string
+	visible *string
 	findValue *string
 	findWhere *string
 	reportRequestId *string
@@ -2195,6 +2196,12 @@ func (r ApiProductCountRequest) Status(status string) ApiProductCountRequest {
 // Defines products&#39;s type
 func (r ApiProductCountRequest) Type_(type_ string) ApiProductCountRequest {
 	r.type_ = &type_
+	return r
+}
+
+// Filter items by visibility status
+func (r ApiProductCountRequest) Visible(visible string) ApiProductCountRequest {
+	r.visible = &visible
 	return r
 }
 
@@ -2329,6 +2336,12 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	}
+	if r.visible != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "visible", r.visible, "form", "")
+	} else {
+		var defaultValue string = "everywhere"
+		r.visible = &defaultValue
 	}
 	if r.findValue != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
@@ -4263,6 +4276,7 @@ type ApiProductListRequest struct {
 	productAttributes *[]string
 	status *string
 	type_ *string
+	visible *string
 	findValue *string
 	findWhere *string
 	returnGlobal *bool
@@ -4400,6 +4414,12 @@ func (r ApiProductListRequest) Status(status string) ApiProductListRequest {
 // Defines products&#39;s type
 func (r ApiProductListRequest) Type_(type_ string) ApiProductListRequest {
 	r.type_ = &type_
+	return r
+}
+
+// Filter items by visibility status
+func (r ApiProductListRequest) Visible(visible string) ApiProductListRequest {
+	r.visible = &visible
 	return r
 }
 
@@ -4591,6 +4611,12 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	}
 	if r.type_ != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	}
+	if r.visible != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "visible", r.visible, "form", "")
+	} else {
+		var defaultValue string = "everywhere"
+		r.visible = &defaultValue
 	}
 	if r.findValue != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")

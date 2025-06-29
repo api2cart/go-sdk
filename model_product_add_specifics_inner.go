@@ -25,6 +25,7 @@ type ProductAddSpecificsInner struct {
 	Values []string `json:"values,omitempty"`
 	UsedForVariations *bool `json:"used_for_variations,omitempty"`
 	ScaleId NullableInt32 `json:"scale_id,omitempty"`
+	InputValue NullableString `json:"input_value,omitempty"`
 	FoodDetails *ProductAddSpecificsInnerFoodDetails `json:"food_details,omitempty"`
 	GroupProductsDetails []ProductAddSpecificsInnerGroupProductsDetailsInner `json:"group_products_details,omitempty"`
 	BookingDetails *ProductAddSpecificsInnerBookingDetails `json:"booking_details,omitempty"`
@@ -221,6 +222,48 @@ func (o *ProductAddSpecificsInner) UnsetScaleId() {
 	o.ScaleId.Unset()
 }
 
+// GetInputValue returns the InputValue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProductAddSpecificsInner) GetInputValue() string {
+	if o == nil || IsNil(o.InputValue.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InputValue.Get()
+}
+
+// GetInputValueOk returns a tuple with the InputValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProductAddSpecificsInner) GetInputValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InputValue.Get(), o.InputValue.IsSet()
+}
+
+// HasInputValue returns a boolean if a field has been set.
+func (o *ProductAddSpecificsInner) HasInputValue() bool {
+	if o != nil && o.InputValue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInputValue gets a reference to the given NullableString and assigns it to the InputValue field.
+func (o *ProductAddSpecificsInner) SetInputValue(v string) {
+	o.InputValue.Set(&v)
+}
+// SetInputValueNil sets the value for InputValue to be an explicit nil
+func (o *ProductAddSpecificsInner) SetInputValueNil() {
+	o.InputValue.Set(nil)
+}
+
+// UnsetInputValue ensures that no value is present for InputValue, not even an explicit nil
+func (o *ProductAddSpecificsInner) UnsetInputValue() {
+	o.InputValue.Unset()
+}
+
 // GetFoodDetails returns the FoodDetails field value if set, zero value otherwise.
 func (o *ProductAddSpecificsInner) GetFoodDetails() ProductAddSpecificsInnerFoodDetails {
 	if o == nil || IsNil(o.FoodDetails) {
@@ -341,6 +384,9 @@ func (o ProductAddSpecificsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ScaleId.IsSet() {
 		toSerialize["scale_id"] = o.ScaleId.Get()
+	}
+	if o.InputValue.IsSet() {
+		toSerialize["input_value"] = o.InputValue.Get()
 	}
 	if !IsNil(o.FoodDetails) {
 		toSerialize["food_details"] = o.FoodDetails

@@ -3514,7 +3514,7 @@ func (r ApiOrderShipmentListRequest) Execute() (*ModelResponseOrderShipmentList,
 /*
 OrderShipmentList order.shipment.list
 
-Get list of shipments by orders.
+Get list of shipments per order.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOrderShipmentListRequest

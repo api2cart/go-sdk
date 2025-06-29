@@ -38,6 +38,8 @@ type OrderAddOrderItemInner struct {
 	OrderItemVariantId *string `json:"order_item_variant_id,omitempty"`
 	// Percentage of tax for product order
 	OrderItemTax *float32 `json:"order_item_tax,omitempty"`
+	// Id of the tax class of product.
+	OrderItemTaxClass *string `json:"order_item_tax_class,omitempty"`
 	// Defines if item price includes tax
 	OrderItemPriceIncludesTax *bool `json:"order_item_price_includes_tax,omitempty"`
 	// Index of the parent grouped/bundle product
@@ -307,6 +309,38 @@ func (o *OrderAddOrderItemInner) SetOrderItemTax(v float32) {
 	o.OrderItemTax = &v
 }
 
+// GetOrderItemTaxClass returns the OrderItemTaxClass field value if set, zero value otherwise.
+func (o *OrderAddOrderItemInner) GetOrderItemTaxClass() string {
+	if o == nil || IsNil(o.OrderItemTaxClass) {
+		var ret string
+		return ret
+	}
+	return *o.OrderItemTaxClass
+}
+
+// GetOrderItemTaxClassOk returns a tuple with the OrderItemTaxClass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAddOrderItemInner) GetOrderItemTaxClassOk() (*string, bool) {
+	if o == nil || IsNil(o.OrderItemTaxClass) {
+		return nil, false
+	}
+	return o.OrderItemTaxClass, true
+}
+
+// HasOrderItemTaxClass returns a boolean if a field has been set.
+func (o *OrderAddOrderItemInner) HasOrderItemTaxClass() bool {
+	if o != nil && !IsNil(o.OrderItemTaxClass) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderItemTaxClass gets a reference to the given string and assigns it to the OrderItemTaxClass field.
+func (o *OrderAddOrderItemInner) SetOrderItemTaxClass(v string) {
+	o.OrderItemTaxClass = &v
+}
+
 // GetOrderItemPriceIncludesTax returns the OrderItemPriceIncludesTax field value if set, zero value otherwise.
 func (o *OrderAddOrderItemInner) GetOrderItemPriceIncludesTax() bool {
 	if o == nil || IsNil(o.OrderItemPriceIncludesTax) {
@@ -556,6 +590,9 @@ func (o OrderAddOrderItemInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrderItemTax) {
 		toSerialize["order_item_tax"] = o.OrderItemTax
+	}
+	if !IsNil(o.OrderItemTaxClass) {
+		toSerialize["order_item_tax_class"] = o.OrderItemTaxClass
 	}
 	if !IsNil(o.OrderItemPriceIncludesTax) {
 		toSerialize["order_item_price_includes_tax"] = o.OrderItemPriceIncludesTax

@@ -56,6 +56,8 @@ type CartCouponAdd struct {
 	IncludeTax *bool `json:"include_tax,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
+	// Defines whether the coupon provides free cash on delivery
+	FreeCashOnDelivery *bool `json:"free_cash_on_delivery,omitempty"`
 }
 
 type _CartCouponAdd CartCouponAdd
@@ -594,6 +596,38 @@ func (o *CartCouponAdd) SetStoreId(v string) {
 	o.StoreId = &v
 }
 
+// GetFreeCashOnDelivery returns the FreeCashOnDelivery field value if set, zero value otherwise.
+func (o *CartCouponAdd) GetFreeCashOnDelivery() bool {
+	if o == nil || IsNil(o.FreeCashOnDelivery) {
+		var ret bool
+		return ret
+	}
+	return *o.FreeCashOnDelivery
+}
+
+// GetFreeCashOnDeliveryOk returns a tuple with the FreeCashOnDelivery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartCouponAdd) GetFreeCashOnDeliveryOk() (*bool, bool) {
+	if o == nil || IsNil(o.FreeCashOnDelivery) {
+		return nil, false
+	}
+	return o.FreeCashOnDelivery, true
+}
+
+// HasFreeCashOnDelivery returns a boolean if a field has been set.
+func (o *CartCouponAdd) HasFreeCashOnDelivery() bool {
+	if o != nil && !IsNil(o.FreeCashOnDelivery) {
+		return true
+	}
+
+	return false
+}
+
+// SetFreeCashOnDelivery gets a reference to the given bool and assigns it to the FreeCashOnDelivery field.
+func (o *CartCouponAdd) SetFreeCashOnDelivery(v bool) {
+	o.FreeCashOnDelivery = &v
+}
+
 func (o CartCouponAdd) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -644,6 +678,9 @@ func (o CartCouponAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId
+	}
+	if !IsNil(o.FreeCashOnDelivery) {
+		toSerialize["free_cash_on_delivery"] = o.FreeCashOnDelivery
 	}
 	return toSerialize, nil
 }

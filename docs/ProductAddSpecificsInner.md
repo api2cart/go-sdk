@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Values** | Pointer to **[]string** |  | [optional] 
 **UsedForVariations** | Pointer to **bool** |  | [optional] [default to false]
 **ScaleId** | Pointer to **NullableInt32** |  | [optional] 
+**InputValue** | Pointer to **NullableString** |  | [optional] 
 **FoodDetails** | Pointer to [**ProductAddSpecificsInnerFoodDetails**](ProductAddSpecificsInnerFoodDetails.md) |  | [optional] 
 **GroupProductsDetails** | Pointer to [**[]ProductAddSpecificsInnerGroupProductsDetailsInner**](ProductAddSpecificsInnerGroupProductsDetailsInner.md) |  | [optional] 
 **BookingDetails** | Pointer to [**ProductAddSpecificsInnerBookingDetails**](ProductAddSpecificsInnerBookingDetails.md) |  | [optional] 
@@ -167,6 +168,41 @@ HasScaleId returns a boolean if a field has been set.
 `func (o *ProductAddSpecificsInner) UnsetScaleId()`
 
 UnsetScaleId ensures that no value is present for ScaleId, not even an explicit nil
+### GetInputValue
+
+`func (o *ProductAddSpecificsInner) GetInputValue() string`
+
+GetInputValue returns the InputValue field if non-nil, zero value otherwise.
+
+### GetInputValueOk
+
+`func (o *ProductAddSpecificsInner) GetInputValueOk() (*string, bool)`
+
+GetInputValueOk returns a tuple with the InputValue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputValue
+
+`func (o *ProductAddSpecificsInner) SetInputValue(v string)`
+
+SetInputValue sets InputValue field to given value.
+
+### HasInputValue
+
+`func (o *ProductAddSpecificsInner) HasInputValue() bool`
+
+HasInputValue returns a boolean if a field has been set.
+
+### SetInputValueNil
+
+`func (o *ProductAddSpecificsInner) SetInputValueNil(b bool)`
+
+ SetInputValueNil sets the value for InputValue to be an explicit nil
+
+### UnsetInputValue
+`func (o *ProductAddSpecificsInner) UnsetInputValue()`
+
+UnsetInputValue ensures that no value is present for InputValue, not even an explicit nil
 ### GetFoodDetails
 
 `func (o *ProductAddSpecificsInner) GetFoodDetails() ProductAddSpecificsInnerFoodDetails`

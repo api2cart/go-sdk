@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **OrderItemWeight** | Pointer to **float32** | Defines orders specified by order item weight | [optional] 
 **OrderItemVariantId** | Pointer to **string** | Ordered product variant. Where x is order item ID | [optional] 
 **OrderItemTax** | Pointer to **float32** | Percentage of tax for product order | [optional] [default to 0]
+**OrderItemTaxClass** | Pointer to **string** | Id of the tax class of product. | [optional] 
 **OrderItemPriceIncludesTax** | Pointer to **bool** | Defines if item price includes tax | [optional] [default to false]
 **OrderItemParent** | Pointer to **int32** | Index of the parent grouped/bundle product | [optional] 
 **OrderItemParentOptionName** | Pointer to **string** | Option name of the parent grouped/bundle product | [optional] 
@@ -218,6 +219,31 @@ SetOrderItemTax sets OrderItemTax field to given value.
 `func (o *OrderAddOrderItemInner) HasOrderItemTax() bool`
 
 HasOrderItemTax returns a boolean if a field has been set.
+
+### GetOrderItemTaxClass
+
+`func (o *OrderAddOrderItemInner) GetOrderItemTaxClass() string`
+
+GetOrderItemTaxClass returns the OrderItemTaxClass field if non-nil, zero value otherwise.
+
+### GetOrderItemTaxClassOk
+
+`func (o *OrderAddOrderItemInner) GetOrderItemTaxClassOk() (*string, bool)`
+
+GetOrderItemTaxClassOk returns a tuple with the OrderItemTaxClass field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderItemTaxClass
+
+`func (o *OrderAddOrderItemInner) SetOrderItemTaxClass(v string)`
+
+SetOrderItemTaxClass sets OrderItemTaxClass field to given value.
+
+### HasOrderItemTaxClass
+
+`func (o *OrderAddOrderItemInner) HasOrderItemTaxClass() bool`
+
+HasOrderItemTaxClass returns a boolean if a field has been set.
 
 ### GetOrderItemPriceIncludesTax
 

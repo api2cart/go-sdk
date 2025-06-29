@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ActionConditionValue** | Pointer to **string** | Defines condition attribute value/s. Can be comma separated string. | [optional] 
 **IncludeTax** | Pointer to **bool** | Indicates whether to apply a discount for taxes. | [optional] [default to false]
 **StoreId** | Pointer to **string** | Store Id | [optional] 
+**FreeCashOnDelivery** | Pointer to **bool** | Defines whether the coupon provides free cash on delivery | [optional] 
 
 ## Methods
 
@@ -440,6 +441,31 @@ SetStoreId sets StoreId field to given value.
 `func (o *CartCouponAdd) HasStoreId() bool`
 
 HasStoreId returns a boolean if a field has been set.
+
+### GetFreeCashOnDelivery
+
+`func (o *CartCouponAdd) GetFreeCashOnDelivery() bool`
+
+GetFreeCashOnDelivery returns the FreeCashOnDelivery field if non-nil, zero value otherwise.
+
+### GetFreeCashOnDeliveryOk
+
+`func (o *CartCouponAdd) GetFreeCashOnDeliveryOk() (*bool, bool)`
+
+GetFreeCashOnDeliveryOk returns a tuple with the FreeCashOnDelivery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFreeCashOnDelivery
+
+`func (o *CartCouponAdd) SetFreeCashOnDelivery(v bool)`
+
+SetFreeCashOnDelivery sets FreeCashOnDelivery field to given value.
+
+### HasFreeCashOnDelivery
+
+`func (o *CartCouponAdd) HasFreeCashOnDelivery() bool`
+
+HasFreeCashOnDelivery returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

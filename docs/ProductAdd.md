@@ -107,6 +107,7 @@ Name | Type | Description | Notes
 **LogisticInfo** | Pointer to [**[]ProductAddLogisticInfoInner**](ProductAddLogisticInfoInner.md) | Defines product&#39;s logistic channel settings | [optional] 
 **ListingDuration** | Pointer to **string** | Describes the number of days the seller wants the listing to be active. Look at cart.info method response for allowed values. | [optional] 
 **ListingType** | Pointer to **string** | Indicates the selling format of the marketplace listing. | [optional] [default to "FixedPrice"]
+**CategoryType** | Pointer to **string** | Specifies the type of category (e.g., apparel or other) for the product being added. | [optional] 
 **ReturnAccepted** | Pointer to **bool** | Indicates whether the seller allows the buyer to return the item. | [optional] 
 **SellerProfiles** | Pointer to [**ProductAddSellerProfiles**](ProductAddSellerProfiles.md) |  | [optional] 
 **AuctionConfidentialityLevel** | Pointer to **string** | This allows buyers to remain anonymous when the bid or buy an item. | [optional] 
@@ -2693,6 +2694,31 @@ SetListingType sets ListingType field to given value.
 `func (o *ProductAdd) HasListingType() bool`
 
 HasListingType returns a boolean if a field has been set.
+
+### GetCategoryType
+
+`func (o *ProductAdd) GetCategoryType() string`
+
+GetCategoryType returns the CategoryType field if non-nil, zero value otherwise.
+
+### GetCategoryTypeOk
+
+`func (o *ProductAdd) GetCategoryTypeOk() (*string, bool)`
+
+GetCategoryTypeOk returns a tuple with the CategoryType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCategoryType
+
+`func (o *ProductAdd) SetCategoryType(v string)`
+
+SetCategoryType sets CategoryType field to given value.
+
+### HasCategoryType
+
+`func (o *ProductAdd) HasCategoryType() bool`
+
+HasCategoryType returns a boolean if a field has been set.
 
 ### GetReturnAccepted
 

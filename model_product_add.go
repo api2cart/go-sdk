@@ -224,6 +224,8 @@ type ProductAdd struct {
 	ListingDuration *string `json:"listing_duration,omitempty"`
 	// Indicates the selling format of the marketplace listing.
 	ListingType *string `json:"listing_type,omitempty"`
+	// Specifies the type of category (e.g., apparel or other) for the product being added.
+	CategoryType *string `json:"category_type,omitempty"`
 	// Indicates whether the seller allows the buyer to return the item.
 	ReturnAccepted *bool `json:"return_accepted,omitempty"`
 	SellerProfiles *ProductAddSellerProfiles `json:"seller_profiles,omitempty"`
@@ -3602,6 +3604,38 @@ func (o *ProductAdd) SetListingType(v string) {
 	o.ListingType = &v
 }
 
+// GetCategoryType returns the CategoryType field value if set, zero value otherwise.
+func (o *ProductAdd) GetCategoryType() string {
+	if o == nil || IsNil(o.CategoryType) {
+		var ret string
+		return ret
+	}
+	return *o.CategoryType
+}
+
+// GetCategoryTypeOk returns a tuple with the CategoryType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetCategoryTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.CategoryType) {
+		return nil, false
+	}
+	return o.CategoryType, true
+}
+
+// HasCategoryType returns a boolean if a field has been set.
+func (o *ProductAdd) HasCategoryType() bool {
+	if o != nil && !IsNil(o.CategoryType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategoryType gets a reference to the given string and assigns it to the CategoryType field.
+func (o *ProductAdd) SetCategoryType(v string) {
+	o.CategoryType = &v
+}
+
 // GetReturnAccepted returns the ReturnAccepted field value if set, zero value otherwise.
 func (o *ProductAdd) GetReturnAccepted() bool {
 	if o == nil || IsNil(o.ReturnAccepted) {
@@ -4296,6 +4330,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ListingType) {
 		toSerialize["listing_type"] = o.ListingType
+	}
+	if !IsNil(o.CategoryType) {
+		toSerialize["category_type"] = o.CategoryType
 	}
 	if !IsNil(o.ReturnAccepted) {
 		toSerialize["return_accepted"] = o.ReturnAccepted
