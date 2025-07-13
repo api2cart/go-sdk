@@ -32,6 +32,7 @@ type Customer struct {
 	LastLogin *A2CDateTime `json:"last_login,omitempty"`
 	BirthDay *A2CDateTime `json:"birth_day,omitempty"`
 	Status *string `json:"status,omitempty"`
+	IsGuest *bool `json:"is_guest,omitempty"`
 	NewsLetterSubscription *bool `json:"news_letter_subscription,omitempty"`
 	Consents []CustomerConsent `json:"consents,omitempty"`
 	Gender *string `json:"gender,omitempty"`
@@ -447,6 +448,38 @@ func (o *Customer) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *Customer) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetIsGuest returns the IsGuest field value if set, zero value otherwise.
+func (o *Customer) GetIsGuest() bool {
+	if o == nil || IsNil(o.IsGuest) {
+		var ret bool
+		return ret
+	}
+	return *o.IsGuest
+}
+
+// GetIsGuestOk returns a tuple with the IsGuest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Customer) GetIsGuestOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsGuest) {
+		return nil, false
+	}
+	return o.IsGuest, true
+}
+
+// HasIsGuest returns a boolean if a field has been set.
+func (o *Customer) HasIsGuest() bool {
+	if o != nil && !IsNil(o.IsGuest) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsGuest gets a reference to the given bool and assigns it to the IsGuest field.
+func (o *Customer) SetIsGuest(v bool) {
+	o.IsGuest = &v
 }
 
 // GetNewsLetterSubscription returns the NewsLetterSubscription field value if set, zero value otherwise.
@@ -942,6 +975,9 @@ func (o Customer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.IsGuest) {
+		toSerialize["is_guest"] = o.IsGuest
 	}
 	if !IsNil(o.NewsLetterSubscription) {
 		toSerialize["news_letter_subscription"] = o.NewsLetterSubscription

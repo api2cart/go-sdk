@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **LastLogin** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
 **BirthDay** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
+**IsGuest** | Pointer to **bool** |  | [optional] 
 **NewsLetterSubscription** | Pointer to **bool** |  | [optional] 
 **Consents** | Pointer to [**[]CustomerConsent**](CustomerConsent.md) |  | [optional] 
 **Gender** | Pointer to **string** |  | [optional] 
@@ -349,6 +350,31 @@ SetStatus sets Status field to given value.
 `func (o *Customer) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetIsGuest
+
+`func (o *Customer) GetIsGuest() bool`
+
+GetIsGuest returns the IsGuest field if non-nil, zero value otherwise.
+
+### GetIsGuestOk
+
+`func (o *Customer) GetIsGuestOk() (*bool, bool)`
+
+GetIsGuestOk returns a tuple with the IsGuest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsGuest
+
+`func (o *Customer) SetIsGuest(v bool)`
+
+SetIsGuest sets IsGuest field to given value.
+
+### HasIsGuest
+
+`func (o *Customer) HasIsGuest() bool`
+
+HasIsGuest returns a boolean if a field has been set.
 
 ### GetNewsLetterSubscription
 

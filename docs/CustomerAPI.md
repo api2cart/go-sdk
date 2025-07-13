@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ## CustomerCount
 
-> CustomerCount200Response CustomerCount(ctx).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
+> CustomerCount200Response CustomerCount(ctx).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 
 customer.count
 
@@ -258,6 +258,7 @@ func main() {
 	groupId := "3" // string | Customer group_id (optional)
 	storeId := "1" // string | Counts customer specified by store id (optional)
 	avail := false // bool | Defines category's visibility status (optional) (default to true)
+	includeGuests := true // bool | Indicates whether to include guest customers in the total count. (optional) (default to false)
 	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
 	findWhere := "email" // string | Counts customers that are searched specified by field (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
@@ -267,7 +268,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerCount(context.Background()).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerCount(context.Background()).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -294,6 +295,7 @@ Name | Type | Description  | Notes
  **groupId** | **string** | Customer group_id | 
  **storeId** | **string** | Counts customer specified by store id | 
  **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
+ **includeGuests** | **bool** | Indicates whether to include guest customers in the total count. | [default to false]
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Counts customers that are searched specified by field | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
@@ -387,7 +389,7 @@ Name | Type | Description  | Notes
 
 ## CustomerFind
 
-> CustomerFind200Response CustomerFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).Execute()
+> CustomerFind200Response CustomerFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).IncludeGuests(includeGuests).Execute()
 
 customer.find
 
@@ -410,10 +412,11 @@ func main() {
 	findWhere := "email" // string | Entity search that is specified by the comma-separated unique fields (optional) (default to "email")
 	findParams := "regex" // string | Entity search that is specified by comma-separated parameters (optional) (default to "whole_words")
 	storeId := "1" // string | Store Id (optional)
+	includeGuests := true // bool | Indicates whether to search among guest customers when looking up a customer. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerFind(context.Background()).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerFind(context.Background()).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).IncludeGuests(includeGuests).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -438,6 +441,7 @@ Name | Type | Description  | Notes
  **findWhere** | **string** | Entity search that is specified by the comma-separated unique fields | [default to &quot;email&quot;]
  **findParams** | **string** | Entity search that is specified by comma-separated parameters | [default to &quot;whole_words&quot;]
  **storeId** | **string** | Store Id | 
+ **includeGuests** | **bool** | Indicates whether to search among guest customers when looking up a customer. | [default to false]
 
 ### Return type
 
@@ -687,7 +691,7 @@ Name | Type | Description  | Notes
 
 ## CustomerList
 
-> ModelResponseCustomerList CustomerList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseCustomerList CustomerList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 customer.list
 
@@ -715,6 +719,7 @@ func main() {
 	groupId := "3" // string | Customer group_id (optional)
 	storeId := "1" // string | Retrieves customers specified by store id (optional)
 	avail := false // bool | Defines category's visibility status (optional) (default to true)
+	includeGuests := true // bool | Indicates whether to include guest customers in the list results. (optional) (default to false)
 	findValue := "mail@gmail.com" // string | Entity search that is specified by some value (optional)
 	findWhere := "email" // string | Customer search that is specified by field (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
@@ -729,7 +734,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -759,6 +764,7 @@ Name | Type | Description  | Notes
  **groupId** | **string** | Customer group_id | 
  **storeId** | **string** | Retrieves customers specified by store id | 
  **avail** | **bool** | Defines category&#39;s visibility status | [default to true]
+ **includeGuests** | **bool** | Indicates whether to include guest customers in the list results. | [default to false]
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Customer search that is specified by field | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 

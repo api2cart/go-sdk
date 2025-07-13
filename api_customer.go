@@ -522,6 +522,7 @@ type ApiCustomerCountRequest struct {
 	groupId *string
 	storeId *string
 	avail *bool
+	includeGuests *bool
 	findValue *string
 	findWhere *string
 	createdFrom *string
@@ -563,6 +564,12 @@ func (r ApiCustomerCountRequest) StoreId(storeId string) ApiCustomerCountRequest
 // Defines category&#39;s visibility status
 func (r ApiCustomerCountRequest) Avail(avail bool) ApiCustomerCountRequest {
 	r.avail = &avail
+	return r
+}
+
+// Indicates whether to include guest customers in the total count.
+func (r ApiCustomerCountRequest) IncludeGuests(includeGuests bool) ApiCustomerCountRequest {
+	r.includeGuests = &includeGuests
 	return r
 }
 
@@ -662,6 +669,12 @@ func (a *CustomerAPIService) CustomerCountExecute(r ApiCustomerCountRequest) (*C
 	} else {
 		var defaultValue bool = true
 		r.avail = &defaultValue
+	}
+	if r.includeGuests != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_guests", r.includeGuests, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.includeGuests = &defaultValue
 	}
 	if r.findValue != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
@@ -908,6 +921,7 @@ type ApiCustomerFindRequest struct {
 	findWhere *string
 	findParams *string
 	storeId *string
+	includeGuests *bool
 }
 
 // Entity search that is specified by some value
@@ -931,6 +945,12 @@ func (r ApiCustomerFindRequest) FindParams(findParams string) ApiCustomerFindReq
 // Store Id
 func (r ApiCustomerFindRequest) StoreId(storeId string) ApiCustomerFindRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Indicates whether to search among guest customers when looking up a customer.
+func (r ApiCustomerFindRequest) IncludeGuests(includeGuests bool) ApiCustomerFindRequest {
+	r.includeGuests = &includeGuests
 	return r
 }
 
@@ -992,6 +1012,12 @@ func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*Cus
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.includeGuests != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_guests", r.includeGuests, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.includeGuests = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1665,6 +1691,7 @@ type ApiCustomerListRequest struct {
 	groupId *string
 	storeId *string
 	avail *bool
+	includeGuests *bool
 	findValue *string
 	findWhere *string
 	createdFrom *string
@@ -1729,6 +1756,12 @@ func (r ApiCustomerListRequest) StoreId(storeId string) ApiCustomerListRequest {
 // Defines category&#39;s visibility status
 func (r ApiCustomerListRequest) Avail(avail bool) ApiCustomerListRequest {
 	r.avail = &avail
+	return r
+}
+
+// Indicates whether to include guest customers in the list results.
+func (r ApiCustomerListRequest) IncludeGuests(includeGuests bool) ApiCustomerListRequest {
+	r.includeGuests = &includeGuests
 	return r
 }
 
@@ -1873,6 +1906,12 @@ func (a *CustomerAPIService) CustomerListExecute(r ApiCustomerListRequest) (*Mod
 	} else {
 		var defaultValue bool = true
 		r.avail = &defaultValue
+	}
+	if r.includeGuests != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include_guests", r.includeGuests, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.includeGuests = &defaultValue
 	}
 	if r.findValue != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "find_value", r.findValue, "form", "")
