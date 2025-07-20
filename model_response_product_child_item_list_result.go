@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseProductChildItemListResult{}
 
 // ResponseProductChildItemListResult struct for ResponseProductChildItemListResult
 type ResponseProductChildItemListResult struct {
-	TotalCount *int32 `json:"total_count,omitempty"`
+	TotalCount NullableInt32 `json:"total_count,omitempty"`
 	Children []Child `json:"children,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseProductChildItemListResultWithDefaults() *ResponseProductChildIt
 	return &this
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseProductChildItemListResult) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil || IsNil(o.TotalCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+	return *o.TotalCount.Get()
 }
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseProductChildItemListResult) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return o.TotalCount.Get(), o.TotalCount.IsSet()
 }
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *ResponseProductChildItemListResult) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
+	if o != nil && o.TotalCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount gets a reference to the given NullableInt32 and assigns it to the TotalCount field.
 func (o *ResponseProductChildItemListResult) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount.Set(&v)
+}
+// SetTotalCountNil sets the value for TotalCount to be an explicit nil
+func (o *ResponseProductChildItemListResult) SetTotalCountNil() {
+	o.TotalCount.Set(nil)
+}
+
+// UnsetTotalCount ensures that no value is present for TotalCount, not even an explicit nil
+func (o *ResponseProductChildItemListResult) UnsetTotalCount() {
+	o.TotalCount.Unset()
 }
 
 // GetChildren returns the Children field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseProductChildItemListResult) SetChildren(v []Child) {
 	o.Children = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseProductChildItemListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseProductChildItemListResult) GetAdditionalFields() map[string]in
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseProductChildItemListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseProductChildItemListResult) SetAdditionalFields(v map[string]in
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseProductChildItemListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseProductChildItemListResult) GetCustomFields() map[string]interf
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseProductChildItemListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseProductChildItemListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseProductChildItemListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TotalCount) {
-		toSerialize["total_count"] = o.TotalCount
+	if o.TotalCount.IsSet() {
+		toSerialize["total_count"] = o.TotalCount.Get()
 	}
 	if !IsNil(o.Children) {
 		toSerialize["children"] = o.Children
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

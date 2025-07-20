@@ -22,16 +22,16 @@ var _ MappedNullable = &Brand{}
 type Brand struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	CreatedTime *string `json:"created_time,omitempty"`
-	ModifiedTime *string `json:"modified_time,omitempty"`
-	FullDescription *string `json:"full_description,omitempty"`
-	ShortDescription *string `json:"short_description,omitempty"`
+	CreatedTime NullableString `json:"created_time,omitempty"`
+	ModifiedTime NullableString `json:"modified_time,omitempty"`
+	FullDescription NullableString `json:"full_description,omitempty"`
+	ShortDescription NullableString `json:"short_description,omitempty"`
 	StoresIds []string `json:"stores_ids,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Url *string `json:"url,omitempty"`
-	MetaTitle *string `json:"meta_title,omitempty"`
-	MetaKeywords *string `json:"meta_keywords,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	MetaTitle NullableString `json:"meta_title,omitempty"`
+	MetaKeywords NullableString `json:"meta_keywords,omitempty"`
+	MetaDescription NullableString `json:"meta_description,omitempty"`
 	Images []Image `json:"images,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -118,132 +118,172 @@ func (o *Brand) SetName(v string) {
 	o.Name = &v
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetCreatedTime() string {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetCreatedTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *Brand) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given string and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableString and assigns it to the CreatedTime field.
 func (o *Brand) SetCreatedTime(v string) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *Brand) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *Brand) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetModifiedTime() string {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetModifiedTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *Brand) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given string and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableString and assigns it to the ModifiedTime field.
 func (o *Brand) SetModifiedTime(v string) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *Brand) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetFullDescription returns the FullDescription field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *Brand) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetFullDescription returns the FullDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetFullDescription() string {
-	if o == nil || IsNil(o.FullDescription) {
+	if o == nil || IsNil(o.FullDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FullDescription
+	return *o.FullDescription.Get()
 }
 
 // GetFullDescriptionOk returns a tuple with the FullDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetFullDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.FullDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FullDescription, true
+	return o.FullDescription.Get(), o.FullDescription.IsSet()
 }
 
 // HasFullDescription returns a boolean if a field has been set.
 func (o *Brand) HasFullDescription() bool {
-	if o != nil && !IsNil(o.FullDescription) {
+	if o != nil && o.FullDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFullDescription gets a reference to the given string and assigns it to the FullDescription field.
+// SetFullDescription gets a reference to the given NullableString and assigns it to the FullDescription field.
 func (o *Brand) SetFullDescription(v string) {
-	o.FullDescription = &v
+	o.FullDescription.Set(&v)
+}
+// SetFullDescriptionNil sets the value for FullDescription to be an explicit nil
+func (o *Brand) SetFullDescriptionNil() {
+	o.FullDescription.Set(nil)
 }
 
-// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
+// UnsetFullDescription ensures that no value is present for FullDescription, not even an explicit nil
+func (o *Brand) UnsetFullDescription() {
+	o.FullDescription.Unset()
+}
+
+// GetShortDescription returns the ShortDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetShortDescription() string {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil || IsNil(o.ShortDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ShortDescription
+	return *o.ShortDescription.Get()
 }
 
 // GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetShortDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShortDescription, true
+	return o.ShortDescription.Get(), o.ShortDescription.IsSet()
 }
 
 // HasShortDescription returns a boolean if a field has been set.
 func (o *Brand) HasShortDescription() bool {
-	if o != nil && !IsNil(o.ShortDescription) {
+	if o != nil && o.ShortDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
+// SetShortDescription gets a reference to the given NullableString and assigns it to the ShortDescription field.
 func (o *Brand) SetShortDescription(v string) {
-	o.ShortDescription = &v
+	o.ShortDescription.Set(&v)
+}
+// SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+func (o *Brand) SetShortDescriptionNil() {
+	o.ShortDescription.Set(nil)
+}
+
+// UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
+func (o *Brand) UnsetShortDescription() {
+	o.ShortDescription.Unset()
 }
 
 // GetStoresIds returns the StoresIds field value if set, zero value otherwise.
@@ -342,100 +382,130 @@ func (o *Brand) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
+// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetMetaTitle() string {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil || IsNil(o.MetaTitle.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaTitle
+	return *o.MetaTitle.Get()
 }
 
 // GetMetaTitleOk returns a tuple with the MetaTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetMetaTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaTitle, true
+	return o.MetaTitle.Get(), o.MetaTitle.IsSet()
 }
 
 // HasMetaTitle returns a boolean if a field has been set.
 func (o *Brand) HasMetaTitle() bool {
-	if o != nil && !IsNil(o.MetaTitle) {
+	if o != nil && o.MetaTitle.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaTitle gets a reference to the given string and assigns it to the MetaTitle field.
+// SetMetaTitle gets a reference to the given NullableString and assigns it to the MetaTitle field.
 func (o *Brand) SetMetaTitle(v string) {
-	o.MetaTitle = &v
+	o.MetaTitle.Set(&v)
+}
+// SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+func (o *Brand) SetMetaTitleNil() {
+	o.MetaTitle.Set(nil)
 }
 
-// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise.
+// UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
+func (o *Brand) UnsetMetaTitle() {
+	o.MetaTitle.Unset()
+}
+
+// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetMetaKeywords() string {
-	if o == nil || IsNil(o.MetaKeywords) {
+	if o == nil || IsNil(o.MetaKeywords.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaKeywords
+	return *o.MetaKeywords.Get()
 }
 
 // GetMetaKeywordsOk returns a tuple with the MetaKeywords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetMetaKeywordsOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaKeywords) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaKeywords, true
+	return o.MetaKeywords.Get(), o.MetaKeywords.IsSet()
 }
 
 // HasMetaKeywords returns a boolean if a field has been set.
 func (o *Brand) HasMetaKeywords() bool {
-	if o != nil && !IsNil(o.MetaKeywords) {
+	if o != nil && o.MetaKeywords.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaKeywords gets a reference to the given string and assigns it to the MetaKeywords field.
+// SetMetaKeywords gets a reference to the given NullableString and assigns it to the MetaKeywords field.
 func (o *Brand) SetMetaKeywords(v string) {
-	o.MetaKeywords = &v
+	o.MetaKeywords.Set(&v)
+}
+// SetMetaKeywordsNil sets the value for MetaKeywords to be an explicit nil
+func (o *Brand) SetMetaKeywordsNil() {
+	o.MetaKeywords.Set(nil)
 }
 
-// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
+// UnsetMetaKeywords ensures that no value is present for MetaKeywords, not even an explicit nil
+func (o *Brand) UnsetMetaKeywords() {
+	o.MetaKeywords.Unset()
+}
+
+// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetMetaDescription() string {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil || IsNil(o.MetaDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaDescription
+	return *o.MetaDescription.Get()
 }
 
 // GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetMetaDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaDescription, true
+	return o.MetaDescription.Get(), o.MetaDescription.IsSet()
 }
 
 // HasMetaDescription returns a boolean if a field has been set.
 func (o *Brand) HasMetaDescription() bool {
-	if o != nil && !IsNil(o.MetaDescription) {
+	if o != nil && o.MetaDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaDescription gets a reference to the given string and assigns it to the MetaDescription field.
+// SetMetaDescription gets a reference to the given NullableString and assigns it to the MetaDescription field.
 func (o *Brand) SetMetaDescription(v string) {
-	o.MetaDescription = &v
+	o.MetaDescription.Set(&v)
+}
+// SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+func (o *Brand) SetMetaDescriptionNil() {
+	o.MetaDescription.Set(nil)
+}
+
+// UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
+func (o *Brand) UnsetMetaDescription() {
+	o.MetaDescription.Unset()
 }
 
 // GetImages returns the Images field value if set, zero value otherwise.
@@ -470,9 +540,9 @@ func (o *Brand) SetImages(v []Image) {
 	o.Images = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -481,6 +551,7 @@ func (o *Brand) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -502,9 +573,9 @@ func (o *Brand) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Brand) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -513,6 +584,7 @@ func (o *Brand) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Brand) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -550,17 +622,17 @@ func (o Brand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.FullDescription) {
-		toSerialize["full_description"] = o.FullDescription
+	if o.FullDescription.IsSet() {
+		toSerialize["full_description"] = o.FullDescription.Get()
 	}
-	if !IsNil(o.ShortDescription) {
-		toSerialize["short_description"] = o.ShortDescription
+	if o.ShortDescription.IsSet() {
+		toSerialize["short_description"] = o.ShortDescription.Get()
 	}
 	if !IsNil(o.StoresIds) {
 		toSerialize["stores_ids"] = o.StoresIds
@@ -571,22 +643,22 @@ func (o Brand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
-	if !IsNil(o.MetaTitle) {
-		toSerialize["meta_title"] = o.MetaTitle
+	if o.MetaTitle.IsSet() {
+		toSerialize["meta_title"] = o.MetaTitle.Get()
 	}
-	if !IsNil(o.MetaKeywords) {
-		toSerialize["meta_keywords"] = o.MetaKeywords
+	if o.MetaKeywords.IsSet() {
+		toSerialize["meta_keywords"] = o.MetaKeywords.Get()
 	}
-	if !IsNil(o.MetaDescription) {
-		toSerialize["meta_description"] = o.MetaDescription
+	if o.MetaDescription.IsSet() {
+		toSerialize["meta_description"] = o.MetaDescription.Get()
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

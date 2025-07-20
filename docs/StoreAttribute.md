@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Code** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **NullableString** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **DefaultValues** | Pointer to **[]string** |  | [optional] 
-**Position** | Pointer to **int32** |  | [optional] 
-**Visible** | Pointer to **bool** |  | [optional] 
-**Required** | Pointer to **bool** |  | [optional] 
-**System** | Pointer to **bool** |  | [optional] 
+**Position** | Pointer to **NullableInt32** |  | [optional] 
+**Visible** | Pointer to **NullableBool** |  | [optional] 
+**Required** | Pointer to **NullableBool** |  | [optional] 
+**System** | Pointer to **NullableBool** |  | [optional] 
 **Values** | Pointer to **[]string** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
-**LangId** | Pointer to **string** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
+**LangId** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -88,6 +88,16 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
+### SetCodeNil
+
+`func (o *StoreAttribute) SetCodeNil(b bool)`
+
+ SetCodeNil sets the value for Code to be an explicit nil
+
+### UnsetCode
+`func (o *StoreAttribute) UnsetCode()`
+
+UnsetCode ensures that no value is present for Code, not even an explicit nil
 ### GetType
 
 `func (o *StoreAttribute) GetType() string`
@@ -188,6 +198,16 @@ SetPosition sets Position field to given value.
 
 HasPosition returns a boolean if a field has been set.
 
+### SetPositionNil
+
+`func (o *StoreAttribute) SetPositionNil(b bool)`
+
+ SetPositionNil sets the value for Position to be an explicit nil
+
+### UnsetPosition
+`func (o *StoreAttribute) UnsetPosition()`
+
+UnsetPosition ensures that no value is present for Position, not even an explicit nil
 ### GetVisible
 
 `func (o *StoreAttribute) GetVisible() bool`
@@ -213,6 +233,16 @@ SetVisible sets Visible field to given value.
 
 HasVisible returns a boolean if a field has been set.
 
+### SetVisibleNil
+
+`func (o *StoreAttribute) SetVisibleNil(b bool)`
+
+ SetVisibleNil sets the value for Visible to be an explicit nil
+
+### UnsetVisible
+`func (o *StoreAttribute) UnsetVisible()`
+
+UnsetVisible ensures that no value is present for Visible, not even an explicit nil
 ### GetRequired
 
 `func (o *StoreAttribute) GetRequired() bool`
@@ -238,6 +268,16 @@ SetRequired sets Required field to given value.
 
 HasRequired returns a boolean if a field has been set.
 
+### SetRequiredNil
+
+`func (o *StoreAttribute) SetRequiredNil(b bool)`
+
+ SetRequiredNil sets the value for Required to be an explicit nil
+
+### UnsetRequired
+`func (o *StoreAttribute) UnsetRequired()`
+
+UnsetRequired ensures that no value is present for Required, not even an explicit nil
 ### GetSystem
 
 `func (o *StoreAttribute) GetSystem() bool`
@@ -263,6 +303,16 @@ SetSystem sets System field to given value.
 
 HasSystem returns a boolean if a field has been set.
 
+### SetSystemNil
+
+`func (o *StoreAttribute) SetSystemNil(b bool)`
+
+ SetSystemNil sets the value for System to be an explicit nil
+
+### UnsetSystem
+`func (o *StoreAttribute) UnsetSystem()`
+
+UnsetSystem ensures that no value is present for System, not even an explicit nil
 ### GetValues
 
 `func (o *StoreAttribute) GetValues() []string`
@@ -313,6 +363,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *StoreAttribute) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *StoreAttribute) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetLangId
 
 `func (o *StoreAttribute) GetLangId() string`
@@ -338,6 +398,16 @@ SetLangId sets LangId field to given value.
 
 HasLangId returns a boolean if a field has been set.
 
+### SetLangIdNil
+
+`func (o *StoreAttribute) SetLangIdNil(b bool)`
+
+ SetLangIdNil sets the value for LangId to be an explicit nil
+
+### UnsetLangId
+`func (o *StoreAttribute) UnsetLangId()`
+
+UnsetLangId ensures that no value is present for LangId, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *StoreAttribute) GetAdditionalFields() map[string]interface{}`
@@ -363,6 +433,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *StoreAttribute) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *StoreAttribute) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *StoreAttribute) GetCustomFields() map[string]interface{}`
@@ -388,6 +468,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *StoreAttribute) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *StoreAttribute) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

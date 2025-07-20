@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | Pointer to **string** |  | [optional] 
-**To** | Pointer to **string** |  | [optional] 
+**From** | Pointer to **NullableString** |  | [optional] 
+**To** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -53,6 +53,16 @@ SetFrom sets From field to given value.
 
 HasFrom returns a boolean if a field has been set.
 
+### SetFromNil
+
+`func (o *TaxClassZipCodesRange) SetFromNil(b bool)`
+
+ SetFromNil sets the value for From to be an explicit nil
+
+### UnsetFrom
+`func (o *TaxClassZipCodesRange) UnsetFrom()`
+
+UnsetFrom ensures that no value is present for From, not even an explicit nil
 ### GetTo
 
 `func (o *TaxClassZipCodesRange) GetTo() string`
@@ -78,6 +88,16 @@ SetTo sets To field to given value.
 
 HasTo returns a boolean if a field has been set.
 
+### SetToNil
+
+`func (o *TaxClassZipCodesRange) SetToNil(b bool)`
+
+ SetToNil sets the value for To to be an explicit nil
+
+### UnsetTo
+`func (o *TaxClassZipCodesRange) UnsetTo()`
+
+UnsetTo ensures that no value is present for To, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *TaxClassZipCodesRange) GetAdditionalFields() map[string]interface{}`
@@ -103,6 +123,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *TaxClassZipCodesRange) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *TaxClassZipCodesRange) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *TaxClassZipCodesRange) GetCustomFields() map[string]interface{}`
@@ -128,6 +158,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *TaxClassZipCodesRange) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *TaxClassZipCodesRange) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

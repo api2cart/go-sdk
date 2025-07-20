@@ -338,9 +338,9 @@ func (o *TaxClassRate) SetZipCodes(v []TaxClassZipCodes) {
 	o.ZipCodes = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClassRate) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -349,6 +349,7 @@ func (o *TaxClassRate) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClassRate) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -370,9 +371,9 @@ func (o *TaxClassRate) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClassRate) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -381,6 +382,7 @@ func (o *TaxClassRate) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClassRate) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -439,10 +441,10 @@ func (o TaxClassRate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ZipCodes) {
 		toSerialize["zip_codes"] = o.ZipCodes
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

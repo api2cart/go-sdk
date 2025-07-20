@@ -94,6 +94,14 @@ type AccountCartAdd struct {
 	BigcartelUserName string `json:"bigcartel_user_name"`
 	// BigCartel account password
 	BigcartelPassword string `json:"bigcartel_password"`
+	// Bricklink Consumer Key
+	BricklinkConsumerKey string `json:"bricklink_consumer_key"`
+	// Bricklink Consumer Secret
+	BricklinkConsumerSecret string `json:"bricklink_consumer_secret"`
+	// Bricklink Access Token
+	BricklinkToken string `json:"bricklink_token"`
+	// Bricklink Access Token Secret
+	BricklinkTokenSecret string `json:"bricklink_token_secret"`
 	// Demandware client id
 	DemandwareClientId *string `json:"demandware_client_id,omitempty"`
 	// Demandware api password
@@ -352,7 +360,7 @@ type _AccountCartAdd AccountCartAdd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string) *AccountCartAdd {
+func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, bricklinkConsumerKey string, bricklinkConsumerSecret string, bricklinkToken string, bricklinkTokenSecret string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string) *AccountCartAdd {
 	this := AccountCartAdd{}
 	this.CartId = cartId
 	var validateVersion bool = false
@@ -363,6 +371,10 @@ func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPasswor
 	this.AmazonSpApiEnvironment = &amazonSpApiEnvironment
 	this.BigcartelUserName = bigcartelUserName
 	this.BigcartelPassword = bigcartelPassword
+	this.BricklinkConsumerKey = bricklinkConsumerKey
+	this.BricklinkConsumerSecret = bricklinkConsumerSecret
+	this.BricklinkToken = bricklinkToken
+	this.BricklinkTokenSecret = bricklinkTokenSecret
 	var ebayEnvironment string = "production"
 	this.EbayEnvironment = &ebayEnvironment
 	var ebaySiteId int32 = 0
@@ -1538,6 +1550,102 @@ func (o *AccountCartAdd) GetBigcartelPasswordOk() (*string, bool) {
 // SetBigcartelPassword sets field value
 func (o *AccountCartAdd) SetBigcartelPassword(v string) {
 	o.BigcartelPassword = v
+}
+
+// GetBricklinkConsumerKey returns the BricklinkConsumerKey field value
+func (o *AccountCartAdd) GetBricklinkConsumerKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BricklinkConsumerKey
+}
+
+// GetBricklinkConsumerKeyOk returns a tuple with the BricklinkConsumerKey field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBricklinkConsumerKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BricklinkConsumerKey, true
+}
+
+// SetBricklinkConsumerKey sets field value
+func (o *AccountCartAdd) SetBricklinkConsumerKey(v string) {
+	o.BricklinkConsumerKey = v
+}
+
+// GetBricklinkConsumerSecret returns the BricklinkConsumerSecret field value
+func (o *AccountCartAdd) GetBricklinkConsumerSecret() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BricklinkConsumerSecret
+}
+
+// GetBricklinkConsumerSecretOk returns a tuple with the BricklinkConsumerSecret field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBricklinkConsumerSecretOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BricklinkConsumerSecret, true
+}
+
+// SetBricklinkConsumerSecret sets field value
+func (o *AccountCartAdd) SetBricklinkConsumerSecret(v string) {
+	o.BricklinkConsumerSecret = v
+}
+
+// GetBricklinkToken returns the BricklinkToken field value
+func (o *AccountCartAdd) GetBricklinkToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BricklinkToken
+}
+
+// GetBricklinkTokenOk returns a tuple with the BricklinkToken field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBricklinkTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BricklinkToken, true
+}
+
+// SetBricklinkToken sets field value
+func (o *AccountCartAdd) SetBricklinkToken(v string) {
+	o.BricklinkToken = v
+}
+
+// GetBricklinkTokenSecret returns the BricklinkTokenSecret field value
+func (o *AccountCartAdd) GetBricklinkTokenSecret() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BricklinkTokenSecret
+}
+
+// GetBricklinkTokenSecretOk returns a tuple with the BricklinkTokenSecret field value
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetBricklinkTokenSecretOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BricklinkTokenSecret, true
+}
+
+// SetBricklinkTokenSecret sets field value
+func (o *AccountCartAdd) SetBricklinkTokenSecret(v string) {
+	o.BricklinkTokenSecret = v
 }
 
 // GetDemandwareClientId returns the DemandwareClientId field value if set, zero value otherwise.
@@ -5620,6 +5728,10 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["bigcartel_user_name"] = o.BigcartelUserName
 	toSerialize["bigcartel_password"] = o.BigcartelPassword
+	toSerialize["bricklink_consumer_key"] = o.BricklinkConsumerKey
+	toSerialize["bricklink_consumer_secret"] = o.BricklinkConsumerSecret
+	toSerialize["bricklink_token"] = o.BricklinkToken
+	toSerialize["bricklink_token_secret"] = o.BricklinkTokenSecret
 	if !IsNil(o.DemandwareClientId) {
 		toSerialize["demandware_client_id"] = o.DemandwareClientId
 	}
@@ -5998,6 +6110,10 @@ func (o *AccountCartAdd) UnmarshalJSON(data []byte) (err error) {
 		"cart_id",
 		"bigcartel_user_name",
 		"bigcartel_password",
+		"bricklink_consumer_key",
+		"bricklink_consumer_secret",
+		"bricklink_token",
+		"bricklink_token_secret",
 		"wix_app_id",
 		"wix_app_secret_key",
 		"temu_access_token",

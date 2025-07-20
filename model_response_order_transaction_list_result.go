@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseOrderTransactionListResult{}
 
 // ResponseOrderTransactionListResult struct for ResponseOrderTransactionListResult
 type ResponseOrderTransactionListResult struct {
-	TransactionsCount *int32 `json:"transactions_count,omitempty"`
+	TransactionsCount NullableInt32 `json:"transactions_count,omitempty"`
 	Transactions []OrderTransaction `json:"transactions,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseOrderTransactionListResultWithDefaults() *ResponseOrderTransacti
 	return &this
 }
 
-// GetTransactionsCount returns the TransactionsCount field value if set, zero value otherwise.
+// GetTransactionsCount returns the TransactionsCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderTransactionListResult) GetTransactionsCount() int32 {
-	if o == nil || IsNil(o.TransactionsCount) {
+	if o == nil || IsNil(o.TransactionsCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TransactionsCount
+	return *o.TransactionsCount.Get()
 }
 
 // GetTransactionsCountOk returns a tuple with the TransactionsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderTransactionListResult) GetTransactionsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TransactionsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TransactionsCount, true
+	return o.TransactionsCount.Get(), o.TransactionsCount.IsSet()
 }
 
 // HasTransactionsCount returns a boolean if a field has been set.
 func (o *ResponseOrderTransactionListResult) HasTransactionsCount() bool {
-	if o != nil && !IsNil(o.TransactionsCount) {
+	if o != nil && o.TransactionsCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTransactionsCount gets a reference to the given int32 and assigns it to the TransactionsCount field.
+// SetTransactionsCount gets a reference to the given NullableInt32 and assigns it to the TransactionsCount field.
 func (o *ResponseOrderTransactionListResult) SetTransactionsCount(v int32) {
-	o.TransactionsCount = &v
+	o.TransactionsCount.Set(&v)
+}
+// SetTransactionsCountNil sets the value for TransactionsCount to be an explicit nil
+func (o *ResponseOrderTransactionListResult) SetTransactionsCountNil() {
+	o.TransactionsCount.Set(nil)
+}
+
+// UnsetTransactionsCount ensures that no value is present for TransactionsCount, not even an explicit nil
+func (o *ResponseOrderTransactionListResult) UnsetTransactionsCount() {
+	o.TransactionsCount.Unset()
 }
 
 // GetTransactions returns the Transactions field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseOrderTransactionListResult) SetTransactions(v []OrderTransactio
 	o.Transactions = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderTransactionListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseOrderTransactionListResult) GetAdditionalFields() map[string]in
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderTransactionListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseOrderTransactionListResult) SetAdditionalFields(v map[string]in
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderTransactionListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseOrderTransactionListResult) GetCustomFields() map[string]interf
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderTransactionListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseOrderTransactionListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseOrderTransactionListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TransactionsCount) {
-		toSerialize["transactions_count"] = o.TransactionsCount
+	if o.TransactionsCount.IsSet() {
+		toSerialize["transactions_count"] = o.TransactionsCount.Get()
 	}
 	if !IsNil(o.Transactions) {
 		toSerialize["transactions"] = o.Transactions
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

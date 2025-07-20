@@ -22,10 +22,10 @@ var _ MappedNullable = &OrderAbandoned{}
 type OrderAbandoned struct {
 	Id *string `json:"id,omitempty"`
 	Customer *BaseCustomer `json:"customer,omitempty"`
-	BasketId *string `json:"basket_id,omitempty"`
-	BasketUrl *string `json:"basket_url,omitempty"`
-	CreatedAt *A2CDateTime `json:"created_at,omitempty"`
-	ModifiedAt *A2CDateTime `json:"modified_at,omitempty"`
+	BasketId NullableString `json:"basket_id,omitempty"`
+	BasketUrl NullableString `json:"basket_url,omitempty"`
+	CreatedAt NullableA2CDateTime `json:"created_at,omitempty"`
+	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
 	Currency *Currency `json:"currency,omitempty"`
 	Totals *OrderTotals `json:"totals,omitempty"`
 	OrderProducts []OrderItem `json:"order_products,omitempty"`
@@ -114,132 +114,172 @@ func (o *OrderAbandoned) SetCustomer(v BaseCustomer) {
 	o.Customer = &v
 }
 
-// GetBasketId returns the BasketId field value if set, zero value otherwise.
+// GetBasketId returns the BasketId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetBasketId() string {
-	if o == nil || IsNil(o.BasketId) {
+	if o == nil || IsNil(o.BasketId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BasketId
+	return *o.BasketId.Get()
 }
 
 // GetBasketIdOk returns a tuple with the BasketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetBasketIdOk() (*string, bool) {
-	if o == nil || IsNil(o.BasketId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BasketId, true
+	return o.BasketId.Get(), o.BasketId.IsSet()
 }
 
 // HasBasketId returns a boolean if a field has been set.
 func (o *OrderAbandoned) HasBasketId() bool {
-	if o != nil && !IsNil(o.BasketId) {
+	if o != nil && o.BasketId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBasketId gets a reference to the given string and assigns it to the BasketId field.
+// SetBasketId gets a reference to the given NullableString and assigns it to the BasketId field.
 func (o *OrderAbandoned) SetBasketId(v string) {
-	o.BasketId = &v
+	o.BasketId.Set(&v)
+}
+// SetBasketIdNil sets the value for BasketId to be an explicit nil
+func (o *OrderAbandoned) SetBasketIdNil() {
+	o.BasketId.Set(nil)
 }
 
-// GetBasketUrl returns the BasketUrl field value if set, zero value otherwise.
+// UnsetBasketId ensures that no value is present for BasketId, not even an explicit nil
+func (o *OrderAbandoned) UnsetBasketId() {
+	o.BasketId.Unset()
+}
+
+// GetBasketUrl returns the BasketUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetBasketUrl() string {
-	if o == nil || IsNil(o.BasketUrl) {
+	if o == nil || IsNil(o.BasketUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BasketUrl
+	return *o.BasketUrl.Get()
 }
 
 // GetBasketUrlOk returns a tuple with the BasketUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetBasketUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.BasketUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BasketUrl, true
+	return o.BasketUrl.Get(), o.BasketUrl.IsSet()
 }
 
 // HasBasketUrl returns a boolean if a field has been set.
 func (o *OrderAbandoned) HasBasketUrl() bool {
-	if o != nil && !IsNil(o.BasketUrl) {
+	if o != nil && o.BasketUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBasketUrl gets a reference to the given string and assigns it to the BasketUrl field.
+// SetBasketUrl gets a reference to the given NullableString and assigns it to the BasketUrl field.
 func (o *OrderAbandoned) SetBasketUrl(v string) {
-	o.BasketUrl = &v
+	o.BasketUrl.Set(&v)
+}
+// SetBasketUrlNil sets the value for BasketUrl to be an explicit nil
+func (o *OrderAbandoned) SetBasketUrlNil() {
+	o.BasketUrl.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetBasketUrl ensures that no value is present for BasketUrl, not even an explicit nil
+func (o *OrderAbandoned) UnsetBasketUrl() {
+	o.BasketUrl.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetCreatedAt() A2CDateTime {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetCreatedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *OrderAbandoned) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given A2CDateTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableA2CDateTime and assigns it to the CreatedAt field.
 func (o *OrderAbandoned) SetCreatedAt(v A2CDateTime) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *OrderAbandoned) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *OrderAbandoned) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetModifiedAt() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetModifiedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *OrderAbandoned) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given A2CDateTime and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedAt field.
 func (o *OrderAbandoned) SetModifiedAt(v A2CDateTime) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *OrderAbandoned) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
+}
+
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *OrderAbandoned) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
@@ -338,9 +378,9 @@ func (o *OrderAbandoned) SetOrderProducts(v []OrderItem) {
 	o.OrderProducts = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -349,6 +389,7 @@ func (o *OrderAbandoned) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -370,9 +411,9 @@ func (o *OrderAbandoned) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderAbandoned) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -381,6 +422,7 @@ func (o *OrderAbandoned) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderAbandoned) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -418,17 +460,17 @@ func (o OrderAbandoned) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Customer) {
 		toSerialize["customer"] = o.Customer
 	}
-	if !IsNil(o.BasketId) {
-		toSerialize["basket_id"] = o.BasketId
+	if o.BasketId.IsSet() {
+		toSerialize["basket_id"] = o.BasketId.Get()
 	}
-	if !IsNil(o.BasketUrl) {
-		toSerialize["basket_url"] = o.BasketUrl
+	if o.BasketUrl.IsSet() {
+		toSerialize["basket_url"] = o.BasketUrl.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
@@ -439,10 +481,10 @@ func (o OrderAbandoned) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderProducts) {
 		toSerialize["order_products"] = o.OrderProducts
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MinWeight** | Pointer to **string** |  | [optional] 
-**MaxWeight** | Pointer to **string** |  | [optional] 
-**MinOrderAmount** | Pointer to **string** |  | [optional] 
-**MaxOrderAmount** | Pointer to **string** |  | [optional] 
-**MinItemsCount** | Pointer to **string** |  | [optional] 
-**MaxItemsCount** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to **string** |  | [optional] 
+**MinWeight** | Pointer to **NullableString** |  | [optional] 
+**MaxWeight** | Pointer to **NullableString** |  | [optional] 
+**MinOrderAmount** | Pointer to **NullableString** |  | [optional] 
+**MaxOrderAmount** | Pointer to **NullableString** |  | [optional] 
+**MinItemsCount** | Pointer to **NullableString** |  | [optional] 
+**MaxItemsCount** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -58,6 +58,16 @@ SetMinWeight sets MinWeight field to given value.
 
 HasMinWeight returns a boolean if a field has been set.
 
+### SetMinWeightNil
+
+`func (o *CartShippingMethodRate) SetMinWeightNil(b bool)`
+
+ SetMinWeightNil sets the value for MinWeight to be an explicit nil
+
+### UnsetMinWeight
+`func (o *CartShippingMethodRate) UnsetMinWeight()`
+
+UnsetMinWeight ensures that no value is present for MinWeight, not even an explicit nil
 ### GetMaxWeight
 
 `func (o *CartShippingMethodRate) GetMaxWeight() string`
@@ -83,6 +93,16 @@ SetMaxWeight sets MaxWeight field to given value.
 
 HasMaxWeight returns a boolean if a field has been set.
 
+### SetMaxWeightNil
+
+`func (o *CartShippingMethodRate) SetMaxWeightNil(b bool)`
+
+ SetMaxWeightNil sets the value for MaxWeight to be an explicit nil
+
+### UnsetMaxWeight
+`func (o *CartShippingMethodRate) UnsetMaxWeight()`
+
+UnsetMaxWeight ensures that no value is present for MaxWeight, not even an explicit nil
 ### GetMinOrderAmount
 
 `func (o *CartShippingMethodRate) GetMinOrderAmount() string`
@@ -108,6 +128,16 @@ SetMinOrderAmount sets MinOrderAmount field to given value.
 
 HasMinOrderAmount returns a boolean if a field has been set.
 
+### SetMinOrderAmountNil
+
+`func (o *CartShippingMethodRate) SetMinOrderAmountNil(b bool)`
+
+ SetMinOrderAmountNil sets the value for MinOrderAmount to be an explicit nil
+
+### UnsetMinOrderAmount
+`func (o *CartShippingMethodRate) UnsetMinOrderAmount()`
+
+UnsetMinOrderAmount ensures that no value is present for MinOrderAmount, not even an explicit nil
 ### GetMaxOrderAmount
 
 `func (o *CartShippingMethodRate) GetMaxOrderAmount() string`
@@ -133,6 +163,16 @@ SetMaxOrderAmount sets MaxOrderAmount field to given value.
 
 HasMaxOrderAmount returns a boolean if a field has been set.
 
+### SetMaxOrderAmountNil
+
+`func (o *CartShippingMethodRate) SetMaxOrderAmountNil(b bool)`
+
+ SetMaxOrderAmountNil sets the value for MaxOrderAmount to be an explicit nil
+
+### UnsetMaxOrderAmount
+`func (o *CartShippingMethodRate) UnsetMaxOrderAmount()`
+
+UnsetMaxOrderAmount ensures that no value is present for MaxOrderAmount, not even an explicit nil
 ### GetMinItemsCount
 
 `func (o *CartShippingMethodRate) GetMinItemsCount() string`
@@ -158,6 +198,16 @@ SetMinItemsCount sets MinItemsCount field to given value.
 
 HasMinItemsCount returns a boolean if a field has been set.
 
+### SetMinItemsCountNil
+
+`func (o *CartShippingMethodRate) SetMinItemsCountNil(b bool)`
+
+ SetMinItemsCountNil sets the value for MinItemsCount to be an explicit nil
+
+### UnsetMinItemsCount
+`func (o *CartShippingMethodRate) UnsetMinItemsCount()`
+
+UnsetMinItemsCount ensures that no value is present for MinItemsCount, not even an explicit nil
 ### GetMaxItemsCount
 
 `func (o *CartShippingMethodRate) GetMaxItemsCount() string`
@@ -183,6 +233,16 @@ SetMaxItemsCount sets MaxItemsCount field to given value.
 
 HasMaxItemsCount returns a boolean if a field has been set.
 
+### SetMaxItemsCountNil
+
+`func (o *CartShippingMethodRate) SetMaxItemsCountNil(b bool)`
+
+ SetMaxItemsCountNil sets the value for MaxItemsCount to be an explicit nil
+
+### UnsetMaxItemsCount
+`func (o *CartShippingMethodRate) UnsetMaxItemsCount()`
+
+UnsetMaxItemsCount ensures that no value is present for MaxItemsCount, not even an explicit nil
 ### GetPrice
 
 `func (o *CartShippingMethodRate) GetPrice() string`
@@ -208,6 +268,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *CartShippingMethodRate) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *CartShippingMethodRate) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CartShippingMethodRate) GetAdditionalFields() map[string]interface{}`
@@ -233,6 +303,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CartShippingMethodRate) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CartShippingMethodRate) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CartShippingMethodRate) GetCustomFields() map[string]interface{}`
@@ -258,6 +338,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CartShippingMethodRate) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CartShippingMethodRate) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

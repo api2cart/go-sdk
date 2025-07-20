@@ -21,8 +21,8 @@ var _ MappedNullable = &CartShippingZone2{}
 // CartShippingZone2 struct for CartShippingZone2
 type CartShippingZone2 struct {
 	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Enabled *bool `json:"enabled,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Enabled NullableBool `json:"enabled,omitempty"`
 	Countries []Country `json:"countries,omitempty"`
 	ShippingMethods []CartShippingMethod `json:"shipping_methods,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
@@ -78,68 +78,88 @@ func (o *CartShippingZone2) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingZone2) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingZone2) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CartShippingZone2) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CartShippingZone2) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CartShippingZone2) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CartShippingZone2) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingZone2) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+	return *o.Enabled.Get()
 }
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingZone2) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return o.Enabled.Get(), o.Enabled.IsSet()
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CartShippingZone2) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled gets a reference to the given NullableBool and assigns it to the Enabled field.
 func (o *CartShippingZone2) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled.Set(&v)
+}
+// SetEnabledNil sets the value for Enabled to be an explicit nil
+func (o *CartShippingZone2) SetEnabledNil() {
+	o.Enabled.Set(nil)
+}
+
+// UnsetEnabled ensures that no value is present for Enabled, not even an explicit nil
+func (o *CartShippingZone2) UnsetEnabled() {
+	o.Enabled.Unset()
 }
 
 // GetCountries returns the Countries field value if set, zero value otherwise.
@@ -206,9 +226,9 @@ func (o *CartShippingZone2) SetShippingMethods(v []CartShippingMethod) {
 	o.ShippingMethods = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingZone2) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +237,7 @@ func (o *CartShippingZone2) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingZone2) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +259,9 @@ func (o *CartShippingZone2) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingZone2) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +270,7 @@ func (o *CartShippingZone2) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingZone2) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -283,11 +305,11 @@ func (o CartShippingZone2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
+	if o.Enabled.IsSet() {
+		toSerialize["enabled"] = o.Enabled.Get()
 	}
 	if !IsNil(o.Countries) {
 		toSerialize["countries"] = o.Countries
@@ -295,10 +317,10 @@ func (o CartShippingZone2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ShippingMethods) {
 		toSerialize["shipping_methods"] = o.ShippingMethods
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

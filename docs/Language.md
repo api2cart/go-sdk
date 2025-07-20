@@ -129,6 +129,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Language) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Language) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Language) GetCustomFields() map[string]interface{}`
@@ -154,6 +164,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Language) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Language) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

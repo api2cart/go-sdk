@@ -21,11 +21,11 @@ var _ MappedNullable = &CustomerConsent{}
 // CustomerConsent struct for CustomerConsent
 type CustomerConsent struct {
 	Id *string `json:"id,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Source *string `json:"source,omitempty"`
-	OptInLevel *string `json:"opt_in_level,omitempty"`
-	ModifiedTime *string `json:"modified_time,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Source NullableString `json:"source,omitempty"`
+	OptInLevel NullableString `json:"opt_in_level,omitempty"`
+	ModifiedTime NullableString `json:"modified_time,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -79,169 +79,219 @@ func (o *CustomerConsent) SetId(v string) {
 	o.Id = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CustomerConsent) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *CustomerConsent) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *CustomerConsent) SetTypeNil() {
+	o.Type.Set(nil)
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *CustomerConsent) UnsetType() {
+	o.Type.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CustomerConsent) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *CustomerConsent) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *CustomerConsent) SetStatusNil() {
+	o.Status.Set(nil)
 }
 
-// GetSource returns the Source field value if set, zero value otherwise.
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *CustomerConsent) UnsetStatus() {
+	o.Status.Unset()
+}
+
+// GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetSource() string {
-	if o == nil || IsNil(o.Source) {
+	if o == nil || IsNil(o.Source.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Source
+	return *o.Source.Get()
 }
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.Source) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Source, true
+	return o.Source.Get(), o.Source.IsSet()
 }
 
 // HasSource returns a boolean if a field has been set.
 func (o *CustomerConsent) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
+	if o != nil && o.Source.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSource gets a reference to the given string and assigns it to the Source field.
+// SetSource gets a reference to the given NullableString and assigns it to the Source field.
 func (o *CustomerConsent) SetSource(v string) {
-	o.Source = &v
+	o.Source.Set(&v)
+}
+// SetSourceNil sets the value for Source to be an explicit nil
+func (o *CustomerConsent) SetSourceNil() {
+	o.Source.Set(nil)
 }
 
-// GetOptInLevel returns the OptInLevel field value if set, zero value otherwise.
+// UnsetSource ensures that no value is present for Source, not even an explicit nil
+func (o *CustomerConsent) UnsetSource() {
+	o.Source.Unset()
+}
+
+// GetOptInLevel returns the OptInLevel field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetOptInLevel() string {
-	if o == nil || IsNil(o.OptInLevel) {
+	if o == nil || IsNil(o.OptInLevel.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OptInLevel
+	return *o.OptInLevel.Get()
 }
 
 // GetOptInLevelOk returns a tuple with the OptInLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetOptInLevelOk() (*string, bool) {
-	if o == nil || IsNil(o.OptInLevel) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OptInLevel, true
+	return o.OptInLevel.Get(), o.OptInLevel.IsSet()
 }
 
 // HasOptInLevel returns a boolean if a field has been set.
 func (o *CustomerConsent) HasOptInLevel() bool {
-	if o != nil && !IsNil(o.OptInLevel) {
+	if o != nil && o.OptInLevel.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOptInLevel gets a reference to the given string and assigns it to the OptInLevel field.
+// SetOptInLevel gets a reference to the given NullableString and assigns it to the OptInLevel field.
 func (o *CustomerConsent) SetOptInLevel(v string) {
-	o.OptInLevel = &v
+	o.OptInLevel.Set(&v)
+}
+// SetOptInLevelNil sets the value for OptInLevel to be an explicit nil
+func (o *CustomerConsent) SetOptInLevelNil() {
+	o.OptInLevel.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetOptInLevel ensures that no value is present for OptInLevel, not even an explicit nil
+func (o *CustomerConsent) UnsetOptInLevel() {
+	o.OptInLevel.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetModifiedTime() string {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetModifiedTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *CustomerConsent) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given string and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableString and assigns it to the ModifiedTime field.
 func (o *CustomerConsent) SetModifiedTime(v string) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *CustomerConsent) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *CustomerConsent) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -250,6 +300,7 @@ func (o *CustomerConsent) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -271,9 +322,9 @@ func (o *CustomerConsent) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerConsent) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -282,6 +333,7 @@ func (o *CustomerConsent) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerConsent) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -316,25 +368,25 @@ func (o CustomerConsent) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
-	if !IsNil(o.Source) {
-		toSerialize["source"] = o.Source
+	if o.Source.IsSet() {
+		toSerialize["source"] = o.Source.Get()
 	}
-	if !IsNil(o.OptInLevel) {
-		toSerialize["opt_in_level"] = o.OptInLevel
+	if o.OptInLevel.IsSet() {
+		toSerialize["opt_in_level"] = o.OptInLevel.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

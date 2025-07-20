@@ -20,13 +20,13 @@ var _ MappedNullable = &OrderRefund{}
 
 // OrderRefund struct for OrderRefund
 type OrderRefund struct {
-	Id *string `json:"id,omitempty"`
-	Shipping *float32 `json:"shipping,omitempty"`
-	Fee *float32 `json:"fee,omitempty"`
-	Tax *float32 `json:"tax,omitempty"`
-	Total *float32 `json:"total,omitempty"`
-	ModifiedTime *A2CDateTime `json:"modified_time,omitempty"`
-	Comment *string `json:"comment,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Shipping NullableFloat32 `json:"shipping,omitempty"`
+	Fee NullableFloat32 `json:"fee,omitempty"`
+	Tax NullableFloat32 `json:"tax,omitempty"`
+	Total NullableFloat32 `json:"total,omitempty"`
+	ModifiedTime NullableA2CDateTime `json:"modified_time,omitempty"`
+	Comment NullableString `json:"comment,omitempty"`
 	Items []OrderStatusRefundItem `json:"items,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -49,228 +49,298 @@ func NewOrderRefundWithDefaults() *OrderRefund {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *OrderRefund) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *OrderRefund) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *OrderRefund) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetShipping returns the Shipping field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *OrderRefund) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetShipping returns the Shipping field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetShipping() float32 {
-	if o == nil || IsNil(o.Shipping) {
+	if o == nil || IsNil(o.Shipping.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Shipping
+	return *o.Shipping.Get()
 }
 
 // GetShippingOk returns a tuple with the Shipping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetShippingOk() (*float32, bool) {
-	if o == nil || IsNil(o.Shipping) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Shipping, true
+	return o.Shipping.Get(), o.Shipping.IsSet()
 }
 
 // HasShipping returns a boolean if a field has been set.
 func (o *OrderRefund) HasShipping() bool {
-	if o != nil && !IsNil(o.Shipping) {
+	if o != nil && o.Shipping.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShipping gets a reference to the given float32 and assigns it to the Shipping field.
+// SetShipping gets a reference to the given NullableFloat32 and assigns it to the Shipping field.
 func (o *OrderRefund) SetShipping(v float32) {
-	o.Shipping = &v
+	o.Shipping.Set(&v)
+}
+// SetShippingNil sets the value for Shipping to be an explicit nil
+func (o *OrderRefund) SetShippingNil() {
+	o.Shipping.Set(nil)
 }
 
-// GetFee returns the Fee field value if set, zero value otherwise.
+// UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
+func (o *OrderRefund) UnsetShipping() {
+	o.Shipping.Unset()
+}
+
+// GetFee returns the Fee field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetFee() float32 {
-	if o == nil || IsNil(o.Fee) {
+	if o == nil || IsNil(o.Fee.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Fee
+	return *o.Fee.Get()
 }
 
 // GetFeeOk returns a tuple with the Fee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetFeeOk() (*float32, bool) {
-	if o == nil || IsNil(o.Fee) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Fee, true
+	return o.Fee.Get(), o.Fee.IsSet()
 }
 
 // HasFee returns a boolean if a field has been set.
 func (o *OrderRefund) HasFee() bool {
-	if o != nil && !IsNil(o.Fee) {
+	if o != nil && o.Fee.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFee gets a reference to the given float32 and assigns it to the Fee field.
+// SetFee gets a reference to the given NullableFloat32 and assigns it to the Fee field.
 func (o *OrderRefund) SetFee(v float32) {
-	o.Fee = &v
+	o.Fee.Set(&v)
+}
+// SetFeeNil sets the value for Fee to be an explicit nil
+func (o *OrderRefund) SetFeeNil() {
+	o.Fee.Set(nil)
 }
 
-// GetTax returns the Tax field value if set, zero value otherwise.
+// UnsetFee ensures that no value is present for Fee, not even an explicit nil
+func (o *OrderRefund) UnsetFee() {
+	o.Fee.Unset()
+}
+
+// GetTax returns the Tax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetTax() float32 {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil || IsNil(o.Tax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Tax
+	return *o.Tax.Get()
 }
 
 // GetTaxOk returns a tuple with the Tax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tax, true
+	return o.Tax.Get(), o.Tax.IsSet()
 }
 
 // HasTax returns a boolean if a field has been set.
 func (o *OrderRefund) HasTax() bool {
-	if o != nil && !IsNil(o.Tax) {
+	if o != nil && o.Tax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTax gets a reference to the given float32 and assigns it to the Tax field.
+// SetTax gets a reference to the given NullableFloat32 and assigns it to the Tax field.
 func (o *OrderRefund) SetTax(v float32) {
-	o.Tax = &v
+	o.Tax.Set(&v)
+}
+// SetTaxNil sets the value for Tax to be an explicit nil
+func (o *OrderRefund) SetTaxNil() {
+	o.Tax.Set(nil)
 }
 
-// GetTotal returns the Total field value if set, zero value otherwise.
+// UnsetTax ensures that no value is present for Tax, not even an explicit nil
+func (o *OrderRefund) UnsetTax() {
+	o.Tax.Unset()
+}
+
+// GetTotal returns the Total field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetTotal() float32 {
-	if o == nil || IsNil(o.Total) {
+	if o == nil || IsNil(o.Total.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Total
+	return *o.Total.Get()
 }
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetTotalOk() (*float32, bool) {
-	if o == nil || IsNil(o.Total) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Total, true
+	return o.Total.Get(), o.Total.IsSet()
 }
 
 // HasTotal returns a boolean if a field has been set.
 func (o *OrderRefund) HasTotal() bool {
-	if o != nil && !IsNil(o.Total) {
+	if o != nil && o.Total.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotal gets a reference to the given float32 and assigns it to the Total field.
+// SetTotal gets a reference to the given NullableFloat32 and assigns it to the Total field.
 func (o *OrderRefund) SetTotal(v float32) {
-	o.Total = &v
+	o.Total.Set(&v)
+}
+// SetTotalNil sets the value for Total to be an explicit nil
+func (o *OrderRefund) SetTotalNil() {
+	o.Total.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetTotal ensures that no value is present for Total, not even an explicit nil
+func (o *OrderRefund) UnsetTotal() {
+	o.Total.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetModifiedTime() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetModifiedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *OrderRefund) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given A2CDateTime and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedTime field.
 func (o *OrderRefund) SetModifiedTime(v A2CDateTime) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *OrderRefund) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *OrderRefund) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+	return *o.Comment.Get()
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return o.Comment.Get(), o.Comment.IsSet()
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *OrderRefund) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
+	if o != nil && o.Comment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
 func (o *OrderRefund) SetComment(v string) {
-	o.Comment = &v
+	o.Comment.Set(&v)
+}
+// SetCommentNil sets the value for Comment to be an explicit nil
+func (o *OrderRefund) SetCommentNil() {
+	o.Comment.Set(nil)
+}
+
+// UnsetComment ensures that no value is present for Comment, not even an explicit nil
+func (o *OrderRefund) UnsetComment() {
+	o.Comment.Unset()
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
@@ -305,9 +375,9 @@ func (o *OrderRefund) SetItems(v []OrderStatusRefundItem) {
 	o.Items = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -316,6 +386,7 @@ func (o *OrderRefund) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -337,9 +408,9 @@ func (o *OrderRefund) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderRefund) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -348,6 +419,7 @@ func (o *OrderRefund) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderRefund) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -379,34 +451,34 @@ func (o OrderRefund) MarshalJSON() ([]byte, error) {
 
 func (o OrderRefund) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !IsNil(o.Shipping) {
-		toSerialize["shipping"] = o.Shipping
+	if o.Shipping.IsSet() {
+		toSerialize["shipping"] = o.Shipping.Get()
 	}
-	if !IsNil(o.Fee) {
-		toSerialize["fee"] = o.Fee
+	if o.Fee.IsSet() {
+		toSerialize["fee"] = o.Fee.Get()
 	}
-	if !IsNil(o.Tax) {
-		toSerialize["tax"] = o.Tax
+	if o.Tax.IsSet() {
+		toSerialize["tax"] = o.Tax.Get()
 	}
-	if !IsNil(o.Total) {
-		toSerialize["total"] = o.Total
+	if o.Total.IsSet() {
+		toSerialize["total"] = o.Total.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
+	if o.Comment.IsSet() {
+		toSerialize["comment"] = o.Comment.Get()
 	}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

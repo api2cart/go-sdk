@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseCartCatalogPriceRulesListResult{}
 
 // ResponseCartCatalogPriceRulesListResult struct for ResponseCartCatalogPriceRulesListResult
 type ResponseCartCatalogPriceRulesListResult struct {
-	CatalogPriceRulesCount *int32 `json:"catalog_price_rules_count,omitempty"`
+	CatalogPriceRulesCount NullableInt32 `json:"catalog_price_rules_count,omitempty"`
 	CatalogPriceRules []CatalogPriceRule `json:"catalog_price_rules,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseCartCatalogPriceRulesListResultWithDefaults() *ResponseCartCatal
 	return &this
 }
 
-// GetCatalogPriceRulesCount returns the CatalogPriceRulesCount field value if set, zero value otherwise.
+// GetCatalogPriceRulesCount returns the CatalogPriceRulesCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCatalogPriceRulesListResult) GetCatalogPriceRulesCount() int32 {
-	if o == nil || IsNil(o.CatalogPriceRulesCount) {
+	if o == nil || IsNil(o.CatalogPriceRulesCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CatalogPriceRulesCount
+	return *o.CatalogPriceRulesCount.Get()
 }
 
 // GetCatalogPriceRulesCountOk returns a tuple with the CatalogPriceRulesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCatalogPriceRulesListResult) GetCatalogPriceRulesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.CatalogPriceRulesCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CatalogPriceRulesCount, true
+	return o.CatalogPriceRulesCount.Get(), o.CatalogPriceRulesCount.IsSet()
 }
 
 // HasCatalogPriceRulesCount returns a boolean if a field has been set.
 func (o *ResponseCartCatalogPriceRulesListResult) HasCatalogPriceRulesCount() bool {
-	if o != nil && !IsNil(o.CatalogPriceRulesCount) {
+	if o != nil && o.CatalogPriceRulesCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCatalogPriceRulesCount gets a reference to the given int32 and assigns it to the CatalogPriceRulesCount field.
+// SetCatalogPriceRulesCount gets a reference to the given NullableInt32 and assigns it to the CatalogPriceRulesCount field.
 func (o *ResponseCartCatalogPriceRulesListResult) SetCatalogPriceRulesCount(v int32) {
-	o.CatalogPriceRulesCount = &v
+	o.CatalogPriceRulesCount.Set(&v)
+}
+// SetCatalogPriceRulesCountNil sets the value for CatalogPriceRulesCount to be an explicit nil
+func (o *ResponseCartCatalogPriceRulesListResult) SetCatalogPriceRulesCountNil() {
+	o.CatalogPriceRulesCount.Set(nil)
+}
+
+// UnsetCatalogPriceRulesCount ensures that no value is present for CatalogPriceRulesCount, not even an explicit nil
+func (o *ResponseCartCatalogPriceRulesListResult) UnsetCatalogPriceRulesCount() {
+	o.CatalogPriceRulesCount.Unset()
 }
 
 // GetCatalogPriceRules returns the CatalogPriceRules field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseCartCatalogPriceRulesListResult) SetCatalogPriceRules(v []Catal
 	o.CatalogPriceRules = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCatalogPriceRulesListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseCartCatalogPriceRulesListResult) GetAdditionalFields() map[stri
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCatalogPriceRulesListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseCartCatalogPriceRulesListResult) SetAdditionalFields(v map[stri
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCatalogPriceRulesListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseCartCatalogPriceRulesListResult) GetCustomFields() map[string]i
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCatalogPriceRulesListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseCartCatalogPriceRulesListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseCartCatalogPriceRulesListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CatalogPriceRulesCount) {
-		toSerialize["catalog_price_rules_count"] = o.CatalogPriceRulesCount
+	if o.CatalogPriceRulesCount.IsSet() {
+		toSerialize["catalog_price_rules_count"] = o.CatalogPriceRulesCount.Get()
 	}
 	if !IsNil(o.CatalogPriceRules) {
 		toSerialize["catalog_price_rules"] = o.CatalogPriceRules
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

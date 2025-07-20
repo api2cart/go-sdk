@@ -6,30 +6,30 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **OrderId** | Pointer to **string** |  | [optional] 
-**BasketId** | Pointer to **string** |  | [optional] 
-**ChannelId** | Pointer to **string** |  | [optional] 
+**BasketId** | Pointer to **NullableString** |  | [optional] 
+**ChannelId** | Pointer to **NullableString** |  | [optional] 
 **Customer** | Pointer to [**BaseCustomer**](BaseCustomer.md) |  | [optional] 
 **CreateAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Currency** | Pointer to [**Currency**](Currency.md) |  | [optional] 
-**ShippingAddress** | Pointer to [**CustomerAddress**](CustomerAddress.md) |  | [optional] 
-**BillingAddress** | Pointer to [**CustomerAddress**](CustomerAddress.md) |  | [optional] 
-**PaymentMethod** | Pointer to [**OrderPaymentMethod**](OrderPaymentMethod.md) |  | [optional] 
-**ShippingMethod** | Pointer to [**OrderShippingMethod**](OrderShippingMethod.md) |  | [optional] 
+**Currency** | Pointer to [**NullableCurrency**](Currency.md) |  | [optional] 
+**ShippingAddress** | Pointer to [**NullableCustomerAddress**](CustomerAddress.md) |  | [optional] 
+**BillingAddress** | Pointer to [**NullableCustomerAddress**](CustomerAddress.md) |  | [optional] 
+**PaymentMethod** | Pointer to [**NullableOrderPaymentMethod**](OrderPaymentMethod.md) |  | [optional] 
+**ShippingMethod** | Pointer to [**NullableOrderShippingMethod**](OrderShippingMethod.md) |  | [optional] 
 **ShippingMethods** | Pointer to [**[]OrderShippingMethod**](OrderShippingMethod.md) |  | [optional] 
 **Status** | Pointer to [**OrderStatus**](OrderStatus.md) |  | [optional] 
-**Totals** | Pointer to [**OrderTotals**](OrderTotals.md) |  | [optional] 
-**Total** | Pointer to [**OrderTotal**](OrderTotal.md) |  | [optional] 
+**Totals** | Pointer to [**NullableOrderTotals**](OrderTotals.md) |  | [optional] 
+**Total** | Pointer to [**NullableOrderTotal**](OrderTotal.md) |  | [optional] 
 **Discounts** | Pointer to [**[]OrderTotalsNewDiscount**](OrderTotalsNewDiscount.md) |  | [optional] 
 **OrderProducts** | Pointer to [**[]OrderItem**](OrderItem.md) |  | [optional] 
 **Bundles** | Pointer to [**[]OrderItem**](OrderItem.md) |  | [optional] 
-**ModifiedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**FinishedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Comment** | Pointer to **string** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
+**ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**FinishedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Comment** | Pointer to **NullableString** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
 **WarehousesIds** | Pointer to **[]string** |  | [optional] 
 **Refunds** | Pointer to [**[]OrderRefund**](OrderRefund.md) |  | [optional] 
-**GiftMessage** | Pointer to **string** |  | [optional] 
-**OrderDetailsUrl** | Pointer to **string** |  | [optional] 
+**GiftMessage** | Pointer to **NullableString** |  | [optional] 
+**OrderDetailsUrl** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -127,6 +127,16 @@ SetBasketId sets BasketId field to given value.
 
 HasBasketId returns a boolean if a field has been set.
 
+### SetBasketIdNil
+
+`func (o *Order) SetBasketIdNil(b bool)`
+
+ SetBasketIdNil sets the value for BasketId to be an explicit nil
+
+### UnsetBasketId
+`func (o *Order) UnsetBasketId()`
+
+UnsetBasketId ensures that no value is present for BasketId, not even an explicit nil
 ### GetChannelId
 
 `func (o *Order) GetChannelId() string`
@@ -152,6 +162,16 @@ SetChannelId sets ChannelId field to given value.
 
 HasChannelId returns a boolean if a field has been set.
 
+### SetChannelIdNil
+
+`func (o *Order) SetChannelIdNil(b bool)`
+
+ SetChannelIdNil sets the value for ChannelId to be an explicit nil
+
+### UnsetChannelId
+`func (o *Order) UnsetChannelId()`
+
+UnsetChannelId ensures that no value is present for ChannelId, not even an explicit nil
 ### GetCustomer
 
 `func (o *Order) GetCustomer() BaseCustomer`
@@ -227,6 +247,16 @@ SetCurrency sets Currency field to given value.
 
 HasCurrency returns a boolean if a field has been set.
 
+### SetCurrencyNil
+
+`func (o *Order) SetCurrencyNil(b bool)`
+
+ SetCurrencyNil sets the value for Currency to be an explicit nil
+
+### UnsetCurrency
+`func (o *Order) UnsetCurrency()`
+
+UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
 ### GetShippingAddress
 
 `func (o *Order) GetShippingAddress() CustomerAddress`
@@ -252,6 +282,16 @@ SetShippingAddress sets ShippingAddress field to given value.
 
 HasShippingAddress returns a boolean if a field has been set.
 
+### SetShippingAddressNil
+
+`func (o *Order) SetShippingAddressNil(b bool)`
+
+ SetShippingAddressNil sets the value for ShippingAddress to be an explicit nil
+
+### UnsetShippingAddress
+`func (o *Order) UnsetShippingAddress()`
+
+UnsetShippingAddress ensures that no value is present for ShippingAddress, not even an explicit nil
 ### GetBillingAddress
 
 `func (o *Order) GetBillingAddress() CustomerAddress`
@@ -277,6 +317,16 @@ SetBillingAddress sets BillingAddress field to given value.
 
 HasBillingAddress returns a boolean if a field has been set.
 
+### SetBillingAddressNil
+
+`func (o *Order) SetBillingAddressNil(b bool)`
+
+ SetBillingAddressNil sets the value for BillingAddress to be an explicit nil
+
+### UnsetBillingAddress
+`func (o *Order) UnsetBillingAddress()`
+
+UnsetBillingAddress ensures that no value is present for BillingAddress, not even an explicit nil
 ### GetPaymentMethod
 
 `func (o *Order) GetPaymentMethod() OrderPaymentMethod`
@@ -302,6 +352,16 @@ SetPaymentMethod sets PaymentMethod field to given value.
 
 HasPaymentMethod returns a boolean if a field has been set.
 
+### SetPaymentMethodNil
+
+`func (o *Order) SetPaymentMethodNil(b bool)`
+
+ SetPaymentMethodNil sets the value for PaymentMethod to be an explicit nil
+
+### UnsetPaymentMethod
+`func (o *Order) UnsetPaymentMethod()`
+
+UnsetPaymentMethod ensures that no value is present for PaymentMethod, not even an explicit nil
 ### GetShippingMethod
 
 `func (o *Order) GetShippingMethod() OrderShippingMethod`
@@ -327,6 +387,16 @@ SetShippingMethod sets ShippingMethod field to given value.
 
 HasShippingMethod returns a boolean if a field has been set.
 
+### SetShippingMethodNil
+
+`func (o *Order) SetShippingMethodNil(b bool)`
+
+ SetShippingMethodNil sets the value for ShippingMethod to be an explicit nil
+
+### UnsetShippingMethod
+`func (o *Order) UnsetShippingMethod()`
+
+UnsetShippingMethod ensures that no value is present for ShippingMethod, not even an explicit nil
 ### GetShippingMethods
 
 `func (o *Order) GetShippingMethods() []OrderShippingMethod`
@@ -402,6 +472,16 @@ SetTotals sets Totals field to given value.
 
 HasTotals returns a boolean if a field has been set.
 
+### SetTotalsNil
+
+`func (o *Order) SetTotalsNil(b bool)`
+
+ SetTotalsNil sets the value for Totals to be an explicit nil
+
+### UnsetTotals
+`func (o *Order) UnsetTotals()`
+
+UnsetTotals ensures that no value is present for Totals, not even an explicit nil
 ### GetTotal
 
 `func (o *Order) GetTotal() OrderTotal`
@@ -427,6 +507,16 @@ SetTotal sets Total field to given value.
 
 HasTotal returns a boolean if a field has been set.
 
+### SetTotalNil
+
+`func (o *Order) SetTotalNil(b bool)`
+
+ SetTotalNil sets the value for Total to be an explicit nil
+
+### UnsetTotal
+`func (o *Order) UnsetTotal()`
+
+UnsetTotal ensures that no value is present for Total, not even an explicit nil
 ### GetDiscounts
 
 `func (o *Order) GetDiscounts() []OrderTotalsNewDiscount`
@@ -527,6 +617,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *Order) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *Order) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetFinishedTime
 
 `func (o *Order) GetFinishedTime() A2CDateTime`
@@ -552,6 +652,16 @@ SetFinishedTime sets FinishedTime field to given value.
 
 HasFinishedTime returns a boolean if a field has been set.
 
+### SetFinishedTimeNil
+
+`func (o *Order) SetFinishedTimeNil(b bool)`
+
+ SetFinishedTimeNil sets the value for FinishedTime to be an explicit nil
+
+### UnsetFinishedTime
+`func (o *Order) UnsetFinishedTime()`
+
+UnsetFinishedTime ensures that no value is present for FinishedTime, not even an explicit nil
 ### GetComment
 
 `func (o *Order) GetComment() string`
@@ -577,6 +687,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *Order) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *Order) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetStoreId
 
 `func (o *Order) GetStoreId() string`
@@ -602,6 +722,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *Order) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *Order) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetWarehousesIds
 
 `func (o *Order) GetWarehousesIds() []string`
@@ -677,6 +807,16 @@ SetGiftMessage sets GiftMessage field to given value.
 
 HasGiftMessage returns a boolean if a field has been set.
 
+### SetGiftMessageNil
+
+`func (o *Order) SetGiftMessageNil(b bool)`
+
+ SetGiftMessageNil sets the value for GiftMessage to be an explicit nil
+
+### UnsetGiftMessage
+`func (o *Order) UnsetGiftMessage()`
+
+UnsetGiftMessage ensures that no value is present for GiftMessage, not even an explicit nil
 ### GetOrderDetailsUrl
 
 `func (o *Order) GetOrderDetailsUrl() string`
@@ -702,6 +842,16 @@ SetOrderDetailsUrl sets OrderDetailsUrl field to given value.
 
 HasOrderDetailsUrl returns a boolean if a field has been set.
 
+### SetOrderDetailsUrlNil
+
+`func (o *Order) SetOrderDetailsUrlNil(b bool)`
+
+ SetOrderDetailsUrlNil sets the value for OrderDetailsUrl to be an explicit nil
+
+### UnsetOrderDetailsUrl
+`func (o *Order) UnsetOrderDetailsUrl()`
+
+UnsetOrderDetailsUrl ensures that no value is present for OrderDetailsUrl, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Order) GetAdditionalFields() map[string]interface{}`
@@ -727,6 +877,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Order) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Order) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Order) GetCustomFields() map[string]interface{}`
@@ -752,6 +912,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Order) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Order) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,8 +22,8 @@ var _ MappedNullable = &StoreAttributeGroup{}
 type StoreAttributeGroup struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Position *int32 `json:"position,omitempty"`
-	AttributeSetId *string `json:"attribute_set_id,omitempty"`
+	Position NullableInt32 `json:"position,omitempty"`
+	AttributeSetId NullableString `json:"attribute_set_id,omitempty"`
 	AssignedAttributeIds []string `json:"assigned_attribute_ids,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -110,68 +110,88 @@ func (o *StoreAttributeGroup) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPosition returns the Position field value if set, zero value otherwise.
+// GetPosition returns the Position field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttributeGroup) GetPosition() int32 {
-	if o == nil || IsNil(o.Position) {
+	if o == nil || IsNil(o.Position.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Position
+	return *o.Position.Get()
 }
 
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttributeGroup) GetPositionOk() (*int32, bool) {
-	if o == nil || IsNil(o.Position) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Position, true
+	return o.Position.Get(), o.Position.IsSet()
 }
 
 // HasPosition returns a boolean if a field has been set.
 func (o *StoreAttributeGroup) HasPosition() bool {
-	if o != nil && !IsNil(o.Position) {
+	if o != nil && o.Position.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPosition gets a reference to the given int32 and assigns it to the Position field.
+// SetPosition gets a reference to the given NullableInt32 and assigns it to the Position field.
 func (o *StoreAttributeGroup) SetPosition(v int32) {
-	o.Position = &v
+	o.Position.Set(&v)
+}
+// SetPositionNil sets the value for Position to be an explicit nil
+func (o *StoreAttributeGroup) SetPositionNil() {
+	o.Position.Set(nil)
 }
 
-// GetAttributeSetId returns the AttributeSetId field value if set, zero value otherwise.
+// UnsetPosition ensures that no value is present for Position, not even an explicit nil
+func (o *StoreAttributeGroup) UnsetPosition() {
+	o.Position.Unset()
+}
+
+// GetAttributeSetId returns the AttributeSetId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttributeGroup) GetAttributeSetId() string {
-	if o == nil || IsNil(o.AttributeSetId) {
+	if o == nil || IsNil(o.AttributeSetId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeSetId
+	return *o.AttributeSetId.Get()
 }
 
 // GetAttributeSetIdOk returns a tuple with the AttributeSetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttributeGroup) GetAttributeSetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeSetId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributeSetId, true
+	return o.AttributeSetId.Get(), o.AttributeSetId.IsSet()
 }
 
 // HasAttributeSetId returns a boolean if a field has been set.
 func (o *StoreAttributeGroup) HasAttributeSetId() bool {
-	if o != nil && !IsNil(o.AttributeSetId) {
+	if o != nil && o.AttributeSetId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeSetId gets a reference to the given string and assigns it to the AttributeSetId field.
+// SetAttributeSetId gets a reference to the given NullableString and assigns it to the AttributeSetId field.
 func (o *StoreAttributeGroup) SetAttributeSetId(v string) {
-	o.AttributeSetId = &v
+	o.AttributeSetId.Set(&v)
+}
+// SetAttributeSetIdNil sets the value for AttributeSetId to be an explicit nil
+func (o *StoreAttributeGroup) SetAttributeSetIdNil() {
+	o.AttributeSetId.Set(nil)
+}
+
+// UnsetAttributeSetId ensures that no value is present for AttributeSetId, not even an explicit nil
+func (o *StoreAttributeGroup) UnsetAttributeSetId() {
+	o.AttributeSetId.Unset()
 }
 
 // GetAssignedAttributeIds returns the AssignedAttributeIds field value if set, zero value otherwise.
@@ -206,9 +226,9 @@ func (o *StoreAttributeGroup) SetAssignedAttributeIds(v []string) {
 	o.AssignedAttributeIds = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttributeGroup) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +237,7 @@ func (o *StoreAttributeGroup) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttributeGroup) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +259,9 @@ func (o *StoreAttributeGroup) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttributeGroup) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +270,7 @@ func (o *StoreAttributeGroup) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttributeGroup) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -286,19 +308,19 @@ func (o StoreAttributeGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Position) {
-		toSerialize["position"] = o.Position
+	if o.Position.IsSet() {
+		toSerialize["position"] = o.Position.Get()
 	}
-	if !IsNil(o.AttributeSetId) {
-		toSerialize["attribute_set_id"] = o.AttributeSetId
+	if o.AttributeSetId.IsSet() {
+		toSerialize["attribute_set_id"] = o.AttributeSetId.Get()
 	}
 	if !IsNil(o.AssignedAttributeIds) {
 		toSerialize["assigned_attribute_ids"] = o.AssignedAttributeIds
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -471,7 +471,7 @@ func (r ApiCategoryAssignRequest) StoreId(storeId string) ApiCategoryAssignReque
 	return r
 }
 
-func (r ApiCategoryAssignRequest) Execute() (*CartConfigUpdate200Response, *http.Response, error) {
+func (r ApiCategoryAssignRequest) Execute() (*CategoryAssign200Response, *http.Response, error) {
 	return r.ApiService.CategoryAssignExecute(r)
 }
 
@@ -491,13 +491,13 @@ func (a *CategoryAPIService) CategoryAssign(ctx context.Context) ApiCategoryAssi
 }
 
 // Execute executes the request
-//  @return CartConfigUpdate200Response
-func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (*CartConfigUpdate200Response, *http.Response, error) {
+//  @return CategoryAssign200Response
+func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (*CategoryAssign200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartConfigUpdate200Response
+		localVarReturnValue  *CategoryAssign200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryAssign")
@@ -2167,7 +2167,7 @@ func (r ApiCategoryUnassignRequest) StoreId(storeId string) ApiCategoryUnassignR
 	return r
 }
 
-func (r ApiCategoryUnassignRequest) Execute() (*CartConfigUpdate200Response, *http.Response, error) {
+func (r ApiCategoryUnassignRequest) Execute() (*CategoryAssign200Response, *http.Response, error) {
 	return r.ApiService.CategoryUnassignExecute(r)
 }
 
@@ -2187,13 +2187,13 @@ func (a *CategoryAPIService) CategoryUnassign(ctx context.Context) ApiCategoryUn
 }
 
 // Execute executes the request
-//  @return CartConfigUpdate200Response
-func (a *CategoryAPIService) CategoryUnassignExecute(r ApiCategoryUnassignRequest) (*CartConfigUpdate200Response, *http.Response, error) {
+//  @return CategoryAssign200Response
+func (a *CategoryAPIService) CategoryUnassignExecute(r ApiCategoryUnassignRequest) (*CategoryAssign200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartConfigUpdate200Response
+		localVarReturnValue  *CategoryAssign200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryUnassign")

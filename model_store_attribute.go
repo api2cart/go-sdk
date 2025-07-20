@@ -21,17 +21,17 @@ var _ MappedNullable = &StoreAttribute{}
 // StoreAttribute struct for StoreAttribute
 type StoreAttribute struct {
 	Id *string `json:"id,omitempty"`
-	Code *string `json:"code,omitempty"`
+	Code NullableString `json:"code,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Name *string `json:"name,omitempty"`
 	DefaultValues []string `json:"default_values,omitempty"`
-	Position *int32 `json:"position,omitempty"`
-	Visible *bool `json:"visible,omitempty"`
-	Required *bool `json:"required,omitempty"`
-	System *bool `json:"system,omitempty"`
+	Position NullableInt32 `json:"position,omitempty"`
+	Visible NullableBool `json:"visible,omitempty"`
+	Required NullableBool `json:"required,omitempty"`
+	System NullableBool `json:"system,omitempty"`
 	Values []string `json:"values,omitempty"`
-	StoreId *string `json:"store_id,omitempty"`
-	LangId *string `json:"lang_id,omitempty"`
+	StoreId NullableString `json:"store_id,omitempty"`
+	LangId NullableString `json:"lang_id,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -85,36 +85,46 @@ func (o *StoreAttribute) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCode returns the Code field value if set, zero value otherwise.
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Code
+	return *o.Code.Get()
 }
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Code, true
+	return o.Code.Get(), o.Code.IsSet()
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *StoreAttribute) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
+// SetCode gets a reference to the given NullableString and assigns it to the Code field.
 func (o *StoreAttribute) SetCode(v string) {
-	o.Code = &v
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *StoreAttribute) SetCodeNil() {
+	o.Code.Set(nil)
+}
+
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *StoreAttribute) UnsetCode() {
+	o.Code.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -213,132 +223,172 @@ func (o *StoreAttribute) SetDefaultValues(v []string) {
 	o.DefaultValues = v
 }
 
-// GetPosition returns the Position field value if set, zero value otherwise.
+// GetPosition returns the Position field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetPosition() int32 {
-	if o == nil || IsNil(o.Position) {
+	if o == nil || IsNil(o.Position.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Position
+	return *o.Position.Get()
 }
 
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetPositionOk() (*int32, bool) {
-	if o == nil || IsNil(o.Position) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Position, true
+	return o.Position.Get(), o.Position.IsSet()
 }
 
 // HasPosition returns a boolean if a field has been set.
 func (o *StoreAttribute) HasPosition() bool {
-	if o != nil && !IsNil(o.Position) {
+	if o != nil && o.Position.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPosition gets a reference to the given int32 and assigns it to the Position field.
+// SetPosition gets a reference to the given NullableInt32 and assigns it to the Position field.
 func (o *StoreAttribute) SetPosition(v int32) {
-	o.Position = &v
+	o.Position.Set(&v)
+}
+// SetPositionNil sets the value for Position to be an explicit nil
+func (o *StoreAttribute) SetPositionNil() {
+	o.Position.Set(nil)
 }
 
-// GetVisible returns the Visible field value if set, zero value otherwise.
+// UnsetPosition ensures that no value is present for Position, not even an explicit nil
+func (o *StoreAttribute) UnsetPosition() {
+	o.Position.Unset()
+}
+
+// GetVisible returns the Visible field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetVisible() bool {
-	if o == nil || IsNil(o.Visible) {
+	if o == nil || IsNil(o.Visible.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Visible
+	return *o.Visible.Get()
 }
 
 // GetVisibleOk returns a tuple with the Visible field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetVisibleOk() (*bool, bool) {
-	if o == nil || IsNil(o.Visible) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Visible, true
+	return o.Visible.Get(), o.Visible.IsSet()
 }
 
 // HasVisible returns a boolean if a field has been set.
 func (o *StoreAttribute) HasVisible() bool {
-	if o != nil && !IsNil(o.Visible) {
+	if o != nil && o.Visible.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVisible gets a reference to the given bool and assigns it to the Visible field.
+// SetVisible gets a reference to the given NullableBool and assigns it to the Visible field.
 func (o *StoreAttribute) SetVisible(v bool) {
-	o.Visible = &v
+	o.Visible.Set(&v)
+}
+// SetVisibleNil sets the value for Visible to be an explicit nil
+func (o *StoreAttribute) SetVisibleNil() {
+	o.Visible.Set(nil)
 }
 
-// GetRequired returns the Required field value if set, zero value otherwise.
+// UnsetVisible ensures that no value is present for Visible, not even an explicit nil
+func (o *StoreAttribute) UnsetVisible() {
+	o.Visible.Unset()
+}
+
+// GetRequired returns the Required field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetRequired() bool {
-	if o == nil || IsNil(o.Required) {
+	if o == nil || IsNil(o.Required.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Required
+	return *o.Required.Get()
 }
 
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetRequiredOk() (*bool, bool) {
-	if o == nil || IsNil(o.Required) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Required, true
+	return o.Required.Get(), o.Required.IsSet()
 }
 
 // HasRequired returns a boolean if a field has been set.
 func (o *StoreAttribute) HasRequired() bool {
-	if o != nil && !IsNil(o.Required) {
+	if o != nil && o.Required.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequired gets a reference to the given bool and assigns it to the Required field.
+// SetRequired gets a reference to the given NullableBool and assigns it to the Required field.
 func (o *StoreAttribute) SetRequired(v bool) {
-	o.Required = &v
+	o.Required.Set(&v)
+}
+// SetRequiredNil sets the value for Required to be an explicit nil
+func (o *StoreAttribute) SetRequiredNil() {
+	o.Required.Set(nil)
 }
 
-// GetSystem returns the System field value if set, zero value otherwise.
+// UnsetRequired ensures that no value is present for Required, not even an explicit nil
+func (o *StoreAttribute) UnsetRequired() {
+	o.Required.Unset()
+}
+
+// GetSystem returns the System field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetSystem() bool {
-	if o == nil || IsNil(o.System) {
+	if o == nil || IsNil(o.System.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.System
+	return *o.System.Get()
 }
 
 // GetSystemOk returns a tuple with the System field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetSystemOk() (*bool, bool) {
-	if o == nil || IsNil(o.System) {
+	if o == nil {
 		return nil, false
 	}
-	return o.System, true
+	return o.System.Get(), o.System.IsSet()
 }
 
 // HasSystem returns a boolean if a field has been set.
 func (o *StoreAttribute) HasSystem() bool {
-	if o != nil && !IsNil(o.System) {
+	if o != nil && o.System.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSystem gets a reference to the given bool and assigns it to the System field.
+// SetSystem gets a reference to the given NullableBool and assigns it to the System field.
 func (o *StoreAttribute) SetSystem(v bool) {
-	o.System = &v
+	o.System.Set(&v)
+}
+// SetSystemNil sets the value for System to be an explicit nil
+func (o *StoreAttribute) SetSystemNil() {
+	o.System.Set(nil)
+}
+
+// UnsetSystem ensures that no value is present for System, not even an explicit nil
+func (o *StoreAttribute) UnsetSystem() {
+	o.System.Unset()
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
@@ -373,73 +423,93 @@ func (o *StoreAttribute) SetValues(v []string) {
 	o.Values = v
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
+// GetStoreId returns the StoreId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil || IsNil(o.StoreId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StoreId
+	return *o.StoreId.Get()
 }
 
 // GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StoreId, true
+	return o.StoreId.Get(), o.StoreId.IsSet()
 }
 
 // HasStoreId returns a boolean if a field has been set.
 func (o *StoreAttribute) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
+	if o != nil && o.StoreId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+// SetStoreId gets a reference to the given NullableString and assigns it to the StoreId field.
 func (o *StoreAttribute) SetStoreId(v string) {
-	o.StoreId = &v
+	o.StoreId.Set(&v)
+}
+// SetStoreIdNil sets the value for StoreId to be an explicit nil
+func (o *StoreAttribute) SetStoreIdNil() {
+	o.StoreId.Set(nil)
 }
 
-// GetLangId returns the LangId field value if set, zero value otherwise.
+// UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
+func (o *StoreAttribute) UnsetStoreId() {
+	o.StoreId.Unset()
+}
+
+// GetLangId returns the LangId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetLangId() string {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil || IsNil(o.LangId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LangId
+	return *o.LangId.Get()
 }
 
 // GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetLangIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LangId, true
+	return o.LangId.Get(), o.LangId.IsSet()
 }
 
 // HasLangId returns a boolean if a field has been set.
 func (o *StoreAttribute) HasLangId() bool {
-	if o != nil && !IsNil(o.LangId) {
+	if o != nil && o.LangId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLangId gets a reference to the given string and assigns it to the LangId field.
+// SetLangId gets a reference to the given NullableString and assigns it to the LangId field.
 func (o *StoreAttribute) SetLangId(v string) {
-	o.LangId = &v
+	o.LangId.Set(&v)
+}
+// SetLangIdNil sets the value for LangId to be an explicit nil
+func (o *StoreAttribute) SetLangIdNil() {
+	o.LangId.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetLangId ensures that no value is present for LangId, not even an explicit nil
+func (o *StoreAttribute) UnsetLangId() {
+	o.LangId.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -448,6 +518,7 @@ func (o *StoreAttribute) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -469,9 +540,9 @@ func (o *StoreAttribute) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StoreAttribute) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -480,6 +551,7 @@ func (o *StoreAttribute) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StoreAttribute) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -514,8 +586,8 @@ func (o StoreAttribute) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -526,31 +598,31 @@ func (o StoreAttribute) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DefaultValues) {
 		toSerialize["default_values"] = o.DefaultValues
 	}
-	if !IsNil(o.Position) {
-		toSerialize["position"] = o.Position
+	if o.Position.IsSet() {
+		toSerialize["position"] = o.Position.Get()
 	}
-	if !IsNil(o.Visible) {
-		toSerialize["visible"] = o.Visible
+	if o.Visible.IsSet() {
+		toSerialize["visible"] = o.Visible.Get()
 	}
-	if !IsNil(o.Required) {
-		toSerialize["required"] = o.Required
+	if o.Required.IsSet() {
+		toSerialize["required"] = o.Required.Get()
 	}
-	if !IsNil(o.System) {
-		toSerialize["system"] = o.System
+	if o.System.IsSet() {
+		toSerialize["system"] = o.System.Get()
 	}
 	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
+	if o.StoreId.IsSet() {
+		toSerialize["store_id"] = o.StoreId.Get()
 	}
-	if !IsNil(o.LangId) {
-		toSerialize["lang_id"] = o.LangId
+	if o.LangId.IsSet() {
+		toSerialize["lang_id"] = o.LangId.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

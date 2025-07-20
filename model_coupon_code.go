@@ -22,7 +22,7 @@ var _ MappedNullable = &CouponCode{}
 type CouponCode struct {
 	Id *string `json:"id,omitempty"`
 	Code *string `json:"code,omitempty"`
-	UsedTimes *int32 `json:"used_times,omitempty"`
+	UsedTimes NullableInt32 `json:"used_times,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -108,41 +108,51 @@ func (o *CouponCode) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetUsedTimes returns the UsedTimes field value if set, zero value otherwise.
+// GetUsedTimes returns the UsedTimes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCode) GetUsedTimes() int32 {
-	if o == nil || IsNil(o.UsedTimes) {
+	if o == nil || IsNil(o.UsedTimes.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.UsedTimes
+	return *o.UsedTimes.Get()
 }
 
 // GetUsedTimesOk returns a tuple with the UsedTimes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCode) GetUsedTimesOk() (*int32, bool) {
-	if o == nil || IsNil(o.UsedTimes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsedTimes, true
+	return o.UsedTimes.Get(), o.UsedTimes.IsSet()
 }
 
 // HasUsedTimes returns a boolean if a field has been set.
 func (o *CouponCode) HasUsedTimes() bool {
-	if o != nil && !IsNil(o.UsedTimes) {
+	if o != nil && o.UsedTimes.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsedTimes gets a reference to the given int32 and assigns it to the UsedTimes field.
+// SetUsedTimes gets a reference to the given NullableInt32 and assigns it to the UsedTimes field.
 func (o *CouponCode) SetUsedTimes(v int32) {
-	o.UsedTimes = &v
+	o.UsedTimes.Set(&v)
+}
+// SetUsedTimesNil sets the value for UsedTimes to be an explicit nil
+func (o *CouponCode) SetUsedTimesNil() {
+	o.UsedTimes.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetUsedTimes ensures that no value is present for UsedTimes, not even an explicit nil
+func (o *CouponCode) UnsetUsedTimes() {
+	o.UsedTimes.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCode) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -151,6 +161,7 @@ func (o *CouponCode) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCode) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -172,9 +183,9 @@ func (o *CouponCode) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCode) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -183,6 +194,7 @@ func (o *CouponCode) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCode) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -220,13 +232,13 @@ func (o CouponCode) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.UsedTimes) {
-		toSerialize["used_times"] = o.UsedTimes
+	if o.UsedTimes.IsSet() {
+		toSerialize["used_times"] = o.UsedTimes.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

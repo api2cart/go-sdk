@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseCartCouponListResult{}
 
 // ResponseCartCouponListResult struct for ResponseCartCouponListResult
 type ResponseCartCouponListResult struct {
-	CouponCount *int32 `json:"coupon_count,omitempty"`
+	CouponCount NullableInt32 `json:"coupon_count,omitempty"`
 	Coupon []Coupon `json:"coupon,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseCartCouponListResultWithDefaults() *ResponseCartCouponListResult
 	return &this
 }
 
-// GetCouponCount returns the CouponCount field value if set, zero value otherwise.
+// GetCouponCount returns the CouponCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCouponListResult) GetCouponCount() int32 {
-	if o == nil || IsNil(o.CouponCount) {
+	if o == nil || IsNil(o.CouponCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CouponCount
+	return *o.CouponCount.Get()
 }
 
 // GetCouponCountOk returns a tuple with the CouponCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCouponListResult) GetCouponCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.CouponCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CouponCount, true
+	return o.CouponCount.Get(), o.CouponCount.IsSet()
 }
 
 // HasCouponCount returns a boolean if a field has been set.
 func (o *ResponseCartCouponListResult) HasCouponCount() bool {
-	if o != nil && !IsNil(o.CouponCount) {
+	if o != nil && o.CouponCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCouponCount gets a reference to the given int32 and assigns it to the CouponCount field.
+// SetCouponCount gets a reference to the given NullableInt32 and assigns it to the CouponCount field.
 func (o *ResponseCartCouponListResult) SetCouponCount(v int32) {
-	o.CouponCount = &v
+	o.CouponCount.Set(&v)
+}
+// SetCouponCountNil sets the value for CouponCount to be an explicit nil
+func (o *ResponseCartCouponListResult) SetCouponCountNil() {
+	o.CouponCount.Set(nil)
+}
+
+// UnsetCouponCount ensures that no value is present for CouponCount, not even an explicit nil
+func (o *ResponseCartCouponListResult) UnsetCouponCount() {
+	o.CouponCount.Unset()
 }
 
 // GetCoupon returns the Coupon field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseCartCouponListResult) SetCoupon(v []Coupon) {
 	o.Coupon = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCouponListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseCartCouponListResult) GetAdditionalFields() map[string]interfac
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCouponListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseCartCouponListResult) SetAdditionalFields(v map[string]interfac
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCartCouponListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseCartCouponListResult) GetCustomFields() map[string]interface{} 
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCartCouponListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseCartCouponListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseCartCouponListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CouponCount) {
-		toSerialize["coupon_count"] = o.CouponCount
+	if o.CouponCount.IsSet() {
+		toSerialize["coupon_count"] = o.CouponCount.Get()
 	}
 	if !IsNil(o.Coupon) {
 		toSerialize["coupon"] = o.Coupon
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

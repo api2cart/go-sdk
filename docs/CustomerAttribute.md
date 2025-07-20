@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributeId** | Pointer to **string** |  | [optional] 
-**Code** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**AttributeId** | Pointer to **NullableString** |  | [optional] 
+**Code** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
 **Values** | Pointer to [**[]CustomerAttributeValue**](CustomerAttributeValue.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -56,6 +56,16 @@ SetAttributeId sets AttributeId field to given value.
 
 HasAttributeId returns a boolean if a field has been set.
 
+### SetAttributeIdNil
+
+`func (o *CustomerAttribute) SetAttributeIdNil(b bool)`
+
+ SetAttributeIdNil sets the value for AttributeId to be an explicit nil
+
+### UnsetAttributeId
+`func (o *CustomerAttribute) UnsetAttributeId()`
+
+UnsetAttributeId ensures that no value is present for AttributeId, not even an explicit nil
 ### GetCode
 
 `func (o *CustomerAttribute) GetCode() string`
@@ -81,6 +91,16 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
+### SetCodeNil
+
+`func (o *CustomerAttribute) SetCodeNil(b bool)`
+
+ SetCodeNil sets the value for Code to be an explicit nil
+
+### UnsetCode
+`func (o *CustomerAttribute) UnsetCode()`
+
+UnsetCode ensures that no value is present for Code, not even an explicit nil
 ### GetName
 
 `func (o *CustomerAttribute) GetName() string`
@@ -106,6 +126,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CustomerAttribute) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CustomerAttribute) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetType
 
 `func (o *CustomerAttribute) GetType() string`
@@ -131,6 +161,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *CustomerAttribute) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *CustomerAttribute) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetValues
 
 `func (o *CustomerAttribute) GetValues() []CustomerAttributeValue`
@@ -181,6 +221,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CustomerAttribute) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CustomerAttribute) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CustomerAttribute) GetCustomFields() map[string]interface{}`
@@ -206,6 +256,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CustomerAttribute) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CustomerAttribute) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

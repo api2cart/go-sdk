@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AttributesCount** | Pointer to **int32** |  | [optional] 
+**AttributesCount** | Pointer to **NullableInt32** |  | [optional] 
 **Attribute** | Pointer to [**[]StoreAttribute**](StoreAttribute.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetAttributesCount sets AttributesCount field to given value.
 
 HasAttributesCount returns a boolean if a field has been set.
 
+### SetAttributesCountNil
+
+`func (o *ResponseAttributeListResult) SetAttributesCountNil(b bool)`
+
+ SetAttributesCountNil sets the value for AttributesCount to be an explicit nil
+
+### UnsetAttributesCount
+`func (o *ResponseAttributeListResult) UnsetAttributesCount()`
+
+UnsetAttributesCount ensures that no value is present for AttributesCount, not even an explicit nil
 ### GetAttribute
 
 `func (o *ResponseAttributeListResult) GetAttribute() []StoreAttribute`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseAttributeListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseAttributeListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseAttributeListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseAttributeListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseAttributeListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

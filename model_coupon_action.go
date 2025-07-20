@@ -23,12 +23,12 @@ type CouponAction struct {
 	Scope *string `json:"scope,omitempty"`
 	ApplyTo *string `json:"apply_to,omitempty"`
 	Amount *float32 `json:"amount,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
-	IncludeTax *bool `json:"include_tax,omitempty"`
+	CurrencyCode NullableString `json:"currency_code,omitempty"`
+	IncludeTax NullableBool `json:"include_tax,omitempty"`
 	Type *string `json:"type,omitempty"`
-	DiscountedQuantity *float32 `json:"discounted_quantity,omitempty"`
-	DiscountQuantityStep *int32 `json:"discount_quantity_step,omitempty"`
-	LogicOperator *string `json:"logic_operator,omitempty"`
+	DiscountedQuantity NullableFloat32 `json:"discounted_quantity,omitempty"`
+	DiscountQuantityStep NullableInt32 `json:"discount_quantity_step,omitempty"`
+	LogicOperator NullableString `json:"logic_operator,omitempty"`
 	Conditions []CouponCondition `json:"conditions,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -147,68 +147,88 @@ func (o *CouponAction) SetAmount(v float32) {
 	o.Amount = &v
 }
 
-// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
+// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetCurrencyCode() string {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CurrencyCode
+	return *o.CurrencyCode.Get()
 }
 
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CurrencyCode, true
+	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
 }
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *CouponAction) HasCurrencyCode() bool {
-	if o != nil && !IsNil(o.CurrencyCode) {
+	if o != nil && o.CurrencyCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrencyCode gets a reference to the given string and assigns it to the CurrencyCode field.
+// SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
 func (o *CouponAction) SetCurrencyCode(v string) {
-	o.CurrencyCode = &v
+	o.CurrencyCode.Set(&v)
+}
+// SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+func (o *CouponAction) SetCurrencyCodeNil() {
+	o.CurrencyCode.Set(nil)
 }
 
-// GetIncludeTax returns the IncludeTax field value if set, zero value otherwise.
+// UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
+func (o *CouponAction) UnsetCurrencyCode() {
+	o.CurrencyCode.Unset()
+}
+
+// GetIncludeTax returns the IncludeTax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetIncludeTax() bool {
-	if o == nil || IsNil(o.IncludeTax) {
+	if o == nil || IsNil(o.IncludeTax.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IncludeTax
+	return *o.IncludeTax.Get()
 }
 
 // GetIncludeTaxOk returns a tuple with the IncludeTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetIncludeTaxOk() (*bool, bool) {
-	if o == nil || IsNil(o.IncludeTax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IncludeTax, true
+	return o.IncludeTax.Get(), o.IncludeTax.IsSet()
 }
 
 // HasIncludeTax returns a boolean if a field has been set.
 func (o *CouponAction) HasIncludeTax() bool {
-	if o != nil && !IsNil(o.IncludeTax) {
+	if o != nil && o.IncludeTax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIncludeTax gets a reference to the given bool and assigns it to the IncludeTax field.
+// SetIncludeTax gets a reference to the given NullableBool and assigns it to the IncludeTax field.
 func (o *CouponAction) SetIncludeTax(v bool) {
-	o.IncludeTax = &v
+	o.IncludeTax.Set(&v)
+}
+// SetIncludeTaxNil sets the value for IncludeTax to be an explicit nil
+func (o *CouponAction) SetIncludeTaxNil() {
+	o.IncludeTax.Set(nil)
+}
+
+// UnsetIncludeTax ensures that no value is present for IncludeTax, not even an explicit nil
+func (o *CouponAction) UnsetIncludeTax() {
+	o.IncludeTax.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -243,100 +263,130 @@ func (o *CouponAction) SetType(v string) {
 	o.Type = &v
 }
 
-// GetDiscountedQuantity returns the DiscountedQuantity field value if set, zero value otherwise.
+// GetDiscountedQuantity returns the DiscountedQuantity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetDiscountedQuantity() float32 {
-	if o == nil || IsNil(o.DiscountedQuantity) {
+	if o == nil || IsNil(o.DiscountedQuantity.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.DiscountedQuantity
+	return *o.DiscountedQuantity.Get()
 }
 
 // GetDiscountedQuantityOk returns a tuple with the DiscountedQuantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetDiscountedQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.DiscountedQuantity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DiscountedQuantity, true
+	return o.DiscountedQuantity.Get(), o.DiscountedQuantity.IsSet()
 }
 
 // HasDiscountedQuantity returns a boolean if a field has been set.
 func (o *CouponAction) HasDiscountedQuantity() bool {
-	if o != nil && !IsNil(o.DiscountedQuantity) {
+	if o != nil && o.DiscountedQuantity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscountedQuantity gets a reference to the given float32 and assigns it to the DiscountedQuantity field.
+// SetDiscountedQuantity gets a reference to the given NullableFloat32 and assigns it to the DiscountedQuantity field.
 func (o *CouponAction) SetDiscountedQuantity(v float32) {
-	o.DiscountedQuantity = &v
+	o.DiscountedQuantity.Set(&v)
+}
+// SetDiscountedQuantityNil sets the value for DiscountedQuantity to be an explicit nil
+func (o *CouponAction) SetDiscountedQuantityNil() {
+	o.DiscountedQuantity.Set(nil)
 }
 
-// GetDiscountQuantityStep returns the DiscountQuantityStep field value if set, zero value otherwise.
+// UnsetDiscountedQuantity ensures that no value is present for DiscountedQuantity, not even an explicit nil
+func (o *CouponAction) UnsetDiscountedQuantity() {
+	o.DiscountedQuantity.Unset()
+}
+
+// GetDiscountQuantityStep returns the DiscountQuantityStep field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetDiscountQuantityStep() int32 {
-	if o == nil || IsNil(o.DiscountQuantityStep) {
+	if o == nil || IsNil(o.DiscountQuantityStep.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.DiscountQuantityStep
+	return *o.DiscountQuantityStep.Get()
 }
 
 // GetDiscountQuantityStepOk returns a tuple with the DiscountQuantityStep field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetDiscountQuantityStepOk() (*int32, bool) {
-	if o == nil || IsNil(o.DiscountQuantityStep) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DiscountQuantityStep, true
+	return o.DiscountQuantityStep.Get(), o.DiscountQuantityStep.IsSet()
 }
 
 // HasDiscountQuantityStep returns a boolean if a field has been set.
 func (o *CouponAction) HasDiscountQuantityStep() bool {
-	if o != nil && !IsNil(o.DiscountQuantityStep) {
+	if o != nil && o.DiscountQuantityStep.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscountQuantityStep gets a reference to the given int32 and assigns it to the DiscountQuantityStep field.
+// SetDiscountQuantityStep gets a reference to the given NullableInt32 and assigns it to the DiscountQuantityStep field.
 func (o *CouponAction) SetDiscountQuantityStep(v int32) {
-	o.DiscountQuantityStep = &v
+	o.DiscountQuantityStep.Set(&v)
+}
+// SetDiscountQuantityStepNil sets the value for DiscountQuantityStep to be an explicit nil
+func (o *CouponAction) SetDiscountQuantityStepNil() {
+	o.DiscountQuantityStep.Set(nil)
 }
 
-// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise.
+// UnsetDiscountQuantityStep ensures that no value is present for DiscountQuantityStep, not even an explicit nil
+func (o *CouponAction) UnsetDiscountQuantityStep() {
+	o.DiscountQuantityStep.Unset()
+}
+
+// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetLogicOperator() string {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil || IsNil(o.LogicOperator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogicOperator
+	return *o.LogicOperator.Get()
 }
 
 // GetLogicOperatorOk returns a tuple with the LogicOperator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetLogicOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogicOperator, true
+	return o.LogicOperator.Get(), o.LogicOperator.IsSet()
 }
 
 // HasLogicOperator returns a boolean if a field has been set.
 func (o *CouponAction) HasLogicOperator() bool {
-	if o != nil && !IsNil(o.LogicOperator) {
+	if o != nil && o.LogicOperator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogicOperator gets a reference to the given string and assigns it to the LogicOperator field.
+// SetLogicOperator gets a reference to the given NullableString and assigns it to the LogicOperator field.
 func (o *CouponAction) SetLogicOperator(v string) {
-	o.LogicOperator = &v
+	o.LogicOperator.Set(&v)
+}
+// SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+func (o *CouponAction) SetLogicOperatorNil() {
+	o.LogicOperator.Set(nil)
+}
+
+// UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
+func (o *CouponAction) UnsetLogicOperator() {
+	o.LogicOperator.Unset()
 }
 
 // GetConditions returns the Conditions field value if set, zero value otherwise.
@@ -371,9 +421,9 @@ func (o *CouponAction) SetConditions(v []CouponCondition) {
 	o.Conditions = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -382,6 +432,7 @@ func (o *CouponAction) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -403,9 +454,9 @@ func (o *CouponAction) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponAction) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -414,6 +465,7 @@ func (o *CouponAction) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponAction) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -454,31 +506,31 @@ func (o CouponAction) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
-	if !IsNil(o.CurrencyCode) {
-		toSerialize["currency_code"] = o.CurrencyCode
+	if o.CurrencyCode.IsSet() {
+		toSerialize["currency_code"] = o.CurrencyCode.Get()
 	}
-	if !IsNil(o.IncludeTax) {
-		toSerialize["include_tax"] = o.IncludeTax
+	if o.IncludeTax.IsSet() {
+		toSerialize["include_tax"] = o.IncludeTax.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.DiscountedQuantity) {
-		toSerialize["discounted_quantity"] = o.DiscountedQuantity
+	if o.DiscountedQuantity.IsSet() {
+		toSerialize["discounted_quantity"] = o.DiscountedQuantity.Get()
 	}
-	if !IsNil(o.DiscountQuantityStep) {
-		toSerialize["discount_quantity_step"] = o.DiscountQuantityStep
+	if o.DiscountQuantityStep.IsSet() {
+		toSerialize["discount_quantity_step"] = o.DiscountQuantityStep.Get()
 	}
-	if !IsNil(o.LogicOperator) {
-		toSerialize["logic_operator"] = o.LogicOperator
+	if o.LogicOperator.IsSet() {
+		toSerialize["logic_operator"] = o.LogicOperator.Get()
 	}
 	if !IsNil(o.Conditions) {
 		toSerialize["conditions"] = o.Conditions
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

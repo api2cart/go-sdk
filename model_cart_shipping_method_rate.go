@@ -20,13 +20,13 @@ var _ MappedNullable = &CartShippingMethodRate{}
 
 // CartShippingMethodRate struct for CartShippingMethodRate
 type CartShippingMethodRate struct {
-	MinWeight *string `json:"min_weight,omitempty"`
-	MaxWeight *string `json:"max_weight,omitempty"`
-	MinOrderAmount *string `json:"min_order_amount,omitempty"`
-	MaxOrderAmount *string `json:"max_order_amount,omitempty"`
-	MinItemsCount *string `json:"min_items_count,omitempty"`
-	MaxItemsCount *string `json:"max_items_count,omitempty"`
-	Price *string `json:"price,omitempty"`
+	MinWeight NullableString `json:"min_weight,omitempty"`
+	MaxWeight NullableString `json:"max_weight,omitempty"`
+	MinOrderAmount NullableString `json:"min_order_amount,omitempty"`
+	MaxOrderAmount NullableString `json:"max_order_amount,omitempty"`
+	MinItemsCount NullableString `json:"min_items_count,omitempty"`
+	MaxItemsCount NullableString `json:"max_items_count,omitempty"`
+	Price NullableString `json:"price,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -48,233 +48,303 @@ func NewCartShippingMethodRateWithDefaults() *CartShippingMethodRate {
 	return &this
 }
 
-// GetMinWeight returns the MinWeight field value if set, zero value otherwise.
+// GetMinWeight returns the MinWeight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMinWeight() string {
-	if o == nil || IsNil(o.MinWeight) {
+	if o == nil || IsNil(o.MinWeight.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MinWeight
+	return *o.MinWeight.Get()
 }
 
 // GetMinWeightOk returns a tuple with the MinWeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMinWeightOk() (*string, bool) {
-	if o == nil || IsNil(o.MinWeight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinWeight, true
+	return o.MinWeight.Get(), o.MinWeight.IsSet()
 }
 
 // HasMinWeight returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMinWeight() bool {
-	if o != nil && !IsNil(o.MinWeight) {
+	if o != nil && o.MinWeight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinWeight gets a reference to the given string and assigns it to the MinWeight field.
+// SetMinWeight gets a reference to the given NullableString and assigns it to the MinWeight field.
 func (o *CartShippingMethodRate) SetMinWeight(v string) {
-	o.MinWeight = &v
+	o.MinWeight.Set(&v)
+}
+// SetMinWeightNil sets the value for MinWeight to be an explicit nil
+func (o *CartShippingMethodRate) SetMinWeightNil() {
+	o.MinWeight.Set(nil)
 }
 
-// GetMaxWeight returns the MaxWeight field value if set, zero value otherwise.
+// UnsetMinWeight ensures that no value is present for MinWeight, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMinWeight() {
+	o.MinWeight.Unset()
+}
+
+// GetMaxWeight returns the MaxWeight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMaxWeight() string {
-	if o == nil || IsNil(o.MaxWeight) {
+	if o == nil || IsNil(o.MaxWeight.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaxWeight
+	return *o.MaxWeight.Get()
 }
 
 // GetMaxWeightOk returns a tuple with the MaxWeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMaxWeightOk() (*string, bool) {
-	if o == nil || IsNil(o.MaxWeight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxWeight, true
+	return o.MaxWeight.Get(), o.MaxWeight.IsSet()
 }
 
 // HasMaxWeight returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMaxWeight() bool {
-	if o != nil && !IsNil(o.MaxWeight) {
+	if o != nil && o.MaxWeight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxWeight gets a reference to the given string and assigns it to the MaxWeight field.
+// SetMaxWeight gets a reference to the given NullableString and assigns it to the MaxWeight field.
 func (o *CartShippingMethodRate) SetMaxWeight(v string) {
-	o.MaxWeight = &v
+	o.MaxWeight.Set(&v)
+}
+// SetMaxWeightNil sets the value for MaxWeight to be an explicit nil
+func (o *CartShippingMethodRate) SetMaxWeightNil() {
+	o.MaxWeight.Set(nil)
 }
 
-// GetMinOrderAmount returns the MinOrderAmount field value if set, zero value otherwise.
+// UnsetMaxWeight ensures that no value is present for MaxWeight, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMaxWeight() {
+	o.MaxWeight.Unset()
+}
+
+// GetMinOrderAmount returns the MinOrderAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMinOrderAmount() string {
-	if o == nil || IsNil(o.MinOrderAmount) {
+	if o == nil || IsNil(o.MinOrderAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MinOrderAmount
+	return *o.MinOrderAmount.Get()
 }
 
 // GetMinOrderAmountOk returns a tuple with the MinOrderAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMinOrderAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.MinOrderAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinOrderAmount, true
+	return o.MinOrderAmount.Get(), o.MinOrderAmount.IsSet()
 }
 
 // HasMinOrderAmount returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMinOrderAmount() bool {
-	if o != nil && !IsNil(o.MinOrderAmount) {
+	if o != nil && o.MinOrderAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinOrderAmount gets a reference to the given string and assigns it to the MinOrderAmount field.
+// SetMinOrderAmount gets a reference to the given NullableString and assigns it to the MinOrderAmount field.
 func (o *CartShippingMethodRate) SetMinOrderAmount(v string) {
-	o.MinOrderAmount = &v
+	o.MinOrderAmount.Set(&v)
+}
+// SetMinOrderAmountNil sets the value for MinOrderAmount to be an explicit nil
+func (o *CartShippingMethodRate) SetMinOrderAmountNil() {
+	o.MinOrderAmount.Set(nil)
 }
 
-// GetMaxOrderAmount returns the MaxOrderAmount field value if set, zero value otherwise.
+// UnsetMinOrderAmount ensures that no value is present for MinOrderAmount, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMinOrderAmount() {
+	o.MinOrderAmount.Unset()
+}
+
+// GetMaxOrderAmount returns the MaxOrderAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMaxOrderAmount() string {
-	if o == nil || IsNil(o.MaxOrderAmount) {
+	if o == nil || IsNil(o.MaxOrderAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaxOrderAmount
+	return *o.MaxOrderAmount.Get()
 }
 
 // GetMaxOrderAmountOk returns a tuple with the MaxOrderAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMaxOrderAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.MaxOrderAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxOrderAmount, true
+	return o.MaxOrderAmount.Get(), o.MaxOrderAmount.IsSet()
 }
 
 // HasMaxOrderAmount returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMaxOrderAmount() bool {
-	if o != nil && !IsNil(o.MaxOrderAmount) {
+	if o != nil && o.MaxOrderAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxOrderAmount gets a reference to the given string and assigns it to the MaxOrderAmount field.
+// SetMaxOrderAmount gets a reference to the given NullableString and assigns it to the MaxOrderAmount field.
 func (o *CartShippingMethodRate) SetMaxOrderAmount(v string) {
-	o.MaxOrderAmount = &v
+	o.MaxOrderAmount.Set(&v)
+}
+// SetMaxOrderAmountNil sets the value for MaxOrderAmount to be an explicit nil
+func (o *CartShippingMethodRate) SetMaxOrderAmountNil() {
+	o.MaxOrderAmount.Set(nil)
 }
 
-// GetMinItemsCount returns the MinItemsCount field value if set, zero value otherwise.
+// UnsetMaxOrderAmount ensures that no value is present for MaxOrderAmount, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMaxOrderAmount() {
+	o.MaxOrderAmount.Unset()
+}
+
+// GetMinItemsCount returns the MinItemsCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMinItemsCount() string {
-	if o == nil || IsNil(o.MinItemsCount) {
+	if o == nil || IsNil(o.MinItemsCount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MinItemsCount
+	return *o.MinItemsCount.Get()
 }
 
 // GetMinItemsCountOk returns a tuple with the MinItemsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMinItemsCountOk() (*string, bool) {
-	if o == nil || IsNil(o.MinItemsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinItemsCount, true
+	return o.MinItemsCount.Get(), o.MinItemsCount.IsSet()
 }
 
 // HasMinItemsCount returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMinItemsCount() bool {
-	if o != nil && !IsNil(o.MinItemsCount) {
+	if o != nil && o.MinItemsCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinItemsCount gets a reference to the given string and assigns it to the MinItemsCount field.
+// SetMinItemsCount gets a reference to the given NullableString and assigns it to the MinItemsCount field.
 func (o *CartShippingMethodRate) SetMinItemsCount(v string) {
-	o.MinItemsCount = &v
+	o.MinItemsCount.Set(&v)
+}
+// SetMinItemsCountNil sets the value for MinItemsCount to be an explicit nil
+func (o *CartShippingMethodRate) SetMinItemsCountNil() {
+	o.MinItemsCount.Set(nil)
 }
 
-// GetMaxItemsCount returns the MaxItemsCount field value if set, zero value otherwise.
+// UnsetMinItemsCount ensures that no value is present for MinItemsCount, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMinItemsCount() {
+	o.MinItemsCount.Unset()
+}
+
+// GetMaxItemsCount returns the MaxItemsCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetMaxItemsCount() string {
-	if o == nil || IsNil(o.MaxItemsCount) {
+	if o == nil || IsNil(o.MaxItemsCount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaxItemsCount
+	return *o.MaxItemsCount.Get()
 }
 
 // GetMaxItemsCountOk returns a tuple with the MaxItemsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetMaxItemsCountOk() (*string, bool) {
-	if o == nil || IsNil(o.MaxItemsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxItemsCount, true
+	return o.MaxItemsCount.Get(), o.MaxItemsCount.IsSet()
 }
 
 // HasMaxItemsCount returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasMaxItemsCount() bool {
-	if o != nil && !IsNil(o.MaxItemsCount) {
+	if o != nil && o.MaxItemsCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxItemsCount gets a reference to the given string and assigns it to the MaxItemsCount field.
+// SetMaxItemsCount gets a reference to the given NullableString and assigns it to the MaxItemsCount field.
 func (o *CartShippingMethodRate) SetMaxItemsCount(v string) {
-	o.MaxItemsCount = &v
+	o.MaxItemsCount.Set(&v)
+}
+// SetMaxItemsCountNil sets the value for MaxItemsCount to be an explicit nil
+func (o *CartShippingMethodRate) SetMaxItemsCountNil() {
+	o.MaxItemsCount.Set(nil)
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// UnsetMaxItemsCount ensures that no value is present for MaxItemsCount, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetMaxItemsCount() {
+	o.MaxItemsCount.Unset()
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetPrice() string {
-	if o == nil || IsNil(o.Price) {
+	if o == nil || IsNil(o.Price.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Price
+	return *o.Price.Get()
 }
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return o.Price.Get(), o.Price.IsSet()
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *CartShippingMethodRate) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
+	if o != nil && o.Price.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrice gets a reference to the given string and assigns it to the Price field.
+// SetPrice gets a reference to the given NullableString and assigns it to the Price field.
 func (o *CartShippingMethodRate) SetPrice(v string) {
-	o.Price = &v
+	o.Price.Set(&v)
+}
+// SetPriceNil sets the value for Price to be an explicit nil
+func (o *CartShippingMethodRate) SetPriceNil() {
+	o.Price.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetPrice ensures that no value is present for Price, not even an explicit nil
+func (o *CartShippingMethodRate) UnsetPrice() {
+	o.Price.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -283,6 +353,7 @@ func (o *CartShippingMethodRate) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -304,9 +375,9 @@ func (o *CartShippingMethodRate) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethodRate) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -315,6 +386,7 @@ func (o *CartShippingMethodRate) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethodRate) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -346,31 +418,31 @@ func (o CartShippingMethodRate) MarshalJSON() ([]byte, error) {
 
 func (o CartShippingMethodRate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MinWeight) {
-		toSerialize["min_weight"] = o.MinWeight
+	if o.MinWeight.IsSet() {
+		toSerialize["min_weight"] = o.MinWeight.Get()
 	}
-	if !IsNil(o.MaxWeight) {
-		toSerialize["max_weight"] = o.MaxWeight
+	if o.MaxWeight.IsSet() {
+		toSerialize["max_weight"] = o.MaxWeight.Get()
 	}
-	if !IsNil(o.MinOrderAmount) {
-		toSerialize["min_order_amount"] = o.MinOrderAmount
+	if o.MinOrderAmount.IsSet() {
+		toSerialize["min_order_amount"] = o.MinOrderAmount.Get()
 	}
-	if !IsNil(o.MaxOrderAmount) {
-		toSerialize["max_order_amount"] = o.MaxOrderAmount
+	if o.MaxOrderAmount.IsSet() {
+		toSerialize["max_order_amount"] = o.MaxOrderAmount.Get()
 	}
-	if !IsNil(o.MinItemsCount) {
-		toSerialize["min_items_count"] = o.MinItemsCount
+	if o.MinItemsCount.IsSet() {
+		toSerialize["min_items_count"] = o.MinItemsCount.Get()
 	}
-	if !IsNil(o.MaxItemsCount) {
-		toSerialize["max_items_count"] = o.MaxItemsCount
+	if o.MaxItemsCount.IsSet() {
+		toSerialize["max_items_count"] = o.MaxItemsCount.Get()
 	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
+	if o.Price.IsSet() {
+		toSerialize["price"] = o.Price.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -22,11 +22,11 @@ var _ MappedNullable = &TaxClass{}
 type TaxClass struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Avail *bool `json:"avail,omitempty"`
-	Tax *float32 `json:"tax,omitempty"`
-	TaxType *int32 `json:"tax_type,omitempty"`
-	CreatedAt *A2CDateTime `json:"created_at,omitempty"`
-	ModifiedAt *A2CDateTime `json:"modified_at,omitempty"`
+	Avail NullableBool `json:"avail,omitempty"`
+	Tax NullableFloat32 `json:"tax,omitempty"`
+	TaxType NullableInt32 `json:"tax_type,omitempty"`
+	CreatedAt NullableA2CDateTime `json:"created_at,omitempty"`
+	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -112,169 +112,219 @@ func (o *TaxClass) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAvail returns the Avail field value if set, zero value otherwise.
+// GetAvail returns the Avail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetAvail() bool {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil || IsNil(o.Avail.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Avail
+	return *o.Avail.Get()
 }
 
 // GetAvailOk returns a tuple with the Avail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetAvailOk() (*bool, bool) {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Avail, true
+	return o.Avail.Get(), o.Avail.IsSet()
 }
 
 // HasAvail returns a boolean if a field has been set.
 func (o *TaxClass) HasAvail() bool {
-	if o != nil && !IsNil(o.Avail) {
+	if o != nil && o.Avail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvail gets a reference to the given bool and assigns it to the Avail field.
+// SetAvail gets a reference to the given NullableBool and assigns it to the Avail field.
 func (o *TaxClass) SetAvail(v bool) {
-	o.Avail = &v
+	o.Avail.Set(&v)
+}
+// SetAvailNil sets the value for Avail to be an explicit nil
+func (o *TaxClass) SetAvailNil() {
+	o.Avail.Set(nil)
 }
 
-// GetTax returns the Tax field value if set, zero value otherwise.
+// UnsetAvail ensures that no value is present for Avail, not even an explicit nil
+func (o *TaxClass) UnsetAvail() {
+	o.Avail.Unset()
+}
+
+// GetTax returns the Tax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetTax() float32 {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil || IsNil(o.Tax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Tax
+	return *o.Tax.Get()
 }
 
 // GetTaxOk returns a tuple with the Tax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tax, true
+	return o.Tax.Get(), o.Tax.IsSet()
 }
 
 // HasTax returns a boolean if a field has been set.
 func (o *TaxClass) HasTax() bool {
-	if o != nil && !IsNil(o.Tax) {
+	if o != nil && o.Tax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTax gets a reference to the given float32 and assigns it to the Tax field.
+// SetTax gets a reference to the given NullableFloat32 and assigns it to the Tax field.
 func (o *TaxClass) SetTax(v float32) {
-	o.Tax = &v
+	o.Tax.Set(&v)
+}
+// SetTaxNil sets the value for Tax to be an explicit nil
+func (o *TaxClass) SetTaxNil() {
+	o.Tax.Set(nil)
 }
 
-// GetTaxType returns the TaxType field value if set, zero value otherwise.
+// UnsetTax ensures that no value is present for Tax, not even an explicit nil
+func (o *TaxClass) UnsetTax() {
+	o.Tax.Unset()
+}
+
+// GetTaxType returns the TaxType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetTaxType() int32 {
-	if o == nil || IsNil(o.TaxType) {
+	if o == nil || IsNil(o.TaxType.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TaxType
+	return *o.TaxType.Get()
 }
 
 // GetTaxTypeOk returns a tuple with the TaxType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetTaxTypeOk() (*int32, bool) {
-	if o == nil || IsNil(o.TaxType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaxType, true
+	return o.TaxType.Get(), o.TaxType.IsSet()
 }
 
 // HasTaxType returns a boolean if a field has been set.
 func (o *TaxClass) HasTaxType() bool {
-	if o != nil && !IsNil(o.TaxType) {
+	if o != nil && o.TaxType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaxType gets a reference to the given int32 and assigns it to the TaxType field.
+// SetTaxType gets a reference to the given NullableInt32 and assigns it to the TaxType field.
 func (o *TaxClass) SetTaxType(v int32) {
-	o.TaxType = &v
+	o.TaxType.Set(&v)
+}
+// SetTaxTypeNil sets the value for TaxType to be an explicit nil
+func (o *TaxClass) SetTaxTypeNil() {
+	o.TaxType.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetTaxType ensures that no value is present for TaxType, not even an explicit nil
+func (o *TaxClass) UnsetTaxType() {
+	o.TaxType.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetCreatedAt() A2CDateTime {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetCreatedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TaxClass) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given A2CDateTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableA2CDateTime and assigns it to the CreatedAt field.
 func (o *TaxClass) SetCreatedAt(v A2CDateTime) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *TaxClass) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *TaxClass) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetModifiedAt() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetModifiedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *TaxClass) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given A2CDateTime and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedAt field.
 func (o *TaxClass) SetModifiedAt(v A2CDateTime) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *TaxClass) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *TaxClass) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -283,6 +333,7 @@ func (o *TaxClass) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -304,9 +355,9 @@ func (o *TaxClass) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaxClass) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -315,6 +366,7 @@ func (o *TaxClass) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaxClass) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -352,25 +404,25 @@ func (o TaxClass) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Avail) {
-		toSerialize["avail"] = o.Avail
+	if o.Avail.IsSet() {
+		toSerialize["avail"] = o.Avail.Get()
 	}
-	if !IsNil(o.Tax) {
-		toSerialize["tax"] = o.Tax
+	if o.Tax.IsSet() {
+		toSerialize["tax"] = o.Tax.Get()
 	}
-	if !IsNil(o.TaxType) {
-		toSerialize["tax_type"] = o.TaxType
+	if o.TaxType.IsSet() {
+		toSerialize["tax_type"] = o.TaxType.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

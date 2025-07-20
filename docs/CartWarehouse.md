@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**Avail** | Pointer to **bool** |  | [optional] 
-**Address** | Pointer to [**CustomerAddress**](CustomerAddress.md) |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Avail** | Pointer to **NullableBool** |  | [optional] 
+**Address** | Pointer to [**NullableCustomerAddress**](CustomerAddress.md) |  | [optional] 
 **CarriersIds** | Pointer to **[]string** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -58,6 +58,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *CartWarehouse) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *CartWarehouse) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetName
 
 `func (o *CartWarehouse) GetName() string`
@@ -83,6 +93,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CartWarehouse) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CartWarehouse) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *CartWarehouse) GetDescription() string`
@@ -108,6 +128,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *CartWarehouse) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *CartWarehouse) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetAvail
 
 `func (o *CartWarehouse) GetAvail() bool`
@@ -133,6 +163,16 @@ SetAvail sets Avail field to given value.
 
 HasAvail returns a boolean if a field has been set.
 
+### SetAvailNil
+
+`func (o *CartWarehouse) SetAvailNil(b bool)`
+
+ SetAvailNil sets the value for Avail to be an explicit nil
+
+### UnsetAvail
+`func (o *CartWarehouse) UnsetAvail()`
+
+UnsetAvail ensures that no value is present for Avail, not even an explicit nil
 ### GetAddress
 
 `func (o *CartWarehouse) GetAddress() CustomerAddress`
@@ -158,6 +198,16 @@ SetAddress sets Address field to given value.
 
 HasAddress returns a boolean if a field has been set.
 
+### SetAddressNil
+
+`func (o *CartWarehouse) SetAddressNil(b bool)`
+
+ SetAddressNil sets the value for Address to be an explicit nil
+
+### UnsetAddress
+`func (o *CartWarehouse) UnsetAddress()`
+
+UnsetAddress ensures that no value is present for Address, not even an explicit nil
 ### GetCarriersIds
 
 `func (o *CartWarehouse) GetCarriersIds() []string`
@@ -233,6 +283,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CartWarehouse) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CartWarehouse) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CartWarehouse) GetCustomFields() map[string]interface{}`
@@ -258,6 +318,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CartWarehouse) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CartWarehouse) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

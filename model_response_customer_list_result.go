@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseCustomerListResult{}
 
 // ResponseCustomerListResult struct for ResponseCustomerListResult
 type ResponseCustomerListResult struct {
-	CustomersCount *int32 `json:"customers_count,omitempty"`
+	CustomersCount NullableInt32 `json:"customers_count,omitempty"`
 	Customer []Customer `json:"customer,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseCustomerListResultWithDefaults() *ResponseCustomerListResult {
 	return &this
 }
 
-// GetCustomersCount returns the CustomersCount field value if set, zero value otherwise.
+// GetCustomersCount returns the CustomersCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerListResult) GetCustomersCount() int32 {
-	if o == nil || IsNil(o.CustomersCount) {
+	if o == nil || IsNil(o.CustomersCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CustomersCount
+	return *o.CustomersCount.Get()
 }
 
 // GetCustomersCountOk returns a tuple with the CustomersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerListResult) GetCustomersCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.CustomersCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomersCount, true
+	return o.CustomersCount.Get(), o.CustomersCount.IsSet()
 }
 
 // HasCustomersCount returns a boolean if a field has been set.
 func (o *ResponseCustomerListResult) HasCustomersCount() bool {
-	if o != nil && !IsNil(o.CustomersCount) {
+	if o != nil && o.CustomersCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomersCount gets a reference to the given int32 and assigns it to the CustomersCount field.
+// SetCustomersCount gets a reference to the given NullableInt32 and assigns it to the CustomersCount field.
 func (o *ResponseCustomerListResult) SetCustomersCount(v int32) {
-	o.CustomersCount = &v
+	o.CustomersCount.Set(&v)
+}
+// SetCustomersCountNil sets the value for CustomersCount to be an explicit nil
+func (o *ResponseCustomerListResult) SetCustomersCountNil() {
+	o.CustomersCount.Set(nil)
+}
+
+// UnsetCustomersCount ensures that no value is present for CustomersCount, not even an explicit nil
+func (o *ResponseCustomerListResult) UnsetCustomersCount() {
+	o.CustomersCount.Unset()
 }
 
 // GetCustomer returns the Customer field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseCustomerListResult) SetCustomer(v []Customer) {
 	o.Customer = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseCustomerListResult) GetAdditionalFields() map[string]interface{
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseCustomerListResult) SetAdditionalFields(v map[string]interface{
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseCustomerListResult) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseCustomerListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseCustomerListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CustomersCount) {
-		toSerialize["customers_count"] = o.CustomersCount
+	if o.CustomersCount.IsSet() {
+		toSerialize["customers_count"] = o.CustomersCount.Get()
 	}
 	if !IsNil(o.Customer) {
 		toSerialize["customer"] = o.Customer
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

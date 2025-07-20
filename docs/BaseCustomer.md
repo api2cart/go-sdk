@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Phone** | Pointer to **string** |  | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
+**Phone** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -106,6 +106,16 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
+### SetFirstNameNil
+
+`func (o *BaseCustomer) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *BaseCustomer) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *BaseCustomer) GetLastName() string`
@@ -131,6 +141,16 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
+### SetLastNameNil
+
+`func (o *BaseCustomer) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *BaseCustomer) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetPhone
 
 `func (o *BaseCustomer) GetPhone() string`
@@ -156,6 +176,16 @@ SetPhone sets Phone field to given value.
 
 HasPhone returns a boolean if a field has been set.
 
+### SetPhoneNil
+
+`func (o *BaseCustomer) SetPhoneNil(b bool)`
+
+ SetPhoneNil sets the value for Phone to be an explicit nil
+
+### UnsetPhone
+`func (o *BaseCustomer) UnsetPhone()`
+
+UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *BaseCustomer) GetAdditionalFields() map[string]interface{}`
@@ -181,6 +211,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *BaseCustomer) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *BaseCustomer) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *BaseCustomer) GetCustomFields() map[string]interface{}`
@@ -206,6 +246,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *BaseCustomer) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *BaseCustomer) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**NickName** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
-**Summary** | Pointer to **string** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
-**Rating** | Pointer to **float32** |  | [optional] 
+**ProductId** | Pointer to **NullableString** |  | [optional] 
+**CustomerId** | Pointer to **NullableString** |  | [optional] 
+**NickName** | Pointer to **NullableString** |  | [optional] 
+**Email** | Pointer to **NullableString** |  | [optional] 
+**Summary** | Pointer to **NullableString** |  | [optional] 
+**Message** | Pointer to **NullableString** |  | [optional] 
+**Rating** | Pointer to **NullableFloat32** |  | [optional] 
 **Ratings** | Pointer to [**[]ProductReviewRating**](ProductReviewRating.md) |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Status** | Pointer to **NullableString** |  | [optional] 
+**CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Medias** | Pointer to [**[]Media**](Media.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -88,6 +88,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *ProductReview) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *ProductReview) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetCustomerId
 
 `func (o *ProductReview) GetCustomerId() string`
@@ -113,6 +123,16 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
+### SetCustomerIdNil
+
+`func (o *ProductReview) SetCustomerIdNil(b bool)`
+
+ SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+
+### UnsetCustomerId
+`func (o *ProductReview) UnsetCustomerId()`
+
+UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetNickName
 
 `func (o *ProductReview) GetNickName() string`
@@ -138,6 +158,16 @@ SetNickName sets NickName field to given value.
 
 HasNickName returns a boolean if a field has been set.
 
+### SetNickNameNil
+
+`func (o *ProductReview) SetNickNameNil(b bool)`
+
+ SetNickNameNil sets the value for NickName to be an explicit nil
+
+### UnsetNickName
+`func (o *ProductReview) UnsetNickName()`
+
+UnsetNickName ensures that no value is present for NickName, not even an explicit nil
 ### GetEmail
 
 `func (o *ProductReview) GetEmail() string`
@@ -163,6 +193,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *ProductReview) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *ProductReview) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetSummary
 
 `func (o *ProductReview) GetSummary() string`
@@ -188,6 +228,16 @@ SetSummary sets Summary field to given value.
 
 HasSummary returns a boolean if a field has been set.
 
+### SetSummaryNil
+
+`func (o *ProductReview) SetSummaryNil(b bool)`
+
+ SetSummaryNil sets the value for Summary to be an explicit nil
+
+### UnsetSummary
+`func (o *ProductReview) UnsetSummary()`
+
+UnsetSummary ensures that no value is present for Summary, not even an explicit nil
 ### GetMessage
 
 `func (o *ProductReview) GetMessage() string`
@@ -213,6 +263,16 @@ SetMessage sets Message field to given value.
 
 HasMessage returns a boolean if a field has been set.
 
+### SetMessageNil
+
+`func (o *ProductReview) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *ProductReview) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetRating
 
 `func (o *ProductReview) GetRating() float32`
@@ -238,6 +298,16 @@ SetRating sets Rating field to given value.
 
 HasRating returns a boolean if a field has been set.
 
+### SetRatingNil
+
+`func (o *ProductReview) SetRatingNil(b bool)`
+
+ SetRatingNil sets the value for Rating to be an explicit nil
+
+### UnsetRating
+`func (o *ProductReview) UnsetRating()`
+
+UnsetRating ensures that no value is present for Rating, not even an explicit nil
 ### GetRatings
 
 `func (o *ProductReview) GetRatings() []ProductReviewRating`
@@ -288,6 +358,16 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### SetStatusNil
+
+`func (o *ProductReview) SetStatusNil(b bool)`
+
+ SetStatusNil sets the value for Status to be an explicit nil
+
+### UnsetStatus
+`func (o *ProductReview) UnsetStatus()`
+
+UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *ProductReview) GetCreatedTime() A2CDateTime`
@@ -313,6 +393,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *ProductReview) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *ProductReview) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetMedias
 
 `func (o *ProductReview) GetMedias() []Media`
@@ -363,6 +453,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductReview) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductReview) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductReview) GetCustomFields() map[string]interface{}`
@@ -388,6 +488,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductReview) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductReview) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

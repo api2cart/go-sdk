@@ -5,59 +5,59 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**UModel** | Pointer to **string** |  | [optional] 
-**USku** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**ShortDescription** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to **float32** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**UModel** | Pointer to **NullableString** |  | [optional] 
+**USku** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**ShortDescription** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
 **AdvancedPrice** | Pointer to [**[]ProductAdvancedPrice**](ProductAdvancedPrice.md) |  | [optional] 
-**CostPrice** | Pointer to **float32** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
+**CostPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
 **Inventory** | Pointer to [**[]ProductInventory**](ProductInventory.md) |  | [optional] 
 **GroupItems** | Pointer to [**[]ProductGroupItem**](ProductGroupItem.md) |  | [optional] 
-**UBrandId** | Pointer to **string** |  | [optional] 
-**UBrand** | Pointer to **string** |  | [optional] 
+**UBrandId** | Pointer to **NullableString** |  | [optional] 
+**UBrand** | Pointer to **NullableString** |  | [optional] 
 **CategoriesIds** | Pointer to **[]string** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**SeoUrl** | Pointer to **string** |  | [optional] 
-**MetaTitle** | Pointer to **string** |  | [optional] 
-**MetaKeywords** | Pointer to **string** |  | [optional] 
-**MetaDescription** | Pointer to **string** |  | [optional] 
-**AvailSale** | Pointer to **bool** |  | [optional] 
-**AvailView** | Pointer to **bool** |  | [optional] 
-**IsVirtual** | Pointer to **bool** |  | [optional] 
-**IsDownloadable** | Pointer to **bool** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
-**InStock** | Pointer to **bool** |  | [optional] 
-**OnSale** | Pointer to **bool** |  | [optional] 
-**Backorders** | Pointer to **string** |  | [optional] 
-**ManageStock** | Pointer to **string** |  | [optional] 
-**IsStockManaged** | Pointer to **bool** |  | [optional] 
-**CreateAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**TaxClassId** | Pointer to **string** |  | [optional] 
-**SpecialPrice** | Pointer to [**SpecialPrice**](SpecialPrice.md) |  | [optional] 
+**Url** | Pointer to **NullableString** |  | [optional] 
+**SeoUrl** | Pointer to **NullableString** |  | [optional] 
+**MetaTitle** | Pointer to **NullableString** |  | [optional] 
+**MetaKeywords** | Pointer to **NullableString** |  | [optional] 
+**MetaDescription** | Pointer to **NullableString** |  | [optional] 
+**AvailSale** | Pointer to **NullableBool** |  | [optional] 
+**AvailView** | Pointer to **NullableBool** |  | [optional] 
+**IsVirtual** | Pointer to **NullableBool** |  | [optional] 
+**IsDownloadable** | Pointer to **NullableBool** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
+**InStock** | Pointer to **NullableBool** |  | [optional] 
+**OnSale** | Pointer to **NullableBool** |  | [optional] 
+**Backorders** | Pointer to **NullableString** |  | [optional] 
+**ManageStock** | Pointer to **NullableString** |  | [optional] 
+**IsStockManaged** | Pointer to **NullableBool** |  | [optional] 
+**CreateAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**TaxClassId** | Pointer to **NullableString** |  | [optional] 
+**SpecialPrice** | Pointer to [**NullableSpecialPrice**](SpecialPrice.md) |  | [optional] 
 **TierPrice** | Pointer to [**[]ProductTierPrice**](ProductTierPrice.md) |  | [optional] 
 **GroupPrice** | Pointer to [**[]ProductGroupPrice**](ProductGroupPrice.md) |  | [optional] 
 **Images** | Pointer to [**[]Image**](Image.md) |  | [optional] 
 **ProductOptions** | Pointer to [**[]ProductOption**](ProductOption.md) |  | [optional] 
-**UUpc** | Pointer to **string** |  | [optional] 
-**UMpn** | Pointer to **string** |  | [optional] 
-**UGtin** | Pointer to **string** |  | [optional] 
-**UIsbn** | Pointer to **string** |  | [optional] 
-**UEan** | Pointer to **string** |  | [optional] 
+**UUpc** | Pointer to **NullableString** |  | [optional] 
+**UMpn** | Pointer to **NullableString** |  | [optional] 
+**UGtin** | Pointer to **NullableString** |  | [optional] 
+**UIsbn** | Pointer to **NullableString** |  | [optional] 
+**UEan** | Pointer to **NullableString** |  | [optional] 
 **RelatedProductsIds** | Pointer to **[]string** |  | [optional] 
 **UpSellProductsIds** | Pointer to **[]string** |  | [optional] 
 **CrossSellProductsIds** | Pointer to **[]string** |  | [optional] 
-**DimensionsUnit** | Pointer to **string** |  | [optional] 
-**Width** | Pointer to **float32** |  | [optional] 
-**Height** | Pointer to **float32** |  | [optional] 
-**Length** | Pointer to **float32** |  | [optional] 
+**DimensionsUnit** | Pointer to **NullableString** |  | [optional] 
+**Width** | Pointer to **NullableFloat32** |  | [optional] 
+**Height** | Pointer to **NullableFloat32** |  | [optional] 
+**Length** | Pointer to **NullableFloat32** |  | [optional] 
 **Discounts** | Pointer to [**[]Discount**](Discount.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -131,6 +131,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *Product) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *Product) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetUModel
 
 `func (o *Product) GetUModel() string`
@@ -156,6 +166,16 @@ SetUModel sets UModel field to given value.
 
 HasUModel returns a boolean if a field has been set.
 
+### SetUModelNil
+
+`func (o *Product) SetUModelNil(b bool)`
+
+ SetUModelNil sets the value for UModel to be an explicit nil
+
+### UnsetUModel
+`func (o *Product) UnsetUModel()`
+
+UnsetUModel ensures that no value is present for UModel, not even an explicit nil
 ### GetUSku
 
 `func (o *Product) GetUSku() string`
@@ -181,6 +201,16 @@ SetUSku sets USku field to given value.
 
 HasUSku returns a boolean if a field has been set.
 
+### SetUSkuNil
+
+`func (o *Product) SetUSkuNil(b bool)`
+
+ SetUSkuNil sets the value for USku to be an explicit nil
+
+### UnsetUSku
+`func (o *Product) UnsetUSku()`
+
+UnsetUSku ensures that no value is present for USku, not even an explicit nil
 ### GetName
 
 `func (o *Product) GetName() string`
@@ -206,6 +236,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Product) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Product) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *Product) GetDescription() string`
@@ -231,6 +271,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Product) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Product) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetShortDescription
 
 `func (o *Product) GetShortDescription() string`
@@ -256,6 +306,16 @@ SetShortDescription sets ShortDescription field to given value.
 
 HasShortDescription returns a boolean if a field has been set.
 
+### SetShortDescriptionNil
+
+`func (o *Product) SetShortDescriptionNil(b bool)`
+
+ SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+
+### UnsetShortDescription
+`func (o *Product) UnsetShortDescription()`
+
+UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
 ### GetPrice
 
 `func (o *Product) GetPrice() float32`
@@ -281,6 +341,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *Product) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *Product) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetAdvancedPrice
 
 `func (o *Product) GetAdvancedPrice() []ProductAdvancedPrice`
@@ -331,6 +401,16 @@ SetCostPrice sets CostPrice field to given value.
 
 HasCostPrice returns a boolean if a field has been set.
 
+### SetCostPriceNil
+
+`func (o *Product) SetCostPriceNil(b bool)`
+
+ SetCostPriceNil sets the value for CostPrice to be an explicit nil
+
+### UnsetCostPrice
+`func (o *Product) UnsetCostPrice()`
+
+UnsetCostPrice ensures that no value is present for CostPrice, not even an explicit nil
 ### GetQuantity
 
 `func (o *Product) GetQuantity() float32`
@@ -356,6 +436,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *Product) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *Product) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetInventory
 
 `func (o *Product) GetInventory() []ProductInventory`
@@ -431,6 +521,16 @@ SetUBrandId sets UBrandId field to given value.
 
 HasUBrandId returns a boolean if a field has been set.
 
+### SetUBrandIdNil
+
+`func (o *Product) SetUBrandIdNil(b bool)`
+
+ SetUBrandIdNil sets the value for UBrandId to be an explicit nil
+
+### UnsetUBrandId
+`func (o *Product) UnsetUBrandId()`
+
+UnsetUBrandId ensures that no value is present for UBrandId, not even an explicit nil
 ### GetUBrand
 
 `func (o *Product) GetUBrand() string`
@@ -456,6 +556,16 @@ SetUBrand sets UBrand field to given value.
 
 HasUBrand returns a boolean if a field has been set.
 
+### SetUBrandNil
+
+`func (o *Product) SetUBrandNil(b bool)`
+
+ SetUBrandNil sets the value for UBrand to be an explicit nil
+
+### UnsetUBrand
+`func (o *Product) UnsetUBrand()`
+
+UnsetUBrand ensures that no value is present for UBrand, not even an explicit nil
 ### GetCategoriesIds
 
 `func (o *Product) GetCategoriesIds() []string`
@@ -531,6 +641,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
+### SetUrlNil
+
+`func (o *Product) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *Product) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetSeoUrl
 
 `func (o *Product) GetSeoUrl() string`
@@ -556,6 +676,16 @@ SetSeoUrl sets SeoUrl field to given value.
 
 HasSeoUrl returns a boolean if a field has been set.
 
+### SetSeoUrlNil
+
+`func (o *Product) SetSeoUrlNil(b bool)`
+
+ SetSeoUrlNil sets the value for SeoUrl to be an explicit nil
+
+### UnsetSeoUrl
+`func (o *Product) UnsetSeoUrl()`
+
+UnsetSeoUrl ensures that no value is present for SeoUrl, not even an explicit nil
 ### GetMetaTitle
 
 `func (o *Product) GetMetaTitle() string`
@@ -581,6 +711,16 @@ SetMetaTitle sets MetaTitle field to given value.
 
 HasMetaTitle returns a boolean if a field has been set.
 
+### SetMetaTitleNil
+
+`func (o *Product) SetMetaTitleNil(b bool)`
+
+ SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+
+### UnsetMetaTitle
+`func (o *Product) UnsetMetaTitle()`
+
+UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
 ### GetMetaKeywords
 
 `func (o *Product) GetMetaKeywords() string`
@@ -606,6 +746,16 @@ SetMetaKeywords sets MetaKeywords field to given value.
 
 HasMetaKeywords returns a boolean if a field has been set.
 
+### SetMetaKeywordsNil
+
+`func (o *Product) SetMetaKeywordsNil(b bool)`
+
+ SetMetaKeywordsNil sets the value for MetaKeywords to be an explicit nil
+
+### UnsetMetaKeywords
+`func (o *Product) UnsetMetaKeywords()`
+
+UnsetMetaKeywords ensures that no value is present for MetaKeywords, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Product) GetMetaDescription() string`
@@ -631,6 +781,16 @@ SetMetaDescription sets MetaDescription field to given value.
 
 HasMetaDescription returns a boolean if a field has been set.
 
+### SetMetaDescriptionNil
+
+`func (o *Product) SetMetaDescriptionNil(b bool)`
+
+ SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+
+### UnsetMetaDescription
+`func (o *Product) UnsetMetaDescription()`
+
+UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
 ### GetAvailSale
 
 `func (o *Product) GetAvailSale() bool`
@@ -656,6 +816,16 @@ SetAvailSale sets AvailSale field to given value.
 
 HasAvailSale returns a boolean if a field has been set.
 
+### SetAvailSaleNil
+
+`func (o *Product) SetAvailSaleNil(b bool)`
+
+ SetAvailSaleNil sets the value for AvailSale to be an explicit nil
+
+### UnsetAvailSale
+`func (o *Product) UnsetAvailSale()`
+
+UnsetAvailSale ensures that no value is present for AvailSale, not even an explicit nil
 ### GetAvailView
 
 `func (o *Product) GetAvailView() bool`
@@ -681,6 +851,16 @@ SetAvailView sets AvailView field to given value.
 
 HasAvailView returns a boolean if a field has been set.
 
+### SetAvailViewNil
+
+`func (o *Product) SetAvailViewNil(b bool)`
+
+ SetAvailViewNil sets the value for AvailView to be an explicit nil
+
+### UnsetAvailView
+`func (o *Product) UnsetAvailView()`
+
+UnsetAvailView ensures that no value is present for AvailView, not even an explicit nil
 ### GetIsVirtual
 
 `func (o *Product) GetIsVirtual() bool`
@@ -706,6 +886,16 @@ SetIsVirtual sets IsVirtual field to given value.
 
 HasIsVirtual returns a boolean if a field has been set.
 
+### SetIsVirtualNil
+
+`func (o *Product) SetIsVirtualNil(b bool)`
+
+ SetIsVirtualNil sets the value for IsVirtual to be an explicit nil
+
+### UnsetIsVirtual
+`func (o *Product) UnsetIsVirtual()`
+
+UnsetIsVirtual ensures that no value is present for IsVirtual, not even an explicit nil
 ### GetIsDownloadable
 
 `func (o *Product) GetIsDownloadable() bool`
@@ -731,6 +921,16 @@ SetIsDownloadable sets IsDownloadable field to given value.
 
 HasIsDownloadable returns a boolean if a field has been set.
 
+### SetIsDownloadableNil
+
+`func (o *Product) SetIsDownloadableNil(b bool)`
+
+ SetIsDownloadableNil sets the value for IsDownloadable to be an explicit nil
+
+### UnsetIsDownloadable
+`func (o *Product) UnsetIsDownloadable()`
+
+UnsetIsDownloadable ensures that no value is present for IsDownloadable, not even an explicit nil
 ### GetWeight
 
 `func (o *Product) GetWeight() float32`
@@ -756,6 +956,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *Product) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *Product) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *Product) GetWeightUnit() string`
@@ -781,6 +991,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *Product) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *Product) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetSortOrder
 
 `func (o *Product) GetSortOrder() int32`
@@ -806,6 +1026,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *Product) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *Product) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetInStock
 
 `func (o *Product) GetInStock() bool`
@@ -831,6 +1061,16 @@ SetInStock sets InStock field to given value.
 
 HasInStock returns a boolean if a field has been set.
 
+### SetInStockNil
+
+`func (o *Product) SetInStockNil(b bool)`
+
+ SetInStockNil sets the value for InStock to be an explicit nil
+
+### UnsetInStock
+`func (o *Product) UnsetInStock()`
+
+UnsetInStock ensures that no value is present for InStock, not even an explicit nil
 ### GetOnSale
 
 `func (o *Product) GetOnSale() bool`
@@ -856,6 +1096,16 @@ SetOnSale sets OnSale field to given value.
 
 HasOnSale returns a boolean if a field has been set.
 
+### SetOnSaleNil
+
+`func (o *Product) SetOnSaleNil(b bool)`
+
+ SetOnSaleNil sets the value for OnSale to be an explicit nil
+
+### UnsetOnSale
+`func (o *Product) UnsetOnSale()`
+
+UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
 ### GetBackorders
 
 `func (o *Product) GetBackorders() string`
@@ -881,6 +1131,16 @@ SetBackorders sets Backorders field to given value.
 
 HasBackorders returns a boolean if a field has been set.
 
+### SetBackordersNil
+
+`func (o *Product) SetBackordersNil(b bool)`
+
+ SetBackordersNil sets the value for Backorders to be an explicit nil
+
+### UnsetBackorders
+`func (o *Product) UnsetBackorders()`
+
+UnsetBackorders ensures that no value is present for Backorders, not even an explicit nil
 ### GetManageStock
 
 `func (o *Product) GetManageStock() string`
@@ -906,6 +1166,16 @@ SetManageStock sets ManageStock field to given value.
 
 HasManageStock returns a boolean if a field has been set.
 
+### SetManageStockNil
+
+`func (o *Product) SetManageStockNil(b bool)`
+
+ SetManageStockNil sets the value for ManageStock to be an explicit nil
+
+### UnsetManageStock
+`func (o *Product) UnsetManageStock()`
+
+UnsetManageStock ensures that no value is present for ManageStock, not even an explicit nil
 ### GetIsStockManaged
 
 `func (o *Product) GetIsStockManaged() bool`
@@ -931,6 +1201,16 @@ SetIsStockManaged sets IsStockManaged field to given value.
 
 HasIsStockManaged returns a boolean if a field has been set.
 
+### SetIsStockManagedNil
+
+`func (o *Product) SetIsStockManagedNil(b bool)`
+
+ SetIsStockManagedNil sets the value for IsStockManaged to be an explicit nil
+
+### UnsetIsStockManaged
+`func (o *Product) UnsetIsStockManaged()`
+
+UnsetIsStockManaged ensures that no value is present for IsStockManaged, not even an explicit nil
 ### GetCreateAt
 
 `func (o *Product) GetCreateAt() A2CDateTime`
@@ -956,6 +1236,16 @@ SetCreateAt sets CreateAt field to given value.
 
 HasCreateAt returns a boolean if a field has been set.
 
+### SetCreateAtNil
+
+`func (o *Product) SetCreateAtNil(b bool)`
+
+ SetCreateAtNil sets the value for CreateAt to be an explicit nil
+
+### UnsetCreateAt
+`func (o *Product) UnsetCreateAt()`
+
+UnsetCreateAt ensures that no value is present for CreateAt, not even an explicit nil
 ### GetModifiedAt
 
 `func (o *Product) GetModifiedAt() A2CDateTime`
@@ -981,6 +1271,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *Product) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *Product) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetTaxClassId
 
 `func (o *Product) GetTaxClassId() string`
@@ -1006,6 +1306,16 @@ SetTaxClassId sets TaxClassId field to given value.
 
 HasTaxClassId returns a boolean if a field has been set.
 
+### SetTaxClassIdNil
+
+`func (o *Product) SetTaxClassIdNil(b bool)`
+
+ SetTaxClassIdNil sets the value for TaxClassId to be an explicit nil
+
+### UnsetTaxClassId
+`func (o *Product) UnsetTaxClassId()`
+
+UnsetTaxClassId ensures that no value is present for TaxClassId, not even an explicit nil
 ### GetSpecialPrice
 
 `func (o *Product) GetSpecialPrice() SpecialPrice`
@@ -1031,6 +1341,16 @@ SetSpecialPrice sets SpecialPrice field to given value.
 
 HasSpecialPrice returns a boolean if a field has been set.
 
+### SetSpecialPriceNil
+
+`func (o *Product) SetSpecialPriceNil(b bool)`
+
+ SetSpecialPriceNil sets the value for SpecialPrice to be an explicit nil
+
+### UnsetSpecialPrice
+`func (o *Product) UnsetSpecialPrice()`
+
+UnsetSpecialPrice ensures that no value is present for SpecialPrice, not even an explicit nil
 ### GetTierPrice
 
 `func (o *Product) GetTierPrice() []ProductTierPrice`
@@ -1156,6 +1476,16 @@ SetUUpc sets UUpc field to given value.
 
 HasUUpc returns a boolean if a field has been set.
 
+### SetUUpcNil
+
+`func (o *Product) SetUUpcNil(b bool)`
+
+ SetUUpcNil sets the value for UUpc to be an explicit nil
+
+### UnsetUUpc
+`func (o *Product) UnsetUUpc()`
+
+UnsetUUpc ensures that no value is present for UUpc, not even an explicit nil
 ### GetUMpn
 
 `func (o *Product) GetUMpn() string`
@@ -1181,6 +1511,16 @@ SetUMpn sets UMpn field to given value.
 
 HasUMpn returns a boolean if a field has been set.
 
+### SetUMpnNil
+
+`func (o *Product) SetUMpnNil(b bool)`
+
+ SetUMpnNil sets the value for UMpn to be an explicit nil
+
+### UnsetUMpn
+`func (o *Product) UnsetUMpn()`
+
+UnsetUMpn ensures that no value is present for UMpn, not even an explicit nil
 ### GetUGtin
 
 `func (o *Product) GetUGtin() string`
@@ -1206,6 +1546,16 @@ SetUGtin sets UGtin field to given value.
 
 HasUGtin returns a boolean if a field has been set.
 
+### SetUGtinNil
+
+`func (o *Product) SetUGtinNil(b bool)`
+
+ SetUGtinNil sets the value for UGtin to be an explicit nil
+
+### UnsetUGtin
+`func (o *Product) UnsetUGtin()`
+
+UnsetUGtin ensures that no value is present for UGtin, not even an explicit nil
 ### GetUIsbn
 
 `func (o *Product) GetUIsbn() string`
@@ -1231,6 +1581,16 @@ SetUIsbn sets UIsbn field to given value.
 
 HasUIsbn returns a boolean if a field has been set.
 
+### SetUIsbnNil
+
+`func (o *Product) SetUIsbnNil(b bool)`
+
+ SetUIsbnNil sets the value for UIsbn to be an explicit nil
+
+### UnsetUIsbn
+`func (o *Product) UnsetUIsbn()`
+
+UnsetUIsbn ensures that no value is present for UIsbn, not even an explicit nil
 ### GetUEan
 
 `func (o *Product) GetUEan() string`
@@ -1256,6 +1616,16 @@ SetUEan sets UEan field to given value.
 
 HasUEan returns a boolean if a field has been set.
 
+### SetUEanNil
+
+`func (o *Product) SetUEanNil(b bool)`
+
+ SetUEanNil sets the value for UEan to be an explicit nil
+
+### UnsetUEan
+`func (o *Product) UnsetUEan()`
+
+UnsetUEan ensures that no value is present for UEan, not even an explicit nil
 ### GetRelatedProductsIds
 
 `func (o *Product) GetRelatedProductsIds() []string`
@@ -1356,6 +1726,16 @@ SetDimensionsUnit sets DimensionsUnit field to given value.
 
 HasDimensionsUnit returns a boolean if a field has been set.
 
+### SetDimensionsUnitNil
+
+`func (o *Product) SetDimensionsUnitNil(b bool)`
+
+ SetDimensionsUnitNil sets the value for DimensionsUnit to be an explicit nil
+
+### UnsetDimensionsUnit
+`func (o *Product) UnsetDimensionsUnit()`
+
+UnsetDimensionsUnit ensures that no value is present for DimensionsUnit, not even an explicit nil
 ### GetWidth
 
 `func (o *Product) GetWidth() float32`
@@ -1381,6 +1761,16 @@ SetWidth sets Width field to given value.
 
 HasWidth returns a boolean if a field has been set.
 
+### SetWidthNil
+
+`func (o *Product) SetWidthNil(b bool)`
+
+ SetWidthNil sets the value for Width to be an explicit nil
+
+### UnsetWidth
+`func (o *Product) UnsetWidth()`
+
+UnsetWidth ensures that no value is present for Width, not even an explicit nil
 ### GetHeight
 
 `func (o *Product) GetHeight() float32`
@@ -1406,6 +1796,16 @@ SetHeight sets Height field to given value.
 
 HasHeight returns a boolean if a field has been set.
 
+### SetHeightNil
+
+`func (o *Product) SetHeightNil(b bool)`
+
+ SetHeightNil sets the value for Height to be an explicit nil
+
+### UnsetHeight
+`func (o *Product) UnsetHeight()`
+
+UnsetHeight ensures that no value is present for Height, not even an explicit nil
 ### GetLength
 
 `func (o *Product) GetLength() float32`
@@ -1431,6 +1831,16 @@ SetLength sets Length field to given value.
 
 HasLength returns a boolean if a field has been set.
 
+### SetLengthNil
+
+`func (o *Product) SetLengthNil(b bool)`
+
+ SetLengthNil sets the value for Length to be an explicit nil
+
+### UnsetLength
+`func (o *Product) UnsetLength()`
+
+UnsetLength ensures that no value is present for Length, not even an explicit nil
 ### GetDiscounts
 
 `func (o *Product) GetDiscounts() []Discount`
@@ -1481,6 +1891,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Product) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Product) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Product) GetCustomFields() map[string]interface{}`
@@ -1506,6 +1926,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Product) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Product) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

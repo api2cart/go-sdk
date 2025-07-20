@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Method** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ProcessedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ProcessedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -156,6 +156,16 @@ SetProcessedTime sets ProcessedTime field to given value.
 
 HasProcessedTime returns a boolean if a field has been set.
 
+### SetProcessedTimeNil
+
+`func (o *BatchJob) SetProcessedTimeNil(b bool)`
+
+ SetProcessedTimeNil sets the value for ProcessedTime to be an explicit nil
+
+### UnsetProcessedTime
+`func (o *BatchJob) UnsetProcessedTime()`
+
+UnsetProcessedTime ensures that no value is present for ProcessedTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *BatchJob) GetAdditionalFields() map[string]interface{}`
@@ -181,6 +191,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *BatchJob) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *BatchJob) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *BatchJob) GetCustomFields() map[string]interface{}`
@@ -206,6 +226,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *BatchJob) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *BatchJob) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

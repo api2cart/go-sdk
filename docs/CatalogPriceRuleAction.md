@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Scope** | Pointer to **string** |  | [optional] 
 **ApplyTo** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
 **Value** | Pointer to **float32** |  | [optional] 
-**CurrencyCode** | Pointer to **string** |  | [optional] 
-**IncludeTax** | Pointer to **bool** |  | [optional] 
+**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
+**IncludeTax** | Pointer to **NullableBool** |  | [optional] 
 **Conditions** | Pointer to [**[]CouponCondition**](CouponCondition.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -134,6 +134,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *CatalogPriceRuleAction) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *CatalogPriceRuleAction) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetValue
 
 `func (o *CatalogPriceRuleAction) GetValue() float32`
@@ -184,6 +194,16 @@ SetCurrencyCode sets CurrencyCode field to given value.
 
 HasCurrencyCode returns a boolean if a field has been set.
 
+### SetCurrencyCodeNil
+
+`func (o *CatalogPriceRuleAction) SetCurrencyCodeNil(b bool)`
+
+ SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+
+### UnsetCurrencyCode
+`func (o *CatalogPriceRuleAction) UnsetCurrencyCode()`
+
+UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 ### GetIncludeTax
 
 `func (o *CatalogPriceRuleAction) GetIncludeTax() bool`
@@ -209,6 +229,16 @@ SetIncludeTax sets IncludeTax field to given value.
 
 HasIncludeTax returns a boolean if a field has been set.
 
+### SetIncludeTaxNil
+
+`func (o *CatalogPriceRuleAction) SetIncludeTaxNil(b bool)`
+
+ SetIncludeTaxNil sets the value for IncludeTax to be an explicit nil
+
+### UnsetIncludeTax
+`func (o *CatalogPriceRuleAction) UnsetIncludeTax()`
+
+UnsetIncludeTax ensures that no value is present for IncludeTax, not even an explicit nil
 ### GetConditions
 
 `func (o *CatalogPriceRuleAction) GetConditions() []CouponCondition`
@@ -259,6 +289,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CatalogPriceRuleAction) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CatalogPriceRuleAction) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CatalogPriceRuleAction) GetCustomFields() map[string]interface{}`
@@ -284,6 +324,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CatalogPriceRuleAction) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CatalogPriceRuleAction) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

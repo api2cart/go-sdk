@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseMarketplaceProductFindResult{}
 
 // ResponseMarketplaceProductFindResult struct for ResponseMarketplaceProductFindResult
 type ResponseMarketplaceProductFindResult struct {
-	MarketplaceProductsCount *int32 `json:"marketplace_products_count,omitempty"`
+	MarketplaceProductsCount NullableInt32 `json:"marketplace_products_count,omitempty"`
 	MarketplaceProduct []MarketplaceProduct `json:"marketplace_product,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseMarketplaceProductFindResultWithDefaults() *ResponseMarketplaceP
 	return &this
 }
 
-// GetMarketplaceProductsCount returns the MarketplaceProductsCount field value if set, zero value otherwise.
+// GetMarketplaceProductsCount returns the MarketplaceProductsCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseMarketplaceProductFindResult) GetMarketplaceProductsCount() int32 {
-	if o == nil || IsNil(o.MarketplaceProductsCount) {
+	if o == nil || IsNil(o.MarketplaceProductsCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.MarketplaceProductsCount
+	return *o.MarketplaceProductsCount.Get()
 }
 
 // GetMarketplaceProductsCountOk returns a tuple with the MarketplaceProductsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseMarketplaceProductFindResult) GetMarketplaceProductsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.MarketplaceProductsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MarketplaceProductsCount, true
+	return o.MarketplaceProductsCount.Get(), o.MarketplaceProductsCount.IsSet()
 }
 
 // HasMarketplaceProductsCount returns a boolean if a field has been set.
 func (o *ResponseMarketplaceProductFindResult) HasMarketplaceProductsCount() bool {
-	if o != nil && !IsNil(o.MarketplaceProductsCount) {
+	if o != nil && o.MarketplaceProductsCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMarketplaceProductsCount gets a reference to the given int32 and assigns it to the MarketplaceProductsCount field.
+// SetMarketplaceProductsCount gets a reference to the given NullableInt32 and assigns it to the MarketplaceProductsCount field.
 func (o *ResponseMarketplaceProductFindResult) SetMarketplaceProductsCount(v int32) {
-	o.MarketplaceProductsCount = &v
+	o.MarketplaceProductsCount.Set(&v)
+}
+// SetMarketplaceProductsCountNil sets the value for MarketplaceProductsCount to be an explicit nil
+func (o *ResponseMarketplaceProductFindResult) SetMarketplaceProductsCountNil() {
+	o.MarketplaceProductsCount.Set(nil)
+}
+
+// UnsetMarketplaceProductsCount ensures that no value is present for MarketplaceProductsCount, not even an explicit nil
+func (o *ResponseMarketplaceProductFindResult) UnsetMarketplaceProductsCount() {
+	o.MarketplaceProductsCount.Unset()
 }
 
 // GetMarketplaceProduct returns the MarketplaceProduct field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseMarketplaceProductFindResult) SetMarketplaceProduct(v []Marketp
 	o.MarketplaceProduct = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseMarketplaceProductFindResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseMarketplaceProductFindResult) GetAdditionalFields() map[string]
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseMarketplaceProductFindResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseMarketplaceProductFindResult) SetAdditionalFields(v map[string]
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseMarketplaceProductFindResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseMarketplaceProductFindResult) GetCustomFields() map[string]inte
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseMarketplaceProductFindResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseMarketplaceProductFindResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseMarketplaceProductFindResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MarketplaceProductsCount) {
-		toSerialize["marketplace_products_count"] = o.MarketplaceProductsCount
+	if o.MarketplaceProductsCount.IsSet() {
+		toSerialize["marketplace_products_count"] = o.MarketplaceProductsCount.Get()
 	}
 	if !IsNil(o.MarketplaceProduct) {
 		toSerialize["marketplace_product"] = o.MarketplaceProduct
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

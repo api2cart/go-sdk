@@ -20,15 +20,15 @@ var _ MappedNullable = &CartShippingMethod{}
 
 // CartShippingMethod struct for CartShippingMethod
 type CartShippingMethod struct {
-	Name *string `json:"name,omitempty"`
-	HandlingFee *string `json:"handling_fee,omitempty"`
-	HandlingEnabled *string `json:"handling_enabled,omitempty"`
-	HandlingType *string `json:"handling_type,omitempty"`
-	DefaultPrice *string `json:"default_price,omitempty"`
-	DefaultPriceType *string `json:"default_price_type,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Enabled *string `json:"enabled,omitempty"`
-	MinOrderAmount *string `json:"min_order_amount,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	HandlingFee NullableString `json:"handling_fee,omitempty"`
+	HandlingEnabled NullableString `json:"handling_enabled,omitempty"`
+	HandlingType NullableString `json:"handling_type,omitempty"`
+	DefaultPrice NullableString `json:"default_price,omitempty"`
+	DefaultPriceType NullableString `json:"default_price_type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Enabled NullableString `json:"enabled,omitempty"`
+	MinOrderAmount NullableString `json:"min_order_amount,omitempty"`
 	Rates []CartShippingMethodRate `json:"rates,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -51,292 +51,382 @@ func NewCartShippingMethodWithDefaults() *CartShippingMethod {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CartShippingMethod) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CartShippingMethod) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetHandlingFee returns the HandlingFee field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CartShippingMethod) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetHandlingFee returns the HandlingFee field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetHandlingFee() string {
-	if o == nil || IsNil(o.HandlingFee) {
+	if o == nil || IsNil(o.HandlingFee.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.HandlingFee
+	return *o.HandlingFee.Get()
 }
 
 // GetHandlingFeeOk returns a tuple with the HandlingFee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetHandlingFeeOk() (*string, bool) {
-	if o == nil || IsNil(o.HandlingFee) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HandlingFee, true
+	return o.HandlingFee.Get(), o.HandlingFee.IsSet()
 }
 
 // HasHandlingFee returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasHandlingFee() bool {
-	if o != nil && !IsNil(o.HandlingFee) {
+	if o != nil && o.HandlingFee.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHandlingFee gets a reference to the given string and assigns it to the HandlingFee field.
+// SetHandlingFee gets a reference to the given NullableString and assigns it to the HandlingFee field.
 func (o *CartShippingMethod) SetHandlingFee(v string) {
-	o.HandlingFee = &v
+	o.HandlingFee.Set(&v)
+}
+// SetHandlingFeeNil sets the value for HandlingFee to be an explicit nil
+func (o *CartShippingMethod) SetHandlingFeeNil() {
+	o.HandlingFee.Set(nil)
 }
 
-// GetHandlingEnabled returns the HandlingEnabled field value if set, zero value otherwise.
+// UnsetHandlingFee ensures that no value is present for HandlingFee, not even an explicit nil
+func (o *CartShippingMethod) UnsetHandlingFee() {
+	o.HandlingFee.Unset()
+}
+
+// GetHandlingEnabled returns the HandlingEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetHandlingEnabled() string {
-	if o == nil || IsNil(o.HandlingEnabled) {
+	if o == nil || IsNil(o.HandlingEnabled.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.HandlingEnabled
+	return *o.HandlingEnabled.Get()
 }
 
 // GetHandlingEnabledOk returns a tuple with the HandlingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetHandlingEnabledOk() (*string, bool) {
-	if o == nil || IsNil(o.HandlingEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HandlingEnabled, true
+	return o.HandlingEnabled.Get(), o.HandlingEnabled.IsSet()
 }
 
 // HasHandlingEnabled returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasHandlingEnabled() bool {
-	if o != nil && !IsNil(o.HandlingEnabled) {
+	if o != nil && o.HandlingEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHandlingEnabled gets a reference to the given string and assigns it to the HandlingEnabled field.
+// SetHandlingEnabled gets a reference to the given NullableString and assigns it to the HandlingEnabled field.
 func (o *CartShippingMethod) SetHandlingEnabled(v string) {
-	o.HandlingEnabled = &v
+	o.HandlingEnabled.Set(&v)
+}
+// SetHandlingEnabledNil sets the value for HandlingEnabled to be an explicit nil
+func (o *CartShippingMethod) SetHandlingEnabledNil() {
+	o.HandlingEnabled.Set(nil)
 }
 
-// GetHandlingType returns the HandlingType field value if set, zero value otherwise.
+// UnsetHandlingEnabled ensures that no value is present for HandlingEnabled, not even an explicit nil
+func (o *CartShippingMethod) UnsetHandlingEnabled() {
+	o.HandlingEnabled.Unset()
+}
+
+// GetHandlingType returns the HandlingType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetHandlingType() string {
-	if o == nil || IsNil(o.HandlingType) {
+	if o == nil || IsNil(o.HandlingType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.HandlingType
+	return *o.HandlingType.Get()
 }
 
 // GetHandlingTypeOk returns a tuple with the HandlingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetHandlingTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.HandlingType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HandlingType, true
+	return o.HandlingType.Get(), o.HandlingType.IsSet()
 }
 
 // HasHandlingType returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasHandlingType() bool {
-	if o != nil && !IsNil(o.HandlingType) {
+	if o != nil && o.HandlingType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHandlingType gets a reference to the given string and assigns it to the HandlingType field.
+// SetHandlingType gets a reference to the given NullableString and assigns it to the HandlingType field.
 func (o *CartShippingMethod) SetHandlingType(v string) {
-	o.HandlingType = &v
+	o.HandlingType.Set(&v)
+}
+// SetHandlingTypeNil sets the value for HandlingType to be an explicit nil
+func (o *CartShippingMethod) SetHandlingTypeNil() {
+	o.HandlingType.Set(nil)
 }
 
-// GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise.
+// UnsetHandlingType ensures that no value is present for HandlingType, not even an explicit nil
+func (o *CartShippingMethod) UnsetHandlingType() {
+	o.HandlingType.Unset()
+}
+
+// GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetDefaultPrice() string {
-	if o == nil || IsNil(o.DefaultPrice) {
+	if o == nil || IsNil(o.DefaultPrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DefaultPrice
+	return *o.DefaultPrice.Get()
 }
 
 // GetDefaultPriceOk returns a tuple with the DefaultPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetDefaultPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultPrice, true
+	return o.DefaultPrice.Get(), o.DefaultPrice.IsSet()
 }
 
 // HasDefaultPrice returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasDefaultPrice() bool {
-	if o != nil && !IsNil(o.DefaultPrice) {
+	if o != nil && o.DefaultPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultPrice gets a reference to the given string and assigns it to the DefaultPrice field.
+// SetDefaultPrice gets a reference to the given NullableString and assigns it to the DefaultPrice field.
 func (o *CartShippingMethod) SetDefaultPrice(v string) {
-	o.DefaultPrice = &v
+	o.DefaultPrice.Set(&v)
+}
+// SetDefaultPriceNil sets the value for DefaultPrice to be an explicit nil
+func (o *CartShippingMethod) SetDefaultPriceNil() {
+	o.DefaultPrice.Set(nil)
 }
 
-// GetDefaultPriceType returns the DefaultPriceType field value if set, zero value otherwise.
+// UnsetDefaultPrice ensures that no value is present for DefaultPrice, not even an explicit nil
+func (o *CartShippingMethod) UnsetDefaultPrice() {
+	o.DefaultPrice.Unset()
+}
+
+// GetDefaultPriceType returns the DefaultPriceType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetDefaultPriceType() string {
-	if o == nil || IsNil(o.DefaultPriceType) {
+	if o == nil || IsNil(o.DefaultPriceType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DefaultPriceType
+	return *o.DefaultPriceType.Get()
 }
 
 // GetDefaultPriceTypeOk returns a tuple with the DefaultPriceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetDefaultPriceTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultPriceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultPriceType, true
+	return o.DefaultPriceType.Get(), o.DefaultPriceType.IsSet()
 }
 
 // HasDefaultPriceType returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasDefaultPriceType() bool {
-	if o != nil && !IsNil(o.DefaultPriceType) {
+	if o != nil && o.DefaultPriceType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultPriceType gets a reference to the given string and assigns it to the DefaultPriceType field.
+// SetDefaultPriceType gets a reference to the given NullableString and assigns it to the DefaultPriceType field.
 func (o *CartShippingMethod) SetDefaultPriceType(v string) {
-	o.DefaultPriceType = &v
+	o.DefaultPriceType.Set(&v)
+}
+// SetDefaultPriceTypeNil sets the value for DefaultPriceType to be an explicit nil
+func (o *CartShippingMethod) SetDefaultPriceTypeNil() {
+	o.DefaultPriceType.Set(nil)
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// UnsetDefaultPriceType ensures that no value is present for DefaultPriceType, not even an explicit nil
+func (o *CartShippingMethod) UnsetDefaultPriceType() {
+	o.DefaultPriceType.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *CartShippingMethod) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *CartShippingMethod) SetTypeNil() {
+	o.Type.Set(nil)
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *CartShippingMethod) UnsetType() {
+	o.Type.Unset()
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetEnabled() string {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Enabled
+	return *o.Enabled.Get()
 }
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetEnabledOk() (*string, bool) {
-	if o == nil || IsNil(o.Enabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return o.Enabled.Get(), o.Enabled.IsSet()
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+	if o != nil && o.Enabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnabled gets a reference to the given string and assigns it to the Enabled field.
+// SetEnabled gets a reference to the given NullableString and assigns it to the Enabled field.
 func (o *CartShippingMethod) SetEnabled(v string) {
-	o.Enabled = &v
+	o.Enabled.Set(&v)
+}
+// SetEnabledNil sets the value for Enabled to be an explicit nil
+func (o *CartShippingMethod) SetEnabledNil() {
+	o.Enabled.Set(nil)
 }
 
-// GetMinOrderAmount returns the MinOrderAmount field value if set, zero value otherwise.
+// UnsetEnabled ensures that no value is present for Enabled, not even an explicit nil
+func (o *CartShippingMethod) UnsetEnabled() {
+	o.Enabled.Unset()
+}
+
+// GetMinOrderAmount returns the MinOrderAmount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetMinOrderAmount() string {
-	if o == nil || IsNil(o.MinOrderAmount) {
+	if o == nil || IsNil(o.MinOrderAmount.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MinOrderAmount
+	return *o.MinOrderAmount.Get()
 }
 
 // GetMinOrderAmountOk returns a tuple with the MinOrderAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetMinOrderAmountOk() (*string, bool) {
-	if o == nil || IsNil(o.MinOrderAmount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinOrderAmount, true
+	return o.MinOrderAmount.Get(), o.MinOrderAmount.IsSet()
 }
 
 // HasMinOrderAmount returns a boolean if a field has been set.
 func (o *CartShippingMethod) HasMinOrderAmount() bool {
-	if o != nil && !IsNil(o.MinOrderAmount) {
+	if o != nil && o.MinOrderAmount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinOrderAmount gets a reference to the given string and assigns it to the MinOrderAmount field.
+// SetMinOrderAmount gets a reference to the given NullableString and assigns it to the MinOrderAmount field.
 func (o *CartShippingMethod) SetMinOrderAmount(v string) {
-	o.MinOrderAmount = &v
+	o.MinOrderAmount.Set(&v)
+}
+// SetMinOrderAmountNil sets the value for MinOrderAmount to be an explicit nil
+func (o *CartShippingMethod) SetMinOrderAmountNil() {
+	o.MinOrderAmount.Set(nil)
+}
+
+// UnsetMinOrderAmount ensures that no value is present for MinOrderAmount, not even an explicit nil
+func (o *CartShippingMethod) UnsetMinOrderAmount() {
+	o.MinOrderAmount.Unset()
 }
 
 // GetRates returns the Rates field value if set, zero value otherwise.
@@ -371,9 +461,9 @@ func (o *CartShippingMethod) SetRates(v []CartShippingMethodRate) {
 	o.Rates = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -382,6 +472,7 @@ func (o *CartShippingMethod) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -403,9 +494,9 @@ func (o *CartShippingMethod) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartShippingMethod) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -414,6 +505,7 @@ func (o *CartShippingMethod) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartShippingMethod) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -445,40 +537,40 @@ func (o CartShippingMethod) MarshalJSON() ([]byte, error) {
 
 func (o CartShippingMethod) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.HandlingFee) {
-		toSerialize["handling_fee"] = o.HandlingFee
+	if o.HandlingFee.IsSet() {
+		toSerialize["handling_fee"] = o.HandlingFee.Get()
 	}
-	if !IsNil(o.HandlingEnabled) {
-		toSerialize["handling_enabled"] = o.HandlingEnabled
+	if o.HandlingEnabled.IsSet() {
+		toSerialize["handling_enabled"] = o.HandlingEnabled.Get()
 	}
-	if !IsNil(o.HandlingType) {
-		toSerialize["handling_type"] = o.HandlingType
+	if o.HandlingType.IsSet() {
+		toSerialize["handling_type"] = o.HandlingType.Get()
 	}
-	if !IsNil(o.DefaultPrice) {
-		toSerialize["default_price"] = o.DefaultPrice
+	if o.DefaultPrice.IsSet() {
+		toSerialize["default_price"] = o.DefaultPrice.Get()
 	}
-	if !IsNil(o.DefaultPriceType) {
-		toSerialize["default_price_type"] = o.DefaultPriceType
+	if o.DefaultPriceType.IsSet() {
+		toSerialize["default_price_type"] = o.DefaultPriceType.Get()
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
+	if o.Enabled.IsSet() {
+		toSerialize["enabled"] = o.Enabled.Get()
 	}
-	if !IsNil(o.MinOrderAmount) {
-		toSerialize["min_order_amount"] = o.MinOrderAmount
+	if o.MinOrderAmount.IsSet() {
+		toSerialize["min_order_amount"] = o.MinOrderAmount.Get()
 	}
 	if !IsNil(o.Rates) {
 		toSerialize["rates"] = o.Rates
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

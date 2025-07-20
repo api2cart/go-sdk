@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
 **HttpPath** | Pointer to **string** |  | [optional] 
-**FileName** | Pointer to **string** |  | [optional] 
+**FileName** | Pointer to **NullableString** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -55,6 +55,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *Media) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Media) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetHttpPath
 
 `func (o *Media) GetHttpPath() string`
@@ -105,6 +115,16 @@ SetFileName sets FileName field to given value.
 
 HasFileName returns a boolean if a field has been set.
 
+### SetFileNameNil
+
+`func (o *Media) SetFileNameNil(b bool)`
+
+ SetFileNameNil sets the value for FileName to be an explicit nil
+
+### UnsetFileName
+`func (o *Media) UnsetFileName()`
+
+UnsetFileName ensures that no value is present for FileName, not even an explicit nil
 ### GetType
 
 `func (o *Media) GetType() string`
@@ -155,6 +175,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Media) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Media) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Media) GetCustomFields() map[string]interface{}`
@@ -180,6 +210,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Media) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Media) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

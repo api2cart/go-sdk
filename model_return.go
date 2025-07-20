@@ -21,16 +21,16 @@ var _ MappedNullable = &Return{}
 // Return struct for Return
 type Return struct {
 	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OrderId *string `json:"order_id,omitempty"`
-	CustomerId *string `json:"customer_id,omitempty"`
-	StoreId *string `json:"store_id,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	ModifiedAt *string `json:"modified_at,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrderId NullableString `json:"order_id,omitempty"`
+	CustomerId NullableString `json:"customer_id,omitempty"`
+	StoreId NullableString `json:"store_id,omitempty"`
+	CreatedAt NullableString `json:"created_at,omitempty"`
+	ModifiedAt NullableString `json:"modified_at,omitempty"`
 	Status *ReturnStatus `json:"status,omitempty"`
 	OrderProducts []ReturnOrderProduct `json:"order_products,omitempty"`
-	Comment *string `json:"comment,omitempty"`
-	StaffNote *string `json:"staff_note,omitempty"`
+	Comment NullableString `json:"comment,omitempty"`
+	StaffNote NullableString `json:"staff_note,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -84,196 +84,256 @@ func (o *Return) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Return) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Return) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Return) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetOrderId returns the OrderId field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Return) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetOrderId returns the OrderId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetOrderId() string {
-	if o == nil || IsNil(o.OrderId) {
+	if o == nil || IsNil(o.OrderId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrderId
+	return *o.OrderId.Get()
 }
 
 // GetOrderIdOk returns a tuple with the OrderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetOrderIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OrderId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrderId, true
+	return o.OrderId.Get(), o.OrderId.IsSet()
 }
 
 // HasOrderId returns a boolean if a field has been set.
 func (o *Return) HasOrderId() bool {
-	if o != nil && !IsNil(o.OrderId) {
+	if o != nil && o.OrderId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrderId gets a reference to the given string and assigns it to the OrderId field.
+// SetOrderId gets a reference to the given NullableString and assigns it to the OrderId field.
 func (o *Return) SetOrderId(v string) {
-	o.OrderId = &v
+	o.OrderId.Set(&v)
+}
+// SetOrderIdNil sets the value for OrderId to be an explicit nil
+func (o *Return) SetOrderIdNil() {
+	o.OrderId.Set(nil)
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+// UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
+func (o *Return) UnsetOrderId() {
+	o.OrderId.Unset()
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId
+	return *o.CustomerId.Get()
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerId, true
+	return o.CustomerId.Get(), o.CustomerId.IsSet()
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *Return) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+	if o != nil && o.CustomerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
 func (o *Return) SetCustomerId(v string) {
-	o.CustomerId = &v
+	o.CustomerId.Set(&v)
+}
+// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+func (o *Return) SetCustomerIdNil() {
+	o.CustomerId.Set(nil)
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
+// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
+func (o *Return) UnsetCustomerId() {
+	o.CustomerId.Unset()
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil || IsNil(o.StoreId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StoreId
+	return *o.StoreId.Get()
 }
 
 // GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StoreId, true
+	return o.StoreId.Get(), o.StoreId.IsSet()
 }
 
 // HasStoreId returns a boolean if a field has been set.
 func (o *Return) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
+	if o != nil && o.StoreId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+// SetStoreId gets a reference to the given NullableString and assigns it to the StoreId field.
 func (o *Return) SetStoreId(v string) {
-	o.StoreId = &v
+	o.StoreId.Set(&v)
+}
+// SetStoreIdNil sets the value for StoreId to be an explicit nil
+func (o *Return) SetStoreIdNil() {
+	o.StoreId.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
+func (o *Return) UnsetStoreId() {
+	o.StoreId.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Return) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *Return) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *Return) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *Return) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetModifiedAt() string {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetModifiedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *Return) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given string and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableString and assigns it to the ModifiedAt field.
 func (o *Return) SetModifiedAt(v string) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *Return) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
+}
+
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *Return) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -340,73 +400,93 @@ func (o *Return) SetOrderProducts(v []ReturnOrderProduct) {
 	o.OrderProducts = v
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+	return *o.Comment.Get()
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return o.Comment.Get(), o.Comment.IsSet()
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *Return) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
+	if o != nil && o.Comment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
 func (o *Return) SetComment(v string) {
-	o.Comment = &v
+	o.Comment.Set(&v)
+}
+// SetCommentNil sets the value for Comment to be an explicit nil
+func (o *Return) SetCommentNil() {
+	o.Comment.Set(nil)
 }
 
-// GetStaffNote returns the StaffNote field value if set, zero value otherwise.
+// UnsetComment ensures that no value is present for Comment, not even an explicit nil
+func (o *Return) UnsetComment() {
+	o.Comment.Unset()
+}
+
+// GetStaffNote returns the StaffNote field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetStaffNote() string {
-	if o == nil || IsNil(o.StaffNote) {
+	if o == nil || IsNil(o.StaffNote.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StaffNote
+	return *o.StaffNote.Get()
 }
 
 // GetStaffNoteOk returns a tuple with the StaffNote field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetStaffNoteOk() (*string, bool) {
-	if o == nil || IsNil(o.StaffNote) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StaffNote, true
+	return o.StaffNote.Get(), o.StaffNote.IsSet()
 }
 
 // HasStaffNote returns a boolean if a field has been set.
 func (o *Return) HasStaffNote() bool {
-	if o != nil && !IsNil(o.StaffNote) {
+	if o != nil && o.StaffNote.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStaffNote gets a reference to the given string and assigns it to the StaffNote field.
+// SetStaffNote gets a reference to the given NullableString and assigns it to the StaffNote field.
 func (o *Return) SetStaffNote(v string) {
-	o.StaffNote = &v
+	o.StaffNote.Set(&v)
+}
+// SetStaffNoteNil sets the value for StaffNote to be an explicit nil
+func (o *Return) SetStaffNoteNil() {
+	o.StaffNote.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetStaffNote ensures that no value is present for StaffNote, not even an explicit nil
+func (o *Return) UnsetStaffNote() {
+	o.StaffNote.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -415,6 +495,7 @@ func (o *Return) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -436,9 +517,9 @@ func (o *Return) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Return) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -447,6 +528,7 @@ func (o *Return) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Return) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -481,23 +563,23 @@ func (o Return) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.OrderId) {
-		toSerialize["order_id"] = o.OrderId
+	if o.OrderId.IsSet() {
+		toSerialize["order_id"] = o.OrderId.Get()
 	}
-	if !IsNil(o.CustomerId) {
-		toSerialize["customer_id"] = o.CustomerId
+	if o.CustomerId.IsSet() {
+		toSerialize["customer_id"] = o.CustomerId.Get()
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
+	if o.StoreId.IsSet() {
+		toSerialize["store_id"] = o.StoreId.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -505,16 +587,16 @@ func (o Return) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderProducts) {
 		toSerialize["order_products"] = o.OrderProducts
 	}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
+	if o.Comment.IsSet() {
+		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !IsNil(o.StaffNote) {
-		toSerialize["staff_note"] = o.StaffNote
+	if o.StaffNote.IsSet() {
+		toSerialize["staff_note"] = o.StaffNote.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -5,22 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **StoreId** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Language** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Language** | Pointer to **NullableString** |  | [optional] 
 **StoreLanguages** | Pointer to [**[]Language**](Language.md) |  | [optional] 
 **Currency** | Pointer to [**Currency**](Currency.md) |  | [optional] 
 **StoreCurrencies** | Pointer to [**[]Currency**](Currency.md) |  | [optional] 
-**Timezone** | Pointer to **string** |  | [optional] 
-**Country** | Pointer to **string** |  | [optional] 
-**RootCategoryId** | Pointer to **string** |  | [optional] 
-**MultiStoreUrl** | Pointer to **string** |  | [optional] 
-**Active** | Pointer to **bool** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**DimensionUnit** | Pointer to **string** |  | [optional] 
-**PricesIncludeTax** | Pointer to **bool** |  | [optional] 
+**Timezone** | Pointer to **NullableString** |  | [optional] 
+**Country** | Pointer to **NullableString** |  | [optional] 
+**RootCategoryId** | Pointer to **NullableString** |  | [optional] 
+**MultiStoreUrl** | Pointer to **NullableString** |  | [optional] 
+**Active** | Pointer to **NullableBool** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**DimensionUnit** | Pointer to **NullableString** |  | [optional] 
+**PricesIncludeTax** | Pointer to **NullableBool** |  | [optional] 
 **CarrierInfo** | Pointer to [**[]Carrier**](Carrier.md) |  | [optional] 
-**StoreOwnerInfo** | Pointer to [**Info**](Info.md) |  | [optional] 
-**DefaultWarehouseId** | Pointer to **string** |  | [optional] 
+**StoreOwnerInfo** | Pointer to [**NullableInfo**](Info.md) |  | [optional] 
+**DefaultWarehouseId** | Pointer to **NullableString** |  | [optional] 
 **Channels** | Pointer to [**[]CartChannel**](CartChannel.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -94,6 +94,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CartStoreInfo) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CartStoreInfo) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetLanguage
 
 `func (o *CartStoreInfo) GetLanguage() string`
@@ -119,6 +129,16 @@ SetLanguage sets Language field to given value.
 
 HasLanguage returns a boolean if a field has been set.
 
+### SetLanguageNil
+
+`func (o *CartStoreInfo) SetLanguageNil(b bool)`
+
+ SetLanguageNil sets the value for Language to be an explicit nil
+
+### UnsetLanguage
+`func (o *CartStoreInfo) UnsetLanguage()`
+
+UnsetLanguage ensures that no value is present for Language, not even an explicit nil
 ### GetStoreLanguages
 
 `func (o *CartStoreInfo) GetStoreLanguages() []Language`
@@ -219,6 +239,16 @@ SetTimezone sets Timezone field to given value.
 
 HasTimezone returns a boolean if a field has been set.
 
+### SetTimezoneNil
+
+`func (o *CartStoreInfo) SetTimezoneNil(b bool)`
+
+ SetTimezoneNil sets the value for Timezone to be an explicit nil
+
+### UnsetTimezone
+`func (o *CartStoreInfo) UnsetTimezone()`
+
+UnsetTimezone ensures that no value is present for Timezone, not even an explicit nil
 ### GetCountry
 
 `func (o *CartStoreInfo) GetCountry() string`
@@ -244,6 +274,16 @@ SetCountry sets Country field to given value.
 
 HasCountry returns a boolean if a field has been set.
 
+### SetCountryNil
+
+`func (o *CartStoreInfo) SetCountryNil(b bool)`
+
+ SetCountryNil sets the value for Country to be an explicit nil
+
+### UnsetCountry
+`func (o *CartStoreInfo) UnsetCountry()`
+
+UnsetCountry ensures that no value is present for Country, not even an explicit nil
 ### GetRootCategoryId
 
 `func (o *CartStoreInfo) GetRootCategoryId() string`
@@ -269,6 +309,16 @@ SetRootCategoryId sets RootCategoryId field to given value.
 
 HasRootCategoryId returns a boolean if a field has been set.
 
+### SetRootCategoryIdNil
+
+`func (o *CartStoreInfo) SetRootCategoryIdNil(b bool)`
+
+ SetRootCategoryIdNil sets the value for RootCategoryId to be an explicit nil
+
+### UnsetRootCategoryId
+`func (o *CartStoreInfo) UnsetRootCategoryId()`
+
+UnsetRootCategoryId ensures that no value is present for RootCategoryId, not even an explicit nil
 ### GetMultiStoreUrl
 
 `func (o *CartStoreInfo) GetMultiStoreUrl() string`
@@ -294,6 +344,16 @@ SetMultiStoreUrl sets MultiStoreUrl field to given value.
 
 HasMultiStoreUrl returns a boolean if a field has been set.
 
+### SetMultiStoreUrlNil
+
+`func (o *CartStoreInfo) SetMultiStoreUrlNil(b bool)`
+
+ SetMultiStoreUrlNil sets the value for MultiStoreUrl to be an explicit nil
+
+### UnsetMultiStoreUrl
+`func (o *CartStoreInfo) UnsetMultiStoreUrl()`
+
+UnsetMultiStoreUrl ensures that no value is present for MultiStoreUrl, not even an explicit nil
 ### GetActive
 
 `func (o *CartStoreInfo) GetActive() bool`
@@ -319,6 +379,16 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
+### SetActiveNil
+
+`func (o *CartStoreInfo) SetActiveNil(b bool)`
+
+ SetActiveNil sets the value for Active to be an explicit nil
+
+### UnsetActive
+`func (o *CartStoreInfo) UnsetActive()`
+
+UnsetActive ensures that no value is present for Active, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *CartStoreInfo) GetWeightUnit() string`
@@ -344,6 +414,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *CartStoreInfo) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *CartStoreInfo) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetDimensionUnit
 
 `func (o *CartStoreInfo) GetDimensionUnit() string`
@@ -369,6 +449,16 @@ SetDimensionUnit sets DimensionUnit field to given value.
 
 HasDimensionUnit returns a boolean if a field has been set.
 
+### SetDimensionUnitNil
+
+`func (o *CartStoreInfo) SetDimensionUnitNil(b bool)`
+
+ SetDimensionUnitNil sets the value for DimensionUnit to be an explicit nil
+
+### UnsetDimensionUnit
+`func (o *CartStoreInfo) UnsetDimensionUnit()`
+
+UnsetDimensionUnit ensures that no value is present for DimensionUnit, not even an explicit nil
 ### GetPricesIncludeTax
 
 `func (o *CartStoreInfo) GetPricesIncludeTax() bool`
@@ -394,6 +484,16 @@ SetPricesIncludeTax sets PricesIncludeTax field to given value.
 
 HasPricesIncludeTax returns a boolean if a field has been set.
 
+### SetPricesIncludeTaxNil
+
+`func (o *CartStoreInfo) SetPricesIncludeTaxNil(b bool)`
+
+ SetPricesIncludeTaxNil sets the value for PricesIncludeTax to be an explicit nil
+
+### UnsetPricesIncludeTax
+`func (o *CartStoreInfo) UnsetPricesIncludeTax()`
+
+UnsetPricesIncludeTax ensures that no value is present for PricesIncludeTax, not even an explicit nil
 ### GetCarrierInfo
 
 `func (o *CartStoreInfo) GetCarrierInfo() []Carrier`
@@ -444,6 +544,16 @@ SetStoreOwnerInfo sets StoreOwnerInfo field to given value.
 
 HasStoreOwnerInfo returns a boolean if a field has been set.
 
+### SetStoreOwnerInfoNil
+
+`func (o *CartStoreInfo) SetStoreOwnerInfoNil(b bool)`
+
+ SetStoreOwnerInfoNil sets the value for StoreOwnerInfo to be an explicit nil
+
+### UnsetStoreOwnerInfo
+`func (o *CartStoreInfo) UnsetStoreOwnerInfo()`
+
+UnsetStoreOwnerInfo ensures that no value is present for StoreOwnerInfo, not even an explicit nil
 ### GetDefaultWarehouseId
 
 `func (o *CartStoreInfo) GetDefaultWarehouseId() string`
@@ -469,6 +579,16 @@ SetDefaultWarehouseId sets DefaultWarehouseId field to given value.
 
 HasDefaultWarehouseId returns a boolean if a field has been set.
 
+### SetDefaultWarehouseIdNil
+
+`func (o *CartStoreInfo) SetDefaultWarehouseIdNil(b bool)`
+
+ SetDefaultWarehouseIdNil sets the value for DefaultWarehouseId to be an explicit nil
+
+### UnsetDefaultWarehouseId
+`func (o *CartStoreInfo) UnsetDefaultWarehouseId()`
+
+UnsetDefaultWarehouseId ensures that no value is present for DefaultWarehouseId, not even an explicit nil
 ### GetChannels
 
 `func (o *CartStoreInfo) GetChannels() []CartChannel`
@@ -519,6 +639,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CartStoreInfo) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CartStoreInfo) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CartStoreInfo) GetCustomFields() map[string]interface{}`
@@ -544,6 +674,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CartStoreInfo) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CartStoreInfo) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

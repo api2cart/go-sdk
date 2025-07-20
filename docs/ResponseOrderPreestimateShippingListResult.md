@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PreestimateShippingsCount** | Pointer to **int32** |  | [optional] 
+**PreestimateShippingsCount** | Pointer to **NullableInt32** |  | [optional] 
 **PreestimateShippings** | Pointer to [**[]OrderPreestimateShipping**](OrderPreestimateShipping.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetPreestimateShippingsCount sets PreestimateShippingsCount field to given value
 
 HasPreestimateShippingsCount returns a boolean if a field has been set.
 
+### SetPreestimateShippingsCountNil
+
+`func (o *ResponseOrderPreestimateShippingListResult) SetPreestimateShippingsCountNil(b bool)`
+
+ SetPreestimateShippingsCountNil sets the value for PreestimateShippingsCount to be an explicit nil
+
+### UnsetPreestimateShippingsCount
+`func (o *ResponseOrderPreestimateShippingListResult) UnsetPreestimateShippingsCount()`
+
+UnsetPreestimateShippingsCount ensures that no value is present for PreestimateShippingsCount, not even an explicit nil
 ### GetPreestimateShippings
 
 `func (o *ResponseOrderPreestimateShippingListResult) GetPreestimateShippings() []OrderPreestimateShipping`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseOrderPreestimateShippingListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseOrderPreestimateShippingListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseOrderPreestimateShippingListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseOrderPreestimateShippingListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseOrderPreestimateShippingListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

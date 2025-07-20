@@ -20,8 +20,8 @@ var _ MappedNullable = &ShipmentTrackingNumber{}
 
 // ShipmentTrackingNumber struct for ShipmentTrackingNumber
 type ShipmentTrackingNumber struct {
-	CarrierId *string `json:"carrier_id,omitempty"`
-	TrackingNumber *string `json:"tracking_number,omitempty"`
+	CarrierId NullableString `json:"carrier_id,omitempty"`
+	TrackingNumber NullableString `json:"tracking_number,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -43,73 +43,93 @@ func NewShipmentTrackingNumberWithDefaults() *ShipmentTrackingNumber {
 	return &this
 }
 
-// GetCarrierId returns the CarrierId field value if set, zero value otherwise.
+// GetCarrierId returns the CarrierId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShipmentTrackingNumber) GetCarrierId() string {
-	if o == nil || IsNil(o.CarrierId) {
+	if o == nil || IsNil(o.CarrierId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CarrierId
+	return *o.CarrierId.Get()
 }
 
 // GetCarrierIdOk returns a tuple with the CarrierId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShipmentTrackingNumber) GetCarrierIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CarrierId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CarrierId, true
+	return o.CarrierId.Get(), o.CarrierId.IsSet()
 }
 
 // HasCarrierId returns a boolean if a field has been set.
 func (o *ShipmentTrackingNumber) HasCarrierId() bool {
-	if o != nil && !IsNil(o.CarrierId) {
+	if o != nil && o.CarrierId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCarrierId gets a reference to the given string and assigns it to the CarrierId field.
+// SetCarrierId gets a reference to the given NullableString and assigns it to the CarrierId field.
 func (o *ShipmentTrackingNumber) SetCarrierId(v string) {
-	o.CarrierId = &v
+	o.CarrierId.Set(&v)
+}
+// SetCarrierIdNil sets the value for CarrierId to be an explicit nil
+func (o *ShipmentTrackingNumber) SetCarrierIdNil() {
+	o.CarrierId.Set(nil)
 }
 
-// GetTrackingNumber returns the TrackingNumber field value if set, zero value otherwise.
+// UnsetCarrierId ensures that no value is present for CarrierId, not even an explicit nil
+func (o *ShipmentTrackingNumber) UnsetCarrierId() {
+	o.CarrierId.Unset()
+}
+
+// GetTrackingNumber returns the TrackingNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShipmentTrackingNumber) GetTrackingNumber() string {
-	if o == nil || IsNil(o.TrackingNumber) {
+	if o == nil || IsNil(o.TrackingNumber.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TrackingNumber
+	return *o.TrackingNumber.Get()
 }
 
 // GetTrackingNumberOk returns a tuple with the TrackingNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShipmentTrackingNumber) GetTrackingNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.TrackingNumber) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TrackingNumber, true
+	return o.TrackingNumber.Get(), o.TrackingNumber.IsSet()
 }
 
 // HasTrackingNumber returns a boolean if a field has been set.
 func (o *ShipmentTrackingNumber) HasTrackingNumber() bool {
-	if o != nil && !IsNil(o.TrackingNumber) {
+	if o != nil && o.TrackingNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTrackingNumber gets a reference to the given string and assigns it to the TrackingNumber field.
+// SetTrackingNumber gets a reference to the given NullableString and assigns it to the TrackingNumber field.
 func (o *ShipmentTrackingNumber) SetTrackingNumber(v string) {
-	o.TrackingNumber = &v
+	o.TrackingNumber.Set(&v)
+}
+// SetTrackingNumberNil sets the value for TrackingNumber to be an explicit nil
+func (o *ShipmentTrackingNumber) SetTrackingNumberNil() {
+	o.TrackingNumber.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetTrackingNumber ensures that no value is present for TrackingNumber, not even an explicit nil
+func (o *ShipmentTrackingNumber) UnsetTrackingNumber() {
+	o.TrackingNumber.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShipmentTrackingNumber) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +138,7 @@ func (o *ShipmentTrackingNumber) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShipmentTrackingNumber) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +160,9 @@ func (o *ShipmentTrackingNumber) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ShipmentTrackingNumber) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +171,7 @@ func (o *ShipmentTrackingNumber) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ShipmentTrackingNumber) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +203,16 @@ func (o ShipmentTrackingNumber) MarshalJSON() ([]byte, error) {
 
 func (o ShipmentTrackingNumber) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CarrierId) {
-		toSerialize["carrier_id"] = o.CarrierId
+	if o.CarrierId.IsSet() {
+		toSerialize["carrier_id"] = o.CarrierId.Get()
 	}
-	if !IsNil(o.TrackingNumber) {
-		toSerialize["tracking_number"] = o.TrackingNumber
+	if o.TrackingNumber.IsSet() {
+		toSerialize["tracking_number"] = o.TrackingNumber.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

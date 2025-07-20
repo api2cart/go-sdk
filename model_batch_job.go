@@ -24,7 +24,7 @@ type BatchJob struct {
 	Method *string `json:"method,omitempty"`
 	Status *string `json:"status,omitempty"`
 	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
-	ProcessedTime *A2CDateTime `json:"processed_time,omitempty"`
+	ProcessedTime NullableA2CDateTime `json:"processed_time,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -174,41 +174,51 @@ func (o *BatchJob) SetCreatedTime(v A2CDateTime) {
 	o.CreatedTime = &v
 }
 
-// GetProcessedTime returns the ProcessedTime field value if set, zero value otherwise.
+// GetProcessedTime returns the ProcessedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJob) GetProcessedTime() A2CDateTime {
-	if o == nil || IsNil(o.ProcessedTime) {
+	if o == nil || IsNil(o.ProcessedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ProcessedTime
+	return *o.ProcessedTime.Get()
 }
 
 // GetProcessedTimeOk returns a tuple with the ProcessedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJob) GetProcessedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ProcessedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProcessedTime, true
+	return o.ProcessedTime.Get(), o.ProcessedTime.IsSet()
 }
 
 // HasProcessedTime returns a boolean if a field has been set.
 func (o *BatchJob) HasProcessedTime() bool {
-	if o != nil && !IsNil(o.ProcessedTime) {
+	if o != nil && o.ProcessedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProcessedTime gets a reference to the given A2CDateTime and assigns it to the ProcessedTime field.
+// SetProcessedTime gets a reference to the given NullableA2CDateTime and assigns it to the ProcessedTime field.
 func (o *BatchJob) SetProcessedTime(v A2CDateTime) {
-	o.ProcessedTime = &v
+	o.ProcessedTime.Set(&v)
+}
+// SetProcessedTimeNil sets the value for ProcessedTime to be an explicit nil
+func (o *BatchJob) SetProcessedTimeNil() {
+	o.ProcessedTime.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetProcessedTime ensures that no value is present for ProcessedTime, not even an explicit nil
+func (o *BatchJob) UnsetProcessedTime() {
+	o.ProcessedTime.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJob) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +227,7 @@ func (o *BatchJob) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJob) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +249,9 @@ func (o *BatchJob) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJob) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +260,7 @@ func (o *BatchJob) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJob) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -292,13 +304,13 @@ func (o BatchJob) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatedTime) {
 		toSerialize["created_time"] = o.CreatedTime
 	}
-	if !IsNil(o.ProcessedTime) {
-		toSerialize["processed_time"] = o.ProcessedTime
+	if o.ProcessedTime.IsSet() {
+		toSerialize["processed_time"] = o.ProcessedTime.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

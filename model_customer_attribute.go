@@ -20,10 +20,10 @@ var _ MappedNullable = &CustomerAttribute{}
 
 // CustomerAttribute struct for CustomerAttribute
 type CustomerAttribute struct {
-	AttributeId *string `json:"attribute_id,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
+	AttributeId NullableString `json:"attribute_id,omitempty"`
+	Code NullableString `json:"code,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	Values []CustomerAttributeValue `json:"values,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -46,132 +46,172 @@ func NewCustomerAttributeWithDefaults() *CustomerAttribute {
 	return &this
 }
 
-// GetAttributeId returns the AttributeId field value if set, zero value otherwise.
+// GetAttributeId returns the AttributeId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetAttributeId() string {
-	if o == nil || IsNil(o.AttributeId) {
+	if o == nil || IsNil(o.AttributeId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeId
+	return *o.AttributeId.Get()
 }
 
 // GetAttributeIdOk returns a tuple with the AttributeId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetAttributeIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AttributeId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributeId, true
+	return o.AttributeId.Get(), o.AttributeId.IsSet()
 }
 
 // HasAttributeId returns a boolean if a field has been set.
 func (o *CustomerAttribute) HasAttributeId() bool {
-	if o != nil && !IsNil(o.AttributeId) {
+	if o != nil && o.AttributeId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeId gets a reference to the given string and assigns it to the AttributeId field.
+// SetAttributeId gets a reference to the given NullableString and assigns it to the AttributeId field.
 func (o *CustomerAttribute) SetAttributeId(v string) {
-	o.AttributeId = &v
+	o.AttributeId.Set(&v)
+}
+// SetAttributeIdNil sets the value for AttributeId to be an explicit nil
+func (o *CustomerAttribute) SetAttributeIdNil() {
+	o.AttributeId.Set(nil)
 }
 
-// GetCode returns the Code field value if set, zero value otherwise.
+// UnsetAttributeId ensures that no value is present for AttributeId, not even an explicit nil
+func (o *CustomerAttribute) UnsetAttributeId() {
+	o.AttributeId.Unset()
+}
+
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Code
+	return *o.Code.Get()
 }
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Code, true
+	return o.Code.Get(), o.Code.IsSet()
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *CustomerAttribute) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
+// SetCode gets a reference to the given NullableString and assigns it to the Code field.
 func (o *CustomerAttribute) SetCode(v string) {
-	o.Code = &v
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *CustomerAttribute) SetCodeNil() {
+	o.Code.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *CustomerAttribute) UnsetCode() {
+	o.Code.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CustomerAttribute) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CustomerAttribute) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CustomerAttribute) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CustomerAttribute) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CustomerAttribute) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *CustomerAttribute) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *CustomerAttribute) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *CustomerAttribute) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
@@ -206,9 +246,9 @@ func (o *CustomerAttribute) SetValues(v []CustomerAttributeValue) {
 	o.Values = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +257,7 @@ func (o *CustomerAttribute) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +279,9 @@ func (o *CustomerAttribute) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerAttribute) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +290,7 @@ func (o *CustomerAttribute) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerAttribute) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -280,25 +322,25 @@ func (o CustomerAttribute) MarshalJSON() ([]byte, error) {
 
 func (o CustomerAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AttributeId) {
-		toSerialize["attribute_id"] = o.AttributeId
+	if o.AttributeId.IsSet() {
+		toSerialize["attribute_id"] = o.AttributeId.Get()
 	}
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

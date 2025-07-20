@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReturnCode** | Pointer to **int32** |  | [optional] 
-**ReturnMessage** | Pointer to **string** |  | [optional] 
-**Result** | Pointer to [**BatchJobResult**](BatchJobResult.md) |  | [optional] 
+**ReturnCode** | Pointer to **NullableInt32** |  | [optional] 
+**ReturnMessage** | Pointer to **NullableString** |  | [optional] 
+**Result** | Pointer to [**NullableBatchJobResult**](BatchJobResult.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -54,6 +54,16 @@ SetReturnCode sets ReturnCode field to given value.
 
 HasReturnCode returns a boolean if a field has been set.
 
+### SetReturnCodeNil
+
+`func (o *ResponseBatchJobResult) SetReturnCodeNil(b bool)`
+
+ SetReturnCodeNil sets the value for ReturnCode to be an explicit nil
+
+### UnsetReturnCode
+`func (o *ResponseBatchJobResult) UnsetReturnCode()`
+
+UnsetReturnCode ensures that no value is present for ReturnCode, not even an explicit nil
 ### GetReturnMessage
 
 `func (o *ResponseBatchJobResult) GetReturnMessage() string`
@@ -79,6 +89,16 @@ SetReturnMessage sets ReturnMessage field to given value.
 
 HasReturnMessage returns a boolean if a field has been set.
 
+### SetReturnMessageNil
+
+`func (o *ResponseBatchJobResult) SetReturnMessageNil(b bool)`
+
+ SetReturnMessageNil sets the value for ReturnMessage to be an explicit nil
+
+### UnsetReturnMessage
+`func (o *ResponseBatchJobResult) UnsetReturnMessage()`
+
+UnsetReturnMessage ensures that no value is present for ReturnMessage, not even an explicit nil
 ### GetResult
 
 `func (o *ResponseBatchJobResult) GetResult() BatchJobResult`
@@ -104,6 +124,16 @@ SetResult sets Result field to given value.
 
 HasResult returns a boolean if a field has been set.
 
+### SetResultNil
+
+`func (o *ResponseBatchJobResult) SetResultNil(b bool)`
+
+ SetResultNil sets the value for Result to be an explicit nil
+
+### UnsetResult
+`func (o *ResponseBatchJobResult) UnsetResult()`
+
+UnsetResult ensures that no value is present for Result, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ResponseBatchJobResult) GetAdditionalFields() map[string]interface{}`
@@ -129,6 +159,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseBatchJobResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseBatchJobResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseBatchJobResult) GetCustomFields() map[string]interface{}`
@@ -154,6 +194,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseBatchJobResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseBatchJobResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

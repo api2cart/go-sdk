@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GroupCount** | Pointer to **int32** |  | [optional] 
+**GroupCount** | Pointer to **NullableInt32** |  | [optional] 
 **Group** | Pointer to [**[]CustomerGroup**](CustomerGroup.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetGroupCount sets GroupCount field to given value.
 
 HasGroupCount returns a boolean if a field has been set.
 
+### SetGroupCountNil
+
+`func (o *ResponseCustomerGroupListResult) SetGroupCountNil(b bool)`
+
+ SetGroupCountNil sets the value for GroupCount to be an explicit nil
+
+### UnsetGroupCount
+`func (o *ResponseCustomerGroupListResult) UnsetGroupCount()`
+
+UnsetGroupCount ensures that no value is present for GroupCount, not even an explicit nil
 ### GetGroup
 
 `func (o *ResponseCustomerGroupListResult) GetGroup() []CustomerGroup`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseCustomerGroupListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseCustomerGroupListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseCustomerGroupListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseCustomerGroupListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseCustomerGroupListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

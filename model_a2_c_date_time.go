@@ -20,7 +20,7 @@ var _ MappedNullable = &A2CDateTime{}
 
 // A2CDateTime struct for A2CDateTime
 type A2CDateTime struct {
-	Value *string `json:"value,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 	Format *string `json:"format,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewA2CDateTimeWithDefaults() *A2CDateTime {
 	return &this
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *A2CDateTime) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *A2CDateTime) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *A2CDateTime) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *A2CDateTime) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *A2CDateTime) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *A2CDateTime) UnsetValue() {
+	o.Value.Unset()
 }
 
 // GetFormat returns the Format field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *A2CDateTime) SetFormat(v string) {
 	o.Format = &v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *A2CDateTime) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *A2CDateTime) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *A2CDateTime) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *A2CDateTime) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *A2CDateTime) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *A2CDateTime) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *A2CDateTime) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o A2CDateTime) MarshalJSON() ([]byte, error) {
 
 func (o A2CDateTime) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

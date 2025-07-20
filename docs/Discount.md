@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **ModifierType** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **float32** |  | [optional] 
-**FromTime** | Pointer to **string** |  | [optional] 
-**ToTime** | Pointer to **string** |  | [optional] 
-**CustomerGroupIds** | Pointer to **string** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
+**FromTime** | Pointer to **NullableString** |  | [optional] 
+**ToTime** | Pointer to **NullableString** |  | [optional] 
+**CustomerGroupIds** | Pointer to **NullableString** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -159,6 +159,16 @@ SetFromTime sets FromTime field to given value.
 
 HasFromTime returns a boolean if a field has been set.
 
+### SetFromTimeNil
+
+`func (o *Discount) SetFromTimeNil(b bool)`
+
+ SetFromTimeNil sets the value for FromTime to be an explicit nil
+
+### UnsetFromTime
+`func (o *Discount) UnsetFromTime()`
+
+UnsetFromTime ensures that no value is present for FromTime, not even an explicit nil
 ### GetToTime
 
 `func (o *Discount) GetToTime() string`
@@ -184,6 +194,16 @@ SetToTime sets ToTime field to given value.
 
 HasToTime returns a boolean if a field has been set.
 
+### SetToTimeNil
+
+`func (o *Discount) SetToTimeNil(b bool)`
+
+ SetToTimeNil sets the value for ToTime to be an explicit nil
+
+### UnsetToTime
+`func (o *Discount) UnsetToTime()`
+
+UnsetToTime ensures that no value is present for ToTime, not even an explicit nil
 ### GetCustomerGroupIds
 
 `func (o *Discount) GetCustomerGroupIds() string`
@@ -209,6 +229,16 @@ SetCustomerGroupIds sets CustomerGroupIds field to given value.
 
 HasCustomerGroupIds returns a boolean if a field has been set.
 
+### SetCustomerGroupIdsNil
+
+`func (o *Discount) SetCustomerGroupIdsNil(b bool)`
+
+ SetCustomerGroupIdsNil sets the value for CustomerGroupIds to be an explicit nil
+
+### UnsetCustomerGroupIds
+`func (o *Discount) UnsetCustomerGroupIds()`
+
+UnsetCustomerGroupIds ensures that no value is present for CustomerGroupIds, not even an explicit nil
 ### GetSortOrder
 
 `func (o *Discount) GetSortOrder() int32`
@@ -234,6 +264,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *Discount) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *Discount) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Discount) GetAdditionalFields() map[string]interface{}`
@@ -259,6 +299,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Discount) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Discount) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Discount) GetCustomFields() map[string]interface{}`
@@ -284,6 +334,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Discount) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Discount) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

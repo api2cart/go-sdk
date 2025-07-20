@@ -22,9 +22,9 @@ var _ MappedNullable = &SpecialPrice{}
 type SpecialPrice struct {
 	Value *float32 `json:"value,omitempty"`
 	Avail *bool `json:"avail,omitempty"`
-	CreatedAt *A2CDateTime `json:"created_at,omitempty"`
-	ModifiedAt *A2CDateTime `json:"modified_at,omitempty"`
-	ExpiredAt *A2CDateTime `json:"expired_at,omitempty"`
+	CreatedAt NullableA2CDateTime `json:"created_at,omitempty"`
+	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
+	ExpiredAt NullableA2CDateTime `json:"expired_at,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -110,105 +110,135 @@ func (o *SpecialPrice) SetAvail(v bool) {
 	o.Avail = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpecialPrice) GetCreatedAt() A2CDateTime {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpecialPrice) GetCreatedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *SpecialPrice) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given A2CDateTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableA2CDateTime and assigns it to the CreatedAt field.
 func (o *SpecialPrice) SetCreatedAt(v A2CDateTime) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *SpecialPrice) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *SpecialPrice) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpecialPrice) GetModifiedAt() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpecialPrice) GetModifiedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *SpecialPrice) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given A2CDateTime and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedAt field.
 func (o *SpecialPrice) SetModifiedAt(v A2CDateTime) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *SpecialPrice) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
 }
 
-// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *SpecialPrice) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
+}
+
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpecialPrice) GetExpiredAt() A2CDateTime {
-	if o == nil || IsNil(o.ExpiredAt) {
+	if o == nil || IsNil(o.ExpiredAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ExpiredAt
+	return *o.ExpiredAt.Get()
 }
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpecialPrice) GetExpiredAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ExpiredAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExpiredAt, true
+	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
 }
 
 // HasExpiredAt returns a boolean if a field has been set.
 func (o *SpecialPrice) HasExpiredAt() bool {
-	if o != nil && !IsNil(o.ExpiredAt) {
+	if o != nil && o.ExpiredAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiredAt gets a reference to the given A2CDateTime and assigns it to the ExpiredAt field.
+// SetExpiredAt gets a reference to the given NullableA2CDateTime and assigns it to the ExpiredAt field.
 func (o *SpecialPrice) SetExpiredAt(v A2CDateTime) {
-	o.ExpiredAt = &v
+	o.ExpiredAt.Set(&v)
+}
+// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
+func (o *SpecialPrice) SetExpiredAtNil() {
+	o.ExpiredAt.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
+func (o *SpecialPrice) UnsetExpiredAt() {
+	o.ExpiredAt.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpecialPrice) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +247,7 @@ func (o *SpecialPrice) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpecialPrice) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +269,9 @@ func (o *SpecialPrice) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpecialPrice) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +280,7 @@ func (o *SpecialPrice) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpecialPrice) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -286,19 +318,19 @@ func (o SpecialPrice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Avail) {
 		toSerialize["avail"] = o.Avail
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
-	if !IsNil(o.ExpiredAt) {
-		toSerialize["expired_at"] = o.ExpiredAt
+	if o.ExpiredAt.IsSet() {
+		toSerialize["expired_at"] = o.ExpiredAt.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

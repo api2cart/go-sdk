@@ -21,22 +21,22 @@ var _ MappedNullable = &CartStoreInfo{}
 // CartStoreInfo struct for CartStoreInfo
 type CartStoreInfo struct {
 	StoreId *string `json:"store_id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Language *string `json:"language,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Language NullableString `json:"language,omitempty"`
 	StoreLanguages []Language `json:"store_languages,omitempty"`
 	Currency *Currency `json:"currency,omitempty"`
 	StoreCurrencies []Currency `json:"store_currencies,omitempty"`
-	Timezone *string `json:"timezone,omitempty"`
-	Country *string `json:"country,omitempty"`
-	RootCategoryId *string `json:"root_category_id,omitempty"`
-	MultiStoreUrl *string `json:"multi_store_url,omitempty"`
-	Active *bool `json:"active,omitempty"`
-	WeightUnit *string `json:"weight_unit,omitempty"`
-	DimensionUnit *string `json:"dimension_unit,omitempty"`
-	PricesIncludeTax *bool `json:"prices_include_tax,omitempty"`
+	Timezone NullableString `json:"timezone,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	RootCategoryId NullableString `json:"root_category_id,omitempty"`
+	MultiStoreUrl NullableString `json:"multi_store_url,omitempty"`
+	Active NullableBool `json:"active,omitempty"`
+	WeightUnit NullableString `json:"weight_unit,omitempty"`
+	DimensionUnit NullableString `json:"dimension_unit,omitempty"`
+	PricesIncludeTax NullableBool `json:"prices_include_tax,omitempty"`
 	CarrierInfo []Carrier `json:"carrier_info,omitempty"`
-	StoreOwnerInfo *Info `json:"store_owner_info,omitempty"`
-	DefaultWarehouseId *string `json:"default_warehouse_id,omitempty"`
+	StoreOwnerInfo NullableInfo `json:"store_owner_info,omitempty"`
+	DefaultWarehouseId NullableString `json:"default_warehouse_id,omitempty"`
 	Channels []CartChannel `json:"channels,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -91,68 +91,88 @@ func (o *CartStoreInfo) SetStoreId(v string) {
 	o.StoreId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CartStoreInfo) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CartStoreInfo) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetLanguage returns the Language field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CartStoreInfo) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetLanguage returns the Language field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetLanguage() string {
-	if o == nil || IsNil(o.Language) {
+	if o == nil || IsNil(o.Language.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Language
+	return *o.Language.Get()
 }
 
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetLanguageOk() (*string, bool) {
-	if o == nil || IsNil(o.Language) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Language, true
+	return o.Language.Get(), o.Language.IsSet()
 }
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasLanguage() bool {
-	if o != nil && !IsNil(o.Language) {
+	if o != nil && o.Language.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLanguage gets a reference to the given string and assigns it to the Language field.
+// SetLanguage gets a reference to the given NullableString and assigns it to the Language field.
 func (o *CartStoreInfo) SetLanguage(v string) {
-	o.Language = &v
+	o.Language.Set(&v)
+}
+// SetLanguageNil sets the value for Language to be an explicit nil
+func (o *CartStoreInfo) SetLanguageNil() {
+	o.Language.Set(nil)
+}
+
+// UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+func (o *CartStoreInfo) UnsetLanguage() {
+	o.Language.Unset()
 }
 
 // GetStoreLanguages returns the StoreLanguages field value if set, zero value otherwise.
@@ -251,260 +271,340 @@ func (o *CartStoreInfo) SetStoreCurrencies(v []Currency) {
 	o.StoreCurrencies = v
 }
 
-// GetTimezone returns the Timezone field value if set, zero value otherwise.
+// GetTimezone returns the Timezone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetTimezone() string {
-	if o == nil || IsNil(o.Timezone) {
+	if o == nil || IsNil(o.Timezone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Timezone
+	return *o.Timezone.Get()
 }
 
 // GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetTimezoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Timezone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Timezone, true
+	return o.Timezone.Get(), o.Timezone.IsSet()
 }
 
 // HasTimezone returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasTimezone() bool {
-	if o != nil && !IsNil(o.Timezone) {
+	if o != nil && o.Timezone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTimezone gets a reference to the given string and assigns it to the Timezone field.
+// SetTimezone gets a reference to the given NullableString and assigns it to the Timezone field.
 func (o *CartStoreInfo) SetTimezone(v string) {
-	o.Timezone = &v
+	o.Timezone.Set(&v)
+}
+// SetTimezoneNil sets the value for Timezone to be an explicit nil
+func (o *CartStoreInfo) SetTimezoneNil() {
+	o.Timezone.Set(nil)
 }
 
-// GetCountry returns the Country field value if set, zero value otherwise.
+// UnsetTimezone ensures that no value is present for Timezone, not even an explicit nil
+func (o *CartStoreInfo) UnsetTimezone() {
+	o.Timezone.Unset()
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetCountry() string {
-	if o == nil || IsNil(o.Country) {
+	if o == nil || IsNil(o.Country.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Country
+	return *o.Country.Get()
 }
 
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetCountryOk() (*string, bool) {
-	if o == nil || IsNil(o.Country) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Country, true
+	return o.Country.Get(), o.Country.IsSet()
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasCountry() bool {
-	if o != nil && !IsNil(o.Country) {
+	if o != nil && o.Country.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCountry gets a reference to the given string and assigns it to the Country field.
+// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
 func (o *CartStoreInfo) SetCountry(v string) {
-	o.Country = &v
+	o.Country.Set(&v)
+}
+// SetCountryNil sets the value for Country to be an explicit nil
+func (o *CartStoreInfo) SetCountryNil() {
+	o.Country.Set(nil)
 }
 
-// GetRootCategoryId returns the RootCategoryId field value if set, zero value otherwise.
+// UnsetCountry ensures that no value is present for Country, not even an explicit nil
+func (o *CartStoreInfo) UnsetCountry() {
+	o.Country.Unset()
+}
+
+// GetRootCategoryId returns the RootCategoryId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetRootCategoryId() string {
-	if o == nil || IsNil(o.RootCategoryId) {
+	if o == nil || IsNil(o.RootCategoryId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RootCategoryId
+	return *o.RootCategoryId.Get()
 }
 
 // GetRootCategoryIdOk returns a tuple with the RootCategoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetRootCategoryIdOk() (*string, bool) {
-	if o == nil || IsNil(o.RootCategoryId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RootCategoryId, true
+	return o.RootCategoryId.Get(), o.RootCategoryId.IsSet()
 }
 
 // HasRootCategoryId returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasRootCategoryId() bool {
-	if o != nil && !IsNil(o.RootCategoryId) {
+	if o != nil && o.RootCategoryId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRootCategoryId gets a reference to the given string and assigns it to the RootCategoryId field.
+// SetRootCategoryId gets a reference to the given NullableString and assigns it to the RootCategoryId field.
 func (o *CartStoreInfo) SetRootCategoryId(v string) {
-	o.RootCategoryId = &v
+	o.RootCategoryId.Set(&v)
+}
+// SetRootCategoryIdNil sets the value for RootCategoryId to be an explicit nil
+func (o *CartStoreInfo) SetRootCategoryIdNil() {
+	o.RootCategoryId.Set(nil)
 }
 
-// GetMultiStoreUrl returns the MultiStoreUrl field value if set, zero value otherwise.
+// UnsetRootCategoryId ensures that no value is present for RootCategoryId, not even an explicit nil
+func (o *CartStoreInfo) UnsetRootCategoryId() {
+	o.RootCategoryId.Unset()
+}
+
+// GetMultiStoreUrl returns the MultiStoreUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetMultiStoreUrl() string {
-	if o == nil || IsNil(o.MultiStoreUrl) {
+	if o == nil || IsNil(o.MultiStoreUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MultiStoreUrl
+	return *o.MultiStoreUrl.Get()
 }
 
 // GetMultiStoreUrlOk returns a tuple with the MultiStoreUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetMultiStoreUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.MultiStoreUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MultiStoreUrl, true
+	return o.MultiStoreUrl.Get(), o.MultiStoreUrl.IsSet()
 }
 
 // HasMultiStoreUrl returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasMultiStoreUrl() bool {
-	if o != nil && !IsNil(o.MultiStoreUrl) {
+	if o != nil && o.MultiStoreUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMultiStoreUrl gets a reference to the given string and assigns it to the MultiStoreUrl field.
+// SetMultiStoreUrl gets a reference to the given NullableString and assigns it to the MultiStoreUrl field.
 func (o *CartStoreInfo) SetMultiStoreUrl(v string) {
-	o.MultiStoreUrl = &v
+	o.MultiStoreUrl.Set(&v)
+}
+// SetMultiStoreUrlNil sets the value for MultiStoreUrl to be an explicit nil
+func (o *CartStoreInfo) SetMultiStoreUrlNil() {
+	o.MultiStoreUrl.Set(nil)
 }
 
-// GetActive returns the Active field value if set, zero value otherwise.
+// UnsetMultiStoreUrl ensures that no value is present for MultiStoreUrl, not even an explicit nil
+func (o *CartStoreInfo) UnsetMultiStoreUrl() {
+	o.MultiStoreUrl.Unset()
+}
+
+// GetActive returns the Active field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetActive() bool {
-	if o == nil || IsNil(o.Active) {
+	if o == nil || IsNil(o.Active.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Active
+	return *o.Active.Get()
 }
 
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Active) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Active, true
+	return o.Active.Get(), o.Active.IsSet()
 }
 
 // HasActive returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasActive() bool {
-	if o != nil && !IsNil(o.Active) {
+	if o != nil && o.Active.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetActive gets a reference to the given bool and assigns it to the Active field.
+// SetActive gets a reference to the given NullableBool and assigns it to the Active field.
 func (o *CartStoreInfo) SetActive(v bool) {
-	o.Active = &v
+	o.Active.Set(&v)
+}
+// SetActiveNil sets the value for Active to be an explicit nil
+func (o *CartStoreInfo) SetActiveNil() {
+	o.Active.Set(nil)
 }
 
-// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+// UnsetActive ensures that no value is present for Active, not even an explicit nil
+func (o *CartStoreInfo) UnsetActive() {
+	o.Active.Unset()
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetWeightUnit() string {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil || IsNil(o.WeightUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WeightUnit
+	return *o.WeightUnit.Get()
 }
 
 // GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetWeightUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WeightUnit, true
+	return o.WeightUnit.Get(), o.WeightUnit.IsSet()
 }
 
 // HasWeightUnit returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasWeightUnit() bool {
-	if o != nil && !IsNil(o.WeightUnit) {
+	if o != nil && o.WeightUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+// SetWeightUnit gets a reference to the given NullableString and assigns it to the WeightUnit field.
 func (o *CartStoreInfo) SetWeightUnit(v string) {
-	o.WeightUnit = &v
+	o.WeightUnit.Set(&v)
+}
+// SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+func (o *CartStoreInfo) SetWeightUnitNil() {
+	o.WeightUnit.Set(nil)
 }
 
-// GetDimensionUnit returns the DimensionUnit field value if set, zero value otherwise.
+// UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
+func (o *CartStoreInfo) UnsetWeightUnit() {
+	o.WeightUnit.Unset()
+}
+
+// GetDimensionUnit returns the DimensionUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetDimensionUnit() string {
-	if o == nil || IsNil(o.DimensionUnit) {
+	if o == nil || IsNil(o.DimensionUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DimensionUnit
+	return *o.DimensionUnit.Get()
 }
 
 // GetDimensionUnitOk returns a tuple with the DimensionUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetDimensionUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.DimensionUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DimensionUnit, true
+	return o.DimensionUnit.Get(), o.DimensionUnit.IsSet()
 }
 
 // HasDimensionUnit returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasDimensionUnit() bool {
-	if o != nil && !IsNil(o.DimensionUnit) {
+	if o != nil && o.DimensionUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDimensionUnit gets a reference to the given string and assigns it to the DimensionUnit field.
+// SetDimensionUnit gets a reference to the given NullableString and assigns it to the DimensionUnit field.
 func (o *CartStoreInfo) SetDimensionUnit(v string) {
-	o.DimensionUnit = &v
+	o.DimensionUnit.Set(&v)
+}
+// SetDimensionUnitNil sets the value for DimensionUnit to be an explicit nil
+func (o *CartStoreInfo) SetDimensionUnitNil() {
+	o.DimensionUnit.Set(nil)
 }
 
-// GetPricesIncludeTax returns the PricesIncludeTax field value if set, zero value otherwise.
+// UnsetDimensionUnit ensures that no value is present for DimensionUnit, not even an explicit nil
+func (o *CartStoreInfo) UnsetDimensionUnit() {
+	o.DimensionUnit.Unset()
+}
+
+// GetPricesIncludeTax returns the PricesIncludeTax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetPricesIncludeTax() bool {
-	if o == nil || IsNil(o.PricesIncludeTax) {
+	if o == nil || IsNil(o.PricesIncludeTax.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.PricesIncludeTax
+	return *o.PricesIncludeTax.Get()
 }
 
 // GetPricesIncludeTaxOk returns a tuple with the PricesIncludeTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetPricesIncludeTaxOk() (*bool, bool) {
-	if o == nil || IsNil(o.PricesIncludeTax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PricesIncludeTax, true
+	return o.PricesIncludeTax.Get(), o.PricesIncludeTax.IsSet()
 }
 
 // HasPricesIncludeTax returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasPricesIncludeTax() bool {
-	if o != nil && !IsNil(o.PricesIncludeTax) {
+	if o != nil && o.PricesIncludeTax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPricesIncludeTax gets a reference to the given bool and assigns it to the PricesIncludeTax field.
+// SetPricesIncludeTax gets a reference to the given NullableBool and assigns it to the PricesIncludeTax field.
 func (o *CartStoreInfo) SetPricesIncludeTax(v bool) {
-	o.PricesIncludeTax = &v
+	o.PricesIncludeTax.Set(&v)
+}
+// SetPricesIncludeTaxNil sets the value for PricesIncludeTax to be an explicit nil
+func (o *CartStoreInfo) SetPricesIncludeTaxNil() {
+	o.PricesIncludeTax.Set(nil)
+}
+
+// UnsetPricesIncludeTax ensures that no value is present for PricesIncludeTax, not even an explicit nil
+func (o *CartStoreInfo) UnsetPricesIncludeTax() {
+	o.PricesIncludeTax.Unset()
 }
 
 // GetCarrierInfo returns the CarrierInfo field value if set, zero value otherwise.
@@ -539,68 +639,88 @@ func (o *CartStoreInfo) SetCarrierInfo(v []Carrier) {
 	o.CarrierInfo = v
 }
 
-// GetStoreOwnerInfo returns the StoreOwnerInfo field value if set, zero value otherwise.
+// GetStoreOwnerInfo returns the StoreOwnerInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetStoreOwnerInfo() Info {
-	if o == nil || IsNil(o.StoreOwnerInfo) {
+	if o == nil || IsNil(o.StoreOwnerInfo.Get()) {
 		var ret Info
 		return ret
 	}
-	return *o.StoreOwnerInfo
+	return *o.StoreOwnerInfo.Get()
 }
 
 // GetStoreOwnerInfoOk returns a tuple with the StoreOwnerInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetStoreOwnerInfoOk() (*Info, bool) {
-	if o == nil || IsNil(o.StoreOwnerInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StoreOwnerInfo, true
+	return o.StoreOwnerInfo.Get(), o.StoreOwnerInfo.IsSet()
 }
 
 // HasStoreOwnerInfo returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasStoreOwnerInfo() bool {
-	if o != nil && !IsNil(o.StoreOwnerInfo) {
+	if o != nil && o.StoreOwnerInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStoreOwnerInfo gets a reference to the given Info and assigns it to the StoreOwnerInfo field.
+// SetStoreOwnerInfo gets a reference to the given NullableInfo and assigns it to the StoreOwnerInfo field.
 func (o *CartStoreInfo) SetStoreOwnerInfo(v Info) {
-	o.StoreOwnerInfo = &v
+	o.StoreOwnerInfo.Set(&v)
+}
+// SetStoreOwnerInfoNil sets the value for StoreOwnerInfo to be an explicit nil
+func (o *CartStoreInfo) SetStoreOwnerInfoNil() {
+	o.StoreOwnerInfo.Set(nil)
 }
 
-// GetDefaultWarehouseId returns the DefaultWarehouseId field value if set, zero value otherwise.
+// UnsetStoreOwnerInfo ensures that no value is present for StoreOwnerInfo, not even an explicit nil
+func (o *CartStoreInfo) UnsetStoreOwnerInfo() {
+	o.StoreOwnerInfo.Unset()
+}
+
+// GetDefaultWarehouseId returns the DefaultWarehouseId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetDefaultWarehouseId() string {
-	if o == nil || IsNil(o.DefaultWarehouseId) {
+	if o == nil || IsNil(o.DefaultWarehouseId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DefaultWarehouseId
+	return *o.DefaultWarehouseId.Get()
 }
 
 // GetDefaultWarehouseIdOk returns a tuple with the DefaultWarehouseId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetDefaultWarehouseIdOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultWarehouseId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultWarehouseId, true
+	return o.DefaultWarehouseId.Get(), o.DefaultWarehouseId.IsSet()
 }
 
 // HasDefaultWarehouseId returns a boolean if a field has been set.
 func (o *CartStoreInfo) HasDefaultWarehouseId() bool {
-	if o != nil && !IsNil(o.DefaultWarehouseId) {
+	if o != nil && o.DefaultWarehouseId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultWarehouseId gets a reference to the given string and assigns it to the DefaultWarehouseId field.
+// SetDefaultWarehouseId gets a reference to the given NullableString and assigns it to the DefaultWarehouseId field.
 func (o *CartStoreInfo) SetDefaultWarehouseId(v string) {
-	o.DefaultWarehouseId = &v
+	o.DefaultWarehouseId.Set(&v)
+}
+// SetDefaultWarehouseIdNil sets the value for DefaultWarehouseId to be an explicit nil
+func (o *CartStoreInfo) SetDefaultWarehouseIdNil() {
+	o.DefaultWarehouseId.Set(nil)
+}
+
+// UnsetDefaultWarehouseId ensures that no value is present for DefaultWarehouseId, not even an explicit nil
+func (o *CartStoreInfo) UnsetDefaultWarehouseId() {
+	o.DefaultWarehouseId.Unset()
 }
 
 // GetChannels returns the Channels field value if set, zero value otherwise.
@@ -635,9 +755,9 @@ func (o *CartStoreInfo) SetChannels(v []CartChannel) {
 	o.Channels = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -646,6 +766,7 @@ func (o *CartStoreInfo) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -667,9 +788,9 @@ func (o *CartStoreInfo) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -678,6 +799,7 @@ func (o *CartStoreInfo) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartStoreInfo) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -712,11 +834,11 @@ func (o CartStoreInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Language) {
-		toSerialize["language"] = o.Language
+	if o.Language.IsSet() {
+		toSerialize["language"] = o.Language.Get()
 	}
 	if !IsNil(o.StoreLanguages) {
 		toSerialize["store_languages"] = o.StoreLanguages
@@ -727,46 +849,46 @@ func (o CartStoreInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StoreCurrencies) {
 		toSerialize["store_currencies"] = o.StoreCurrencies
 	}
-	if !IsNil(o.Timezone) {
-		toSerialize["timezone"] = o.Timezone
+	if o.Timezone.IsSet() {
+		toSerialize["timezone"] = o.Timezone.Get()
 	}
-	if !IsNil(o.Country) {
-		toSerialize["country"] = o.Country
+	if o.Country.IsSet() {
+		toSerialize["country"] = o.Country.Get()
 	}
-	if !IsNil(o.RootCategoryId) {
-		toSerialize["root_category_id"] = o.RootCategoryId
+	if o.RootCategoryId.IsSet() {
+		toSerialize["root_category_id"] = o.RootCategoryId.Get()
 	}
-	if !IsNil(o.MultiStoreUrl) {
-		toSerialize["multi_store_url"] = o.MultiStoreUrl
+	if o.MultiStoreUrl.IsSet() {
+		toSerialize["multi_store_url"] = o.MultiStoreUrl.Get()
 	}
-	if !IsNil(o.Active) {
-		toSerialize["active"] = o.Active
+	if o.Active.IsSet() {
+		toSerialize["active"] = o.Active.Get()
 	}
-	if !IsNil(o.WeightUnit) {
-		toSerialize["weight_unit"] = o.WeightUnit
+	if o.WeightUnit.IsSet() {
+		toSerialize["weight_unit"] = o.WeightUnit.Get()
 	}
-	if !IsNil(o.DimensionUnit) {
-		toSerialize["dimension_unit"] = o.DimensionUnit
+	if o.DimensionUnit.IsSet() {
+		toSerialize["dimension_unit"] = o.DimensionUnit.Get()
 	}
-	if !IsNil(o.PricesIncludeTax) {
-		toSerialize["prices_include_tax"] = o.PricesIncludeTax
+	if o.PricesIncludeTax.IsSet() {
+		toSerialize["prices_include_tax"] = o.PricesIncludeTax.Get()
 	}
 	if !IsNil(o.CarrierInfo) {
 		toSerialize["carrier_info"] = o.CarrierInfo
 	}
-	if !IsNil(o.StoreOwnerInfo) {
-		toSerialize["store_owner_info"] = o.StoreOwnerInfo
+	if o.StoreOwnerInfo.IsSet() {
+		toSerialize["store_owner_info"] = o.StoreOwnerInfo.Get()
 	}
-	if !IsNil(o.DefaultWarehouseId) {
-		toSerialize["default_warehouse_id"] = o.DefaultWarehouseId
+	if o.DefaultWarehouseId.IsSet() {
+		toSerialize["default_warehouse_id"] = o.DefaultWarehouseId.Get()
 	}
 	if !IsNil(o.Channels) {
 		toSerialize["channels"] = o.Channels
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

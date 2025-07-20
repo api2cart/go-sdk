@@ -23,10 +23,10 @@ type CatalogPriceRuleAction struct {
 	Scope *string `json:"scope,omitempty"`
 	ApplyTo *string `json:"apply_to,omitempty"`
 	Type *string `json:"type,omitempty"`
-	Quantity *float32 `json:"quantity,omitempty"`
+	Quantity NullableFloat32 `json:"quantity,omitempty"`
 	Value *float32 `json:"value,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
-	IncludeTax *bool `json:"include_tax,omitempty"`
+	CurrencyCode NullableString `json:"currency_code,omitempty"`
+	IncludeTax NullableBool `json:"include_tax,omitempty"`
 	Conditions []CouponCondition `json:"conditions,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -145,36 +145,46 @@ func (o *CatalogPriceRuleAction) SetType(v string) {
 	o.Type = &v
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
+// GetQuantity returns the Quantity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRuleAction) GetQuantity() float32 {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil || IsNil(o.Quantity.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Quantity
+	return *o.Quantity.Get()
 }
 
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRuleAction) GetQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Quantity, true
+	return o.Quantity.Get(), o.Quantity.IsSet()
 }
 
 // HasQuantity returns a boolean if a field has been set.
 func (o *CatalogPriceRuleAction) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
+	if o != nil && o.Quantity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuantity gets a reference to the given float32 and assigns it to the Quantity field.
+// SetQuantity gets a reference to the given NullableFloat32 and assigns it to the Quantity field.
 func (o *CatalogPriceRuleAction) SetQuantity(v float32) {
-	o.Quantity = &v
+	o.Quantity.Set(&v)
+}
+// SetQuantityNil sets the value for Quantity to be an explicit nil
+func (o *CatalogPriceRuleAction) SetQuantityNil() {
+	o.Quantity.Set(nil)
+}
+
+// UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
+func (o *CatalogPriceRuleAction) UnsetQuantity() {
+	o.Quantity.Unset()
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
@@ -209,68 +219,88 @@ func (o *CatalogPriceRuleAction) SetValue(v float32) {
 	o.Value = &v
 }
 
-// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
+// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRuleAction) GetCurrencyCode() string {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CurrencyCode
+	return *o.CurrencyCode.Get()
 }
 
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRuleAction) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CurrencyCode, true
+	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
 }
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *CatalogPriceRuleAction) HasCurrencyCode() bool {
-	if o != nil && !IsNil(o.CurrencyCode) {
+	if o != nil && o.CurrencyCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrencyCode gets a reference to the given string and assigns it to the CurrencyCode field.
+// SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
 func (o *CatalogPriceRuleAction) SetCurrencyCode(v string) {
-	o.CurrencyCode = &v
+	o.CurrencyCode.Set(&v)
+}
+// SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+func (o *CatalogPriceRuleAction) SetCurrencyCodeNil() {
+	o.CurrencyCode.Set(nil)
 }
 
-// GetIncludeTax returns the IncludeTax field value if set, zero value otherwise.
+// UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
+func (o *CatalogPriceRuleAction) UnsetCurrencyCode() {
+	o.CurrencyCode.Unset()
+}
+
+// GetIncludeTax returns the IncludeTax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRuleAction) GetIncludeTax() bool {
-	if o == nil || IsNil(o.IncludeTax) {
+	if o == nil || IsNil(o.IncludeTax.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IncludeTax
+	return *o.IncludeTax.Get()
 }
 
 // GetIncludeTaxOk returns a tuple with the IncludeTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRuleAction) GetIncludeTaxOk() (*bool, bool) {
-	if o == nil || IsNil(o.IncludeTax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IncludeTax, true
+	return o.IncludeTax.Get(), o.IncludeTax.IsSet()
 }
 
 // HasIncludeTax returns a boolean if a field has been set.
 func (o *CatalogPriceRuleAction) HasIncludeTax() bool {
-	if o != nil && !IsNil(o.IncludeTax) {
+	if o != nil && o.IncludeTax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIncludeTax gets a reference to the given bool and assigns it to the IncludeTax field.
+// SetIncludeTax gets a reference to the given NullableBool and assigns it to the IncludeTax field.
 func (o *CatalogPriceRuleAction) SetIncludeTax(v bool) {
-	o.IncludeTax = &v
+	o.IncludeTax.Set(&v)
+}
+// SetIncludeTaxNil sets the value for IncludeTax to be an explicit nil
+func (o *CatalogPriceRuleAction) SetIncludeTaxNil() {
+	o.IncludeTax.Set(nil)
+}
+
+// UnsetIncludeTax ensures that no value is present for IncludeTax, not even an explicit nil
+func (o *CatalogPriceRuleAction) UnsetIncludeTax() {
+	o.IncludeTax.Unset()
 }
 
 // GetConditions returns the Conditions field value if set, zero value otherwise.
@@ -305,9 +335,9 @@ func (o *CatalogPriceRuleAction) SetConditions(v []CouponCondition) {
 	o.Conditions = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRuleAction) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -316,6 +346,7 @@ func (o *CatalogPriceRuleAction) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRuleAction) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -337,9 +368,9 @@ func (o *CatalogPriceRuleAction) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRuleAction) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -348,6 +379,7 @@ func (o *CatalogPriceRuleAction) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRuleAction) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -388,25 +420,25 @@ func (o CatalogPriceRuleAction) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
+	if o.Quantity.IsSet() {
+		toSerialize["quantity"] = o.Quantity.Get()
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.CurrencyCode) {
-		toSerialize["currency_code"] = o.CurrencyCode
+	if o.CurrencyCode.IsSet() {
+		toSerialize["currency_code"] = o.CurrencyCode.Get()
 	}
-	if !IsNil(o.IncludeTax) {
-		toSerialize["include_tax"] = o.IncludeTax
+	if o.IncludeTax.IsSet() {
+		toSerialize["include_tax"] = o.IncludeTax.Get()
 	}
 	if !IsNil(o.Conditions) {
 		toSerialize["conditions"] = o.Conditions
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

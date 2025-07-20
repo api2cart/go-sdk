@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
 **Iso3** | Pointer to **string** |  | [optional] 
 **SymbolLeft** | Pointer to **string** |  | [optional] 
-**SymbolRight** | Pointer to **string** |  | [optional] 
-**Rate** | Pointer to **float32** |  | [optional] 
-**Avail** | Pointer to **bool** |  | [optional] 
-**Default** | Pointer to **bool** |  | [optional] 
+**SymbolRight** | Pointer to **NullableString** |  | [optional] 
+**Rate** | Pointer to **NullableFloat32** |  | [optional] 
+**Avail** | Pointer to **NullableBool** |  | [optional] 
+**Default** | Pointer to **NullableBool** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -84,6 +84,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Currency) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Currency) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetIso3
 
 `func (o *Currency) GetIso3() string`
@@ -159,6 +169,16 @@ SetSymbolRight sets SymbolRight field to given value.
 
 HasSymbolRight returns a boolean if a field has been set.
 
+### SetSymbolRightNil
+
+`func (o *Currency) SetSymbolRightNil(b bool)`
+
+ SetSymbolRightNil sets the value for SymbolRight to be an explicit nil
+
+### UnsetSymbolRight
+`func (o *Currency) UnsetSymbolRight()`
+
+UnsetSymbolRight ensures that no value is present for SymbolRight, not even an explicit nil
 ### GetRate
 
 `func (o *Currency) GetRate() float32`
@@ -184,6 +204,16 @@ SetRate sets Rate field to given value.
 
 HasRate returns a boolean if a field has been set.
 
+### SetRateNil
+
+`func (o *Currency) SetRateNil(b bool)`
+
+ SetRateNil sets the value for Rate to be an explicit nil
+
+### UnsetRate
+`func (o *Currency) UnsetRate()`
+
+UnsetRate ensures that no value is present for Rate, not even an explicit nil
 ### GetAvail
 
 `func (o *Currency) GetAvail() bool`
@@ -209,6 +239,16 @@ SetAvail sets Avail field to given value.
 
 HasAvail returns a boolean if a field has been set.
 
+### SetAvailNil
+
+`func (o *Currency) SetAvailNil(b bool)`
+
+ SetAvailNil sets the value for Avail to be an explicit nil
+
+### UnsetAvail
+`func (o *Currency) UnsetAvail()`
+
+UnsetAvail ensures that no value is present for Avail, not even an explicit nil
 ### GetDefault
 
 `func (o *Currency) GetDefault() bool`
@@ -234,6 +274,16 @@ SetDefault sets Default field to given value.
 
 HasDefault returns a boolean if a field has been set.
 
+### SetDefaultNil
+
+`func (o *Currency) SetDefaultNil(b bool)`
+
+ SetDefaultNil sets the value for Default to be an explicit nil
+
+### UnsetDefault
+`func (o *Currency) UnsetDefault()`
+
+UnsetDefault ensures that no value is present for Default, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Currency) GetAdditionalFields() map[string]interface{}`
@@ -259,6 +309,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Currency) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Currency) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Currency) GetCustomFields() map[string]interface{}`
@@ -284,6 +344,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Currency) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Currency) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

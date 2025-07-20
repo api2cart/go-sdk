@@ -21,12 +21,12 @@ var _ MappedNullable = &OrderTotal{}
 // OrderTotal struct for OrderTotal
 type OrderTotal struct {
 	SubtotalExTax *float32 `json:"subtotal_ex_tax,omitempty"`
-	WrappingExTax *float32 `json:"wrapping_ex_tax,omitempty"`
+	WrappingExTax NullableFloat32 `json:"wrapping_ex_tax,omitempty"`
 	ShippingExTax *float32 `json:"shipping_ex_tax,omitempty"`
 	TotalDiscount *float32 `json:"total_discount,omitempty"`
 	TotalTax *float32 `json:"total_tax,omitempty"`
 	Total *float32 `json:"total,omitempty"`
-	TotalPaid *float32 `json:"total_paid,omitempty"`
+	TotalPaid NullableFloat32 `json:"total_paid,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -80,36 +80,46 @@ func (o *OrderTotal) SetSubtotalExTax(v float32) {
 	o.SubtotalExTax = &v
 }
 
-// GetWrappingExTax returns the WrappingExTax field value if set, zero value otherwise.
+// GetWrappingExTax returns the WrappingExTax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotal) GetWrappingExTax() float32 {
-	if o == nil || IsNil(o.WrappingExTax) {
+	if o == nil || IsNil(o.WrappingExTax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.WrappingExTax
+	return *o.WrappingExTax.Get()
 }
 
 // GetWrappingExTaxOk returns a tuple with the WrappingExTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotal) GetWrappingExTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.WrappingExTax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WrappingExTax, true
+	return o.WrappingExTax.Get(), o.WrappingExTax.IsSet()
 }
 
 // HasWrappingExTax returns a boolean if a field has been set.
 func (o *OrderTotal) HasWrappingExTax() bool {
-	if o != nil && !IsNil(o.WrappingExTax) {
+	if o != nil && o.WrappingExTax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWrappingExTax gets a reference to the given float32 and assigns it to the WrappingExTax field.
+// SetWrappingExTax gets a reference to the given NullableFloat32 and assigns it to the WrappingExTax field.
 func (o *OrderTotal) SetWrappingExTax(v float32) {
-	o.WrappingExTax = &v
+	o.WrappingExTax.Set(&v)
+}
+// SetWrappingExTaxNil sets the value for WrappingExTax to be an explicit nil
+func (o *OrderTotal) SetWrappingExTaxNil() {
+	o.WrappingExTax.Set(nil)
+}
+
+// UnsetWrappingExTax ensures that no value is present for WrappingExTax, not even an explicit nil
+func (o *OrderTotal) UnsetWrappingExTax() {
+	o.WrappingExTax.Unset()
 }
 
 // GetShippingExTax returns the ShippingExTax field value if set, zero value otherwise.
@@ -240,41 +250,51 @@ func (o *OrderTotal) SetTotal(v float32) {
 	o.Total = &v
 }
 
-// GetTotalPaid returns the TotalPaid field value if set, zero value otherwise.
+// GetTotalPaid returns the TotalPaid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotal) GetTotalPaid() float32 {
-	if o == nil || IsNil(o.TotalPaid) {
+	if o == nil || IsNil(o.TotalPaid.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.TotalPaid
+	return *o.TotalPaid.Get()
 }
 
 // GetTotalPaidOk returns a tuple with the TotalPaid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotal) GetTotalPaidOk() (*float32, bool) {
-	if o == nil || IsNil(o.TotalPaid) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalPaid, true
+	return o.TotalPaid.Get(), o.TotalPaid.IsSet()
 }
 
 // HasTotalPaid returns a boolean if a field has been set.
 func (o *OrderTotal) HasTotalPaid() bool {
-	if o != nil && !IsNil(o.TotalPaid) {
+	if o != nil && o.TotalPaid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalPaid gets a reference to the given float32 and assigns it to the TotalPaid field.
+// SetTotalPaid gets a reference to the given NullableFloat32 and assigns it to the TotalPaid field.
 func (o *OrderTotal) SetTotalPaid(v float32) {
-	o.TotalPaid = &v
+	o.TotalPaid.Set(&v)
+}
+// SetTotalPaidNil sets the value for TotalPaid to be an explicit nil
+func (o *OrderTotal) SetTotalPaidNil() {
+	o.TotalPaid.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetTotalPaid ensures that no value is present for TotalPaid, not even an explicit nil
+func (o *OrderTotal) UnsetTotalPaid() {
+	o.TotalPaid.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotal) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -283,6 +303,7 @@ func (o *OrderTotal) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotal) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -304,9 +325,9 @@ func (o *OrderTotal) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotal) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -315,6 +336,7 @@ func (o *OrderTotal) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotal) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -349,8 +371,8 @@ func (o OrderTotal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubtotalExTax) {
 		toSerialize["subtotal_ex_tax"] = o.SubtotalExTax
 	}
-	if !IsNil(o.WrappingExTax) {
-		toSerialize["wrapping_ex_tax"] = o.WrappingExTax
+	if o.WrappingExTax.IsSet() {
+		toSerialize["wrapping_ex_tax"] = o.WrappingExTax.Get()
 	}
 	if !IsNil(o.ShippingExTax) {
 		toSerialize["shipping_ex_tax"] = o.ShippingExTax
@@ -364,13 +386,13 @@ func (o OrderTotal) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-	if !IsNil(o.TotalPaid) {
-		toSerialize["total_paid"] = o.TotalPaid
+	if o.TotalPaid.IsSet() {
+		toSerialize["total_paid"] = o.TotalPaid.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

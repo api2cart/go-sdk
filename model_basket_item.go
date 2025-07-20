@@ -20,17 +20,17 @@ var _ MappedNullable = &BasketItem{}
 
 // BasketItem struct for BasketItem
 type BasketItem struct {
-	Id *string `json:"id,omitempty"`
-	ParentId *string `json:"parent_id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	ParentId NullableString `json:"parent_id,omitempty"`
 	ProductId *string `json:"product_id,omitempty"`
-	VariantId *string `json:"variant_id,omitempty"`
-	Sku *string `json:"sku,omitempty"`
+	VariantId NullableString `json:"variant_id,omitempty"`
+	Sku NullableString `json:"sku,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Price *float32 `json:"price,omitempty"`
-	Tax *float32 `json:"tax,omitempty"`
-	Quantity *float32 `json:"quantity,omitempty"`
-	WeightUnit *string `json:"weight_unit,omitempty"`
-	Weight *float32 `json:"weight,omitempty"`
+	Tax NullableFloat32 `json:"tax,omitempty"`
+	Quantity NullableFloat32 `json:"quantity,omitempty"`
+	WeightUnit NullableString `json:"weight_unit,omitempty"`
+	Weight NullableFloat32 `json:"weight,omitempty"`
 	Options []BasketItemOption `json:"options,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -53,68 +53,88 @@ func NewBasketItemWithDefaults() *BasketItem {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BasketItem) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *BasketItem) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *BasketItem) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetParentId returns the ParentId field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *BasketItem) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetParentId() string {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil || IsNil(o.ParentId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ParentId
+	return *o.ParentId.Get()
 }
 
 // GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetParentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ParentId, true
+	return o.ParentId.Get(), o.ParentId.IsSet()
 }
 
 // HasParentId returns a boolean if a field has been set.
 func (o *BasketItem) HasParentId() bool {
-	if o != nil && !IsNil(o.ParentId) {
+	if o != nil && o.ParentId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParentId gets a reference to the given string and assigns it to the ParentId field.
+// SetParentId gets a reference to the given NullableString and assigns it to the ParentId field.
 func (o *BasketItem) SetParentId(v string) {
-	o.ParentId = &v
+	o.ParentId.Set(&v)
+}
+// SetParentIdNil sets the value for ParentId to be an explicit nil
+func (o *BasketItem) SetParentIdNil() {
+	o.ParentId.Set(nil)
+}
+
+// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
+func (o *BasketItem) UnsetParentId() {
+	o.ParentId.Unset()
 }
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
@@ -149,68 +169,88 @@ func (o *BasketItem) SetProductId(v string) {
 	o.ProductId = &v
 }
 
-// GetVariantId returns the VariantId field value if set, zero value otherwise.
+// GetVariantId returns the VariantId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetVariantId() string {
-	if o == nil || IsNil(o.VariantId) {
+	if o == nil || IsNil(o.VariantId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.VariantId
+	return *o.VariantId.Get()
 }
 
 // GetVariantIdOk returns a tuple with the VariantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetVariantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.VariantId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VariantId, true
+	return o.VariantId.Get(), o.VariantId.IsSet()
 }
 
 // HasVariantId returns a boolean if a field has been set.
 func (o *BasketItem) HasVariantId() bool {
-	if o != nil && !IsNil(o.VariantId) {
+	if o != nil && o.VariantId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVariantId gets a reference to the given string and assigns it to the VariantId field.
+// SetVariantId gets a reference to the given NullableString and assigns it to the VariantId field.
 func (o *BasketItem) SetVariantId(v string) {
-	o.VariantId = &v
+	o.VariantId.Set(&v)
+}
+// SetVariantIdNil sets the value for VariantId to be an explicit nil
+func (o *BasketItem) SetVariantIdNil() {
+	o.VariantId.Set(nil)
 }
 
-// GetSku returns the Sku field value if set, zero value otherwise.
+// UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
+func (o *BasketItem) UnsetVariantId() {
+	o.VariantId.Unset()
+}
+
+// GetSku returns the Sku field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetSku() string {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil || IsNil(o.Sku.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Sku
+	return *o.Sku.Get()
 }
 
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetSkuOk() (*string, bool) {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Sku, true
+	return o.Sku.Get(), o.Sku.IsSet()
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *BasketItem) HasSku() bool {
-	if o != nil && !IsNil(o.Sku) {
+	if o != nil && o.Sku.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSku gets a reference to the given string and assigns it to the Sku field.
+// SetSku gets a reference to the given NullableString and assigns it to the Sku field.
 func (o *BasketItem) SetSku(v string) {
-	o.Sku = &v
+	o.Sku.Set(&v)
+}
+// SetSkuNil sets the value for Sku to be an explicit nil
+func (o *BasketItem) SetSkuNil() {
+	o.Sku.Set(nil)
+}
+
+// UnsetSku ensures that no value is present for Sku, not even an explicit nil
+func (o *BasketItem) UnsetSku() {
+	o.Sku.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -277,132 +317,172 @@ func (o *BasketItem) SetPrice(v float32) {
 	o.Price = &v
 }
 
-// GetTax returns the Tax field value if set, zero value otherwise.
+// GetTax returns the Tax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetTax() float32 {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil || IsNil(o.Tax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Tax
+	return *o.Tax.Get()
 }
 
 // GetTaxOk returns a tuple with the Tax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tax, true
+	return o.Tax.Get(), o.Tax.IsSet()
 }
 
 // HasTax returns a boolean if a field has been set.
 func (o *BasketItem) HasTax() bool {
-	if o != nil && !IsNil(o.Tax) {
+	if o != nil && o.Tax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTax gets a reference to the given float32 and assigns it to the Tax field.
+// SetTax gets a reference to the given NullableFloat32 and assigns it to the Tax field.
 func (o *BasketItem) SetTax(v float32) {
-	o.Tax = &v
+	o.Tax.Set(&v)
+}
+// SetTaxNil sets the value for Tax to be an explicit nil
+func (o *BasketItem) SetTaxNil() {
+	o.Tax.Set(nil)
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
+// UnsetTax ensures that no value is present for Tax, not even an explicit nil
+func (o *BasketItem) UnsetTax() {
+	o.Tax.Unset()
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetQuantity() float32 {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil || IsNil(o.Quantity.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Quantity
+	return *o.Quantity.Get()
 }
 
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Quantity, true
+	return o.Quantity.Get(), o.Quantity.IsSet()
 }
 
 // HasQuantity returns a boolean if a field has been set.
 func (o *BasketItem) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
+	if o != nil && o.Quantity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuantity gets a reference to the given float32 and assigns it to the Quantity field.
+// SetQuantity gets a reference to the given NullableFloat32 and assigns it to the Quantity field.
 func (o *BasketItem) SetQuantity(v float32) {
-	o.Quantity = &v
+	o.Quantity.Set(&v)
+}
+// SetQuantityNil sets the value for Quantity to be an explicit nil
+func (o *BasketItem) SetQuantityNil() {
+	o.Quantity.Set(nil)
 }
 
-// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+// UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
+func (o *BasketItem) UnsetQuantity() {
+	o.Quantity.Unset()
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetWeightUnit() string {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil || IsNil(o.WeightUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WeightUnit
+	return *o.WeightUnit.Get()
 }
 
 // GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetWeightUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WeightUnit, true
+	return o.WeightUnit.Get(), o.WeightUnit.IsSet()
 }
 
 // HasWeightUnit returns a boolean if a field has been set.
 func (o *BasketItem) HasWeightUnit() bool {
-	if o != nil && !IsNil(o.WeightUnit) {
+	if o != nil && o.WeightUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+// SetWeightUnit gets a reference to the given NullableString and assigns it to the WeightUnit field.
 func (o *BasketItem) SetWeightUnit(v string) {
-	o.WeightUnit = &v
+	o.WeightUnit.Set(&v)
+}
+// SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+func (o *BasketItem) SetWeightUnitNil() {
+	o.WeightUnit.Set(nil)
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
+func (o *BasketItem) UnsetWeightUnit() {
+	o.WeightUnit.Unset()
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetWeight() float32 {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil || IsNil(o.Weight.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Weight
+	return *o.Weight.Get()
 }
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetWeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Weight, true
+	return o.Weight.Get(), o.Weight.IsSet()
 }
 
 // HasWeight returns a boolean if a field has been set.
 func (o *BasketItem) HasWeight() bool {
-	if o != nil && !IsNil(o.Weight) {
+	if o != nil && o.Weight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given float32 and assigns it to the Weight field.
+// SetWeight gets a reference to the given NullableFloat32 and assigns it to the Weight field.
 func (o *BasketItem) SetWeight(v float32) {
-	o.Weight = &v
+	o.Weight.Set(&v)
+}
+// SetWeightNil sets the value for Weight to be an explicit nil
+func (o *BasketItem) SetWeightNil() {
+	o.Weight.Set(nil)
+}
+
+// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+func (o *BasketItem) UnsetWeight() {
+	o.Weight.Unset()
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
@@ -437,9 +517,9 @@ func (o *BasketItem) SetOptions(v []BasketItemOption) {
 	o.Options = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -448,6 +528,7 @@ func (o *BasketItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -469,9 +550,9 @@ func (o *BasketItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -480,6 +561,7 @@ func (o *BasketItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -511,20 +593,20 @@ func (o BasketItem) MarshalJSON() ([]byte, error) {
 
 func (o BasketItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !IsNil(o.ParentId) {
-		toSerialize["parent_id"] = o.ParentId
+	if o.ParentId.IsSet() {
+		toSerialize["parent_id"] = o.ParentId.Get()
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["product_id"] = o.ProductId
 	}
-	if !IsNil(o.VariantId) {
-		toSerialize["variant_id"] = o.VariantId
+	if o.VariantId.IsSet() {
+		toSerialize["variant_id"] = o.VariantId.Get()
 	}
-	if !IsNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
+	if o.Sku.IsSet() {
+		toSerialize["sku"] = o.Sku.Get()
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -532,25 +614,25 @@ func (o BasketItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
-	if !IsNil(o.Tax) {
-		toSerialize["tax"] = o.Tax
+	if o.Tax.IsSet() {
+		toSerialize["tax"] = o.Tax.Get()
 	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
+	if o.Quantity.IsSet() {
+		toSerialize["quantity"] = o.Quantity.Get()
 	}
-	if !IsNil(o.WeightUnit) {
-		toSerialize["weight_unit"] = o.WeightUnit
+	if o.WeightUnit.IsSet() {
+		toSerialize["weight_unit"] = o.WeightUnit.Get()
 	}
-	if !IsNil(o.Weight) {
-		toSerialize["weight"] = o.Weight
+	if o.Weight.IsSet() {
+		toSerialize["weight"] = o.Weight.Get()
 	}
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

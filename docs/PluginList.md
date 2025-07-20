@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllPlugins** | Pointer to **int32** |  | [optional] 
+**AllPlugins** | Pointer to **NullableInt32** |  | [optional] 
 **Plugins** | Pointer to [**[]Plugin**](Plugin.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetAllPlugins sets AllPlugins field to given value.
 
 HasAllPlugins returns a boolean if a field has been set.
 
+### SetAllPluginsNil
+
+`func (o *PluginList) SetAllPluginsNil(b bool)`
+
+ SetAllPluginsNil sets the value for AllPlugins to be an explicit nil
+
+### UnsetAllPlugins
+`func (o *PluginList) UnsetAllPlugins()`
+
+UnsetAllPlugins ensures that no value is present for AllPlugins, not even an explicit nil
 ### GetPlugins
 
 `func (o *PluginList) GetPlugins() []Plugin`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *PluginList) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *PluginList) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *PluginList) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *PluginList) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *PluginList) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

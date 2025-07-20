@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**OrderId** | Pointer to **string** |  | [optional] 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**ModifiedAt** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**OrderId** | Pointer to **NullableString** |  | [optional] 
+**CustomerId** | Pointer to **NullableString** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **NullableString** |  | [optional] 
+**ModifiedAt** | Pointer to **NullableString** |  | [optional] 
 **Status** | Pointer to [**ReturnStatus**](ReturnStatus.md) |  | [optional] 
 **OrderProducts** | Pointer to [**[]ReturnOrderProduct**](ReturnOrderProduct.md) |  | [optional] 
-**Comment** | Pointer to **string** |  | [optional] 
-**StaffNote** | Pointer to **string** |  | [optional] 
+**Comment** | Pointer to **NullableString** |  | [optional] 
+**StaffNote** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -87,6 +87,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Return) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Return) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetOrderId
 
 `func (o *Return) GetOrderId() string`
@@ -112,6 +122,16 @@ SetOrderId sets OrderId field to given value.
 
 HasOrderId returns a boolean if a field has been set.
 
+### SetOrderIdNil
+
+`func (o *Return) SetOrderIdNil(b bool)`
+
+ SetOrderIdNil sets the value for OrderId to be an explicit nil
+
+### UnsetOrderId
+`func (o *Return) UnsetOrderId()`
+
+UnsetOrderId ensures that no value is present for OrderId, not even an explicit nil
 ### GetCustomerId
 
 `func (o *Return) GetCustomerId() string`
@@ -137,6 +157,16 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
+### SetCustomerIdNil
+
+`func (o *Return) SetCustomerIdNil(b bool)`
+
+ SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+
+### UnsetCustomerId
+`func (o *Return) UnsetCustomerId()`
+
+UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetStoreId
 
 `func (o *Return) GetStoreId() string`
@@ -162,6 +192,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *Return) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *Return) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Return) GetCreatedAt() string`
@@ -187,6 +227,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *Return) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *Return) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetModifiedAt
 
 `func (o *Return) GetModifiedAt() string`
@@ -212,6 +262,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *Return) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *Return) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetStatus
 
 `func (o *Return) GetStatus() ReturnStatus`
@@ -287,6 +347,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *Return) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *Return) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetStaffNote
 
 `func (o *Return) GetStaffNote() string`
@@ -312,6 +382,16 @@ SetStaffNote sets StaffNote field to given value.
 
 HasStaffNote returns a boolean if a field has been set.
 
+### SetStaffNoteNil
+
+`func (o *Return) SetStaffNoteNil(b bool)`
+
+ SetStaffNoteNil sets the value for StaffNote to be an explicit nil
+
+### UnsetStaffNote
+`func (o *Return) UnsetStaffNote()`
+
+UnsetStaffNote ensures that no value is present for StaffNote, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Return) GetAdditionalFields() map[string]interface{}`
@@ -337,6 +417,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Return) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Return) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Return) GetCustomFields() map[string]interface{}`
@@ -362,6 +452,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Return) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Return) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

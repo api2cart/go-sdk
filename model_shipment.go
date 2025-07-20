@@ -22,15 +22,15 @@ var _ MappedNullable = &Shipment{}
 type Shipment struct {
 	Id *string `json:"id,omitempty"`
 	OrderId *string `json:"order_id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	WarehouseId *string `json:"warehouse_id,omitempty"`
-	ShipmentProvider *string `json:"shipment_provider,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	WarehouseId NullableString `json:"warehouse_id,omitempty"`
+	ShipmentProvider NullableString `json:"shipment_provider,omitempty"`
 	TrackingNumbers []ShipmentTrackingNumber `json:"tracking_numbers,omitempty"`
-	CreatedAt *A2CDateTime `json:"created_at,omitempty"`
-	ModifiedTime *A2CDateTime `json:"modified_time,omitempty"`
+	CreatedAt NullableA2CDateTime `json:"created_at,omitempty"`
+	ModifiedTime NullableA2CDateTime `json:"modified_time,omitempty"`
 	Items []ShipmentItem `json:"items,omitempty"`
-	IsShipped *bool `json:"is_shipped,omitempty"`
-	DeliveredAt *A2CDateTime `json:"delivered_at,omitempty"`
+	IsShipped NullableBool `json:"is_shipped,omitempty"`
+	DeliveredAt NullableA2CDateTime `json:"delivered_at,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -116,100 +116,130 @@ func (o *Shipment) SetOrderId(v string) {
 	o.OrderId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Shipment) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Shipment) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Shipment) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Shipment) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetWarehouseId returns the WarehouseId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetWarehouseId() string {
-	if o == nil || IsNil(o.WarehouseId) {
+	if o == nil || IsNil(o.WarehouseId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WarehouseId
+	return *o.WarehouseId.Get()
 }
 
 // GetWarehouseIdOk returns a tuple with the WarehouseId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetWarehouseIdOk() (*string, bool) {
-	if o == nil || IsNil(o.WarehouseId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WarehouseId, true
+	return o.WarehouseId.Get(), o.WarehouseId.IsSet()
 }
 
 // HasWarehouseId returns a boolean if a field has been set.
 func (o *Shipment) HasWarehouseId() bool {
-	if o != nil && !IsNil(o.WarehouseId) {
+	if o != nil && o.WarehouseId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWarehouseId gets a reference to the given string and assigns it to the WarehouseId field.
+// SetWarehouseId gets a reference to the given NullableString and assigns it to the WarehouseId field.
 func (o *Shipment) SetWarehouseId(v string) {
-	o.WarehouseId = &v
+	o.WarehouseId.Set(&v)
+}
+// SetWarehouseIdNil sets the value for WarehouseId to be an explicit nil
+func (o *Shipment) SetWarehouseIdNil() {
+	o.WarehouseId.Set(nil)
 }
 
-// GetShipmentProvider returns the ShipmentProvider field value if set, zero value otherwise.
+// UnsetWarehouseId ensures that no value is present for WarehouseId, not even an explicit nil
+func (o *Shipment) UnsetWarehouseId() {
+	o.WarehouseId.Unset()
+}
+
+// GetShipmentProvider returns the ShipmentProvider field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetShipmentProvider() string {
-	if o == nil || IsNil(o.ShipmentProvider) {
+	if o == nil || IsNil(o.ShipmentProvider.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ShipmentProvider
+	return *o.ShipmentProvider.Get()
 }
 
 // GetShipmentProviderOk returns a tuple with the ShipmentProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetShipmentProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.ShipmentProvider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShipmentProvider, true
+	return o.ShipmentProvider.Get(), o.ShipmentProvider.IsSet()
 }
 
 // HasShipmentProvider returns a boolean if a field has been set.
 func (o *Shipment) HasShipmentProvider() bool {
-	if o != nil && !IsNil(o.ShipmentProvider) {
+	if o != nil && o.ShipmentProvider.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShipmentProvider gets a reference to the given string and assigns it to the ShipmentProvider field.
+// SetShipmentProvider gets a reference to the given NullableString and assigns it to the ShipmentProvider field.
 func (o *Shipment) SetShipmentProvider(v string) {
-	o.ShipmentProvider = &v
+	o.ShipmentProvider.Set(&v)
+}
+// SetShipmentProviderNil sets the value for ShipmentProvider to be an explicit nil
+func (o *Shipment) SetShipmentProviderNil() {
+	o.ShipmentProvider.Set(nil)
+}
+
+// UnsetShipmentProvider ensures that no value is present for ShipmentProvider, not even an explicit nil
+func (o *Shipment) UnsetShipmentProvider() {
+	o.ShipmentProvider.Unset()
 }
 
 // GetTrackingNumbers returns the TrackingNumbers field value if set, zero value otherwise.
@@ -244,68 +274,88 @@ func (o *Shipment) SetTrackingNumbers(v []ShipmentTrackingNumber) {
 	o.TrackingNumbers = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetCreatedAt() A2CDateTime {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetCreatedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Shipment) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given A2CDateTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableA2CDateTime and assigns it to the CreatedAt field.
 func (o *Shipment) SetCreatedAt(v A2CDateTime) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *Shipment) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *Shipment) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetModifiedTime() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetModifiedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *Shipment) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given A2CDateTime and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedTime field.
 func (o *Shipment) SetModifiedTime(v A2CDateTime) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *Shipment) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
+}
+
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *Shipment) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
@@ -340,73 +390,93 @@ func (o *Shipment) SetItems(v []ShipmentItem) {
 	o.Items = v
 }
 
-// GetIsShipped returns the IsShipped field value if set, zero value otherwise.
+// GetIsShipped returns the IsShipped field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetIsShipped() bool {
-	if o == nil || IsNil(o.IsShipped) {
+	if o == nil || IsNil(o.IsShipped.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsShipped
+	return *o.IsShipped.Get()
 }
 
 // GetIsShippedOk returns a tuple with the IsShipped field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetIsShippedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsShipped) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsShipped, true
+	return o.IsShipped.Get(), o.IsShipped.IsSet()
 }
 
 // HasIsShipped returns a boolean if a field has been set.
 func (o *Shipment) HasIsShipped() bool {
-	if o != nil && !IsNil(o.IsShipped) {
+	if o != nil && o.IsShipped.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsShipped gets a reference to the given bool and assigns it to the IsShipped field.
+// SetIsShipped gets a reference to the given NullableBool and assigns it to the IsShipped field.
 func (o *Shipment) SetIsShipped(v bool) {
-	o.IsShipped = &v
+	o.IsShipped.Set(&v)
+}
+// SetIsShippedNil sets the value for IsShipped to be an explicit nil
+func (o *Shipment) SetIsShippedNil() {
+	o.IsShipped.Set(nil)
 }
 
-// GetDeliveredAt returns the DeliveredAt field value if set, zero value otherwise.
+// UnsetIsShipped ensures that no value is present for IsShipped, not even an explicit nil
+func (o *Shipment) UnsetIsShipped() {
+	o.IsShipped.Unset()
+}
+
+// GetDeliveredAt returns the DeliveredAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetDeliveredAt() A2CDateTime {
-	if o == nil || IsNil(o.DeliveredAt) {
+	if o == nil || IsNil(o.DeliveredAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.DeliveredAt
+	return *o.DeliveredAt.Get()
 }
 
 // GetDeliveredAtOk returns a tuple with the DeliveredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetDeliveredAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.DeliveredAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeliveredAt, true
+	return o.DeliveredAt.Get(), o.DeliveredAt.IsSet()
 }
 
 // HasDeliveredAt returns a boolean if a field has been set.
 func (o *Shipment) HasDeliveredAt() bool {
-	if o != nil && !IsNil(o.DeliveredAt) {
+	if o != nil && o.DeliveredAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeliveredAt gets a reference to the given A2CDateTime and assigns it to the DeliveredAt field.
+// SetDeliveredAt gets a reference to the given NullableA2CDateTime and assigns it to the DeliveredAt field.
 func (o *Shipment) SetDeliveredAt(v A2CDateTime) {
-	o.DeliveredAt = &v
+	o.DeliveredAt.Set(&v)
+}
+// SetDeliveredAtNil sets the value for DeliveredAt to be an explicit nil
+func (o *Shipment) SetDeliveredAtNil() {
+	o.DeliveredAt.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetDeliveredAt ensures that no value is present for DeliveredAt, not even an explicit nil
+func (o *Shipment) UnsetDeliveredAt() {
+	o.DeliveredAt.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -415,6 +485,7 @@ func (o *Shipment) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -436,9 +507,9 @@ func (o *Shipment) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Shipment) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -447,6 +518,7 @@ func (o *Shipment) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Shipment) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -484,37 +556,37 @@ func (o Shipment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderId) {
 		toSerialize["order_id"] = o.OrderId
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.WarehouseId) {
-		toSerialize["warehouse_id"] = o.WarehouseId
+	if o.WarehouseId.IsSet() {
+		toSerialize["warehouse_id"] = o.WarehouseId.Get()
 	}
-	if !IsNil(o.ShipmentProvider) {
-		toSerialize["shipment_provider"] = o.ShipmentProvider
+	if o.ShipmentProvider.IsSet() {
+		toSerialize["shipment_provider"] = o.ShipmentProvider.Get()
 	}
 	if !IsNil(o.TrackingNumbers) {
 		toSerialize["tracking_numbers"] = o.TrackingNumbers
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-	if !IsNil(o.IsShipped) {
-		toSerialize["is_shipped"] = o.IsShipped
+	if o.IsShipped.IsSet() {
+		toSerialize["is_shipped"] = o.IsShipped.Get()
 	}
-	if !IsNil(o.DeliveredAt) {
-		toSerialize["delivered_at"] = o.DeliveredAt
+	if o.DeliveredAt.IsSet() {
+		toSerialize["delivered_at"] = o.DeliveredAt.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

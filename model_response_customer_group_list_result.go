@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseCustomerGroupListResult{}
 
 // ResponseCustomerGroupListResult struct for ResponseCustomerGroupListResult
 type ResponseCustomerGroupListResult struct {
-	GroupCount *int32 `json:"group_count,omitempty"`
+	GroupCount NullableInt32 `json:"group_count,omitempty"`
 	Group []CustomerGroup `json:"group,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseCustomerGroupListResultWithDefaults() *ResponseCustomerGroupList
 	return &this
 }
 
-// GetGroupCount returns the GroupCount field value if set, zero value otherwise.
+// GetGroupCount returns the GroupCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerGroupListResult) GetGroupCount() int32 {
-	if o == nil || IsNil(o.GroupCount) {
+	if o == nil || IsNil(o.GroupCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.GroupCount
+	return *o.GroupCount.Get()
 }
 
 // GetGroupCountOk returns a tuple with the GroupCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerGroupListResult) GetGroupCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.GroupCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GroupCount, true
+	return o.GroupCount.Get(), o.GroupCount.IsSet()
 }
 
 // HasGroupCount returns a boolean if a field has been set.
 func (o *ResponseCustomerGroupListResult) HasGroupCount() bool {
-	if o != nil && !IsNil(o.GroupCount) {
+	if o != nil && o.GroupCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupCount gets a reference to the given int32 and assigns it to the GroupCount field.
+// SetGroupCount gets a reference to the given NullableInt32 and assigns it to the GroupCount field.
 func (o *ResponseCustomerGroupListResult) SetGroupCount(v int32) {
-	o.GroupCount = &v
+	o.GroupCount.Set(&v)
+}
+// SetGroupCountNil sets the value for GroupCount to be an explicit nil
+func (o *ResponseCustomerGroupListResult) SetGroupCountNil() {
+	o.GroupCount.Set(nil)
+}
+
+// UnsetGroupCount ensures that no value is present for GroupCount, not even an explicit nil
+func (o *ResponseCustomerGroupListResult) UnsetGroupCount() {
+	o.GroupCount.Unset()
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseCustomerGroupListResult) SetGroup(v []CustomerGroup) {
 	o.Group = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerGroupListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseCustomerGroupListResult) GetAdditionalFields() map[string]inter
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerGroupListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseCustomerGroupListResult) SetAdditionalFields(v map[string]inter
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCustomerGroupListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseCustomerGroupListResult) GetCustomFields() map[string]interface
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCustomerGroupListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseCustomerGroupListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseCustomerGroupListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupCount) {
-		toSerialize["group_count"] = o.GroupCount
+	if o.GroupCount.IsSet() {
+		toSerialize["group_count"] = o.GroupCount.Get()
 	}
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

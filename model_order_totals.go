@@ -23,8 +23,8 @@ type OrderTotals struct {
 	Total *float32 `json:"total,omitempty"`
 	Subtotal *float32 `json:"subtotal,omitempty"`
 	Shipping *float32 `json:"shipping,omitempty"`
-	Tax *float32 `json:"tax,omitempty"`
-	Discount *float32 `json:"discount,omitempty"`
+	Tax NullableFloat32 `json:"tax,omitempty"`
+	Discount NullableFloat32 `json:"discount,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -142,73 +142,93 @@ func (o *OrderTotals) SetShipping(v float32) {
 	o.Shipping = &v
 }
 
-// GetTax returns the Tax field value if set, zero value otherwise.
+// GetTax returns the Tax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotals) GetTax() float32 {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil || IsNil(o.Tax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Tax
+	return *o.Tax.Get()
 }
 
 // GetTaxOk returns a tuple with the Tax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotals) GetTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.Tax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tax, true
+	return o.Tax.Get(), o.Tax.IsSet()
 }
 
 // HasTax returns a boolean if a field has been set.
 func (o *OrderTotals) HasTax() bool {
-	if o != nil && !IsNil(o.Tax) {
+	if o != nil && o.Tax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTax gets a reference to the given float32 and assigns it to the Tax field.
+// SetTax gets a reference to the given NullableFloat32 and assigns it to the Tax field.
 func (o *OrderTotals) SetTax(v float32) {
-	o.Tax = &v
+	o.Tax.Set(&v)
+}
+// SetTaxNil sets the value for Tax to be an explicit nil
+func (o *OrderTotals) SetTaxNil() {
+	o.Tax.Set(nil)
 }
 
-// GetDiscount returns the Discount field value if set, zero value otherwise.
+// UnsetTax ensures that no value is present for Tax, not even an explicit nil
+func (o *OrderTotals) UnsetTax() {
+	o.Tax.Unset()
+}
+
+// GetDiscount returns the Discount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotals) GetDiscount() float32 {
-	if o == nil || IsNil(o.Discount) {
+	if o == nil || IsNil(o.Discount.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Discount
+	return *o.Discount.Get()
 }
 
 // GetDiscountOk returns a tuple with the Discount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotals) GetDiscountOk() (*float32, bool) {
-	if o == nil || IsNil(o.Discount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Discount, true
+	return o.Discount.Get(), o.Discount.IsSet()
 }
 
 // HasDiscount returns a boolean if a field has been set.
 func (o *OrderTotals) HasDiscount() bool {
-	if o != nil && !IsNil(o.Discount) {
+	if o != nil && o.Discount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiscount gets a reference to the given float32 and assigns it to the Discount field.
+// SetDiscount gets a reference to the given NullableFloat32 and assigns it to the Discount field.
 func (o *OrderTotals) SetDiscount(v float32) {
-	o.Discount = &v
+	o.Discount.Set(&v)
+}
+// SetDiscountNil sets the value for Discount to be an explicit nil
+func (o *OrderTotals) SetDiscountNil() {
+	o.Discount.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetDiscount ensures that no value is present for Discount, not even an explicit nil
+func (o *OrderTotals) UnsetDiscount() {
+	o.Discount.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotals) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +237,7 @@ func (o *OrderTotals) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotals) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +259,9 @@ func (o *OrderTotals) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderTotals) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +270,7 @@ func (o *OrderTotals) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderTotals) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -289,16 +311,16 @@ func (o OrderTotals) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Shipping) {
 		toSerialize["shipping"] = o.Shipping
 	}
-	if !IsNil(o.Tax) {
-		toSerialize["tax"] = o.Tax
+	if o.Tax.IsSet() {
+		toSerialize["tax"] = o.Tax.Get()
 	}
-	if !IsNil(o.Discount) {
-		toSerialize["discount"] = o.Discount
+	if o.Discount.IsSet() {
+		toSerialize["discount"] = o.Discount.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

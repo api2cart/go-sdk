@@ -21,7 +21,7 @@ var _ MappedNullable = &Plugin{}
 // Plugin struct for Plugin
 type Plugin struct {
 	Name *string `json:"name,omitempty"`
-	Active *bool `json:"active,omitempty"`
+	Active NullableBool `json:"active,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -75,41 +75,51 @@ func (o *Plugin) SetName(v string) {
 	o.Name = &v
 }
 
-// GetActive returns the Active field value if set, zero value otherwise.
+// GetActive returns the Active field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Plugin) GetActive() bool {
-	if o == nil || IsNil(o.Active) {
+	if o == nil || IsNil(o.Active.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Active
+	return *o.Active.Get()
 }
 
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Plugin) GetActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Active) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Active, true
+	return o.Active.Get(), o.Active.IsSet()
 }
 
 // HasActive returns a boolean if a field has been set.
 func (o *Plugin) HasActive() bool {
-	if o != nil && !IsNil(o.Active) {
+	if o != nil && o.Active.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetActive gets a reference to the given bool and assigns it to the Active field.
+// SetActive gets a reference to the given NullableBool and assigns it to the Active field.
 func (o *Plugin) SetActive(v bool) {
-	o.Active = &v
+	o.Active.Set(&v)
+}
+// SetActiveNil sets the value for Active to be an explicit nil
+func (o *Plugin) SetActiveNil() {
+	o.Active.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetActive ensures that no value is present for Active, not even an explicit nil
+func (o *Plugin) UnsetActive() {
+	o.Active.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Plugin) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *Plugin) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Plugin) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *Plugin) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Plugin) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *Plugin) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Plugin) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -184,13 +196,13 @@ func (o Plugin) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Active) {
-		toSerialize["active"] = o.Active
+	if o.Active.IsSet() {
+		toSerialize["active"] = o.Active.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

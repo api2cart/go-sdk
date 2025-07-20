@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **OrderId** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**WarehouseId** | Pointer to **string** |  | [optional] 
-**ShipmentProvider** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**WarehouseId** | Pointer to **NullableString** |  | [optional] 
+**ShipmentProvider** | Pointer to **NullableString** |  | [optional] 
 **TrackingNumbers** | Pointer to [**[]ShipmentTrackingNumber**](ShipmentTrackingNumber.md) |  | [optional] 
-**CreatedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**CreatedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Items** | Pointer to [**[]ShipmentItem**](ShipmentItem.md) |  | [optional] 
-**IsShipped** | Pointer to **bool** |  | [optional] 
-**DeliveredAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**IsShipped** | Pointer to **NullableBool** |  | [optional] 
+**DeliveredAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -112,6 +112,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Shipment) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Shipment) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetWarehouseId
 
 `func (o *Shipment) GetWarehouseId() string`
@@ -137,6 +147,16 @@ SetWarehouseId sets WarehouseId field to given value.
 
 HasWarehouseId returns a boolean if a field has been set.
 
+### SetWarehouseIdNil
+
+`func (o *Shipment) SetWarehouseIdNil(b bool)`
+
+ SetWarehouseIdNil sets the value for WarehouseId to be an explicit nil
+
+### UnsetWarehouseId
+`func (o *Shipment) UnsetWarehouseId()`
+
+UnsetWarehouseId ensures that no value is present for WarehouseId, not even an explicit nil
 ### GetShipmentProvider
 
 `func (o *Shipment) GetShipmentProvider() string`
@@ -162,6 +182,16 @@ SetShipmentProvider sets ShipmentProvider field to given value.
 
 HasShipmentProvider returns a boolean if a field has been set.
 
+### SetShipmentProviderNil
+
+`func (o *Shipment) SetShipmentProviderNil(b bool)`
+
+ SetShipmentProviderNil sets the value for ShipmentProvider to be an explicit nil
+
+### UnsetShipmentProvider
+`func (o *Shipment) UnsetShipmentProvider()`
+
+UnsetShipmentProvider ensures that no value is present for ShipmentProvider, not even an explicit nil
 ### GetTrackingNumbers
 
 `func (o *Shipment) GetTrackingNumbers() []ShipmentTrackingNumber`
@@ -212,6 +242,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *Shipment) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *Shipment) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Shipment) GetModifiedTime() A2CDateTime`
@@ -237,6 +277,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Shipment) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Shipment) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetItems
 
 `func (o *Shipment) GetItems() []ShipmentItem`
@@ -287,6 +337,16 @@ SetIsShipped sets IsShipped field to given value.
 
 HasIsShipped returns a boolean if a field has been set.
 
+### SetIsShippedNil
+
+`func (o *Shipment) SetIsShippedNil(b bool)`
+
+ SetIsShippedNil sets the value for IsShipped to be an explicit nil
+
+### UnsetIsShipped
+`func (o *Shipment) UnsetIsShipped()`
+
+UnsetIsShipped ensures that no value is present for IsShipped, not even an explicit nil
 ### GetDeliveredAt
 
 `func (o *Shipment) GetDeliveredAt() A2CDateTime`
@@ -312,6 +372,16 @@ SetDeliveredAt sets DeliveredAt field to given value.
 
 HasDeliveredAt returns a boolean if a field has been set.
 
+### SetDeliveredAtNil
+
+`func (o *Shipment) SetDeliveredAtNil(b bool)`
+
+ SetDeliveredAtNil sets the value for DeliveredAt to be an explicit nil
+
+### UnsetDeliveredAt
+`func (o *Shipment) UnsetDeliveredAt()`
+
+UnsetDeliveredAt ensures that no value is present for DeliveredAt, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Shipment) GetAdditionalFields() map[string]interface{}`
@@ -337,6 +407,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Shipment) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Shipment) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Shipment) GetCustomFields() map[string]interface{}`
@@ -362,6 +442,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Shipment) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Shipment) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

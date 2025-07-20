@@ -1,29 +1,22 @@
 # \CartAPI
 
-All URIs are relative to *https://api.api2cart.com/v1.1*
+All URIs are relative to *https://api.api2cart.local.com/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CartBridge**](CartAPI.md#CartBridge) | **Get** /cart.bridge.json | cart.bridge
 [**CartCatalogPriceRulesCount**](CartAPI.md#CartCatalogPriceRulesCount) | **Get** /cart.catalog_price_rules.count.json | cart.catalog_price_rules.count
 [**CartCatalogPriceRulesList**](CartAPI.md#CartCatalogPriceRulesList) | **Get** /cart.catalog_price_rules.list.json | cart.catalog_price_rules.list
-[**CartClearCache**](CartAPI.md#CartClearCache) | **Post** /cart.clear_cache.json | cart.clear_cache
-[**CartConfig**](CartAPI.md#CartConfig) | **Get** /cart.config.json | cart.config
-[**CartConfigUpdate**](CartAPI.md#CartConfigUpdate) | **Put** /cart.config.update.json | cart.config.update
 [**CartCouponAdd**](CartAPI.md#CartCouponAdd) | **Post** /cart.coupon.add.json | cart.coupon.add
 [**CartCouponConditionAdd**](CartAPI.md#CartCouponConditionAdd) | **Post** /cart.coupon.condition.add.json | cart.coupon.condition.add
 [**CartCouponCount**](CartAPI.md#CartCouponCount) | **Get** /cart.coupon.count.json | cart.coupon.count
 [**CartCouponDelete**](CartAPI.md#CartCouponDelete) | **Delete** /cart.coupon.delete.json | cart.coupon.delete
 [**CartCouponList**](CartAPI.md#CartCouponList) | **Get** /cart.coupon.list.json | cart.coupon.list
-[**CartCreate**](CartAPI.md#CartCreate) | **Post** /cart.create.json | cart.create
 [**CartDelete**](CartAPI.md#CartDelete) | **Delete** /cart.delete.json | cart.delete
-[**CartDisconnect**](CartAPI.md#CartDisconnect) | **Get** /cart.disconnect.json | cart.disconnect
 [**CartGiftcardAdd**](CartAPI.md#CartGiftcardAdd) | **Post** /cart.giftcard.add.json | cart.giftcard.add
 [**CartGiftcardCount**](CartAPI.md#CartGiftcardCount) | **Get** /cart.giftcard.count.json | cart.giftcard.count
 [**CartGiftcardDelete**](CartAPI.md#CartGiftcardDelete) | **Delete** /cart.giftcard.delete.json | cart.giftcard.delete
 [**CartGiftcardList**](CartAPI.md#CartGiftcardList) | **Get** /cart.giftcard.list.json | cart.giftcard.list
 [**CartInfo**](CartAPI.md#CartInfo) | **Get** /cart.info.json | cart.info
-[**CartList**](CartAPI.md#CartList) | **Get** /cart.list.json | cart.list
 [**CartMetaDataList**](CartAPI.md#CartMetaDataList) | **Get** /cart.meta_data.list.json | cart.meta_data.list
 [**CartMetaDataSet**](CartAPI.md#CartMetaDataSet) | **Post** /cart.meta_data.set.json | cart.meta_data.set
 [**CartMetaDataUnset**](CartAPI.md#CartMetaDataUnset) | **Delete** /cart.meta_data.unset.json | cart.meta_data.unset
@@ -35,67 +28,6 @@ Method | HTTP request | Description
 [**CartShippingZonesList**](CartAPI.md#CartShippingZonesList) | **Get** /cart.shipping_zones.list.json | cart.shipping_zones.list
 [**CartValidate**](CartAPI.md#CartValidate) | **Get** /cart.validate.json | cart.validate
 
-
-
-## CartBridge
-
-> CartBridge200Response CartBridge(ctx).Execute()
-
-cart.bridge
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartBridge(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartBridge``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartBridge`: CartBridge200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartBridge`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartBridgeRequest struct via the builder pattern
-
-
-### Return type
-
-[**CartBridge200Response**](CartBridge200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CartCatalogPriceRulesCount
@@ -230,206 +162,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CartClearCache
-
-> CartClearCache200Response CartClearCache(ctx).CacheType(cacheType).Execute()
-
-cart.clear_cache
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	cacheType := "storage_cache" // string | Defines which cache should be cleared.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartClearCache(context.Background()).CacheType(cacheType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartClearCache``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartClearCache`: CartClearCache200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartClearCache`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartClearCacheRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cacheType** | **string** | Defines which cache should be cleared. | 
-
-### Return type
-
-[**CartClearCache200Response**](CartClearCache200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CartConfig
-
-> CartConfig200Response CartConfig(ctx).Params(params).Exclude(exclude).Execute()
-
-cart.config
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	params := "store_name,store_url,db_prefix" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "store_name,store_url,db_prefix")
-	exclude := "store_name,store_url,db_prefix" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartConfig(context.Background()).Params(params).Exclude(exclude).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartConfig``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartConfig`: CartConfig200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartConfigRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;store_name,store_url,db_prefix&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
-
-### Return type
-
-[**CartConfig200Response**](CartConfig200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CartConfigUpdate
-
-> CartConfigUpdate200Response CartConfigUpdate(ctx).CartConfigUpdate(cartConfigUpdate).Execute()
-
-cart.config.update
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	cartConfigUpdate := *openapiclient.NewCartConfigUpdate() // CartConfigUpdate | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartConfigUpdate(context.Background()).CartConfigUpdate(cartConfigUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartConfigUpdate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartConfigUpdate`: CartConfigUpdate200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartConfigUpdate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartConfigUpdateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cartConfigUpdate** | [**CartConfigUpdate**](CartConfigUpdate.md) |  | 
-
-### Return type
-
-[**CartConfigUpdate200Response**](CartConfigUpdate200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -821,72 +553,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CartCreate
-
-> AccountCartAdd200Response CartCreate(ctx).CartCreate(cartCreate).Execute()
-
-cart.create
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	cartCreate := *openapiclient.NewCartCreate("Opencart14", "1", "6b0b5b7b-7d87-45b5-bf34-ac6b438e63da", "316c0a09-f195-42be-74f6-a02cebb9cae6") // CartCreate | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartCreate(context.Background()).CartCreate(cartCreate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartCreate`: AccountCartAdd200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cartCreate** | [**CartCreate**](CartCreate.md) |  | 
-
-### Return type
-
-[**AccountCartAdd200Response**](AccountCartAdd200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CartDelete
 
 > CartDelete200Response CartDelete(ctx).DeleteBridge(deleteBridge).Execute()
@@ -938,72 +604,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CartDelete200Response**](CartDelete200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CartDisconnect
-
-> CartDisconnect200Response CartDisconnect(ctx).DeleteBridge(deleteBridge).Execute()
-
-cart.disconnect
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	deleteBridge := true // bool | Identifies if there is a necessity to delete bridge (optional) (default to false)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartDisconnect(context.Background()).DeleteBridge(deleteBridge).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartDisconnect``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartDisconnect`: CartDisconnect200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartDisconnect`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartDisconnectRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deleteBridge** | **bool** | Identifies if there is a necessity to delete bridge | [default to false]
-
-### Return type
-
-[**CartDisconnect200Response**](CartDisconnect200Response.md)
 
 ### Authorization
 
@@ -1366,67 +966,6 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CartList
-
-> CartList200Response CartList(ctx).Execute()
-
-cart.list
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartList(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CartList`: CartList200Response
-	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCartListRequest struct via the builder pattern
-
-
-### Return type
-
-[**CartList200Response**](CartList200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

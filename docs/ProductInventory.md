@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **WarehouseId** | Pointer to **string** |  | [optional] 
 **Quantity** | Pointer to **float32** |  | [optional] 
-**InStock** | Pointer to **bool** |  | [optional] 
-**Priority** | Pointer to **int32** |  | [optional] 
+**InStock** | Pointer to **NullableBool** |  | [optional] 
+**Priority** | Pointer to **NullableInt32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -105,6 +105,16 @@ SetInStock sets InStock field to given value.
 
 HasInStock returns a boolean if a field has been set.
 
+### SetInStockNil
+
+`func (o *ProductInventory) SetInStockNil(b bool)`
+
+ SetInStockNil sets the value for InStock to be an explicit nil
+
+### UnsetInStock
+`func (o *ProductInventory) UnsetInStock()`
+
+UnsetInStock ensures that no value is present for InStock, not even an explicit nil
 ### GetPriority
 
 `func (o *ProductInventory) GetPriority() int32`
@@ -130,6 +140,16 @@ SetPriority sets Priority field to given value.
 
 HasPriority returns a boolean if a field has been set.
 
+### SetPriorityNil
+
+`func (o *ProductInventory) SetPriorityNil(b bool)`
+
+ SetPriorityNil sets the value for Priority to be an explicit nil
+
+### UnsetPriority
+`func (o *ProductInventory) UnsetPriority()`
+
+UnsetPriority ensures that no value is present for Priority, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ProductInventory) GetAdditionalFields() map[string]interface{}`
@@ -155,6 +175,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductInventory) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductInventory) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductInventory) GetCustomFields() map[string]interface{}`
@@ -180,6 +210,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductInventory) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductInventory) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**ProductOptionItemId** | Pointer to **string** |  | [optional] 
+**ProductOptionItemId** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
-**Price** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **string** |  | [optional] 
-**Quantity** | Pointer to **int32** |  | [optional] 
-**TypePrice** | Pointer to **string** |  | [optional] 
-**Sku** | Pointer to **string** |  | [optional] 
-**IsDefault** | Pointer to **bool** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
+**Price** | Pointer to **NullableString** |  | [optional] 
+**Weight** | Pointer to **NullableString** |  | [optional] 
+**Quantity** | Pointer to **NullableInt32** |  | [optional] 
+**TypePrice** | Pointer to **NullableString** |  | [optional] 
+**Sku** | Pointer to **NullableString** |  | [optional] 
+**IsDefault** | Pointer to **NullableBool** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -86,6 +86,16 @@ SetProductOptionItemId sets ProductOptionItemId field to given value.
 
 HasProductOptionItemId returns a boolean if a field has been set.
 
+### SetProductOptionItemIdNil
+
+`func (o *ProductOptionItem) SetProductOptionItemIdNil(b bool)`
+
+ SetProductOptionItemIdNil sets the value for ProductOptionItemId to be an explicit nil
+
+### UnsetProductOptionItemId
+`func (o *ProductOptionItem) UnsetProductOptionItemId()`
+
+UnsetProductOptionItemId ensures that no value is present for ProductOptionItemId, not even an explicit nil
 ### GetName
 
 `func (o *ProductOptionItem) GetName() string`
@@ -136,6 +146,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *ProductOptionItem) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *ProductOptionItem) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetPrice
 
 `func (o *ProductOptionItem) GetPrice() string`
@@ -161,6 +181,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *ProductOptionItem) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *ProductOptionItem) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetWeight
 
 `func (o *ProductOptionItem) GetWeight() string`
@@ -186,6 +216,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *ProductOptionItem) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *ProductOptionItem) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetQuantity
 
 `func (o *ProductOptionItem) GetQuantity() int32`
@@ -211,6 +251,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *ProductOptionItem) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *ProductOptionItem) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetTypePrice
 
 `func (o *ProductOptionItem) GetTypePrice() string`
@@ -236,6 +286,16 @@ SetTypePrice sets TypePrice field to given value.
 
 HasTypePrice returns a boolean if a field has been set.
 
+### SetTypePriceNil
+
+`func (o *ProductOptionItem) SetTypePriceNil(b bool)`
+
+ SetTypePriceNil sets the value for TypePrice to be an explicit nil
+
+### UnsetTypePrice
+`func (o *ProductOptionItem) UnsetTypePrice()`
+
+UnsetTypePrice ensures that no value is present for TypePrice, not even an explicit nil
 ### GetSku
 
 `func (o *ProductOptionItem) GetSku() string`
@@ -261,6 +321,16 @@ SetSku sets Sku field to given value.
 
 HasSku returns a boolean if a field has been set.
 
+### SetSkuNil
+
+`func (o *ProductOptionItem) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *ProductOptionItem) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
 ### GetIsDefault
 
 `func (o *ProductOptionItem) GetIsDefault() bool`
@@ -286,6 +356,16 @@ SetIsDefault sets IsDefault field to given value.
 
 HasIsDefault returns a boolean if a field has been set.
 
+### SetIsDefaultNil
+
+`func (o *ProductOptionItem) SetIsDefaultNil(b bool)`
+
+ SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+
+### UnsetIsDefault
+`func (o *ProductOptionItem) UnsetIsDefault()`
+
+UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ProductOptionItem) GetAdditionalFields() map[string]interface{}`
@@ -311,6 +391,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductOptionItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductOptionItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductOptionItem) GetCustomFields() map[string]interface{}`
@@ -336,6 +426,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductOptionItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductOptionItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

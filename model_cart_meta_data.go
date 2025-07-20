@@ -21,9 +21,9 @@ var _ MappedNullable = &CartMetaData{}
 // CartMetaData struct for CartMetaData
 type CartMetaData struct {
 	Id *string `json:"id,omitempty"`
-	Key *string `json:"key,omitempty"`
-	Value *string `json:"value,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	Key NullableString `json:"key,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -77,105 +77,135 @@ func (o *CartMetaData) SetId(v string) {
 	o.Id = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartMetaData) GetKey() string {
-	if o == nil || IsNil(o.Key) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Key
+	return *o.Key.Get()
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartMetaData) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return o.Key.Get(), o.Key.IsSet()
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *CartMetaData) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
+	if o != nil && o.Key.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey gets a reference to the given NullableString and assigns it to the Key field.
 func (o *CartMetaData) SetKey(v string) {
-	o.Key = &v
+	o.Key.Set(&v)
+}
+// SetKeyNil sets the value for Key to be an explicit nil
+func (o *CartMetaData) SetKeyNil() {
+	o.Key.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetKey ensures that no value is present for Key, not even an explicit nil
+func (o *CartMetaData) UnsetKey() {
+	o.Key.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartMetaData) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartMetaData) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *CartMetaData) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *CartMetaData) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *CartMetaData) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *CartMetaData) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartMetaData) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartMetaData) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CartMetaData) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *CartMetaData) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *CartMetaData) SetNamespaceNil() {
+	o.Namespace.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *CartMetaData) UnsetNamespace() {
+	o.Namespace.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartMetaData) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +214,7 @@ func (o *CartMetaData) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartMetaData) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +236,9 @@ func (o *CartMetaData) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartMetaData) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +247,7 @@ func (o *CartMetaData) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartMetaData) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -250,19 +282,19 @@ func (o CartMetaData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
+	if o.Key.IsSet() {
+		toSerialize["key"] = o.Key.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

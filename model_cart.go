@@ -20,10 +20,10 @@ var _ MappedNullable = &Cart{}
 
 // Cart struct for Cart
 type Cart struct {
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Version *string `json:"version,omitempty"`
-	DbPrefix *string `json:"db_prefix,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	DbPrefix NullableString `json:"db_prefix,omitempty"`
 	StoresInfo []CartStoreInfo `json:"stores_info,omitempty"`
 	Warehouses []CartWarehouse `json:"warehouses,omitempty"`
 	ShippingZones []CartShippingZone `json:"shipping_zones,omitempty"`
@@ -48,132 +48,172 @@ func NewCartWithDefaults() *Cart {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Cart) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Cart) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Cart) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Cart) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Cart) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *Cart) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *Cart) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *Cart) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetVersion() string {
-	if o == nil || IsNil(o.Version) {
+	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Version
+	return *o.Version.Get()
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.Version) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Version, true
+	return o.Version.Get(), o.Version.IsSet()
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *Cart) HasVersion() bool {
-	if o != nil && !IsNil(o.Version) {
+	if o != nil && o.Version.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given string and assigns it to the Version field.
+// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
 func (o *Cart) SetVersion(v string) {
-	o.Version = &v
+	o.Version.Set(&v)
+}
+// SetVersionNil sets the value for Version to be an explicit nil
+func (o *Cart) SetVersionNil() {
+	o.Version.Set(nil)
 }
 
-// GetDbPrefix returns the DbPrefix field value if set, zero value otherwise.
+// UnsetVersion ensures that no value is present for Version, not even an explicit nil
+func (o *Cart) UnsetVersion() {
+	o.Version.Unset()
+}
+
+// GetDbPrefix returns the DbPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetDbPrefix() string {
-	if o == nil || IsNil(o.DbPrefix) {
+	if o == nil || IsNil(o.DbPrefix.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DbPrefix
+	return *o.DbPrefix.Get()
 }
 
 // GetDbPrefixOk returns a tuple with the DbPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetDbPrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.DbPrefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DbPrefix, true
+	return o.DbPrefix.Get(), o.DbPrefix.IsSet()
 }
 
 // HasDbPrefix returns a boolean if a field has been set.
 func (o *Cart) HasDbPrefix() bool {
-	if o != nil && !IsNil(o.DbPrefix) {
+	if o != nil && o.DbPrefix.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDbPrefix gets a reference to the given string and assigns it to the DbPrefix field.
+// SetDbPrefix gets a reference to the given NullableString and assigns it to the DbPrefix field.
 func (o *Cart) SetDbPrefix(v string) {
-	o.DbPrefix = &v
+	o.DbPrefix.Set(&v)
+}
+// SetDbPrefixNil sets the value for DbPrefix to be an explicit nil
+func (o *Cart) SetDbPrefixNil() {
+	o.DbPrefix.Set(nil)
+}
+
+// UnsetDbPrefix ensures that no value is present for DbPrefix, not even an explicit nil
+func (o *Cart) UnsetDbPrefix() {
+	o.DbPrefix.Unset()
 }
 
 // GetStoresInfo returns the StoresInfo field value if set, zero value otherwise.
@@ -272,9 +312,9 @@ func (o *Cart) SetShippingZones(v []CartShippingZone) {
 	o.ShippingZones = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -283,6 +323,7 @@ func (o *Cart) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -304,9 +345,9 @@ func (o *Cart) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Cart) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -315,6 +356,7 @@ func (o *Cart) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cart) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -346,17 +388,17 @@ func (o Cart) MarshalJSON() ([]byte, error) {
 
 func (o Cart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
+	if o.Version.IsSet() {
+		toSerialize["version"] = o.Version.Get()
 	}
-	if !IsNil(o.DbPrefix) {
-		toSerialize["db_prefix"] = o.DbPrefix
+	if o.DbPrefix.IsSet() {
+		toSerialize["db_prefix"] = o.DbPrefix.Get()
 	}
 	if !IsNil(o.StoresInfo) {
 		toSerialize["stores_info"] = o.StoresInfo
@@ -367,10 +409,10 @@ func (o Cart) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ShippingZones) {
 		toSerialize["shipping_zones"] = o.ShippingZones
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

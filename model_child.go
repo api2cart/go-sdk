@@ -22,49 +22,49 @@ var _ MappedNullable = &Child{}
 type Child struct {
 	Id *string `json:"id,omitempty"`
 	ParentId *string `json:"parent_id,omitempty"`
-	Sku *string `json:"sku,omitempty"`
-	Upc *string `json:"upc,omitempty"`
-	Ean *string `json:"ean,omitempty"`
-	Mpn *string `json:"mpn,omitempty"`
-	Gtin *string `json:"gtin,omitempty"`
-	Isbn *string `json:"isbn,omitempty"`
-	Url *string `json:"url,omitempty"`
-	SeoUrl *string `json:"seo_url,omitempty"`
-	SortOrder *int32 `json:"sort_order,omitempty"`
-	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
-	ModifiedTime *A2CDateTime `json:"modified_time,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ShortDescription *string `json:"short_description,omitempty"`
-	FullDescription *string `json:"full_description,omitempty"`
+	Sku NullableString `json:"sku,omitempty"`
+	Upc NullableString `json:"upc,omitempty"`
+	Ean NullableString `json:"ean,omitempty"`
+	Mpn NullableString `json:"mpn,omitempty"`
+	Gtin NullableString `json:"gtin,omitempty"`
+	Isbn NullableString `json:"isbn,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	SeoUrl NullableString `json:"seo_url,omitempty"`
+	SortOrder NullableInt32 `json:"sort_order,omitempty"`
+	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
+	ModifiedTime NullableA2CDateTime `json:"modified_time,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ShortDescription NullableString `json:"short_description,omitempty"`
+	FullDescription NullableString `json:"full_description,omitempty"`
 	Images []Image `json:"images,omitempty"`
 	Combination []ProductChildItemCombination `json:"combination,omitempty"`
-	DefaultPrice *float32 `json:"default_price,omitempty"`
-	CostPrice *float32 `json:"cost_price,omitempty"`
-	ListPrice *float32 `json:"list_price,omitempty"`
-	WholesalePrice *float32 `json:"wholesale_price,omitempty"`
+	DefaultPrice NullableFloat32 `json:"default_price,omitempty"`
+	CostPrice NullableFloat32 `json:"cost_price,omitempty"`
+	ListPrice NullableFloat32 `json:"list_price,omitempty"`
+	WholesalePrice NullableFloat32 `json:"wholesale_price,omitempty"`
 	AdvancedPrice []ProductAdvancedPrice `json:"advanced_price,omitempty"`
-	TaxClassId *string `json:"tax_class_id,omitempty"`
-	AvailForSale *bool `json:"avail_for_sale,omitempty"`
-	AllowBackorders *bool `json:"allow_backorders,omitempty"`
-	InStock *bool `json:"in_stock,omitempty"`
-	OnSale *bool `json:"on_sale,omitempty"`
-	ManageStock *bool `json:"manage_stock,omitempty"`
-	InventoryLevel *float32 `json:"inventory_level,omitempty"`
+	TaxClassId NullableString `json:"tax_class_id,omitempty"`
+	AvailForSale NullableBool `json:"avail_for_sale,omitempty"`
+	AllowBackorders NullableBool `json:"allow_backorders,omitempty"`
+	InStock NullableBool `json:"in_stock,omitempty"`
+	OnSale NullableBool `json:"on_sale,omitempty"`
+	ManageStock NullableBool `json:"manage_stock,omitempty"`
+	InventoryLevel NullableFloat32 `json:"inventory_level,omitempty"`
 	Inventory []ProductInventory `json:"inventory,omitempty"`
-	MinQuantity *float32 `json:"min_quantity,omitempty"`
-	DefaultQtyInPack *float32 `json:"default_qty_in_pack,omitempty"`
-	IsQtyInPackFixed *bool `json:"is_qty_in_pack_fixed,omitempty"`
-	WeightUnit *string `json:"weight_unit,omitempty"`
-	Weight *float32 `json:"weight,omitempty"`
-	DimensionsUnit *string `json:"dimensions_unit,omitempty"`
-	Width *float32 `json:"width,omitempty"`
-	Height *float32 `json:"height,omitempty"`
-	Length *float32 `json:"length,omitempty"`
-	MetaTitle *string `json:"meta_title,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
-	MetaKeywords *string `json:"meta_keywords,omitempty"`
+	MinQuantity NullableFloat32 `json:"min_quantity,omitempty"`
+	DefaultQtyInPack NullableFloat32 `json:"default_qty_in_pack,omitempty"`
+	IsQtyInPackFixed NullableBool `json:"is_qty_in_pack_fixed,omitempty"`
+	WeightUnit NullableString `json:"weight_unit,omitempty"`
+	Weight NullableFloat32 `json:"weight,omitempty"`
+	DimensionsUnit NullableString `json:"dimensions_unit,omitempty"`
+	Width NullableFloat32 `json:"width,omitempty"`
+	Height NullableFloat32 `json:"height,omitempty"`
+	Length NullableFloat32 `json:"length,omitempty"`
+	MetaTitle NullableString `json:"meta_title,omitempty"`
+	MetaDescription NullableString `json:"meta_description,omitempty"`
+	MetaKeywords NullableString `json:"meta_keywords,omitempty"`
 	Discounts []Discount `json:"discounts,omitempty"`
-	IsVirtual *bool `json:"is_virtual,omitempty"`
+	IsVirtual NullableBool `json:"is_virtual,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -150,452 +150,592 @@ func (o *Child) SetParentId(v string) {
 	o.ParentId = &v
 }
 
-// GetSku returns the Sku field value if set, zero value otherwise.
+// GetSku returns the Sku field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetSku() string {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil || IsNil(o.Sku.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Sku
+	return *o.Sku.Get()
 }
 
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetSkuOk() (*string, bool) {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Sku, true
+	return o.Sku.Get(), o.Sku.IsSet()
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *Child) HasSku() bool {
-	if o != nil && !IsNil(o.Sku) {
+	if o != nil && o.Sku.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSku gets a reference to the given string and assigns it to the Sku field.
+// SetSku gets a reference to the given NullableString and assigns it to the Sku field.
 func (o *Child) SetSku(v string) {
-	o.Sku = &v
+	o.Sku.Set(&v)
+}
+// SetSkuNil sets the value for Sku to be an explicit nil
+func (o *Child) SetSkuNil() {
+	o.Sku.Set(nil)
 }
 
-// GetUpc returns the Upc field value if set, zero value otherwise.
+// UnsetSku ensures that no value is present for Sku, not even an explicit nil
+func (o *Child) UnsetSku() {
+	o.Sku.Unset()
+}
+
+// GetUpc returns the Upc field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetUpc() string {
-	if o == nil || IsNil(o.Upc) {
+	if o == nil || IsNil(o.Upc.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Upc
+	return *o.Upc.Get()
 }
 
 // GetUpcOk returns a tuple with the Upc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetUpcOk() (*string, bool) {
-	if o == nil || IsNil(o.Upc) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Upc, true
+	return o.Upc.Get(), o.Upc.IsSet()
 }
 
 // HasUpc returns a boolean if a field has been set.
 func (o *Child) HasUpc() bool {
-	if o != nil && !IsNil(o.Upc) {
+	if o != nil && o.Upc.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUpc gets a reference to the given string and assigns it to the Upc field.
+// SetUpc gets a reference to the given NullableString and assigns it to the Upc field.
 func (o *Child) SetUpc(v string) {
-	o.Upc = &v
+	o.Upc.Set(&v)
+}
+// SetUpcNil sets the value for Upc to be an explicit nil
+func (o *Child) SetUpcNil() {
+	o.Upc.Set(nil)
 }
 
-// GetEan returns the Ean field value if set, zero value otherwise.
+// UnsetUpc ensures that no value is present for Upc, not even an explicit nil
+func (o *Child) UnsetUpc() {
+	o.Upc.Unset()
+}
+
+// GetEan returns the Ean field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetEan() string {
-	if o == nil || IsNil(o.Ean) {
+	if o == nil || IsNil(o.Ean.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Ean
+	return *o.Ean.Get()
 }
 
 // GetEanOk returns a tuple with the Ean field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetEanOk() (*string, bool) {
-	if o == nil || IsNil(o.Ean) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ean, true
+	return o.Ean.Get(), o.Ean.IsSet()
 }
 
 // HasEan returns a boolean if a field has been set.
 func (o *Child) HasEan() bool {
-	if o != nil && !IsNil(o.Ean) {
+	if o != nil && o.Ean.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEan gets a reference to the given string and assigns it to the Ean field.
+// SetEan gets a reference to the given NullableString and assigns it to the Ean field.
 func (o *Child) SetEan(v string) {
-	o.Ean = &v
+	o.Ean.Set(&v)
+}
+// SetEanNil sets the value for Ean to be an explicit nil
+func (o *Child) SetEanNil() {
+	o.Ean.Set(nil)
 }
 
-// GetMpn returns the Mpn field value if set, zero value otherwise.
+// UnsetEan ensures that no value is present for Ean, not even an explicit nil
+func (o *Child) UnsetEan() {
+	o.Ean.Unset()
+}
+
+// GetMpn returns the Mpn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetMpn() string {
-	if o == nil || IsNil(o.Mpn) {
+	if o == nil || IsNil(o.Mpn.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mpn
+	return *o.Mpn.Get()
 }
 
 // GetMpnOk returns a tuple with the Mpn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetMpnOk() (*string, bool) {
-	if o == nil || IsNil(o.Mpn) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mpn, true
+	return o.Mpn.Get(), o.Mpn.IsSet()
 }
 
 // HasMpn returns a boolean if a field has been set.
 func (o *Child) HasMpn() bool {
-	if o != nil && !IsNil(o.Mpn) {
+	if o != nil && o.Mpn.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMpn gets a reference to the given string and assigns it to the Mpn field.
+// SetMpn gets a reference to the given NullableString and assigns it to the Mpn field.
 func (o *Child) SetMpn(v string) {
-	o.Mpn = &v
+	o.Mpn.Set(&v)
+}
+// SetMpnNil sets the value for Mpn to be an explicit nil
+func (o *Child) SetMpnNil() {
+	o.Mpn.Set(nil)
 }
 
-// GetGtin returns the Gtin field value if set, zero value otherwise.
+// UnsetMpn ensures that no value is present for Mpn, not even an explicit nil
+func (o *Child) UnsetMpn() {
+	o.Mpn.Unset()
+}
+
+// GetGtin returns the Gtin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetGtin() string {
-	if o == nil || IsNil(o.Gtin) {
+	if o == nil || IsNil(o.Gtin.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Gtin
+	return *o.Gtin.Get()
 }
 
 // GetGtinOk returns a tuple with the Gtin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetGtinOk() (*string, bool) {
-	if o == nil || IsNil(o.Gtin) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Gtin, true
+	return o.Gtin.Get(), o.Gtin.IsSet()
 }
 
 // HasGtin returns a boolean if a field has been set.
 func (o *Child) HasGtin() bool {
-	if o != nil && !IsNil(o.Gtin) {
+	if o != nil && o.Gtin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGtin gets a reference to the given string and assigns it to the Gtin field.
+// SetGtin gets a reference to the given NullableString and assigns it to the Gtin field.
 func (o *Child) SetGtin(v string) {
-	o.Gtin = &v
+	o.Gtin.Set(&v)
+}
+// SetGtinNil sets the value for Gtin to be an explicit nil
+func (o *Child) SetGtinNil() {
+	o.Gtin.Set(nil)
 }
 
-// GetIsbn returns the Isbn field value if set, zero value otherwise.
+// UnsetGtin ensures that no value is present for Gtin, not even an explicit nil
+func (o *Child) UnsetGtin() {
+	o.Gtin.Unset()
+}
+
+// GetIsbn returns the Isbn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetIsbn() string {
-	if o == nil || IsNil(o.Isbn) {
+	if o == nil || IsNil(o.Isbn.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Isbn
+	return *o.Isbn.Get()
 }
 
 // GetIsbnOk returns a tuple with the Isbn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetIsbnOk() (*string, bool) {
-	if o == nil || IsNil(o.Isbn) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Isbn, true
+	return o.Isbn.Get(), o.Isbn.IsSet()
 }
 
 // HasIsbn returns a boolean if a field has been set.
 func (o *Child) HasIsbn() bool {
-	if o != nil && !IsNil(o.Isbn) {
+	if o != nil && o.Isbn.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsbn gets a reference to the given string and assigns it to the Isbn field.
+// SetIsbn gets a reference to the given NullableString and assigns it to the Isbn field.
 func (o *Child) SetIsbn(v string) {
-	o.Isbn = &v
+	o.Isbn.Set(&v)
+}
+// SetIsbnNil sets the value for Isbn to be an explicit nil
+func (o *Child) SetIsbnNil() {
+	o.Isbn.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetIsbn ensures that no value is present for Isbn, not even an explicit nil
+func (o *Child) UnsetIsbn() {
+	o.Isbn.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Child) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *Child) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *Child) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *Child) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetSeoUrl() string {
-	if o == nil || IsNil(o.SeoUrl) {
+	if o == nil || IsNil(o.SeoUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SeoUrl
+	return *o.SeoUrl.Get()
 }
 
 // GetSeoUrlOk returns a tuple with the SeoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetSeoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.SeoUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SeoUrl, true
+	return o.SeoUrl.Get(), o.SeoUrl.IsSet()
 }
 
 // HasSeoUrl returns a boolean if a field has been set.
 func (o *Child) HasSeoUrl() bool {
-	if o != nil && !IsNil(o.SeoUrl) {
+	if o != nil && o.SeoUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSeoUrl gets a reference to the given string and assigns it to the SeoUrl field.
+// SetSeoUrl gets a reference to the given NullableString and assigns it to the SeoUrl field.
 func (o *Child) SetSeoUrl(v string) {
-	o.SeoUrl = &v
+	o.SeoUrl.Set(&v)
+}
+// SetSeoUrlNil sets the value for SeoUrl to be an explicit nil
+func (o *Child) SetSeoUrlNil() {
+	o.SeoUrl.Set(nil)
 }
 
-// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+// UnsetSeoUrl ensures that no value is present for SeoUrl, not even an explicit nil
+func (o *Child) UnsetSeoUrl() {
+	o.SeoUrl.Unset()
+}
+
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetSortOrder() int32 {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil || IsNil(o.SortOrder.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SortOrder
+	return *o.SortOrder.Get()
 }
 
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetSortOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SortOrder, true
+	return o.SortOrder.Get(), o.SortOrder.IsSet()
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *Child) HasSortOrder() bool {
-	if o != nil && !IsNil(o.SortOrder) {
+	if o != nil && o.SortOrder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+// SetSortOrder gets a reference to the given NullableInt32 and assigns it to the SortOrder field.
 func (o *Child) SetSortOrder(v int32) {
-	o.SortOrder = &v
+	o.SortOrder.Set(&v)
+}
+// SetSortOrderNil sets the value for SortOrder to be an explicit nil
+func (o *Child) SetSortOrderNil() {
+	o.SortOrder.Set(nil)
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
+func (o *Child) UnsetSortOrder() {
+	o.SortOrder.Unset()
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetCreatedTime() A2CDateTime {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetCreatedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *Child) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given A2CDateTime and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableA2CDateTime and assigns it to the CreatedTime field.
 func (o *Child) SetCreatedTime(v A2CDateTime) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *Child) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *Child) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetModifiedTime() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetModifiedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *Child) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given A2CDateTime and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedTime field.
 func (o *Child) SetModifiedTime(v A2CDateTime) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *Child) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *Child) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Child) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Child) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Child) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Child) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetShortDescription returns the ShortDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetShortDescription() string {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil || IsNil(o.ShortDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ShortDescription
+	return *o.ShortDescription.Get()
 }
 
 // GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetShortDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShortDescription, true
+	return o.ShortDescription.Get(), o.ShortDescription.IsSet()
 }
 
 // HasShortDescription returns a boolean if a field has been set.
 func (o *Child) HasShortDescription() bool {
-	if o != nil && !IsNil(o.ShortDescription) {
+	if o != nil && o.ShortDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
+// SetShortDescription gets a reference to the given NullableString and assigns it to the ShortDescription field.
 func (o *Child) SetShortDescription(v string) {
-	o.ShortDescription = &v
+	o.ShortDescription.Set(&v)
+}
+// SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+func (o *Child) SetShortDescriptionNil() {
+	o.ShortDescription.Set(nil)
 }
 
-// GetFullDescription returns the FullDescription field value if set, zero value otherwise.
+// UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
+func (o *Child) UnsetShortDescription() {
+	o.ShortDescription.Unset()
+}
+
+// GetFullDescription returns the FullDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetFullDescription() string {
-	if o == nil || IsNil(o.FullDescription) {
+	if o == nil || IsNil(o.FullDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FullDescription
+	return *o.FullDescription.Get()
 }
 
 // GetFullDescriptionOk returns a tuple with the FullDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetFullDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.FullDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FullDescription, true
+	return o.FullDescription.Get(), o.FullDescription.IsSet()
 }
 
 // HasFullDescription returns a boolean if a field has been set.
 func (o *Child) HasFullDescription() bool {
-	if o != nil && !IsNil(o.FullDescription) {
+	if o != nil && o.FullDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFullDescription gets a reference to the given string and assigns it to the FullDescription field.
+// SetFullDescription gets a reference to the given NullableString and assigns it to the FullDescription field.
 func (o *Child) SetFullDescription(v string) {
-	o.FullDescription = &v
+	o.FullDescription.Set(&v)
+}
+// SetFullDescriptionNil sets the value for FullDescription to be an explicit nil
+func (o *Child) SetFullDescriptionNil() {
+	o.FullDescription.Set(nil)
+}
+
+// UnsetFullDescription ensures that no value is present for FullDescription, not even an explicit nil
+func (o *Child) UnsetFullDescription() {
+	o.FullDescription.Unset()
 }
 
 // GetImages returns the Images field value if set, zero value otherwise.
@@ -662,132 +802,172 @@ func (o *Child) SetCombination(v []ProductChildItemCombination) {
 	o.Combination = v
 }
 
-// GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise.
+// GetDefaultPrice returns the DefaultPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetDefaultPrice() float32 {
-	if o == nil || IsNil(o.DefaultPrice) {
+	if o == nil || IsNil(o.DefaultPrice.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.DefaultPrice
+	return *o.DefaultPrice.Get()
 }
 
 // GetDefaultPriceOk returns a tuple with the DefaultPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetDefaultPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.DefaultPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultPrice, true
+	return o.DefaultPrice.Get(), o.DefaultPrice.IsSet()
 }
 
 // HasDefaultPrice returns a boolean if a field has been set.
 func (o *Child) HasDefaultPrice() bool {
-	if o != nil && !IsNil(o.DefaultPrice) {
+	if o != nil && o.DefaultPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultPrice gets a reference to the given float32 and assigns it to the DefaultPrice field.
+// SetDefaultPrice gets a reference to the given NullableFloat32 and assigns it to the DefaultPrice field.
 func (o *Child) SetDefaultPrice(v float32) {
-	o.DefaultPrice = &v
+	o.DefaultPrice.Set(&v)
+}
+// SetDefaultPriceNil sets the value for DefaultPrice to be an explicit nil
+func (o *Child) SetDefaultPriceNil() {
+	o.DefaultPrice.Set(nil)
 }
 
-// GetCostPrice returns the CostPrice field value if set, zero value otherwise.
+// UnsetDefaultPrice ensures that no value is present for DefaultPrice, not even an explicit nil
+func (o *Child) UnsetDefaultPrice() {
+	o.DefaultPrice.Unset()
+}
+
+// GetCostPrice returns the CostPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetCostPrice() float32 {
-	if o == nil || IsNil(o.CostPrice) {
+	if o == nil || IsNil(o.CostPrice.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.CostPrice
+	return *o.CostPrice.Get()
 }
 
 // GetCostPriceOk returns a tuple with the CostPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetCostPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.CostPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CostPrice, true
+	return o.CostPrice.Get(), o.CostPrice.IsSet()
 }
 
 // HasCostPrice returns a boolean if a field has been set.
 func (o *Child) HasCostPrice() bool {
-	if o != nil && !IsNil(o.CostPrice) {
+	if o != nil && o.CostPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCostPrice gets a reference to the given float32 and assigns it to the CostPrice field.
+// SetCostPrice gets a reference to the given NullableFloat32 and assigns it to the CostPrice field.
 func (o *Child) SetCostPrice(v float32) {
-	o.CostPrice = &v
+	o.CostPrice.Set(&v)
+}
+// SetCostPriceNil sets the value for CostPrice to be an explicit nil
+func (o *Child) SetCostPriceNil() {
+	o.CostPrice.Set(nil)
 }
 
-// GetListPrice returns the ListPrice field value if set, zero value otherwise.
+// UnsetCostPrice ensures that no value is present for CostPrice, not even an explicit nil
+func (o *Child) UnsetCostPrice() {
+	o.CostPrice.Unset()
+}
+
+// GetListPrice returns the ListPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetListPrice() float32 {
-	if o == nil || IsNil(o.ListPrice) {
+	if o == nil || IsNil(o.ListPrice.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.ListPrice
+	return *o.ListPrice.Get()
 }
 
 // GetListPriceOk returns a tuple with the ListPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetListPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.ListPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ListPrice, true
+	return o.ListPrice.Get(), o.ListPrice.IsSet()
 }
 
 // HasListPrice returns a boolean if a field has been set.
 func (o *Child) HasListPrice() bool {
-	if o != nil && !IsNil(o.ListPrice) {
+	if o != nil && o.ListPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetListPrice gets a reference to the given float32 and assigns it to the ListPrice field.
+// SetListPrice gets a reference to the given NullableFloat32 and assigns it to the ListPrice field.
 func (o *Child) SetListPrice(v float32) {
-	o.ListPrice = &v
+	o.ListPrice.Set(&v)
+}
+// SetListPriceNil sets the value for ListPrice to be an explicit nil
+func (o *Child) SetListPriceNil() {
+	o.ListPrice.Set(nil)
 }
 
-// GetWholesalePrice returns the WholesalePrice field value if set, zero value otherwise.
+// UnsetListPrice ensures that no value is present for ListPrice, not even an explicit nil
+func (o *Child) UnsetListPrice() {
+	o.ListPrice.Unset()
+}
+
+// GetWholesalePrice returns the WholesalePrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetWholesalePrice() float32 {
-	if o == nil || IsNil(o.WholesalePrice) {
+	if o == nil || IsNil(o.WholesalePrice.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.WholesalePrice
+	return *o.WholesalePrice.Get()
 }
 
 // GetWholesalePriceOk returns a tuple with the WholesalePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetWholesalePriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.WholesalePrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WholesalePrice, true
+	return o.WholesalePrice.Get(), o.WholesalePrice.IsSet()
 }
 
 // HasWholesalePrice returns a boolean if a field has been set.
 func (o *Child) HasWholesalePrice() bool {
-	if o != nil && !IsNil(o.WholesalePrice) {
+	if o != nil && o.WholesalePrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWholesalePrice gets a reference to the given float32 and assigns it to the WholesalePrice field.
+// SetWholesalePrice gets a reference to the given NullableFloat32 and assigns it to the WholesalePrice field.
 func (o *Child) SetWholesalePrice(v float32) {
-	o.WholesalePrice = &v
+	o.WholesalePrice.Set(&v)
+}
+// SetWholesalePriceNil sets the value for WholesalePrice to be an explicit nil
+func (o *Child) SetWholesalePriceNil() {
+	o.WholesalePrice.Set(nil)
+}
+
+// UnsetWholesalePrice ensures that no value is present for WholesalePrice, not even an explicit nil
+func (o *Child) UnsetWholesalePrice() {
+	o.WholesalePrice.Unset()
 }
 
 // GetAdvancedPrice returns the AdvancedPrice field value if set, zero value otherwise.
@@ -822,228 +1002,298 @@ func (o *Child) SetAdvancedPrice(v []ProductAdvancedPrice) {
 	o.AdvancedPrice = v
 }
 
-// GetTaxClassId returns the TaxClassId field value if set, zero value otherwise.
+// GetTaxClassId returns the TaxClassId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetTaxClassId() string {
-	if o == nil || IsNil(o.TaxClassId) {
+	if o == nil || IsNil(o.TaxClassId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TaxClassId
+	return *o.TaxClassId.Get()
 }
 
 // GetTaxClassIdOk returns a tuple with the TaxClassId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetTaxClassIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TaxClassId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaxClassId, true
+	return o.TaxClassId.Get(), o.TaxClassId.IsSet()
 }
 
 // HasTaxClassId returns a boolean if a field has been set.
 func (o *Child) HasTaxClassId() bool {
-	if o != nil && !IsNil(o.TaxClassId) {
+	if o != nil && o.TaxClassId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaxClassId gets a reference to the given string and assigns it to the TaxClassId field.
+// SetTaxClassId gets a reference to the given NullableString and assigns it to the TaxClassId field.
 func (o *Child) SetTaxClassId(v string) {
-	o.TaxClassId = &v
+	o.TaxClassId.Set(&v)
+}
+// SetTaxClassIdNil sets the value for TaxClassId to be an explicit nil
+func (o *Child) SetTaxClassIdNil() {
+	o.TaxClassId.Set(nil)
 }
 
-// GetAvailForSale returns the AvailForSale field value if set, zero value otherwise.
+// UnsetTaxClassId ensures that no value is present for TaxClassId, not even an explicit nil
+func (o *Child) UnsetTaxClassId() {
+	o.TaxClassId.Unset()
+}
+
+// GetAvailForSale returns the AvailForSale field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetAvailForSale() bool {
-	if o == nil || IsNil(o.AvailForSale) {
+	if o == nil || IsNil(o.AvailForSale.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AvailForSale
+	return *o.AvailForSale.Get()
 }
 
 // GetAvailForSaleOk returns a tuple with the AvailForSale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetAvailForSaleOk() (*bool, bool) {
-	if o == nil || IsNil(o.AvailForSale) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AvailForSale, true
+	return o.AvailForSale.Get(), o.AvailForSale.IsSet()
 }
 
 // HasAvailForSale returns a boolean if a field has been set.
 func (o *Child) HasAvailForSale() bool {
-	if o != nil && !IsNil(o.AvailForSale) {
+	if o != nil && o.AvailForSale.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailForSale gets a reference to the given bool and assigns it to the AvailForSale field.
+// SetAvailForSale gets a reference to the given NullableBool and assigns it to the AvailForSale field.
 func (o *Child) SetAvailForSale(v bool) {
-	o.AvailForSale = &v
+	o.AvailForSale.Set(&v)
+}
+// SetAvailForSaleNil sets the value for AvailForSale to be an explicit nil
+func (o *Child) SetAvailForSaleNil() {
+	o.AvailForSale.Set(nil)
 }
 
-// GetAllowBackorders returns the AllowBackorders field value if set, zero value otherwise.
+// UnsetAvailForSale ensures that no value is present for AvailForSale, not even an explicit nil
+func (o *Child) UnsetAvailForSale() {
+	o.AvailForSale.Unset()
+}
+
+// GetAllowBackorders returns the AllowBackorders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetAllowBackorders() bool {
-	if o == nil || IsNil(o.AllowBackorders) {
+	if o == nil || IsNil(o.AllowBackorders.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AllowBackorders
+	return *o.AllowBackorders.Get()
 }
 
 // GetAllowBackordersOk returns a tuple with the AllowBackorders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetAllowBackordersOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowBackorders) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowBackorders, true
+	return o.AllowBackorders.Get(), o.AllowBackorders.IsSet()
 }
 
 // HasAllowBackorders returns a boolean if a field has been set.
 func (o *Child) HasAllowBackorders() bool {
-	if o != nil && !IsNil(o.AllowBackorders) {
+	if o != nil && o.AllowBackorders.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowBackorders gets a reference to the given bool and assigns it to the AllowBackorders field.
+// SetAllowBackorders gets a reference to the given NullableBool and assigns it to the AllowBackorders field.
 func (o *Child) SetAllowBackorders(v bool) {
-	o.AllowBackorders = &v
+	o.AllowBackorders.Set(&v)
+}
+// SetAllowBackordersNil sets the value for AllowBackorders to be an explicit nil
+func (o *Child) SetAllowBackordersNil() {
+	o.AllowBackorders.Set(nil)
 }
 
-// GetInStock returns the InStock field value if set, zero value otherwise.
+// UnsetAllowBackorders ensures that no value is present for AllowBackorders, not even an explicit nil
+func (o *Child) UnsetAllowBackorders() {
+	o.AllowBackorders.Unset()
+}
+
+// GetInStock returns the InStock field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetInStock() bool {
-	if o == nil || IsNil(o.InStock) {
+	if o == nil || IsNil(o.InStock.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.InStock
+	return *o.InStock.Get()
 }
 
 // GetInStockOk returns a tuple with the InStock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetInStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.InStock) {
+	if o == nil {
 		return nil, false
 	}
-	return o.InStock, true
+	return o.InStock.Get(), o.InStock.IsSet()
 }
 
 // HasInStock returns a boolean if a field has been set.
 func (o *Child) HasInStock() bool {
-	if o != nil && !IsNil(o.InStock) {
+	if o != nil && o.InStock.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInStock gets a reference to the given bool and assigns it to the InStock field.
+// SetInStock gets a reference to the given NullableBool and assigns it to the InStock field.
 func (o *Child) SetInStock(v bool) {
-	o.InStock = &v
+	o.InStock.Set(&v)
+}
+// SetInStockNil sets the value for InStock to be an explicit nil
+func (o *Child) SetInStockNil() {
+	o.InStock.Set(nil)
 }
 
-// GetOnSale returns the OnSale field value if set, zero value otherwise.
+// UnsetInStock ensures that no value is present for InStock, not even an explicit nil
+func (o *Child) UnsetInStock() {
+	o.InStock.Unset()
+}
+
+// GetOnSale returns the OnSale field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetOnSale() bool {
-	if o == nil || IsNil(o.OnSale) {
+	if o == nil || IsNil(o.OnSale.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.OnSale
+	return *o.OnSale.Get()
 }
 
 // GetOnSaleOk returns a tuple with the OnSale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetOnSaleOk() (*bool, bool) {
-	if o == nil || IsNil(o.OnSale) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OnSale, true
+	return o.OnSale.Get(), o.OnSale.IsSet()
 }
 
 // HasOnSale returns a boolean if a field has been set.
 func (o *Child) HasOnSale() bool {
-	if o != nil && !IsNil(o.OnSale) {
+	if o != nil && o.OnSale.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOnSale gets a reference to the given bool and assigns it to the OnSale field.
+// SetOnSale gets a reference to the given NullableBool and assigns it to the OnSale field.
 func (o *Child) SetOnSale(v bool) {
-	o.OnSale = &v
+	o.OnSale.Set(&v)
+}
+// SetOnSaleNil sets the value for OnSale to be an explicit nil
+func (o *Child) SetOnSaleNil() {
+	o.OnSale.Set(nil)
 }
 
-// GetManageStock returns the ManageStock field value if set, zero value otherwise.
+// UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
+func (o *Child) UnsetOnSale() {
+	o.OnSale.Unset()
+}
+
+// GetManageStock returns the ManageStock field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetManageStock() bool {
-	if o == nil || IsNil(o.ManageStock) {
+	if o == nil || IsNil(o.ManageStock.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.ManageStock
+	return *o.ManageStock.Get()
 }
 
 // GetManageStockOk returns a tuple with the ManageStock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetManageStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.ManageStock) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ManageStock, true
+	return o.ManageStock.Get(), o.ManageStock.IsSet()
 }
 
 // HasManageStock returns a boolean if a field has been set.
 func (o *Child) HasManageStock() bool {
-	if o != nil && !IsNil(o.ManageStock) {
+	if o != nil && o.ManageStock.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManageStock gets a reference to the given bool and assigns it to the ManageStock field.
+// SetManageStock gets a reference to the given NullableBool and assigns it to the ManageStock field.
 func (o *Child) SetManageStock(v bool) {
-	o.ManageStock = &v
+	o.ManageStock.Set(&v)
+}
+// SetManageStockNil sets the value for ManageStock to be an explicit nil
+func (o *Child) SetManageStockNil() {
+	o.ManageStock.Set(nil)
 }
 
-// GetInventoryLevel returns the InventoryLevel field value if set, zero value otherwise.
+// UnsetManageStock ensures that no value is present for ManageStock, not even an explicit nil
+func (o *Child) UnsetManageStock() {
+	o.ManageStock.Unset()
+}
+
+// GetInventoryLevel returns the InventoryLevel field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetInventoryLevel() float32 {
-	if o == nil || IsNil(o.InventoryLevel) {
+	if o == nil || IsNil(o.InventoryLevel.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.InventoryLevel
+	return *o.InventoryLevel.Get()
 }
 
 // GetInventoryLevelOk returns a tuple with the InventoryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetInventoryLevelOk() (*float32, bool) {
-	if o == nil || IsNil(o.InventoryLevel) {
+	if o == nil {
 		return nil, false
 	}
-	return o.InventoryLevel, true
+	return o.InventoryLevel.Get(), o.InventoryLevel.IsSet()
 }
 
 // HasInventoryLevel returns a boolean if a field has been set.
 func (o *Child) HasInventoryLevel() bool {
-	if o != nil && !IsNil(o.InventoryLevel) {
+	if o != nil && o.InventoryLevel.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInventoryLevel gets a reference to the given float32 and assigns it to the InventoryLevel field.
+// SetInventoryLevel gets a reference to the given NullableFloat32 and assigns it to the InventoryLevel field.
 func (o *Child) SetInventoryLevel(v float32) {
-	o.InventoryLevel = &v
+	o.InventoryLevel.Set(&v)
+}
+// SetInventoryLevelNil sets the value for InventoryLevel to be an explicit nil
+func (o *Child) SetInventoryLevelNil() {
+	o.InventoryLevel.Set(nil)
+}
+
+// UnsetInventoryLevel ensures that no value is present for InventoryLevel, not even an explicit nil
+func (o *Child) UnsetInventoryLevel() {
+	o.InventoryLevel.Unset()
 }
 
 // GetInventory returns the Inventory field value if set, zero value otherwise.
@@ -1078,388 +1328,508 @@ func (o *Child) SetInventory(v []ProductInventory) {
 	o.Inventory = v
 }
 
-// GetMinQuantity returns the MinQuantity field value if set, zero value otherwise.
+// GetMinQuantity returns the MinQuantity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetMinQuantity() float32 {
-	if o == nil || IsNil(o.MinQuantity) {
+	if o == nil || IsNil(o.MinQuantity.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.MinQuantity
+	return *o.MinQuantity.Get()
 }
 
 // GetMinQuantityOk returns a tuple with the MinQuantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetMinQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.MinQuantity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinQuantity, true
+	return o.MinQuantity.Get(), o.MinQuantity.IsSet()
 }
 
 // HasMinQuantity returns a boolean if a field has been set.
 func (o *Child) HasMinQuantity() bool {
-	if o != nil && !IsNil(o.MinQuantity) {
+	if o != nil && o.MinQuantity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinQuantity gets a reference to the given float32 and assigns it to the MinQuantity field.
+// SetMinQuantity gets a reference to the given NullableFloat32 and assigns it to the MinQuantity field.
 func (o *Child) SetMinQuantity(v float32) {
-	o.MinQuantity = &v
+	o.MinQuantity.Set(&v)
+}
+// SetMinQuantityNil sets the value for MinQuantity to be an explicit nil
+func (o *Child) SetMinQuantityNil() {
+	o.MinQuantity.Set(nil)
 }
 
-// GetDefaultQtyInPack returns the DefaultQtyInPack field value if set, zero value otherwise.
+// UnsetMinQuantity ensures that no value is present for MinQuantity, not even an explicit nil
+func (o *Child) UnsetMinQuantity() {
+	o.MinQuantity.Unset()
+}
+
+// GetDefaultQtyInPack returns the DefaultQtyInPack field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetDefaultQtyInPack() float32 {
-	if o == nil || IsNil(o.DefaultQtyInPack) {
+	if o == nil || IsNil(o.DefaultQtyInPack.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.DefaultQtyInPack
+	return *o.DefaultQtyInPack.Get()
 }
 
 // GetDefaultQtyInPackOk returns a tuple with the DefaultQtyInPack field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetDefaultQtyInPackOk() (*float32, bool) {
-	if o == nil || IsNil(o.DefaultQtyInPack) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultQtyInPack, true
+	return o.DefaultQtyInPack.Get(), o.DefaultQtyInPack.IsSet()
 }
 
 // HasDefaultQtyInPack returns a boolean if a field has been set.
 func (o *Child) HasDefaultQtyInPack() bool {
-	if o != nil && !IsNil(o.DefaultQtyInPack) {
+	if o != nil && o.DefaultQtyInPack.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultQtyInPack gets a reference to the given float32 and assigns it to the DefaultQtyInPack field.
+// SetDefaultQtyInPack gets a reference to the given NullableFloat32 and assigns it to the DefaultQtyInPack field.
 func (o *Child) SetDefaultQtyInPack(v float32) {
-	o.DefaultQtyInPack = &v
+	o.DefaultQtyInPack.Set(&v)
+}
+// SetDefaultQtyInPackNil sets the value for DefaultQtyInPack to be an explicit nil
+func (o *Child) SetDefaultQtyInPackNil() {
+	o.DefaultQtyInPack.Set(nil)
 }
 
-// GetIsQtyInPackFixed returns the IsQtyInPackFixed field value if set, zero value otherwise.
+// UnsetDefaultQtyInPack ensures that no value is present for DefaultQtyInPack, not even an explicit nil
+func (o *Child) UnsetDefaultQtyInPack() {
+	o.DefaultQtyInPack.Unset()
+}
+
+// GetIsQtyInPackFixed returns the IsQtyInPackFixed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetIsQtyInPackFixed() bool {
-	if o == nil || IsNil(o.IsQtyInPackFixed) {
+	if o == nil || IsNil(o.IsQtyInPackFixed.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsQtyInPackFixed
+	return *o.IsQtyInPackFixed.Get()
 }
 
 // GetIsQtyInPackFixedOk returns a tuple with the IsQtyInPackFixed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetIsQtyInPackFixedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsQtyInPackFixed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsQtyInPackFixed, true
+	return o.IsQtyInPackFixed.Get(), o.IsQtyInPackFixed.IsSet()
 }
 
 // HasIsQtyInPackFixed returns a boolean if a field has been set.
 func (o *Child) HasIsQtyInPackFixed() bool {
-	if o != nil && !IsNil(o.IsQtyInPackFixed) {
+	if o != nil && o.IsQtyInPackFixed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsQtyInPackFixed gets a reference to the given bool and assigns it to the IsQtyInPackFixed field.
+// SetIsQtyInPackFixed gets a reference to the given NullableBool and assigns it to the IsQtyInPackFixed field.
 func (o *Child) SetIsQtyInPackFixed(v bool) {
-	o.IsQtyInPackFixed = &v
+	o.IsQtyInPackFixed.Set(&v)
+}
+// SetIsQtyInPackFixedNil sets the value for IsQtyInPackFixed to be an explicit nil
+func (o *Child) SetIsQtyInPackFixedNil() {
+	o.IsQtyInPackFixed.Set(nil)
 }
 
-// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+// UnsetIsQtyInPackFixed ensures that no value is present for IsQtyInPackFixed, not even an explicit nil
+func (o *Child) UnsetIsQtyInPackFixed() {
+	o.IsQtyInPackFixed.Unset()
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetWeightUnit() string {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil || IsNil(o.WeightUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WeightUnit
+	return *o.WeightUnit.Get()
 }
 
 // GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetWeightUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WeightUnit, true
+	return o.WeightUnit.Get(), o.WeightUnit.IsSet()
 }
 
 // HasWeightUnit returns a boolean if a field has been set.
 func (o *Child) HasWeightUnit() bool {
-	if o != nil && !IsNil(o.WeightUnit) {
+	if o != nil && o.WeightUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+// SetWeightUnit gets a reference to the given NullableString and assigns it to the WeightUnit field.
 func (o *Child) SetWeightUnit(v string) {
-	o.WeightUnit = &v
+	o.WeightUnit.Set(&v)
+}
+// SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+func (o *Child) SetWeightUnitNil() {
+	o.WeightUnit.Set(nil)
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
+func (o *Child) UnsetWeightUnit() {
+	o.WeightUnit.Unset()
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetWeight() float32 {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil || IsNil(o.Weight.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Weight
+	return *o.Weight.Get()
 }
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetWeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Weight, true
+	return o.Weight.Get(), o.Weight.IsSet()
 }
 
 // HasWeight returns a boolean if a field has been set.
 func (o *Child) HasWeight() bool {
-	if o != nil && !IsNil(o.Weight) {
+	if o != nil && o.Weight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given float32 and assigns it to the Weight field.
+// SetWeight gets a reference to the given NullableFloat32 and assigns it to the Weight field.
 func (o *Child) SetWeight(v float32) {
-	o.Weight = &v
+	o.Weight.Set(&v)
+}
+// SetWeightNil sets the value for Weight to be an explicit nil
+func (o *Child) SetWeightNil() {
+	o.Weight.Set(nil)
 }
 
-// GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise.
+// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+func (o *Child) UnsetWeight() {
+	o.Weight.Unset()
+}
+
+// GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetDimensionsUnit() string {
-	if o == nil || IsNil(o.DimensionsUnit) {
+	if o == nil || IsNil(o.DimensionsUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DimensionsUnit
+	return *o.DimensionsUnit.Get()
 }
 
 // GetDimensionsUnitOk returns a tuple with the DimensionsUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetDimensionsUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.DimensionsUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DimensionsUnit, true
+	return o.DimensionsUnit.Get(), o.DimensionsUnit.IsSet()
 }
 
 // HasDimensionsUnit returns a boolean if a field has been set.
 func (o *Child) HasDimensionsUnit() bool {
-	if o != nil && !IsNil(o.DimensionsUnit) {
+	if o != nil && o.DimensionsUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDimensionsUnit gets a reference to the given string and assigns it to the DimensionsUnit field.
+// SetDimensionsUnit gets a reference to the given NullableString and assigns it to the DimensionsUnit field.
 func (o *Child) SetDimensionsUnit(v string) {
-	o.DimensionsUnit = &v
+	o.DimensionsUnit.Set(&v)
+}
+// SetDimensionsUnitNil sets the value for DimensionsUnit to be an explicit nil
+func (o *Child) SetDimensionsUnitNil() {
+	o.DimensionsUnit.Set(nil)
 }
 
-// GetWidth returns the Width field value if set, zero value otherwise.
+// UnsetDimensionsUnit ensures that no value is present for DimensionsUnit, not even an explicit nil
+func (o *Child) UnsetDimensionsUnit() {
+	o.DimensionsUnit.Unset()
+}
+
+// GetWidth returns the Width field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetWidth() float32 {
-	if o == nil || IsNil(o.Width) {
+	if o == nil || IsNil(o.Width.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Width
+	return *o.Width.Get()
 }
 
 // GetWidthOk returns a tuple with the Width field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetWidthOk() (*float32, bool) {
-	if o == nil || IsNil(o.Width) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Width, true
+	return o.Width.Get(), o.Width.IsSet()
 }
 
 // HasWidth returns a boolean if a field has been set.
 func (o *Child) HasWidth() bool {
-	if o != nil && !IsNil(o.Width) {
+	if o != nil && o.Width.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWidth gets a reference to the given float32 and assigns it to the Width field.
+// SetWidth gets a reference to the given NullableFloat32 and assigns it to the Width field.
 func (o *Child) SetWidth(v float32) {
-	o.Width = &v
+	o.Width.Set(&v)
+}
+// SetWidthNil sets the value for Width to be an explicit nil
+func (o *Child) SetWidthNil() {
+	o.Width.Set(nil)
 }
 
-// GetHeight returns the Height field value if set, zero value otherwise.
+// UnsetWidth ensures that no value is present for Width, not even an explicit nil
+func (o *Child) UnsetWidth() {
+	o.Width.Unset()
+}
+
+// GetHeight returns the Height field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetHeight() float32 {
-	if o == nil || IsNil(o.Height) {
+	if o == nil || IsNil(o.Height.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Height
+	return *o.Height.Get()
 }
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetHeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.Height) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Height, true
+	return o.Height.Get(), o.Height.IsSet()
 }
 
 // HasHeight returns a boolean if a field has been set.
 func (o *Child) HasHeight() bool {
-	if o != nil && !IsNil(o.Height) {
+	if o != nil && o.Height.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHeight gets a reference to the given float32 and assigns it to the Height field.
+// SetHeight gets a reference to the given NullableFloat32 and assigns it to the Height field.
 func (o *Child) SetHeight(v float32) {
-	o.Height = &v
+	o.Height.Set(&v)
+}
+// SetHeightNil sets the value for Height to be an explicit nil
+func (o *Child) SetHeightNil() {
+	o.Height.Set(nil)
 }
 
-// GetLength returns the Length field value if set, zero value otherwise.
+// UnsetHeight ensures that no value is present for Height, not even an explicit nil
+func (o *Child) UnsetHeight() {
+	o.Height.Unset()
+}
+
+// GetLength returns the Length field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetLength() float32 {
-	if o == nil || IsNil(o.Length) {
+	if o == nil || IsNil(o.Length.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Length
+	return *o.Length.Get()
 }
 
 // GetLengthOk returns a tuple with the Length field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetLengthOk() (*float32, bool) {
-	if o == nil || IsNil(o.Length) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Length, true
+	return o.Length.Get(), o.Length.IsSet()
 }
 
 // HasLength returns a boolean if a field has been set.
 func (o *Child) HasLength() bool {
-	if o != nil && !IsNil(o.Length) {
+	if o != nil && o.Length.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLength gets a reference to the given float32 and assigns it to the Length field.
+// SetLength gets a reference to the given NullableFloat32 and assigns it to the Length field.
 func (o *Child) SetLength(v float32) {
-	o.Length = &v
+	o.Length.Set(&v)
+}
+// SetLengthNil sets the value for Length to be an explicit nil
+func (o *Child) SetLengthNil() {
+	o.Length.Set(nil)
 }
 
-// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
+// UnsetLength ensures that no value is present for Length, not even an explicit nil
+func (o *Child) UnsetLength() {
+	o.Length.Unset()
+}
+
+// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetMetaTitle() string {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil || IsNil(o.MetaTitle.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaTitle
+	return *o.MetaTitle.Get()
 }
 
 // GetMetaTitleOk returns a tuple with the MetaTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetMetaTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaTitle, true
+	return o.MetaTitle.Get(), o.MetaTitle.IsSet()
 }
 
 // HasMetaTitle returns a boolean if a field has been set.
 func (o *Child) HasMetaTitle() bool {
-	if o != nil && !IsNil(o.MetaTitle) {
+	if o != nil && o.MetaTitle.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaTitle gets a reference to the given string and assigns it to the MetaTitle field.
+// SetMetaTitle gets a reference to the given NullableString and assigns it to the MetaTitle field.
 func (o *Child) SetMetaTitle(v string) {
-	o.MetaTitle = &v
+	o.MetaTitle.Set(&v)
+}
+// SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+func (o *Child) SetMetaTitleNil() {
+	o.MetaTitle.Set(nil)
 }
 
-// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
+// UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
+func (o *Child) UnsetMetaTitle() {
+	o.MetaTitle.Unset()
+}
+
+// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetMetaDescription() string {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil || IsNil(o.MetaDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaDescription
+	return *o.MetaDescription.Get()
 }
 
 // GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetMetaDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaDescription, true
+	return o.MetaDescription.Get(), o.MetaDescription.IsSet()
 }
 
 // HasMetaDescription returns a boolean if a field has been set.
 func (o *Child) HasMetaDescription() bool {
-	if o != nil && !IsNil(o.MetaDescription) {
+	if o != nil && o.MetaDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaDescription gets a reference to the given string and assigns it to the MetaDescription field.
+// SetMetaDescription gets a reference to the given NullableString and assigns it to the MetaDescription field.
 func (o *Child) SetMetaDescription(v string) {
-	o.MetaDescription = &v
+	o.MetaDescription.Set(&v)
+}
+// SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+func (o *Child) SetMetaDescriptionNil() {
+	o.MetaDescription.Set(nil)
 }
 
-// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise.
+// UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
+func (o *Child) UnsetMetaDescription() {
+	o.MetaDescription.Unset()
+}
+
+// GetMetaKeywords returns the MetaKeywords field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetMetaKeywords() string {
-	if o == nil || IsNil(o.MetaKeywords) {
+	if o == nil || IsNil(o.MetaKeywords.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaKeywords
+	return *o.MetaKeywords.Get()
 }
 
 // GetMetaKeywordsOk returns a tuple with the MetaKeywords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetMetaKeywordsOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaKeywords) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaKeywords, true
+	return o.MetaKeywords.Get(), o.MetaKeywords.IsSet()
 }
 
 // HasMetaKeywords returns a boolean if a field has been set.
 func (o *Child) HasMetaKeywords() bool {
-	if o != nil && !IsNil(o.MetaKeywords) {
+	if o != nil && o.MetaKeywords.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaKeywords gets a reference to the given string and assigns it to the MetaKeywords field.
+// SetMetaKeywords gets a reference to the given NullableString and assigns it to the MetaKeywords field.
 func (o *Child) SetMetaKeywords(v string) {
-	o.MetaKeywords = &v
+	o.MetaKeywords.Set(&v)
+}
+// SetMetaKeywordsNil sets the value for MetaKeywords to be an explicit nil
+func (o *Child) SetMetaKeywordsNil() {
+	o.MetaKeywords.Set(nil)
+}
+
+// UnsetMetaKeywords ensures that no value is present for MetaKeywords, not even an explicit nil
+func (o *Child) UnsetMetaKeywords() {
+	o.MetaKeywords.Unset()
 }
 
 // GetDiscounts returns the Discounts field value if set, zero value otherwise.
@@ -1494,41 +1864,51 @@ func (o *Child) SetDiscounts(v []Discount) {
 	o.Discounts = v
 }
 
-// GetIsVirtual returns the IsVirtual field value if set, zero value otherwise.
+// GetIsVirtual returns the IsVirtual field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetIsVirtual() bool {
-	if o == nil || IsNil(o.IsVirtual) {
+	if o == nil || IsNil(o.IsVirtual.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtual
+	return *o.IsVirtual.Get()
 }
 
 // GetIsVirtualOk returns a tuple with the IsVirtual field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetIsVirtualOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtual) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsVirtual, true
+	return o.IsVirtual.Get(), o.IsVirtual.IsSet()
 }
 
 // HasIsVirtual returns a boolean if a field has been set.
 func (o *Child) HasIsVirtual() bool {
-	if o != nil && !IsNil(o.IsVirtual) {
+	if o != nil && o.IsVirtual.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsVirtual gets a reference to the given bool and assigns it to the IsVirtual field.
+// SetIsVirtual gets a reference to the given NullableBool and assigns it to the IsVirtual field.
 func (o *Child) SetIsVirtual(v bool) {
-	o.IsVirtual = &v
+	o.IsVirtual.Set(&v)
+}
+// SetIsVirtualNil sets the value for IsVirtual to be an explicit nil
+func (o *Child) SetIsVirtualNil() {
+	o.IsVirtual.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetIsVirtual ensures that no value is present for IsVirtual, not even an explicit nil
+func (o *Child) UnsetIsVirtual() {
+	o.IsVirtual.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -1537,6 +1917,7 @@ func (o *Child) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -1558,9 +1939,9 @@ func (o *Child) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -1569,6 +1950,7 @@ func (o *Child) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Child) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -1606,47 +1988,47 @@ func (o Child) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ParentId) {
 		toSerialize["parent_id"] = o.ParentId
 	}
-	if !IsNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
+	if o.Sku.IsSet() {
+		toSerialize["sku"] = o.Sku.Get()
 	}
-	if !IsNil(o.Upc) {
-		toSerialize["upc"] = o.Upc
+	if o.Upc.IsSet() {
+		toSerialize["upc"] = o.Upc.Get()
 	}
-	if !IsNil(o.Ean) {
-		toSerialize["ean"] = o.Ean
+	if o.Ean.IsSet() {
+		toSerialize["ean"] = o.Ean.Get()
 	}
-	if !IsNil(o.Mpn) {
-		toSerialize["mpn"] = o.Mpn
+	if o.Mpn.IsSet() {
+		toSerialize["mpn"] = o.Mpn.Get()
 	}
-	if !IsNil(o.Gtin) {
-		toSerialize["gtin"] = o.Gtin
+	if o.Gtin.IsSet() {
+		toSerialize["gtin"] = o.Gtin.Get()
 	}
-	if !IsNil(o.Isbn) {
-		toSerialize["isbn"] = o.Isbn
+	if o.Isbn.IsSet() {
+		toSerialize["isbn"] = o.Isbn.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.SeoUrl) {
-		toSerialize["seo_url"] = o.SeoUrl
+	if o.SeoUrl.IsSet() {
+		toSerialize["seo_url"] = o.SeoUrl.Get()
 	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sort_order"] = o.SortOrder
+	if o.SortOrder.IsSet() {
+		toSerialize["sort_order"] = o.SortOrder.Get()
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.ShortDescription) {
-		toSerialize["short_description"] = o.ShortDescription
+	if o.ShortDescription.IsSet() {
+		toSerialize["short_description"] = o.ShortDescription.Get()
 	}
-	if !IsNil(o.FullDescription) {
-		toSerialize["full_description"] = o.FullDescription
+	if o.FullDescription.IsSet() {
+		toSerialize["full_description"] = o.FullDescription.Get()
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
@@ -1654,91 +2036,91 @@ func (o Child) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Combination) {
 		toSerialize["combination"] = o.Combination
 	}
-	if !IsNil(o.DefaultPrice) {
-		toSerialize["default_price"] = o.DefaultPrice
+	if o.DefaultPrice.IsSet() {
+		toSerialize["default_price"] = o.DefaultPrice.Get()
 	}
-	if !IsNil(o.CostPrice) {
-		toSerialize["cost_price"] = o.CostPrice
+	if o.CostPrice.IsSet() {
+		toSerialize["cost_price"] = o.CostPrice.Get()
 	}
-	if !IsNil(o.ListPrice) {
-		toSerialize["list_price"] = o.ListPrice
+	if o.ListPrice.IsSet() {
+		toSerialize["list_price"] = o.ListPrice.Get()
 	}
-	if !IsNil(o.WholesalePrice) {
-		toSerialize["wholesale_price"] = o.WholesalePrice
+	if o.WholesalePrice.IsSet() {
+		toSerialize["wholesale_price"] = o.WholesalePrice.Get()
 	}
 	if !IsNil(o.AdvancedPrice) {
 		toSerialize["advanced_price"] = o.AdvancedPrice
 	}
-	if !IsNil(o.TaxClassId) {
-		toSerialize["tax_class_id"] = o.TaxClassId
+	if o.TaxClassId.IsSet() {
+		toSerialize["tax_class_id"] = o.TaxClassId.Get()
 	}
-	if !IsNil(o.AvailForSale) {
-		toSerialize["avail_for_sale"] = o.AvailForSale
+	if o.AvailForSale.IsSet() {
+		toSerialize["avail_for_sale"] = o.AvailForSale.Get()
 	}
-	if !IsNil(o.AllowBackorders) {
-		toSerialize["allow_backorders"] = o.AllowBackorders
+	if o.AllowBackorders.IsSet() {
+		toSerialize["allow_backorders"] = o.AllowBackorders.Get()
 	}
-	if !IsNil(o.InStock) {
-		toSerialize["in_stock"] = o.InStock
+	if o.InStock.IsSet() {
+		toSerialize["in_stock"] = o.InStock.Get()
 	}
-	if !IsNil(o.OnSale) {
-		toSerialize["on_sale"] = o.OnSale
+	if o.OnSale.IsSet() {
+		toSerialize["on_sale"] = o.OnSale.Get()
 	}
-	if !IsNil(o.ManageStock) {
-		toSerialize["manage_stock"] = o.ManageStock
+	if o.ManageStock.IsSet() {
+		toSerialize["manage_stock"] = o.ManageStock.Get()
 	}
-	if !IsNil(o.InventoryLevel) {
-		toSerialize["inventory_level"] = o.InventoryLevel
+	if o.InventoryLevel.IsSet() {
+		toSerialize["inventory_level"] = o.InventoryLevel.Get()
 	}
 	if !IsNil(o.Inventory) {
 		toSerialize["inventory"] = o.Inventory
 	}
-	if !IsNil(o.MinQuantity) {
-		toSerialize["min_quantity"] = o.MinQuantity
+	if o.MinQuantity.IsSet() {
+		toSerialize["min_quantity"] = o.MinQuantity.Get()
 	}
-	if !IsNil(o.DefaultQtyInPack) {
-		toSerialize["default_qty_in_pack"] = o.DefaultQtyInPack
+	if o.DefaultQtyInPack.IsSet() {
+		toSerialize["default_qty_in_pack"] = o.DefaultQtyInPack.Get()
 	}
-	if !IsNil(o.IsQtyInPackFixed) {
-		toSerialize["is_qty_in_pack_fixed"] = o.IsQtyInPackFixed
+	if o.IsQtyInPackFixed.IsSet() {
+		toSerialize["is_qty_in_pack_fixed"] = o.IsQtyInPackFixed.Get()
 	}
-	if !IsNil(o.WeightUnit) {
-		toSerialize["weight_unit"] = o.WeightUnit
+	if o.WeightUnit.IsSet() {
+		toSerialize["weight_unit"] = o.WeightUnit.Get()
 	}
-	if !IsNil(o.Weight) {
-		toSerialize["weight"] = o.Weight
+	if o.Weight.IsSet() {
+		toSerialize["weight"] = o.Weight.Get()
 	}
-	if !IsNil(o.DimensionsUnit) {
-		toSerialize["dimensions_unit"] = o.DimensionsUnit
+	if o.DimensionsUnit.IsSet() {
+		toSerialize["dimensions_unit"] = o.DimensionsUnit.Get()
 	}
-	if !IsNil(o.Width) {
-		toSerialize["width"] = o.Width
+	if o.Width.IsSet() {
+		toSerialize["width"] = o.Width.Get()
 	}
-	if !IsNil(o.Height) {
-		toSerialize["height"] = o.Height
+	if o.Height.IsSet() {
+		toSerialize["height"] = o.Height.Get()
 	}
-	if !IsNil(o.Length) {
-		toSerialize["length"] = o.Length
+	if o.Length.IsSet() {
+		toSerialize["length"] = o.Length.Get()
 	}
-	if !IsNil(o.MetaTitle) {
-		toSerialize["meta_title"] = o.MetaTitle
+	if o.MetaTitle.IsSet() {
+		toSerialize["meta_title"] = o.MetaTitle.Get()
 	}
-	if !IsNil(o.MetaDescription) {
-		toSerialize["meta_description"] = o.MetaDescription
+	if o.MetaDescription.IsSet() {
+		toSerialize["meta_description"] = o.MetaDescription.Get()
 	}
-	if !IsNil(o.MetaKeywords) {
-		toSerialize["meta_keywords"] = o.MetaKeywords
+	if o.MetaKeywords.IsSet() {
+		toSerialize["meta_keywords"] = o.MetaKeywords.Get()
 	}
 	if !IsNil(o.Discounts) {
 		toSerialize["discounts"] = o.Discounts
 	}
-	if !IsNil(o.IsVirtual) {
-		toSerialize["is_virtual"] = o.IsVirtual
+	if o.IsVirtual.IsSet() {
+		toSerialize["is_virtual"] = o.IsVirtual.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

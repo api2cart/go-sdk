@@ -21,10 +21,10 @@ var _ MappedNullable = &BasketLiveShippingService{}
 // BasketLiveShippingService struct for BasketLiveShippingService
 type BasketLiveShippingService struct {
 	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Callback *string `json:"callback,omitempty"`
-	CallbackErrCnt *int32 `json:"callback_err_cnt,omitempty"`
-	EnabledOnStore *bool `json:"enabled_on_store,omitempty"`
+	CallbackErrCnt NullableInt32 `json:"callback_err_cnt,omitempty"`
+	EnabledOnStore NullableBool `json:"enabled_on_store,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -78,36 +78,46 @@ func (o *BasketLiveShippingService) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketLiveShippingService) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketLiveShippingService) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *BasketLiveShippingService) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *BasketLiveShippingService) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *BasketLiveShippingService) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *BasketLiveShippingService) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetCallback returns the Callback field value if set, zero value otherwise.
@@ -142,73 +152,93 @@ func (o *BasketLiveShippingService) SetCallback(v string) {
 	o.Callback = &v
 }
 
-// GetCallbackErrCnt returns the CallbackErrCnt field value if set, zero value otherwise.
+// GetCallbackErrCnt returns the CallbackErrCnt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketLiveShippingService) GetCallbackErrCnt() int32 {
-	if o == nil || IsNil(o.CallbackErrCnt) {
+	if o == nil || IsNil(o.CallbackErrCnt.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CallbackErrCnt
+	return *o.CallbackErrCnt.Get()
 }
 
 // GetCallbackErrCntOk returns a tuple with the CallbackErrCnt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketLiveShippingService) GetCallbackErrCntOk() (*int32, bool) {
-	if o == nil || IsNil(o.CallbackErrCnt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CallbackErrCnt, true
+	return o.CallbackErrCnt.Get(), o.CallbackErrCnt.IsSet()
 }
 
 // HasCallbackErrCnt returns a boolean if a field has been set.
 func (o *BasketLiveShippingService) HasCallbackErrCnt() bool {
-	if o != nil && !IsNil(o.CallbackErrCnt) {
+	if o != nil && o.CallbackErrCnt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCallbackErrCnt gets a reference to the given int32 and assigns it to the CallbackErrCnt field.
+// SetCallbackErrCnt gets a reference to the given NullableInt32 and assigns it to the CallbackErrCnt field.
 func (o *BasketLiveShippingService) SetCallbackErrCnt(v int32) {
-	o.CallbackErrCnt = &v
+	o.CallbackErrCnt.Set(&v)
+}
+// SetCallbackErrCntNil sets the value for CallbackErrCnt to be an explicit nil
+func (o *BasketLiveShippingService) SetCallbackErrCntNil() {
+	o.CallbackErrCnt.Set(nil)
 }
 
-// GetEnabledOnStore returns the EnabledOnStore field value if set, zero value otherwise.
+// UnsetCallbackErrCnt ensures that no value is present for CallbackErrCnt, not even an explicit nil
+func (o *BasketLiveShippingService) UnsetCallbackErrCnt() {
+	o.CallbackErrCnt.Unset()
+}
+
+// GetEnabledOnStore returns the EnabledOnStore field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketLiveShippingService) GetEnabledOnStore() bool {
-	if o == nil || IsNil(o.EnabledOnStore) {
+	if o == nil || IsNil(o.EnabledOnStore.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnabledOnStore
+	return *o.EnabledOnStore.Get()
 }
 
 // GetEnabledOnStoreOk returns a tuple with the EnabledOnStore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketLiveShippingService) GetEnabledOnStoreOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnabledOnStore) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnabledOnStore, true
+	return o.EnabledOnStore.Get(), o.EnabledOnStore.IsSet()
 }
 
 // HasEnabledOnStore returns a boolean if a field has been set.
 func (o *BasketLiveShippingService) HasEnabledOnStore() bool {
-	if o != nil && !IsNil(o.EnabledOnStore) {
+	if o != nil && o.EnabledOnStore.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnabledOnStore gets a reference to the given bool and assigns it to the EnabledOnStore field.
+// SetEnabledOnStore gets a reference to the given NullableBool and assigns it to the EnabledOnStore field.
 func (o *BasketLiveShippingService) SetEnabledOnStore(v bool) {
-	o.EnabledOnStore = &v
+	o.EnabledOnStore.Set(&v)
+}
+// SetEnabledOnStoreNil sets the value for EnabledOnStore to be an explicit nil
+func (o *BasketLiveShippingService) SetEnabledOnStoreNil() {
+	o.EnabledOnStore.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetEnabledOnStore ensures that no value is present for EnabledOnStore, not even an explicit nil
+func (o *BasketLiveShippingService) UnsetEnabledOnStore() {
+	o.EnabledOnStore.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketLiveShippingService) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +247,7 @@ func (o *BasketLiveShippingService) GetAdditionalFields() map[string]interface{}
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketLiveShippingService) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +269,9 @@ func (o *BasketLiveShippingService) SetAdditionalFields(v map[string]interface{}
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketLiveShippingService) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +280,7 @@ func (o *BasketLiveShippingService) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketLiveShippingService) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -283,22 +315,22 @@ func (o BasketLiveShippingService) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.Callback) {
 		toSerialize["callback"] = o.Callback
 	}
-	if !IsNil(o.CallbackErrCnt) {
-		toSerialize["callback_err_cnt"] = o.CallbackErrCnt
+	if o.CallbackErrCnt.IsSet() {
+		toSerialize["callback_err_cnt"] = o.CallbackErrCnt.Get()
 	}
-	if !IsNil(o.EnabledOnStore) {
-		toSerialize["enabled_on_store"] = o.EnabledOnStore
+	if o.EnabledOnStore.IsSet() {
+		toSerialize["enabled_on_store"] = o.EnabledOnStore.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -20,16 +20,16 @@ var _ MappedNullable = &Image{}
 
 // Image struct for Image
 type Image struct {
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	HttpPath *string `json:"http_path,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
-	MimeType *string `json:"mime-type,omitempty"`
-	Size *int32 `json:"size,omitempty"`
-	CreateAt *A2CDateTime `json:"create_at,omitempty"`
-	ModifiedAt *A2CDateTime `json:"modified_at,omitempty"`
-	Alt *string `json:"alt,omitempty"`
+	FileName NullableString `json:"file_name,omitempty"`
+	MimeType NullableString `json:"mime-type,omitempty"`
+	Size NullableInt32 `json:"size,omitempty"`
+	CreateAt NullableA2CDateTime `json:"create_at,omitempty"`
+	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
+	Alt NullableString `json:"alt,omitempty"`
 	Avail *bool `json:"avail,omitempty"`
-	SortOrder *int32 `json:"sort_order,omitempty"`
+	SortOrder NullableInt32 `json:"sort_order,omitempty"`
 	Type *string `json:"type,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -52,36 +52,46 @@ func NewImageWithDefaults() *Image {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Image) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *Image) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *Image) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *Image) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetHttpPath returns the HttpPath field value if set, zero value otherwise.
@@ -116,196 +126,256 @@ func (o *Image) SetHttpPath(v string) {
 	o.HttpPath = &v
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise.
+// GetFileName returns the FileName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetFileName() string {
-	if o == nil || IsNil(o.FileName) {
+	if o == nil || IsNil(o.FileName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FileName
+	return *o.FileName.Get()
 }
 
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetFileNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FileName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FileName, true
+	return o.FileName.Get(), o.FileName.IsSet()
 }
 
 // HasFileName returns a boolean if a field has been set.
 func (o *Image) HasFileName() bool {
-	if o != nil && !IsNil(o.FileName) {
+	if o != nil && o.FileName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFileName gets a reference to the given string and assigns it to the FileName field.
+// SetFileName gets a reference to the given NullableString and assigns it to the FileName field.
 func (o *Image) SetFileName(v string) {
-	o.FileName = &v
+	o.FileName.Set(&v)
+}
+// SetFileNameNil sets the value for FileName to be an explicit nil
+func (o *Image) SetFileNameNil() {
+	o.FileName.Set(nil)
 }
 
-// GetMimeType returns the MimeType field value if set, zero value otherwise.
+// UnsetFileName ensures that no value is present for FileName, not even an explicit nil
+func (o *Image) UnsetFileName() {
+	o.FileName.Unset()
+}
+
+// GetMimeType returns the MimeType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetMimeType() string {
-	if o == nil || IsNil(o.MimeType) {
+	if o == nil || IsNil(o.MimeType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MimeType
+	return *o.MimeType.Get()
 }
 
 // GetMimeTypeOk returns a tuple with the MimeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetMimeTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.MimeType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MimeType, true
+	return o.MimeType.Get(), o.MimeType.IsSet()
 }
 
 // HasMimeType returns a boolean if a field has been set.
 func (o *Image) HasMimeType() bool {
-	if o != nil && !IsNil(o.MimeType) {
+	if o != nil && o.MimeType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMimeType gets a reference to the given string and assigns it to the MimeType field.
+// SetMimeType gets a reference to the given NullableString and assigns it to the MimeType field.
 func (o *Image) SetMimeType(v string) {
-	o.MimeType = &v
+	o.MimeType.Set(&v)
+}
+// SetMimeTypeNil sets the value for MimeType to be an explicit nil
+func (o *Image) SetMimeTypeNil() {
+	o.MimeType.Set(nil)
 }
 
-// GetSize returns the Size field value if set, zero value otherwise.
+// UnsetMimeType ensures that no value is present for MimeType, not even an explicit nil
+func (o *Image) UnsetMimeType() {
+	o.MimeType.Unset()
+}
+
+// GetSize returns the Size field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetSize() int32 {
-	if o == nil || IsNil(o.Size) {
+	if o == nil || IsNil(o.Size.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Size
+	return *o.Size.Get()
 }
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.Size) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Size, true
+	return o.Size.Get(), o.Size.IsSet()
 }
 
 // HasSize returns a boolean if a field has been set.
 func (o *Image) HasSize() bool {
-	if o != nil && !IsNil(o.Size) {
+	if o != nil && o.Size.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
+// SetSize gets a reference to the given NullableInt32 and assigns it to the Size field.
 func (o *Image) SetSize(v int32) {
-	o.Size = &v
+	o.Size.Set(&v)
+}
+// SetSizeNil sets the value for Size to be an explicit nil
+func (o *Image) SetSizeNil() {
+	o.Size.Set(nil)
 }
 
-// GetCreateAt returns the CreateAt field value if set, zero value otherwise.
+// UnsetSize ensures that no value is present for Size, not even an explicit nil
+func (o *Image) UnsetSize() {
+	o.Size.Unset()
+}
+
+// GetCreateAt returns the CreateAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetCreateAt() A2CDateTime {
-	if o == nil || IsNil(o.CreateAt) {
+	if o == nil || IsNil(o.CreateAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreateAt
+	return *o.CreateAt.Get()
 }
 
 // GetCreateAtOk returns a tuple with the CreateAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetCreateAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreateAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreateAt, true
+	return o.CreateAt.Get(), o.CreateAt.IsSet()
 }
 
 // HasCreateAt returns a boolean if a field has been set.
 func (o *Image) HasCreateAt() bool {
-	if o != nil && !IsNil(o.CreateAt) {
+	if o != nil && o.CreateAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreateAt gets a reference to the given A2CDateTime and assigns it to the CreateAt field.
+// SetCreateAt gets a reference to the given NullableA2CDateTime and assigns it to the CreateAt field.
 func (o *Image) SetCreateAt(v A2CDateTime) {
-	o.CreateAt = &v
+	o.CreateAt.Set(&v)
+}
+// SetCreateAtNil sets the value for CreateAt to be an explicit nil
+func (o *Image) SetCreateAtNil() {
+	o.CreateAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreateAt ensures that no value is present for CreateAt, not even an explicit nil
+func (o *Image) UnsetCreateAt() {
+	o.CreateAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetModifiedAt() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetModifiedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *Image) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given A2CDateTime and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedAt field.
 func (o *Image) SetModifiedAt(v A2CDateTime) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *Image) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
 }
 
-// GetAlt returns the Alt field value if set, zero value otherwise.
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *Image) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
+}
+
+// GetAlt returns the Alt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetAlt() string {
-	if o == nil || IsNil(o.Alt) {
+	if o == nil || IsNil(o.Alt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Alt
+	return *o.Alt.Get()
 }
 
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetAltOk() (*string, bool) {
-	if o == nil || IsNil(o.Alt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Alt, true
+	return o.Alt.Get(), o.Alt.IsSet()
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *Image) HasAlt() bool {
-	if o != nil && !IsNil(o.Alt) {
+	if o != nil && o.Alt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAlt gets a reference to the given string and assigns it to the Alt field.
+// SetAlt gets a reference to the given NullableString and assigns it to the Alt field.
 func (o *Image) SetAlt(v string) {
-	o.Alt = &v
+	o.Alt.Set(&v)
+}
+// SetAltNil sets the value for Alt to be an explicit nil
+func (o *Image) SetAltNil() {
+	o.Alt.Set(nil)
+}
+
+// UnsetAlt ensures that no value is present for Alt, not even an explicit nil
+func (o *Image) UnsetAlt() {
+	o.Alt.Unset()
 }
 
 // GetAvail returns the Avail field value if set, zero value otherwise.
@@ -340,36 +410,46 @@ func (o *Image) SetAvail(v bool) {
 	o.Avail = &v
 }
 
-// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetSortOrder() int32 {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil || IsNil(o.SortOrder.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SortOrder
+	return *o.SortOrder.Get()
 }
 
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetSortOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SortOrder, true
+	return o.SortOrder.Get(), o.SortOrder.IsSet()
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *Image) HasSortOrder() bool {
-	if o != nil && !IsNil(o.SortOrder) {
+	if o != nil && o.SortOrder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+// SetSortOrder gets a reference to the given NullableInt32 and assigns it to the SortOrder field.
 func (o *Image) SetSortOrder(v int32) {
-	o.SortOrder = &v
+	o.SortOrder.Set(&v)
+}
+// SetSortOrderNil sets the value for SortOrder to be an explicit nil
+func (o *Image) SetSortOrderNil() {
+	o.SortOrder.Set(nil)
+}
+
+// UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
+func (o *Image) UnsetSortOrder() {
+	o.SortOrder.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -404,9 +484,9 @@ func (o *Image) SetType(v string) {
 	o.Type = &v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -415,6 +495,7 @@ func (o *Image) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -436,9 +517,9 @@ func (o *Image) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Image) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -447,6 +528,7 @@ func (o *Image) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Image) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -478,43 +560,43 @@ func (o Image) MarshalJSON() ([]byte, error) {
 
 func (o Image) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	if !IsNil(o.HttpPath) {
 		toSerialize["http_path"] = o.HttpPath
 	}
-	if !IsNil(o.FileName) {
-		toSerialize["file_name"] = o.FileName
+	if o.FileName.IsSet() {
+		toSerialize["file_name"] = o.FileName.Get()
 	}
-	if !IsNil(o.MimeType) {
-		toSerialize["mime-type"] = o.MimeType
+	if o.MimeType.IsSet() {
+		toSerialize["mime-type"] = o.MimeType.Get()
 	}
-	if !IsNil(o.Size) {
-		toSerialize["size"] = o.Size
+	if o.Size.IsSet() {
+		toSerialize["size"] = o.Size.Get()
 	}
-	if !IsNil(o.CreateAt) {
-		toSerialize["create_at"] = o.CreateAt
+	if o.CreateAt.IsSet() {
+		toSerialize["create_at"] = o.CreateAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
-	if !IsNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
+	if o.Alt.IsSet() {
+		toSerialize["alt"] = o.Alt.Get()
 	}
 	if !IsNil(o.Avail) {
 		toSerialize["avail"] = o.Avail
 	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sort_order"] = o.SortOrder
+	if o.SortOrder.IsSet() {
+		toSerialize["sort_order"] = o.SortOrder.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

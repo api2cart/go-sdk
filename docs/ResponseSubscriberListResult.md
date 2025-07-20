@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | Pointer to **int32** |  | [optional] 
+**TotalCount** | Pointer to **NullableInt32** |  | [optional] 
 **Subscribers** | Pointer to [**[]Subscriber**](Subscriber.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetTotalCount sets TotalCount field to given value.
 
 HasTotalCount returns a boolean if a field has been set.
 
+### SetTotalCountNil
+
+`func (o *ResponseSubscriberListResult) SetTotalCountNil(b bool)`
+
+ SetTotalCountNil sets the value for TotalCount to be an explicit nil
+
+### UnsetTotalCount
+`func (o *ResponseSubscriberListResult) UnsetTotalCount()`
+
+UnsetTotalCount ensures that no value is present for TotalCount, not even an explicit nil
 ### GetSubscribers
 
 `func (o *ResponseSubscriberListResult) GetSubscribers() []Subscriber`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseSubscriberListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseSubscriberListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseSubscriberListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseSubscriberListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseSubscriberListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

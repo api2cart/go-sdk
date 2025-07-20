@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseOrderShipmentListResult{}
 
 // ResponseOrderShipmentListResult struct for ResponseOrderShipmentListResult
 type ResponseOrderShipmentListResult struct {
-	ShipmentCount *int32 `json:"shipment_count,omitempty"`
+	ShipmentCount NullableInt32 `json:"shipment_count,omitempty"`
 	Shipment []Shipment `json:"shipment,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseOrderShipmentListResultWithDefaults() *ResponseOrderShipmentList
 	return &this
 }
 
-// GetShipmentCount returns the ShipmentCount field value if set, zero value otherwise.
+// GetShipmentCount returns the ShipmentCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderShipmentListResult) GetShipmentCount() int32 {
-	if o == nil || IsNil(o.ShipmentCount) {
+	if o == nil || IsNil(o.ShipmentCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.ShipmentCount
+	return *o.ShipmentCount.Get()
 }
 
 // GetShipmentCountOk returns a tuple with the ShipmentCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderShipmentListResult) GetShipmentCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ShipmentCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShipmentCount, true
+	return o.ShipmentCount.Get(), o.ShipmentCount.IsSet()
 }
 
 // HasShipmentCount returns a boolean if a field has been set.
 func (o *ResponseOrderShipmentListResult) HasShipmentCount() bool {
-	if o != nil && !IsNil(o.ShipmentCount) {
+	if o != nil && o.ShipmentCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShipmentCount gets a reference to the given int32 and assigns it to the ShipmentCount field.
+// SetShipmentCount gets a reference to the given NullableInt32 and assigns it to the ShipmentCount field.
 func (o *ResponseOrderShipmentListResult) SetShipmentCount(v int32) {
-	o.ShipmentCount = &v
+	o.ShipmentCount.Set(&v)
+}
+// SetShipmentCountNil sets the value for ShipmentCount to be an explicit nil
+func (o *ResponseOrderShipmentListResult) SetShipmentCountNil() {
+	o.ShipmentCount.Set(nil)
+}
+
+// UnsetShipmentCount ensures that no value is present for ShipmentCount, not even an explicit nil
+func (o *ResponseOrderShipmentListResult) UnsetShipmentCount() {
+	o.ShipmentCount.Unset()
 }
 
 // GetShipment returns the Shipment field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseOrderShipmentListResult) SetShipment(v []Shipment) {
 	o.Shipment = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderShipmentListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseOrderShipmentListResult) GetAdditionalFields() map[string]inter
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderShipmentListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseOrderShipmentListResult) SetAdditionalFields(v map[string]inter
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderShipmentListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseOrderShipmentListResult) GetCustomFields() map[string]interface
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderShipmentListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseOrderShipmentListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseOrderShipmentListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ShipmentCount) {
-		toSerialize["shipment_count"] = o.ShipmentCount
+	if o.ShipmentCount.IsSet() {
+		toSerialize["shipment_count"] = o.ShipmentCount.Get()
 	}
 	if !IsNil(o.Shipment) {
 		toSerialize["shipment"] = o.Shipment
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

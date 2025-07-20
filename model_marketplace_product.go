@@ -21,27 +21,27 @@ var _ MappedNullable = &MarketplaceProduct{}
 // MarketplaceProduct struct for MarketplaceProduct
 type MarketplaceProduct struct {
 	Id *string `json:"id,omitempty"`
-	Type *string `json:"type,omitempty"`
-	UAsin *string `json:"u_asin,omitempty"`
-	UEan *string `json:"u_ean,omitempty"`
-	UGtin *string `json:"u_gtin,omitempty"`
-	UIsbn *string `json:"u_isbn,omitempty"`
-	UMpn *string `json:"u_mpn,omitempty"`
-	UUpc *string `json:"u_upc,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Price *float32 `json:"price,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	UAsin NullableString `json:"u_asin,omitempty"`
+	UEan NullableString `json:"u_ean,omitempty"`
+	UGtin NullableString `json:"u_gtin,omitempty"`
+	UIsbn NullableString `json:"u_isbn,omitempty"`
+	UMpn NullableString `json:"u_mpn,omitempty"`
+	UUpc NullableString `json:"u_upc,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Price NullableFloat32 `json:"price,omitempty"`
 	Images []Image `json:"images,omitempty"`
 	ProductOptions []ProductOption `json:"product_options,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	Brand *string `json:"brand,omitempty"`
-	Weight *float32 `json:"weight,omitempty"`
-	WeightUnit *string `json:"weight_unit,omitempty"`
-	DimensionsUnit *string `json:"dimensions_unit,omitempty"`
-	Width *float32 `json:"width,omitempty"`
-	Height *float32 `json:"height,omitempty"`
-	Length *float32 `json:"length,omitempty"`
+	Manufacturer NullableString `json:"manufacturer,omitempty"`
+	Brand NullableString `json:"brand,omitempty"`
+	Weight NullableFloat32 `json:"weight,omitempty"`
+	WeightUnit NullableString `json:"weight_unit,omitempty"`
+	DimensionsUnit NullableString `json:"dimensions_unit,omitempty"`
+	Width NullableFloat32 `json:"width,omitempty"`
+	Height NullableFloat32 `json:"height,omitempty"`
+	Length NullableFloat32 `json:"length,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -95,356 +95,466 @@ func (o *MarketplaceProduct) SetId(v string) {
 	o.Id = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *MarketplaceProduct) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *MarketplaceProduct) SetTypeNil() {
+	o.Type.Set(nil)
 }
 
-// GetUAsin returns the UAsin field value if set, zero value otherwise.
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *MarketplaceProduct) UnsetType() {
+	o.Type.Unset()
+}
+
+// GetUAsin returns the UAsin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUAsin() string {
-	if o == nil || IsNil(o.UAsin) {
+	if o == nil || IsNil(o.UAsin.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UAsin
+	return *o.UAsin.Get()
 }
 
 // GetUAsinOk returns a tuple with the UAsin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUAsinOk() (*string, bool) {
-	if o == nil || IsNil(o.UAsin) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UAsin, true
+	return o.UAsin.Get(), o.UAsin.IsSet()
 }
 
 // HasUAsin returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUAsin() bool {
-	if o != nil && !IsNil(o.UAsin) {
+	if o != nil && o.UAsin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUAsin gets a reference to the given string and assigns it to the UAsin field.
+// SetUAsin gets a reference to the given NullableString and assigns it to the UAsin field.
 func (o *MarketplaceProduct) SetUAsin(v string) {
-	o.UAsin = &v
+	o.UAsin.Set(&v)
+}
+// SetUAsinNil sets the value for UAsin to be an explicit nil
+func (o *MarketplaceProduct) SetUAsinNil() {
+	o.UAsin.Set(nil)
 }
 
-// GetUEan returns the UEan field value if set, zero value otherwise.
+// UnsetUAsin ensures that no value is present for UAsin, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUAsin() {
+	o.UAsin.Unset()
+}
+
+// GetUEan returns the UEan field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUEan() string {
-	if o == nil || IsNil(o.UEan) {
+	if o == nil || IsNil(o.UEan.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UEan
+	return *o.UEan.Get()
 }
 
 // GetUEanOk returns a tuple with the UEan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUEanOk() (*string, bool) {
-	if o == nil || IsNil(o.UEan) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UEan, true
+	return o.UEan.Get(), o.UEan.IsSet()
 }
 
 // HasUEan returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUEan() bool {
-	if o != nil && !IsNil(o.UEan) {
+	if o != nil && o.UEan.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUEan gets a reference to the given string and assigns it to the UEan field.
+// SetUEan gets a reference to the given NullableString and assigns it to the UEan field.
 func (o *MarketplaceProduct) SetUEan(v string) {
-	o.UEan = &v
+	o.UEan.Set(&v)
+}
+// SetUEanNil sets the value for UEan to be an explicit nil
+func (o *MarketplaceProduct) SetUEanNil() {
+	o.UEan.Set(nil)
 }
 
-// GetUGtin returns the UGtin field value if set, zero value otherwise.
+// UnsetUEan ensures that no value is present for UEan, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUEan() {
+	o.UEan.Unset()
+}
+
+// GetUGtin returns the UGtin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUGtin() string {
-	if o == nil || IsNil(o.UGtin) {
+	if o == nil || IsNil(o.UGtin.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UGtin
+	return *o.UGtin.Get()
 }
 
 // GetUGtinOk returns a tuple with the UGtin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUGtinOk() (*string, bool) {
-	if o == nil || IsNil(o.UGtin) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UGtin, true
+	return o.UGtin.Get(), o.UGtin.IsSet()
 }
 
 // HasUGtin returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUGtin() bool {
-	if o != nil && !IsNil(o.UGtin) {
+	if o != nil && o.UGtin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUGtin gets a reference to the given string and assigns it to the UGtin field.
+// SetUGtin gets a reference to the given NullableString and assigns it to the UGtin field.
 func (o *MarketplaceProduct) SetUGtin(v string) {
-	o.UGtin = &v
+	o.UGtin.Set(&v)
+}
+// SetUGtinNil sets the value for UGtin to be an explicit nil
+func (o *MarketplaceProduct) SetUGtinNil() {
+	o.UGtin.Set(nil)
 }
 
-// GetUIsbn returns the UIsbn field value if set, zero value otherwise.
+// UnsetUGtin ensures that no value is present for UGtin, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUGtin() {
+	o.UGtin.Unset()
+}
+
+// GetUIsbn returns the UIsbn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUIsbn() string {
-	if o == nil || IsNil(o.UIsbn) {
+	if o == nil || IsNil(o.UIsbn.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UIsbn
+	return *o.UIsbn.Get()
 }
 
 // GetUIsbnOk returns a tuple with the UIsbn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUIsbnOk() (*string, bool) {
-	if o == nil || IsNil(o.UIsbn) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UIsbn, true
+	return o.UIsbn.Get(), o.UIsbn.IsSet()
 }
 
 // HasUIsbn returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUIsbn() bool {
-	if o != nil && !IsNil(o.UIsbn) {
+	if o != nil && o.UIsbn.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUIsbn gets a reference to the given string and assigns it to the UIsbn field.
+// SetUIsbn gets a reference to the given NullableString and assigns it to the UIsbn field.
 func (o *MarketplaceProduct) SetUIsbn(v string) {
-	o.UIsbn = &v
+	o.UIsbn.Set(&v)
+}
+// SetUIsbnNil sets the value for UIsbn to be an explicit nil
+func (o *MarketplaceProduct) SetUIsbnNil() {
+	o.UIsbn.Set(nil)
 }
 
-// GetUMpn returns the UMpn field value if set, zero value otherwise.
+// UnsetUIsbn ensures that no value is present for UIsbn, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUIsbn() {
+	o.UIsbn.Unset()
+}
+
+// GetUMpn returns the UMpn field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUMpn() string {
-	if o == nil || IsNil(o.UMpn) {
+	if o == nil || IsNil(o.UMpn.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UMpn
+	return *o.UMpn.Get()
 }
 
 // GetUMpnOk returns a tuple with the UMpn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUMpnOk() (*string, bool) {
-	if o == nil || IsNil(o.UMpn) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UMpn, true
+	return o.UMpn.Get(), o.UMpn.IsSet()
 }
 
 // HasUMpn returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUMpn() bool {
-	if o != nil && !IsNil(o.UMpn) {
+	if o != nil && o.UMpn.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUMpn gets a reference to the given string and assigns it to the UMpn field.
+// SetUMpn gets a reference to the given NullableString and assigns it to the UMpn field.
 func (o *MarketplaceProduct) SetUMpn(v string) {
-	o.UMpn = &v
+	o.UMpn.Set(&v)
+}
+// SetUMpnNil sets the value for UMpn to be an explicit nil
+func (o *MarketplaceProduct) SetUMpnNil() {
+	o.UMpn.Set(nil)
 }
 
-// GetUUpc returns the UUpc field value if set, zero value otherwise.
+// UnsetUMpn ensures that no value is present for UMpn, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUMpn() {
+	o.UMpn.Unset()
+}
+
+// GetUUpc returns the UUpc field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUUpc() string {
-	if o == nil || IsNil(o.UUpc) {
+	if o == nil || IsNil(o.UUpc.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UUpc
+	return *o.UUpc.Get()
 }
 
 // GetUUpcOk returns a tuple with the UUpc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUUpcOk() (*string, bool) {
-	if o == nil || IsNil(o.UUpc) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UUpc, true
+	return o.UUpc.Get(), o.UUpc.IsSet()
 }
 
 // HasUUpc returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUUpc() bool {
-	if o != nil && !IsNil(o.UUpc) {
+	if o != nil && o.UUpc.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUUpc gets a reference to the given string and assigns it to the UUpc field.
+// SetUUpc gets a reference to the given NullableString and assigns it to the UUpc field.
 func (o *MarketplaceProduct) SetUUpc(v string) {
-	o.UUpc = &v
+	o.UUpc.Set(&v)
+}
+// SetUUpcNil sets the value for UUpc to be an explicit nil
+func (o *MarketplaceProduct) SetUUpcNil() {
+	o.UUpc.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetUUpc ensures that no value is present for UUpc, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUUpc() {
+	o.UUpc.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *MarketplaceProduct) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *MarketplaceProduct) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *MarketplaceProduct) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *MarketplaceProduct) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *MarketplaceProduct) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *MarketplaceProduct) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *MarketplaceProduct) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *MarketplaceProduct) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *MarketplaceProduct) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetPrice() float32 {
-	if o == nil || IsNil(o.Price) {
+	if o == nil || IsNil(o.Price.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Price
+	return *o.Price.Get()
 }
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return o.Price.Get(), o.Price.IsSet()
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
+	if o != nil && o.Price.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrice gets a reference to the given float32 and assigns it to the Price field.
+// SetPrice gets a reference to the given NullableFloat32 and assigns it to the Price field.
 func (o *MarketplaceProduct) SetPrice(v float32) {
-	o.Price = &v
+	o.Price.Set(&v)
+}
+// SetPriceNil sets the value for Price to be an explicit nil
+func (o *MarketplaceProduct) SetPriceNil() {
+	o.Price.Set(nil)
+}
+
+// UnsetPrice ensures that no value is present for Price, not even an explicit nil
+func (o *MarketplaceProduct) UnsetPrice() {
+	o.Price.Unset()
 }
 
 // GetImages returns the Images field value if set, zero value otherwise.
@@ -511,265 +621,345 @@ func (o *MarketplaceProduct) SetProductOptions(v []ProductOption) {
 	o.ProductOptions = v
 }
 
-// GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
+// GetManufacturer returns the Manufacturer field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetManufacturer() string {
-	if o == nil || IsNil(o.Manufacturer) {
+	if o == nil || IsNil(o.Manufacturer.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Manufacturer
+	return *o.Manufacturer.Get()
 }
 
 // GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetManufacturerOk() (*string, bool) {
-	if o == nil || IsNil(o.Manufacturer) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Manufacturer, true
+	return o.Manufacturer.Get(), o.Manufacturer.IsSet()
 }
 
 // HasManufacturer returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasManufacturer() bool {
-	if o != nil && !IsNil(o.Manufacturer) {
+	if o != nil && o.Manufacturer.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManufacturer gets a reference to the given string and assigns it to the Manufacturer field.
+// SetManufacturer gets a reference to the given NullableString and assigns it to the Manufacturer field.
 func (o *MarketplaceProduct) SetManufacturer(v string) {
-	o.Manufacturer = &v
+	o.Manufacturer.Set(&v)
+}
+// SetManufacturerNil sets the value for Manufacturer to be an explicit nil
+func (o *MarketplaceProduct) SetManufacturerNil() {
+	o.Manufacturer.Set(nil)
 }
 
-// GetBrand returns the Brand field value if set, zero value otherwise.
+// UnsetManufacturer ensures that no value is present for Manufacturer, not even an explicit nil
+func (o *MarketplaceProduct) UnsetManufacturer() {
+	o.Manufacturer.Unset()
+}
+
+// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetBrand() string {
-	if o == nil || IsNil(o.Brand) {
+	if o == nil || IsNil(o.Brand.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Brand
+	return *o.Brand.Get()
 }
 
 // GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetBrandOk() (*string, bool) {
-	if o == nil || IsNil(o.Brand) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Brand, true
+	return o.Brand.Get(), o.Brand.IsSet()
 }
 
 // HasBrand returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasBrand() bool {
-	if o != nil && !IsNil(o.Brand) {
+	if o != nil && o.Brand.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBrand gets a reference to the given string and assigns it to the Brand field.
+// SetBrand gets a reference to the given NullableString and assigns it to the Brand field.
 func (o *MarketplaceProduct) SetBrand(v string) {
-	o.Brand = &v
+	o.Brand.Set(&v)
+}
+// SetBrandNil sets the value for Brand to be an explicit nil
+func (o *MarketplaceProduct) SetBrandNil() {
+	o.Brand.Set(nil)
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// UnsetBrand ensures that no value is present for Brand, not even an explicit nil
+func (o *MarketplaceProduct) UnsetBrand() {
+	o.Brand.Unset()
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetWeight() float32 {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil || IsNil(o.Weight.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Weight
+	return *o.Weight.Get()
 }
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetWeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Weight, true
+	return o.Weight.Get(), o.Weight.IsSet()
 }
 
 // HasWeight returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasWeight() bool {
-	if o != nil && !IsNil(o.Weight) {
+	if o != nil && o.Weight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given float32 and assigns it to the Weight field.
+// SetWeight gets a reference to the given NullableFloat32 and assigns it to the Weight field.
 func (o *MarketplaceProduct) SetWeight(v float32) {
-	o.Weight = &v
+	o.Weight.Set(&v)
+}
+// SetWeightNil sets the value for Weight to be an explicit nil
+func (o *MarketplaceProduct) SetWeightNil() {
+	o.Weight.Set(nil)
 }
 
-// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+func (o *MarketplaceProduct) UnsetWeight() {
+	o.Weight.Unset()
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetWeightUnit() string {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil || IsNil(o.WeightUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WeightUnit
+	return *o.WeightUnit.Get()
 }
 
 // GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetWeightUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.WeightUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WeightUnit, true
+	return o.WeightUnit.Get(), o.WeightUnit.IsSet()
 }
 
 // HasWeightUnit returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasWeightUnit() bool {
-	if o != nil && !IsNil(o.WeightUnit) {
+	if o != nil && o.WeightUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+// SetWeightUnit gets a reference to the given NullableString and assigns it to the WeightUnit field.
 func (o *MarketplaceProduct) SetWeightUnit(v string) {
-	o.WeightUnit = &v
+	o.WeightUnit.Set(&v)
+}
+// SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+func (o *MarketplaceProduct) SetWeightUnitNil() {
+	o.WeightUnit.Set(nil)
 }
 
-// GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise.
+// UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
+func (o *MarketplaceProduct) UnsetWeightUnit() {
+	o.WeightUnit.Unset()
+}
+
+// GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetDimensionsUnit() string {
-	if o == nil || IsNil(o.DimensionsUnit) {
+	if o == nil || IsNil(o.DimensionsUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DimensionsUnit
+	return *o.DimensionsUnit.Get()
 }
 
 // GetDimensionsUnitOk returns a tuple with the DimensionsUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetDimensionsUnitOk() (*string, bool) {
-	if o == nil || IsNil(o.DimensionsUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DimensionsUnit, true
+	return o.DimensionsUnit.Get(), o.DimensionsUnit.IsSet()
 }
 
 // HasDimensionsUnit returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasDimensionsUnit() bool {
-	if o != nil && !IsNil(o.DimensionsUnit) {
+	if o != nil && o.DimensionsUnit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDimensionsUnit gets a reference to the given string and assigns it to the DimensionsUnit field.
+// SetDimensionsUnit gets a reference to the given NullableString and assigns it to the DimensionsUnit field.
 func (o *MarketplaceProduct) SetDimensionsUnit(v string) {
-	o.DimensionsUnit = &v
+	o.DimensionsUnit.Set(&v)
+}
+// SetDimensionsUnitNil sets the value for DimensionsUnit to be an explicit nil
+func (o *MarketplaceProduct) SetDimensionsUnitNil() {
+	o.DimensionsUnit.Set(nil)
 }
 
-// GetWidth returns the Width field value if set, zero value otherwise.
+// UnsetDimensionsUnit ensures that no value is present for DimensionsUnit, not even an explicit nil
+func (o *MarketplaceProduct) UnsetDimensionsUnit() {
+	o.DimensionsUnit.Unset()
+}
+
+// GetWidth returns the Width field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetWidth() float32 {
-	if o == nil || IsNil(o.Width) {
+	if o == nil || IsNil(o.Width.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Width
+	return *o.Width.Get()
 }
 
 // GetWidthOk returns a tuple with the Width field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetWidthOk() (*float32, bool) {
-	if o == nil || IsNil(o.Width) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Width, true
+	return o.Width.Get(), o.Width.IsSet()
 }
 
 // HasWidth returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasWidth() bool {
-	if o != nil && !IsNil(o.Width) {
+	if o != nil && o.Width.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWidth gets a reference to the given float32 and assigns it to the Width field.
+// SetWidth gets a reference to the given NullableFloat32 and assigns it to the Width field.
 func (o *MarketplaceProduct) SetWidth(v float32) {
-	o.Width = &v
+	o.Width.Set(&v)
+}
+// SetWidthNil sets the value for Width to be an explicit nil
+func (o *MarketplaceProduct) SetWidthNil() {
+	o.Width.Set(nil)
 }
 
-// GetHeight returns the Height field value if set, zero value otherwise.
+// UnsetWidth ensures that no value is present for Width, not even an explicit nil
+func (o *MarketplaceProduct) UnsetWidth() {
+	o.Width.Unset()
+}
+
+// GetHeight returns the Height field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetHeight() float32 {
-	if o == nil || IsNil(o.Height) {
+	if o == nil || IsNil(o.Height.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Height
+	return *o.Height.Get()
 }
 
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetHeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.Height) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Height, true
+	return o.Height.Get(), o.Height.IsSet()
 }
 
 // HasHeight returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasHeight() bool {
-	if o != nil && !IsNil(o.Height) {
+	if o != nil && o.Height.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHeight gets a reference to the given float32 and assigns it to the Height field.
+// SetHeight gets a reference to the given NullableFloat32 and assigns it to the Height field.
 func (o *MarketplaceProduct) SetHeight(v float32) {
-	o.Height = &v
+	o.Height.Set(&v)
+}
+// SetHeightNil sets the value for Height to be an explicit nil
+func (o *MarketplaceProduct) SetHeightNil() {
+	o.Height.Set(nil)
 }
 
-// GetLength returns the Length field value if set, zero value otherwise.
+// UnsetHeight ensures that no value is present for Height, not even an explicit nil
+func (o *MarketplaceProduct) UnsetHeight() {
+	o.Height.Unset()
+}
+
+// GetLength returns the Length field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetLength() float32 {
-	if o == nil || IsNil(o.Length) {
+	if o == nil || IsNil(o.Length.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Length
+	return *o.Length.Get()
 }
 
 // GetLengthOk returns a tuple with the Length field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetLengthOk() (*float32, bool) {
-	if o == nil || IsNil(o.Length) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Length, true
+	return o.Length.Get(), o.Length.IsSet()
 }
 
 // HasLength returns a boolean if a field has been set.
 func (o *MarketplaceProduct) HasLength() bool {
-	if o != nil && !IsNil(o.Length) {
+	if o != nil && o.Length.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLength gets a reference to the given float32 and assigns it to the Length field.
+// SetLength gets a reference to the given NullableFloat32 and assigns it to the Length field.
 func (o *MarketplaceProduct) SetLength(v float32) {
-	o.Length = &v
+	o.Length.Set(&v)
+}
+// SetLengthNil sets the value for Length to be an explicit nil
+func (o *MarketplaceProduct) SetLengthNil() {
+	o.Length.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetLength ensures that no value is present for Length, not even an explicit nil
+func (o *MarketplaceProduct) UnsetLength() {
+	o.Length.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -778,6 +968,7 @@ func (o *MarketplaceProduct) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -799,9 +990,9 @@ func (o *MarketplaceProduct) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MarketplaceProduct) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -810,6 +1001,7 @@ func (o *MarketplaceProduct) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MarketplaceProduct) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -844,38 +1036,38 @@ func (o MarketplaceProduct) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
-	if !IsNil(o.UAsin) {
-		toSerialize["u_asin"] = o.UAsin
+	if o.UAsin.IsSet() {
+		toSerialize["u_asin"] = o.UAsin.Get()
 	}
-	if !IsNil(o.UEan) {
-		toSerialize["u_ean"] = o.UEan
+	if o.UEan.IsSet() {
+		toSerialize["u_ean"] = o.UEan.Get()
 	}
-	if !IsNil(o.UGtin) {
-		toSerialize["u_gtin"] = o.UGtin
+	if o.UGtin.IsSet() {
+		toSerialize["u_gtin"] = o.UGtin.Get()
 	}
-	if !IsNil(o.UIsbn) {
-		toSerialize["u_isbn"] = o.UIsbn
+	if o.UIsbn.IsSet() {
+		toSerialize["u_isbn"] = o.UIsbn.Get()
 	}
-	if !IsNil(o.UMpn) {
-		toSerialize["u_mpn"] = o.UMpn
+	if o.UMpn.IsSet() {
+		toSerialize["u_mpn"] = o.UMpn.Get()
 	}
-	if !IsNil(o.UUpc) {
-		toSerialize["u_upc"] = o.UUpc
+	if o.UUpc.IsSet() {
+		toSerialize["u_upc"] = o.UUpc.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
+	if o.Price.IsSet() {
+		toSerialize["price"] = o.Price.Get()
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
@@ -883,34 +1075,34 @@ func (o MarketplaceProduct) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProductOptions) {
 		toSerialize["product_options"] = o.ProductOptions
 	}
-	if !IsNil(o.Manufacturer) {
-		toSerialize["manufacturer"] = o.Manufacturer
+	if o.Manufacturer.IsSet() {
+		toSerialize["manufacturer"] = o.Manufacturer.Get()
 	}
-	if !IsNil(o.Brand) {
-		toSerialize["brand"] = o.Brand
+	if o.Brand.IsSet() {
+		toSerialize["brand"] = o.Brand.Get()
 	}
-	if !IsNil(o.Weight) {
-		toSerialize["weight"] = o.Weight
+	if o.Weight.IsSet() {
+		toSerialize["weight"] = o.Weight.Get()
 	}
-	if !IsNil(o.WeightUnit) {
-		toSerialize["weight_unit"] = o.WeightUnit
+	if o.WeightUnit.IsSet() {
+		toSerialize["weight_unit"] = o.WeightUnit.Get()
 	}
-	if !IsNil(o.DimensionsUnit) {
-		toSerialize["dimensions_unit"] = o.DimensionsUnit
+	if o.DimensionsUnit.IsSet() {
+		toSerialize["dimensions_unit"] = o.DimensionsUnit.Get()
 	}
-	if !IsNil(o.Width) {
-		toSerialize["width"] = o.Width
+	if o.Width.IsSet() {
+		toSerialize["width"] = o.Width.Get()
 	}
-	if !IsNil(o.Height) {
-		toSerialize["height"] = o.Height
+	if o.Height.IsSet() {
+		toSerialize["height"] = o.Height.Get()
 	}
-	if !IsNil(o.Length) {
-		toSerialize["length"] = o.Length
+	if o.Length.IsSet() {
+		toSerialize["length"] = o.Length.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

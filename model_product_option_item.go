@@ -21,15 +21,15 @@ var _ MappedNullable = &ProductOptionItem{}
 // ProductOptionItem struct for ProductOptionItem
 type ProductOptionItem struct {
 	Id *string `json:"id,omitempty"`
-	ProductOptionItemId *string `json:"product_option_item_id,omitempty"`
+	ProductOptionItemId NullableString `json:"product_option_item_id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	SortOrder *int32 `json:"sort_order,omitempty"`
-	Price *string `json:"price,omitempty"`
-	Weight *string `json:"weight,omitempty"`
-	Quantity *int32 `json:"quantity,omitempty"`
-	TypePrice *string `json:"type_price,omitempty"`
-	Sku *string `json:"sku,omitempty"`
-	IsDefault *bool `json:"is_default,omitempty"`
+	SortOrder NullableInt32 `json:"sort_order,omitempty"`
+	Price NullableString `json:"price,omitempty"`
+	Weight NullableString `json:"weight,omitempty"`
+	Quantity NullableInt32 `json:"quantity,omitempty"`
+	TypePrice NullableString `json:"type_price,omitempty"`
+	Sku NullableString `json:"sku,omitempty"`
+	IsDefault NullableBool `json:"is_default,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -83,36 +83,46 @@ func (o *ProductOptionItem) SetId(v string) {
 	o.Id = &v
 }
 
-// GetProductOptionItemId returns the ProductOptionItemId field value if set, zero value otherwise.
+// GetProductOptionItemId returns the ProductOptionItemId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetProductOptionItemId() string {
-	if o == nil || IsNil(o.ProductOptionItemId) {
+	if o == nil || IsNil(o.ProductOptionItemId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProductOptionItemId
+	return *o.ProductOptionItemId.Get()
 }
 
 // GetProductOptionItemIdOk returns a tuple with the ProductOptionItemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetProductOptionItemIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductOptionItemId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProductOptionItemId, true
+	return o.ProductOptionItemId.Get(), o.ProductOptionItemId.IsSet()
 }
 
 // HasProductOptionItemId returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasProductOptionItemId() bool {
-	if o != nil && !IsNil(o.ProductOptionItemId) {
+	if o != nil && o.ProductOptionItemId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProductOptionItemId gets a reference to the given string and assigns it to the ProductOptionItemId field.
+// SetProductOptionItemId gets a reference to the given NullableString and assigns it to the ProductOptionItemId field.
 func (o *ProductOptionItem) SetProductOptionItemId(v string) {
-	o.ProductOptionItemId = &v
+	o.ProductOptionItemId.Set(&v)
+}
+// SetProductOptionItemIdNil sets the value for ProductOptionItemId to be an explicit nil
+func (o *ProductOptionItem) SetProductOptionItemIdNil() {
+	o.ProductOptionItemId.Set(nil)
+}
+
+// UnsetProductOptionItemId ensures that no value is present for ProductOptionItemId, not even an explicit nil
+func (o *ProductOptionItem) UnsetProductOptionItemId() {
+	o.ProductOptionItemId.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -147,233 +157,303 @@ func (o *ProductOptionItem) SetName(v string) {
 	o.Name = &v
 }
 
-// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetSortOrder() int32 {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil || IsNil(o.SortOrder.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SortOrder
+	return *o.SortOrder.Get()
 }
 
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetSortOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SortOrder, true
+	return o.SortOrder.Get(), o.SortOrder.IsSet()
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasSortOrder() bool {
-	if o != nil && !IsNil(o.SortOrder) {
+	if o != nil && o.SortOrder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+// SetSortOrder gets a reference to the given NullableInt32 and assigns it to the SortOrder field.
 func (o *ProductOptionItem) SetSortOrder(v int32) {
-	o.SortOrder = &v
+	o.SortOrder.Set(&v)
+}
+// SetSortOrderNil sets the value for SortOrder to be an explicit nil
+func (o *ProductOptionItem) SetSortOrderNil() {
+	o.SortOrder.Set(nil)
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
+func (o *ProductOptionItem) UnsetSortOrder() {
+	o.SortOrder.Unset()
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetPrice() string {
-	if o == nil || IsNil(o.Price) {
+	if o == nil || IsNil(o.Price.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Price
+	return *o.Price.Get()
 }
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return o.Price.Get(), o.Price.IsSet()
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
+	if o != nil && o.Price.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrice gets a reference to the given string and assigns it to the Price field.
+// SetPrice gets a reference to the given NullableString and assigns it to the Price field.
 func (o *ProductOptionItem) SetPrice(v string) {
-	o.Price = &v
+	o.Price.Set(&v)
+}
+// SetPriceNil sets the value for Price to be an explicit nil
+func (o *ProductOptionItem) SetPriceNil() {
+	o.Price.Set(nil)
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// UnsetPrice ensures that no value is present for Price, not even an explicit nil
+func (o *ProductOptionItem) UnsetPrice() {
+	o.Price.Unset()
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetWeight() string {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil || IsNil(o.Weight.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Weight
+	return *o.Weight.Get()
 }
 
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetWeightOk() (*string, bool) {
-	if o == nil || IsNil(o.Weight) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Weight, true
+	return o.Weight.Get(), o.Weight.IsSet()
 }
 
 // HasWeight returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasWeight() bool {
-	if o != nil && !IsNil(o.Weight) {
+	if o != nil && o.Weight.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWeight gets a reference to the given string and assigns it to the Weight field.
+// SetWeight gets a reference to the given NullableString and assigns it to the Weight field.
 func (o *ProductOptionItem) SetWeight(v string) {
-	o.Weight = &v
+	o.Weight.Set(&v)
+}
+// SetWeightNil sets the value for Weight to be an explicit nil
+func (o *ProductOptionItem) SetWeightNil() {
+	o.Weight.Set(nil)
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
+// UnsetWeight ensures that no value is present for Weight, not even an explicit nil
+func (o *ProductOptionItem) UnsetWeight() {
+	o.Weight.Unset()
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetQuantity() int32 {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil || IsNil(o.Quantity.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Quantity
+	return *o.Quantity.Get()
 }
 
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetQuantityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Quantity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Quantity, true
+	return o.Quantity.Get(), o.Quantity.IsSet()
 }
 
 // HasQuantity returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
+	if o != nil && o.Quantity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
+// SetQuantity gets a reference to the given NullableInt32 and assigns it to the Quantity field.
 func (o *ProductOptionItem) SetQuantity(v int32) {
-	o.Quantity = &v
+	o.Quantity.Set(&v)
+}
+// SetQuantityNil sets the value for Quantity to be an explicit nil
+func (o *ProductOptionItem) SetQuantityNil() {
+	o.Quantity.Set(nil)
 }
 
-// GetTypePrice returns the TypePrice field value if set, zero value otherwise.
+// UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
+func (o *ProductOptionItem) UnsetQuantity() {
+	o.Quantity.Unset()
+}
+
+// GetTypePrice returns the TypePrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetTypePrice() string {
-	if o == nil || IsNil(o.TypePrice) {
+	if o == nil || IsNil(o.TypePrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TypePrice
+	return *o.TypePrice.Get()
 }
 
 // GetTypePriceOk returns a tuple with the TypePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetTypePriceOk() (*string, bool) {
-	if o == nil || IsNil(o.TypePrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TypePrice, true
+	return o.TypePrice.Get(), o.TypePrice.IsSet()
 }
 
 // HasTypePrice returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasTypePrice() bool {
-	if o != nil && !IsNil(o.TypePrice) {
+	if o != nil && o.TypePrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTypePrice gets a reference to the given string and assigns it to the TypePrice field.
+// SetTypePrice gets a reference to the given NullableString and assigns it to the TypePrice field.
 func (o *ProductOptionItem) SetTypePrice(v string) {
-	o.TypePrice = &v
+	o.TypePrice.Set(&v)
+}
+// SetTypePriceNil sets the value for TypePrice to be an explicit nil
+func (o *ProductOptionItem) SetTypePriceNil() {
+	o.TypePrice.Set(nil)
 }
 
-// GetSku returns the Sku field value if set, zero value otherwise.
+// UnsetTypePrice ensures that no value is present for TypePrice, not even an explicit nil
+func (o *ProductOptionItem) UnsetTypePrice() {
+	o.TypePrice.Unset()
+}
+
+// GetSku returns the Sku field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetSku() string {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil || IsNil(o.Sku.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Sku
+	return *o.Sku.Get()
 }
 
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetSkuOk() (*string, bool) {
-	if o == nil || IsNil(o.Sku) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Sku, true
+	return o.Sku.Get(), o.Sku.IsSet()
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasSku() bool {
-	if o != nil && !IsNil(o.Sku) {
+	if o != nil && o.Sku.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSku gets a reference to the given string and assigns it to the Sku field.
+// SetSku gets a reference to the given NullableString and assigns it to the Sku field.
 func (o *ProductOptionItem) SetSku(v string) {
-	o.Sku = &v
+	o.Sku.Set(&v)
+}
+// SetSkuNil sets the value for Sku to be an explicit nil
+func (o *ProductOptionItem) SetSkuNil() {
+	o.Sku.Set(nil)
 }
 
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// UnsetSku ensures that no value is present for Sku, not even an explicit nil
+func (o *ProductOptionItem) UnsetSku() {
+	o.Sku.Unset()
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil || IsNil(o.IsDefault.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+	return *o.IsDefault.Get()
 }
 
 // GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return o.IsDefault.Get(), o.IsDefault.IsSet()
 }
 
 // HasIsDefault returns a boolean if a field has been set.
 func (o *ProductOptionItem) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
+	if o != nil && o.IsDefault.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault gets a reference to the given NullableBool and assigns it to the IsDefault field.
 func (o *ProductOptionItem) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault.Set(&v)
+}
+// SetIsDefaultNil sets the value for IsDefault to be an explicit nil
+func (o *ProductOptionItem) SetIsDefaultNil() {
+	o.IsDefault.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetIsDefault ensures that no value is present for IsDefault, not even an explicit nil
+func (o *ProductOptionItem) UnsetIsDefault() {
+	o.IsDefault.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -382,6 +462,7 @@ func (o *ProductOptionItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -403,9 +484,9 @@ func (o *ProductOptionItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductOptionItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -414,6 +495,7 @@ func (o *ProductOptionItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductOptionItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -448,37 +530,37 @@ func (o ProductOptionItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.ProductOptionItemId) {
-		toSerialize["product_option_item_id"] = o.ProductOptionItemId
+	if o.ProductOptionItemId.IsSet() {
+		toSerialize["product_option_item_id"] = o.ProductOptionItemId.Get()
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sort_order"] = o.SortOrder
+	if o.SortOrder.IsSet() {
+		toSerialize["sort_order"] = o.SortOrder.Get()
 	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
+	if o.Price.IsSet() {
+		toSerialize["price"] = o.Price.Get()
 	}
-	if !IsNil(o.Weight) {
-		toSerialize["weight"] = o.Weight
+	if o.Weight.IsSet() {
+		toSerialize["weight"] = o.Weight.Get()
 	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
+	if o.Quantity.IsSet() {
+		toSerialize["quantity"] = o.Quantity.Get()
 	}
-	if !IsNil(o.TypePrice) {
-		toSerialize["type_price"] = o.TypePrice
+	if o.TypePrice.IsSet() {
+		toSerialize["type_price"] = o.TypePrice.Get()
 	}
-	if !IsNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
+	if o.Sku.IsSet() {
+		toSerialize["sku"] = o.Sku.Get()
 	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["is_default"] = o.IsDefault
+	if o.IsDefault.IsSet() {
+		toSerialize["is_default"] = o.IsDefault.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

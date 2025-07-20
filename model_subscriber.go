@@ -21,16 +21,16 @@ var _ MappedNullable = &Subscriber{}
 // Subscriber struct for Subscriber
 type Subscriber struct {
 	Id *string `json:"id,omitempty"`
-	CustomerId *string `json:"customer_id,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Subscribed *bool `json:"subscribed,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
+	CustomerId NullableString `json:"customer_id,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Subscribed NullableBool `json:"subscribed,omitempty"`
+	FirstName NullableString `json:"first_name,omitempty"`
+	LastName NullableString `json:"last_name,omitempty"`
 	StoresIds []string `json:"stores_ids,omitempty"`
-	CreatedTime *string `json:"created_time,omitempty"`
-	ModifiedTime *string `json:"modified_time,omitempty"`
-	LangId *string `json:"lang_id,omitempty"`
-	Gender *string `json:"gender,omitempty"`
+	CreatedTime NullableString `json:"created_time,omitempty"`
+	ModifiedTime NullableString `json:"modified_time,omitempty"`
+	LangId NullableString `json:"lang_id,omitempty"`
+	Gender NullableString `json:"gender,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -84,164 +84,214 @@ func (o *Subscriber) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId
+	return *o.CustomerId.Get()
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerId, true
+	return o.CustomerId.Get(), o.CustomerId.IsSet()
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *Subscriber) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+	if o != nil && o.CustomerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
 func (o *Subscriber) SetCustomerId(v string) {
-	o.CustomerId = &v
+	o.CustomerId.Set(&v)
+}
+// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+func (o *Subscriber) SetCustomerIdNil() {
+	o.CustomerId.Set(nil)
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
+func (o *Subscriber) UnsetCustomerId() {
+	o.CustomerId.Unset()
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *Subscriber) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *Subscriber) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *Subscriber) SetEmailNil() {
+	o.Email.Set(nil)
 }
 
-// GetSubscribed returns the Subscribed field value if set, zero value otherwise.
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *Subscriber) UnsetEmail() {
+	o.Email.Unset()
+}
+
+// GetSubscribed returns the Subscribed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetSubscribed() bool {
-	if o == nil || IsNil(o.Subscribed) {
+	if o == nil || IsNil(o.Subscribed.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Subscribed
+	return *o.Subscribed.Get()
 }
 
 // GetSubscribedOk returns a tuple with the Subscribed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetSubscribedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Subscribed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Subscribed, true
+	return o.Subscribed.Get(), o.Subscribed.IsSet()
 }
 
 // HasSubscribed returns a boolean if a field has been set.
 func (o *Subscriber) HasSubscribed() bool {
-	if o != nil && !IsNil(o.Subscribed) {
+	if o != nil && o.Subscribed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscribed gets a reference to the given bool and assigns it to the Subscribed field.
+// SetSubscribed gets a reference to the given NullableBool and assigns it to the Subscribed field.
 func (o *Subscriber) SetSubscribed(v bool) {
-	o.Subscribed = &v
+	o.Subscribed.Set(&v)
+}
+// SetSubscribedNil sets the value for Subscribed to be an explicit nil
+func (o *Subscriber) SetSubscribedNil() {
+	o.Subscribed.Set(nil)
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
+// UnsetSubscribed ensures that no value is present for Subscribed, not even an explicit nil
+func (o *Subscriber) UnsetSubscribed() {
+	o.Subscribed.Unset()
+}
+
+// GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetFirstName() string {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FirstName
+	return *o.FirstName.Get()
 }
 
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetFirstNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FirstName, true
+	return o.FirstName.Get(), o.FirstName.IsSet()
 }
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *Subscriber) HasFirstName() bool {
-	if o != nil && !IsNil(o.FirstName) {
+	if o != nil && o.FirstName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
+// SetFirstName gets a reference to the given NullableString and assigns it to the FirstName field.
 func (o *Subscriber) SetFirstName(v string) {
-	o.FirstName = &v
+	o.FirstName.Set(&v)
+}
+// SetFirstNameNil sets the value for FirstName to be an explicit nil
+func (o *Subscriber) SetFirstNameNil() {
+	o.FirstName.Set(nil)
 }
 
-// GetLastName returns the LastName field value if set, zero value otherwise.
+// UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+func (o *Subscriber) UnsetFirstName() {
+	o.FirstName.Unset()
+}
+
+// GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetLastName() string {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil || IsNil(o.LastName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastName
+	return *o.LastName.Get()
 }
 
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetLastNameOk() (*string, bool) {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastName, true
+	return o.LastName.Get(), o.LastName.IsSet()
 }
 
 // HasLastName returns a boolean if a field has been set.
 func (o *Subscriber) HasLastName() bool {
-	if o != nil && !IsNil(o.LastName) {
+	if o != nil && o.LastName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastName gets a reference to the given string and assigns it to the LastName field.
+// SetLastName gets a reference to the given NullableString and assigns it to the LastName field.
 func (o *Subscriber) SetLastName(v string) {
-	o.LastName = &v
+	o.LastName.Set(&v)
+}
+// SetLastNameNil sets the value for LastName to be an explicit nil
+func (o *Subscriber) SetLastNameNil() {
+	o.LastName.Set(nil)
+}
+
+// UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+func (o *Subscriber) UnsetLastName() {
+	o.LastName.Unset()
 }
 
 // GetStoresIds returns the StoresIds field value if set, zero value otherwise.
@@ -276,137 +326,177 @@ func (o *Subscriber) SetStoresIds(v []string) {
 	o.StoresIds = v
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetCreatedTime() string {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetCreatedTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *Subscriber) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given string and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableString and assigns it to the CreatedTime field.
 func (o *Subscriber) SetCreatedTime(v string) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *Subscriber) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *Subscriber) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetModifiedTime() string {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetModifiedTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *Subscriber) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given string and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableString and assigns it to the ModifiedTime field.
 func (o *Subscriber) SetModifiedTime(v string) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *Subscriber) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetLangId returns the LangId field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *Subscriber) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetLangId returns the LangId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetLangId() string {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil || IsNil(o.LangId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LangId
+	return *o.LangId.Get()
 }
 
 // GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetLangIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LangId, true
+	return o.LangId.Get(), o.LangId.IsSet()
 }
 
 // HasLangId returns a boolean if a field has been set.
 func (o *Subscriber) HasLangId() bool {
-	if o != nil && !IsNil(o.LangId) {
+	if o != nil && o.LangId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLangId gets a reference to the given string and assigns it to the LangId field.
+// SetLangId gets a reference to the given NullableString and assigns it to the LangId field.
 func (o *Subscriber) SetLangId(v string) {
-	o.LangId = &v
+	o.LangId.Set(&v)
+}
+// SetLangIdNil sets the value for LangId to be an explicit nil
+func (o *Subscriber) SetLangIdNil() {
+	o.LangId.Set(nil)
 }
 
-// GetGender returns the Gender field value if set, zero value otherwise.
+// UnsetLangId ensures that no value is present for LangId, not even an explicit nil
+func (o *Subscriber) UnsetLangId() {
+	o.LangId.Unset()
+}
+
+// GetGender returns the Gender field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetGender() string {
-	if o == nil || IsNil(o.Gender) {
+	if o == nil || IsNil(o.Gender.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Gender
+	return *o.Gender.Get()
 }
 
 // GetGenderOk returns a tuple with the Gender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetGenderOk() (*string, bool) {
-	if o == nil || IsNil(o.Gender) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Gender, true
+	return o.Gender.Get(), o.Gender.IsSet()
 }
 
 // HasGender returns a boolean if a field has been set.
 func (o *Subscriber) HasGender() bool {
-	if o != nil && !IsNil(o.Gender) {
+	if o != nil && o.Gender.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGender gets a reference to the given string and assigns it to the Gender field.
+// SetGender gets a reference to the given NullableString and assigns it to the Gender field.
 func (o *Subscriber) SetGender(v string) {
-	o.Gender = &v
+	o.Gender.Set(&v)
+}
+// SetGenderNil sets the value for Gender to be an explicit nil
+func (o *Subscriber) SetGenderNil() {
+	o.Gender.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetGender ensures that no value is present for Gender, not even an explicit nil
+func (o *Subscriber) UnsetGender() {
+	o.Gender.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -415,6 +505,7 @@ func (o *Subscriber) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -436,9 +527,9 @@ func (o *Subscriber) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Subscriber) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -447,6 +538,7 @@ func (o *Subscriber) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subscriber) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -481,40 +573,40 @@ func (o Subscriber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.CustomerId) {
-		toSerialize["customer_id"] = o.CustomerId
+	if o.CustomerId.IsSet() {
+		toSerialize["customer_id"] = o.CustomerId.Get()
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.Subscribed) {
-		toSerialize["subscribed"] = o.Subscribed
+	if o.Subscribed.IsSet() {
+		toSerialize["subscribed"] = o.Subscribed.Get()
 	}
-	if !IsNil(o.FirstName) {
-		toSerialize["first_name"] = o.FirstName
+	if o.FirstName.IsSet() {
+		toSerialize["first_name"] = o.FirstName.Get()
 	}
-	if !IsNil(o.LastName) {
-		toSerialize["last_name"] = o.LastName
+	if o.LastName.IsSet() {
+		toSerialize["last_name"] = o.LastName.Get()
 	}
 	if !IsNil(o.StoresIds) {
 		toSerialize["stores_ids"] = o.StoresIds
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.LangId) {
-		toSerialize["lang_id"] = o.LangId
+	if o.LangId.IsSet() {
+		toSerialize["lang_id"] = o.LangId.Get()
 	}
-	if !IsNil(o.Gender) {
-		toSerialize["gender"] = o.Gender
+	if o.Gender.IsSet() {
+		toSerialize["gender"] = o.Gender.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

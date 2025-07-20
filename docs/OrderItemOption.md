@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OptionId** | Pointer to **string** |  | [optional] 
+**OptionId** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 **Price** | Pointer to **float32** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**ProductOptionValueId** | Pointer to **string** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**ProductOptionValueId** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -58,6 +58,16 @@ SetOptionId sets OptionId field to given value.
 
 HasOptionId returns a boolean if a field has been set.
 
+### SetOptionIdNil
+
+`func (o *OrderItemOption) SetOptionIdNil(b bool)`
+
+ SetOptionIdNil sets the value for OptionId to be an explicit nil
+
+### UnsetOptionId
+`func (o *OrderItemOption) UnsetOptionId()`
+
+UnsetOptionId ensures that no value is present for OptionId, not even an explicit nil
 ### GetName
 
 `func (o *OrderItemOption) GetName() string`
@@ -158,6 +168,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *OrderItemOption) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *OrderItemOption) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetType
 
 `func (o *OrderItemOption) GetType() string`
@@ -183,6 +203,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *OrderItemOption) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *OrderItemOption) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetProductOptionValueId
 
 `func (o *OrderItemOption) GetProductOptionValueId() string`
@@ -208,6 +238,16 @@ SetProductOptionValueId sets ProductOptionValueId field to given value.
 
 HasProductOptionValueId returns a boolean if a field has been set.
 
+### SetProductOptionValueIdNil
+
+`func (o *OrderItemOption) SetProductOptionValueIdNil(b bool)`
+
+ SetProductOptionValueIdNil sets the value for ProductOptionValueId to be an explicit nil
+
+### UnsetProductOptionValueId
+`func (o *OrderItemOption) UnsetProductOptionValueId()`
+
+UnsetProductOptionValueId ensures that no value is present for ProductOptionValueId, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderItemOption) GetAdditionalFields() map[string]interface{}`
@@ -233,6 +273,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderItemOption) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderItemOption) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderItemOption) GetCustomFields() map[string]interface{}`
@@ -258,6 +308,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderItemOption) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderItemOption) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

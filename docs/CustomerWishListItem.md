@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
 **ProductId** | Pointer to **string** |  | [optional] 
-**ChildId** | Pointer to **string** |  | [optional] 
-**CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ChildId** | Pointer to **NullableString** |  | [optional] 
+**CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -55,6 +55,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *CustomerWishListItem) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *CustomerWishListItem) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetProductId
 
 `func (o *CustomerWishListItem) GetProductId() string`
@@ -105,6 +115,16 @@ SetChildId sets ChildId field to given value.
 
 HasChildId returns a boolean if a field has been set.
 
+### SetChildIdNil
+
+`func (o *CustomerWishListItem) SetChildIdNil(b bool)`
+
+ SetChildIdNil sets the value for ChildId to be an explicit nil
+
+### UnsetChildId
+`func (o *CustomerWishListItem) UnsetChildId()`
+
+UnsetChildId ensures that no value is present for ChildId, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *CustomerWishListItem) GetCreatedTime() A2CDateTime`
@@ -130,6 +150,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *CustomerWishListItem) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *CustomerWishListItem) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CustomerWishListItem) GetAdditionalFields() map[string]interface{}`
@@ -155,6 +185,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CustomerWishListItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CustomerWishListItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CustomerWishListItem) GetCustomFields() map[string]interface{}`
@@ -180,6 +220,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CustomerWishListItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CustomerWishListItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

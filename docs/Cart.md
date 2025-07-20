@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**Version** | Pointer to **string** |  | [optional] 
-**DbPrefix** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Url** | Pointer to **NullableString** |  | [optional] 
+**Version** | Pointer to **NullableString** |  | [optional] 
+**DbPrefix** | Pointer to **NullableString** |  | [optional] 
 **StoresInfo** | Pointer to [**[]CartStoreInfo**](CartStoreInfo.md) |  | [optional] 
 **Warehouses** | Pointer to [**[]CartWarehouse**](CartWarehouse.md) |  | [optional] 
 **ShippingZones** | Pointer to [**[]CartShippingZone**](CartShippingZone.md) |  | [optional] 
@@ -58,6 +58,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Cart) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Cart) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetUrl
 
 `func (o *Cart) GetUrl() string`
@@ -83,6 +93,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
+### SetUrlNil
+
+`func (o *Cart) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *Cart) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetVersion
 
 `func (o *Cart) GetVersion() string`
@@ -108,6 +128,16 @@ SetVersion sets Version field to given value.
 
 HasVersion returns a boolean if a field has been set.
 
+### SetVersionNil
+
+`func (o *Cart) SetVersionNil(b bool)`
+
+ SetVersionNil sets the value for Version to be an explicit nil
+
+### UnsetVersion
+`func (o *Cart) UnsetVersion()`
+
+UnsetVersion ensures that no value is present for Version, not even an explicit nil
 ### GetDbPrefix
 
 `func (o *Cart) GetDbPrefix() string`
@@ -133,6 +163,16 @@ SetDbPrefix sets DbPrefix field to given value.
 
 HasDbPrefix returns a boolean if a field has been set.
 
+### SetDbPrefixNil
+
+`func (o *Cart) SetDbPrefixNil(b bool)`
+
+ SetDbPrefixNil sets the value for DbPrefix to be an explicit nil
+
+### UnsetDbPrefix
+`func (o *Cart) UnsetDbPrefix()`
+
+UnsetDbPrefix ensures that no value is present for DbPrefix, not even an explicit nil
 ### GetStoresInfo
 
 `func (o *Cart) GetStoresInfo() []CartStoreInfo`
@@ -233,6 +273,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Cart) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Cart) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Cart) GetCustomFields() map[string]interface{}`
@@ -258,6 +308,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Cart) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Cart) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

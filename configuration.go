@@ -94,7 +94,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.api2cart.com/v1.1",
+				URL: "https://api.api2cart.local.com/v1.1",
 				Description: "API2Cart Production Server",
 			},
 		},

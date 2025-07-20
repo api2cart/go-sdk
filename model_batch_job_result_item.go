@@ -22,7 +22,7 @@ var _ MappedNullable = &BatchJobResultItem{}
 type BatchJobResultItem struct {
 	Id *int32 `json:"id,omitempty"`
 	Status *string `json:"status,omitempty"`
-	EntityId *string `json:"entity_id,omitempty"`
+	EntityId NullableString `json:"entity_id,omitempty"`
 	Errors []string `json:"errors,omitempty"`
 	Warnings []string `json:"warnings,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
@@ -110,36 +110,46 @@ func (o *BatchJobResultItem) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetEntityId returns the EntityId field value if set, zero value otherwise.
+// GetEntityId returns the EntityId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJobResultItem) GetEntityId() string {
-	if o == nil || IsNil(o.EntityId) {
+	if o == nil || IsNil(o.EntityId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.EntityId
+	return *o.EntityId.Get()
 }
 
 // GetEntityIdOk returns a tuple with the EntityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJobResultItem) GetEntityIdOk() (*string, bool) {
-	if o == nil || IsNil(o.EntityId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EntityId, true
+	return o.EntityId.Get(), o.EntityId.IsSet()
 }
 
 // HasEntityId returns a boolean if a field has been set.
 func (o *BatchJobResultItem) HasEntityId() bool {
-	if o != nil && !IsNil(o.EntityId) {
+	if o != nil && o.EntityId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEntityId gets a reference to the given string and assigns it to the EntityId field.
+// SetEntityId gets a reference to the given NullableString and assigns it to the EntityId field.
 func (o *BatchJobResultItem) SetEntityId(v string) {
-	o.EntityId = &v
+	o.EntityId.Set(&v)
+}
+// SetEntityIdNil sets the value for EntityId to be an explicit nil
+func (o *BatchJobResultItem) SetEntityIdNil() {
+	o.EntityId.Set(nil)
+}
+
+// UnsetEntityId ensures that no value is present for EntityId, not even an explicit nil
+func (o *BatchJobResultItem) UnsetEntityId() {
+	o.EntityId.Unset()
 }
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
@@ -206,9 +216,9 @@ func (o *BatchJobResultItem) SetWarnings(v []string) {
 	o.Warnings = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJobResultItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +227,7 @@ func (o *BatchJobResultItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJobResultItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +249,9 @@ func (o *BatchJobResultItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BatchJobResultItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +260,7 @@ func (o *BatchJobResultItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BatchJobResultItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -286,8 +298,8 @@ func (o BatchJobResultItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.EntityId) {
-		toSerialize["entity_id"] = o.EntityId
+	if o.EntityId.IsSet() {
+		toSerialize["entity_id"] = o.EntityId.Get()
 	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
@@ -295,10 +307,10 @@ func (o BatchJobResultItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Warnings) {
 		toSerialize["warnings"] = o.Warnings
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

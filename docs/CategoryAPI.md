@@ -1,6 +1,6 @@
 # \CategoryAPI
 
-All URIs are relative to *https://api.api2cart.com/v1.1*
+All URIs are relative to *https://api.api2cart.local.com/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ## CategoryAssign
 
-> CartConfigUpdate200Response CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+> CategoryAssign200Response CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
 
 category.assign
 
@@ -211,7 +211,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryAssign`: CartConfigUpdate200Response
+	// response from `CategoryAssign`: CategoryAssign200Response
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryAssign`: %v\n", resp)
 }
 ```
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CartConfigUpdate200Response**](CartConfigUpdate200Response.md)
+[**CategoryAssign200Response**](CategoryAssign200Response.md)
 
 ### Authorization
 
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 
 ## CategoryUnassign
 
-> CartConfigUpdate200Response CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+> CategoryAssign200Response CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
 
 category.unassign
 
@@ -849,7 +849,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryUnassign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryUnassign`: CartConfigUpdate200Response
+	// response from `CategoryUnassign`: CategoryAssign200Response
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryUnassign`: %v\n", resp)
 }
 ```
@@ -871,7 +871,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CartConfigUpdate200Response**](CartConfigUpdate200Response.md)
+[**CategoryAssign200Response**](CategoryAssign200Response.md)
 
 ### Authorization
 

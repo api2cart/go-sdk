@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | Pointer to **string** |  | [optional] 
-**OrderProductId** | Pointer to **string** |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
+**ProductId** | Pointer to **NullableString** |  | [optional] 
+**OrderProductId** | Pointer to **NullableString** |  | [optional] 
+**Model** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Price** | Pointer to **float32** |  | [optional] 
-**PriceIncTax** | Pointer to **float32** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
-**DiscountAmount** | Pointer to **float32** |  | [optional] 
-**TotalPrice** | Pointer to **float32** |  | [optional] 
-**TaxPercent** | Pointer to **float32** |  | [optional] 
-**TaxValue** | Pointer to **float32** |  | [optional] 
-**TaxValueAfterDiscount** | Pointer to **float32** |  | [optional] 
+**PriceIncTax** | Pointer to **NullableFloat32** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
+**DiscountAmount** | Pointer to **NullableFloat32** |  | [optional] 
+**TotalPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**TaxPercent** | Pointer to **NullableFloat32** |  | [optional] 
+**TaxValue** | Pointer to **NullableFloat32** |  | [optional] 
+**TaxValueAfterDiscount** | Pointer to **NullableFloat32** |  | [optional] 
 **Options** | Pointer to [**[]OrderItemOption**](OrderItemOption.md) |  | [optional] 
-**VariantId** | Pointer to **string** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
-**Barcode** | Pointer to **string** |  | [optional] 
-**ParentOrderProductId** | Pointer to **string** |  | [optional] 
+**VariantId** | Pointer to **NullableString** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
+**Barcode** | Pointer to **NullableString** |  | [optional] 
+**ParentOrderProductId** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -69,6 +69,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *OrderItem) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *OrderItem) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetOrderProductId
 
 `func (o *OrderItem) GetOrderProductId() string`
@@ -94,6 +104,16 @@ SetOrderProductId sets OrderProductId field to given value.
 
 HasOrderProductId returns a boolean if a field has been set.
 
+### SetOrderProductIdNil
+
+`func (o *OrderItem) SetOrderProductIdNil(b bool)`
+
+ SetOrderProductIdNil sets the value for OrderProductId to be an explicit nil
+
+### UnsetOrderProductId
+`func (o *OrderItem) UnsetOrderProductId()`
+
+UnsetOrderProductId ensures that no value is present for OrderProductId, not even an explicit nil
 ### GetModel
 
 `func (o *OrderItem) GetModel() string`
@@ -119,6 +139,16 @@ SetModel sets Model field to given value.
 
 HasModel returns a boolean if a field has been set.
 
+### SetModelNil
+
+`func (o *OrderItem) SetModelNil(b bool)`
+
+ SetModelNil sets the value for Model to be an explicit nil
+
+### UnsetModel
+`func (o *OrderItem) UnsetModel()`
+
+UnsetModel ensures that no value is present for Model, not even an explicit nil
 ### GetName
 
 `func (o *OrderItem) GetName() string`
@@ -194,6 +224,16 @@ SetPriceIncTax sets PriceIncTax field to given value.
 
 HasPriceIncTax returns a boolean if a field has been set.
 
+### SetPriceIncTaxNil
+
+`func (o *OrderItem) SetPriceIncTaxNil(b bool)`
+
+ SetPriceIncTaxNil sets the value for PriceIncTax to be an explicit nil
+
+### UnsetPriceIncTax
+`func (o *OrderItem) UnsetPriceIncTax()`
+
+UnsetPriceIncTax ensures that no value is present for PriceIncTax, not even an explicit nil
 ### GetQuantity
 
 `func (o *OrderItem) GetQuantity() float32`
@@ -219,6 +259,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *OrderItem) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *OrderItem) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetDiscountAmount
 
 `func (o *OrderItem) GetDiscountAmount() float32`
@@ -244,6 +294,16 @@ SetDiscountAmount sets DiscountAmount field to given value.
 
 HasDiscountAmount returns a boolean if a field has been set.
 
+### SetDiscountAmountNil
+
+`func (o *OrderItem) SetDiscountAmountNil(b bool)`
+
+ SetDiscountAmountNil sets the value for DiscountAmount to be an explicit nil
+
+### UnsetDiscountAmount
+`func (o *OrderItem) UnsetDiscountAmount()`
+
+UnsetDiscountAmount ensures that no value is present for DiscountAmount, not even an explicit nil
 ### GetTotalPrice
 
 `func (o *OrderItem) GetTotalPrice() float32`
@@ -269,6 +329,16 @@ SetTotalPrice sets TotalPrice field to given value.
 
 HasTotalPrice returns a boolean if a field has been set.
 
+### SetTotalPriceNil
+
+`func (o *OrderItem) SetTotalPriceNil(b bool)`
+
+ SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
+
+### UnsetTotalPrice
+`func (o *OrderItem) UnsetTotalPrice()`
+
+UnsetTotalPrice ensures that no value is present for TotalPrice, not even an explicit nil
 ### GetTaxPercent
 
 `func (o *OrderItem) GetTaxPercent() float32`
@@ -294,6 +364,16 @@ SetTaxPercent sets TaxPercent field to given value.
 
 HasTaxPercent returns a boolean if a field has been set.
 
+### SetTaxPercentNil
+
+`func (o *OrderItem) SetTaxPercentNil(b bool)`
+
+ SetTaxPercentNil sets the value for TaxPercent to be an explicit nil
+
+### UnsetTaxPercent
+`func (o *OrderItem) UnsetTaxPercent()`
+
+UnsetTaxPercent ensures that no value is present for TaxPercent, not even an explicit nil
 ### GetTaxValue
 
 `func (o *OrderItem) GetTaxValue() float32`
@@ -319,6 +399,16 @@ SetTaxValue sets TaxValue field to given value.
 
 HasTaxValue returns a boolean if a field has been set.
 
+### SetTaxValueNil
+
+`func (o *OrderItem) SetTaxValueNil(b bool)`
+
+ SetTaxValueNil sets the value for TaxValue to be an explicit nil
+
+### UnsetTaxValue
+`func (o *OrderItem) UnsetTaxValue()`
+
+UnsetTaxValue ensures that no value is present for TaxValue, not even an explicit nil
 ### GetTaxValueAfterDiscount
 
 `func (o *OrderItem) GetTaxValueAfterDiscount() float32`
@@ -344,6 +434,16 @@ SetTaxValueAfterDiscount sets TaxValueAfterDiscount field to given value.
 
 HasTaxValueAfterDiscount returns a boolean if a field has been set.
 
+### SetTaxValueAfterDiscountNil
+
+`func (o *OrderItem) SetTaxValueAfterDiscountNil(b bool)`
+
+ SetTaxValueAfterDiscountNil sets the value for TaxValueAfterDiscount to be an explicit nil
+
+### UnsetTaxValueAfterDiscount
+`func (o *OrderItem) UnsetTaxValueAfterDiscount()`
+
+UnsetTaxValueAfterDiscount ensures that no value is present for TaxValueAfterDiscount, not even an explicit nil
 ### GetOptions
 
 `func (o *OrderItem) GetOptions() []OrderItemOption`
@@ -394,6 +494,16 @@ SetVariantId sets VariantId field to given value.
 
 HasVariantId returns a boolean if a field has been set.
 
+### SetVariantIdNil
+
+`func (o *OrderItem) SetVariantIdNil(b bool)`
+
+ SetVariantIdNil sets the value for VariantId to be an explicit nil
+
+### UnsetVariantId
+`func (o *OrderItem) UnsetVariantId()`
+
+UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *OrderItem) GetWeightUnit() string`
@@ -419,6 +529,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *OrderItem) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *OrderItem) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetWeight
 
 `func (o *OrderItem) GetWeight() float32`
@@ -444,6 +564,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *OrderItem) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *OrderItem) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetBarcode
 
 `func (o *OrderItem) GetBarcode() string`
@@ -469,6 +599,16 @@ SetBarcode sets Barcode field to given value.
 
 HasBarcode returns a boolean if a field has been set.
 
+### SetBarcodeNil
+
+`func (o *OrderItem) SetBarcodeNil(b bool)`
+
+ SetBarcodeNil sets the value for Barcode to be an explicit nil
+
+### UnsetBarcode
+`func (o *OrderItem) UnsetBarcode()`
+
+UnsetBarcode ensures that no value is present for Barcode, not even an explicit nil
 ### GetParentOrderProductId
 
 `func (o *OrderItem) GetParentOrderProductId() string`
@@ -494,6 +634,16 @@ SetParentOrderProductId sets ParentOrderProductId field to given value.
 
 HasParentOrderProductId returns a boolean if a field has been set.
 
+### SetParentOrderProductIdNil
+
+`func (o *OrderItem) SetParentOrderProductIdNil(b bool)`
+
+ SetParentOrderProductIdNil sets the value for ParentOrderProductId to be an explicit nil
+
+### UnsetParentOrderProductId
+`func (o *OrderItem) UnsetParentOrderProductId()`
+
+UnsetParentOrderProductId ensures that no value is present for ParentOrderProductId, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderItem) GetAdditionalFields() map[string]interface{}`
@@ -519,6 +669,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderItem) GetCustomFields() map[string]interface{}`
@@ -544,6 +704,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

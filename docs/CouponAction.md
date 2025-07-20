@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **Scope** | Pointer to **string** |  | [optional] 
 **ApplyTo** | Pointer to **string** |  | [optional] 
 **Amount** | Pointer to **float32** |  | [optional] 
-**CurrencyCode** | Pointer to **string** |  | [optional] 
-**IncludeTax** | Pointer to **bool** |  | [optional] 
+**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
+**IncludeTax** | Pointer to **NullableBool** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
-**DiscountedQuantity** | Pointer to **float32** |  | [optional] 
-**DiscountQuantityStep** | Pointer to **int32** |  | [optional] 
-**LogicOperator** | Pointer to **string** |  | [optional] 
+**DiscountedQuantity** | Pointer to **NullableFloat32** |  | [optional] 
+**DiscountQuantityStep** | Pointer to **NullableInt32** |  | [optional] 
+**LogicOperator** | Pointer to **NullableString** |  | [optional] 
 **Conditions** | Pointer to [**[]CouponCondition**](CouponCondition.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -136,6 +136,16 @@ SetCurrencyCode sets CurrencyCode field to given value.
 
 HasCurrencyCode returns a boolean if a field has been set.
 
+### SetCurrencyCodeNil
+
+`func (o *CouponAction) SetCurrencyCodeNil(b bool)`
+
+ SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+
+### UnsetCurrencyCode
+`func (o *CouponAction) UnsetCurrencyCode()`
+
+UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 ### GetIncludeTax
 
 `func (o *CouponAction) GetIncludeTax() bool`
@@ -161,6 +171,16 @@ SetIncludeTax sets IncludeTax field to given value.
 
 HasIncludeTax returns a boolean if a field has been set.
 
+### SetIncludeTaxNil
+
+`func (o *CouponAction) SetIncludeTaxNil(b bool)`
+
+ SetIncludeTaxNil sets the value for IncludeTax to be an explicit nil
+
+### UnsetIncludeTax
+`func (o *CouponAction) UnsetIncludeTax()`
+
+UnsetIncludeTax ensures that no value is present for IncludeTax, not even an explicit nil
 ### GetType
 
 `func (o *CouponAction) GetType() string`
@@ -211,6 +231,16 @@ SetDiscountedQuantity sets DiscountedQuantity field to given value.
 
 HasDiscountedQuantity returns a boolean if a field has been set.
 
+### SetDiscountedQuantityNil
+
+`func (o *CouponAction) SetDiscountedQuantityNil(b bool)`
+
+ SetDiscountedQuantityNil sets the value for DiscountedQuantity to be an explicit nil
+
+### UnsetDiscountedQuantity
+`func (o *CouponAction) UnsetDiscountedQuantity()`
+
+UnsetDiscountedQuantity ensures that no value is present for DiscountedQuantity, not even an explicit nil
 ### GetDiscountQuantityStep
 
 `func (o *CouponAction) GetDiscountQuantityStep() int32`
@@ -236,6 +266,16 @@ SetDiscountQuantityStep sets DiscountQuantityStep field to given value.
 
 HasDiscountQuantityStep returns a boolean if a field has been set.
 
+### SetDiscountQuantityStepNil
+
+`func (o *CouponAction) SetDiscountQuantityStepNil(b bool)`
+
+ SetDiscountQuantityStepNil sets the value for DiscountQuantityStep to be an explicit nil
+
+### UnsetDiscountQuantityStep
+`func (o *CouponAction) UnsetDiscountQuantityStep()`
+
+UnsetDiscountQuantityStep ensures that no value is present for DiscountQuantityStep, not even an explicit nil
 ### GetLogicOperator
 
 `func (o *CouponAction) GetLogicOperator() string`
@@ -261,6 +301,16 @@ SetLogicOperator sets LogicOperator field to given value.
 
 HasLogicOperator returns a boolean if a field has been set.
 
+### SetLogicOperatorNil
+
+`func (o *CouponAction) SetLogicOperatorNil(b bool)`
+
+ SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+
+### UnsetLogicOperator
+`func (o *CouponAction) UnsetLogicOperator()`
+
+UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
 ### GetConditions
 
 `func (o *CouponAction) GetConditions() []CouponCondition`
@@ -311,6 +361,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CouponAction) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CouponAction) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CouponAction) GetCustomFields() map[string]interface{}`
@@ -336,6 +396,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CouponAction) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CouponAction) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

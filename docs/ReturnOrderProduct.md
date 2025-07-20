@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProductId** | Pointer to **string** |  | [optional] 
+**ProductId** | Pointer to **NullableString** |  | [optional] 
 **OrderProductId** | Pointer to **string** |  | [optional] 
-**Sku** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Sku** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
 **Quantity** | Pointer to **int32** |  | [optional] 
 **Reason** | Pointer to [**ReturnReason**](ReturnReason.md) |  | [optional] 
-**Action** | Pointer to [**ReturnAction**](ReturnAction.md) |  | [optional] 
-**Condition** | Pointer to **string** |  | [optional] 
-**CustomerComment** | Pointer to **string** |  | [optional] 
+**Action** | Pointer to [**NullableReturnAction**](ReturnAction.md) |  | [optional] 
+**Condition** | Pointer to **NullableString** |  | [optional] 
+**CustomerComment** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -60,6 +60,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *ReturnOrderProduct) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *ReturnOrderProduct) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetOrderProductId
 
 `func (o *ReturnOrderProduct) GetOrderProductId() string`
@@ -110,6 +120,16 @@ SetSku sets Sku field to given value.
 
 HasSku returns a boolean if a field has been set.
 
+### SetSkuNil
+
+`func (o *ReturnOrderProduct) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *ReturnOrderProduct) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
 ### GetName
 
 `func (o *ReturnOrderProduct) GetName() string`
@@ -135,6 +155,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *ReturnOrderProduct) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ReturnOrderProduct) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetQuantity
 
 `func (o *ReturnOrderProduct) GetQuantity() int32`
@@ -210,6 +240,16 @@ SetAction sets Action field to given value.
 
 HasAction returns a boolean if a field has been set.
 
+### SetActionNil
+
+`func (o *ReturnOrderProduct) SetActionNil(b bool)`
+
+ SetActionNil sets the value for Action to be an explicit nil
+
+### UnsetAction
+`func (o *ReturnOrderProduct) UnsetAction()`
+
+UnsetAction ensures that no value is present for Action, not even an explicit nil
 ### GetCondition
 
 `func (o *ReturnOrderProduct) GetCondition() string`
@@ -235,6 +275,16 @@ SetCondition sets Condition field to given value.
 
 HasCondition returns a boolean if a field has been set.
 
+### SetConditionNil
+
+`func (o *ReturnOrderProduct) SetConditionNil(b bool)`
+
+ SetConditionNil sets the value for Condition to be an explicit nil
+
+### UnsetCondition
+`func (o *ReturnOrderProduct) UnsetCondition()`
+
+UnsetCondition ensures that no value is present for Condition, not even an explicit nil
 ### GetCustomerComment
 
 `func (o *ReturnOrderProduct) GetCustomerComment() string`
@@ -260,6 +310,16 @@ SetCustomerComment sets CustomerComment field to given value.
 
 HasCustomerComment returns a boolean if a field has been set.
 
+### SetCustomerCommentNil
+
+`func (o *ReturnOrderProduct) SetCustomerCommentNil(b bool)`
+
+ SetCustomerCommentNil sets the value for CustomerComment to be an explicit nil
+
+### UnsetCustomerComment
+`func (o *ReturnOrderProduct) UnsetCustomerComment()`
+
+UnsetCustomerComment ensures that no value is present for CustomerComment, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ReturnOrderProduct) GetAdditionalFields() map[string]interface{}`
@@ -285,6 +345,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ReturnOrderProduct) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ReturnOrderProduct) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ReturnOrderProduct) GetCustomFields() map[string]interface{}`
@@ -310,6 +380,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ReturnOrderProduct) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ReturnOrderProduct) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,6 +1,6 @@
 # \ProductAPI
 
-All URIs are relative to *https://api.api2cart.com/v1.1*
+All URIs are relative to *https://api.api2cart.local.com/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**ProductCurrencyList**](ProductAPI.md#ProductCurrencyList) | **Get** /product.currency.list.json | product.currency.list
 [**ProductDelete**](ProductAPI.md#ProductDelete) | **Delete** /product.delete.json | product.delete
 [**ProductDeleteBatch**](ProductAPI.md#ProductDeleteBatch) | **Post** /product.delete.batch.json | product.delete.batch
-[**ProductFields**](ProductAPI.md#ProductFields) | **Get** /product.fields.json | product.fields
 [**ProductFind**](ProductAPI.md#ProductFind) | **Get** /product.find.json | product.find
 [**ProductImageAdd**](ProductAPI.md#ProductImageAdd) | **Post** /product.image.add.json | product.image.add
 [**ProductImageDelete**](ProductAPI.md#ProductImageDelete) | **Delete** /product.image.delete.json | product.image.delete
@@ -44,13 +43,10 @@ Method | HTTP request | Description
 [**ProductUpdateBatch**](ProductAPI.md#ProductUpdateBatch) | **Post** /product.update.batch.json | product.update.batch
 [**ProductVariantAdd**](ProductAPI.md#ProductVariantAdd) | **Post** /product.variant.add.json | product.variant.add
 [**ProductVariantAddBatch**](ProductAPI.md#ProductVariantAddBatch) | **Post** /product.variant.add.batch.json | product.variant.add.batch
-[**ProductVariantCount**](ProductAPI.md#ProductVariantCount) | **Get** /product.variant.count.json | product.variant.count
 [**ProductVariantDelete**](ProductAPI.md#ProductVariantDelete) | **Delete** /product.variant.delete.json | product.variant.delete
 [**ProductVariantDeleteBatch**](ProductAPI.md#ProductVariantDeleteBatch) | **Post** /product.variant.delete.batch.json | product.variant.delete.batch
 [**ProductVariantImageAdd**](ProductAPI.md#ProductVariantImageAdd) | **Post** /product.variant.image.add.json | product.variant.image.add
 [**ProductVariantImageDelete**](ProductAPI.md#ProductVariantImageDelete) | **Delete** /product.variant.image.delete.json | product.variant.image.delete
-[**ProductVariantInfo**](ProductAPI.md#ProductVariantInfo) | **Get** /product.variant.info.json | product.variant.info
-[**ProductVariantList**](ProductAPI.md#ProductVariantList) | **Get** /product.variant.list.json | product.variant.list
 [**ProductVariantPriceAdd**](ProductAPI.md#ProductVariantPriceAdd) | **Post** /product.variant.price.add.json | product.variant.price.add
 [**ProductVariantPriceDelete**](ProductAPI.md#ProductVariantPriceDelete) | **Delete** /product.variant.price.delete.json | product.variant.price.delete
 [**ProductVariantPriceUpdate**](ProductAPI.md#ProductVariantPriceUpdate) | **Put** /product.variant.price.update.json | product.variant.price.update
@@ -1198,67 +1194,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ProductFields
-
-> CartConfigUpdate200Response ProductFields(ctx).Execute()
-
-product.fields
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductFields(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductFields``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ProductFields`: CartConfigUpdate200Response
-	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductFields`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProductFieldsRequest struct via the builder pattern
-
-
-### Return type
-
-[**CartConfigUpdate200Response**](CartConfigUpdate200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -3124,84 +3059,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProductVariantCount
-
-> ProductVariantCount200Response ProductVariantCount(ctx).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
-
-product.variant.count
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	productId := "10" // string | Retrieves products' variants specified by product id
-	categoryId := "6" // string | Counts products’ variants specified by category id (optional)
-	storeId := "1" // string | Retrieves variants specified by store id (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantCount(context.Background()).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantCount``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ProductVariantCount`: ProductVariantCount200Response
-	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductVariantCount`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProductVariantCountRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **productId** | **string** | Retrieves products&#39; variants specified by product id | 
- **categoryId** | **string** | Counts products’ variants specified by category id | 
- **storeId** | **string** | Retrieves variants specified by store id | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
-
-### Return type
-
-[**ProductVariantCount200Response**](ProductVariantCount200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ProductVariantDelete
 
 > AttributeValueDelete200Response ProductVariantDelete(ctx).Id(id).ProductId(productId).StoreId(storeId).Execute()
@@ -3461,164 +3318,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AttributeDelete200Response**](AttributeDelete200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ProductVariantInfo
-
-> ProductInfo200Response ProductVariantInfo(ctx).Id(id).StoreId(storeId).Params(params).Exclude(exclude).Execute()
-
-product.variant.info
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	id := "10" // string | Retrieves variant's info specified by variant id
-	storeId := "1" // string | Retrieves variant info specified by store id (optional)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price")
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantInfo(context.Background()).Id(id).StoreId(storeId).Params(params).Exclude(exclude).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantInfo``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ProductVariantInfo`: ProductInfo200Response
-	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductVariantInfo`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProductVariantInfoRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string** | Retrieves variant&#39;s info specified by variant id | 
- **storeId** | **string** | Retrieves variant info specified by store id | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
-
-### Return type
-
-[**ProductInfo200Response**](ProductInfo200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ProductVariantList
-
-> ProductVariantList200Response ProductVariantList(ctx).Start(start).Count(count).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).Exclude(exclude).Execute()
-
-product.variant.list
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	productId := "10" // string | Retrieves products' variants specified by product id (optional)
-	categoryId := "6" // string | Retrieves products’ variants specified by category id (optional)
-	storeId := "1" // string | Retrieves variants specified by store id (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,name,description,price")
-	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductVariantList(context.Background()).Start(start).Count(count).ProductId(productId).CategoryId(categoryId).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Params(params).Exclude(exclude).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductVariantList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ProductVariantList`: ProductVariantList200Response
-	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductVariantList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProductVariantListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **productId** | **string** | Retrieves products&#39; variants specified by product id | 
- **categoryId** | **string** | Retrieves products’ variants specified by category id | 
- **storeId** | **string** | Retrieves variants specified by store id | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,name,description,price&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
-
-### Return type
-
-[**ProductVariantList200Response**](ProductVariantList200Response.md)
 
 ### Authorization
 

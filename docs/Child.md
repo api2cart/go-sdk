@@ -6,49 +6,49 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **ParentId** | Pointer to **string** |  | [optional] 
-**Sku** | Pointer to **string** |  | [optional] 
-**Upc** | Pointer to **string** |  | [optional] 
-**Ean** | Pointer to **string** |  | [optional] 
-**Mpn** | Pointer to **string** |  | [optional] 
-**Gtin** | Pointer to **string** |  | [optional] 
-**Isbn** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**SeoUrl** | Pointer to **string** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
-**CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**ShortDescription** | Pointer to **string** |  | [optional] 
-**FullDescription** | Pointer to **string** |  | [optional] 
+**Sku** | Pointer to **NullableString** |  | [optional] 
+**Upc** | Pointer to **NullableString** |  | [optional] 
+**Ean** | Pointer to **NullableString** |  | [optional] 
+**Mpn** | Pointer to **NullableString** |  | [optional] 
+**Gtin** | Pointer to **NullableString** |  | [optional] 
+**Isbn** | Pointer to **NullableString** |  | [optional] 
+**Url** | Pointer to **NullableString** |  | [optional] 
+**SeoUrl** | Pointer to **NullableString** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
+**CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**ShortDescription** | Pointer to **NullableString** |  | [optional] 
+**FullDescription** | Pointer to **NullableString** |  | [optional] 
 **Images** | Pointer to [**[]Image**](Image.md) |  | [optional] 
 **Combination** | Pointer to [**[]ProductChildItemCombination**](ProductChildItemCombination.md) |  | [optional] 
-**DefaultPrice** | Pointer to **float32** |  | [optional] 
-**CostPrice** | Pointer to **float32** |  | [optional] 
-**ListPrice** | Pointer to **float32** |  | [optional] 
-**WholesalePrice** | Pointer to **float32** |  | [optional] 
+**DefaultPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**CostPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**ListPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**WholesalePrice** | Pointer to **NullableFloat32** |  | [optional] 
 **AdvancedPrice** | Pointer to [**[]ProductAdvancedPrice**](ProductAdvancedPrice.md) |  | [optional] 
-**TaxClassId** | Pointer to **string** |  | [optional] 
-**AvailForSale** | Pointer to **bool** |  | [optional] 
-**AllowBackorders** | Pointer to **bool** |  | [optional] 
-**InStock** | Pointer to **bool** |  | [optional] 
-**OnSale** | Pointer to **bool** |  | [optional] 
-**ManageStock** | Pointer to **bool** |  | [optional] 
-**InventoryLevel** | Pointer to **float32** |  | [optional] 
+**TaxClassId** | Pointer to **NullableString** |  | [optional] 
+**AvailForSale** | Pointer to **NullableBool** |  | [optional] 
+**AllowBackorders** | Pointer to **NullableBool** |  | [optional] 
+**InStock** | Pointer to **NullableBool** |  | [optional] 
+**OnSale** | Pointer to **NullableBool** |  | [optional] 
+**ManageStock** | Pointer to **NullableBool** |  | [optional] 
+**InventoryLevel** | Pointer to **NullableFloat32** |  | [optional] 
 **Inventory** | Pointer to [**[]ProductInventory**](ProductInventory.md) |  | [optional] 
-**MinQuantity** | Pointer to **float32** |  | [optional] 
-**DefaultQtyInPack** | Pointer to **float32** |  | [optional] 
-**IsQtyInPackFixed** | Pointer to **bool** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
-**DimensionsUnit** | Pointer to **string** |  | [optional] 
-**Width** | Pointer to **float32** |  | [optional] 
-**Height** | Pointer to **float32** |  | [optional] 
-**Length** | Pointer to **float32** |  | [optional] 
-**MetaTitle** | Pointer to **string** |  | [optional] 
-**MetaDescription** | Pointer to **string** |  | [optional] 
-**MetaKeywords** | Pointer to **string** |  | [optional] 
+**MinQuantity** | Pointer to **NullableFloat32** |  | [optional] 
+**DefaultQtyInPack** | Pointer to **NullableFloat32** |  | [optional] 
+**IsQtyInPackFixed** | Pointer to **NullableBool** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
+**DimensionsUnit** | Pointer to **NullableString** |  | [optional] 
+**Width** | Pointer to **NullableFloat32** |  | [optional] 
+**Height** | Pointer to **NullableFloat32** |  | [optional] 
+**Length** | Pointer to **NullableFloat32** |  | [optional] 
+**MetaTitle** | Pointer to **NullableString** |  | [optional] 
+**MetaDescription** | Pointer to **NullableString** |  | [optional] 
+**MetaKeywords** | Pointer to **NullableString** |  | [optional] 
 **Discounts** | Pointer to [**[]Discount**](Discount.md) |  | [optional] 
-**IsVirtual** | Pointer to **bool** |  | [optional] 
+**IsVirtual** | Pointer to **NullableBool** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -146,6 +146,16 @@ SetSku sets Sku field to given value.
 
 HasSku returns a boolean if a field has been set.
 
+### SetSkuNil
+
+`func (o *Child) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *Child) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
 ### GetUpc
 
 `func (o *Child) GetUpc() string`
@@ -171,6 +181,16 @@ SetUpc sets Upc field to given value.
 
 HasUpc returns a boolean if a field has been set.
 
+### SetUpcNil
+
+`func (o *Child) SetUpcNil(b bool)`
+
+ SetUpcNil sets the value for Upc to be an explicit nil
+
+### UnsetUpc
+`func (o *Child) UnsetUpc()`
+
+UnsetUpc ensures that no value is present for Upc, not even an explicit nil
 ### GetEan
 
 `func (o *Child) GetEan() string`
@@ -196,6 +216,16 @@ SetEan sets Ean field to given value.
 
 HasEan returns a boolean if a field has been set.
 
+### SetEanNil
+
+`func (o *Child) SetEanNil(b bool)`
+
+ SetEanNil sets the value for Ean to be an explicit nil
+
+### UnsetEan
+`func (o *Child) UnsetEan()`
+
+UnsetEan ensures that no value is present for Ean, not even an explicit nil
 ### GetMpn
 
 `func (o *Child) GetMpn() string`
@@ -221,6 +251,16 @@ SetMpn sets Mpn field to given value.
 
 HasMpn returns a boolean if a field has been set.
 
+### SetMpnNil
+
+`func (o *Child) SetMpnNil(b bool)`
+
+ SetMpnNil sets the value for Mpn to be an explicit nil
+
+### UnsetMpn
+`func (o *Child) UnsetMpn()`
+
+UnsetMpn ensures that no value is present for Mpn, not even an explicit nil
 ### GetGtin
 
 `func (o *Child) GetGtin() string`
@@ -246,6 +286,16 @@ SetGtin sets Gtin field to given value.
 
 HasGtin returns a boolean if a field has been set.
 
+### SetGtinNil
+
+`func (o *Child) SetGtinNil(b bool)`
+
+ SetGtinNil sets the value for Gtin to be an explicit nil
+
+### UnsetGtin
+`func (o *Child) UnsetGtin()`
+
+UnsetGtin ensures that no value is present for Gtin, not even an explicit nil
 ### GetIsbn
 
 `func (o *Child) GetIsbn() string`
@@ -271,6 +321,16 @@ SetIsbn sets Isbn field to given value.
 
 HasIsbn returns a boolean if a field has been set.
 
+### SetIsbnNil
+
+`func (o *Child) SetIsbnNil(b bool)`
+
+ SetIsbnNil sets the value for Isbn to be an explicit nil
+
+### UnsetIsbn
+`func (o *Child) UnsetIsbn()`
+
+UnsetIsbn ensures that no value is present for Isbn, not even an explicit nil
 ### GetUrl
 
 `func (o *Child) GetUrl() string`
@@ -296,6 +356,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
+### SetUrlNil
+
+`func (o *Child) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *Child) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetSeoUrl
 
 `func (o *Child) GetSeoUrl() string`
@@ -321,6 +391,16 @@ SetSeoUrl sets SeoUrl field to given value.
 
 HasSeoUrl returns a boolean if a field has been set.
 
+### SetSeoUrlNil
+
+`func (o *Child) SetSeoUrlNil(b bool)`
+
+ SetSeoUrlNil sets the value for SeoUrl to be an explicit nil
+
+### UnsetSeoUrl
+`func (o *Child) UnsetSeoUrl()`
+
+UnsetSeoUrl ensures that no value is present for SeoUrl, not even an explicit nil
 ### GetSortOrder
 
 `func (o *Child) GetSortOrder() int32`
@@ -346,6 +426,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *Child) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *Child) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *Child) GetCreatedTime() A2CDateTime`
@@ -371,6 +461,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *Child) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *Child) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Child) GetModifiedTime() A2CDateTime`
@@ -396,6 +496,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Child) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Child) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetName
 
 `func (o *Child) GetName() string`
@@ -421,6 +531,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Child) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Child) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetShortDescription
 
 `func (o *Child) GetShortDescription() string`
@@ -446,6 +566,16 @@ SetShortDescription sets ShortDescription field to given value.
 
 HasShortDescription returns a boolean if a field has been set.
 
+### SetShortDescriptionNil
+
+`func (o *Child) SetShortDescriptionNil(b bool)`
+
+ SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+
+### UnsetShortDescription
+`func (o *Child) UnsetShortDescription()`
+
+UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
 ### GetFullDescription
 
 `func (o *Child) GetFullDescription() string`
@@ -471,6 +601,16 @@ SetFullDescription sets FullDescription field to given value.
 
 HasFullDescription returns a boolean if a field has been set.
 
+### SetFullDescriptionNil
+
+`func (o *Child) SetFullDescriptionNil(b bool)`
+
+ SetFullDescriptionNil sets the value for FullDescription to be an explicit nil
+
+### UnsetFullDescription
+`func (o *Child) UnsetFullDescription()`
+
+UnsetFullDescription ensures that no value is present for FullDescription, not even an explicit nil
 ### GetImages
 
 `func (o *Child) GetImages() []Image`
@@ -546,6 +686,16 @@ SetDefaultPrice sets DefaultPrice field to given value.
 
 HasDefaultPrice returns a boolean if a field has been set.
 
+### SetDefaultPriceNil
+
+`func (o *Child) SetDefaultPriceNil(b bool)`
+
+ SetDefaultPriceNil sets the value for DefaultPrice to be an explicit nil
+
+### UnsetDefaultPrice
+`func (o *Child) UnsetDefaultPrice()`
+
+UnsetDefaultPrice ensures that no value is present for DefaultPrice, not even an explicit nil
 ### GetCostPrice
 
 `func (o *Child) GetCostPrice() float32`
@@ -571,6 +721,16 @@ SetCostPrice sets CostPrice field to given value.
 
 HasCostPrice returns a boolean if a field has been set.
 
+### SetCostPriceNil
+
+`func (o *Child) SetCostPriceNil(b bool)`
+
+ SetCostPriceNil sets the value for CostPrice to be an explicit nil
+
+### UnsetCostPrice
+`func (o *Child) UnsetCostPrice()`
+
+UnsetCostPrice ensures that no value is present for CostPrice, not even an explicit nil
 ### GetListPrice
 
 `func (o *Child) GetListPrice() float32`
@@ -596,6 +756,16 @@ SetListPrice sets ListPrice field to given value.
 
 HasListPrice returns a boolean if a field has been set.
 
+### SetListPriceNil
+
+`func (o *Child) SetListPriceNil(b bool)`
+
+ SetListPriceNil sets the value for ListPrice to be an explicit nil
+
+### UnsetListPrice
+`func (o *Child) UnsetListPrice()`
+
+UnsetListPrice ensures that no value is present for ListPrice, not even an explicit nil
 ### GetWholesalePrice
 
 `func (o *Child) GetWholesalePrice() float32`
@@ -621,6 +791,16 @@ SetWholesalePrice sets WholesalePrice field to given value.
 
 HasWholesalePrice returns a boolean if a field has been set.
 
+### SetWholesalePriceNil
+
+`func (o *Child) SetWholesalePriceNil(b bool)`
+
+ SetWholesalePriceNil sets the value for WholesalePrice to be an explicit nil
+
+### UnsetWholesalePrice
+`func (o *Child) UnsetWholesalePrice()`
+
+UnsetWholesalePrice ensures that no value is present for WholesalePrice, not even an explicit nil
 ### GetAdvancedPrice
 
 `func (o *Child) GetAdvancedPrice() []ProductAdvancedPrice`
@@ -671,6 +851,16 @@ SetTaxClassId sets TaxClassId field to given value.
 
 HasTaxClassId returns a boolean if a field has been set.
 
+### SetTaxClassIdNil
+
+`func (o *Child) SetTaxClassIdNil(b bool)`
+
+ SetTaxClassIdNil sets the value for TaxClassId to be an explicit nil
+
+### UnsetTaxClassId
+`func (o *Child) UnsetTaxClassId()`
+
+UnsetTaxClassId ensures that no value is present for TaxClassId, not even an explicit nil
 ### GetAvailForSale
 
 `func (o *Child) GetAvailForSale() bool`
@@ -696,6 +886,16 @@ SetAvailForSale sets AvailForSale field to given value.
 
 HasAvailForSale returns a boolean if a field has been set.
 
+### SetAvailForSaleNil
+
+`func (o *Child) SetAvailForSaleNil(b bool)`
+
+ SetAvailForSaleNil sets the value for AvailForSale to be an explicit nil
+
+### UnsetAvailForSale
+`func (o *Child) UnsetAvailForSale()`
+
+UnsetAvailForSale ensures that no value is present for AvailForSale, not even an explicit nil
 ### GetAllowBackorders
 
 `func (o *Child) GetAllowBackorders() bool`
@@ -721,6 +921,16 @@ SetAllowBackorders sets AllowBackorders field to given value.
 
 HasAllowBackorders returns a boolean if a field has been set.
 
+### SetAllowBackordersNil
+
+`func (o *Child) SetAllowBackordersNil(b bool)`
+
+ SetAllowBackordersNil sets the value for AllowBackorders to be an explicit nil
+
+### UnsetAllowBackorders
+`func (o *Child) UnsetAllowBackorders()`
+
+UnsetAllowBackorders ensures that no value is present for AllowBackorders, not even an explicit nil
 ### GetInStock
 
 `func (o *Child) GetInStock() bool`
@@ -746,6 +956,16 @@ SetInStock sets InStock field to given value.
 
 HasInStock returns a boolean if a field has been set.
 
+### SetInStockNil
+
+`func (o *Child) SetInStockNil(b bool)`
+
+ SetInStockNil sets the value for InStock to be an explicit nil
+
+### UnsetInStock
+`func (o *Child) UnsetInStock()`
+
+UnsetInStock ensures that no value is present for InStock, not even an explicit nil
 ### GetOnSale
 
 `func (o *Child) GetOnSale() bool`
@@ -771,6 +991,16 @@ SetOnSale sets OnSale field to given value.
 
 HasOnSale returns a boolean if a field has been set.
 
+### SetOnSaleNil
+
+`func (o *Child) SetOnSaleNil(b bool)`
+
+ SetOnSaleNil sets the value for OnSale to be an explicit nil
+
+### UnsetOnSale
+`func (o *Child) UnsetOnSale()`
+
+UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
 ### GetManageStock
 
 `func (o *Child) GetManageStock() bool`
@@ -796,6 +1026,16 @@ SetManageStock sets ManageStock field to given value.
 
 HasManageStock returns a boolean if a field has been set.
 
+### SetManageStockNil
+
+`func (o *Child) SetManageStockNil(b bool)`
+
+ SetManageStockNil sets the value for ManageStock to be an explicit nil
+
+### UnsetManageStock
+`func (o *Child) UnsetManageStock()`
+
+UnsetManageStock ensures that no value is present for ManageStock, not even an explicit nil
 ### GetInventoryLevel
 
 `func (o *Child) GetInventoryLevel() float32`
@@ -821,6 +1061,16 @@ SetInventoryLevel sets InventoryLevel field to given value.
 
 HasInventoryLevel returns a boolean if a field has been set.
 
+### SetInventoryLevelNil
+
+`func (o *Child) SetInventoryLevelNil(b bool)`
+
+ SetInventoryLevelNil sets the value for InventoryLevel to be an explicit nil
+
+### UnsetInventoryLevel
+`func (o *Child) UnsetInventoryLevel()`
+
+UnsetInventoryLevel ensures that no value is present for InventoryLevel, not even an explicit nil
 ### GetInventory
 
 `func (o *Child) GetInventory() []ProductInventory`
@@ -871,6 +1121,16 @@ SetMinQuantity sets MinQuantity field to given value.
 
 HasMinQuantity returns a boolean if a field has been set.
 
+### SetMinQuantityNil
+
+`func (o *Child) SetMinQuantityNil(b bool)`
+
+ SetMinQuantityNil sets the value for MinQuantity to be an explicit nil
+
+### UnsetMinQuantity
+`func (o *Child) UnsetMinQuantity()`
+
+UnsetMinQuantity ensures that no value is present for MinQuantity, not even an explicit nil
 ### GetDefaultQtyInPack
 
 `func (o *Child) GetDefaultQtyInPack() float32`
@@ -896,6 +1156,16 @@ SetDefaultQtyInPack sets DefaultQtyInPack field to given value.
 
 HasDefaultQtyInPack returns a boolean if a field has been set.
 
+### SetDefaultQtyInPackNil
+
+`func (o *Child) SetDefaultQtyInPackNil(b bool)`
+
+ SetDefaultQtyInPackNil sets the value for DefaultQtyInPack to be an explicit nil
+
+### UnsetDefaultQtyInPack
+`func (o *Child) UnsetDefaultQtyInPack()`
+
+UnsetDefaultQtyInPack ensures that no value is present for DefaultQtyInPack, not even an explicit nil
 ### GetIsQtyInPackFixed
 
 `func (o *Child) GetIsQtyInPackFixed() bool`
@@ -921,6 +1191,16 @@ SetIsQtyInPackFixed sets IsQtyInPackFixed field to given value.
 
 HasIsQtyInPackFixed returns a boolean if a field has been set.
 
+### SetIsQtyInPackFixedNil
+
+`func (o *Child) SetIsQtyInPackFixedNil(b bool)`
+
+ SetIsQtyInPackFixedNil sets the value for IsQtyInPackFixed to be an explicit nil
+
+### UnsetIsQtyInPackFixed
+`func (o *Child) UnsetIsQtyInPackFixed()`
+
+UnsetIsQtyInPackFixed ensures that no value is present for IsQtyInPackFixed, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *Child) GetWeightUnit() string`
@@ -946,6 +1226,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *Child) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *Child) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetWeight
 
 `func (o *Child) GetWeight() float32`
@@ -971,6 +1261,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *Child) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *Child) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetDimensionsUnit
 
 `func (o *Child) GetDimensionsUnit() string`
@@ -996,6 +1296,16 @@ SetDimensionsUnit sets DimensionsUnit field to given value.
 
 HasDimensionsUnit returns a boolean if a field has been set.
 
+### SetDimensionsUnitNil
+
+`func (o *Child) SetDimensionsUnitNil(b bool)`
+
+ SetDimensionsUnitNil sets the value for DimensionsUnit to be an explicit nil
+
+### UnsetDimensionsUnit
+`func (o *Child) UnsetDimensionsUnit()`
+
+UnsetDimensionsUnit ensures that no value is present for DimensionsUnit, not even an explicit nil
 ### GetWidth
 
 `func (o *Child) GetWidth() float32`
@@ -1021,6 +1331,16 @@ SetWidth sets Width field to given value.
 
 HasWidth returns a boolean if a field has been set.
 
+### SetWidthNil
+
+`func (o *Child) SetWidthNil(b bool)`
+
+ SetWidthNil sets the value for Width to be an explicit nil
+
+### UnsetWidth
+`func (o *Child) UnsetWidth()`
+
+UnsetWidth ensures that no value is present for Width, not even an explicit nil
 ### GetHeight
 
 `func (o *Child) GetHeight() float32`
@@ -1046,6 +1366,16 @@ SetHeight sets Height field to given value.
 
 HasHeight returns a boolean if a field has been set.
 
+### SetHeightNil
+
+`func (o *Child) SetHeightNil(b bool)`
+
+ SetHeightNil sets the value for Height to be an explicit nil
+
+### UnsetHeight
+`func (o *Child) UnsetHeight()`
+
+UnsetHeight ensures that no value is present for Height, not even an explicit nil
 ### GetLength
 
 `func (o *Child) GetLength() float32`
@@ -1071,6 +1401,16 @@ SetLength sets Length field to given value.
 
 HasLength returns a boolean if a field has been set.
 
+### SetLengthNil
+
+`func (o *Child) SetLengthNil(b bool)`
+
+ SetLengthNil sets the value for Length to be an explicit nil
+
+### UnsetLength
+`func (o *Child) UnsetLength()`
+
+UnsetLength ensures that no value is present for Length, not even an explicit nil
 ### GetMetaTitle
 
 `func (o *Child) GetMetaTitle() string`
@@ -1096,6 +1436,16 @@ SetMetaTitle sets MetaTitle field to given value.
 
 HasMetaTitle returns a boolean if a field has been set.
 
+### SetMetaTitleNil
+
+`func (o *Child) SetMetaTitleNil(b bool)`
+
+ SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+
+### UnsetMetaTitle
+`func (o *Child) UnsetMetaTitle()`
+
+UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Child) GetMetaDescription() string`
@@ -1121,6 +1471,16 @@ SetMetaDescription sets MetaDescription field to given value.
 
 HasMetaDescription returns a boolean if a field has been set.
 
+### SetMetaDescriptionNil
+
+`func (o *Child) SetMetaDescriptionNil(b bool)`
+
+ SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+
+### UnsetMetaDescription
+`func (o *Child) UnsetMetaDescription()`
+
+UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
 ### GetMetaKeywords
 
 `func (o *Child) GetMetaKeywords() string`
@@ -1146,6 +1506,16 @@ SetMetaKeywords sets MetaKeywords field to given value.
 
 HasMetaKeywords returns a boolean if a field has been set.
 
+### SetMetaKeywordsNil
+
+`func (o *Child) SetMetaKeywordsNil(b bool)`
+
+ SetMetaKeywordsNil sets the value for MetaKeywords to be an explicit nil
+
+### UnsetMetaKeywords
+`func (o *Child) UnsetMetaKeywords()`
+
+UnsetMetaKeywords ensures that no value is present for MetaKeywords, not even an explicit nil
 ### GetDiscounts
 
 `func (o *Child) GetDiscounts() []Discount`
@@ -1196,6 +1566,16 @@ SetIsVirtual sets IsVirtual field to given value.
 
 HasIsVirtual returns a boolean if a field has been set.
 
+### SetIsVirtualNil
+
+`func (o *Child) SetIsVirtualNil(b bool)`
+
+ SetIsVirtualNil sets the value for IsVirtual to be an explicit nil
+
+### UnsetIsVirtual
+`func (o *Child) UnsetIsVirtual()`
+
+UnsetIsVirtual ensures that no value is present for IsVirtual, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Child) GetAdditionalFields() map[string]interface{}`
@@ -1221,6 +1601,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Child) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Child) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Child) GetCustomFields() map[string]interface{}`
@@ -1246,6 +1636,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Child) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Child) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

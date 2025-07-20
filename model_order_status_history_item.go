@@ -23,8 +23,8 @@ type OrderStatusHistoryItem struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	ModifiedTime *A2CDateTime `json:"modified_time,omitempty"`
-	Notify *bool `json:"notify,omitempty"`
-	Comment *string `json:"comment,omitempty"`
+	Notify NullableBool `json:"notify,omitempty"`
+	Comment NullableString `json:"comment,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -142,73 +142,93 @@ func (o *OrderStatusHistoryItem) SetModifiedTime(v A2CDateTime) {
 	o.ModifiedTime = &v
 }
 
-// GetNotify returns the Notify field value if set, zero value otherwise.
+// GetNotify returns the Notify field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatusHistoryItem) GetNotify() bool {
-	if o == nil || IsNil(o.Notify) {
+	if o == nil || IsNil(o.Notify.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Notify
+	return *o.Notify.Get()
 }
 
 // GetNotifyOk returns a tuple with the Notify field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatusHistoryItem) GetNotifyOk() (*bool, bool) {
-	if o == nil || IsNil(o.Notify) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Notify, true
+	return o.Notify.Get(), o.Notify.IsSet()
 }
 
 // HasNotify returns a boolean if a field has been set.
 func (o *OrderStatusHistoryItem) HasNotify() bool {
-	if o != nil && !IsNil(o.Notify) {
+	if o != nil && o.Notify.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNotify gets a reference to the given bool and assigns it to the Notify field.
+// SetNotify gets a reference to the given NullableBool and assigns it to the Notify field.
 func (o *OrderStatusHistoryItem) SetNotify(v bool) {
-	o.Notify = &v
+	o.Notify.Set(&v)
+}
+// SetNotifyNil sets the value for Notify to be an explicit nil
+func (o *OrderStatusHistoryItem) SetNotifyNil() {
+	o.Notify.Set(nil)
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// UnsetNotify ensures that no value is present for Notify, not even an explicit nil
+func (o *OrderStatusHistoryItem) UnsetNotify() {
+	o.Notify.Unset()
+}
+
+// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatusHistoryItem) GetComment() string {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil || IsNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+	return *o.Comment.Get()
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatusHistoryItem) GetCommentOk() (*string, bool) {
-	if o == nil || IsNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return o.Comment.Get(), o.Comment.IsSet()
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *OrderStatusHistoryItem) HasComment() bool {
-	if o != nil && !IsNil(o.Comment) {
+	if o != nil && o.Comment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
 func (o *OrderStatusHistoryItem) SetComment(v string) {
-	o.Comment = &v
+	o.Comment.Set(&v)
+}
+// SetCommentNil sets the value for Comment to be an explicit nil
+func (o *OrderStatusHistoryItem) SetCommentNil() {
+	o.Comment.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetComment ensures that no value is present for Comment, not even an explicit nil
+func (o *OrderStatusHistoryItem) UnsetComment() {
+	o.Comment.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatusHistoryItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +237,7 @@ func (o *OrderStatusHistoryItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatusHistoryItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +259,9 @@ func (o *OrderStatusHistoryItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatusHistoryItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +270,7 @@ func (o *OrderStatusHistoryItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatusHistoryItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -289,16 +311,16 @@ func (o OrderStatusHistoryItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ModifiedTime) {
 		toSerialize["modified_time"] = o.ModifiedTime
 	}
-	if !IsNil(o.Notify) {
-		toSerialize["notify"] = o.Notify
+	if o.Notify.IsSet() {
+		toSerialize["notify"] = o.Notify.Get()
 	}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
+	if o.Comment.IsSet() {
+		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

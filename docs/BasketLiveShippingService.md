@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
 **Callback** | Pointer to **string** |  | [optional] 
-**CallbackErrCnt** | Pointer to **int32** |  | [optional] 
-**EnabledOnStore** | Pointer to **bool** |  | [optional] 
+**CallbackErrCnt** | Pointer to **NullableInt32** |  | [optional] 
+**EnabledOnStore** | Pointer to **NullableBool** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -81,6 +81,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *BasketLiveShippingService) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *BasketLiveShippingService) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCallback
 
 `func (o *BasketLiveShippingService) GetCallback() string`
@@ -131,6 +141,16 @@ SetCallbackErrCnt sets CallbackErrCnt field to given value.
 
 HasCallbackErrCnt returns a boolean if a field has been set.
 
+### SetCallbackErrCntNil
+
+`func (o *BasketLiveShippingService) SetCallbackErrCntNil(b bool)`
+
+ SetCallbackErrCntNil sets the value for CallbackErrCnt to be an explicit nil
+
+### UnsetCallbackErrCnt
+`func (o *BasketLiveShippingService) UnsetCallbackErrCnt()`
+
+UnsetCallbackErrCnt ensures that no value is present for CallbackErrCnt, not even an explicit nil
 ### GetEnabledOnStore
 
 `func (o *BasketLiveShippingService) GetEnabledOnStore() bool`
@@ -156,6 +176,16 @@ SetEnabledOnStore sets EnabledOnStore field to given value.
 
 HasEnabledOnStore returns a boolean if a field has been set.
 
+### SetEnabledOnStoreNil
+
+`func (o *BasketLiveShippingService) SetEnabledOnStoreNil(b bool)`
+
+ SetEnabledOnStoreNil sets the value for EnabledOnStore to be an explicit nil
+
+### UnsetEnabledOnStore
+`func (o *BasketLiveShippingService) UnsetEnabledOnStore()`
+
+UnsetEnabledOnStore ensures that no value is present for EnabledOnStore, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *BasketLiveShippingService) GetAdditionalFields() map[string]interface{}`
@@ -181,6 +211,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *BasketLiveShippingService) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *BasketLiveShippingService) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *BasketLiveShippingService) GetCustomFields() map[string]interface{}`
@@ -206,6 +246,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *BasketLiveShippingService) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *BasketLiveShippingService) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

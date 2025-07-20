@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ShipmentCount** | Pointer to **int32** |  | [optional] 
+**ShipmentCount** | Pointer to **NullableInt32** |  | [optional] 
 **Shipment** | Pointer to [**[]Shipment**](Shipment.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetShipmentCount sets ShipmentCount field to given value.
 
 HasShipmentCount returns a boolean if a field has been set.
 
+### SetShipmentCountNil
+
+`func (o *ResponseOrderShipmentListResult) SetShipmentCountNil(b bool)`
+
+ SetShipmentCountNil sets the value for ShipmentCount to be an explicit nil
+
+### UnsetShipmentCount
+`func (o *ResponseOrderShipmentListResult) UnsetShipmentCount()`
+
+UnsetShipmentCount ensures that no value is present for ShipmentCount, not even an explicit nil
 ### GetShipment
 
 `func (o *ResponseOrderShipmentListResult) GetShipment() []Shipment`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseOrderShipmentListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseOrderShipmentListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseOrderShipmentListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseOrderShipmentListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseOrderShipmentListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

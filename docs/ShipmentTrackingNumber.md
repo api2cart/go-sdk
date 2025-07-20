@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CarrierId** | Pointer to **string** |  | [optional] 
-**TrackingNumber** | Pointer to **string** |  | [optional] 
+**CarrierId** | Pointer to **NullableString** |  | [optional] 
+**TrackingNumber** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -53,6 +53,16 @@ SetCarrierId sets CarrierId field to given value.
 
 HasCarrierId returns a boolean if a field has been set.
 
+### SetCarrierIdNil
+
+`func (o *ShipmentTrackingNumber) SetCarrierIdNil(b bool)`
+
+ SetCarrierIdNil sets the value for CarrierId to be an explicit nil
+
+### UnsetCarrierId
+`func (o *ShipmentTrackingNumber) UnsetCarrierId()`
+
+UnsetCarrierId ensures that no value is present for CarrierId, not even an explicit nil
 ### GetTrackingNumber
 
 `func (o *ShipmentTrackingNumber) GetTrackingNumber() string`
@@ -78,6 +88,16 @@ SetTrackingNumber sets TrackingNumber field to given value.
 
 HasTrackingNumber returns a boolean if a field has been set.
 
+### SetTrackingNumberNil
+
+`func (o *ShipmentTrackingNumber) SetTrackingNumberNil(b bool)`
+
+ SetTrackingNumberNil sets the value for TrackingNumber to be an explicit nil
+
+### UnsetTrackingNumber
+`func (o *ShipmentTrackingNumber) UnsetTrackingNumber()`
+
+UnsetTrackingNumber ensures that no value is present for TrackingNumber, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ShipmentTrackingNumber) GetAdditionalFields() map[string]interface{}`
@@ -103,6 +123,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ShipmentTrackingNumber) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ShipmentTrackingNumber) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ShipmentTrackingNumber) GetCustomFields() map[string]interface{}`
@@ -128,6 +158,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ShipmentTrackingNumber) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ShipmentTrackingNumber) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

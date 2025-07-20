@@ -24,10 +24,10 @@ type Discount struct {
 	Name *string `json:"name,omitempty"`
 	ModifierType *string `json:"modifier_type,omitempty"`
 	Value *float32 `json:"value,omitempty"`
-	FromTime *string `json:"from_time,omitempty"`
-	ToTime *string `json:"to_time,omitempty"`
-	CustomerGroupIds *string `json:"customer_group_ids,omitempty"`
-	SortOrder *int32 `json:"sort_order,omitempty"`
+	FromTime NullableString `json:"from_time,omitempty"`
+	ToTime NullableString `json:"to_time,omitempty"`
+	CustomerGroupIds NullableString `json:"customer_group_ids,omitempty"`
+	SortOrder NullableInt32 `json:"sort_order,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -177,137 +177,177 @@ func (o *Discount) SetValue(v float32) {
 	o.Value = &v
 }
 
-// GetFromTime returns the FromTime field value if set, zero value otherwise.
+// GetFromTime returns the FromTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetFromTime() string {
-	if o == nil || IsNil(o.FromTime) {
+	if o == nil || IsNil(o.FromTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FromTime
+	return *o.FromTime.Get()
 }
 
 // GetFromTimeOk returns a tuple with the FromTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetFromTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.FromTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FromTime, true
+	return o.FromTime.Get(), o.FromTime.IsSet()
 }
 
 // HasFromTime returns a boolean if a field has been set.
 func (o *Discount) HasFromTime() bool {
-	if o != nil && !IsNil(o.FromTime) {
+	if o != nil && o.FromTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFromTime gets a reference to the given string and assigns it to the FromTime field.
+// SetFromTime gets a reference to the given NullableString and assigns it to the FromTime field.
 func (o *Discount) SetFromTime(v string) {
-	o.FromTime = &v
+	o.FromTime.Set(&v)
+}
+// SetFromTimeNil sets the value for FromTime to be an explicit nil
+func (o *Discount) SetFromTimeNil() {
+	o.FromTime.Set(nil)
 }
 
-// GetToTime returns the ToTime field value if set, zero value otherwise.
+// UnsetFromTime ensures that no value is present for FromTime, not even an explicit nil
+func (o *Discount) UnsetFromTime() {
+	o.FromTime.Unset()
+}
+
+// GetToTime returns the ToTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetToTime() string {
-	if o == nil || IsNil(o.ToTime) {
+	if o == nil || IsNil(o.ToTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ToTime
+	return *o.ToTime.Get()
 }
 
 // GetToTimeOk returns a tuple with the ToTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetToTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.ToTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ToTime, true
+	return o.ToTime.Get(), o.ToTime.IsSet()
 }
 
 // HasToTime returns a boolean if a field has been set.
 func (o *Discount) HasToTime() bool {
-	if o != nil && !IsNil(o.ToTime) {
+	if o != nil && o.ToTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetToTime gets a reference to the given string and assigns it to the ToTime field.
+// SetToTime gets a reference to the given NullableString and assigns it to the ToTime field.
 func (o *Discount) SetToTime(v string) {
-	o.ToTime = &v
+	o.ToTime.Set(&v)
+}
+// SetToTimeNil sets the value for ToTime to be an explicit nil
+func (o *Discount) SetToTimeNil() {
+	o.ToTime.Set(nil)
 }
 
-// GetCustomerGroupIds returns the CustomerGroupIds field value if set, zero value otherwise.
+// UnsetToTime ensures that no value is present for ToTime, not even an explicit nil
+func (o *Discount) UnsetToTime() {
+	o.ToTime.Unset()
+}
+
+// GetCustomerGroupIds returns the CustomerGroupIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetCustomerGroupIds() string {
-	if o == nil || IsNil(o.CustomerGroupIds) {
+	if o == nil || IsNil(o.CustomerGroupIds.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerGroupIds
+	return *o.CustomerGroupIds.Get()
 }
 
 // GetCustomerGroupIdsOk returns a tuple with the CustomerGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetCustomerGroupIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerGroupIds) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerGroupIds, true
+	return o.CustomerGroupIds.Get(), o.CustomerGroupIds.IsSet()
 }
 
 // HasCustomerGroupIds returns a boolean if a field has been set.
 func (o *Discount) HasCustomerGroupIds() bool {
-	if o != nil && !IsNil(o.CustomerGroupIds) {
+	if o != nil && o.CustomerGroupIds.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerGroupIds gets a reference to the given string and assigns it to the CustomerGroupIds field.
+// SetCustomerGroupIds gets a reference to the given NullableString and assigns it to the CustomerGroupIds field.
 func (o *Discount) SetCustomerGroupIds(v string) {
-	o.CustomerGroupIds = &v
+	o.CustomerGroupIds.Set(&v)
+}
+// SetCustomerGroupIdsNil sets the value for CustomerGroupIds to be an explicit nil
+func (o *Discount) SetCustomerGroupIdsNil() {
+	o.CustomerGroupIds.Set(nil)
 }
 
-// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+// UnsetCustomerGroupIds ensures that no value is present for CustomerGroupIds, not even an explicit nil
+func (o *Discount) UnsetCustomerGroupIds() {
+	o.CustomerGroupIds.Unset()
+}
+
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetSortOrder() int32 {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil || IsNil(o.SortOrder.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SortOrder
+	return *o.SortOrder.Get()
 }
 
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetSortOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SortOrder, true
+	return o.SortOrder.Get(), o.SortOrder.IsSet()
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *Discount) HasSortOrder() bool {
-	if o != nil && !IsNil(o.SortOrder) {
+	if o != nil && o.SortOrder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+// SetSortOrder gets a reference to the given NullableInt32 and assigns it to the SortOrder field.
 func (o *Discount) SetSortOrder(v int32) {
-	o.SortOrder = &v
+	o.SortOrder.Set(&v)
+}
+// SetSortOrderNil sets the value for SortOrder to be an explicit nil
+func (o *Discount) SetSortOrderNil() {
+	o.SortOrder.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
+func (o *Discount) UnsetSortOrder() {
+	o.SortOrder.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -316,6 +356,7 @@ func (o *Discount) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -337,9 +378,9 @@ func (o *Discount) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Discount) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -348,6 +389,7 @@ func (o *Discount) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Discount) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -391,22 +433,22 @@ func (o Discount) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.FromTime) {
-		toSerialize["from_time"] = o.FromTime
+	if o.FromTime.IsSet() {
+		toSerialize["from_time"] = o.FromTime.Get()
 	}
-	if !IsNil(o.ToTime) {
-		toSerialize["to_time"] = o.ToTime
+	if o.ToTime.IsSet() {
+		toSerialize["to_time"] = o.ToTime.Get()
 	}
-	if !IsNil(o.CustomerGroupIds) {
-		toSerialize["customer_group_ids"] = o.CustomerGroupIds
+	if o.CustomerGroupIds.IsSet() {
+		toSerialize["customer_group_ids"] = o.CustomerGroupIds.Get()
 	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sort_order"] = o.SortOrder
+	if o.SortOrder.IsSet() {
+		toSerialize["sort_order"] = o.SortOrder.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -20,10 +20,10 @@ var _ MappedNullable = &CustomerWishListItem{}
 
 // CustomerWishListItem struct for CustomerWishListItem
 type CustomerWishListItem struct {
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	ProductId *string `json:"product_id,omitempty"`
-	ChildId *string `json:"child_id,omitempty"`
-	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
+	ChildId NullableString `json:"child_id,omitempty"`
+	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -45,36 +45,46 @@ func NewCustomerWishListItemWithDefaults() *CustomerWishListItem {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerWishListItem) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWishListItem) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *CustomerWishListItem) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *CustomerWishListItem) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *CustomerWishListItem) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *CustomerWishListItem) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
@@ -109,73 +119,93 @@ func (o *CustomerWishListItem) SetProductId(v string) {
 	o.ProductId = &v
 }
 
-// GetChildId returns the ChildId field value if set, zero value otherwise.
+// GetChildId returns the ChildId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerWishListItem) GetChildId() string {
-	if o == nil || IsNil(o.ChildId) {
+	if o == nil || IsNil(o.ChildId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ChildId
+	return *o.ChildId.Get()
 }
 
 // GetChildIdOk returns a tuple with the ChildId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWishListItem) GetChildIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ChildId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChildId, true
+	return o.ChildId.Get(), o.ChildId.IsSet()
 }
 
 // HasChildId returns a boolean if a field has been set.
 func (o *CustomerWishListItem) HasChildId() bool {
-	if o != nil && !IsNil(o.ChildId) {
+	if o != nil && o.ChildId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetChildId gets a reference to the given string and assigns it to the ChildId field.
+// SetChildId gets a reference to the given NullableString and assigns it to the ChildId field.
 func (o *CustomerWishListItem) SetChildId(v string) {
-	o.ChildId = &v
+	o.ChildId.Set(&v)
+}
+// SetChildIdNil sets the value for ChildId to be an explicit nil
+func (o *CustomerWishListItem) SetChildIdNil() {
+	o.ChildId.Set(nil)
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// UnsetChildId ensures that no value is present for ChildId, not even an explicit nil
+func (o *CustomerWishListItem) UnsetChildId() {
+	o.ChildId.Unset()
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerWishListItem) GetCreatedTime() A2CDateTime {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWishListItem) GetCreatedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *CustomerWishListItem) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given A2CDateTime and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableA2CDateTime and assigns it to the CreatedTime field.
 func (o *CustomerWishListItem) SetCreatedTime(v A2CDateTime) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *CustomerWishListItem) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *CustomerWishListItem) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerWishListItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +214,7 @@ func (o *CustomerWishListItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWishListItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +236,9 @@ func (o *CustomerWishListItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomerWishListItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +247,7 @@ func (o *CustomerWishListItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomerWishListItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -247,22 +279,22 @@ func (o CustomerWishListItem) MarshalJSON() ([]byte, error) {
 
 func (o CustomerWishListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["product_id"] = o.ProductId
 	}
-	if !IsNil(o.ChildId) {
-		toSerialize["child_id"] = o.ChildId
+	if o.ChildId.IsSet() {
+		toSerialize["child_id"] = o.ChildId.Get()
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

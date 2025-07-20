@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseOrderPreestimateShippingListResult{}
 
 // ResponseOrderPreestimateShippingListResult struct for ResponseOrderPreestimateShippingListResult
 type ResponseOrderPreestimateShippingListResult struct {
-	PreestimateShippingsCount *int32 `json:"preestimate_shippings_count,omitempty"`
+	PreestimateShippingsCount NullableInt32 `json:"preestimate_shippings_count,omitempty"`
 	PreestimateShippings []OrderPreestimateShipping `json:"preestimate_shippings,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseOrderPreestimateShippingListResultWithDefaults() *ResponseOrderP
 	return &this
 }
 
-// GetPreestimateShippingsCount returns the PreestimateShippingsCount field value if set, zero value otherwise.
+// GetPreestimateShippingsCount returns the PreestimateShippingsCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderPreestimateShippingListResult) GetPreestimateShippingsCount() int32 {
-	if o == nil || IsNil(o.PreestimateShippingsCount) {
+	if o == nil || IsNil(o.PreestimateShippingsCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.PreestimateShippingsCount
+	return *o.PreestimateShippingsCount.Get()
 }
 
 // GetPreestimateShippingsCountOk returns a tuple with the PreestimateShippingsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderPreestimateShippingListResult) GetPreestimateShippingsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.PreestimateShippingsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PreestimateShippingsCount, true
+	return o.PreestimateShippingsCount.Get(), o.PreestimateShippingsCount.IsSet()
 }
 
 // HasPreestimateShippingsCount returns a boolean if a field has been set.
 func (o *ResponseOrderPreestimateShippingListResult) HasPreestimateShippingsCount() bool {
-	if o != nil && !IsNil(o.PreestimateShippingsCount) {
+	if o != nil && o.PreestimateShippingsCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPreestimateShippingsCount gets a reference to the given int32 and assigns it to the PreestimateShippingsCount field.
+// SetPreestimateShippingsCount gets a reference to the given NullableInt32 and assigns it to the PreestimateShippingsCount field.
 func (o *ResponseOrderPreestimateShippingListResult) SetPreestimateShippingsCount(v int32) {
-	o.PreestimateShippingsCount = &v
+	o.PreestimateShippingsCount.Set(&v)
+}
+// SetPreestimateShippingsCountNil sets the value for PreestimateShippingsCount to be an explicit nil
+func (o *ResponseOrderPreestimateShippingListResult) SetPreestimateShippingsCountNil() {
+	o.PreestimateShippingsCount.Set(nil)
+}
+
+// UnsetPreestimateShippingsCount ensures that no value is present for PreestimateShippingsCount, not even an explicit nil
+func (o *ResponseOrderPreestimateShippingListResult) UnsetPreestimateShippingsCount() {
+	o.PreestimateShippingsCount.Unset()
 }
 
 // GetPreestimateShippings returns the PreestimateShippings field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseOrderPreestimateShippingListResult) SetPreestimateShippings(v [
 	o.PreestimateShippings = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderPreestimateShippingListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseOrderPreestimateShippingListResult) GetAdditionalFields() map[s
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderPreestimateShippingListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseOrderPreestimateShippingListResult) SetAdditionalFields(v map[s
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseOrderPreestimateShippingListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseOrderPreestimateShippingListResult) GetCustomFields() map[strin
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseOrderPreestimateShippingListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseOrderPreestimateShippingListResult) MarshalJSON() ([]byte, error
 
 func (o ResponseOrderPreestimateShippingListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PreestimateShippingsCount) {
-		toSerialize["preestimate_shippings_count"] = o.PreestimateShippingsCount
+	if o.PreestimateShippingsCount.IsSet() {
+		toSerialize["preestimate_shippings_count"] = o.PreestimateShippingsCount.Get()
 	}
 	if !IsNil(o.PreestimateShippings) {
 		toSerialize["preestimate_shippings"] = o.PreestimateShippings
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

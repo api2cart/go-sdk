@@ -40,6 +40,10 @@ Name | Type | Description | Notes
 **BolRetailerId** | Pointer to **int32** | Bol Retailer ID | [optional] 
 **BigcartelUserName** | **string** | Subdomain of store | 
 **BigcartelPassword** | **string** | BigCartel account password | 
+**BricklinkConsumerKey** | **string** | Bricklink Consumer Key | 
+**BricklinkConsumerSecret** | **string** | Bricklink Consumer Secret | 
+**BricklinkToken** | **string** | Bricklink Access Token | 
+**BricklinkTokenSecret** | **string** | Bricklink Access Token Secret | 
 **DemandwareClientId** | Pointer to **string** | Demandware client id | [optional] 
 **DemandwareApiPassword** | Pointer to **string** | Demandware api password | [optional] 
 **DemandwareUserName** | Pointer to **string** | Demandware user name | [optional] 
@@ -170,7 +174,7 @@ Name | Type | Description | Notes
 
 ### NewAccountCartAdd
 
-`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string, ) *AccountCartAdd`
+`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, bricklinkConsumerKey string, bricklinkConsumerSecret string, bricklinkToken string, bricklinkTokenSecret string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string, ) *AccountCartAdd`
 
 NewAccountCartAdd instantiates a new AccountCartAdd object
 This constructor will assign default values to properties that have it defined,
@@ -1068,6 +1072,86 @@ and a boolean to check if the value has been set.
 `func (o *AccountCartAdd) SetBigcartelPassword(v string)`
 
 SetBigcartelPassword sets BigcartelPassword field to given value.
+
+
+### GetBricklinkConsumerKey
+
+`func (o *AccountCartAdd) GetBricklinkConsumerKey() string`
+
+GetBricklinkConsumerKey returns the BricklinkConsumerKey field if non-nil, zero value otherwise.
+
+### GetBricklinkConsumerKeyOk
+
+`func (o *AccountCartAdd) GetBricklinkConsumerKeyOk() (*string, bool)`
+
+GetBricklinkConsumerKeyOk returns a tuple with the BricklinkConsumerKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBricklinkConsumerKey
+
+`func (o *AccountCartAdd) SetBricklinkConsumerKey(v string)`
+
+SetBricklinkConsumerKey sets BricklinkConsumerKey field to given value.
+
+
+### GetBricklinkConsumerSecret
+
+`func (o *AccountCartAdd) GetBricklinkConsumerSecret() string`
+
+GetBricklinkConsumerSecret returns the BricklinkConsumerSecret field if non-nil, zero value otherwise.
+
+### GetBricklinkConsumerSecretOk
+
+`func (o *AccountCartAdd) GetBricklinkConsumerSecretOk() (*string, bool)`
+
+GetBricklinkConsumerSecretOk returns a tuple with the BricklinkConsumerSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBricklinkConsumerSecret
+
+`func (o *AccountCartAdd) SetBricklinkConsumerSecret(v string)`
+
+SetBricklinkConsumerSecret sets BricklinkConsumerSecret field to given value.
+
+
+### GetBricklinkToken
+
+`func (o *AccountCartAdd) GetBricklinkToken() string`
+
+GetBricklinkToken returns the BricklinkToken field if non-nil, zero value otherwise.
+
+### GetBricklinkTokenOk
+
+`func (o *AccountCartAdd) GetBricklinkTokenOk() (*string, bool)`
+
+GetBricklinkTokenOk returns a tuple with the BricklinkToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBricklinkToken
+
+`func (o *AccountCartAdd) SetBricklinkToken(v string)`
+
+SetBricklinkToken sets BricklinkToken field to given value.
+
+
+### GetBricklinkTokenSecret
+
+`func (o *AccountCartAdd) GetBricklinkTokenSecret() string`
+
+GetBricklinkTokenSecret returns the BricklinkTokenSecret field if non-nil, zero value otherwise.
+
+### GetBricklinkTokenSecretOk
+
+`func (o *AccountCartAdd) GetBricklinkTokenSecretOk() (*string, bool)`
+
+GetBricklinkTokenSecretOk returns a tuple with the BricklinkTokenSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBricklinkTokenSecret
+
+`func (o *AccountCartAdd) SetBricklinkTokenSecret(v string)`
+
+SetBricklinkTokenSecret sets BricklinkTokenSecret field to given value.
 
 
 ### GetDemandwareClientId

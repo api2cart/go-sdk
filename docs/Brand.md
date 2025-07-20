@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**CreatedTime** | Pointer to **string** |  | [optional] 
-**ModifiedTime** | Pointer to **string** |  | [optional] 
-**FullDescription** | Pointer to **string** |  | [optional] 
-**ShortDescription** | Pointer to **string** |  | [optional] 
+**CreatedTime** | Pointer to **NullableString** |  | [optional] 
+**ModifiedTime** | Pointer to **NullableString** |  | [optional] 
+**FullDescription** | Pointer to **NullableString** |  | [optional] 
+**ShortDescription** | Pointer to **NullableString** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
-**MetaTitle** | Pointer to **string** |  | [optional] 
-**MetaKeywords** | Pointer to **string** |  | [optional] 
-**MetaDescription** | Pointer to **string** |  | [optional] 
+**MetaTitle** | Pointer to **NullableString** |  | [optional] 
+**MetaKeywords** | Pointer to **NullableString** |  | [optional] 
+**MetaDescription** | Pointer to **NullableString** |  | [optional] 
 **Images** | Pointer to [**[]Image**](Image.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -114,6 +114,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *Brand) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *Brand) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Brand) GetModifiedTime() string`
@@ -139,6 +149,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Brand) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Brand) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetFullDescription
 
 `func (o *Brand) GetFullDescription() string`
@@ -164,6 +184,16 @@ SetFullDescription sets FullDescription field to given value.
 
 HasFullDescription returns a boolean if a field has been set.
 
+### SetFullDescriptionNil
+
+`func (o *Brand) SetFullDescriptionNil(b bool)`
+
+ SetFullDescriptionNil sets the value for FullDescription to be an explicit nil
+
+### UnsetFullDescription
+`func (o *Brand) UnsetFullDescription()`
+
+UnsetFullDescription ensures that no value is present for FullDescription, not even an explicit nil
 ### GetShortDescription
 
 `func (o *Brand) GetShortDescription() string`
@@ -189,6 +219,16 @@ SetShortDescription sets ShortDescription field to given value.
 
 HasShortDescription returns a boolean if a field has been set.
 
+### SetShortDescriptionNil
+
+`func (o *Brand) SetShortDescriptionNil(b bool)`
+
+ SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+
+### UnsetShortDescription
+`func (o *Brand) UnsetShortDescription()`
+
+UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
 ### GetStoresIds
 
 `func (o *Brand) GetStoresIds() []string`
@@ -289,6 +329,16 @@ SetMetaTitle sets MetaTitle field to given value.
 
 HasMetaTitle returns a boolean if a field has been set.
 
+### SetMetaTitleNil
+
+`func (o *Brand) SetMetaTitleNil(b bool)`
+
+ SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+
+### UnsetMetaTitle
+`func (o *Brand) UnsetMetaTitle()`
+
+UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
 ### GetMetaKeywords
 
 `func (o *Brand) GetMetaKeywords() string`
@@ -314,6 +364,16 @@ SetMetaKeywords sets MetaKeywords field to given value.
 
 HasMetaKeywords returns a boolean if a field has been set.
 
+### SetMetaKeywordsNil
+
+`func (o *Brand) SetMetaKeywordsNil(b bool)`
+
+ SetMetaKeywordsNil sets the value for MetaKeywords to be an explicit nil
+
+### UnsetMetaKeywords
+`func (o *Brand) UnsetMetaKeywords()`
+
+UnsetMetaKeywords ensures that no value is present for MetaKeywords, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Brand) GetMetaDescription() string`
@@ -339,6 +399,16 @@ SetMetaDescription sets MetaDescription field to given value.
 
 HasMetaDescription returns a boolean if a field has been set.
 
+### SetMetaDescriptionNil
+
+`func (o *Brand) SetMetaDescriptionNil(b bool)`
+
+ SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+
+### UnsetMetaDescription
+`func (o *Brand) UnsetMetaDescription()`
+
+UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
 ### GetImages
 
 `func (o *Brand) GetImages() []Image`
@@ -389,6 +459,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Brand) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Brand) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Brand) GetCustomFields() map[string]interface{}`
@@ -414,6 +494,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Brand) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Brand) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**ParentId** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ParentId** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**ShortDescription** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**ShortDescription** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
-**Keywords** | Pointer to **string** |  | [optional] 
-**MetaDescription** | Pointer to **string** |  | [optional] 
-**MetaTitle** | Pointer to **string** |  | [optional] 
+**Keywords** | Pointer to **NullableString** |  | [optional] 
+**MetaDescription** | Pointer to **NullableString** |  | [optional] 
+**MetaTitle** | Pointer to **NullableString** |  | [optional] 
 **Avail** | Pointer to **bool** |  | [optional] 
-**Path** | Pointer to **string** |  | [optional] 
-**SeoUrl** | Pointer to **string** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
+**Path** | Pointer to **NullableString** |  | [optional] 
+**SeoUrl** | Pointer to **NullableString** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
 **Images** | Pointer to [**[]Image**](Image.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -92,6 +92,16 @@ SetParentId sets ParentId field to given value.
 
 HasParentId returns a boolean if a field has been set.
 
+### SetParentIdNil
+
+`func (o *Category) SetParentIdNil(b bool)`
+
+ SetParentIdNil sets the value for ParentId to be an explicit nil
+
+### UnsetParentId
+`func (o *Category) UnsetParentId()`
+
+UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Category) GetCreatedAt() A2CDateTime`
@@ -117,6 +127,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *Category) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *Category) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetModifiedAt
 
 `func (o *Category) GetModifiedAt() A2CDateTime`
@@ -142,6 +162,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *Category) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *Category) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetName
 
 `func (o *Category) GetName() string`
@@ -192,6 +222,16 @@ SetShortDescription sets ShortDescription field to given value.
 
 HasShortDescription returns a boolean if a field has been set.
 
+### SetShortDescriptionNil
+
+`func (o *Category) SetShortDescriptionNil(b bool)`
+
+ SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+
+### UnsetShortDescription
+`func (o *Category) UnsetShortDescription()`
+
+UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
 ### GetDescription
 
 `func (o *Category) GetDescription() string`
@@ -217,6 +257,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Category) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Category) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetStoresIds
 
 `func (o *Category) GetStoresIds() []string`
@@ -267,6 +317,16 @@ SetKeywords sets Keywords field to given value.
 
 HasKeywords returns a boolean if a field has been set.
 
+### SetKeywordsNil
+
+`func (o *Category) SetKeywordsNil(b bool)`
+
+ SetKeywordsNil sets the value for Keywords to be an explicit nil
+
+### UnsetKeywords
+`func (o *Category) UnsetKeywords()`
+
+UnsetKeywords ensures that no value is present for Keywords, not even an explicit nil
 ### GetMetaDescription
 
 `func (o *Category) GetMetaDescription() string`
@@ -292,6 +352,16 @@ SetMetaDescription sets MetaDescription field to given value.
 
 HasMetaDescription returns a boolean if a field has been set.
 
+### SetMetaDescriptionNil
+
+`func (o *Category) SetMetaDescriptionNil(b bool)`
+
+ SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+
+### UnsetMetaDescription
+`func (o *Category) UnsetMetaDescription()`
+
+UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
 ### GetMetaTitle
 
 `func (o *Category) GetMetaTitle() string`
@@ -317,6 +387,16 @@ SetMetaTitle sets MetaTitle field to given value.
 
 HasMetaTitle returns a boolean if a field has been set.
 
+### SetMetaTitleNil
+
+`func (o *Category) SetMetaTitleNil(b bool)`
+
+ SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+
+### UnsetMetaTitle
+`func (o *Category) UnsetMetaTitle()`
+
+UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
 ### GetAvail
 
 `func (o *Category) GetAvail() bool`
@@ -367,6 +447,16 @@ SetPath sets Path field to given value.
 
 HasPath returns a boolean if a field has been set.
 
+### SetPathNil
+
+`func (o *Category) SetPathNil(b bool)`
+
+ SetPathNil sets the value for Path to be an explicit nil
+
+### UnsetPath
+`func (o *Category) UnsetPath()`
+
+UnsetPath ensures that no value is present for Path, not even an explicit nil
 ### GetSeoUrl
 
 `func (o *Category) GetSeoUrl() string`
@@ -392,6 +482,16 @@ SetSeoUrl sets SeoUrl field to given value.
 
 HasSeoUrl returns a boolean if a field has been set.
 
+### SetSeoUrlNil
+
+`func (o *Category) SetSeoUrlNil(b bool)`
+
+ SetSeoUrlNil sets the value for SeoUrl to be an explicit nil
+
+### UnsetSeoUrl
+`func (o *Category) UnsetSeoUrl()`
+
+UnsetSeoUrl ensures that no value is present for SeoUrl, not even an explicit nil
 ### GetSortOrder
 
 `func (o *Category) GetSortOrder() int32`
@@ -417,6 +517,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *Category) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *Category) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetImages
 
 `func (o *Category) GetImages() []Image`
@@ -467,6 +577,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Category) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Category) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Category) GetCustomFields() map[string]interface{}`
@@ -492,6 +612,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Category) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Category) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

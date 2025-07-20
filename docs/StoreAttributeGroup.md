@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Position** | Pointer to **int32** |  | [optional] 
-**AttributeSetId** | Pointer to **string** |  | [optional] 
+**Position** | Pointer to **NullableInt32** |  | [optional] 
+**AttributeSetId** | Pointer to **NullableString** |  | [optional] 
 **AssignedAttributeIds** | Pointer to **[]string** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -106,6 +106,16 @@ SetPosition sets Position field to given value.
 
 HasPosition returns a boolean if a field has been set.
 
+### SetPositionNil
+
+`func (o *StoreAttributeGroup) SetPositionNil(b bool)`
+
+ SetPositionNil sets the value for Position to be an explicit nil
+
+### UnsetPosition
+`func (o *StoreAttributeGroup) UnsetPosition()`
+
+UnsetPosition ensures that no value is present for Position, not even an explicit nil
 ### GetAttributeSetId
 
 `func (o *StoreAttributeGroup) GetAttributeSetId() string`
@@ -131,6 +141,16 @@ SetAttributeSetId sets AttributeSetId field to given value.
 
 HasAttributeSetId returns a boolean if a field has been set.
 
+### SetAttributeSetIdNil
+
+`func (o *StoreAttributeGroup) SetAttributeSetIdNil(b bool)`
+
+ SetAttributeSetIdNil sets the value for AttributeSetId to be an explicit nil
+
+### UnsetAttributeSetId
+`func (o *StoreAttributeGroup) UnsetAttributeSetId()`
+
+UnsetAttributeSetId ensures that no value is present for AttributeSetId, not even an explicit nil
 ### GetAssignedAttributeIds
 
 `func (o *StoreAttributeGroup) GetAssignedAttributeIds() []string`
@@ -181,6 +201,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *StoreAttributeGroup) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *StoreAttributeGroup) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *StoreAttributeGroup) GetCustomFields() map[string]interface{}`
@@ -206,6 +236,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *StoreAttributeGroup) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *StoreAttributeGroup) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

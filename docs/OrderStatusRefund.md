@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Shipping** | Pointer to **float32** |  | [optional] 
-**Fee** | Pointer to **float32** |  | [optional] 
-**Tax** | Pointer to **float32** |  | [optional] 
-**TotalRefunded** | Pointer to **float32** |  | [optional] 
-**Time** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Comment** | Pointer to **string** |  | [optional] 
+**Shipping** | Pointer to **NullableFloat32** |  | [optional] 
+**Fee** | Pointer to **NullableFloat32** |  | [optional] 
+**Tax** | Pointer to **NullableFloat32** |  | [optional] 
+**TotalRefunded** | Pointer to **NullableFloat32** |  | [optional] 
+**Time** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Comment** | Pointer to **NullableString** |  | [optional] 
 **RefundedItems** | Pointer to [**[]OrderStatusRefundItem**](OrderStatusRefundItem.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -58,6 +58,16 @@ SetShipping sets Shipping field to given value.
 
 HasShipping returns a boolean if a field has been set.
 
+### SetShippingNil
+
+`func (o *OrderStatusRefund) SetShippingNil(b bool)`
+
+ SetShippingNil sets the value for Shipping to be an explicit nil
+
+### UnsetShipping
+`func (o *OrderStatusRefund) UnsetShipping()`
+
+UnsetShipping ensures that no value is present for Shipping, not even an explicit nil
 ### GetFee
 
 `func (o *OrderStatusRefund) GetFee() float32`
@@ -83,6 +93,16 @@ SetFee sets Fee field to given value.
 
 HasFee returns a boolean if a field has been set.
 
+### SetFeeNil
+
+`func (o *OrderStatusRefund) SetFeeNil(b bool)`
+
+ SetFeeNil sets the value for Fee to be an explicit nil
+
+### UnsetFee
+`func (o *OrderStatusRefund) UnsetFee()`
+
+UnsetFee ensures that no value is present for Fee, not even an explicit nil
 ### GetTax
 
 `func (o *OrderStatusRefund) GetTax() float32`
@@ -108,6 +128,16 @@ SetTax sets Tax field to given value.
 
 HasTax returns a boolean if a field has been set.
 
+### SetTaxNil
+
+`func (o *OrderStatusRefund) SetTaxNil(b bool)`
+
+ SetTaxNil sets the value for Tax to be an explicit nil
+
+### UnsetTax
+`func (o *OrderStatusRefund) UnsetTax()`
+
+UnsetTax ensures that no value is present for Tax, not even an explicit nil
 ### GetTotalRefunded
 
 `func (o *OrderStatusRefund) GetTotalRefunded() float32`
@@ -133,6 +163,16 @@ SetTotalRefunded sets TotalRefunded field to given value.
 
 HasTotalRefunded returns a boolean if a field has been set.
 
+### SetTotalRefundedNil
+
+`func (o *OrderStatusRefund) SetTotalRefundedNil(b bool)`
+
+ SetTotalRefundedNil sets the value for TotalRefunded to be an explicit nil
+
+### UnsetTotalRefunded
+`func (o *OrderStatusRefund) UnsetTotalRefunded()`
+
+UnsetTotalRefunded ensures that no value is present for TotalRefunded, not even an explicit nil
 ### GetTime
 
 `func (o *OrderStatusRefund) GetTime() A2CDateTime`
@@ -158,6 +198,16 @@ SetTime sets Time field to given value.
 
 HasTime returns a boolean if a field has been set.
 
+### SetTimeNil
+
+`func (o *OrderStatusRefund) SetTimeNil(b bool)`
+
+ SetTimeNil sets the value for Time to be an explicit nil
+
+### UnsetTime
+`func (o *OrderStatusRefund) UnsetTime()`
+
+UnsetTime ensures that no value is present for Time, not even an explicit nil
 ### GetComment
 
 `func (o *OrderStatusRefund) GetComment() string`
@@ -183,6 +233,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *OrderStatusRefund) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *OrderStatusRefund) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetRefundedItems
 
 `func (o *OrderStatusRefund) GetRefundedItems() []OrderStatusRefundItem`
@@ -233,6 +293,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderStatusRefund) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderStatusRefund) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderStatusRefund) GetCustomFields() map[string]interface{}`
@@ -258,6 +328,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderStatusRefund) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderStatusRefund) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

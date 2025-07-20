@@ -21,20 +21,20 @@ var _ MappedNullable = &Category{}
 // Category struct for Category
 type Category struct {
 	Id *string `json:"id,omitempty"`
-	ParentId *string `json:"parent_id,omitempty"`
-	CreatedAt *A2CDateTime `json:"created_at,omitempty"`
-	ModifiedAt *A2CDateTime `json:"modified_at,omitempty"`
+	ParentId NullableString `json:"parent_id,omitempty"`
+	CreatedAt NullableA2CDateTime `json:"created_at,omitempty"`
+	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ShortDescription *string `json:"short_description,omitempty"`
-	Description *string `json:"description,omitempty"`
+	ShortDescription NullableString `json:"short_description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	StoresIds []string `json:"stores_ids,omitempty"`
-	Keywords *string `json:"keywords,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
-	MetaTitle *string `json:"meta_title,omitempty"`
+	Keywords NullableString `json:"keywords,omitempty"`
+	MetaDescription NullableString `json:"meta_description,omitempty"`
+	MetaTitle NullableString `json:"meta_title,omitempty"`
 	Avail *bool `json:"avail,omitempty"`
-	Path *string `json:"path,omitempty"`
-	SeoUrl *string `json:"seo_url,omitempty"`
-	SortOrder *int32 `json:"sort_order,omitempty"`
+	Path NullableString `json:"path,omitempty"`
+	SeoUrl NullableString `json:"seo_url,omitempty"`
+	SortOrder NullableInt32 `json:"sort_order,omitempty"`
 	Images []Image `json:"images,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -89,100 +89,130 @@ func (o *Category) SetId(v string) {
 	o.Id = &v
 }
 
-// GetParentId returns the ParentId field value if set, zero value otherwise.
+// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetParentId() string {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil || IsNil(o.ParentId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ParentId
+	return *o.ParentId.Get()
 }
 
 // GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetParentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ParentId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ParentId, true
+	return o.ParentId.Get(), o.ParentId.IsSet()
 }
 
 // HasParentId returns a boolean if a field has been set.
 func (o *Category) HasParentId() bool {
-	if o != nil && !IsNil(o.ParentId) {
+	if o != nil && o.ParentId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParentId gets a reference to the given string and assigns it to the ParentId field.
+// SetParentId gets a reference to the given NullableString and assigns it to the ParentId field.
 func (o *Category) SetParentId(v string) {
-	o.ParentId = &v
+	o.ParentId.Set(&v)
+}
+// SetParentIdNil sets the value for ParentId to be an explicit nil
+func (o *Category) SetParentIdNil() {
+	o.ParentId.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
+func (o *Category) UnsetParentId() {
+	o.ParentId.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetCreatedAt() A2CDateTime {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetCreatedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Category) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given A2CDateTime and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableA2CDateTime and assigns it to the CreatedAt field.
 func (o *Category) SetCreatedAt(v A2CDateTime) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *Category) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *Category) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetModifiedAt() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil || IsNil(o.ModifiedAt.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedAt
+	return *o.ModifiedAt.Get()
 }
 
 // GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetModifiedAtOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedAt, true
+	return o.ModifiedAt.Get(), o.ModifiedAt.IsSet()
 }
 
 // HasModifiedAt returns a boolean if a field has been set.
 func (o *Category) HasModifiedAt() bool {
-	if o != nil && !IsNil(o.ModifiedAt) {
+	if o != nil && o.ModifiedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedAt gets a reference to the given A2CDateTime and assigns it to the ModifiedAt field.
+// SetModifiedAt gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedAt field.
 func (o *Category) SetModifiedAt(v A2CDateTime) {
-	o.ModifiedAt = &v
+	o.ModifiedAt.Set(&v)
+}
+// SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+func (o *Category) SetModifiedAtNil() {
+	o.ModifiedAt.Set(nil)
+}
+
+// UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
+func (o *Category) UnsetModifiedAt() {
+	o.ModifiedAt.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -217,68 +247,88 @@ func (o *Category) SetName(v string) {
 	o.Name = &v
 }
 
-// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
+// GetShortDescription returns the ShortDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetShortDescription() string {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil || IsNil(o.ShortDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ShortDescription
+	return *o.ShortDescription.Get()
 }
 
 // GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetShortDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShortDescription, true
+	return o.ShortDescription.Get(), o.ShortDescription.IsSet()
 }
 
 // HasShortDescription returns a boolean if a field has been set.
 func (o *Category) HasShortDescription() bool {
-	if o != nil && !IsNil(o.ShortDescription) {
+	if o != nil && o.ShortDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
+// SetShortDescription gets a reference to the given NullableString and assigns it to the ShortDescription field.
 func (o *Category) SetShortDescription(v string) {
-	o.ShortDescription = &v
+	o.ShortDescription.Set(&v)
+}
+// SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+func (o *Category) SetShortDescriptionNil() {
+	o.ShortDescription.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
+func (o *Category) UnsetShortDescription() {
+	o.ShortDescription.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Category) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Category) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Category) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Category) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetStoresIds returns the StoresIds field value if set, zero value otherwise.
@@ -313,100 +363,130 @@ func (o *Category) SetStoresIds(v []string) {
 	o.StoresIds = v
 }
 
-// GetKeywords returns the Keywords field value if set, zero value otherwise.
+// GetKeywords returns the Keywords field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetKeywords() string {
-	if o == nil || IsNil(o.Keywords) {
+	if o == nil || IsNil(o.Keywords.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Keywords
+	return *o.Keywords.Get()
 }
 
 // GetKeywordsOk returns a tuple with the Keywords field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetKeywordsOk() (*string, bool) {
-	if o == nil || IsNil(o.Keywords) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Keywords, true
+	return o.Keywords.Get(), o.Keywords.IsSet()
 }
 
 // HasKeywords returns a boolean if a field has been set.
 func (o *Category) HasKeywords() bool {
-	if o != nil && !IsNil(o.Keywords) {
+	if o != nil && o.Keywords.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKeywords gets a reference to the given string and assigns it to the Keywords field.
+// SetKeywords gets a reference to the given NullableString and assigns it to the Keywords field.
 func (o *Category) SetKeywords(v string) {
-	o.Keywords = &v
+	o.Keywords.Set(&v)
+}
+// SetKeywordsNil sets the value for Keywords to be an explicit nil
+func (o *Category) SetKeywordsNil() {
+	o.Keywords.Set(nil)
 }
 
-// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise.
+// UnsetKeywords ensures that no value is present for Keywords, not even an explicit nil
+func (o *Category) UnsetKeywords() {
+	o.Keywords.Unset()
+}
+
+// GetMetaDescription returns the MetaDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetMetaDescription() string {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil || IsNil(o.MetaDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaDescription
+	return *o.MetaDescription.Get()
 }
 
 // GetMetaDescriptionOk returns a tuple with the MetaDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetMetaDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaDescription, true
+	return o.MetaDescription.Get(), o.MetaDescription.IsSet()
 }
 
 // HasMetaDescription returns a boolean if a field has been set.
 func (o *Category) HasMetaDescription() bool {
-	if o != nil && !IsNil(o.MetaDescription) {
+	if o != nil && o.MetaDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaDescription gets a reference to the given string and assigns it to the MetaDescription field.
+// SetMetaDescription gets a reference to the given NullableString and assigns it to the MetaDescription field.
 func (o *Category) SetMetaDescription(v string) {
-	o.MetaDescription = &v
+	o.MetaDescription.Set(&v)
+}
+// SetMetaDescriptionNil sets the value for MetaDescription to be an explicit nil
+func (o *Category) SetMetaDescriptionNil() {
+	o.MetaDescription.Set(nil)
 }
 
-// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
+// UnsetMetaDescription ensures that no value is present for MetaDescription, not even an explicit nil
+func (o *Category) UnsetMetaDescription() {
+	o.MetaDescription.Unset()
+}
+
+// GetMetaTitle returns the MetaTitle field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetMetaTitle() string {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil || IsNil(o.MetaTitle.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetaTitle
+	return *o.MetaTitle.Get()
 }
 
 // GetMetaTitleOk returns a tuple with the MetaTitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetMetaTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.MetaTitle) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetaTitle, true
+	return o.MetaTitle.Get(), o.MetaTitle.IsSet()
 }
 
 // HasMetaTitle returns a boolean if a field has been set.
 func (o *Category) HasMetaTitle() bool {
-	if o != nil && !IsNil(o.MetaTitle) {
+	if o != nil && o.MetaTitle.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetaTitle gets a reference to the given string and assigns it to the MetaTitle field.
+// SetMetaTitle gets a reference to the given NullableString and assigns it to the MetaTitle field.
 func (o *Category) SetMetaTitle(v string) {
-	o.MetaTitle = &v
+	o.MetaTitle.Set(&v)
+}
+// SetMetaTitleNil sets the value for MetaTitle to be an explicit nil
+func (o *Category) SetMetaTitleNil() {
+	o.MetaTitle.Set(nil)
+}
+
+// UnsetMetaTitle ensures that no value is present for MetaTitle, not even an explicit nil
+func (o *Category) UnsetMetaTitle() {
+	o.MetaTitle.Unset()
 }
 
 // GetAvail returns the Avail field value if set, zero value otherwise.
@@ -441,100 +521,130 @@ func (o *Category) SetAvail(v bool) {
 	o.Avail = &v
 }
 
-// GetPath returns the Path field value if set, zero value otherwise.
+// GetPath returns the Path field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetPath() string {
-	if o == nil || IsNil(o.Path) {
+	if o == nil || IsNil(o.Path.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Path
+	return *o.Path.Get()
 }
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetPathOk() (*string, bool) {
-	if o == nil || IsNil(o.Path) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Path, true
+	return o.Path.Get(), o.Path.IsSet()
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *Category) HasPath() bool {
-	if o != nil && !IsNil(o.Path) {
+	if o != nil && o.Path.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPath gets a reference to the given string and assigns it to the Path field.
+// SetPath gets a reference to the given NullableString and assigns it to the Path field.
 func (o *Category) SetPath(v string) {
-	o.Path = &v
+	o.Path.Set(&v)
+}
+// SetPathNil sets the value for Path to be an explicit nil
+func (o *Category) SetPathNil() {
+	o.Path.Set(nil)
 }
 
-// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise.
+// UnsetPath ensures that no value is present for Path, not even an explicit nil
+func (o *Category) UnsetPath() {
+	o.Path.Unset()
+}
+
+// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetSeoUrl() string {
-	if o == nil || IsNil(o.SeoUrl) {
+	if o == nil || IsNil(o.SeoUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SeoUrl
+	return *o.SeoUrl.Get()
 }
 
 // GetSeoUrlOk returns a tuple with the SeoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetSeoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.SeoUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SeoUrl, true
+	return o.SeoUrl.Get(), o.SeoUrl.IsSet()
 }
 
 // HasSeoUrl returns a boolean if a field has been set.
 func (o *Category) HasSeoUrl() bool {
-	if o != nil && !IsNil(o.SeoUrl) {
+	if o != nil && o.SeoUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSeoUrl gets a reference to the given string and assigns it to the SeoUrl field.
+// SetSeoUrl gets a reference to the given NullableString and assigns it to the SeoUrl field.
 func (o *Category) SetSeoUrl(v string) {
-	o.SeoUrl = &v
+	o.SeoUrl.Set(&v)
+}
+// SetSeoUrlNil sets the value for SeoUrl to be an explicit nil
+func (o *Category) SetSeoUrlNil() {
+	o.SeoUrl.Set(nil)
 }
 
-// GetSortOrder returns the SortOrder field value if set, zero value otherwise.
+// UnsetSeoUrl ensures that no value is present for SeoUrl, not even an explicit nil
+func (o *Category) UnsetSeoUrl() {
+	o.SeoUrl.Unset()
+}
+
+// GetSortOrder returns the SortOrder field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetSortOrder() int32 {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil || IsNil(o.SortOrder.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.SortOrder
+	return *o.SortOrder.Get()
 }
 
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetSortOrderOk() (*int32, bool) {
-	if o == nil || IsNil(o.SortOrder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SortOrder, true
+	return o.SortOrder.Get(), o.SortOrder.IsSet()
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *Category) HasSortOrder() bool {
-	if o != nil && !IsNil(o.SortOrder) {
+	if o != nil && o.SortOrder.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSortOrder gets a reference to the given int32 and assigns it to the SortOrder field.
+// SetSortOrder gets a reference to the given NullableInt32 and assigns it to the SortOrder field.
 func (o *Category) SetSortOrder(v int32) {
-	o.SortOrder = &v
+	o.SortOrder.Set(&v)
+}
+// SetSortOrderNil sets the value for SortOrder to be an explicit nil
+func (o *Category) SetSortOrderNil() {
+	o.SortOrder.Set(nil)
+}
+
+// UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
+func (o *Category) UnsetSortOrder() {
+	o.SortOrder.Unset()
 }
 
 // GetImages returns the Images field value if set, zero value otherwise.
@@ -569,9 +679,9 @@ func (o *Category) SetImages(v []Image) {
 	o.Images = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -580,6 +690,7 @@ func (o *Category) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -601,9 +712,9 @@ func (o *Category) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Category) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -612,6 +723,7 @@ func (o *Category) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Category) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -646,55 +758,55 @@ func (o Category) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.ParentId) {
-		toSerialize["parent_id"] = o.ParentId
+	if o.ParentId.IsSet() {
+		toSerialize["parent_id"] = o.ParentId.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ModifiedAt) {
-		toSerialize["modified_at"] = o.ModifiedAt
+	if o.ModifiedAt.IsSet() {
+		toSerialize["modified_at"] = o.ModifiedAt.Get()
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.ShortDescription) {
-		toSerialize["short_description"] = o.ShortDescription
+	if o.ShortDescription.IsSet() {
+		toSerialize["short_description"] = o.ShortDescription.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.StoresIds) {
 		toSerialize["stores_ids"] = o.StoresIds
 	}
-	if !IsNil(o.Keywords) {
-		toSerialize["keywords"] = o.Keywords
+	if o.Keywords.IsSet() {
+		toSerialize["keywords"] = o.Keywords.Get()
 	}
-	if !IsNil(o.MetaDescription) {
-		toSerialize["meta_description"] = o.MetaDescription
+	if o.MetaDescription.IsSet() {
+		toSerialize["meta_description"] = o.MetaDescription.Get()
 	}
-	if !IsNil(o.MetaTitle) {
-		toSerialize["meta_title"] = o.MetaTitle
+	if o.MetaTitle.IsSet() {
+		toSerialize["meta_title"] = o.MetaTitle.Get()
 	}
 	if !IsNil(o.Avail) {
 		toSerialize["avail"] = o.Avail
 	}
-	if !IsNil(o.Path) {
-		toSerialize["path"] = o.Path
+	if o.Path.IsSet() {
+		toSerialize["path"] = o.Path.Get()
 	}
-	if !IsNil(o.SeoUrl) {
-		toSerialize["seo_url"] = o.SeoUrl
+	if o.SeoUrl.IsSet() {
+		toSerialize["seo_url"] = o.SeoUrl.Get()
 	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sort_order"] = o.SortOrder
+	if o.SortOrder.IsSet() {
+		toSerialize["sort_order"] = o.SortOrder.Get()
 	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

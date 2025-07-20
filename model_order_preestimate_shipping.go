@@ -21,13 +21,13 @@ var _ MappedNullable = &OrderPreestimateShipping{}
 // OrderPreestimateShipping struct for OrderPreestimateShipping
 type OrderPreestimateShipping struct {
 	MethodCode *string `json:"method_code,omitempty"`
-	MethodName *string `json:"method_name,omitempty"`
-	CarrierCode *string `json:"carrier_code,omitempty"`
-	CarrierName *string `json:"carrier_name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Price *float32 `json:"price,omitempty"`
-	PriceIncTax *float32 `json:"price_inc_tax,omitempty"`
-	DeliveryTime *string `json:"delivery_time,omitempty"`
+	MethodName NullableString `json:"method_name,omitempty"`
+	CarrierCode NullableString `json:"carrier_code,omitempty"`
+	CarrierName NullableString `json:"carrier_name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Price NullableFloat32 `json:"price,omitempty"`
+	PriceIncTax NullableFloat32 `json:"price_inc_tax,omitempty"`
+	DeliveryTime NullableString `json:"delivery_time,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -81,233 +81,303 @@ func (o *OrderPreestimateShipping) SetMethodCode(v string) {
 	o.MethodCode = &v
 }
 
-// GetMethodName returns the MethodName field value if set, zero value otherwise.
+// GetMethodName returns the MethodName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetMethodName() string {
-	if o == nil || IsNil(o.MethodName) {
+	if o == nil || IsNil(o.MethodName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MethodName
+	return *o.MethodName.Get()
 }
 
 // GetMethodNameOk returns a tuple with the MethodName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetMethodNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MethodName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MethodName, true
+	return o.MethodName.Get(), o.MethodName.IsSet()
 }
 
 // HasMethodName returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasMethodName() bool {
-	if o != nil && !IsNil(o.MethodName) {
+	if o != nil && o.MethodName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMethodName gets a reference to the given string and assigns it to the MethodName field.
+// SetMethodName gets a reference to the given NullableString and assigns it to the MethodName field.
 func (o *OrderPreestimateShipping) SetMethodName(v string) {
-	o.MethodName = &v
+	o.MethodName.Set(&v)
+}
+// SetMethodNameNil sets the value for MethodName to be an explicit nil
+func (o *OrderPreestimateShipping) SetMethodNameNil() {
+	o.MethodName.Set(nil)
 }
 
-// GetCarrierCode returns the CarrierCode field value if set, zero value otherwise.
+// UnsetMethodName ensures that no value is present for MethodName, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetMethodName() {
+	o.MethodName.Unset()
+}
+
+// GetCarrierCode returns the CarrierCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetCarrierCode() string {
-	if o == nil || IsNil(o.CarrierCode) {
+	if o == nil || IsNil(o.CarrierCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CarrierCode
+	return *o.CarrierCode.Get()
 }
 
 // GetCarrierCodeOk returns a tuple with the CarrierCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetCarrierCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.CarrierCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CarrierCode, true
+	return o.CarrierCode.Get(), o.CarrierCode.IsSet()
 }
 
 // HasCarrierCode returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasCarrierCode() bool {
-	if o != nil && !IsNil(o.CarrierCode) {
+	if o != nil && o.CarrierCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCarrierCode gets a reference to the given string and assigns it to the CarrierCode field.
+// SetCarrierCode gets a reference to the given NullableString and assigns it to the CarrierCode field.
 func (o *OrderPreestimateShipping) SetCarrierCode(v string) {
-	o.CarrierCode = &v
+	o.CarrierCode.Set(&v)
+}
+// SetCarrierCodeNil sets the value for CarrierCode to be an explicit nil
+func (o *OrderPreestimateShipping) SetCarrierCodeNil() {
+	o.CarrierCode.Set(nil)
 }
 
-// GetCarrierName returns the CarrierName field value if set, zero value otherwise.
+// UnsetCarrierCode ensures that no value is present for CarrierCode, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetCarrierCode() {
+	o.CarrierCode.Unset()
+}
+
+// GetCarrierName returns the CarrierName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetCarrierName() string {
-	if o == nil || IsNil(o.CarrierName) {
+	if o == nil || IsNil(o.CarrierName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CarrierName
+	return *o.CarrierName.Get()
 }
 
 // GetCarrierNameOk returns a tuple with the CarrierName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetCarrierNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CarrierName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CarrierName, true
+	return o.CarrierName.Get(), o.CarrierName.IsSet()
 }
 
 // HasCarrierName returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasCarrierName() bool {
-	if o != nil && !IsNil(o.CarrierName) {
+	if o != nil && o.CarrierName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCarrierName gets a reference to the given string and assigns it to the CarrierName field.
+// SetCarrierName gets a reference to the given NullableString and assigns it to the CarrierName field.
 func (o *OrderPreestimateShipping) SetCarrierName(v string) {
-	o.CarrierName = &v
+	o.CarrierName.Set(&v)
+}
+// SetCarrierNameNil sets the value for CarrierName to be an explicit nil
+func (o *OrderPreestimateShipping) SetCarrierNameNil() {
+	o.CarrierName.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetCarrierName ensures that no value is present for CarrierName, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetCarrierName() {
+	o.CarrierName.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *OrderPreestimateShipping) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *OrderPreestimateShipping) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetPrice() float32 {
-	if o == nil || IsNil(o.Price) {
+	if o == nil || IsNil(o.Price.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Price
+	return *o.Price.Get()
 }
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return o.Price.Get(), o.Price.IsSet()
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
+	if o != nil && o.Price.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrice gets a reference to the given float32 and assigns it to the Price field.
+// SetPrice gets a reference to the given NullableFloat32 and assigns it to the Price field.
 func (o *OrderPreestimateShipping) SetPrice(v float32) {
-	o.Price = &v
+	o.Price.Set(&v)
+}
+// SetPriceNil sets the value for Price to be an explicit nil
+func (o *OrderPreestimateShipping) SetPriceNil() {
+	o.Price.Set(nil)
 }
 
-// GetPriceIncTax returns the PriceIncTax field value if set, zero value otherwise.
+// UnsetPrice ensures that no value is present for Price, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetPrice() {
+	o.Price.Unset()
+}
+
+// GetPriceIncTax returns the PriceIncTax field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetPriceIncTax() float32 {
-	if o == nil || IsNil(o.PriceIncTax) {
+	if o == nil || IsNil(o.PriceIncTax.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.PriceIncTax
+	return *o.PriceIncTax.Get()
 }
 
 // GetPriceIncTaxOk returns a tuple with the PriceIncTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetPriceIncTaxOk() (*float32, bool) {
-	if o == nil || IsNil(o.PriceIncTax) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PriceIncTax, true
+	return o.PriceIncTax.Get(), o.PriceIncTax.IsSet()
 }
 
 // HasPriceIncTax returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasPriceIncTax() bool {
-	if o != nil && !IsNil(o.PriceIncTax) {
+	if o != nil && o.PriceIncTax.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPriceIncTax gets a reference to the given float32 and assigns it to the PriceIncTax field.
+// SetPriceIncTax gets a reference to the given NullableFloat32 and assigns it to the PriceIncTax field.
 func (o *OrderPreestimateShipping) SetPriceIncTax(v float32) {
-	o.PriceIncTax = &v
+	o.PriceIncTax.Set(&v)
+}
+// SetPriceIncTaxNil sets the value for PriceIncTax to be an explicit nil
+func (o *OrderPreestimateShipping) SetPriceIncTaxNil() {
+	o.PriceIncTax.Set(nil)
 }
 
-// GetDeliveryTime returns the DeliveryTime field value if set, zero value otherwise.
+// UnsetPriceIncTax ensures that no value is present for PriceIncTax, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetPriceIncTax() {
+	o.PriceIncTax.Unset()
+}
+
+// GetDeliveryTime returns the DeliveryTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetDeliveryTime() string {
-	if o == nil || IsNil(o.DeliveryTime) {
+	if o == nil || IsNil(o.DeliveryTime.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DeliveryTime
+	return *o.DeliveryTime.Get()
 }
 
 // GetDeliveryTimeOk returns a tuple with the DeliveryTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetDeliveryTimeOk() (*string, bool) {
-	if o == nil || IsNil(o.DeliveryTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeliveryTime, true
+	return o.DeliveryTime.Get(), o.DeliveryTime.IsSet()
 }
 
 // HasDeliveryTime returns a boolean if a field has been set.
 func (o *OrderPreestimateShipping) HasDeliveryTime() bool {
-	if o != nil && !IsNil(o.DeliveryTime) {
+	if o != nil && o.DeliveryTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeliveryTime gets a reference to the given string and assigns it to the DeliveryTime field.
+// SetDeliveryTime gets a reference to the given NullableString and assigns it to the DeliveryTime field.
 func (o *OrderPreestimateShipping) SetDeliveryTime(v string) {
-	o.DeliveryTime = &v
+	o.DeliveryTime.Set(&v)
+}
+// SetDeliveryTimeNil sets the value for DeliveryTime to be an explicit nil
+func (o *OrderPreestimateShipping) SetDeliveryTimeNil() {
+	o.DeliveryTime.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetDeliveryTime ensures that no value is present for DeliveryTime, not even an explicit nil
+func (o *OrderPreestimateShipping) UnsetDeliveryTime() {
+	o.DeliveryTime.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -316,6 +386,7 @@ func (o *OrderPreestimateShipping) GetAdditionalFields() map[string]interface{} 
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -337,9 +408,9 @@ func (o *OrderPreestimateShipping) SetAdditionalFields(v map[string]interface{})
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderPreestimateShipping) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -348,6 +419,7 @@ func (o *OrderPreestimateShipping) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderPreestimateShipping) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -382,31 +454,31 @@ func (o OrderPreestimateShipping) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MethodCode) {
 		toSerialize["method_code"] = o.MethodCode
 	}
-	if !IsNil(o.MethodName) {
-		toSerialize["method_name"] = o.MethodName
+	if o.MethodName.IsSet() {
+		toSerialize["method_name"] = o.MethodName.Get()
 	}
-	if !IsNil(o.CarrierCode) {
-		toSerialize["carrier_code"] = o.CarrierCode
+	if o.CarrierCode.IsSet() {
+		toSerialize["carrier_code"] = o.CarrierCode.Get()
 	}
-	if !IsNil(o.CarrierName) {
-		toSerialize["carrier_name"] = o.CarrierName
+	if o.CarrierName.IsSet() {
+		toSerialize["carrier_name"] = o.CarrierName.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
+	if o.Price.IsSet() {
+		toSerialize["price"] = o.Price.Get()
 	}
-	if !IsNil(o.PriceIncTax) {
-		toSerialize["price_inc_tax"] = o.PriceIncTax
+	if o.PriceIncTax.IsSet() {
+		toSerialize["price_inc_tax"] = o.PriceIncTax.Get()
 	}
-	if !IsNil(o.DeliveryTime) {
-		toSerialize["delivery_time"] = o.DeliveryTime
+	if o.DeliveryTime.IsSet() {
+		toSerialize["delivery_time"] = o.DeliveryTime.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

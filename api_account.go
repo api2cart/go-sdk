@@ -406,6 +406,10 @@ type ApiAccountConfigUpdateRequest struct {
 	shopwareApiSecret *string
 	bigcartelUserName *string
 	bigcartelPassword *string
+	bricklinkConsumerKey *string
+	bricklinkConsumerSecret *string
+	bricklinkToken *string
+	bricklinkTokenSecret *string
 	volusionLogin *string
 	volusionPassword *string
 	walmartClientId *string
@@ -954,6 +958,30 @@ func (r ApiAccountConfigUpdateRequest) BigcartelUserName(bigcartelUserName strin
 // BigCartel account password
 func (r ApiAccountConfigUpdateRequest) BigcartelPassword(bigcartelPassword string) ApiAccountConfigUpdateRequest {
 	r.bigcartelPassword = &bigcartelPassword
+	return r
+}
+
+// Bricklink Consumer Key
+func (r ApiAccountConfigUpdateRequest) BricklinkConsumerKey(bricklinkConsumerKey string) ApiAccountConfigUpdateRequest {
+	r.bricklinkConsumerKey = &bricklinkConsumerKey
+	return r
+}
+
+// Bricklink Consumer Secret
+func (r ApiAccountConfigUpdateRequest) BricklinkConsumerSecret(bricklinkConsumerSecret string) ApiAccountConfigUpdateRequest {
+	r.bricklinkConsumerSecret = &bricklinkConsumerSecret
+	return r
+}
+
+// Bricklink Access Token
+func (r ApiAccountConfigUpdateRequest) BricklinkToken(bricklinkToken string) ApiAccountConfigUpdateRequest {
+	r.bricklinkToken = &bricklinkToken
+	return r
+}
+
+// Bricklink Access Token Secret
+func (r ApiAccountConfigUpdateRequest) BricklinkTokenSecret(bricklinkTokenSecret string) ApiAccountConfigUpdateRequest {
+	r.bricklinkTokenSecret = &bricklinkTokenSecret
 	return r
 }
 
@@ -1689,6 +1717,18 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.bigcartelPassword != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bigcartel_password", r.bigcartelPassword, "form", "")
+	}
+	if r.bricklinkConsumerKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bricklink_consumer_key", r.bricklinkConsumerKey, "form", "")
+	}
+	if r.bricklinkConsumerSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bricklink_consumer_secret", r.bricklinkConsumerSecret, "form", "")
+	}
+	if r.bricklinkToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bricklink_token", r.bricklinkToken, "form", "")
+	}
+	if r.bricklinkTokenSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "bricklink_token_secret", r.bricklinkTokenSecret, "form", "")
 	}
 	if r.volusionLogin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "volusion_login", r.volusionLogin, "form", "")

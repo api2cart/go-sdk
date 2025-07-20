@@ -6,25 +6,25 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
 **Postcode** | Pointer to **string** |  | [optional] 
 **Address1** | Pointer to **string** |  | [optional] 
-**Address2** | Pointer to **string** |  | [optional] 
-**Phone** | Pointer to **string** |  | [optional] 
-**PhoneMobile** | Pointer to **string** |  | [optional] 
+**Address2** | Pointer to **NullableString** |  | [optional] 
+**Phone** | Pointer to **NullableString** |  | [optional] 
+**PhoneMobile** | Pointer to **NullableString** |  | [optional] 
 **City** | Pointer to **string** |  | [optional] 
 **Country** | Pointer to [**Country**](Country.md) |  | [optional] 
-**State** | Pointer to [**State**](State.md) |  | [optional] 
-**Company** | Pointer to **string** |  | [optional] 
-**Fax** | Pointer to **string** |  | [optional] 
-**Website** | Pointer to **string** |  | [optional] 
-**Gender** | Pointer to **string** |  | [optional] 
-**Region** | Pointer to **string** |  | [optional] 
+**State** | Pointer to [**NullableState**](State.md) |  | [optional] 
+**Company** | Pointer to **NullableString** |  | [optional] 
+**Fax** | Pointer to **NullableString** |  | [optional] 
+**Website** | Pointer to **NullableString** |  | [optional] 
+**Gender** | Pointer to **NullableString** |  | [optional] 
+**Region** | Pointer to **NullableString** |  | [optional] 
 **Default** | Pointer to **bool** |  | [optional] 
-**TaxId** | Pointer to **string** |  | [optional] 
-**IdentificationNumber** | Pointer to **string** |  | [optional] 
-**Alias** | Pointer to **string** |  | [optional] 
+**TaxId** | Pointer to **NullableString** |  | [optional] 
+**IdentificationNumber** | Pointer to **NullableString** |  | [optional] 
+**Alias** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -122,6 +122,16 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
+### SetFirstNameNil
+
+`func (o *CustomerAddress) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *CustomerAddress) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *CustomerAddress) GetLastName() string`
@@ -147,6 +157,16 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
+### SetLastNameNil
+
+`func (o *CustomerAddress) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *CustomerAddress) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetPostcode
 
 `func (o *CustomerAddress) GetPostcode() string`
@@ -222,6 +242,16 @@ SetAddress2 sets Address2 field to given value.
 
 HasAddress2 returns a boolean if a field has been set.
 
+### SetAddress2Nil
+
+`func (o *CustomerAddress) SetAddress2Nil(b bool)`
+
+ SetAddress2Nil sets the value for Address2 to be an explicit nil
+
+### UnsetAddress2
+`func (o *CustomerAddress) UnsetAddress2()`
+
+UnsetAddress2 ensures that no value is present for Address2, not even an explicit nil
 ### GetPhone
 
 `func (o *CustomerAddress) GetPhone() string`
@@ -247,6 +277,16 @@ SetPhone sets Phone field to given value.
 
 HasPhone returns a boolean if a field has been set.
 
+### SetPhoneNil
+
+`func (o *CustomerAddress) SetPhoneNil(b bool)`
+
+ SetPhoneNil sets the value for Phone to be an explicit nil
+
+### UnsetPhone
+`func (o *CustomerAddress) UnsetPhone()`
+
+UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 ### GetPhoneMobile
 
 `func (o *CustomerAddress) GetPhoneMobile() string`
@@ -272,6 +312,16 @@ SetPhoneMobile sets PhoneMobile field to given value.
 
 HasPhoneMobile returns a boolean if a field has been set.
 
+### SetPhoneMobileNil
+
+`func (o *CustomerAddress) SetPhoneMobileNil(b bool)`
+
+ SetPhoneMobileNil sets the value for PhoneMobile to be an explicit nil
+
+### UnsetPhoneMobile
+`func (o *CustomerAddress) UnsetPhoneMobile()`
+
+UnsetPhoneMobile ensures that no value is present for PhoneMobile, not even an explicit nil
 ### GetCity
 
 `func (o *CustomerAddress) GetCity() string`
@@ -347,6 +397,16 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### SetStateNil
+
+`func (o *CustomerAddress) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *CustomerAddress) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
 ### GetCompany
 
 `func (o *CustomerAddress) GetCompany() string`
@@ -372,6 +432,16 @@ SetCompany sets Company field to given value.
 
 HasCompany returns a boolean if a field has been set.
 
+### SetCompanyNil
+
+`func (o *CustomerAddress) SetCompanyNil(b bool)`
+
+ SetCompanyNil sets the value for Company to be an explicit nil
+
+### UnsetCompany
+`func (o *CustomerAddress) UnsetCompany()`
+
+UnsetCompany ensures that no value is present for Company, not even an explicit nil
 ### GetFax
 
 `func (o *CustomerAddress) GetFax() string`
@@ -397,6 +467,16 @@ SetFax sets Fax field to given value.
 
 HasFax returns a boolean if a field has been set.
 
+### SetFaxNil
+
+`func (o *CustomerAddress) SetFaxNil(b bool)`
+
+ SetFaxNil sets the value for Fax to be an explicit nil
+
+### UnsetFax
+`func (o *CustomerAddress) UnsetFax()`
+
+UnsetFax ensures that no value is present for Fax, not even an explicit nil
 ### GetWebsite
 
 `func (o *CustomerAddress) GetWebsite() string`
@@ -422,6 +502,16 @@ SetWebsite sets Website field to given value.
 
 HasWebsite returns a boolean if a field has been set.
 
+### SetWebsiteNil
+
+`func (o *CustomerAddress) SetWebsiteNil(b bool)`
+
+ SetWebsiteNil sets the value for Website to be an explicit nil
+
+### UnsetWebsite
+`func (o *CustomerAddress) UnsetWebsite()`
+
+UnsetWebsite ensures that no value is present for Website, not even an explicit nil
 ### GetGender
 
 `func (o *CustomerAddress) GetGender() string`
@@ -447,6 +537,16 @@ SetGender sets Gender field to given value.
 
 HasGender returns a boolean if a field has been set.
 
+### SetGenderNil
+
+`func (o *CustomerAddress) SetGenderNil(b bool)`
+
+ SetGenderNil sets the value for Gender to be an explicit nil
+
+### UnsetGender
+`func (o *CustomerAddress) UnsetGender()`
+
+UnsetGender ensures that no value is present for Gender, not even an explicit nil
 ### GetRegion
 
 `func (o *CustomerAddress) GetRegion() string`
@@ -472,6 +572,16 @@ SetRegion sets Region field to given value.
 
 HasRegion returns a boolean if a field has been set.
 
+### SetRegionNil
+
+`func (o *CustomerAddress) SetRegionNil(b bool)`
+
+ SetRegionNil sets the value for Region to be an explicit nil
+
+### UnsetRegion
+`func (o *CustomerAddress) UnsetRegion()`
+
+UnsetRegion ensures that no value is present for Region, not even an explicit nil
 ### GetDefault
 
 `func (o *CustomerAddress) GetDefault() bool`
@@ -522,6 +632,16 @@ SetTaxId sets TaxId field to given value.
 
 HasTaxId returns a boolean if a field has been set.
 
+### SetTaxIdNil
+
+`func (o *CustomerAddress) SetTaxIdNil(b bool)`
+
+ SetTaxIdNil sets the value for TaxId to be an explicit nil
+
+### UnsetTaxId
+`func (o *CustomerAddress) UnsetTaxId()`
+
+UnsetTaxId ensures that no value is present for TaxId, not even an explicit nil
 ### GetIdentificationNumber
 
 `func (o *CustomerAddress) GetIdentificationNumber() string`
@@ -547,6 +667,16 @@ SetIdentificationNumber sets IdentificationNumber field to given value.
 
 HasIdentificationNumber returns a boolean if a field has been set.
 
+### SetIdentificationNumberNil
+
+`func (o *CustomerAddress) SetIdentificationNumberNil(b bool)`
+
+ SetIdentificationNumberNil sets the value for IdentificationNumber to be an explicit nil
+
+### UnsetIdentificationNumber
+`func (o *CustomerAddress) UnsetIdentificationNumber()`
+
+UnsetIdentificationNumber ensures that no value is present for IdentificationNumber, not even an explicit nil
 ### GetAlias
 
 `func (o *CustomerAddress) GetAlias() string`
@@ -572,6 +702,16 @@ SetAlias sets Alias field to given value.
 
 HasAlias returns a boolean if a field has been set.
 
+### SetAliasNil
+
+`func (o *CustomerAddress) SetAliasNil(b bool)`
+
+ SetAliasNil sets the value for Alias to be an explicit nil
+
+### UnsetAlias
+`func (o *CustomerAddress) UnsetAlias()`
+
+UnsetAlias ensures that no value is present for Alias, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CustomerAddress) GetAdditionalFields() map[string]interface{}`
@@ -597,6 +737,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CustomerAddress) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CustomerAddress) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CustomerAddress) GetCustomFields() map[string]interface{}`
@@ -622,6 +772,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CustomerAddress) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CustomerAddress) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

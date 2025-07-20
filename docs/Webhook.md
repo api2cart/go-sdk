@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
-**Label** | Pointer to **string** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
-**LangId** | Pointer to **string** |  | [optional] 
-**Active** | Pointer to **bool** |  | [optional] 
-**Callback** | Pointer to **string** |  | [optional] 
-**Fields** | Pointer to **string** |  | [optional] 
-**ResponseFields** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
-**Entity** | Pointer to **string** |  | [optional] 
-**Action** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableInt32** |  | [optional] 
+**Label** | Pointer to **NullableString** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
+**LangId** | Pointer to **NullableString** |  | [optional] 
+**Active** | Pointer to **NullableBool** |  | [optional] 
+**Callback** | Pointer to **NullableString** |  | [optional] 
+**Fields** | Pointer to **NullableString** |  | [optional] 
+**ResponseFields** | Pointer to **NullableString** |  | [optional] 
+**CreatedAt** | Pointer to **NullableString** |  | [optional] 
+**UpdatedAt** | Pointer to **NullableString** |  | [optional] 
+**Entity** | Pointer to **NullableString** |  | [optional] 
+**Action** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -63,6 +63,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *Webhook) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Webhook) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetLabel
 
 `func (o *Webhook) GetLabel() string`
@@ -88,6 +98,16 @@ SetLabel sets Label field to given value.
 
 HasLabel returns a boolean if a field has been set.
 
+### SetLabelNil
+
+`func (o *Webhook) SetLabelNil(b bool)`
+
+ SetLabelNil sets the value for Label to be an explicit nil
+
+### UnsetLabel
+`func (o *Webhook) UnsetLabel()`
+
+UnsetLabel ensures that no value is present for Label, not even an explicit nil
 ### GetStoreId
 
 `func (o *Webhook) GetStoreId() string`
@@ -113,6 +133,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *Webhook) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *Webhook) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetLangId
 
 `func (o *Webhook) GetLangId() string`
@@ -138,6 +168,16 @@ SetLangId sets LangId field to given value.
 
 HasLangId returns a boolean if a field has been set.
 
+### SetLangIdNil
+
+`func (o *Webhook) SetLangIdNil(b bool)`
+
+ SetLangIdNil sets the value for LangId to be an explicit nil
+
+### UnsetLangId
+`func (o *Webhook) UnsetLangId()`
+
+UnsetLangId ensures that no value is present for LangId, not even an explicit nil
 ### GetActive
 
 `func (o *Webhook) GetActive() bool`
@@ -163,6 +203,16 @@ SetActive sets Active field to given value.
 
 HasActive returns a boolean if a field has been set.
 
+### SetActiveNil
+
+`func (o *Webhook) SetActiveNil(b bool)`
+
+ SetActiveNil sets the value for Active to be an explicit nil
+
+### UnsetActive
+`func (o *Webhook) UnsetActive()`
+
+UnsetActive ensures that no value is present for Active, not even an explicit nil
 ### GetCallback
 
 `func (o *Webhook) GetCallback() string`
@@ -188,6 +238,16 @@ SetCallback sets Callback field to given value.
 
 HasCallback returns a boolean if a field has been set.
 
+### SetCallbackNil
+
+`func (o *Webhook) SetCallbackNil(b bool)`
+
+ SetCallbackNil sets the value for Callback to be an explicit nil
+
+### UnsetCallback
+`func (o *Webhook) UnsetCallback()`
+
+UnsetCallback ensures that no value is present for Callback, not even an explicit nil
 ### GetFields
 
 `func (o *Webhook) GetFields() string`
@@ -213,6 +273,16 @@ SetFields sets Fields field to given value.
 
 HasFields returns a boolean if a field has been set.
 
+### SetFieldsNil
+
+`func (o *Webhook) SetFieldsNil(b bool)`
+
+ SetFieldsNil sets the value for Fields to be an explicit nil
+
+### UnsetFields
+`func (o *Webhook) UnsetFields()`
+
+UnsetFields ensures that no value is present for Fields, not even an explicit nil
 ### GetResponseFields
 
 `func (o *Webhook) GetResponseFields() string`
@@ -238,6 +308,16 @@ SetResponseFields sets ResponseFields field to given value.
 
 HasResponseFields returns a boolean if a field has been set.
 
+### SetResponseFieldsNil
+
+`func (o *Webhook) SetResponseFieldsNil(b bool)`
+
+ SetResponseFieldsNil sets the value for ResponseFields to be an explicit nil
+
+### UnsetResponseFields
+`func (o *Webhook) UnsetResponseFields()`
+
+UnsetResponseFields ensures that no value is present for ResponseFields, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Webhook) GetCreatedAt() string`
@@ -263,6 +343,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *Webhook) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *Webhook) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetUpdatedAt
 
 `func (o *Webhook) GetUpdatedAt() string`
@@ -288,6 +378,16 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### SetUpdatedAtNil
+
+`func (o *Webhook) SetUpdatedAtNil(b bool)`
+
+ SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
+
+### UnsetUpdatedAt
+`func (o *Webhook) UnsetUpdatedAt()`
+
+UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetEntity
 
 `func (o *Webhook) GetEntity() string`
@@ -313,6 +413,16 @@ SetEntity sets Entity field to given value.
 
 HasEntity returns a boolean if a field has been set.
 
+### SetEntityNil
+
+`func (o *Webhook) SetEntityNil(b bool)`
+
+ SetEntityNil sets the value for Entity to be an explicit nil
+
+### UnsetEntity
+`func (o *Webhook) UnsetEntity()`
+
+UnsetEntity ensures that no value is present for Entity, not even an explicit nil
 ### GetAction
 
 `func (o *Webhook) GetAction() string`
@@ -338,6 +448,16 @@ SetAction sets Action field to given value.
 
 HasAction returns a boolean if a field has been set.
 
+### SetActionNil
+
+`func (o *Webhook) SetActionNil(b bool)`
+
+ SetActionNil sets the value for Action to be an explicit nil
+
+### UnsetAction
+`func (o *Webhook) UnsetAction()`
+
+UnsetAction ensures that no value is present for Action, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Webhook) GetAdditionalFields() map[string]interface{}`
@@ -363,6 +483,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Webhook) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Webhook) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Webhook) GetCustomFields() map[string]interface{}`
@@ -388,6 +518,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Webhook) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Webhook) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

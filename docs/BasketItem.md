@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**ParentId** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
+**ParentId** | Pointer to **NullableString** |  | [optional] 
 **ProductId** | Pointer to **string** |  | [optional] 
-**VariantId** | Pointer to **string** |  | [optional] 
-**Sku** | Pointer to **string** |  | [optional] 
+**VariantId** | Pointer to **NullableString** |  | [optional] 
+**Sku** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Price** | Pointer to **float32** |  | [optional] 
-**Tax** | Pointer to **float32** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
+**Tax** | Pointer to **NullableFloat32** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
 **Options** | Pointer to [**[]BasketItemOption**](BasketItemOption.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -63,6 +63,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *BasketItem) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *BasketItem) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetParentId
 
 `func (o *BasketItem) GetParentId() string`
@@ -88,6 +98,16 @@ SetParentId sets ParentId field to given value.
 
 HasParentId returns a boolean if a field has been set.
 
+### SetParentIdNil
+
+`func (o *BasketItem) SetParentIdNil(b bool)`
+
+ SetParentIdNil sets the value for ParentId to be an explicit nil
+
+### UnsetParentId
+`func (o *BasketItem) UnsetParentId()`
+
+UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetProductId
 
 `func (o *BasketItem) GetProductId() string`
@@ -138,6 +158,16 @@ SetVariantId sets VariantId field to given value.
 
 HasVariantId returns a boolean if a field has been set.
 
+### SetVariantIdNil
+
+`func (o *BasketItem) SetVariantIdNil(b bool)`
+
+ SetVariantIdNil sets the value for VariantId to be an explicit nil
+
+### UnsetVariantId
+`func (o *BasketItem) UnsetVariantId()`
+
+UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
 ### GetSku
 
 `func (o *BasketItem) GetSku() string`
@@ -163,6 +193,16 @@ SetSku sets Sku field to given value.
 
 HasSku returns a boolean if a field has been set.
 
+### SetSkuNil
+
+`func (o *BasketItem) SetSkuNil(b bool)`
+
+ SetSkuNil sets the value for Sku to be an explicit nil
+
+### UnsetSku
+`func (o *BasketItem) UnsetSku()`
+
+UnsetSku ensures that no value is present for Sku, not even an explicit nil
 ### GetName
 
 `func (o *BasketItem) GetName() string`
@@ -238,6 +278,16 @@ SetTax sets Tax field to given value.
 
 HasTax returns a boolean if a field has been set.
 
+### SetTaxNil
+
+`func (o *BasketItem) SetTaxNil(b bool)`
+
+ SetTaxNil sets the value for Tax to be an explicit nil
+
+### UnsetTax
+`func (o *BasketItem) UnsetTax()`
+
+UnsetTax ensures that no value is present for Tax, not even an explicit nil
 ### GetQuantity
 
 `func (o *BasketItem) GetQuantity() float32`
@@ -263,6 +313,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *BasketItem) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *BasketItem) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *BasketItem) GetWeightUnit() string`
@@ -288,6 +348,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *BasketItem) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *BasketItem) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetWeight
 
 `func (o *BasketItem) GetWeight() float32`
@@ -313,6 +383,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *BasketItem) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *BasketItem) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetOptions
 
 `func (o *BasketItem) GetOptions() []BasketItemOption`
@@ -363,6 +443,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *BasketItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *BasketItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *BasketItem) GetCustomFields() map[string]interface{}`
@@ -388,6 +478,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *BasketItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *BasketItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

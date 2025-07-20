@@ -21,19 +21,19 @@ var _ MappedNullable = &Coupon{}
 // Coupon struct for Coupon
 type Coupon struct {
 	Id *string `json:"id,omitempty"`
-	Code *string `json:"code,omitempty"`
+	Code NullableString `json:"code,omitempty"`
 	Codes []CouponCode `json:"codes,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	Actions []CouponAction `json:"actions,omitempty"`
-	DateStart *A2CDateTime `json:"date_start,omitempty"`
-	DateEnd *A2CDateTime `json:"date_end,omitempty"`
-	Avail *bool `json:"avail,omitempty"`
-	Priority *int32 `json:"priority,omitempty"`
-	UsedTimes *int32 `json:"used_times,omitempty"`
-	UsageLimit *int32 `json:"usage_limit,omitempty"`
-	UsageLimitPerCustomer *int32 `json:"usage_limit_per_customer,omitempty"`
-	LogicOperator *string `json:"logic_operator,omitempty"`
+	DateStart NullableA2CDateTime `json:"date_start,omitempty"`
+	DateEnd NullableA2CDateTime `json:"date_end,omitempty"`
+	Avail NullableBool `json:"avail,omitempty"`
+	Priority NullableInt32 `json:"priority,omitempty"`
+	UsedTimes NullableInt32 `json:"used_times,omitempty"`
+	UsageLimit NullableInt32 `json:"usage_limit,omitempty"`
+	UsageLimitPerCustomer NullableInt32 `json:"usage_limit_per_customer,omitempty"`
+	LogicOperator NullableString `json:"logic_operator,omitempty"`
 	Conditions []CouponCondition `json:"conditions,omitempty"`
 	UsageHistory []CouponHistory `json:"usage_history,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
@@ -89,36 +89,46 @@ func (o *Coupon) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCode returns the Code field value if set, zero value otherwise.
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Code
+	return *o.Code.Get()
 }
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Code, true
+	return o.Code.Get(), o.Code.IsSet()
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *Coupon) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
+// SetCode gets a reference to the given NullableString and assigns it to the Code field.
 func (o *Coupon) SetCode(v string) {
-	o.Code = &v
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *Coupon) SetCodeNil() {
+	o.Code.Set(nil)
+}
+
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *Coupon) UnsetCode() {
+	o.Code.Unset()
 }
 
 // GetCodes returns the Codes field value if set, zero value otherwise.
@@ -153,68 +163,88 @@ func (o *Coupon) SetCodes(v []CouponCode) {
 	o.Codes = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Coupon) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Coupon) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Coupon) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Coupon) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Coupon) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Coupon) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Coupon) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Coupon) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetActions returns the Actions field value if set, zero value otherwise.
@@ -249,260 +279,340 @@ func (o *Coupon) SetActions(v []CouponAction) {
 	o.Actions = v
 }
 
-// GetDateStart returns the DateStart field value if set, zero value otherwise.
+// GetDateStart returns the DateStart field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetDateStart() A2CDateTime {
-	if o == nil || IsNil(o.DateStart) {
+	if o == nil || IsNil(o.DateStart.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.DateStart
+	return *o.DateStart.Get()
 }
 
 // GetDateStartOk returns a tuple with the DateStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetDateStartOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.DateStart) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DateStart, true
+	return o.DateStart.Get(), o.DateStart.IsSet()
 }
 
 // HasDateStart returns a boolean if a field has been set.
 func (o *Coupon) HasDateStart() bool {
-	if o != nil && !IsNil(o.DateStart) {
+	if o != nil && o.DateStart.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDateStart gets a reference to the given A2CDateTime and assigns it to the DateStart field.
+// SetDateStart gets a reference to the given NullableA2CDateTime and assigns it to the DateStart field.
 func (o *Coupon) SetDateStart(v A2CDateTime) {
-	o.DateStart = &v
+	o.DateStart.Set(&v)
+}
+// SetDateStartNil sets the value for DateStart to be an explicit nil
+func (o *Coupon) SetDateStartNil() {
+	o.DateStart.Set(nil)
 }
 
-// GetDateEnd returns the DateEnd field value if set, zero value otherwise.
+// UnsetDateStart ensures that no value is present for DateStart, not even an explicit nil
+func (o *Coupon) UnsetDateStart() {
+	o.DateStart.Unset()
+}
+
+// GetDateEnd returns the DateEnd field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetDateEnd() A2CDateTime {
-	if o == nil || IsNil(o.DateEnd) {
+	if o == nil || IsNil(o.DateEnd.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.DateEnd
+	return *o.DateEnd.Get()
 }
 
 // GetDateEndOk returns a tuple with the DateEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetDateEndOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.DateEnd) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DateEnd, true
+	return o.DateEnd.Get(), o.DateEnd.IsSet()
 }
 
 // HasDateEnd returns a boolean if a field has been set.
 func (o *Coupon) HasDateEnd() bool {
-	if o != nil && !IsNil(o.DateEnd) {
+	if o != nil && o.DateEnd.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDateEnd gets a reference to the given A2CDateTime and assigns it to the DateEnd field.
+// SetDateEnd gets a reference to the given NullableA2CDateTime and assigns it to the DateEnd field.
 func (o *Coupon) SetDateEnd(v A2CDateTime) {
-	o.DateEnd = &v
+	o.DateEnd.Set(&v)
+}
+// SetDateEndNil sets the value for DateEnd to be an explicit nil
+func (o *Coupon) SetDateEndNil() {
+	o.DateEnd.Set(nil)
 }
 
-// GetAvail returns the Avail field value if set, zero value otherwise.
+// UnsetDateEnd ensures that no value is present for DateEnd, not even an explicit nil
+func (o *Coupon) UnsetDateEnd() {
+	o.DateEnd.Unset()
+}
+
+// GetAvail returns the Avail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetAvail() bool {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil || IsNil(o.Avail.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Avail
+	return *o.Avail.Get()
 }
 
 // GetAvailOk returns a tuple with the Avail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetAvailOk() (*bool, bool) {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Avail, true
+	return o.Avail.Get(), o.Avail.IsSet()
 }
 
 // HasAvail returns a boolean if a field has been set.
 func (o *Coupon) HasAvail() bool {
-	if o != nil && !IsNil(o.Avail) {
+	if o != nil && o.Avail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvail gets a reference to the given bool and assigns it to the Avail field.
+// SetAvail gets a reference to the given NullableBool and assigns it to the Avail field.
 func (o *Coupon) SetAvail(v bool) {
-	o.Avail = &v
+	o.Avail.Set(&v)
+}
+// SetAvailNil sets the value for Avail to be an explicit nil
+func (o *Coupon) SetAvailNil() {
+	o.Avail.Set(nil)
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
+// UnsetAvail ensures that no value is present for Avail, not even an explicit nil
+func (o *Coupon) UnsetAvail() {
+	o.Avail.Unset()
+}
+
+// GetPriority returns the Priority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetPriority() int32 {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil || IsNil(o.Priority.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Priority
+	return *o.Priority.Get()
 }
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetPriorityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Priority, true
+	return o.Priority.Get(), o.Priority.IsSet()
 }
 
 // HasPriority returns a boolean if a field has been set.
 func (o *Coupon) HasPriority() bool {
-	if o != nil && !IsNil(o.Priority) {
+	if o != nil && o.Priority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
+// SetPriority gets a reference to the given NullableInt32 and assigns it to the Priority field.
 func (o *Coupon) SetPriority(v int32) {
-	o.Priority = &v
+	o.Priority.Set(&v)
+}
+// SetPriorityNil sets the value for Priority to be an explicit nil
+func (o *Coupon) SetPriorityNil() {
+	o.Priority.Set(nil)
 }
 
-// GetUsedTimes returns the UsedTimes field value if set, zero value otherwise.
+// UnsetPriority ensures that no value is present for Priority, not even an explicit nil
+func (o *Coupon) UnsetPriority() {
+	o.Priority.Unset()
+}
+
+// GetUsedTimes returns the UsedTimes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetUsedTimes() int32 {
-	if o == nil || IsNil(o.UsedTimes) {
+	if o == nil || IsNil(o.UsedTimes.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.UsedTimes
+	return *o.UsedTimes.Get()
 }
 
 // GetUsedTimesOk returns a tuple with the UsedTimes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetUsedTimesOk() (*int32, bool) {
-	if o == nil || IsNil(o.UsedTimes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsedTimes, true
+	return o.UsedTimes.Get(), o.UsedTimes.IsSet()
 }
 
 // HasUsedTimes returns a boolean if a field has been set.
 func (o *Coupon) HasUsedTimes() bool {
-	if o != nil && !IsNil(o.UsedTimes) {
+	if o != nil && o.UsedTimes.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsedTimes gets a reference to the given int32 and assigns it to the UsedTimes field.
+// SetUsedTimes gets a reference to the given NullableInt32 and assigns it to the UsedTimes field.
 func (o *Coupon) SetUsedTimes(v int32) {
-	o.UsedTimes = &v
+	o.UsedTimes.Set(&v)
+}
+// SetUsedTimesNil sets the value for UsedTimes to be an explicit nil
+func (o *Coupon) SetUsedTimesNil() {
+	o.UsedTimes.Set(nil)
 }
 
-// GetUsageLimit returns the UsageLimit field value if set, zero value otherwise.
+// UnsetUsedTimes ensures that no value is present for UsedTimes, not even an explicit nil
+func (o *Coupon) UnsetUsedTimes() {
+	o.UsedTimes.Unset()
+}
+
+// GetUsageLimit returns the UsageLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetUsageLimit() int32 {
-	if o == nil || IsNil(o.UsageLimit) {
+	if o == nil || IsNil(o.UsageLimit.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.UsageLimit
+	return *o.UsageLimit.Get()
 }
 
 // GetUsageLimitOk returns a tuple with the UsageLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetUsageLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.UsageLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsageLimit, true
+	return o.UsageLimit.Get(), o.UsageLimit.IsSet()
 }
 
 // HasUsageLimit returns a boolean if a field has been set.
 func (o *Coupon) HasUsageLimit() bool {
-	if o != nil && !IsNil(o.UsageLimit) {
+	if o != nil && o.UsageLimit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsageLimit gets a reference to the given int32 and assigns it to the UsageLimit field.
+// SetUsageLimit gets a reference to the given NullableInt32 and assigns it to the UsageLimit field.
 func (o *Coupon) SetUsageLimit(v int32) {
-	o.UsageLimit = &v
+	o.UsageLimit.Set(&v)
+}
+// SetUsageLimitNil sets the value for UsageLimit to be an explicit nil
+func (o *Coupon) SetUsageLimitNil() {
+	o.UsageLimit.Set(nil)
 }
 
-// GetUsageLimitPerCustomer returns the UsageLimitPerCustomer field value if set, zero value otherwise.
+// UnsetUsageLimit ensures that no value is present for UsageLimit, not even an explicit nil
+func (o *Coupon) UnsetUsageLimit() {
+	o.UsageLimit.Unset()
+}
+
+// GetUsageLimitPerCustomer returns the UsageLimitPerCustomer field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetUsageLimitPerCustomer() int32 {
-	if o == nil || IsNil(o.UsageLimitPerCustomer) {
+	if o == nil || IsNil(o.UsageLimitPerCustomer.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.UsageLimitPerCustomer
+	return *o.UsageLimitPerCustomer.Get()
 }
 
 // GetUsageLimitPerCustomerOk returns a tuple with the UsageLimitPerCustomer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetUsageLimitPerCustomerOk() (*int32, bool) {
-	if o == nil || IsNil(o.UsageLimitPerCustomer) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsageLimitPerCustomer, true
+	return o.UsageLimitPerCustomer.Get(), o.UsageLimitPerCustomer.IsSet()
 }
 
 // HasUsageLimitPerCustomer returns a boolean if a field has been set.
 func (o *Coupon) HasUsageLimitPerCustomer() bool {
-	if o != nil && !IsNil(o.UsageLimitPerCustomer) {
+	if o != nil && o.UsageLimitPerCustomer.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsageLimitPerCustomer gets a reference to the given int32 and assigns it to the UsageLimitPerCustomer field.
+// SetUsageLimitPerCustomer gets a reference to the given NullableInt32 and assigns it to the UsageLimitPerCustomer field.
 func (o *Coupon) SetUsageLimitPerCustomer(v int32) {
-	o.UsageLimitPerCustomer = &v
+	o.UsageLimitPerCustomer.Set(&v)
+}
+// SetUsageLimitPerCustomerNil sets the value for UsageLimitPerCustomer to be an explicit nil
+func (o *Coupon) SetUsageLimitPerCustomerNil() {
+	o.UsageLimitPerCustomer.Set(nil)
 }
 
-// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise.
+// UnsetUsageLimitPerCustomer ensures that no value is present for UsageLimitPerCustomer, not even an explicit nil
+func (o *Coupon) UnsetUsageLimitPerCustomer() {
+	o.UsageLimitPerCustomer.Unset()
+}
+
+// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetLogicOperator() string {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil || IsNil(o.LogicOperator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogicOperator
+	return *o.LogicOperator.Get()
 }
 
 // GetLogicOperatorOk returns a tuple with the LogicOperator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetLogicOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogicOperator, true
+	return o.LogicOperator.Get(), o.LogicOperator.IsSet()
 }
 
 // HasLogicOperator returns a boolean if a field has been set.
 func (o *Coupon) HasLogicOperator() bool {
-	if o != nil && !IsNil(o.LogicOperator) {
+	if o != nil && o.LogicOperator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogicOperator gets a reference to the given string and assigns it to the LogicOperator field.
+// SetLogicOperator gets a reference to the given NullableString and assigns it to the LogicOperator field.
 func (o *Coupon) SetLogicOperator(v string) {
-	o.LogicOperator = &v
+	o.LogicOperator.Set(&v)
+}
+// SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+func (o *Coupon) SetLogicOperatorNil() {
+	o.LogicOperator.Set(nil)
+}
+
+// UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
+func (o *Coupon) UnsetLogicOperator() {
+	o.LogicOperator.Unset()
 }
 
 // GetConditions returns the Conditions field value if set, zero value otherwise.
@@ -569,9 +679,9 @@ func (o *Coupon) SetUsageHistory(v []CouponHistory) {
 	o.UsageHistory = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -580,6 +690,7 @@ func (o *Coupon) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -601,9 +712,9 @@ func (o *Coupon) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Coupon) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -612,6 +723,7 @@ func (o *Coupon) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Coupon) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -646,44 +758,44 @@ func (o Coupon) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
 	}
 	if !IsNil(o.Codes) {
 		toSerialize["codes"] = o.Codes
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.Actions) {
 		toSerialize["actions"] = o.Actions
 	}
-	if !IsNil(o.DateStart) {
-		toSerialize["date_start"] = o.DateStart
+	if o.DateStart.IsSet() {
+		toSerialize["date_start"] = o.DateStart.Get()
 	}
-	if !IsNil(o.DateEnd) {
-		toSerialize["date_end"] = o.DateEnd
+	if o.DateEnd.IsSet() {
+		toSerialize["date_end"] = o.DateEnd.Get()
 	}
-	if !IsNil(o.Avail) {
-		toSerialize["avail"] = o.Avail
+	if o.Avail.IsSet() {
+		toSerialize["avail"] = o.Avail.Get()
 	}
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
+	if o.Priority.IsSet() {
+		toSerialize["priority"] = o.Priority.Get()
 	}
-	if !IsNil(o.UsedTimes) {
-		toSerialize["used_times"] = o.UsedTimes
+	if o.UsedTimes.IsSet() {
+		toSerialize["used_times"] = o.UsedTimes.Get()
 	}
-	if !IsNil(o.UsageLimit) {
-		toSerialize["usage_limit"] = o.UsageLimit
+	if o.UsageLimit.IsSet() {
+		toSerialize["usage_limit"] = o.UsageLimit.Get()
 	}
-	if !IsNil(o.UsageLimitPerCustomer) {
-		toSerialize["usage_limit_per_customer"] = o.UsageLimitPerCustomer
+	if o.UsageLimitPerCustomer.IsSet() {
+		toSerialize["usage_limit_per_customer"] = o.UsageLimitPerCustomer.Get()
 	}
-	if !IsNil(o.LogicOperator) {
-		toSerialize["logic_operator"] = o.LogicOperator
+	if o.LogicOperator.IsSet() {
+		toSerialize["logic_operator"] = o.LogicOperator.Get()
 	}
 	if !IsNil(o.Conditions) {
 		toSerialize["conditions"] = o.Conditions
@@ -691,10 +803,10 @@ func (o Coupon) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsageHistory) {
 		toSerialize["usage_history"] = o.UsageHistory
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

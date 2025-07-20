@@ -22,9 +22,9 @@ var _ MappedNullable = &BaseCustomer{}
 type BaseCustomer struct {
 	Id *string `json:"id,omitempty"`
 	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
-	Phone *string `json:"phone,omitempty"`
+	FirstName NullableString `json:"first_name,omitempty"`
+	LastName NullableString `json:"last_name,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -110,105 +110,135 @@ func (o *BaseCustomer) SetEmail(v string) {
 	o.Email = &v
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
+// GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseCustomer) GetFirstName() string {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil || IsNil(o.FirstName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FirstName
+	return *o.FirstName.Get()
 }
 
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseCustomer) GetFirstNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FirstName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FirstName, true
+	return o.FirstName.Get(), o.FirstName.IsSet()
 }
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *BaseCustomer) HasFirstName() bool {
-	if o != nil && !IsNil(o.FirstName) {
+	if o != nil && o.FirstName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
+// SetFirstName gets a reference to the given NullableString and assigns it to the FirstName field.
 func (o *BaseCustomer) SetFirstName(v string) {
-	o.FirstName = &v
+	o.FirstName.Set(&v)
+}
+// SetFirstNameNil sets the value for FirstName to be an explicit nil
+func (o *BaseCustomer) SetFirstNameNil() {
+	o.FirstName.Set(nil)
 }
 
-// GetLastName returns the LastName field value if set, zero value otherwise.
+// UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
+func (o *BaseCustomer) UnsetFirstName() {
+	o.FirstName.Unset()
+}
+
+// GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseCustomer) GetLastName() string {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil || IsNil(o.LastName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastName
+	return *o.LastName.Get()
 }
 
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseCustomer) GetLastNameOk() (*string, bool) {
-	if o == nil || IsNil(o.LastName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastName, true
+	return o.LastName.Get(), o.LastName.IsSet()
 }
 
 // HasLastName returns a boolean if a field has been set.
 func (o *BaseCustomer) HasLastName() bool {
-	if o != nil && !IsNil(o.LastName) {
+	if o != nil && o.LastName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastName gets a reference to the given string and assigns it to the LastName field.
+// SetLastName gets a reference to the given NullableString and assigns it to the LastName field.
 func (o *BaseCustomer) SetLastName(v string) {
-	o.LastName = &v
+	o.LastName.Set(&v)
+}
+// SetLastNameNil sets the value for LastName to be an explicit nil
+func (o *BaseCustomer) SetLastNameNil() {
+	o.LastName.Set(nil)
 }
 
-// GetPhone returns the Phone field value if set, zero value otherwise.
+// UnsetLastName ensures that no value is present for LastName, not even an explicit nil
+func (o *BaseCustomer) UnsetLastName() {
+	o.LastName.Unset()
+}
+
+// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseCustomer) GetPhone() string {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil || IsNil(o.Phone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Phone
+	return *o.Phone.Get()
 }
 
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseCustomer) GetPhoneOk() (*string, bool) {
-	if o == nil || IsNil(o.Phone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phone, true
+	return o.Phone.Get(), o.Phone.IsSet()
 }
 
 // HasPhone returns a boolean if a field has been set.
 func (o *BaseCustomer) HasPhone() bool {
-	if o != nil && !IsNil(o.Phone) {
+	if o != nil && o.Phone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhone gets a reference to the given string and assigns it to the Phone field.
+// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
 func (o *BaseCustomer) SetPhone(v string) {
-	o.Phone = &v
+	o.Phone.Set(&v)
+}
+// SetPhoneNil sets the value for Phone to be an explicit nil
+func (o *BaseCustomer) SetPhoneNil() {
+	o.Phone.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
+func (o *BaseCustomer) UnsetPhone() {
+	o.Phone.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseCustomer) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +247,7 @@ func (o *BaseCustomer) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseCustomer) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +269,9 @@ func (o *BaseCustomer) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BaseCustomer) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +280,7 @@ func (o *BaseCustomer) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BaseCustomer) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -286,19 +318,19 @@ func (o BaseCustomer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !IsNil(o.FirstName) {
-		toSerialize["first_name"] = o.FirstName
+	if o.FirstName.IsSet() {
+		toSerialize["first_name"] = o.FirstName.Get()
 	}
-	if !IsNil(o.LastName) {
-		toSerialize["last_name"] = o.LastName
+	if o.LastName.IsSet() {
+		toSerialize["last_name"] = o.LastName.Get()
 	}
-	if !IsNil(o.Phone) {
-		toSerialize["phone"] = o.Phone
+	if o.Phone.IsSet() {
+		toSerialize["phone"] = o.Phone.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

@@ -20,9 +20,9 @@ var _ MappedNullable = &ResponseBatchJobResult{}
 
 // ResponseBatchJobResult struct for ResponseBatchJobResult
 type ResponseBatchJobResult struct {
-	ReturnCode *int32 `json:"return_code,omitempty"`
-	ReturnMessage *string `json:"return_message,omitempty"`
-	Result *BatchJobResult `json:"result,omitempty"`
+	ReturnCode NullableInt32 `json:"return_code,omitempty"`
+	ReturnMessage NullableString `json:"return_message,omitempty"`
+	Result NullableBatchJobResult `json:"result,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -44,105 +44,135 @@ func NewResponseBatchJobResultWithDefaults() *ResponseBatchJobResult {
 	return &this
 }
 
-// GetReturnCode returns the ReturnCode field value if set, zero value otherwise.
+// GetReturnCode returns the ReturnCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseBatchJobResult) GetReturnCode() int32 {
-	if o == nil || IsNil(o.ReturnCode) {
+	if o == nil || IsNil(o.ReturnCode.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.ReturnCode
+	return *o.ReturnCode.Get()
 }
 
 // GetReturnCodeOk returns a tuple with the ReturnCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBatchJobResult) GetReturnCodeOk() (*int32, bool) {
-	if o == nil || IsNil(o.ReturnCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReturnCode, true
+	return o.ReturnCode.Get(), o.ReturnCode.IsSet()
 }
 
 // HasReturnCode returns a boolean if a field has been set.
 func (o *ResponseBatchJobResult) HasReturnCode() bool {
-	if o != nil && !IsNil(o.ReturnCode) {
+	if o != nil && o.ReturnCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReturnCode gets a reference to the given int32 and assigns it to the ReturnCode field.
+// SetReturnCode gets a reference to the given NullableInt32 and assigns it to the ReturnCode field.
 func (o *ResponseBatchJobResult) SetReturnCode(v int32) {
-	o.ReturnCode = &v
+	o.ReturnCode.Set(&v)
+}
+// SetReturnCodeNil sets the value for ReturnCode to be an explicit nil
+func (o *ResponseBatchJobResult) SetReturnCodeNil() {
+	o.ReturnCode.Set(nil)
 }
 
-// GetReturnMessage returns the ReturnMessage field value if set, zero value otherwise.
+// UnsetReturnCode ensures that no value is present for ReturnCode, not even an explicit nil
+func (o *ResponseBatchJobResult) UnsetReturnCode() {
+	o.ReturnCode.Unset()
+}
+
+// GetReturnMessage returns the ReturnMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseBatchJobResult) GetReturnMessage() string {
-	if o == nil || IsNil(o.ReturnMessage) {
+	if o == nil || IsNil(o.ReturnMessage.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ReturnMessage
+	return *o.ReturnMessage.Get()
 }
 
 // GetReturnMessageOk returns a tuple with the ReturnMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBatchJobResult) GetReturnMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.ReturnMessage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReturnMessage, true
+	return o.ReturnMessage.Get(), o.ReturnMessage.IsSet()
 }
 
 // HasReturnMessage returns a boolean if a field has been set.
 func (o *ResponseBatchJobResult) HasReturnMessage() bool {
-	if o != nil && !IsNil(o.ReturnMessage) {
+	if o != nil && o.ReturnMessage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReturnMessage gets a reference to the given string and assigns it to the ReturnMessage field.
+// SetReturnMessage gets a reference to the given NullableString and assigns it to the ReturnMessage field.
 func (o *ResponseBatchJobResult) SetReturnMessage(v string) {
-	o.ReturnMessage = &v
+	o.ReturnMessage.Set(&v)
+}
+// SetReturnMessageNil sets the value for ReturnMessage to be an explicit nil
+func (o *ResponseBatchJobResult) SetReturnMessageNil() {
+	o.ReturnMessage.Set(nil)
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
+// UnsetReturnMessage ensures that no value is present for ReturnMessage, not even an explicit nil
+func (o *ResponseBatchJobResult) UnsetReturnMessage() {
+	o.ReturnMessage.Unset()
+}
+
+// GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseBatchJobResult) GetResult() BatchJobResult {
-	if o == nil || IsNil(o.Result) {
+	if o == nil || IsNil(o.Result.Get()) {
 		var ret BatchJobResult
 		return ret
 	}
-	return *o.Result
+	return *o.Result.Get()
 }
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBatchJobResult) GetResultOk() (*BatchJobResult, bool) {
-	if o == nil || IsNil(o.Result) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Result, true
+	return o.Result.Get(), o.Result.IsSet()
 }
 
 // HasResult returns a boolean if a field has been set.
 func (o *ResponseBatchJobResult) HasResult() bool {
-	if o != nil && !IsNil(o.Result) {
+	if o != nil && o.Result.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetResult gets a reference to the given BatchJobResult and assigns it to the Result field.
+// SetResult gets a reference to the given NullableBatchJobResult and assigns it to the Result field.
 func (o *ResponseBatchJobResult) SetResult(v BatchJobResult) {
-	o.Result = &v
+	o.Result.Set(&v)
+}
+// SetResultNil sets the value for Result to be an explicit nil
+func (o *ResponseBatchJobResult) SetResultNil() {
+	o.Result.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetResult ensures that no value is present for Result, not even an explicit nil
+func (o *ResponseBatchJobResult) UnsetResult() {
+	o.Result.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseBatchJobResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -151,6 +181,7 @@ func (o *ResponseBatchJobResult) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBatchJobResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -172,9 +203,9 @@ func (o *ResponseBatchJobResult) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseBatchJobResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -183,6 +214,7 @@ func (o *ResponseBatchJobResult) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseBatchJobResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -214,19 +246,19 @@ func (o ResponseBatchJobResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseBatchJobResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ReturnCode) {
-		toSerialize["return_code"] = o.ReturnCode
+	if o.ReturnCode.IsSet() {
+		toSerialize["return_code"] = o.ReturnCode.Get()
 	}
-	if !IsNil(o.ReturnMessage) {
-		toSerialize["return_message"] = o.ReturnMessage
+	if o.ReturnMessage.IsSet() {
+		toSerialize["return_message"] = o.ReturnMessage.Get()
 	}
-	if !IsNil(o.Result) {
-		toSerialize["result"] = o.Result
+	if o.Result.IsSet() {
+		toSerialize["result"] = o.Result.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

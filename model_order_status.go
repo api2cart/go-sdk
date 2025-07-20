@@ -23,7 +23,7 @@ type OrderStatus struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	History []OrderStatusHistoryItem `json:"history,omitempty"`
-	RefundInfo *OrderStatusRefund `json:"refund_info,omitempty"`
+	RefundInfo NullableOrderStatusRefund `json:"refund_info,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -141,41 +141,51 @@ func (o *OrderStatus) SetHistory(v []OrderStatusHistoryItem) {
 	o.History = v
 }
 
-// GetRefundInfo returns the RefundInfo field value if set, zero value otherwise.
+// GetRefundInfo returns the RefundInfo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatus) GetRefundInfo() OrderStatusRefund {
-	if o == nil || IsNil(o.RefundInfo) {
+	if o == nil || IsNil(o.RefundInfo.Get()) {
 		var ret OrderStatusRefund
 		return ret
 	}
-	return *o.RefundInfo
+	return *o.RefundInfo.Get()
 }
 
 // GetRefundInfoOk returns a tuple with the RefundInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatus) GetRefundInfoOk() (*OrderStatusRefund, bool) {
-	if o == nil || IsNil(o.RefundInfo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RefundInfo, true
+	return o.RefundInfo.Get(), o.RefundInfo.IsSet()
 }
 
 // HasRefundInfo returns a boolean if a field has been set.
 func (o *OrderStatus) HasRefundInfo() bool {
-	if o != nil && !IsNil(o.RefundInfo) {
+	if o != nil && o.RefundInfo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRefundInfo gets a reference to the given OrderStatusRefund and assigns it to the RefundInfo field.
+// SetRefundInfo gets a reference to the given NullableOrderStatusRefund and assigns it to the RefundInfo field.
 func (o *OrderStatus) SetRefundInfo(v OrderStatusRefund) {
-	o.RefundInfo = &v
+	o.RefundInfo.Set(&v)
+}
+// SetRefundInfoNil sets the value for RefundInfo to be an explicit nil
+func (o *OrderStatus) SetRefundInfoNil() {
+	o.RefundInfo.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetRefundInfo ensures that no value is present for RefundInfo, not even an explicit nil
+func (o *OrderStatus) UnsetRefundInfo() {
+	o.RefundInfo.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatus) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +194,7 @@ func (o *OrderStatus) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatus) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +216,9 @@ func (o *OrderStatus) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrderStatus) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +227,7 @@ func (o *OrderStatus) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrderStatus) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -256,13 +268,13 @@ func (o OrderStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.History) {
 		toSerialize["history"] = o.History
 	}
-	if !IsNil(o.RefundInfo) {
-		toSerialize["refund_info"] = o.RefundInfo
+	if o.RefundInfo.IsSet() {
+		toSerialize["refund_info"] = o.RefundInfo.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

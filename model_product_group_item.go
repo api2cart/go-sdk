@@ -20,11 +20,11 @@ var _ MappedNullable = &ProductGroupItem{}
 
 // ProductGroupItem struct for ProductGroupItem
 type ProductGroupItem struct {
-	ChildItemId *string `json:"child_item_id,omitempty"`
+	ChildItemId NullableString `json:"child_item_id,omitempty"`
 	ProductId *string `json:"product_id,omitempty"`
 	DefaultQtyInPack *string `json:"default_qty_in_pack,omitempty"`
-	IsQtyInPackFixed *bool `json:"is_qty_in_pack_fixed,omitempty"`
-	Price *float32 `json:"price,omitempty"`
+	IsQtyInPackFixed NullableBool `json:"is_qty_in_pack_fixed,omitempty"`
+	Price NullableFloat32 `json:"price,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -46,36 +46,46 @@ func NewProductGroupItemWithDefaults() *ProductGroupItem {
 	return &this
 }
 
-// GetChildItemId returns the ChildItemId field value if set, zero value otherwise.
+// GetChildItemId returns the ChildItemId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupItem) GetChildItemId() string {
-	if o == nil || IsNil(o.ChildItemId) {
+	if o == nil || IsNil(o.ChildItemId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ChildItemId
+	return *o.ChildItemId.Get()
 }
 
 // GetChildItemIdOk returns a tuple with the ChildItemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupItem) GetChildItemIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ChildItemId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChildItemId, true
+	return o.ChildItemId.Get(), o.ChildItemId.IsSet()
 }
 
 // HasChildItemId returns a boolean if a field has been set.
 func (o *ProductGroupItem) HasChildItemId() bool {
-	if o != nil && !IsNil(o.ChildItemId) {
+	if o != nil && o.ChildItemId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetChildItemId gets a reference to the given string and assigns it to the ChildItemId field.
+// SetChildItemId gets a reference to the given NullableString and assigns it to the ChildItemId field.
 func (o *ProductGroupItem) SetChildItemId(v string) {
-	o.ChildItemId = &v
+	o.ChildItemId.Set(&v)
+}
+// SetChildItemIdNil sets the value for ChildItemId to be an explicit nil
+func (o *ProductGroupItem) SetChildItemIdNil() {
+	o.ChildItemId.Set(nil)
+}
+
+// UnsetChildItemId ensures that no value is present for ChildItemId, not even an explicit nil
+func (o *ProductGroupItem) UnsetChildItemId() {
+	o.ChildItemId.Unset()
 }
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
@@ -142,73 +152,93 @@ func (o *ProductGroupItem) SetDefaultQtyInPack(v string) {
 	o.DefaultQtyInPack = &v
 }
 
-// GetIsQtyInPackFixed returns the IsQtyInPackFixed field value if set, zero value otherwise.
+// GetIsQtyInPackFixed returns the IsQtyInPackFixed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupItem) GetIsQtyInPackFixed() bool {
-	if o == nil || IsNil(o.IsQtyInPackFixed) {
+	if o == nil || IsNil(o.IsQtyInPackFixed.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsQtyInPackFixed
+	return *o.IsQtyInPackFixed.Get()
 }
 
 // GetIsQtyInPackFixedOk returns a tuple with the IsQtyInPackFixed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupItem) GetIsQtyInPackFixedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsQtyInPackFixed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsQtyInPackFixed, true
+	return o.IsQtyInPackFixed.Get(), o.IsQtyInPackFixed.IsSet()
 }
 
 // HasIsQtyInPackFixed returns a boolean if a field has been set.
 func (o *ProductGroupItem) HasIsQtyInPackFixed() bool {
-	if o != nil && !IsNil(o.IsQtyInPackFixed) {
+	if o != nil && o.IsQtyInPackFixed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsQtyInPackFixed gets a reference to the given bool and assigns it to the IsQtyInPackFixed field.
+// SetIsQtyInPackFixed gets a reference to the given NullableBool and assigns it to the IsQtyInPackFixed field.
 func (o *ProductGroupItem) SetIsQtyInPackFixed(v bool) {
-	o.IsQtyInPackFixed = &v
+	o.IsQtyInPackFixed.Set(&v)
+}
+// SetIsQtyInPackFixedNil sets the value for IsQtyInPackFixed to be an explicit nil
+func (o *ProductGroupItem) SetIsQtyInPackFixedNil() {
+	o.IsQtyInPackFixed.Set(nil)
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// UnsetIsQtyInPackFixed ensures that no value is present for IsQtyInPackFixed, not even an explicit nil
+func (o *ProductGroupItem) UnsetIsQtyInPackFixed() {
+	o.IsQtyInPackFixed.Unset()
+}
+
+// GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupItem) GetPrice() float32 {
-	if o == nil || IsNil(o.Price) {
+	if o == nil || IsNil(o.Price.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Price
+	return *o.Price.Get()
 }
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupItem) GetPriceOk() (*float32, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return o.Price.Get(), o.Price.IsSet()
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *ProductGroupItem) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
+	if o != nil && o.Price.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrice gets a reference to the given float32 and assigns it to the Price field.
+// SetPrice gets a reference to the given NullableFloat32 and assigns it to the Price field.
 func (o *ProductGroupItem) SetPrice(v float32) {
-	o.Price = &v
+	o.Price.Set(&v)
+}
+// SetPriceNil sets the value for Price to be an explicit nil
+func (o *ProductGroupItem) SetPriceNil() {
+	o.Price.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetPrice ensures that no value is present for Price, not even an explicit nil
+func (o *ProductGroupItem) UnsetPrice() {
+	o.Price.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupItem) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +247,7 @@ func (o *ProductGroupItem) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +269,9 @@ func (o *ProductGroupItem) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductGroupItem) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +280,7 @@ func (o *ProductGroupItem) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductGroupItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -280,8 +312,8 @@ func (o ProductGroupItem) MarshalJSON() ([]byte, error) {
 
 func (o ProductGroupItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChildItemId) {
-		toSerialize["child_item_id"] = o.ChildItemId
+	if o.ChildItemId.IsSet() {
+		toSerialize["child_item_id"] = o.ChildItemId.Get()
 	}
 	if !IsNil(o.ProductId) {
 		toSerialize["product_id"] = o.ProductId
@@ -289,16 +321,16 @@ func (o ProductGroupItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DefaultQtyInPack) {
 		toSerialize["default_qty_in_pack"] = o.DefaultQtyInPack
 	}
-	if !IsNil(o.IsQtyInPackFixed) {
-		toSerialize["is_qty_in_pack_fixed"] = o.IsQtyInPackFixed
+	if o.IsQtyInPackFixed.IsSet() {
+		toSerialize["is_qty_in_pack_fixed"] = o.IsQtyInPackFixed.Get()
 	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
+	if o.Price.IsSet() {
+		toSerialize["price"] = o.Price.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

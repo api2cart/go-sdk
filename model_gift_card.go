@@ -22,20 +22,20 @@ var _ MappedNullable = &GiftCard{}
 type GiftCard struct {
 	Id *string `json:"id,omitempty"`
 	Code *string `json:"code,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Type *string `json:"type,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
+	CurrencyCode NullableString `json:"currency_code,omitempty"`
 	Amount *float32 `json:"amount,omitempty"`
 	InitialAmount *float32 `json:"initial_amount,omitempty"`
 	Status *string `json:"status,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	AvailTo *string `json:"avail_to,omitempty"`
-	FreeProductIds *string `json:"free_product_ids,omitempty"`
-	Message *string `json:"message,omitempty"`
-	IssuerEmail *string `json:"issuer_email,omitempty"`
-	RecipientEmail *string `json:"recipient_email,omitempty"`
-	IssuerName *string `json:"issuer_name,omitempty"`
-	RecipientName *string `json:"recipient_name,omitempty"`
+	CreatedAt NullableString `json:"created_at,omitempty"`
+	AvailTo NullableString `json:"avail_to,omitempty"`
+	FreeProductIds NullableString `json:"free_product_ids,omitempty"`
+	Message NullableString `json:"message,omitempty"`
+	IssuerEmail NullableString `json:"issuer_email,omitempty"`
+	RecipientEmail NullableString `json:"recipient_email,omitempty"`
+	IssuerName NullableString `json:"issuer_name,omitempty"`
+	RecipientName NullableString `json:"recipient_name,omitempty"`
 	UsageHistory []CouponHistory `json:"usage_history,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -122,36 +122,46 @@ func (o *GiftCard) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *GiftCard) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *GiftCard) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *GiftCard) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *GiftCard) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -186,36 +196,46 @@ func (o *GiftCard) SetType(v string) {
 	o.Type = &v
 }
 
-// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
+// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetCurrencyCode() string {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CurrencyCode
+	return *o.CurrencyCode.Get()
 }
 
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.CurrencyCode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CurrencyCode, true
+	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
 }
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *GiftCard) HasCurrencyCode() bool {
-	if o != nil && !IsNil(o.CurrencyCode) {
+	if o != nil && o.CurrencyCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrencyCode gets a reference to the given string and assigns it to the CurrencyCode field.
+// SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
 func (o *GiftCard) SetCurrencyCode(v string) {
-	o.CurrencyCode = &v
+	o.CurrencyCode.Set(&v)
+}
+// SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+func (o *GiftCard) SetCurrencyCodeNil() {
+	o.CurrencyCode.Set(nil)
+}
+
+// UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
+func (o *GiftCard) UnsetCurrencyCode() {
+	o.CurrencyCode.Unset()
 }
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
@@ -314,260 +334,340 @@ func (o *GiftCard) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GiftCard) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *GiftCard) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *GiftCard) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetAvailTo returns the AvailTo field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *GiftCard) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetAvailTo returns the AvailTo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetAvailTo() string {
-	if o == nil || IsNil(o.AvailTo) {
+	if o == nil || IsNil(o.AvailTo.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AvailTo
+	return *o.AvailTo.Get()
 }
 
 // GetAvailToOk returns a tuple with the AvailTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetAvailToOk() (*string, bool) {
-	if o == nil || IsNil(o.AvailTo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AvailTo, true
+	return o.AvailTo.Get(), o.AvailTo.IsSet()
 }
 
 // HasAvailTo returns a boolean if a field has been set.
 func (o *GiftCard) HasAvailTo() bool {
-	if o != nil && !IsNil(o.AvailTo) {
+	if o != nil && o.AvailTo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailTo gets a reference to the given string and assigns it to the AvailTo field.
+// SetAvailTo gets a reference to the given NullableString and assigns it to the AvailTo field.
 func (o *GiftCard) SetAvailTo(v string) {
-	o.AvailTo = &v
+	o.AvailTo.Set(&v)
+}
+// SetAvailToNil sets the value for AvailTo to be an explicit nil
+func (o *GiftCard) SetAvailToNil() {
+	o.AvailTo.Set(nil)
 }
 
-// GetFreeProductIds returns the FreeProductIds field value if set, zero value otherwise.
+// UnsetAvailTo ensures that no value is present for AvailTo, not even an explicit nil
+func (o *GiftCard) UnsetAvailTo() {
+	o.AvailTo.Unset()
+}
+
+// GetFreeProductIds returns the FreeProductIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetFreeProductIds() string {
-	if o == nil || IsNil(o.FreeProductIds) {
+	if o == nil || IsNil(o.FreeProductIds.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FreeProductIds
+	return *o.FreeProductIds.Get()
 }
 
 // GetFreeProductIdsOk returns a tuple with the FreeProductIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetFreeProductIdsOk() (*string, bool) {
-	if o == nil || IsNil(o.FreeProductIds) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FreeProductIds, true
+	return o.FreeProductIds.Get(), o.FreeProductIds.IsSet()
 }
 
 // HasFreeProductIds returns a boolean if a field has been set.
 func (o *GiftCard) HasFreeProductIds() bool {
-	if o != nil && !IsNil(o.FreeProductIds) {
+	if o != nil && o.FreeProductIds.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFreeProductIds gets a reference to the given string and assigns it to the FreeProductIds field.
+// SetFreeProductIds gets a reference to the given NullableString and assigns it to the FreeProductIds field.
 func (o *GiftCard) SetFreeProductIds(v string) {
-	o.FreeProductIds = &v
+	o.FreeProductIds.Set(&v)
+}
+// SetFreeProductIdsNil sets the value for FreeProductIds to be an explicit nil
+func (o *GiftCard) SetFreeProductIdsNil() {
+	o.FreeProductIds.Set(nil)
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// UnsetFreeProductIds ensures that no value is present for FreeProductIds, not even an explicit nil
+func (o *GiftCard) UnsetFreeProductIds() {
+	o.FreeProductIds.Unset()
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
+	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Message
+	return *o.Message.Get()
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Message, true
+	return o.Message.Get(), o.Message.IsSet()
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *GiftCard) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
+	if o != nil && o.Message.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given string and assigns it to the Message field.
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
 func (o *GiftCard) SetMessage(v string) {
-	o.Message = &v
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *GiftCard) SetMessageNil() {
+	o.Message.Set(nil)
 }
 
-// GetIssuerEmail returns the IssuerEmail field value if set, zero value otherwise.
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *GiftCard) UnsetMessage() {
+	o.Message.Unset()
+}
+
+// GetIssuerEmail returns the IssuerEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetIssuerEmail() string {
-	if o == nil || IsNil(o.IssuerEmail) {
+	if o == nil || IsNil(o.IssuerEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IssuerEmail
+	return *o.IssuerEmail.Get()
 }
 
 // GetIssuerEmailOk returns a tuple with the IssuerEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetIssuerEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.IssuerEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IssuerEmail, true
+	return o.IssuerEmail.Get(), o.IssuerEmail.IsSet()
 }
 
 // HasIssuerEmail returns a boolean if a field has been set.
 func (o *GiftCard) HasIssuerEmail() bool {
-	if o != nil && !IsNil(o.IssuerEmail) {
+	if o != nil && o.IssuerEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerEmail gets a reference to the given string and assigns it to the IssuerEmail field.
+// SetIssuerEmail gets a reference to the given NullableString and assigns it to the IssuerEmail field.
 func (o *GiftCard) SetIssuerEmail(v string) {
-	o.IssuerEmail = &v
+	o.IssuerEmail.Set(&v)
+}
+// SetIssuerEmailNil sets the value for IssuerEmail to be an explicit nil
+func (o *GiftCard) SetIssuerEmailNil() {
+	o.IssuerEmail.Set(nil)
 }
 
-// GetRecipientEmail returns the RecipientEmail field value if set, zero value otherwise.
+// UnsetIssuerEmail ensures that no value is present for IssuerEmail, not even an explicit nil
+func (o *GiftCard) UnsetIssuerEmail() {
+	o.IssuerEmail.Unset()
+}
+
+// GetRecipientEmail returns the RecipientEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetRecipientEmail() string {
-	if o == nil || IsNil(o.RecipientEmail) {
+	if o == nil || IsNil(o.RecipientEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RecipientEmail
+	return *o.RecipientEmail.Get()
 }
 
 // GetRecipientEmailOk returns a tuple with the RecipientEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetRecipientEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.RecipientEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RecipientEmail, true
+	return o.RecipientEmail.Get(), o.RecipientEmail.IsSet()
 }
 
 // HasRecipientEmail returns a boolean if a field has been set.
 func (o *GiftCard) HasRecipientEmail() bool {
-	if o != nil && !IsNil(o.RecipientEmail) {
+	if o != nil && o.RecipientEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRecipientEmail gets a reference to the given string and assigns it to the RecipientEmail field.
+// SetRecipientEmail gets a reference to the given NullableString and assigns it to the RecipientEmail field.
 func (o *GiftCard) SetRecipientEmail(v string) {
-	o.RecipientEmail = &v
+	o.RecipientEmail.Set(&v)
+}
+// SetRecipientEmailNil sets the value for RecipientEmail to be an explicit nil
+func (o *GiftCard) SetRecipientEmailNil() {
+	o.RecipientEmail.Set(nil)
 }
 
-// GetIssuerName returns the IssuerName field value if set, zero value otherwise.
+// UnsetRecipientEmail ensures that no value is present for RecipientEmail, not even an explicit nil
+func (o *GiftCard) UnsetRecipientEmail() {
+	o.RecipientEmail.Unset()
+}
+
+// GetIssuerName returns the IssuerName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetIssuerName() string {
-	if o == nil || IsNil(o.IssuerName) {
+	if o == nil || IsNil(o.IssuerName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IssuerName
+	return *o.IssuerName.Get()
 }
 
 // GetIssuerNameOk returns a tuple with the IssuerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetIssuerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.IssuerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IssuerName, true
+	return o.IssuerName.Get(), o.IssuerName.IsSet()
 }
 
 // HasIssuerName returns a boolean if a field has been set.
 func (o *GiftCard) HasIssuerName() bool {
-	if o != nil && !IsNil(o.IssuerName) {
+	if o != nil && o.IssuerName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIssuerName gets a reference to the given string and assigns it to the IssuerName field.
+// SetIssuerName gets a reference to the given NullableString and assigns it to the IssuerName field.
 func (o *GiftCard) SetIssuerName(v string) {
-	o.IssuerName = &v
+	o.IssuerName.Set(&v)
+}
+// SetIssuerNameNil sets the value for IssuerName to be an explicit nil
+func (o *GiftCard) SetIssuerNameNil() {
+	o.IssuerName.Set(nil)
 }
 
-// GetRecipientName returns the RecipientName field value if set, zero value otherwise.
+// UnsetIssuerName ensures that no value is present for IssuerName, not even an explicit nil
+func (o *GiftCard) UnsetIssuerName() {
+	o.IssuerName.Unset()
+}
+
+// GetRecipientName returns the RecipientName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetRecipientName() string {
-	if o == nil || IsNil(o.RecipientName) {
+	if o == nil || IsNil(o.RecipientName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RecipientName
+	return *o.RecipientName.Get()
 }
 
 // GetRecipientNameOk returns a tuple with the RecipientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetRecipientNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RecipientName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RecipientName, true
+	return o.RecipientName.Get(), o.RecipientName.IsSet()
 }
 
 // HasRecipientName returns a boolean if a field has been set.
 func (o *GiftCard) HasRecipientName() bool {
-	if o != nil && !IsNil(o.RecipientName) {
+	if o != nil && o.RecipientName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRecipientName gets a reference to the given string and assigns it to the RecipientName field.
+// SetRecipientName gets a reference to the given NullableString and assigns it to the RecipientName field.
 func (o *GiftCard) SetRecipientName(v string) {
-	o.RecipientName = &v
+	o.RecipientName.Set(&v)
+}
+// SetRecipientNameNil sets the value for RecipientName to be an explicit nil
+func (o *GiftCard) SetRecipientNameNil() {
+	o.RecipientName.Set(nil)
+}
+
+// UnsetRecipientName ensures that no value is present for RecipientName, not even an explicit nil
+func (o *GiftCard) UnsetRecipientName() {
+	o.RecipientName.Unset()
 }
 
 // GetUsageHistory returns the UsageHistory field value if set, zero value otherwise.
@@ -602,9 +702,9 @@ func (o *GiftCard) SetUsageHistory(v []CouponHistory) {
 	o.UsageHistory = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -613,6 +713,7 @@ func (o *GiftCard) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -634,9 +735,9 @@ func (o *GiftCard) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiftCard) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -645,6 +746,7 @@ func (o *GiftCard) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiftCard) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -682,14 +784,14 @@ func (o GiftCard) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.CurrencyCode) {
-		toSerialize["currency_code"] = o.CurrencyCode
+	if o.CurrencyCode.IsSet() {
+		toSerialize["currency_code"] = o.CurrencyCode.Get()
 	}
 	if !IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
@@ -700,37 +802,37 @@ func (o GiftCard) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.AvailTo) {
-		toSerialize["avail_to"] = o.AvailTo
+	if o.AvailTo.IsSet() {
+		toSerialize["avail_to"] = o.AvailTo.Get()
 	}
-	if !IsNil(o.FreeProductIds) {
-		toSerialize["free_product_ids"] = o.FreeProductIds
+	if o.FreeProductIds.IsSet() {
+		toSerialize["free_product_ids"] = o.FreeProductIds.Get()
 	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
-	if !IsNil(o.IssuerEmail) {
-		toSerialize["issuer_email"] = o.IssuerEmail
+	if o.IssuerEmail.IsSet() {
+		toSerialize["issuer_email"] = o.IssuerEmail.Get()
 	}
-	if !IsNil(o.RecipientEmail) {
-		toSerialize["recipient_email"] = o.RecipientEmail
+	if o.RecipientEmail.IsSet() {
+		toSerialize["recipient_email"] = o.RecipientEmail.Get()
 	}
-	if !IsNil(o.IssuerName) {
-		toSerialize["issuer_name"] = o.IssuerName
+	if o.IssuerName.IsSet() {
+		toSerialize["issuer_name"] = o.IssuerName.Get()
 	}
-	if !IsNil(o.RecipientName) {
-		toSerialize["recipient_name"] = o.RecipientName
+	if o.RecipientName.IsSet() {
+		toSerialize["recipient_name"] = o.RecipientName.Get()
 	}
 	if !IsNil(o.UsageHistory) {
 		toSerialize["usage_history"] = o.UsageHistory
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

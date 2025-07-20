@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrdersCount** | Pointer to **int32** |  | [optional] 
+**OrdersCount** | Pointer to **NullableInt32** |  | [optional] 
 **Order** | Pointer to [**[]Order**](Order.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetOrdersCount sets OrdersCount field to given value.
 
 HasOrdersCount returns a boolean if a field has been set.
 
+### SetOrdersCountNil
+
+`func (o *ResponseOrderListResult) SetOrdersCountNil(b bool)`
+
+ SetOrdersCountNil sets the value for OrdersCount to be an explicit nil
+
+### UnsetOrdersCount
+`func (o *ResponseOrderListResult) UnsetOrdersCount()`
+
+UnsetOrdersCount ensures that no value is present for OrdersCount, not even an explicit nil
 ### GetOrder
 
 `func (o *ResponseOrderListResult) GetOrder() []Order`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseOrderListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseOrderListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseOrderListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseOrderListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseOrderListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,15 +21,15 @@ var _ MappedNullable = &Script{}
 // Script struct for Script
 type Script struct {
 	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Src *string `json:"src,omitempty"`
-	Scope *string `json:"scope,omitempty"`
-	Event *string `json:"event,omitempty"`
-	LoadMethod *string `json:"load_method,omitempty"`
-	Html *string `json:"html,omitempty"`
-	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
-	ModifiedTime *A2CDateTime `json:"modified_time,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Src NullableString `json:"src,omitempty"`
+	Scope NullableString `json:"scope,omitempty"`
+	Event NullableString `json:"event,omitempty"`
+	LoadMethod NullableString `json:"load_method,omitempty"`
+	Html NullableString `json:"html,omitempty"`
+	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
+	ModifiedTime NullableA2CDateTime `json:"modified_time,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -83,297 +83,387 @@ func (o *Script) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Script) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Script) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Script) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Script) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Script) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Script) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Script) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetSrc returns the Src field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Script) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetSrc returns the Src field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetSrc() string {
-	if o == nil || IsNil(o.Src) {
+	if o == nil || IsNil(o.Src.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Src
+	return *o.Src.Get()
 }
 
 // GetSrcOk returns a tuple with the Src field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetSrcOk() (*string, bool) {
-	if o == nil || IsNil(o.Src) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Src, true
+	return o.Src.Get(), o.Src.IsSet()
 }
 
 // HasSrc returns a boolean if a field has been set.
 func (o *Script) HasSrc() bool {
-	if o != nil && !IsNil(o.Src) {
+	if o != nil && o.Src.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSrc gets a reference to the given string and assigns it to the Src field.
+// SetSrc gets a reference to the given NullableString and assigns it to the Src field.
 func (o *Script) SetSrc(v string) {
-	o.Src = &v
+	o.Src.Set(&v)
+}
+// SetSrcNil sets the value for Src to be an explicit nil
+func (o *Script) SetSrcNil() {
+	o.Src.Set(nil)
 }
 
-// GetScope returns the Scope field value if set, zero value otherwise.
+// UnsetSrc ensures that no value is present for Src, not even an explicit nil
+func (o *Script) UnsetSrc() {
+	o.Src.Unset()
+}
+
+// GetScope returns the Scope field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetScope() string {
-	if o == nil || IsNil(o.Scope) {
+	if o == nil || IsNil(o.Scope.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Scope
+	return *o.Scope.Get()
 }
 
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetScopeOk() (*string, bool) {
-	if o == nil || IsNil(o.Scope) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Scope, true
+	return o.Scope.Get(), o.Scope.IsSet()
 }
 
 // HasScope returns a boolean if a field has been set.
 func (o *Script) HasScope() bool {
-	if o != nil && !IsNil(o.Scope) {
+	if o != nil && o.Scope.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetScope gets a reference to the given string and assigns it to the Scope field.
+// SetScope gets a reference to the given NullableString and assigns it to the Scope field.
 func (o *Script) SetScope(v string) {
-	o.Scope = &v
+	o.Scope.Set(&v)
+}
+// SetScopeNil sets the value for Scope to be an explicit nil
+func (o *Script) SetScopeNil() {
+	o.Scope.Set(nil)
 }
 
-// GetEvent returns the Event field value if set, zero value otherwise.
+// UnsetScope ensures that no value is present for Scope, not even an explicit nil
+func (o *Script) UnsetScope() {
+	o.Scope.Unset()
+}
+
+// GetEvent returns the Event field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetEvent() string {
-	if o == nil || IsNil(o.Event) {
+	if o == nil || IsNil(o.Event.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Event
+	return *o.Event.Get()
 }
 
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetEventOk() (*string, bool) {
-	if o == nil || IsNil(o.Event) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Event, true
+	return o.Event.Get(), o.Event.IsSet()
 }
 
 // HasEvent returns a boolean if a field has been set.
 func (o *Script) HasEvent() bool {
-	if o != nil && !IsNil(o.Event) {
+	if o != nil && o.Event.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEvent gets a reference to the given string and assigns it to the Event field.
+// SetEvent gets a reference to the given NullableString and assigns it to the Event field.
 func (o *Script) SetEvent(v string) {
-	o.Event = &v
+	o.Event.Set(&v)
+}
+// SetEventNil sets the value for Event to be an explicit nil
+func (o *Script) SetEventNil() {
+	o.Event.Set(nil)
 }
 
-// GetLoadMethod returns the LoadMethod field value if set, zero value otherwise.
+// UnsetEvent ensures that no value is present for Event, not even an explicit nil
+func (o *Script) UnsetEvent() {
+	o.Event.Unset()
+}
+
+// GetLoadMethod returns the LoadMethod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetLoadMethod() string {
-	if o == nil || IsNil(o.LoadMethod) {
+	if o == nil || IsNil(o.LoadMethod.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LoadMethod
+	return *o.LoadMethod.Get()
 }
 
 // GetLoadMethodOk returns a tuple with the LoadMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetLoadMethodOk() (*string, bool) {
-	if o == nil || IsNil(o.LoadMethod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LoadMethod, true
+	return o.LoadMethod.Get(), o.LoadMethod.IsSet()
 }
 
 // HasLoadMethod returns a boolean if a field has been set.
 func (o *Script) HasLoadMethod() bool {
-	if o != nil && !IsNil(o.LoadMethod) {
+	if o != nil && o.LoadMethod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLoadMethod gets a reference to the given string and assigns it to the LoadMethod field.
+// SetLoadMethod gets a reference to the given NullableString and assigns it to the LoadMethod field.
 func (o *Script) SetLoadMethod(v string) {
-	o.LoadMethod = &v
+	o.LoadMethod.Set(&v)
+}
+// SetLoadMethodNil sets the value for LoadMethod to be an explicit nil
+func (o *Script) SetLoadMethodNil() {
+	o.LoadMethod.Set(nil)
 }
 
-// GetHtml returns the Html field value if set, zero value otherwise.
+// UnsetLoadMethod ensures that no value is present for LoadMethod, not even an explicit nil
+func (o *Script) UnsetLoadMethod() {
+	o.LoadMethod.Unset()
+}
+
+// GetHtml returns the Html field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetHtml() string {
-	if o == nil || IsNil(o.Html) {
+	if o == nil || IsNil(o.Html.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Html
+	return *o.Html.Get()
 }
 
 // GetHtmlOk returns a tuple with the Html field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetHtmlOk() (*string, bool) {
-	if o == nil || IsNil(o.Html) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Html, true
+	return o.Html.Get(), o.Html.IsSet()
 }
 
 // HasHtml returns a boolean if a field has been set.
 func (o *Script) HasHtml() bool {
-	if o != nil && !IsNil(o.Html) {
+	if o != nil && o.Html.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHtml gets a reference to the given string and assigns it to the Html field.
+// SetHtml gets a reference to the given NullableString and assigns it to the Html field.
 func (o *Script) SetHtml(v string) {
-	o.Html = &v
+	o.Html.Set(&v)
+}
+// SetHtmlNil sets the value for Html to be an explicit nil
+func (o *Script) SetHtmlNil() {
+	o.Html.Set(nil)
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// UnsetHtml ensures that no value is present for Html, not even an explicit nil
+func (o *Script) UnsetHtml() {
+	o.Html.Unset()
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetCreatedTime() A2CDateTime {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetCreatedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *Script) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given A2CDateTime and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableA2CDateTime and assigns it to the CreatedTime field.
 func (o *Script) SetCreatedTime(v A2CDateTime) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *Script) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *Script) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetModifiedTime() A2CDateTime {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.ModifiedTime
+	return *o.ModifiedTime.Get()
 }
 
 // GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetModifiedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.ModifiedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedTime, true
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
 }
 
 // HasModifiedTime returns a boolean if a field has been set.
 func (o *Script) HasModifiedTime() bool {
-	if o != nil && !IsNil(o.ModifiedTime) {
+	if o != nil && o.ModifiedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModifiedTime gets a reference to the given A2CDateTime and assigns it to the ModifiedTime field.
+// SetModifiedTime gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedTime field.
 func (o *Script) SetModifiedTime(v A2CDateTime) {
-	o.ModifiedTime = &v
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *Script) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *Script) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -382,6 +472,7 @@ func (o *Script) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -403,9 +494,9 @@ func (o *Script) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Script) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -414,6 +505,7 @@ func (o *Script) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Script) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -448,37 +540,37 @@ func (o Script) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.Src) {
-		toSerialize["src"] = o.Src
+	if o.Src.IsSet() {
+		toSerialize["src"] = o.Src.Get()
 	}
-	if !IsNil(o.Scope) {
-		toSerialize["scope"] = o.Scope
+	if o.Scope.IsSet() {
+		toSerialize["scope"] = o.Scope.Get()
 	}
-	if !IsNil(o.Event) {
-		toSerialize["event"] = o.Event
+	if o.Event.IsSet() {
+		toSerialize["event"] = o.Event.Get()
 	}
-	if !IsNil(o.LoadMethod) {
-		toSerialize["load_method"] = o.LoadMethod
+	if o.LoadMethod.IsSet() {
+		toSerialize["load_method"] = o.LoadMethod.Get()
 	}
-	if !IsNil(o.Html) {
-		toSerialize["html"] = o.Html
+	if o.Html.IsSet() {
+		toSerialize["html"] = o.Html.Get()
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.ModifiedTime) {
-		toSerialize["modified_time"] = o.ModifiedTime
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

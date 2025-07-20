@@ -1,6 +1,6 @@
 # \OrderAPI
 
-All URIs are relative to *https://api.api2cart.com/v1.1*
+All URIs are relative to *https://api.api2cart.local.com/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**OrderAdd**](OrderAPI.md#OrderAdd) | **Post** /order.add.json | order.add
 [**OrderCount**](OrderAPI.md#OrderCount) | **Get** /order.count.json | order.count
 [**OrderFinancialStatusList**](OrderAPI.md#OrderFinancialStatusList) | **Get** /order.financial_status.list.json | order.financial_status.list
-[**OrderFind**](OrderAPI.md#OrderFind) | **Get** /order.find.json | order.find
 [**OrderFulfillmentStatusList**](OrderAPI.md#OrderFulfillmentStatusList) | **Get** /order.fulfillment_status.list.json | order.fulfillment_status.list
 [**OrderInfo**](OrderAPI.md#OrderInfo) | **Get** /order.info.json | order.info
 [**OrderList**](OrderAPI.md#OrderList) | **Get** /order.list.json | order.list
@@ -338,94 +337,6 @@ Other parameters are passed through a pointer to a apiOrderFinancialStatusListRe
 ### Return type
 
 [**OrderFinancialStatusList200Response**](OrderFinancialStatusList200Response.md)
-
-### Authorization
-
-[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrderFind
-
-> OrderFind200Response OrderFind(ctx).Start(start).Count(count).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).FinancialStatus(financialStatus).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Params(params).Exclude(exclude).Execute()
-
-order.find
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
-	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
-	customerId := "5" // string | Retrieves orders specified by customer id (optional)
-	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
-	orderStatus := "Completed" // string | Retrieves orders specified by order status (optional)
-	financialStatus := "paid" // string | Retrieves orders specified by financial status (optional)
-	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
-	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
-	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
-	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
-	params := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "order_id,customer,totals,address,items,bundles,status")
-	exclude := "order_id,totals,status" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderFind(context.Background()).Start(start).Count(count).CustomerId(customerId).CustomerEmail(customerEmail).OrderStatus(orderStatus).FinancialStatus(financialStatus).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Params(params).Exclude(exclude).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderFind``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `OrderFind`: OrderFind200Response
-	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderFind`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrderFindRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
- **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
- **customerId** | **string** | Retrieves orders specified by customer id | 
- **customerEmail** | **string** | Retrieves orders specified by customer email | 
- **orderStatus** | **string** | Retrieves orders specified by order status | 
- **financialStatus** | **string** | Retrieves orders specified by financial status | 
- **createdTo** | **string** | Retrieve entities to their creation date | 
- **createdFrom** | **string** | Retrieve entities from their creation date | 
- **modifiedTo** | **string** | Retrieve entities to their modification date | 
- **modifiedFrom** | **string** | Retrieve entities from their modification date | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;order_id,customer,totals,address,items,bundles,status&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
-
-### Return type
-
-[**OrderFind200Response**](OrderFind200Response.md)
 
 ### Authorization
 

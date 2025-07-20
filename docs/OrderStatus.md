@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **History** | Pointer to [**[]OrderStatusHistoryItem**](OrderStatusHistoryItem.md) |  | [optional] 
-**RefundInfo** | Pointer to [**OrderStatusRefund**](OrderStatusRefund.md) |  | [optional] 
+**RefundInfo** | Pointer to [**NullableOrderStatusRefund**](OrderStatusRefund.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -130,6 +130,16 @@ SetRefundInfo sets RefundInfo field to given value.
 
 HasRefundInfo returns a boolean if a field has been set.
 
+### SetRefundInfoNil
+
+`func (o *OrderStatus) SetRefundInfoNil(b bool)`
+
+ SetRefundInfoNil sets the value for RefundInfo to be an explicit nil
+
+### UnsetRefundInfo
+`func (o *OrderStatus) UnsetRefundInfo()`
+
+UnsetRefundInfo ensures that no value is present for RefundInfo, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderStatus) GetAdditionalFields() map[string]interface{}`
@@ -155,6 +165,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderStatus) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderStatus) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderStatus) GetCustomFields() map[string]interface{}`
@@ -180,6 +200,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderStatus) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderStatus) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,19 +21,19 @@ var _ MappedNullable = &CatalogPriceRule{}
 // CatalogPriceRule struct for CatalogPriceRule
 type CatalogPriceRule struct {
 	Id *string `json:"id,omitempty"`
-	Gid *string `json:"gid,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ShortDescription *string `json:"short_description,omitempty"`
-	Avail *bool `json:"avail,omitempty"`
+	Gid NullableString `json:"gid,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	ShortDescription NullableString `json:"short_description,omitempty"`
+	Avail NullableBool `json:"avail,omitempty"`
 	Actions []CatalogPriceRuleAction `json:"actions,omitempty"`
-	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
-	DateStart *A2CDateTime `json:"date_start,omitempty"`
-	DateEnd *A2CDateTime `json:"date_end,omitempty"`
-	UsageCount *float32 `json:"usage_count,omitempty"`
+	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
+	DateStart NullableA2CDateTime `json:"date_start,omitempty"`
+	DateEnd NullableA2CDateTime `json:"date_end,omitempty"`
+	UsageCount NullableFloat32 `json:"usage_count,omitempty"`
 	Conditions []CouponCondition `json:"conditions,omitempty"`
-	UsesPerOrderLimit *int32 `json:"uses_per_order_limit,omitempty"`
+	UsesPerOrderLimit NullableInt32 `json:"uses_per_order_limit,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -87,196 +87,256 @@ func (o *CatalogPriceRule) SetId(v string) {
 	o.Id = &v
 }
 
-// GetGid returns the Gid field value if set, zero value otherwise.
+// GetGid returns the Gid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetGid() string {
-	if o == nil || IsNil(o.Gid) {
+	if o == nil || IsNil(o.Gid.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Gid
+	return *o.Gid.Get()
 }
 
 // GetGidOk returns a tuple with the Gid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetGidOk() (*string, bool) {
-	if o == nil || IsNil(o.Gid) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Gid, true
+	return o.Gid.Get(), o.Gid.IsSet()
 }
 
 // HasGid returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasGid() bool {
-	if o != nil && !IsNil(o.Gid) {
+	if o != nil && o.Gid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGid gets a reference to the given string and assigns it to the Gid field.
+// SetGid gets a reference to the given NullableString and assigns it to the Gid field.
 func (o *CatalogPriceRule) SetGid(v string) {
-	o.Gid = &v
+	o.Gid.Set(&v)
+}
+// SetGidNil sets the value for Gid to be an explicit nil
+func (o *CatalogPriceRule) SetGidNil() {
+	o.Gid.Set(nil)
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// UnsetGid ensures that no value is present for Gid, not even an explicit nil
+func (o *CatalogPriceRule) UnsetGid() {
+	o.Gid.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *CatalogPriceRule) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *CatalogPriceRule) SetTypeNil() {
+	o.Type.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *CatalogPriceRule) UnsetType() {
+	o.Type.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CatalogPriceRule) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CatalogPriceRule) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CatalogPriceRule) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *CatalogPriceRule) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CatalogPriceRule) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetShortDescription returns the ShortDescription field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CatalogPriceRule) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetShortDescription returns the ShortDescription field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetShortDescription() string {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil || IsNil(o.ShortDescription.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ShortDescription
+	return *o.ShortDescription.Get()
 }
 
 // GetShortDescriptionOk returns a tuple with the ShortDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetShortDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.ShortDescription) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShortDescription, true
+	return o.ShortDescription.Get(), o.ShortDescription.IsSet()
 }
 
 // HasShortDescription returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasShortDescription() bool {
-	if o != nil && !IsNil(o.ShortDescription) {
+	if o != nil && o.ShortDescription.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
+// SetShortDescription gets a reference to the given NullableString and assigns it to the ShortDescription field.
 func (o *CatalogPriceRule) SetShortDescription(v string) {
-	o.ShortDescription = &v
+	o.ShortDescription.Set(&v)
+}
+// SetShortDescriptionNil sets the value for ShortDescription to be an explicit nil
+func (o *CatalogPriceRule) SetShortDescriptionNil() {
+	o.ShortDescription.Set(nil)
 }
 
-// GetAvail returns the Avail field value if set, zero value otherwise.
+// UnsetShortDescription ensures that no value is present for ShortDescription, not even an explicit nil
+func (o *CatalogPriceRule) UnsetShortDescription() {
+	o.ShortDescription.Unset()
+}
+
+// GetAvail returns the Avail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetAvail() bool {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil || IsNil(o.Avail.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Avail
+	return *o.Avail.Get()
 }
 
 // GetAvailOk returns a tuple with the Avail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetAvailOk() (*bool, bool) {
-	if o == nil || IsNil(o.Avail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Avail, true
+	return o.Avail.Get(), o.Avail.IsSet()
 }
 
 // HasAvail returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasAvail() bool {
-	if o != nil && !IsNil(o.Avail) {
+	if o != nil && o.Avail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvail gets a reference to the given bool and assigns it to the Avail field.
+// SetAvail gets a reference to the given NullableBool and assigns it to the Avail field.
 func (o *CatalogPriceRule) SetAvail(v bool) {
-	o.Avail = &v
+	o.Avail.Set(&v)
+}
+// SetAvailNil sets the value for Avail to be an explicit nil
+func (o *CatalogPriceRule) SetAvailNil() {
+	o.Avail.Set(nil)
+}
+
+// UnsetAvail ensures that no value is present for Avail, not even an explicit nil
+func (o *CatalogPriceRule) UnsetAvail() {
+	o.Avail.Unset()
 }
 
 // GetActions returns the Actions field value if set, zero value otherwise.
@@ -311,132 +371,172 @@ func (o *CatalogPriceRule) SetActions(v []CatalogPriceRuleAction) {
 	o.Actions = v
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetCreatedTime() A2CDateTime {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetCreatedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given A2CDateTime and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableA2CDateTime and assigns it to the CreatedTime field.
 func (o *CatalogPriceRule) SetCreatedTime(v A2CDateTime) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *CatalogPriceRule) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
 }
 
-// GetDateStart returns the DateStart field value if set, zero value otherwise.
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *CatalogPriceRule) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
+}
+
+// GetDateStart returns the DateStart field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetDateStart() A2CDateTime {
-	if o == nil || IsNil(o.DateStart) {
+	if o == nil || IsNil(o.DateStart.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.DateStart
+	return *o.DateStart.Get()
 }
 
 // GetDateStartOk returns a tuple with the DateStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetDateStartOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.DateStart) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DateStart, true
+	return o.DateStart.Get(), o.DateStart.IsSet()
 }
 
 // HasDateStart returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasDateStart() bool {
-	if o != nil && !IsNil(o.DateStart) {
+	if o != nil && o.DateStart.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDateStart gets a reference to the given A2CDateTime and assigns it to the DateStart field.
+// SetDateStart gets a reference to the given NullableA2CDateTime and assigns it to the DateStart field.
 func (o *CatalogPriceRule) SetDateStart(v A2CDateTime) {
-	o.DateStart = &v
+	o.DateStart.Set(&v)
+}
+// SetDateStartNil sets the value for DateStart to be an explicit nil
+func (o *CatalogPriceRule) SetDateStartNil() {
+	o.DateStart.Set(nil)
 }
 
-// GetDateEnd returns the DateEnd field value if set, zero value otherwise.
+// UnsetDateStart ensures that no value is present for DateStart, not even an explicit nil
+func (o *CatalogPriceRule) UnsetDateStart() {
+	o.DateStart.Unset()
+}
+
+// GetDateEnd returns the DateEnd field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetDateEnd() A2CDateTime {
-	if o == nil || IsNil(o.DateEnd) {
+	if o == nil || IsNil(o.DateEnd.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.DateEnd
+	return *o.DateEnd.Get()
 }
 
 // GetDateEndOk returns a tuple with the DateEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetDateEndOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.DateEnd) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DateEnd, true
+	return o.DateEnd.Get(), o.DateEnd.IsSet()
 }
 
 // HasDateEnd returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasDateEnd() bool {
-	if o != nil && !IsNil(o.DateEnd) {
+	if o != nil && o.DateEnd.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDateEnd gets a reference to the given A2CDateTime and assigns it to the DateEnd field.
+// SetDateEnd gets a reference to the given NullableA2CDateTime and assigns it to the DateEnd field.
 func (o *CatalogPriceRule) SetDateEnd(v A2CDateTime) {
-	o.DateEnd = &v
+	o.DateEnd.Set(&v)
+}
+// SetDateEndNil sets the value for DateEnd to be an explicit nil
+func (o *CatalogPriceRule) SetDateEndNil() {
+	o.DateEnd.Set(nil)
 }
 
-// GetUsageCount returns the UsageCount field value if set, zero value otherwise.
+// UnsetDateEnd ensures that no value is present for DateEnd, not even an explicit nil
+func (o *CatalogPriceRule) UnsetDateEnd() {
+	o.DateEnd.Unset()
+}
+
+// GetUsageCount returns the UsageCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetUsageCount() float32 {
-	if o == nil || IsNil(o.UsageCount) {
+	if o == nil || IsNil(o.UsageCount.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.UsageCount
+	return *o.UsageCount.Get()
 }
 
 // GetUsageCountOk returns a tuple with the UsageCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetUsageCountOk() (*float32, bool) {
-	if o == nil || IsNil(o.UsageCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsageCount, true
+	return o.UsageCount.Get(), o.UsageCount.IsSet()
 }
 
 // HasUsageCount returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasUsageCount() bool {
-	if o != nil && !IsNil(o.UsageCount) {
+	if o != nil && o.UsageCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsageCount gets a reference to the given float32 and assigns it to the UsageCount field.
+// SetUsageCount gets a reference to the given NullableFloat32 and assigns it to the UsageCount field.
 func (o *CatalogPriceRule) SetUsageCount(v float32) {
-	o.UsageCount = &v
+	o.UsageCount.Set(&v)
+}
+// SetUsageCountNil sets the value for UsageCount to be an explicit nil
+func (o *CatalogPriceRule) SetUsageCountNil() {
+	o.UsageCount.Set(nil)
+}
+
+// UnsetUsageCount ensures that no value is present for UsageCount, not even an explicit nil
+func (o *CatalogPriceRule) UnsetUsageCount() {
+	o.UsageCount.Unset()
 }
 
 // GetConditions returns the Conditions field value if set, zero value otherwise.
@@ -471,41 +571,51 @@ func (o *CatalogPriceRule) SetConditions(v []CouponCondition) {
 	o.Conditions = v
 }
 
-// GetUsesPerOrderLimit returns the UsesPerOrderLimit field value if set, zero value otherwise.
+// GetUsesPerOrderLimit returns the UsesPerOrderLimit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetUsesPerOrderLimit() int32 {
-	if o == nil || IsNil(o.UsesPerOrderLimit) {
+	if o == nil || IsNil(o.UsesPerOrderLimit.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.UsesPerOrderLimit
+	return *o.UsesPerOrderLimit.Get()
 }
 
 // GetUsesPerOrderLimitOk returns a tuple with the UsesPerOrderLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetUsesPerOrderLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.UsesPerOrderLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsesPerOrderLimit, true
+	return o.UsesPerOrderLimit.Get(), o.UsesPerOrderLimit.IsSet()
 }
 
 // HasUsesPerOrderLimit returns a boolean if a field has been set.
 func (o *CatalogPriceRule) HasUsesPerOrderLimit() bool {
-	if o != nil && !IsNil(o.UsesPerOrderLimit) {
+	if o != nil && o.UsesPerOrderLimit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsesPerOrderLimit gets a reference to the given int32 and assigns it to the UsesPerOrderLimit field.
+// SetUsesPerOrderLimit gets a reference to the given NullableInt32 and assigns it to the UsesPerOrderLimit field.
 func (o *CatalogPriceRule) SetUsesPerOrderLimit(v int32) {
-	o.UsesPerOrderLimit = &v
+	o.UsesPerOrderLimit.Set(&v)
+}
+// SetUsesPerOrderLimitNil sets the value for UsesPerOrderLimit to be an explicit nil
+func (o *CatalogPriceRule) SetUsesPerOrderLimitNil() {
+	o.UsesPerOrderLimit.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetUsesPerOrderLimit ensures that no value is present for UsesPerOrderLimit, not even an explicit nil
+func (o *CatalogPriceRule) UnsetUsesPerOrderLimit() {
+	o.UsesPerOrderLimit.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -514,6 +624,7 @@ func (o *CatalogPriceRule) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -535,9 +646,9 @@ func (o *CatalogPriceRule) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogPriceRule) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -546,6 +657,7 @@ func (o *CatalogPriceRule) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogPriceRule) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -580,49 +692,49 @@ func (o CatalogPriceRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Gid) {
-		toSerialize["gid"] = o.Gid
+	if o.Gid.IsSet() {
+		toSerialize["gid"] = o.Gid.Get()
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.ShortDescription) {
-		toSerialize["short_description"] = o.ShortDescription
+	if o.ShortDescription.IsSet() {
+		toSerialize["short_description"] = o.ShortDescription.Get()
 	}
-	if !IsNil(o.Avail) {
-		toSerialize["avail"] = o.Avail
+	if o.Avail.IsSet() {
+		toSerialize["avail"] = o.Avail.Get()
 	}
 	if !IsNil(o.Actions) {
 		toSerialize["actions"] = o.Actions
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
-	if !IsNil(o.DateStart) {
-		toSerialize["date_start"] = o.DateStart
+	if o.DateStart.IsSet() {
+		toSerialize["date_start"] = o.DateStart.Get()
 	}
-	if !IsNil(o.DateEnd) {
-		toSerialize["date_end"] = o.DateEnd
+	if o.DateEnd.IsSet() {
+		toSerialize["date_end"] = o.DateEnd.Get()
 	}
-	if !IsNil(o.UsageCount) {
-		toSerialize["usage_count"] = o.UsageCount
+	if o.UsageCount.IsSet() {
+		toSerialize["usage_count"] = o.UsageCount.Get()
 	}
 	if !IsNil(o.Conditions) {
 		toSerialize["conditions"] = o.Conditions
 	}
-	if !IsNil(o.UsesPerOrderLimit) {
-		toSerialize["uses_per_order_limit"] = o.UsesPerOrderLimit
+	if o.UsesPerOrderLimit.IsSet() {
+		toSerialize["uses_per_order_limit"] = o.UsesPerOrderLimit.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

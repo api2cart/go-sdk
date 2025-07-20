@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderProductId** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**VariantId** | Pointer to **string** |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to **float32** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
+**OrderProductId** | Pointer to **NullableString** |  | [optional] 
+**ProductId** | Pointer to **NullableString** |  | [optional] 
+**VariantId** | Pointer to **NullableString** |  | [optional] 
+**Model** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -58,6 +58,16 @@ SetOrderProductId sets OrderProductId field to given value.
 
 HasOrderProductId returns a boolean if a field has been set.
 
+### SetOrderProductIdNil
+
+`func (o *ShipmentItem) SetOrderProductIdNil(b bool)`
+
+ SetOrderProductIdNil sets the value for OrderProductId to be an explicit nil
+
+### UnsetOrderProductId
+`func (o *ShipmentItem) UnsetOrderProductId()`
+
+UnsetOrderProductId ensures that no value is present for OrderProductId, not even an explicit nil
 ### GetProductId
 
 `func (o *ShipmentItem) GetProductId() string`
@@ -83,6 +93,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *ShipmentItem) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *ShipmentItem) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetVariantId
 
 `func (o *ShipmentItem) GetVariantId() string`
@@ -108,6 +128,16 @@ SetVariantId sets VariantId field to given value.
 
 HasVariantId returns a boolean if a field has been set.
 
+### SetVariantIdNil
+
+`func (o *ShipmentItem) SetVariantIdNil(b bool)`
+
+ SetVariantIdNil sets the value for VariantId to be an explicit nil
+
+### UnsetVariantId
+`func (o *ShipmentItem) UnsetVariantId()`
+
+UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
 ### GetModel
 
 `func (o *ShipmentItem) GetModel() string`
@@ -133,6 +163,16 @@ SetModel sets Model field to given value.
 
 HasModel returns a boolean if a field has been set.
 
+### SetModelNil
+
+`func (o *ShipmentItem) SetModelNil(b bool)`
+
+ SetModelNil sets the value for Model to be an explicit nil
+
+### UnsetModel
+`func (o *ShipmentItem) UnsetModel()`
+
+UnsetModel ensures that no value is present for Model, not even an explicit nil
 ### GetName
 
 `func (o *ShipmentItem) GetName() string`
@@ -158,6 +198,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *ShipmentItem) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ShipmentItem) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetPrice
 
 `func (o *ShipmentItem) GetPrice() float32`
@@ -183,6 +233,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *ShipmentItem) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *ShipmentItem) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetQuantity
 
 `func (o *ShipmentItem) GetQuantity() float32`
@@ -208,6 +268,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *ShipmentItem) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *ShipmentItem) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ShipmentItem) GetAdditionalFields() map[string]interface{}`
@@ -233,6 +303,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ShipmentItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ShipmentItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ShipmentItem) GetCustomFields() map[string]interface{}`
@@ -258,6 +338,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ShipmentItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ShipmentItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,8 +22,8 @@ var _ MappedNullable = &ProductInventory{}
 type ProductInventory struct {
 	WarehouseId *string `json:"warehouse_id,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
-	InStock *bool `json:"in_stock,omitempty"`
-	Priority *int32 `json:"priority,omitempty"`
+	InStock NullableBool `json:"in_stock,omitempty"`
+	Priority NullableInt32 `json:"priority,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -109,73 +109,93 @@ func (o *ProductInventory) SetQuantity(v float32) {
 	o.Quantity = &v
 }
 
-// GetInStock returns the InStock field value if set, zero value otherwise.
+// GetInStock returns the InStock field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductInventory) GetInStock() bool {
-	if o == nil || IsNil(o.InStock) {
+	if o == nil || IsNil(o.InStock.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.InStock
+	return *o.InStock.Get()
 }
 
 // GetInStockOk returns a tuple with the InStock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductInventory) GetInStockOk() (*bool, bool) {
-	if o == nil || IsNil(o.InStock) {
+	if o == nil {
 		return nil, false
 	}
-	return o.InStock, true
+	return o.InStock.Get(), o.InStock.IsSet()
 }
 
 // HasInStock returns a boolean if a field has been set.
 func (o *ProductInventory) HasInStock() bool {
-	if o != nil && !IsNil(o.InStock) {
+	if o != nil && o.InStock.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInStock gets a reference to the given bool and assigns it to the InStock field.
+// SetInStock gets a reference to the given NullableBool and assigns it to the InStock field.
 func (o *ProductInventory) SetInStock(v bool) {
-	o.InStock = &v
+	o.InStock.Set(&v)
+}
+// SetInStockNil sets the value for InStock to be an explicit nil
+func (o *ProductInventory) SetInStockNil() {
+	o.InStock.Set(nil)
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
+// UnsetInStock ensures that no value is present for InStock, not even an explicit nil
+func (o *ProductInventory) UnsetInStock() {
+	o.InStock.Unset()
+}
+
+// GetPriority returns the Priority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductInventory) GetPriority() int32 {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil || IsNil(o.Priority.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Priority
+	return *o.Priority.Get()
 }
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductInventory) GetPriorityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Priority, true
+	return o.Priority.Get(), o.Priority.IsSet()
 }
 
 // HasPriority returns a boolean if a field has been set.
 func (o *ProductInventory) HasPriority() bool {
-	if o != nil && !IsNil(o.Priority) {
+	if o != nil && o.Priority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
+// SetPriority gets a reference to the given NullableInt32 and assigns it to the Priority field.
 func (o *ProductInventory) SetPriority(v int32) {
-	o.Priority = &v
+	o.Priority.Set(&v)
+}
+// SetPriorityNil sets the value for Priority to be an explicit nil
+func (o *ProductInventory) SetPriorityNil() {
+	o.Priority.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetPriority ensures that no value is present for Priority, not even an explicit nil
+func (o *ProductInventory) UnsetPriority() {
+	o.Priority.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductInventory) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +204,7 @@ func (o *ProductInventory) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductInventory) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +226,9 @@ func (o *ProductInventory) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductInventory) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +237,7 @@ func (o *ProductInventory) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductInventory) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -253,16 +275,16 @@ func (o ProductInventory) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
 	}
-	if !IsNil(o.InStock) {
-		toSerialize["in_stock"] = o.InStock
+	if o.InStock.IsSet() {
+		toSerialize["in_stock"] = o.InStock.Get()
 	}
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
+	if o.Priority.IsSet() {
+		toSerialize["priority"] = o.Priority.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

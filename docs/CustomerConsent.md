@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**Source** | Pointer to **string** |  | [optional] 
-**OptInLevel** | Pointer to **string** |  | [optional] 
-**ModifiedTime** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**Status** | Pointer to **NullableString** |  | [optional] 
+**Source** | Pointer to **NullableString** |  | [optional] 
+**OptInLevel** | Pointer to **NullableString** |  | [optional] 
+**ModifiedTime** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -82,6 +82,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *CustomerConsent) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *CustomerConsent) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetStatus
 
 `func (o *CustomerConsent) GetStatus() string`
@@ -107,6 +117,16 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### SetStatusNil
+
+`func (o *CustomerConsent) SetStatusNil(b bool)`
+
+ SetStatusNil sets the value for Status to be an explicit nil
+
+### UnsetStatus
+`func (o *CustomerConsent) UnsetStatus()`
+
+UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetSource
 
 `func (o *CustomerConsent) GetSource() string`
@@ -132,6 +152,16 @@ SetSource sets Source field to given value.
 
 HasSource returns a boolean if a field has been set.
 
+### SetSourceNil
+
+`func (o *CustomerConsent) SetSourceNil(b bool)`
+
+ SetSourceNil sets the value for Source to be an explicit nil
+
+### UnsetSource
+`func (o *CustomerConsent) UnsetSource()`
+
+UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetOptInLevel
 
 `func (o *CustomerConsent) GetOptInLevel() string`
@@ -157,6 +187,16 @@ SetOptInLevel sets OptInLevel field to given value.
 
 HasOptInLevel returns a boolean if a field has been set.
 
+### SetOptInLevelNil
+
+`func (o *CustomerConsent) SetOptInLevelNil(b bool)`
+
+ SetOptInLevelNil sets the value for OptInLevel to be an explicit nil
+
+### UnsetOptInLevel
+`func (o *CustomerConsent) UnsetOptInLevel()`
+
+UnsetOptInLevel ensures that no value is present for OptInLevel, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *CustomerConsent) GetModifiedTime() string`
@@ -182,6 +222,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *CustomerConsent) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *CustomerConsent) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CustomerConsent) GetAdditionalFields() map[string]interface{}`
@@ -207,6 +257,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CustomerConsent) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CustomerConsent) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CustomerConsent) GetCustomFields() map[string]interface{}`
@@ -232,6 +292,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CustomerConsent) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CustomerConsent) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

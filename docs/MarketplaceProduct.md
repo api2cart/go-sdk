@@ -5,27 +5,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**UAsin** | Pointer to **string** |  | [optional] 
-**UEan** | Pointer to **string** |  | [optional] 
-**UGtin** | Pointer to **string** |  | [optional] 
-**UIsbn** | Pointer to **string** |  | [optional] 
-**UMpn** | Pointer to **string** |  | [optional] 
-**UUpc** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to **float32** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**UAsin** | Pointer to **NullableString** |  | [optional] 
+**UEan** | Pointer to **NullableString** |  | [optional] 
+**UGtin** | Pointer to **NullableString** |  | [optional] 
+**UIsbn** | Pointer to **NullableString** |  | [optional] 
+**UMpn** | Pointer to **NullableString** |  | [optional] 
+**UUpc** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Url** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
 **Images** | Pointer to [**[]Image**](Image.md) |  | [optional] 
 **ProductOptions** | Pointer to [**[]ProductOption**](ProductOption.md) |  | [optional] 
-**Manufacturer** | Pointer to **string** |  | [optional] 
-**Brand** | Pointer to **string** |  | [optional] 
-**Weight** | Pointer to **float32** |  | [optional] 
-**WeightUnit** | Pointer to **string** |  | [optional] 
-**DimensionsUnit** | Pointer to **string** |  | [optional] 
-**Width** | Pointer to **float32** |  | [optional] 
-**Height** | Pointer to **float32** |  | [optional] 
-**Length** | Pointer to **float32** |  | [optional] 
+**Manufacturer** | Pointer to **NullableString** |  | [optional] 
+**Brand** | Pointer to **NullableString** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
+**WeightUnit** | Pointer to **NullableString** |  | [optional] 
+**DimensionsUnit** | Pointer to **NullableString** |  | [optional] 
+**Width** | Pointer to **NullableFloat32** |  | [optional] 
+**Height** | Pointer to **NullableFloat32** |  | [optional] 
+**Length** | Pointer to **NullableFloat32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -98,6 +98,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *MarketplaceProduct) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *MarketplaceProduct) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetUAsin
 
 `func (o *MarketplaceProduct) GetUAsin() string`
@@ -123,6 +133,16 @@ SetUAsin sets UAsin field to given value.
 
 HasUAsin returns a boolean if a field has been set.
 
+### SetUAsinNil
+
+`func (o *MarketplaceProduct) SetUAsinNil(b bool)`
+
+ SetUAsinNil sets the value for UAsin to be an explicit nil
+
+### UnsetUAsin
+`func (o *MarketplaceProduct) UnsetUAsin()`
+
+UnsetUAsin ensures that no value is present for UAsin, not even an explicit nil
 ### GetUEan
 
 `func (o *MarketplaceProduct) GetUEan() string`
@@ -148,6 +168,16 @@ SetUEan sets UEan field to given value.
 
 HasUEan returns a boolean if a field has been set.
 
+### SetUEanNil
+
+`func (o *MarketplaceProduct) SetUEanNil(b bool)`
+
+ SetUEanNil sets the value for UEan to be an explicit nil
+
+### UnsetUEan
+`func (o *MarketplaceProduct) UnsetUEan()`
+
+UnsetUEan ensures that no value is present for UEan, not even an explicit nil
 ### GetUGtin
 
 `func (o *MarketplaceProduct) GetUGtin() string`
@@ -173,6 +203,16 @@ SetUGtin sets UGtin field to given value.
 
 HasUGtin returns a boolean if a field has been set.
 
+### SetUGtinNil
+
+`func (o *MarketplaceProduct) SetUGtinNil(b bool)`
+
+ SetUGtinNil sets the value for UGtin to be an explicit nil
+
+### UnsetUGtin
+`func (o *MarketplaceProduct) UnsetUGtin()`
+
+UnsetUGtin ensures that no value is present for UGtin, not even an explicit nil
 ### GetUIsbn
 
 `func (o *MarketplaceProduct) GetUIsbn() string`
@@ -198,6 +238,16 @@ SetUIsbn sets UIsbn field to given value.
 
 HasUIsbn returns a boolean if a field has been set.
 
+### SetUIsbnNil
+
+`func (o *MarketplaceProduct) SetUIsbnNil(b bool)`
+
+ SetUIsbnNil sets the value for UIsbn to be an explicit nil
+
+### UnsetUIsbn
+`func (o *MarketplaceProduct) UnsetUIsbn()`
+
+UnsetUIsbn ensures that no value is present for UIsbn, not even an explicit nil
 ### GetUMpn
 
 `func (o *MarketplaceProduct) GetUMpn() string`
@@ -223,6 +273,16 @@ SetUMpn sets UMpn field to given value.
 
 HasUMpn returns a boolean if a field has been set.
 
+### SetUMpnNil
+
+`func (o *MarketplaceProduct) SetUMpnNil(b bool)`
+
+ SetUMpnNil sets the value for UMpn to be an explicit nil
+
+### UnsetUMpn
+`func (o *MarketplaceProduct) UnsetUMpn()`
+
+UnsetUMpn ensures that no value is present for UMpn, not even an explicit nil
 ### GetUUpc
 
 `func (o *MarketplaceProduct) GetUUpc() string`
@@ -248,6 +308,16 @@ SetUUpc sets UUpc field to given value.
 
 HasUUpc returns a boolean if a field has been set.
 
+### SetUUpcNil
+
+`func (o *MarketplaceProduct) SetUUpcNil(b bool)`
+
+ SetUUpcNil sets the value for UUpc to be an explicit nil
+
+### UnsetUUpc
+`func (o *MarketplaceProduct) UnsetUUpc()`
+
+UnsetUUpc ensures that no value is present for UUpc, not even an explicit nil
 ### GetName
 
 `func (o *MarketplaceProduct) GetName() string`
@@ -273,6 +343,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *MarketplaceProduct) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *MarketplaceProduct) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *MarketplaceProduct) GetDescription() string`
@@ -298,6 +378,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *MarketplaceProduct) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *MarketplaceProduct) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetUrl
 
 `func (o *MarketplaceProduct) GetUrl() string`
@@ -323,6 +413,16 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
+### SetUrlNil
+
+`func (o *MarketplaceProduct) SetUrlNil(b bool)`
+
+ SetUrlNil sets the value for Url to be an explicit nil
+
+### UnsetUrl
+`func (o *MarketplaceProduct) UnsetUrl()`
+
+UnsetUrl ensures that no value is present for Url, not even an explicit nil
 ### GetPrice
 
 `func (o *MarketplaceProduct) GetPrice() float32`
@@ -348,6 +448,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *MarketplaceProduct) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *MarketplaceProduct) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetImages
 
 `func (o *MarketplaceProduct) GetImages() []Image`
@@ -423,6 +533,16 @@ SetManufacturer sets Manufacturer field to given value.
 
 HasManufacturer returns a boolean if a field has been set.
 
+### SetManufacturerNil
+
+`func (o *MarketplaceProduct) SetManufacturerNil(b bool)`
+
+ SetManufacturerNil sets the value for Manufacturer to be an explicit nil
+
+### UnsetManufacturer
+`func (o *MarketplaceProduct) UnsetManufacturer()`
+
+UnsetManufacturer ensures that no value is present for Manufacturer, not even an explicit nil
 ### GetBrand
 
 `func (o *MarketplaceProduct) GetBrand() string`
@@ -448,6 +568,16 @@ SetBrand sets Brand field to given value.
 
 HasBrand returns a boolean if a field has been set.
 
+### SetBrandNil
+
+`func (o *MarketplaceProduct) SetBrandNil(b bool)`
+
+ SetBrandNil sets the value for Brand to be an explicit nil
+
+### UnsetBrand
+`func (o *MarketplaceProduct) UnsetBrand()`
+
+UnsetBrand ensures that no value is present for Brand, not even an explicit nil
 ### GetWeight
 
 `func (o *MarketplaceProduct) GetWeight() float32`
@@ -473,6 +603,16 @@ SetWeight sets Weight field to given value.
 
 HasWeight returns a boolean if a field has been set.
 
+### SetWeightNil
+
+`func (o *MarketplaceProduct) SetWeightNil(b bool)`
+
+ SetWeightNil sets the value for Weight to be an explicit nil
+
+### UnsetWeight
+`func (o *MarketplaceProduct) UnsetWeight()`
+
+UnsetWeight ensures that no value is present for Weight, not even an explicit nil
 ### GetWeightUnit
 
 `func (o *MarketplaceProduct) GetWeightUnit() string`
@@ -498,6 +638,16 @@ SetWeightUnit sets WeightUnit field to given value.
 
 HasWeightUnit returns a boolean if a field has been set.
 
+### SetWeightUnitNil
+
+`func (o *MarketplaceProduct) SetWeightUnitNil(b bool)`
+
+ SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
+
+### UnsetWeightUnit
+`func (o *MarketplaceProduct) UnsetWeightUnit()`
+
+UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
 ### GetDimensionsUnit
 
 `func (o *MarketplaceProduct) GetDimensionsUnit() string`
@@ -523,6 +673,16 @@ SetDimensionsUnit sets DimensionsUnit field to given value.
 
 HasDimensionsUnit returns a boolean if a field has been set.
 
+### SetDimensionsUnitNil
+
+`func (o *MarketplaceProduct) SetDimensionsUnitNil(b bool)`
+
+ SetDimensionsUnitNil sets the value for DimensionsUnit to be an explicit nil
+
+### UnsetDimensionsUnit
+`func (o *MarketplaceProduct) UnsetDimensionsUnit()`
+
+UnsetDimensionsUnit ensures that no value is present for DimensionsUnit, not even an explicit nil
 ### GetWidth
 
 `func (o *MarketplaceProduct) GetWidth() float32`
@@ -548,6 +708,16 @@ SetWidth sets Width field to given value.
 
 HasWidth returns a boolean if a field has been set.
 
+### SetWidthNil
+
+`func (o *MarketplaceProduct) SetWidthNil(b bool)`
+
+ SetWidthNil sets the value for Width to be an explicit nil
+
+### UnsetWidth
+`func (o *MarketplaceProduct) UnsetWidth()`
+
+UnsetWidth ensures that no value is present for Width, not even an explicit nil
 ### GetHeight
 
 `func (o *MarketplaceProduct) GetHeight() float32`
@@ -573,6 +743,16 @@ SetHeight sets Height field to given value.
 
 HasHeight returns a boolean if a field has been set.
 
+### SetHeightNil
+
+`func (o *MarketplaceProduct) SetHeightNil(b bool)`
+
+ SetHeightNil sets the value for Height to be an explicit nil
+
+### UnsetHeight
+`func (o *MarketplaceProduct) UnsetHeight()`
+
+UnsetHeight ensures that no value is present for Height, not even an explicit nil
 ### GetLength
 
 `func (o *MarketplaceProduct) GetLength() float32`
@@ -598,6 +778,16 @@ SetLength sets Length field to given value.
 
 HasLength returns a boolean if a field has been set.
 
+### SetLengthNil
+
+`func (o *MarketplaceProduct) SetLengthNil(b bool)`
+
+ SetLengthNil sets the value for Length to be an explicit nil
+
+### UnsetLength
+`func (o *MarketplaceProduct) UnsetLength()`
+
+UnsetLength ensures that no value is present for Length, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *MarketplaceProduct) GetAdditionalFields() map[string]interface{}`
@@ -623,6 +813,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *MarketplaceProduct) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *MarketplaceProduct) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *MarketplaceProduct) GetCustomFields() map[string]interface{}`
@@ -648,6 +848,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *MarketplaceProduct) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *MarketplaceProduct) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

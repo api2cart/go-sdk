@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseCategoryListResult{}
 
 // ResponseCategoryListResult struct for ResponseCategoryListResult
 type ResponseCategoryListResult struct {
-	CategoriesCount *int32 `json:"categories_count,omitempty"`
+	CategoriesCount NullableInt32 `json:"categories_count,omitempty"`
 	Category []Category `json:"category,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseCategoryListResultWithDefaults() *ResponseCategoryListResult {
 	return &this
 }
 
-// GetCategoriesCount returns the CategoriesCount field value if set, zero value otherwise.
+// GetCategoriesCount returns the CategoriesCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCategoryListResult) GetCategoriesCount() int32 {
-	if o == nil || IsNil(o.CategoriesCount) {
+	if o == nil || IsNil(o.CategoriesCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.CategoriesCount
+	return *o.CategoriesCount.Get()
 }
 
 // GetCategoriesCountOk returns a tuple with the CategoriesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCategoryListResult) GetCategoriesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.CategoriesCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CategoriesCount, true
+	return o.CategoriesCount.Get(), o.CategoriesCount.IsSet()
 }
 
 // HasCategoriesCount returns a boolean if a field has been set.
 func (o *ResponseCategoryListResult) HasCategoriesCount() bool {
-	if o != nil && !IsNil(o.CategoriesCount) {
+	if o != nil && o.CategoriesCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCategoriesCount gets a reference to the given int32 and assigns it to the CategoriesCount field.
+// SetCategoriesCount gets a reference to the given NullableInt32 and assigns it to the CategoriesCount field.
 func (o *ResponseCategoryListResult) SetCategoriesCount(v int32) {
-	o.CategoriesCount = &v
+	o.CategoriesCount.Set(&v)
+}
+// SetCategoriesCountNil sets the value for CategoriesCount to be an explicit nil
+func (o *ResponseCategoryListResult) SetCategoriesCountNil() {
+	o.CategoriesCount.Set(nil)
+}
+
+// UnsetCategoriesCount ensures that no value is present for CategoriesCount, not even an explicit nil
+func (o *ResponseCategoryListResult) UnsetCategoriesCount() {
+	o.CategoriesCount.Unset()
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseCategoryListResult) SetCategory(v []Category) {
 	o.Category = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCategoryListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseCategoryListResult) GetAdditionalFields() map[string]interface{
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCategoryListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseCategoryListResult) SetAdditionalFields(v map[string]interface{
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseCategoryListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseCategoryListResult) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseCategoryListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseCategoryListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseCategoryListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CategoriesCount) {
-		toSerialize["categories_count"] = o.CategoriesCount
+	if o.CategoriesCount.IsSet() {
+		toSerialize["categories_count"] = o.CategoriesCount.Get()
 	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

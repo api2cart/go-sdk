@@ -5,19 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Code** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **NullableString** |  | [optional] 
 **Codes** | Pointer to [**[]CouponCode**](CouponCode.md) |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 **Actions** | Pointer to [**[]CouponAction**](CouponAction.md) |  | [optional] 
-**DateStart** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**DateEnd** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Avail** | Pointer to **bool** |  | [optional] 
-**Priority** | Pointer to **int32** |  | [optional] 
-**UsedTimes** | Pointer to **int32** |  | [optional] 
-**UsageLimit** | Pointer to **int32** |  | [optional] 
-**UsageLimitPerCustomer** | Pointer to **int32** |  | [optional] 
-**LogicOperator** | Pointer to **string** |  | [optional] 
+**DateStart** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**DateEnd** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Avail** | Pointer to **NullableBool** |  | [optional] 
+**Priority** | Pointer to **NullableInt32** |  | [optional] 
+**UsedTimes** | Pointer to **NullableInt32** |  | [optional] 
+**UsageLimit** | Pointer to **NullableInt32** |  | [optional] 
+**UsageLimitPerCustomer** | Pointer to **NullableInt32** |  | [optional] 
+**LogicOperator** | Pointer to **NullableString** |  | [optional] 
 **Conditions** | Pointer to [**[]CouponCondition**](CouponCondition.md) |  | [optional] 
 **UsageHistory** | Pointer to [**[]CouponHistory**](CouponHistory.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -92,6 +92,16 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
+### SetCodeNil
+
+`func (o *Coupon) SetCodeNil(b bool)`
+
+ SetCodeNil sets the value for Code to be an explicit nil
+
+### UnsetCode
+`func (o *Coupon) UnsetCode()`
+
+UnsetCode ensures that no value is present for Code, not even an explicit nil
 ### GetCodes
 
 `func (o *Coupon) GetCodes() []CouponCode`
@@ -142,6 +152,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Coupon) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Coupon) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *Coupon) GetDescription() string`
@@ -167,6 +187,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Coupon) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Coupon) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetActions
 
 `func (o *Coupon) GetActions() []CouponAction`
@@ -217,6 +247,16 @@ SetDateStart sets DateStart field to given value.
 
 HasDateStart returns a boolean if a field has been set.
 
+### SetDateStartNil
+
+`func (o *Coupon) SetDateStartNil(b bool)`
+
+ SetDateStartNil sets the value for DateStart to be an explicit nil
+
+### UnsetDateStart
+`func (o *Coupon) UnsetDateStart()`
+
+UnsetDateStart ensures that no value is present for DateStart, not even an explicit nil
 ### GetDateEnd
 
 `func (o *Coupon) GetDateEnd() A2CDateTime`
@@ -242,6 +282,16 @@ SetDateEnd sets DateEnd field to given value.
 
 HasDateEnd returns a boolean if a field has been set.
 
+### SetDateEndNil
+
+`func (o *Coupon) SetDateEndNil(b bool)`
+
+ SetDateEndNil sets the value for DateEnd to be an explicit nil
+
+### UnsetDateEnd
+`func (o *Coupon) UnsetDateEnd()`
+
+UnsetDateEnd ensures that no value is present for DateEnd, not even an explicit nil
 ### GetAvail
 
 `func (o *Coupon) GetAvail() bool`
@@ -267,6 +317,16 @@ SetAvail sets Avail field to given value.
 
 HasAvail returns a boolean if a field has been set.
 
+### SetAvailNil
+
+`func (o *Coupon) SetAvailNil(b bool)`
+
+ SetAvailNil sets the value for Avail to be an explicit nil
+
+### UnsetAvail
+`func (o *Coupon) UnsetAvail()`
+
+UnsetAvail ensures that no value is present for Avail, not even an explicit nil
 ### GetPriority
 
 `func (o *Coupon) GetPriority() int32`
@@ -292,6 +352,16 @@ SetPriority sets Priority field to given value.
 
 HasPriority returns a boolean if a field has been set.
 
+### SetPriorityNil
+
+`func (o *Coupon) SetPriorityNil(b bool)`
+
+ SetPriorityNil sets the value for Priority to be an explicit nil
+
+### UnsetPriority
+`func (o *Coupon) UnsetPriority()`
+
+UnsetPriority ensures that no value is present for Priority, not even an explicit nil
 ### GetUsedTimes
 
 `func (o *Coupon) GetUsedTimes() int32`
@@ -317,6 +387,16 @@ SetUsedTimes sets UsedTimes field to given value.
 
 HasUsedTimes returns a boolean if a field has been set.
 
+### SetUsedTimesNil
+
+`func (o *Coupon) SetUsedTimesNil(b bool)`
+
+ SetUsedTimesNil sets the value for UsedTimes to be an explicit nil
+
+### UnsetUsedTimes
+`func (o *Coupon) UnsetUsedTimes()`
+
+UnsetUsedTimes ensures that no value is present for UsedTimes, not even an explicit nil
 ### GetUsageLimit
 
 `func (o *Coupon) GetUsageLimit() int32`
@@ -342,6 +422,16 @@ SetUsageLimit sets UsageLimit field to given value.
 
 HasUsageLimit returns a boolean if a field has been set.
 
+### SetUsageLimitNil
+
+`func (o *Coupon) SetUsageLimitNil(b bool)`
+
+ SetUsageLimitNil sets the value for UsageLimit to be an explicit nil
+
+### UnsetUsageLimit
+`func (o *Coupon) UnsetUsageLimit()`
+
+UnsetUsageLimit ensures that no value is present for UsageLimit, not even an explicit nil
 ### GetUsageLimitPerCustomer
 
 `func (o *Coupon) GetUsageLimitPerCustomer() int32`
@@ -367,6 +457,16 @@ SetUsageLimitPerCustomer sets UsageLimitPerCustomer field to given value.
 
 HasUsageLimitPerCustomer returns a boolean if a field has been set.
 
+### SetUsageLimitPerCustomerNil
+
+`func (o *Coupon) SetUsageLimitPerCustomerNil(b bool)`
+
+ SetUsageLimitPerCustomerNil sets the value for UsageLimitPerCustomer to be an explicit nil
+
+### UnsetUsageLimitPerCustomer
+`func (o *Coupon) UnsetUsageLimitPerCustomer()`
+
+UnsetUsageLimitPerCustomer ensures that no value is present for UsageLimitPerCustomer, not even an explicit nil
 ### GetLogicOperator
 
 `func (o *Coupon) GetLogicOperator() string`
@@ -392,6 +492,16 @@ SetLogicOperator sets LogicOperator field to given value.
 
 HasLogicOperator returns a boolean if a field has been set.
 
+### SetLogicOperatorNil
+
+`func (o *Coupon) SetLogicOperatorNil(b bool)`
+
+ SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+
+### UnsetLogicOperator
+`func (o *Coupon) UnsetLogicOperator()`
+
+UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
 ### GetConditions
 
 `func (o *Coupon) GetConditions() []CouponCondition`
@@ -467,6 +577,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Coupon) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Coupon) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Coupon) GetCustomFields() map[string]interface{}`
@@ -492,6 +612,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Coupon) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Coupon) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

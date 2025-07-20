@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TransactionsCount** | Pointer to **int32** |  | [optional] 
+**TransactionsCount** | Pointer to **NullableInt32** |  | [optional] 
 **Transactions** | Pointer to [**[]OrderTransaction**](OrderTransaction.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetTransactionsCount sets TransactionsCount field to given value.
 
 HasTransactionsCount returns a boolean if a field has been set.
 
+### SetTransactionsCountNil
+
+`func (o *ResponseOrderTransactionListResult) SetTransactionsCountNil(b bool)`
+
+ SetTransactionsCountNil sets the value for TransactionsCount to be an explicit nil
+
+### UnsetTransactionsCount
+`func (o *ResponseOrderTransactionListResult) UnsetTransactionsCount()`
+
+UnsetTransactionsCount ensures that no value is present for TransactionsCount, not even an explicit nil
 ### GetTransactions
 
 `func (o *ResponseOrderTransactionListResult) GetTransactions() []OrderTransaction`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseOrderTransactionListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseOrderTransactionListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseOrderTransactionListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseOrderTransactionListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseOrderTransactionListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

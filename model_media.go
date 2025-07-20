@@ -20,9 +20,9 @@ var _ MappedNullable = &Media{}
 
 // Media struct for Media
 type Media struct {
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	HttpPath *string `json:"http_path,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
+	FileName NullableString `json:"file_name,omitempty"`
 	Type *string `json:"type,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -45,36 +45,46 @@ func NewMediaWithDefaults() *Media {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Media) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Media) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Media) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *Media) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *Media) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *Media) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetHttpPath returns the HttpPath field value if set, zero value otherwise.
@@ -109,36 +119,46 @@ func (o *Media) SetHttpPath(v string) {
 	o.HttpPath = &v
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise.
+// GetFileName returns the FileName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Media) GetFileName() string {
-	if o == nil || IsNil(o.FileName) {
+	if o == nil || IsNil(o.FileName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FileName
+	return *o.FileName.Get()
 }
 
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Media) GetFileNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FileName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FileName, true
+	return o.FileName.Get(), o.FileName.IsSet()
 }
 
 // HasFileName returns a boolean if a field has been set.
 func (o *Media) HasFileName() bool {
-	if o != nil && !IsNil(o.FileName) {
+	if o != nil && o.FileName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFileName gets a reference to the given string and assigns it to the FileName field.
+// SetFileName gets a reference to the given NullableString and assigns it to the FileName field.
 func (o *Media) SetFileName(v string) {
-	o.FileName = &v
+	o.FileName.Set(&v)
+}
+// SetFileNameNil sets the value for FileName to be an explicit nil
+func (o *Media) SetFileNameNil() {
+	o.FileName.Set(nil)
+}
+
+// UnsetFileName ensures that no value is present for FileName, not even an explicit nil
+func (o *Media) UnsetFileName() {
+	o.FileName.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -173,9 +193,9 @@ func (o *Media) SetType(v string) {
 	o.Type = &v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Media) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +204,7 @@ func (o *Media) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Media) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +226,9 @@ func (o *Media) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Media) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +237,7 @@ func (o *Media) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Media) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -247,22 +269,22 @@ func (o Media) MarshalJSON() ([]byte, error) {
 
 func (o Media) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
 	if !IsNil(o.HttpPath) {
 		toSerialize["http_path"] = o.HttpPath
 	}
-	if !IsNil(o.FileName) {
-		toSerialize["file_name"] = o.FileName
+	if o.FileName.IsSet() {
+		toSerialize["file_name"] = o.FileName.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

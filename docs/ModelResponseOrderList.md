@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReturnCode** | Pointer to **int32** |  | [optional] 
-**ReturnMessage** | Pointer to **string** |  | [optional] 
-**Pagination** | Pointer to [**Pagination**](Pagination.md) |  | [optional] 
-**Result** | Pointer to [**ResponseOrderListResult**](ResponseOrderListResult.md) |  | [optional] 
+**ReturnCode** | Pointer to **NullableInt32** |  | [optional] 
+**ReturnMessage** | Pointer to **NullableString** |  | [optional] 
+**Pagination** | Pointer to [**NullablePagination**](Pagination.md) |  | [optional] 
+**Result** | Pointer to [**NullableResponseOrderListResult**](ResponseOrderListResult.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -55,6 +55,16 @@ SetReturnCode sets ReturnCode field to given value.
 
 HasReturnCode returns a boolean if a field has been set.
 
+### SetReturnCodeNil
+
+`func (o *ModelResponseOrderList) SetReturnCodeNil(b bool)`
+
+ SetReturnCodeNil sets the value for ReturnCode to be an explicit nil
+
+### UnsetReturnCode
+`func (o *ModelResponseOrderList) UnsetReturnCode()`
+
+UnsetReturnCode ensures that no value is present for ReturnCode, not even an explicit nil
 ### GetReturnMessage
 
 `func (o *ModelResponseOrderList) GetReturnMessage() string`
@@ -80,6 +90,16 @@ SetReturnMessage sets ReturnMessage field to given value.
 
 HasReturnMessage returns a boolean if a field has been set.
 
+### SetReturnMessageNil
+
+`func (o *ModelResponseOrderList) SetReturnMessageNil(b bool)`
+
+ SetReturnMessageNil sets the value for ReturnMessage to be an explicit nil
+
+### UnsetReturnMessage
+`func (o *ModelResponseOrderList) UnsetReturnMessage()`
+
+UnsetReturnMessage ensures that no value is present for ReturnMessage, not even an explicit nil
 ### GetPagination
 
 `func (o *ModelResponseOrderList) GetPagination() Pagination`
@@ -105,6 +125,16 @@ SetPagination sets Pagination field to given value.
 
 HasPagination returns a boolean if a field has been set.
 
+### SetPaginationNil
+
+`func (o *ModelResponseOrderList) SetPaginationNil(b bool)`
+
+ SetPaginationNil sets the value for Pagination to be an explicit nil
+
+### UnsetPagination
+`func (o *ModelResponseOrderList) UnsetPagination()`
+
+UnsetPagination ensures that no value is present for Pagination, not even an explicit nil
 ### GetResult
 
 `func (o *ModelResponseOrderList) GetResult() ResponseOrderListResult`
@@ -130,6 +160,16 @@ SetResult sets Result field to given value.
 
 HasResult returns a boolean if a field has been set.
 
+### SetResultNil
+
+`func (o *ModelResponseOrderList) SetResultNil(b bool)`
+
+ SetResultNil sets the value for Result to be an explicit nil
+
+### UnsetResult
+`func (o *ModelResponseOrderList) UnsetResult()`
+
+UnsetResult ensures that no value is present for Result, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ModelResponseOrderList) GetAdditionalFields() map[string]interface{}`
@@ -155,6 +195,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ModelResponseOrderList) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ModelResponseOrderList) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ModelResponseOrderList) GetCustomFields() map[string]interface{}`
@@ -180,6 +230,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ModelResponseOrderList) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ModelResponseOrderList) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

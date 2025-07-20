@@ -20,7 +20,7 @@ var _ MappedNullable = &ResponseAttributeListResult{}
 
 // ResponseAttributeListResult struct for ResponseAttributeListResult
 type ResponseAttributeListResult struct {
-	AttributesCount *int32 `json:"attributes_count,omitempty"`
+	AttributesCount NullableInt32 `json:"attributes_count,omitempty"`
 	Attribute []StoreAttribute `json:"attribute,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewResponseAttributeListResultWithDefaults() *ResponseAttributeListResult {
 	return &this
 }
 
-// GetAttributesCount returns the AttributesCount field value if set, zero value otherwise.
+// GetAttributesCount returns the AttributesCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseAttributeListResult) GetAttributesCount() int32 {
-	if o == nil || IsNil(o.AttributesCount) {
+	if o == nil || IsNil(o.AttributesCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AttributesCount
+	return *o.AttributesCount.Get()
 }
 
 // GetAttributesCountOk returns a tuple with the AttributesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseAttributeListResult) GetAttributesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AttributesCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AttributesCount, true
+	return o.AttributesCount.Get(), o.AttributesCount.IsSet()
 }
 
 // HasAttributesCount returns a boolean if a field has been set.
 func (o *ResponseAttributeListResult) HasAttributesCount() bool {
-	if o != nil && !IsNil(o.AttributesCount) {
+	if o != nil && o.AttributesCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributesCount gets a reference to the given int32 and assigns it to the AttributesCount field.
+// SetAttributesCount gets a reference to the given NullableInt32 and assigns it to the AttributesCount field.
 func (o *ResponseAttributeListResult) SetAttributesCount(v int32) {
-	o.AttributesCount = &v
+	o.AttributesCount.Set(&v)
+}
+// SetAttributesCountNil sets the value for AttributesCount to be an explicit nil
+func (o *ResponseAttributeListResult) SetAttributesCountNil() {
+	o.AttributesCount.Set(nil)
+}
+
+// UnsetAttributesCount ensures that no value is present for AttributesCount, not even an explicit nil
+func (o *ResponseAttributeListResult) UnsetAttributesCount() {
+	o.AttributesCount.Unset()
 }
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *ResponseAttributeListResult) SetAttribute(v []StoreAttribute) {
 	o.Attribute = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseAttributeListResult) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *ResponseAttributeListResult) GetAdditionalFields() map[string]interface
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseAttributeListResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *ResponseAttributeListResult) SetAdditionalFields(v map[string]interface
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResponseAttributeListResult) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *ResponseAttributeListResult) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResponseAttributeListResult) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o ResponseAttributeListResult) MarshalJSON() ([]byte, error) {
 
 func (o ResponseAttributeListResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AttributesCount) {
-		toSerialize["attributes_count"] = o.AttributesCount
+	if o.AttributesCount.IsSet() {
+		toSerialize["attributes_count"] = o.AttributesCount.Get()
 	}
 	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

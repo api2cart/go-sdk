@@ -70,18 +70,6 @@ func Test_openapi_OrderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrderAPIService OrderFind", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.OrderAPI.OrderFind(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OrderAPIService OrderFulfillmentStatusList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

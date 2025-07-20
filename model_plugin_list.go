@@ -20,7 +20,7 @@ var _ MappedNullable = &PluginList{}
 
 // PluginList struct for PluginList
 type PluginList struct {
-	AllPlugins *int32 `json:"all_plugins,omitempty"`
+	AllPlugins NullableInt32 `json:"all_plugins,omitempty"`
 	Plugins []Plugin `json:"plugins,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -43,36 +43,46 @@ func NewPluginListWithDefaults() *PluginList {
 	return &this
 }
 
-// GetAllPlugins returns the AllPlugins field value if set, zero value otherwise.
+// GetAllPlugins returns the AllPlugins field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PluginList) GetAllPlugins() int32 {
-	if o == nil || IsNil(o.AllPlugins) {
+	if o == nil || IsNil(o.AllPlugins.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AllPlugins
+	return *o.AllPlugins.Get()
 }
 
 // GetAllPluginsOk returns a tuple with the AllPlugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PluginList) GetAllPluginsOk() (*int32, bool) {
-	if o == nil || IsNil(o.AllPlugins) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllPlugins, true
+	return o.AllPlugins.Get(), o.AllPlugins.IsSet()
 }
 
 // HasAllPlugins returns a boolean if a field has been set.
 func (o *PluginList) HasAllPlugins() bool {
-	if o != nil && !IsNil(o.AllPlugins) {
+	if o != nil && o.AllPlugins.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAllPlugins gets a reference to the given int32 and assigns it to the AllPlugins field.
+// SetAllPlugins gets a reference to the given NullableInt32 and assigns it to the AllPlugins field.
 func (o *PluginList) SetAllPlugins(v int32) {
-	o.AllPlugins = &v
+	o.AllPlugins.Set(&v)
+}
+// SetAllPluginsNil sets the value for AllPlugins to be an explicit nil
+func (o *PluginList) SetAllPluginsNil() {
+	o.AllPlugins.Set(nil)
+}
+
+// UnsetAllPlugins ensures that no value is present for AllPlugins, not even an explicit nil
+func (o *PluginList) UnsetAllPlugins() {
+	o.AllPlugins.Unset()
 }
 
 // GetPlugins returns the Plugins field value if set, zero value otherwise.
@@ -107,9 +117,9 @@ func (o *PluginList) SetPlugins(v []Plugin) {
 	o.Plugins = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PluginList) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -118,6 +128,7 @@ func (o *PluginList) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PluginList) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -139,9 +150,9 @@ func (o *PluginList) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PluginList) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -150,6 +161,7 @@ func (o *PluginList) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PluginList) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -181,16 +193,16 @@ func (o PluginList) MarshalJSON() ([]byte, error) {
 
 func (o PluginList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AllPlugins) {
-		toSerialize["all_plugins"] = o.AllPlugins
+	if o.AllPlugins.IsSet() {
+		toSerialize["all_plugins"] = o.AllPlugins.Get()
 	}
 	if !IsNil(o.Plugins) {
 		toSerialize["plugins"] = o.Plugins
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

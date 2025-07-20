@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Avail** | Pointer to **bool** |  | [optional] 
-**Tax** | Pointer to **float32** |  | [optional] 
-**TaxType** | Pointer to **int32** |  | [optional] 
-**CreatedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Avail** | Pointer to **NullableBool** |  | [optional] 
+**Tax** | Pointer to **NullableFloat32** |  | [optional] 
+**TaxType** | Pointer to **NullableInt32** |  | [optional] 
+**CreatedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **TaxRates** | Pointer to [**[]TaxClassRate**](TaxClassRate.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -109,6 +109,16 @@ SetAvail sets Avail field to given value.
 
 HasAvail returns a boolean if a field has been set.
 
+### SetAvailNil
+
+`func (o *ResponseTaxClassInfoResult) SetAvailNil(b bool)`
+
+ SetAvailNil sets the value for Avail to be an explicit nil
+
+### UnsetAvail
+`func (o *ResponseTaxClassInfoResult) UnsetAvail()`
+
+UnsetAvail ensures that no value is present for Avail, not even an explicit nil
 ### GetTax
 
 `func (o *ResponseTaxClassInfoResult) GetTax() float32`
@@ -134,6 +144,16 @@ SetTax sets Tax field to given value.
 
 HasTax returns a boolean if a field has been set.
 
+### SetTaxNil
+
+`func (o *ResponseTaxClassInfoResult) SetTaxNil(b bool)`
+
+ SetTaxNil sets the value for Tax to be an explicit nil
+
+### UnsetTax
+`func (o *ResponseTaxClassInfoResult) UnsetTax()`
+
+UnsetTax ensures that no value is present for Tax, not even an explicit nil
 ### GetTaxType
 
 `func (o *ResponseTaxClassInfoResult) GetTaxType() int32`
@@ -159,6 +179,16 @@ SetTaxType sets TaxType field to given value.
 
 HasTaxType returns a boolean if a field has been set.
 
+### SetTaxTypeNil
+
+`func (o *ResponseTaxClassInfoResult) SetTaxTypeNil(b bool)`
+
+ SetTaxTypeNil sets the value for TaxType to be an explicit nil
+
+### UnsetTaxType
+`func (o *ResponseTaxClassInfoResult) UnsetTaxType()`
+
+UnsetTaxType ensures that no value is present for TaxType, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *ResponseTaxClassInfoResult) GetCreatedAt() A2CDateTime`
@@ -184,6 +214,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *ResponseTaxClassInfoResult) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *ResponseTaxClassInfoResult) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetModifiedAt
 
 `func (o *ResponseTaxClassInfoResult) GetModifiedAt() A2CDateTime`
@@ -209,6 +249,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *ResponseTaxClassInfoResult) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *ResponseTaxClassInfoResult) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetTaxRates
 
 `func (o *ResponseTaxClassInfoResult) GetTaxRates() []TaxClassRate`
@@ -259,6 +309,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseTaxClassInfoResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseTaxClassInfoResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseTaxClassInfoResult) GetCustomFields() map[string]interface{}`
@@ -284,6 +344,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseTaxClassInfoResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseTaxClassInfoResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,16 +21,16 @@ var _ MappedNullable = &ProductReview{}
 // ProductReview struct for ProductReview
 type ProductReview struct {
 	Id *string `json:"id,omitempty"`
-	ProductId *string `json:"product_id,omitempty"`
-	CustomerId *string `json:"customer_id,omitempty"`
-	NickName *string `json:"nick_name,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Summary *string `json:"summary,omitempty"`
-	Message *string `json:"message,omitempty"`
-	Rating *float32 `json:"rating,omitempty"`
+	ProductId NullableString `json:"product_id,omitempty"`
+	CustomerId NullableString `json:"customer_id,omitempty"`
+	NickName NullableString `json:"nick_name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Summary NullableString `json:"summary,omitempty"`
+	Message NullableString `json:"message,omitempty"`
+	Rating NullableFloat32 `json:"rating,omitempty"`
 	Ratings []ProductReviewRating `json:"ratings,omitempty"`
-	Status *string `json:"status,omitempty"`
-	CreatedTime *A2CDateTime `json:"created_time,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
 	Medias []Media `json:"medias,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -85,228 +85,298 @@ func (o *ProductReview) SetId(v string) {
 	o.Id = &v
 }
 
-// GetProductId returns the ProductId field value if set, zero value otherwise.
+// GetProductId returns the ProductId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetProductId() string {
-	if o == nil || IsNil(o.ProductId) {
+	if o == nil || IsNil(o.ProductId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProductId
+	return *o.ProductId.Get()
 }
 
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetProductIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ProductId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProductId, true
+	return o.ProductId.Get(), o.ProductId.IsSet()
 }
 
 // HasProductId returns a boolean if a field has been set.
 func (o *ProductReview) HasProductId() bool {
-	if o != nil && !IsNil(o.ProductId) {
+	if o != nil && o.ProductId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProductId gets a reference to the given string and assigns it to the ProductId field.
+// SetProductId gets a reference to the given NullableString and assigns it to the ProductId field.
 func (o *ProductReview) SetProductId(v string) {
-	o.ProductId = &v
+	o.ProductId.Set(&v)
+}
+// SetProductIdNil sets the value for ProductId to be an explicit nil
+func (o *ProductReview) SetProductIdNil() {
+	o.ProductId.Set(nil)
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+// UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
+func (o *ProductReview) UnsetProductId() {
+	o.ProductId.Unset()
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil || IsNil(o.CustomerId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId
+	return *o.CustomerId.Get()
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetCustomerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.CustomerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomerId, true
+	return o.CustomerId.Get(), o.CustomerId.IsSet()
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *ProductReview) HasCustomerId() bool {
-	if o != nil && !IsNil(o.CustomerId) {
+	if o != nil && o.CustomerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
 func (o *ProductReview) SetCustomerId(v string) {
-	o.CustomerId = &v
+	o.CustomerId.Set(&v)
+}
+// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+func (o *ProductReview) SetCustomerIdNil() {
+	o.CustomerId.Set(nil)
 }
 
-// GetNickName returns the NickName field value if set, zero value otherwise.
+// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
+func (o *ProductReview) UnsetCustomerId() {
+	o.CustomerId.Unset()
+}
+
+// GetNickName returns the NickName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetNickName() string {
-	if o == nil || IsNil(o.NickName) {
+	if o == nil || IsNil(o.NickName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.NickName
+	return *o.NickName.Get()
 }
 
 // GetNickNameOk returns a tuple with the NickName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetNickNameOk() (*string, bool) {
-	if o == nil || IsNil(o.NickName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NickName, true
+	return o.NickName.Get(), o.NickName.IsSet()
 }
 
 // HasNickName returns a boolean if a field has been set.
 func (o *ProductReview) HasNickName() bool {
-	if o != nil && !IsNil(o.NickName) {
+	if o != nil && o.NickName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNickName gets a reference to the given string and assigns it to the NickName field.
+// SetNickName gets a reference to the given NullableString and assigns it to the NickName field.
 func (o *ProductReview) SetNickName(v string) {
-	o.NickName = &v
+	o.NickName.Set(&v)
+}
+// SetNickNameNil sets the value for NickName to be an explicit nil
+func (o *ProductReview) SetNickNameNil() {
+	o.NickName.Set(nil)
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// UnsetNickName ensures that no value is present for NickName, not even an explicit nil
+func (o *ProductReview) UnsetNickName() {
+	o.NickName.Unset()
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *ProductReview) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *ProductReview) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *ProductReview) SetEmailNil() {
+	o.Email.Set(nil)
 }
 
-// GetSummary returns the Summary field value if set, zero value otherwise.
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *ProductReview) UnsetEmail() {
+	o.Email.Unset()
+}
+
+// GetSummary returns the Summary field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetSummary() string {
-	if o == nil || IsNil(o.Summary) {
+	if o == nil || IsNil(o.Summary.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Summary
+	return *o.Summary.Get()
 }
 
 // GetSummaryOk returns a tuple with the Summary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetSummaryOk() (*string, bool) {
-	if o == nil || IsNil(o.Summary) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Summary, true
+	return o.Summary.Get(), o.Summary.IsSet()
 }
 
 // HasSummary returns a boolean if a field has been set.
 func (o *ProductReview) HasSummary() bool {
-	if o != nil && !IsNil(o.Summary) {
+	if o != nil && o.Summary.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSummary gets a reference to the given string and assigns it to the Summary field.
+// SetSummary gets a reference to the given NullableString and assigns it to the Summary field.
 func (o *ProductReview) SetSummary(v string) {
-	o.Summary = &v
+	o.Summary.Set(&v)
+}
+// SetSummaryNil sets the value for Summary to be an explicit nil
+func (o *ProductReview) SetSummaryNil() {
+	o.Summary.Set(nil)
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// UnsetSummary ensures that no value is present for Summary, not even an explicit nil
+func (o *ProductReview) UnsetSummary() {
+	o.Summary.Unset()
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
+	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Message
+	return *o.Message.Get()
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Message, true
+	return o.Message.Get(), o.Message.IsSet()
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ProductReview) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
+	if o != nil && o.Message.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given string and assigns it to the Message field.
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
 func (o *ProductReview) SetMessage(v string) {
-	o.Message = &v
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *ProductReview) SetMessageNil() {
+	o.Message.Set(nil)
 }
 
-// GetRating returns the Rating field value if set, zero value otherwise.
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *ProductReview) UnsetMessage() {
+	o.Message.Unset()
+}
+
+// GetRating returns the Rating field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetRating() float32 {
-	if o == nil || IsNil(o.Rating) {
+	if o == nil || IsNil(o.Rating.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Rating
+	return *o.Rating.Get()
 }
 
 // GetRatingOk returns a tuple with the Rating field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetRatingOk() (*float32, bool) {
-	if o == nil || IsNil(o.Rating) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Rating, true
+	return o.Rating.Get(), o.Rating.IsSet()
 }
 
 // HasRating returns a boolean if a field has been set.
 func (o *ProductReview) HasRating() bool {
-	if o != nil && !IsNil(o.Rating) {
+	if o != nil && o.Rating.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRating gets a reference to the given float32 and assigns it to the Rating field.
+// SetRating gets a reference to the given NullableFloat32 and assigns it to the Rating field.
 func (o *ProductReview) SetRating(v float32) {
-	o.Rating = &v
+	o.Rating.Set(&v)
+}
+// SetRatingNil sets the value for Rating to be an explicit nil
+func (o *ProductReview) SetRatingNil() {
+	o.Rating.Set(nil)
+}
+
+// UnsetRating ensures that no value is present for Rating, not even an explicit nil
+func (o *ProductReview) UnsetRating() {
+	o.Rating.Unset()
 }
 
 // GetRatings returns the Ratings field value if set, zero value otherwise.
@@ -341,68 +411,88 @@ func (o *ProductReview) SetRatings(v []ProductReviewRating) {
 	o.Ratings = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProductReview) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *ProductReview) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *ProductReview) SetStatusNil() {
+	o.Status.Set(nil)
 }
 
-// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise.
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *ProductReview) UnsetStatus() {
+	o.Status.Unset()
+}
+
+// GetCreatedTime returns the CreatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetCreatedTime() A2CDateTime {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil || IsNil(o.CreatedTime.Get()) {
 		var ret A2CDateTime
 		return ret
 	}
-	return *o.CreatedTime
+	return *o.CreatedTime.Get()
 }
 
 // GetCreatedTimeOk returns a tuple with the CreatedTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetCreatedTimeOk() (*A2CDateTime, bool) {
-	if o == nil || IsNil(o.CreatedTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedTime, true
+	return o.CreatedTime.Get(), o.CreatedTime.IsSet()
 }
 
 // HasCreatedTime returns a boolean if a field has been set.
 func (o *ProductReview) HasCreatedTime() bool {
-	if o != nil && !IsNil(o.CreatedTime) {
+	if o != nil && o.CreatedTime.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedTime gets a reference to the given A2CDateTime and assigns it to the CreatedTime field.
+// SetCreatedTime gets a reference to the given NullableA2CDateTime and assigns it to the CreatedTime field.
 func (o *ProductReview) SetCreatedTime(v A2CDateTime) {
-	o.CreatedTime = &v
+	o.CreatedTime.Set(&v)
+}
+// SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+func (o *ProductReview) SetCreatedTimeNil() {
+	o.CreatedTime.Set(nil)
+}
+
+// UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+func (o *ProductReview) UnsetCreatedTime() {
+	o.CreatedTime.Unset()
 }
 
 // GetMedias returns the Medias field value if set, zero value otherwise.
@@ -437,9 +527,9 @@ func (o *ProductReview) SetMedias(v []Media) {
 	o.Medias = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -448,6 +538,7 @@ func (o *ProductReview) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -469,9 +560,9 @@ func (o *ProductReview) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProductReview) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -480,6 +571,7 @@ func (o *ProductReview) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProductReview) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -514,43 +606,43 @@ func (o ProductReview) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.ProductId) {
-		toSerialize["product_id"] = o.ProductId
+	if o.ProductId.IsSet() {
+		toSerialize["product_id"] = o.ProductId.Get()
 	}
-	if !IsNil(o.CustomerId) {
-		toSerialize["customer_id"] = o.CustomerId
+	if o.CustomerId.IsSet() {
+		toSerialize["customer_id"] = o.CustomerId.Get()
 	}
-	if !IsNil(o.NickName) {
-		toSerialize["nick_name"] = o.NickName
+	if o.NickName.IsSet() {
+		toSerialize["nick_name"] = o.NickName.Get()
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.Summary) {
-		toSerialize["summary"] = o.Summary
+	if o.Summary.IsSet() {
+		toSerialize["summary"] = o.Summary.Get()
 	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
-	if !IsNil(o.Rating) {
-		toSerialize["rating"] = o.Rating
+	if o.Rating.IsSet() {
+		toSerialize["rating"] = o.Rating.Get()
 	}
 	if !IsNil(o.Ratings) {
 		toSerialize["ratings"] = o.Ratings
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
-	if !IsNil(o.CreatedTime) {
-		toSerialize["created_time"] = o.CreatedTime
+	if o.CreatedTime.IsSet() {
+		toSerialize["created_time"] = o.CreatedTime.Get()
 	}
 	if !IsNil(o.Medias) {
 		toSerialize["medias"] = o.Medias
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

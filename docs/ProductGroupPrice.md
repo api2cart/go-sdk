@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
 **Price** | Pointer to **float32** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
-**Quantity** | Pointer to **float32** |  | [optional] 
-**StartTime** | Pointer to **string** |  | [optional] 
-**ExpireTime** | Pointer to **string** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
+**Quantity** | Pointer to **NullableFloat32** |  | [optional] 
+**StartTime** | Pointer to **NullableString** |  | [optional] 
+**ExpireTime** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -58,6 +58,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *ProductGroupPrice) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *ProductGroupPrice) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetGroupId
 
 `func (o *ProductGroupPrice) GetGroupId() string`
@@ -133,6 +143,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *ProductGroupPrice) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *ProductGroupPrice) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetQuantity
 
 `func (o *ProductGroupPrice) GetQuantity() float32`
@@ -158,6 +178,16 @@ SetQuantity sets Quantity field to given value.
 
 HasQuantity returns a boolean if a field has been set.
 
+### SetQuantityNil
+
+`func (o *ProductGroupPrice) SetQuantityNil(b bool)`
+
+ SetQuantityNil sets the value for Quantity to be an explicit nil
+
+### UnsetQuantity
+`func (o *ProductGroupPrice) UnsetQuantity()`
+
+UnsetQuantity ensures that no value is present for Quantity, not even an explicit nil
 ### GetStartTime
 
 `func (o *ProductGroupPrice) GetStartTime() string`
@@ -183,6 +213,16 @@ SetStartTime sets StartTime field to given value.
 
 HasStartTime returns a boolean if a field has been set.
 
+### SetStartTimeNil
+
+`func (o *ProductGroupPrice) SetStartTimeNil(b bool)`
+
+ SetStartTimeNil sets the value for StartTime to be an explicit nil
+
+### UnsetStartTime
+`func (o *ProductGroupPrice) UnsetStartTime()`
+
+UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
 ### GetExpireTime
 
 `func (o *ProductGroupPrice) GetExpireTime() string`
@@ -208,6 +248,16 @@ SetExpireTime sets ExpireTime field to given value.
 
 HasExpireTime returns a boolean if a field has been set.
 
+### SetExpireTimeNil
+
+`func (o *ProductGroupPrice) SetExpireTimeNil(b bool)`
+
+ SetExpireTimeNil sets the value for ExpireTime to be an explicit nil
+
+### UnsetExpireTime
+`func (o *ProductGroupPrice) UnsetExpireTime()`
+
+UnsetExpireTime ensures that no value is present for ExpireTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ProductGroupPrice) GetAdditionalFields() map[string]interface{}`
@@ -233,6 +283,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductGroupPrice) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductGroupPrice) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductGroupPrice) GetCustomFields() map[string]interface{}`
@@ -258,6 +318,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductGroupPrice) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductGroupPrice) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

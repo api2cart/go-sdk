@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **ModifiedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Notify** | Pointer to **bool** |  | [optional] 
-**Comment** | Pointer to **string** |  | [optional] 
+**Notify** | Pointer to **NullableBool** |  | [optional] 
+**Comment** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -131,6 +131,16 @@ SetNotify sets Notify field to given value.
 
 HasNotify returns a boolean if a field has been set.
 
+### SetNotifyNil
+
+`func (o *OrderStatusHistoryItem) SetNotifyNil(b bool)`
+
+ SetNotifyNil sets the value for Notify to be an explicit nil
+
+### UnsetNotify
+`func (o *OrderStatusHistoryItem) UnsetNotify()`
+
+UnsetNotify ensures that no value is present for Notify, not even an explicit nil
 ### GetComment
 
 `func (o *OrderStatusHistoryItem) GetComment() string`
@@ -156,6 +166,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *OrderStatusHistoryItem) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *OrderStatusHistoryItem) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderStatusHistoryItem) GetAdditionalFields() map[string]interface{}`
@@ -181,6 +201,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderStatusHistoryItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderStatusHistoryItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderStatusHistoryItem) GetCustomFields() map[string]interface{}`
@@ -206,6 +236,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderStatusHistoryItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderStatusHistoryItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

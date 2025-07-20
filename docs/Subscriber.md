@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**CustomerId** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
-**Subscribed** | Pointer to **bool** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
+**CustomerId** | Pointer to **NullableString** |  | [optional] 
+**Email** | Pointer to **NullableString** |  | [optional] 
+**Subscribed** | Pointer to **NullableBool** |  | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
-**CreatedTime** | Pointer to **string** |  | [optional] 
-**ModifiedTime** | Pointer to **string** |  | [optional] 
-**LangId** | Pointer to **string** |  | [optional] 
-**Gender** | Pointer to **string** |  | [optional] 
+**CreatedTime** | Pointer to **NullableString** |  | [optional] 
+**ModifiedTime** | Pointer to **NullableString** |  | [optional] 
+**LangId** | Pointer to **NullableString** |  | [optional] 
+**Gender** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -87,6 +87,16 @@ SetCustomerId sets CustomerId field to given value.
 
 HasCustomerId returns a boolean if a field has been set.
 
+### SetCustomerIdNil
+
+`func (o *Subscriber) SetCustomerIdNil(b bool)`
+
+ SetCustomerIdNil sets the value for CustomerId to be an explicit nil
+
+### UnsetCustomerId
+`func (o *Subscriber) UnsetCustomerId()`
+
+UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
 ### GetEmail
 
 `func (o *Subscriber) GetEmail() string`
@@ -112,6 +122,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *Subscriber) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *Subscriber) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetSubscribed
 
 `func (o *Subscriber) GetSubscribed() bool`
@@ -137,6 +157,16 @@ SetSubscribed sets Subscribed field to given value.
 
 HasSubscribed returns a boolean if a field has been set.
 
+### SetSubscribedNil
+
+`func (o *Subscriber) SetSubscribedNil(b bool)`
+
+ SetSubscribedNil sets the value for Subscribed to be an explicit nil
+
+### UnsetSubscribed
+`func (o *Subscriber) UnsetSubscribed()`
+
+UnsetSubscribed ensures that no value is present for Subscribed, not even an explicit nil
 ### GetFirstName
 
 `func (o *Subscriber) GetFirstName() string`
@@ -162,6 +192,16 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
+### SetFirstNameNil
+
+`func (o *Subscriber) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *Subscriber) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *Subscriber) GetLastName() string`
@@ -187,6 +227,16 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
+### SetLastNameNil
+
+`func (o *Subscriber) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *Subscriber) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetStoresIds
 
 `func (o *Subscriber) GetStoresIds() []string`
@@ -237,6 +287,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *Subscriber) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *Subscriber) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Subscriber) GetModifiedTime() string`
@@ -262,6 +322,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Subscriber) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Subscriber) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetLangId
 
 `func (o *Subscriber) GetLangId() string`
@@ -287,6 +357,16 @@ SetLangId sets LangId field to given value.
 
 HasLangId returns a boolean if a field has been set.
 
+### SetLangIdNil
+
+`func (o *Subscriber) SetLangIdNil(b bool)`
+
+ SetLangIdNil sets the value for LangId to be an explicit nil
+
+### UnsetLangId
+`func (o *Subscriber) UnsetLangId()`
+
+UnsetLangId ensures that no value is present for LangId, not even an explicit nil
 ### GetGender
 
 `func (o *Subscriber) GetGender() string`
@@ -312,6 +392,16 @@ SetGender sets Gender field to given value.
 
 HasGender returns a boolean if a field has been set.
 
+### SetGenderNil
+
+`func (o *Subscriber) SetGenderNil(b bool)`
+
+ SetGenderNil sets the value for Gender to be an explicit nil
+
+### UnsetGender
+`func (o *Subscriber) UnsetGender()`
+
+UnsetGender ensures that no value is present for Gender, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Subscriber) GetAdditionalFields() map[string]interface{}`
@@ -337,6 +427,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Subscriber) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Subscriber) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Subscriber) GetCustomFields() map[string]interface{}`
@@ -362,6 +462,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Subscriber) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Subscriber) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

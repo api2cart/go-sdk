@@ -20,11 +20,11 @@ var _ MappedNullable = &BasketItemOption{}
 
 // BasketItemOption struct for BasketItemOption
 type BasketItemOption struct {
-	Id *string `json:"id,omitempty"`
-	ValueId *string `json:"value_id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Value *string `json:"value,omitempty"`
-	UsedInCombination *bool `json:"used_in_combination,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	ValueId NullableString `json:"value_id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	UsedInCombination NullableBool `json:"used_in_combination,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -46,169 +46,219 @@ func NewBasketItemOptionWithDefaults() *BasketItemOption {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BasketItemOption) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *BasketItemOption) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *BasketItemOption) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetValueId returns the ValueId field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *BasketItemOption) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetValueId returns the ValueId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetValueId() string {
-	if o == nil || IsNil(o.ValueId) {
+	if o == nil || IsNil(o.ValueId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ValueId
+	return *o.ValueId.Get()
 }
 
 // GetValueIdOk returns a tuple with the ValueId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetValueIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ValueId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ValueId, true
+	return o.ValueId.Get(), o.ValueId.IsSet()
 }
 
 // HasValueId returns a boolean if a field has been set.
 func (o *BasketItemOption) HasValueId() bool {
-	if o != nil && !IsNil(o.ValueId) {
+	if o != nil && o.ValueId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValueId gets a reference to the given string and assigns it to the ValueId field.
+// SetValueId gets a reference to the given NullableString and assigns it to the ValueId field.
 func (o *BasketItemOption) SetValueId(v string) {
-	o.ValueId = &v
+	o.ValueId.Set(&v)
+}
+// SetValueIdNil sets the value for ValueId to be an explicit nil
+func (o *BasketItemOption) SetValueIdNil() {
+	o.ValueId.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetValueId ensures that no value is present for ValueId, not even an explicit nil
+func (o *BasketItemOption) UnsetValueId() {
+	o.ValueId.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *BasketItemOption) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *BasketItemOption) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *BasketItemOption) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *BasketItemOption) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *BasketItemOption) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *BasketItemOption) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *BasketItemOption) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetUsedInCombination returns the UsedInCombination field value if set, zero value otherwise.
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *BasketItemOption) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetUsedInCombination returns the UsedInCombination field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetUsedInCombination() bool {
-	if o == nil || IsNil(o.UsedInCombination) {
+	if o == nil || IsNil(o.UsedInCombination.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.UsedInCombination
+	return *o.UsedInCombination.Get()
 }
 
 // GetUsedInCombinationOk returns a tuple with the UsedInCombination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetUsedInCombinationOk() (*bool, bool) {
-	if o == nil || IsNil(o.UsedInCombination) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UsedInCombination, true
+	return o.UsedInCombination.Get(), o.UsedInCombination.IsSet()
 }
 
 // HasUsedInCombination returns a boolean if a field has been set.
 func (o *BasketItemOption) HasUsedInCombination() bool {
-	if o != nil && !IsNil(o.UsedInCombination) {
+	if o != nil && o.UsedInCombination.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsedInCombination gets a reference to the given bool and assigns it to the UsedInCombination field.
+// SetUsedInCombination gets a reference to the given NullableBool and assigns it to the UsedInCombination field.
 func (o *BasketItemOption) SetUsedInCombination(v bool) {
-	o.UsedInCombination = &v
+	o.UsedInCombination.Set(&v)
+}
+// SetUsedInCombinationNil sets the value for UsedInCombination to be an explicit nil
+func (o *BasketItemOption) SetUsedInCombinationNil() {
+	o.UsedInCombination.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetUsedInCombination ensures that no value is present for UsedInCombination, not even an explicit nil
+func (o *BasketItemOption) UnsetUsedInCombination() {
+	o.UsedInCombination.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -217,6 +267,7 @@ func (o *BasketItemOption) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -238,9 +289,9 @@ func (o *BasketItemOption) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BasketItemOption) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -249,6 +300,7 @@ func (o *BasketItemOption) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BasketItemOption) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -280,25 +332,25 @@ func (o BasketItemOption) MarshalJSON() ([]byte, error) {
 
 func (o BasketItemOption) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !IsNil(o.ValueId) {
-		toSerialize["value_id"] = o.ValueId
+	if o.ValueId.IsSet() {
+		toSerialize["value_id"] = o.ValueId.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !IsNil(o.UsedInCombination) {
-		toSerialize["used_in_combination"] = o.UsedInCombination
+	if o.UsedInCombination.IsSet() {
+		toSerialize["used_in_combination"] = o.UsedInCombination.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

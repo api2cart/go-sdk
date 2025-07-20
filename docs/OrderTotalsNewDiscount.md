@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **NullableString** |  | [optional] 
 **Value** | Pointer to **float32** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -54,6 +54,16 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
+### SetCodeNil
+
+`func (o *OrderTotalsNewDiscount) SetCodeNil(b bool)`
+
+ SetCodeNil sets the value for Code to be an explicit nil
+
+### UnsetCode
+`func (o *OrderTotalsNewDiscount) UnsetCode()`
+
+UnsetCode ensures that no value is present for Code, not even an explicit nil
 ### GetValue
 
 `func (o *OrderTotalsNewDiscount) GetValue() float32`
@@ -104,6 +114,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *OrderTotalsNewDiscount) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *OrderTotalsNewDiscount) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderTotalsNewDiscount) GetAdditionalFields() map[string]interface{}`
@@ -129,6 +149,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderTotalsNewDiscount) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderTotalsNewDiscount) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderTotalsNewDiscount) GetCustomFields() map[string]interface{}`
@@ -154,6 +184,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderTotalsNewDiscount) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderTotalsNewDiscount) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

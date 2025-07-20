@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **NullableString** |  | [optional] 
 **HttpPath** | Pointer to **string** |  | [optional] 
-**FileName** | Pointer to **string** |  | [optional] 
-**MimeType** | Pointer to **string** |  | [optional] 
-**Size** | Pointer to **int32** |  | [optional] 
-**CreateAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedAt** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Alt** | Pointer to **string** |  | [optional] 
+**FileName** | Pointer to **NullableString** |  | [optional] 
+**MimeType** | Pointer to **NullableString** |  | [optional] 
+**Size** | Pointer to **NullableInt32** |  | [optional] 
+**CreateAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Alt** | Pointer to **NullableString** |  | [optional] 
 **Avail** | Pointer to **bool** |  | [optional] 
-**SortOrder** | Pointer to **int32** |  | [optional] 
+**SortOrder** | Pointer to **NullableInt32** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -62,6 +62,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *Image) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *Image) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetHttpPath
 
 `func (o *Image) GetHttpPath() string`
@@ -112,6 +122,16 @@ SetFileName sets FileName field to given value.
 
 HasFileName returns a boolean if a field has been set.
 
+### SetFileNameNil
+
+`func (o *Image) SetFileNameNil(b bool)`
+
+ SetFileNameNil sets the value for FileName to be an explicit nil
+
+### UnsetFileName
+`func (o *Image) UnsetFileName()`
+
+UnsetFileName ensures that no value is present for FileName, not even an explicit nil
 ### GetMimeType
 
 `func (o *Image) GetMimeType() string`
@@ -137,6 +157,16 @@ SetMimeType sets MimeType field to given value.
 
 HasMimeType returns a boolean if a field has been set.
 
+### SetMimeTypeNil
+
+`func (o *Image) SetMimeTypeNil(b bool)`
+
+ SetMimeTypeNil sets the value for MimeType to be an explicit nil
+
+### UnsetMimeType
+`func (o *Image) UnsetMimeType()`
+
+UnsetMimeType ensures that no value is present for MimeType, not even an explicit nil
 ### GetSize
 
 `func (o *Image) GetSize() int32`
@@ -162,6 +192,16 @@ SetSize sets Size field to given value.
 
 HasSize returns a boolean if a field has been set.
 
+### SetSizeNil
+
+`func (o *Image) SetSizeNil(b bool)`
+
+ SetSizeNil sets the value for Size to be an explicit nil
+
+### UnsetSize
+`func (o *Image) UnsetSize()`
+
+UnsetSize ensures that no value is present for Size, not even an explicit nil
 ### GetCreateAt
 
 `func (o *Image) GetCreateAt() A2CDateTime`
@@ -187,6 +227,16 @@ SetCreateAt sets CreateAt field to given value.
 
 HasCreateAt returns a boolean if a field has been set.
 
+### SetCreateAtNil
+
+`func (o *Image) SetCreateAtNil(b bool)`
+
+ SetCreateAtNil sets the value for CreateAt to be an explicit nil
+
+### UnsetCreateAt
+`func (o *Image) UnsetCreateAt()`
+
+UnsetCreateAt ensures that no value is present for CreateAt, not even an explicit nil
 ### GetModifiedAt
 
 `func (o *Image) GetModifiedAt() A2CDateTime`
@@ -212,6 +262,16 @@ SetModifiedAt sets ModifiedAt field to given value.
 
 HasModifiedAt returns a boolean if a field has been set.
 
+### SetModifiedAtNil
+
+`func (o *Image) SetModifiedAtNil(b bool)`
+
+ SetModifiedAtNil sets the value for ModifiedAt to be an explicit nil
+
+### UnsetModifiedAt
+`func (o *Image) UnsetModifiedAt()`
+
+UnsetModifiedAt ensures that no value is present for ModifiedAt, not even an explicit nil
 ### GetAlt
 
 `func (o *Image) GetAlt() string`
@@ -237,6 +297,16 @@ SetAlt sets Alt field to given value.
 
 HasAlt returns a boolean if a field has been set.
 
+### SetAltNil
+
+`func (o *Image) SetAltNil(b bool)`
+
+ SetAltNil sets the value for Alt to be an explicit nil
+
+### UnsetAlt
+`func (o *Image) UnsetAlt()`
+
+UnsetAlt ensures that no value is present for Alt, not even an explicit nil
 ### GetAvail
 
 `func (o *Image) GetAvail() bool`
@@ -287,6 +357,16 @@ SetSortOrder sets SortOrder field to given value.
 
 HasSortOrder returns a boolean if a field has been set.
 
+### SetSortOrderNil
+
+`func (o *Image) SetSortOrderNil(b bool)`
+
+ SetSortOrderNil sets the value for SortOrder to be an explicit nil
+
+### UnsetSortOrder
+`func (o *Image) UnsetSortOrder()`
+
+UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetType
 
 `func (o *Image) GetType() string`
@@ -337,6 +417,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Image) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Image) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Image) GetCustomFields() map[string]interface{}`
@@ -362,6 +452,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Image) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Image) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

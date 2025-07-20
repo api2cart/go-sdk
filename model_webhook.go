@@ -20,18 +20,18 @@ var _ MappedNullable = &Webhook{}
 
 // Webhook struct for Webhook
 type Webhook struct {
-	Id *int32 `json:"id,omitempty"`
-	Label *string `json:"label,omitempty"`
-	StoreId *string `json:"store_id,omitempty"`
-	LangId *string `json:"lang_id,omitempty"`
-	Active *bool `json:"active,omitempty"`
-	Callback *string `json:"callback,omitempty"`
-	Fields *string `json:"fields,omitempty"`
-	ResponseFields *string `json:"response_fields,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Entity *string `json:"entity,omitempty"`
-	Action *string `json:"action,omitempty"`
+	Id NullableInt32 `json:"id,omitempty"`
+	Label NullableString `json:"label,omitempty"`
+	StoreId NullableString `json:"store_id,omitempty"`
+	LangId NullableString `json:"lang_id,omitempty"`
+	Active NullableBool `json:"active,omitempty"`
+	Callback NullableString `json:"callback,omitempty"`
+	Fields NullableString `json:"fields,omitempty"`
+	ResponseFields NullableString `json:"response_fields,omitempty"`
+	CreatedAt NullableString `json:"created_at,omitempty"`
+	UpdatedAt NullableString `json:"updated_at,omitempty"`
+	Entity NullableString `json:"entity,omitempty"`
+	Action NullableString `json:"action,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -53,393 +53,513 @@ func NewWebhookWithDefaults() *Webhook {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Webhook) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId gets a reference to the given NullableInt32 and assigns it to the Id field.
 func (o *Webhook) SetId(v int32) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *Webhook) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *Webhook) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetLabel() string {
-	if o == nil || IsNil(o.Label) {
+	if o == nil || IsNil(o.Label.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Label
+	return *o.Label.Get()
 }
 
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetLabelOk() (*string, bool) {
-	if o == nil || IsNil(o.Label) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Label, true
+	return o.Label.Get(), o.Label.IsSet()
 }
 
 // HasLabel returns a boolean if a field has been set.
 func (o *Webhook) HasLabel() bool {
-	if o != nil && !IsNil(o.Label) {
+	if o != nil && o.Label.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLabel gets a reference to the given string and assigns it to the Label field.
+// SetLabel gets a reference to the given NullableString and assigns it to the Label field.
 func (o *Webhook) SetLabel(v string) {
-	o.Label = &v
+	o.Label.Set(&v)
+}
+// SetLabelNil sets the value for Label to be an explicit nil
+func (o *Webhook) SetLabelNil() {
+	o.Label.Set(nil)
 }
 
-// GetStoreId returns the StoreId field value if set, zero value otherwise.
+// UnsetLabel ensures that no value is present for Label, not even an explicit nil
+func (o *Webhook) UnsetLabel() {
+	o.Label.Unset()
+}
+
+// GetStoreId returns the StoreId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetStoreId() string {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil || IsNil(o.StoreId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StoreId
+	return *o.StoreId.Get()
 }
 
 // GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetStoreIdOk() (*string, bool) {
-	if o == nil || IsNil(o.StoreId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StoreId, true
+	return o.StoreId.Get(), o.StoreId.IsSet()
 }
 
 // HasStoreId returns a boolean if a field has been set.
 func (o *Webhook) HasStoreId() bool {
-	if o != nil && !IsNil(o.StoreId) {
+	if o != nil && o.StoreId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+// SetStoreId gets a reference to the given NullableString and assigns it to the StoreId field.
 func (o *Webhook) SetStoreId(v string) {
-	o.StoreId = &v
+	o.StoreId.Set(&v)
+}
+// SetStoreIdNil sets the value for StoreId to be an explicit nil
+func (o *Webhook) SetStoreIdNil() {
+	o.StoreId.Set(nil)
 }
 
-// GetLangId returns the LangId field value if set, zero value otherwise.
+// UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
+func (o *Webhook) UnsetStoreId() {
+	o.StoreId.Unset()
+}
+
+// GetLangId returns the LangId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetLangId() string {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil || IsNil(o.LangId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LangId
+	return *o.LangId.Get()
 }
 
 // GetLangIdOk returns a tuple with the LangId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetLangIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LangId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LangId, true
+	return o.LangId.Get(), o.LangId.IsSet()
 }
 
 // HasLangId returns a boolean if a field has been set.
 func (o *Webhook) HasLangId() bool {
-	if o != nil && !IsNil(o.LangId) {
+	if o != nil && o.LangId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLangId gets a reference to the given string and assigns it to the LangId field.
+// SetLangId gets a reference to the given NullableString and assigns it to the LangId field.
 func (o *Webhook) SetLangId(v string) {
-	o.LangId = &v
+	o.LangId.Set(&v)
+}
+// SetLangIdNil sets the value for LangId to be an explicit nil
+func (o *Webhook) SetLangIdNil() {
+	o.LangId.Set(nil)
 }
 
-// GetActive returns the Active field value if set, zero value otherwise.
+// UnsetLangId ensures that no value is present for LangId, not even an explicit nil
+func (o *Webhook) UnsetLangId() {
+	o.LangId.Unset()
+}
+
+// GetActive returns the Active field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetActive() bool {
-	if o == nil || IsNil(o.Active) {
+	if o == nil || IsNil(o.Active.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Active
+	return *o.Active.Get()
 }
 
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Active) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Active, true
+	return o.Active.Get(), o.Active.IsSet()
 }
 
 // HasActive returns a boolean if a field has been set.
 func (o *Webhook) HasActive() bool {
-	if o != nil && !IsNil(o.Active) {
+	if o != nil && o.Active.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetActive gets a reference to the given bool and assigns it to the Active field.
+// SetActive gets a reference to the given NullableBool and assigns it to the Active field.
 func (o *Webhook) SetActive(v bool) {
-	o.Active = &v
+	o.Active.Set(&v)
+}
+// SetActiveNil sets the value for Active to be an explicit nil
+func (o *Webhook) SetActiveNil() {
+	o.Active.Set(nil)
 }
 
-// GetCallback returns the Callback field value if set, zero value otherwise.
+// UnsetActive ensures that no value is present for Active, not even an explicit nil
+func (o *Webhook) UnsetActive() {
+	o.Active.Unset()
+}
+
+// GetCallback returns the Callback field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetCallback() string {
-	if o == nil || IsNil(o.Callback) {
+	if o == nil || IsNil(o.Callback.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Callback
+	return *o.Callback.Get()
 }
 
 // GetCallbackOk returns a tuple with the Callback field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetCallbackOk() (*string, bool) {
-	if o == nil || IsNil(o.Callback) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Callback, true
+	return o.Callback.Get(), o.Callback.IsSet()
 }
 
 // HasCallback returns a boolean if a field has been set.
 func (o *Webhook) HasCallback() bool {
-	if o != nil && !IsNil(o.Callback) {
+	if o != nil && o.Callback.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCallback gets a reference to the given string and assigns it to the Callback field.
+// SetCallback gets a reference to the given NullableString and assigns it to the Callback field.
 func (o *Webhook) SetCallback(v string) {
-	o.Callback = &v
+	o.Callback.Set(&v)
+}
+// SetCallbackNil sets the value for Callback to be an explicit nil
+func (o *Webhook) SetCallbackNil() {
+	o.Callback.Set(nil)
 }
 
-// GetFields returns the Fields field value if set, zero value otherwise.
+// UnsetCallback ensures that no value is present for Callback, not even an explicit nil
+func (o *Webhook) UnsetCallback() {
+	o.Callback.Unset()
+}
+
+// GetFields returns the Fields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetFields() string {
-	if o == nil || IsNil(o.Fields) {
+	if o == nil || IsNil(o.Fields.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Fields
+	return *o.Fields.Get()
 }
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetFieldsOk() (*string, bool) {
-	if o == nil || IsNil(o.Fields) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Fields, true
+	return o.Fields.Get(), o.Fields.IsSet()
 }
 
 // HasFields returns a boolean if a field has been set.
 func (o *Webhook) HasFields() bool {
-	if o != nil && !IsNil(o.Fields) {
+	if o != nil && o.Fields.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFields gets a reference to the given string and assigns it to the Fields field.
+// SetFields gets a reference to the given NullableString and assigns it to the Fields field.
 func (o *Webhook) SetFields(v string) {
-	o.Fields = &v
+	o.Fields.Set(&v)
+}
+// SetFieldsNil sets the value for Fields to be an explicit nil
+func (o *Webhook) SetFieldsNil() {
+	o.Fields.Set(nil)
 }
 
-// GetResponseFields returns the ResponseFields field value if set, zero value otherwise.
+// UnsetFields ensures that no value is present for Fields, not even an explicit nil
+func (o *Webhook) UnsetFields() {
+	o.Fields.Unset()
+}
+
+// GetResponseFields returns the ResponseFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetResponseFields() string {
-	if o == nil || IsNil(o.ResponseFields) {
+	if o == nil || IsNil(o.ResponseFields.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ResponseFields
+	return *o.ResponseFields.Get()
 }
 
 // GetResponseFieldsOk returns a tuple with the ResponseFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetResponseFieldsOk() (*string, bool) {
-	if o == nil || IsNil(o.ResponseFields) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResponseFields, true
+	return o.ResponseFields.Get(), o.ResponseFields.IsSet()
 }
 
 // HasResponseFields returns a boolean if a field has been set.
 func (o *Webhook) HasResponseFields() bool {
-	if o != nil && !IsNil(o.ResponseFields) {
+	if o != nil && o.ResponseFields.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetResponseFields gets a reference to the given string and assigns it to the ResponseFields field.
+// SetResponseFields gets a reference to the given NullableString and assigns it to the ResponseFields field.
 func (o *Webhook) SetResponseFields(v string) {
-	o.ResponseFields = &v
+	o.ResponseFields.Set(&v)
+}
+// SetResponseFieldsNil sets the value for ResponseFields to be an explicit nil
+func (o *Webhook) SetResponseFieldsNil() {
+	o.ResponseFields.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetResponseFields ensures that no value is present for ResponseFields, not even an explicit nil
+func (o *Webhook) UnsetResponseFields() {
+	o.ResponseFields.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Webhook) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *Webhook) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *Webhook) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *Webhook) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UpdatedAt
+	return *o.UpdatedAt.Get()
 }
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return o.UpdatedAt.Get(), o.UpdatedAt.IsSet()
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Webhook) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
+	if o != nil && o.UpdatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+// SetUpdatedAt gets a reference to the given NullableString and assigns it to the UpdatedAt field.
 func (o *Webhook) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+	o.UpdatedAt.Set(&v)
+}
+// SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
+func (o *Webhook) SetUpdatedAtNil() {
+	o.UpdatedAt.Set(nil)
 }
 
-// GetEntity returns the Entity field value if set, zero value otherwise.
+// UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
+func (o *Webhook) UnsetUpdatedAt() {
+	o.UpdatedAt.Unset()
+}
+
+// GetEntity returns the Entity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetEntity() string {
-	if o == nil || IsNil(o.Entity) {
+	if o == nil || IsNil(o.Entity.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Entity
+	return *o.Entity.Get()
 }
 
 // GetEntityOk returns a tuple with the Entity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetEntityOk() (*string, bool) {
-	if o == nil || IsNil(o.Entity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Entity, true
+	return o.Entity.Get(), o.Entity.IsSet()
 }
 
 // HasEntity returns a boolean if a field has been set.
 func (o *Webhook) HasEntity() bool {
-	if o != nil && !IsNil(o.Entity) {
+	if o != nil && o.Entity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEntity gets a reference to the given string and assigns it to the Entity field.
+// SetEntity gets a reference to the given NullableString and assigns it to the Entity field.
 func (o *Webhook) SetEntity(v string) {
-	o.Entity = &v
+	o.Entity.Set(&v)
+}
+// SetEntityNil sets the value for Entity to be an explicit nil
+func (o *Webhook) SetEntityNil() {
+	o.Entity.Set(nil)
 }
 
-// GetAction returns the Action field value if set, zero value otherwise.
+// UnsetEntity ensures that no value is present for Entity, not even an explicit nil
+func (o *Webhook) UnsetEntity() {
+	o.Entity.Unset()
+}
+
+// GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetAction() string {
-	if o == nil || IsNil(o.Action) {
+	if o == nil || IsNil(o.Action.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Action
+	return *o.Action.Get()
 }
 
 // GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetActionOk() (*string, bool) {
-	if o == nil || IsNil(o.Action) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Action, true
+	return o.Action.Get(), o.Action.IsSet()
 }
 
 // HasAction returns a boolean if a field has been set.
 func (o *Webhook) HasAction() bool {
-	if o != nil && !IsNil(o.Action) {
+	if o != nil && o.Action.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAction gets a reference to the given string and assigns it to the Action field.
+// SetAction gets a reference to the given NullableString and assigns it to the Action field.
 func (o *Webhook) SetAction(v string) {
-	o.Action = &v
+	o.Action.Set(&v)
+}
+// SetActionNil sets the value for Action to be an explicit nil
+func (o *Webhook) SetActionNil() {
+	o.Action.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetAction ensures that no value is present for Action, not even an explicit nil
+func (o *Webhook) UnsetAction() {
+	o.Action.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -448,6 +568,7 @@ func (o *Webhook) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -469,9 +590,9 @@ func (o *Webhook) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -480,6 +601,7 @@ func (o *Webhook) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Webhook) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -511,46 +633,46 @@ func (o Webhook) MarshalJSON() ([]byte, error) {
 
 func (o Webhook) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !IsNil(o.Label) {
-		toSerialize["label"] = o.Label
+	if o.Label.IsSet() {
+		toSerialize["label"] = o.Label.Get()
 	}
-	if !IsNil(o.StoreId) {
-		toSerialize["store_id"] = o.StoreId
+	if o.StoreId.IsSet() {
+		toSerialize["store_id"] = o.StoreId.Get()
 	}
-	if !IsNil(o.LangId) {
-		toSerialize["lang_id"] = o.LangId
+	if o.LangId.IsSet() {
+		toSerialize["lang_id"] = o.LangId.Get()
 	}
-	if !IsNil(o.Active) {
-		toSerialize["active"] = o.Active
+	if o.Active.IsSet() {
+		toSerialize["active"] = o.Active.Get()
 	}
-	if !IsNil(o.Callback) {
-		toSerialize["callback"] = o.Callback
+	if o.Callback.IsSet() {
+		toSerialize["callback"] = o.Callback.Get()
 	}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
+	if o.Fields.IsSet() {
+		toSerialize["fields"] = o.Fields.Get()
 	}
-	if !IsNil(o.ResponseFields) {
-		toSerialize["response_fields"] = o.ResponseFields
+	if o.ResponseFields.IsSet() {
+		toSerialize["response_fields"] = o.ResponseFields.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["created_at"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
+	if o.UpdatedAt.IsSet() {
+		toSerialize["updated_at"] = o.UpdatedAt.Get()
 	}
-	if !IsNil(o.Entity) {
-		toSerialize["entity"] = o.Entity
+	if o.Entity.IsSet() {
+		toSerialize["entity"] = o.Entity.Get()
 	}
-	if !IsNil(o.Action) {
-		toSerialize["action"] = o.Action
+	if o.Action.IsSet() {
+		toSerialize["action"] = o.Action.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

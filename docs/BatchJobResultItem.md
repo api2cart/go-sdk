@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int32** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**EntityId** | Pointer to **string** |  | [optional] 
+**EntityId** | Pointer to **NullableString** |  | [optional] 
 **Errors** | Pointer to **[]string** |  | [optional] 
 **Warnings** | Pointer to **[]string** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -106,6 +106,16 @@ SetEntityId sets EntityId field to given value.
 
 HasEntityId returns a boolean if a field has been set.
 
+### SetEntityIdNil
+
+`func (o *BatchJobResultItem) SetEntityIdNil(b bool)`
+
+ SetEntityIdNil sets the value for EntityId to be an explicit nil
+
+### UnsetEntityId
+`func (o *BatchJobResultItem) UnsetEntityId()`
+
+UnsetEntityId ensures that no value is present for EntityId, not even an explicit nil
 ### GetErrors
 
 `func (o *BatchJobResultItem) GetErrors() []string`
@@ -181,6 +191,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *BatchJobResultItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *BatchJobResultItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *BatchJobResultItem) GetCustomFields() map[string]interface{}`
@@ -206,6 +226,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *BatchJobResultItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *BatchJobResultItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

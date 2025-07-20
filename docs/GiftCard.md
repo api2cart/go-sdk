@@ -6,20 +6,20 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
-**CurrencyCode** | Pointer to **string** |  | [optional] 
+**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **Amount** | Pointer to **float32** |  | [optional] 
 **InitialAmount** | Pointer to **float32** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**AvailTo** | Pointer to **string** |  | [optional] 
-**FreeProductIds** | Pointer to **string** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
-**IssuerEmail** | Pointer to **string** |  | [optional] 
-**RecipientEmail** | Pointer to **string** |  | [optional] 
-**IssuerName** | Pointer to **string** |  | [optional] 
-**RecipientName** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **NullableString** |  | [optional] 
+**AvailTo** | Pointer to **NullableString** |  | [optional] 
+**FreeProductIds** | Pointer to **NullableString** |  | [optional] 
+**Message** | Pointer to **NullableString** |  | [optional] 
+**IssuerEmail** | Pointer to **NullableString** |  | [optional] 
+**RecipientEmail** | Pointer to **NullableString** |  | [optional] 
+**IssuerName** | Pointer to **NullableString** |  | [optional] 
+**RecipientName** | Pointer to **NullableString** |  | [optional] 
 **UsageHistory** | Pointer to [**[]CouponHistory**](CouponHistory.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -118,6 +118,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *GiftCard) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *GiftCard) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetType
 
 `func (o *GiftCard) GetType() string`
@@ -168,6 +178,16 @@ SetCurrencyCode sets CurrencyCode field to given value.
 
 HasCurrencyCode returns a boolean if a field has been set.
 
+### SetCurrencyCodeNil
+
+`func (o *GiftCard) SetCurrencyCodeNil(b bool)`
+
+ SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+
+### UnsetCurrencyCode
+`func (o *GiftCard) UnsetCurrencyCode()`
+
+UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 ### GetAmount
 
 `func (o *GiftCard) GetAmount() float32`
@@ -268,6 +288,16 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### SetCreatedAtNil
+
+`func (o *GiftCard) SetCreatedAtNil(b bool)`
+
+ SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+
+### UnsetCreatedAt
+`func (o *GiftCard) UnsetCreatedAt()`
+
+UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 ### GetAvailTo
 
 `func (o *GiftCard) GetAvailTo() string`
@@ -293,6 +323,16 @@ SetAvailTo sets AvailTo field to given value.
 
 HasAvailTo returns a boolean if a field has been set.
 
+### SetAvailToNil
+
+`func (o *GiftCard) SetAvailToNil(b bool)`
+
+ SetAvailToNil sets the value for AvailTo to be an explicit nil
+
+### UnsetAvailTo
+`func (o *GiftCard) UnsetAvailTo()`
+
+UnsetAvailTo ensures that no value is present for AvailTo, not even an explicit nil
 ### GetFreeProductIds
 
 `func (o *GiftCard) GetFreeProductIds() string`
@@ -318,6 +358,16 @@ SetFreeProductIds sets FreeProductIds field to given value.
 
 HasFreeProductIds returns a boolean if a field has been set.
 
+### SetFreeProductIdsNil
+
+`func (o *GiftCard) SetFreeProductIdsNil(b bool)`
+
+ SetFreeProductIdsNil sets the value for FreeProductIds to be an explicit nil
+
+### UnsetFreeProductIds
+`func (o *GiftCard) UnsetFreeProductIds()`
+
+UnsetFreeProductIds ensures that no value is present for FreeProductIds, not even an explicit nil
 ### GetMessage
 
 `func (o *GiftCard) GetMessage() string`
@@ -343,6 +393,16 @@ SetMessage sets Message field to given value.
 
 HasMessage returns a boolean if a field has been set.
 
+### SetMessageNil
+
+`func (o *GiftCard) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *GiftCard) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetIssuerEmail
 
 `func (o *GiftCard) GetIssuerEmail() string`
@@ -368,6 +428,16 @@ SetIssuerEmail sets IssuerEmail field to given value.
 
 HasIssuerEmail returns a boolean if a field has been set.
 
+### SetIssuerEmailNil
+
+`func (o *GiftCard) SetIssuerEmailNil(b bool)`
+
+ SetIssuerEmailNil sets the value for IssuerEmail to be an explicit nil
+
+### UnsetIssuerEmail
+`func (o *GiftCard) UnsetIssuerEmail()`
+
+UnsetIssuerEmail ensures that no value is present for IssuerEmail, not even an explicit nil
 ### GetRecipientEmail
 
 `func (o *GiftCard) GetRecipientEmail() string`
@@ -393,6 +463,16 @@ SetRecipientEmail sets RecipientEmail field to given value.
 
 HasRecipientEmail returns a boolean if a field has been set.
 
+### SetRecipientEmailNil
+
+`func (o *GiftCard) SetRecipientEmailNil(b bool)`
+
+ SetRecipientEmailNil sets the value for RecipientEmail to be an explicit nil
+
+### UnsetRecipientEmail
+`func (o *GiftCard) UnsetRecipientEmail()`
+
+UnsetRecipientEmail ensures that no value is present for RecipientEmail, not even an explicit nil
 ### GetIssuerName
 
 `func (o *GiftCard) GetIssuerName() string`
@@ -418,6 +498,16 @@ SetIssuerName sets IssuerName field to given value.
 
 HasIssuerName returns a boolean if a field has been set.
 
+### SetIssuerNameNil
+
+`func (o *GiftCard) SetIssuerNameNil(b bool)`
+
+ SetIssuerNameNil sets the value for IssuerName to be an explicit nil
+
+### UnsetIssuerName
+`func (o *GiftCard) UnsetIssuerName()`
+
+UnsetIssuerName ensures that no value is present for IssuerName, not even an explicit nil
 ### GetRecipientName
 
 `func (o *GiftCard) GetRecipientName() string`
@@ -443,6 +533,16 @@ SetRecipientName sets RecipientName field to given value.
 
 HasRecipientName returns a boolean if a field has been set.
 
+### SetRecipientNameNil
+
+`func (o *GiftCard) SetRecipientNameNil(b bool)`
+
+ SetRecipientNameNil sets the value for RecipientName to be an explicit nil
+
+### UnsetRecipientName
+`func (o *GiftCard) UnsetRecipientName()`
+
+UnsetRecipientName ensures that no value is present for RecipientName, not even an explicit nil
 ### GetUsageHistory
 
 `func (o *GiftCard) GetUsageHistory() []CouponHistory`
@@ -493,6 +593,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *GiftCard) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *GiftCard) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *GiftCard) GetCustomFields() map[string]interface{}`
@@ -518,6 +628,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *GiftCard) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *GiftCard) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

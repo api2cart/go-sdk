@@ -22,11 +22,11 @@ var _ MappedNullable = &CouponCondition{}
 type CouponCondition struct {
 	Id *string `json:"id,omitempty"`
 	Entity *string `json:"entity,omitempty"`
-	MatchItems *string `json:"match_items,omitempty"`
-	Key *string `json:"key,omitempty"`
-	Operator *string `json:"operator,omitempty"`
-	Value *string `json:"value,omitempty"`
-	LogicOperator *string `json:"logic_operator,omitempty"`
+	MatchItems NullableString `json:"match_items,omitempty"`
+	Key NullableString `json:"key,omitempty"`
+	Operator NullableString `json:"operator,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	LogicOperator NullableString `json:"logic_operator,omitempty"`
 	SubConditions []CouponCondition `json:"sub-conditions,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -113,164 +113,214 @@ func (o *CouponCondition) SetEntity(v string) {
 	o.Entity = &v
 }
 
-// GetMatchItems returns the MatchItems field value if set, zero value otherwise.
+// GetMatchItems returns the MatchItems field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetMatchItems() string {
-	if o == nil || IsNil(o.MatchItems) {
+	if o == nil || IsNil(o.MatchItems.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MatchItems
+	return *o.MatchItems.Get()
 }
 
 // GetMatchItemsOk returns a tuple with the MatchItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetMatchItemsOk() (*string, bool) {
-	if o == nil || IsNil(o.MatchItems) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MatchItems, true
+	return o.MatchItems.Get(), o.MatchItems.IsSet()
 }
 
 // HasMatchItems returns a boolean if a field has been set.
 func (o *CouponCondition) HasMatchItems() bool {
-	if o != nil && !IsNil(o.MatchItems) {
+	if o != nil && o.MatchItems.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMatchItems gets a reference to the given string and assigns it to the MatchItems field.
+// SetMatchItems gets a reference to the given NullableString and assigns it to the MatchItems field.
 func (o *CouponCondition) SetMatchItems(v string) {
-	o.MatchItems = &v
+	o.MatchItems.Set(&v)
+}
+// SetMatchItemsNil sets the value for MatchItems to be an explicit nil
+func (o *CouponCondition) SetMatchItemsNil() {
+	o.MatchItems.Set(nil)
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// UnsetMatchItems ensures that no value is present for MatchItems, not even an explicit nil
+func (o *CouponCondition) UnsetMatchItems() {
+	o.MatchItems.Unset()
+}
+
+// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetKey() string {
-	if o == nil || IsNil(o.Key) {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Key
+	return *o.Key.Get()
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return o.Key.Get(), o.Key.IsSet()
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *CouponCondition) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
+	if o != nil && o.Key.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey gets a reference to the given NullableString and assigns it to the Key field.
 func (o *CouponCondition) SetKey(v string) {
-	o.Key = &v
+	o.Key.Set(&v)
+}
+// SetKeyNil sets the value for Key to be an explicit nil
+func (o *CouponCondition) SetKeyNil() {
+	o.Key.Set(nil)
 }
 
-// GetOperator returns the Operator field value if set, zero value otherwise.
+// UnsetKey ensures that no value is present for Key, not even an explicit nil
+func (o *CouponCondition) UnsetKey() {
+	o.Key.Unset()
+}
+
+// GetOperator returns the Operator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetOperator() string {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil || IsNil(o.Operator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Operator
+	return *o.Operator.Get()
 }
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Operator, true
+	return o.Operator.Get(), o.Operator.IsSet()
 }
 
 // HasOperator returns a boolean if a field has been set.
 func (o *CouponCondition) HasOperator() bool {
-	if o != nil && !IsNil(o.Operator) {
+	if o != nil && o.Operator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOperator gets a reference to the given string and assigns it to the Operator field.
+// SetOperator gets a reference to the given NullableString and assigns it to the Operator field.
 func (o *CouponCondition) SetOperator(v string) {
-	o.Operator = &v
+	o.Operator.Set(&v)
+}
+// SetOperatorNil sets the value for Operator to be an explicit nil
+func (o *CouponCondition) SetOperatorNil() {
+	o.Operator.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetOperator ensures that no value is present for Operator, not even an explicit nil
+func (o *CouponCondition) UnsetOperator() {
+	o.Operator.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *CouponCondition) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *CouponCondition) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *CouponCondition) SetValueNil() {
+	o.Value.Set(nil)
 }
 
-// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise.
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *CouponCondition) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetLogicOperator returns the LogicOperator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetLogicOperator() string {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil || IsNil(o.LogicOperator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogicOperator
+	return *o.LogicOperator.Get()
 }
 
 // GetLogicOperatorOk returns a tuple with the LogicOperator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetLogicOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.LogicOperator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogicOperator, true
+	return o.LogicOperator.Get(), o.LogicOperator.IsSet()
 }
 
 // HasLogicOperator returns a boolean if a field has been set.
 func (o *CouponCondition) HasLogicOperator() bool {
-	if o != nil && !IsNil(o.LogicOperator) {
+	if o != nil && o.LogicOperator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogicOperator gets a reference to the given string and assigns it to the LogicOperator field.
+// SetLogicOperator gets a reference to the given NullableString and assigns it to the LogicOperator field.
 func (o *CouponCondition) SetLogicOperator(v string) {
-	o.LogicOperator = &v
+	o.LogicOperator.Set(&v)
+}
+// SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+func (o *CouponCondition) SetLogicOperatorNil() {
+	o.LogicOperator.Set(nil)
+}
+
+// UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
+func (o *CouponCondition) UnsetLogicOperator() {
+	o.LogicOperator.Unset()
 }
 
 // GetSubConditions returns the SubConditions field value if set, zero value otherwise.
@@ -305,9 +355,9 @@ func (o *CouponCondition) SetSubConditions(v []CouponCondition) {
 	o.SubConditions = v
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -316,6 +366,7 @@ func (o *CouponCondition) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -337,9 +388,9 @@ func (o *CouponCondition) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CouponCondition) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -348,6 +399,7 @@ func (o *CouponCondition) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CouponCondition) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -385,28 +437,28 @@ func (o CouponCondition) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Entity) {
 		toSerialize["entity"] = o.Entity
 	}
-	if !IsNil(o.MatchItems) {
-		toSerialize["match_items"] = o.MatchItems
+	if o.MatchItems.IsSet() {
+		toSerialize["match_items"] = o.MatchItems.Get()
 	}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
+	if o.Key.IsSet() {
+		toSerialize["key"] = o.Key.Get()
 	}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
+	if o.Operator.IsSet() {
+		toSerialize["operator"] = o.Operator.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !IsNil(o.LogicOperator) {
-		toSerialize["logic_operator"] = o.LogicOperator
+	if o.LogicOperator.IsSet() {
+		toSerialize["logic_operator"] = o.LogicOperator.Get()
 	}
 	if !IsNil(o.SubConditions) {
 		toSerialize["sub-conditions"] = o.SubConditions
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

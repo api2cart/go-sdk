@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**Src** | Pointer to **string** |  | [optional] 
-**Scope** | Pointer to **string** |  | [optional] 
-**Event** | Pointer to **string** |  | [optional] 
-**LoadMethod** | Pointer to **string** |  | [optional] 
-**Html** | Pointer to **string** |  | [optional] 
-**CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Src** | Pointer to **NullableString** |  | [optional] 
+**Scope** | Pointer to **NullableString** |  | [optional] 
+**Event** | Pointer to **NullableString** |  | [optional] 
+**LoadMethod** | Pointer to **NullableString** |  | [optional] 
+**Html** | Pointer to **NullableString** |  | [optional] 
+**CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -86,6 +86,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Script) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Script) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *Script) GetDescription() string`
@@ -111,6 +121,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Script) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Script) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSrc
 
 `func (o *Script) GetSrc() string`
@@ -136,6 +156,16 @@ SetSrc sets Src field to given value.
 
 HasSrc returns a boolean if a field has been set.
 
+### SetSrcNil
+
+`func (o *Script) SetSrcNil(b bool)`
+
+ SetSrcNil sets the value for Src to be an explicit nil
+
+### UnsetSrc
+`func (o *Script) UnsetSrc()`
+
+UnsetSrc ensures that no value is present for Src, not even an explicit nil
 ### GetScope
 
 `func (o *Script) GetScope() string`
@@ -161,6 +191,16 @@ SetScope sets Scope field to given value.
 
 HasScope returns a boolean if a field has been set.
 
+### SetScopeNil
+
+`func (o *Script) SetScopeNil(b bool)`
+
+ SetScopeNil sets the value for Scope to be an explicit nil
+
+### UnsetScope
+`func (o *Script) UnsetScope()`
+
+UnsetScope ensures that no value is present for Scope, not even an explicit nil
 ### GetEvent
 
 `func (o *Script) GetEvent() string`
@@ -186,6 +226,16 @@ SetEvent sets Event field to given value.
 
 HasEvent returns a boolean if a field has been set.
 
+### SetEventNil
+
+`func (o *Script) SetEventNil(b bool)`
+
+ SetEventNil sets the value for Event to be an explicit nil
+
+### UnsetEvent
+`func (o *Script) UnsetEvent()`
+
+UnsetEvent ensures that no value is present for Event, not even an explicit nil
 ### GetLoadMethod
 
 `func (o *Script) GetLoadMethod() string`
@@ -211,6 +261,16 @@ SetLoadMethod sets LoadMethod field to given value.
 
 HasLoadMethod returns a boolean if a field has been set.
 
+### SetLoadMethodNil
+
+`func (o *Script) SetLoadMethodNil(b bool)`
+
+ SetLoadMethodNil sets the value for LoadMethod to be an explicit nil
+
+### UnsetLoadMethod
+`func (o *Script) UnsetLoadMethod()`
+
+UnsetLoadMethod ensures that no value is present for LoadMethod, not even an explicit nil
 ### GetHtml
 
 `func (o *Script) GetHtml() string`
@@ -236,6 +296,16 @@ SetHtml sets Html field to given value.
 
 HasHtml returns a boolean if a field has been set.
 
+### SetHtmlNil
+
+`func (o *Script) SetHtmlNil(b bool)`
+
+ SetHtmlNil sets the value for Html to be an explicit nil
+
+### UnsetHtml
+`func (o *Script) UnsetHtml()`
+
+UnsetHtml ensures that no value is present for Html, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *Script) GetCreatedTime() A2CDateTime`
@@ -261,6 +331,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *Script) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *Script) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Script) GetModifiedTime() A2CDateTime`
@@ -286,6 +366,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Script) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Script) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Script) GetAdditionalFields() map[string]interface{}`
@@ -311,6 +401,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Script) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Script) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Script) GetCustomFields() map[string]interface{}`
@@ -336,6 +436,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Script) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Script) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

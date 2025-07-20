@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
-**UsedTimes** | Pointer to **int32** |  | [optional] 
+**UsedTimes** | Pointer to **NullableInt32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -104,6 +104,16 @@ SetUsedTimes sets UsedTimes field to given value.
 
 HasUsedTimes returns a boolean if a field has been set.
 
+### SetUsedTimesNil
+
+`func (o *CouponCode) SetUsedTimesNil(b bool)`
+
+ SetUsedTimesNil sets the value for UsedTimes to be an explicit nil
+
+### UnsetUsedTimes
+`func (o *CouponCode) UnsetUsedTimes()`
+
+UnsetUsedTimes ensures that no value is present for UsedTimes, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CouponCode) GetAdditionalFields() map[string]interface{}`
@@ -129,6 +139,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CouponCode) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CouponCode) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CouponCode) GetCustomFields() map[string]interface{}`
@@ -154,6 +174,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CouponCode) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CouponCode) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

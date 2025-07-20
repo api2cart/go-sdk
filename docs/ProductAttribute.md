@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **AttributeId** | Pointer to **string** |  | [optional] 
 **Code** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**LangId** | Pointer to **string** |  | [optional] 
-**StoreId** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
-**Required** | Pointer to **bool** |  | [optional] 
-**Visible** | Pointer to **bool** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Position** | Pointer to **int32** |  | [optional] 
-**AttributeGroupId** | Pointer to **string** |  | [optional] 
-**ProductId** | Pointer to **string** |  | [optional] 
-**VariantId** | Pointer to **string** |  | [optional] 
+**LangId** | Pointer to **NullableString** |  | [optional] 
+**StoreId** | Pointer to **NullableString** |  | [optional] 
+**Value** | Pointer to **NullableString** |  | [optional] 
+**Required** | Pointer to **NullableBool** |  | [optional] 
+**Visible** | Pointer to **NullableBool** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**Position** | Pointer to **NullableInt32** |  | [optional] 
+**AttributeGroupId** | Pointer to **NullableString** |  | [optional] 
+**ProductId** | Pointer to **NullableString** |  | [optional] 
+**VariantId** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -139,6 +139,16 @@ SetLangId sets LangId field to given value.
 
 HasLangId returns a boolean if a field has been set.
 
+### SetLangIdNil
+
+`func (o *ProductAttribute) SetLangIdNil(b bool)`
+
+ SetLangIdNil sets the value for LangId to be an explicit nil
+
+### UnsetLangId
+`func (o *ProductAttribute) UnsetLangId()`
+
+UnsetLangId ensures that no value is present for LangId, not even an explicit nil
 ### GetStoreId
 
 `func (o *ProductAttribute) GetStoreId() string`
@@ -164,6 +174,16 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### SetStoreIdNil
+
+`func (o *ProductAttribute) SetStoreIdNil(b bool)`
+
+ SetStoreIdNil sets the value for StoreId to be an explicit nil
+
+### UnsetStoreId
+`func (o *ProductAttribute) UnsetStoreId()`
+
+UnsetStoreId ensures that no value is present for StoreId, not even an explicit nil
 ### GetValue
 
 `func (o *ProductAttribute) GetValue() string`
@@ -189,6 +209,16 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### SetValueNil
+
+`func (o *ProductAttribute) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *ProductAttribute) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetRequired
 
 `func (o *ProductAttribute) GetRequired() bool`
@@ -214,6 +244,16 @@ SetRequired sets Required field to given value.
 
 HasRequired returns a boolean if a field has been set.
 
+### SetRequiredNil
+
+`func (o *ProductAttribute) SetRequiredNil(b bool)`
+
+ SetRequiredNil sets the value for Required to be an explicit nil
+
+### UnsetRequired
+`func (o *ProductAttribute) UnsetRequired()`
+
+UnsetRequired ensures that no value is present for Required, not even an explicit nil
 ### GetVisible
 
 `func (o *ProductAttribute) GetVisible() bool`
@@ -239,6 +279,16 @@ SetVisible sets Visible field to given value.
 
 HasVisible returns a boolean if a field has been set.
 
+### SetVisibleNil
+
+`func (o *ProductAttribute) SetVisibleNil(b bool)`
+
+ SetVisibleNil sets the value for Visible to be an explicit nil
+
+### UnsetVisible
+`func (o *ProductAttribute) UnsetVisible()`
+
+UnsetVisible ensures that no value is present for Visible, not even an explicit nil
 ### GetType
 
 `func (o *ProductAttribute) GetType() string`
@@ -264,6 +314,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *ProductAttribute) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *ProductAttribute) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetPosition
 
 `func (o *ProductAttribute) GetPosition() int32`
@@ -289,6 +349,16 @@ SetPosition sets Position field to given value.
 
 HasPosition returns a boolean if a field has been set.
 
+### SetPositionNil
+
+`func (o *ProductAttribute) SetPositionNil(b bool)`
+
+ SetPositionNil sets the value for Position to be an explicit nil
+
+### UnsetPosition
+`func (o *ProductAttribute) UnsetPosition()`
+
+UnsetPosition ensures that no value is present for Position, not even an explicit nil
 ### GetAttributeGroupId
 
 `func (o *ProductAttribute) GetAttributeGroupId() string`
@@ -314,6 +384,16 @@ SetAttributeGroupId sets AttributeGroupId field to given value.
 
 HasAttributeGroupId returns a boolean if a field has been set.
 
+### SetAttributeGroupIdNil
+
+`func (o *ProductAttribute) SetAttributeGroupIdNil(b bool)`
+
+ SetAttributeGroupIdNil sets the value for AttributeGroupId to be an explicit nil
+
+### UnsetAttributeGroupId
+`func (o *ProductAttribute) UnsetAttributeGroupId()`
+
+UnsetAttributeGroupId ensures that no value is present for AttributeGroupId, not even an explicit nil
 ### GetProductId
 
 `func (o *ProductAttribute) GetProductId() string`
@@ -339,6 +419,16 @@ SetProductId sets ProductId field to given value.
 
 HasProductId returns a boolean if a field has been set.
 
+### SetProductIdNil
+
+`func (o *ProductAttribute) SetProductIdNil(b bool)`
+
+ SetProductIdNil sets the value for ProductId to be an explicit nil
+
+### UnsetProductId
+`func (o *ProductAttribute) UnsetProductId()`
+
+UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
 ### GetVariantId
 
 `func (o *ProductAttribute) GetVariantId() string`
@@ -364,6 +454,16 @@ SetVariantId sets VariantId field to given value.
 
 HasVariantId returns a boolean if a field has been set.
 
+### SetVariantIdNil
+
+`func (o *ProductAttribute) SetVariantIdNil(b bool)`
+
+ SetVariantIdNil sets the value for VariantId to be an explicit nil
+
+### UnsetVariantId
+`func (o *ProductAttribute) UnsetVariantId()`
+
+UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ProductAttribute) GetAdditionalFields() map[string]interface{}`
@@ -389,6 +489,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductAttribute) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductAttribute) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductAttribute) GetCustomFields() map[string]interface{}`
@@ -414,6 +524,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductAttribute) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductAttribute) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

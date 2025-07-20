@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Previous** | Pointer to **string** |  | [optional] 
-**Next** | Pointer to **string** |  | [optional] 
+**Previous** | Pointer to **NullableString** |  | [optional] 
+**Next** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -53,6 +53,16 @@ SetPrevious sets Previous field to given value.
 
 HasPrevious returns a boolean if a field has been set.
 
+### SetPreviousNil
+
+`func (o *Pagination) SetPreviousNil(b bool)`
+
+ SetPreviousNil sets the value for Previous to be an explicit nil
+
+### UnsetPrevious
+`func (o *Pagination) UnsetPrevious()`
+
+UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
 ### GetNext
 
 `func (o *Pagination) GetNext() string`
@@ -78,6 +88,16 @@ SetNext sets Next field to given value.
 
 HasNext returns a boolean if a field has been set.
 
+### SetNextNil
+
+`func (o *Pagination) SetNextNil(b bool)`
+
+ SetNextNil sets the value for Next to be an explicit nil
+
+### UnsetNext
+`func (o *Pagination) UnsetNext()`
+
+UnsetNext ensures that no value is present for Next, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Pagination) GetAdditionalFields() map[string]interface{}`
@@ -103,6 +123,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Pagination) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Pagination) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Pagination) GetCustomFields() map[string]interface{}`
@@ -128,6 +158,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Pagination) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Pagination) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

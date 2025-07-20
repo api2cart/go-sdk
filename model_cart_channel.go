@@ -21,9 +21,9 @@ var _ MappedNullable = &CartChannel{}
 // CartChannel struct for CartChannel
 type CartChannel struct {
 	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	IsEnabled *bool `json:"is_enabled,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Platform NullableString `json:"platform,omitempty"`
+	IsEnabled NullableBool `json:"is_enabled,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -77,105 +77,135 @@ func (o *CartChannel) SetId(v string) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartChannel) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartChannel) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CartChannel) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CartChannel) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CartChannel) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetPlatform returns the Platform field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CartChannel) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetPlatform returns the Platform field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartChannel) GetPlatform() string {
-	if o == nil || IsNil(o.Platform) {
+	if o == nil || IsNil(o.Platform.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Platform
+	return *o.Platform.Get()
 }
 
 // GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartChannel) GetPlatformOk() (*string, bool) {
-	if o == nil || IsNil(o.Platform) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Platform, true
+	return o.Platform.Get(), o.Platform.IsSet()
 }
 
 // HasPlatform returns a boolean if a field has been set.
 func (o *CartChannel) HasPlatform() bool {
-	if o != nil && !IsNil(o.Platform) {
+	if o != nil && o.Platform.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPlatform gets a reference to the given string and assigns it to the Platform field.
+// SetPlatform gets a reference to the given NullableString and assigns it to the Platform field.
 func (o *CartChannel) SetPlatform(v string) {
-	o.Platform = &v
+	o.Platform.Set(&v)
+}
+// SetPlatformNil sets the value for Platform to be an explicit nil
+func (o *CartChannel) SetPlatformNil() {
+	o.Platform.Set(nil)
 }
 
-// GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
+// UnsetPlatform ensures that no value is present for Platform, not even an explicit nil
+func (o *CartChannel) UnsetPlatform() {
+	o.Platform.Unset()
+}
+
+// GetIsEnabled returns the IsEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartChannel) GetIsEnabled() bool {
-	if o == nil || IsNil(o.IsEnabled) {
+	if o == nil || IsNil(o.IsEnabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.IsEnabled
+	return *o.IsEnabled.Get()
 }
 
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartChannel) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEnabled, true
+	return o.IsEnabled.Get(), o.IsEnabled.IsSet()
 }
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *CartChannel) HasIsEnabled() bool {
-	if o != nil && !IsNil(o.IsEnabled) {
+	if o != nil && o.IsEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIsEnabled gets a reference to the given bool and assigns it to the IsEnabled field.
+// SetIsEnabled gets a reference to the given NullableBool and assigns it to the IsEnabled field.
 func (o *CartChannel) SetIsEnabled(v bool) {
-	o.IsEnabled = &v
+	o.IsEnabled.Set(&v)
+}
+// SetIsEnabledNil sets the value for IsEnabled to be an explicit nil
+func (o *CartChannel) SetIsEnabledNil() {
+	o.IsEnabled.Set(nil)
 }
 
-// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise.
+// UnsetIsEnabled ensures that no value is present for IsEnabled, not even an explicit nil
+func (o *CartChannel) UnsetIsEnabled() {
+	o.IsEnabled.Unset()
+}
+
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartChannel) GetAdditionalFields() map[string]interface{} {
-	if o == nil || IsNil(o.AdditionalFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -184,6 +214,7 @@ func (o *CartChannel) GetAdditionalFields() map[string]interface{} {
 
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartChannel) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
@@ -205,9 +236,9 @@ func (o *CartChannel) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
-// GetCustomFields returns the CustomFields field value if set, zero value otherwise.
+// GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartChannel) GetCustomFields() map[string]interface{} {
-	if o == nil || IsNil(o.CustomFields) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -216,6 +247,7 @@ func (o *CartChannel) GetCustomFields() map[string]interface{} {
 
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CartChannel) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
@@ -250,19 +282,19 @@ func (o CartChannel) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Platform) {
-		toSerialize["platform"] = o.Platform
+	if o.Platform.IsSet() {
+		toSerialize["platform"] = o.Platform.Get()
 	}
-	if !IsNil(o.IsEnabled) {
-		toSerialize["is_enabled"] = o.IsEnabled
+	if o.IsEnabled.IsSet() {
+		toSerialize["is_enabled"] = o.IsEnabled.Get()
 	}
-	if !IsNil(o.AdditionalFields) {
+	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields
 	}
-	if !IsNil(o.CustomFields) {
+	if o.CustomFields != nil {
 		toSerialize["custom_fields"] = o.CustomFields
 	}
 	return toSerialize, nil

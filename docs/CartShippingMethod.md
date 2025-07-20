@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**HandlingFee** | Pointer to **string** |  | [optional] 
-**HandlingEnabled** | Pointer to **string** |  | [optional] 
-**HandlingType** | Pointer to **string** |  | [optional] 
-**DefaultPrice** | Pointer to **string** |  | [optional] 
-**DefaultPriceType** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Enabled** | Pointer to **string** |  | [optional] 
-**MinOrderAmount** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**HandlingFee** | Pointer to **NullableString** |  | [optional] 
+**HandlingEnabled** | Pointer to **NullableString** |  | [optional] 
+**HandlingType** | Pointer to **NullableString** |  | [optional] 
+**DefaultPrice** | Pointer to **NullableString** |  | [optional] 
+**DefaultPriceType** | Pointer to **NullableString** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
+**Enabled** | Pointer to **NullableString** |  | [optional] 
+**MinOrderAmount** | Pointer to **NullableString** |  | [optional] 
 **Rates** | Pointer to [**[]CartShippingMethodRate**](CartShippingMethodRate.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -61,6 +61,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CartShippingMethod) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CartShippingMethod) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetHandlingFee
 
 `func (o *CartShippingMethod) GetHandlingFee() string`
@@ -86,6 +96,16 @@ SetHandlingFee sets HandlingFee field to given value.
 
 HasHandlingFee returns a boolean if a field has been set.
 
+### SetHandlingFeeNil
+
+`func (o *CartShippingMethod) SetHandlingFeeNil(b bool)`
+
+ SetHandlingFeeNil sets the value for HandlingFee to be an explicit nil
+
+### UnsetHandlingFee
+`func (o *CartShippingMethod) UnsetHandlingFee()`
+
+UnsetHandlingFee ensures that no value is present for HandlingFee, not even an explicit nil
 ### GetHandlingEnabled
 
 `func (o *CartShippingMethod) GetHandlingEnabled() string`
@@ -111,6 +131,16 @@ SetHandlingEnabled sets HandlingEnabled field to given value.
 
 HasHandlingEnabled returns a boolean if a field has been set.
 
+### SetHandlingEnabledNil
+
+`func (o *CartShippingMethod) SetHandlingEnabledNil(b bool)`
+
+ SetHandlingEnabledNil sets the value for HandlingEnabled to be an explicit nil
+
+### UnsetHandlingEnabled
+`func (o *CartShippingMethod) UnsetHandlingEnabled()`
+
+UnsetHandlingEnabled ensures that no value is present for HandlingEnabled, not even an explicit nil
 ### GetHandlingType
 
 `func (o *CartShippingMethod) GetHandlingType() string`
@@ -136,6 +166,16 @@ SetHandlingType sets HandlingType field to given value.
 
 HasHandlingType returns a boolean if a field has been set.
 
+### SetHandlingTypeNil
+
+`func (o *CartShippingMethod) SetHandlingTypeNil(b bool)`
+
+ SetHandlingTypeNil sets the value for HandlingType to be an explicit nil
+
+### UnsetHandlingType
+`func (o *CartShippingMethod) UnsetHandlingType()`
+
+UnsetHandlingType ensures that no value is present for HandlingType, not even an explicit nil
 ### GetDefaultPrice
 
 `func (o *CartShippingMethod) GetDefaultPrice() string`
@@ -161,6 +201,16 @@ SetDefaultPrice sets DefaultPrice field to given value.
 
 HasDefaultPrice returns a boolean if a field has been set.
 
+### SetDefaultPriceNil
+
+`func (o *CartShippingMethod) SetDefaultPriceNil(b bool)`
+
+ SetDefaultPriceNil sets the value for DefaultPrice to be an explicit nil
+
+### UnsetDefaultPrice
+`func (o *CartShippingMethod) UnsetDefaultPrice()`
+
+UnsetDefaultPrice ensures that no value is present for DefaultPrice, not even an explicit nil
 ### GetDefaultPriceType
 
 `func (o *CartShippingMethod) GetDefaultPriceType() string`
@@ -186,6 +236,16 @@ SetDefaultPriceType sets DefaultPriceType field to given value.
 
 HasDefaultPriceType returns a boolean if a field has been set.
 
+### SetDefaultPriceTypeNil
+
+`func (o *CartShippingMethod) SetDefaultPriceTypeNil(b bool)`
+
+ SetDefaultPriceTypeNil sets the value for DefaultPriceType to be an explicit nil
+
+### UnsetDefaultPriceType
+`func (o *CartShippingMethod) UnsetDefaultPriceType()`
+
+UnsetDefaultPriceType ensures that no value is present for DefaultPriceType, not even an explicit nil
 ### GetType
 
 `func (o *CartShippingMethod) GetType() string`
@@ -211,6 +271,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *CartShippingMethod) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *CartShippingMethod) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetEnabled
 
 `func (o *CartShippingMethod) GetEnabled() string`
@@ -236,6 +306,16 @@ SetEnabled sets Enabled field to given value.
 
 HasEnabled returns a boolean if a field has been set.
 
+### SetEnabledNil
+
+`func (o *CartShippingMethod) SetEnabledNil(b bool)`
+
+ SetEnabledNil sets the value for Enabled to be an explicit nil
+
+### UnsetEnabled
+`func (o *CartShippingMethod) UnsetEnabled()`
+
+UnsetEnabled ensures that no value is present for Enabled, not even an explicit nil
 ### GetMinOrderAmount
 
 `func (o *CartShippingMethod) GetMinOrderAmount() string`
@@ -261,6 +341,16 @@ SetMinOrderAmount sets MinOrderAmount field to given value.
 
 HasMinOrderAmount returns a boolean if a field has been set.
 
+### SetMinOrderAmountNil
+
+`func (o *CartShippingMethod) SetMinOrderAmountNil(b bool)`
+
+ SetMinOrderAmountNil sets the value for MinOrderAmount to be an explicit nil
+
+### UnsetMinOrderAmount
+`func (o *CartShippingMethod) UnsetMinOrderAmount()`
+
+UnsetMinOrderAmount ensures that no value is present for MinOrderAmount, not even an explicit nil
 ### GetRates
 
 `func (o *CartShippingMethod) GetRates() []CartShippingMethodRate`
@@ -311,6 +401,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CartShippingMethod) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CartShippingMethod) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CartShippingMethod) GetCustomFields() map[string]interface{}`
@@ -336,6 +436,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CartShippingMethod) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CartShippingMethod) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

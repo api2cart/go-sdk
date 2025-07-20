@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Platform** | Pointer to **string** |  | [optional] 
-**IsEnabled** | Pointer to **bool** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
+**Platform** | Pointer to **NullableString** |  | [optional] 
+**IsEnabled** | Pointer to **NullableBool** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -80,6 +80,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *CartChannel) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *CartChannel) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetPlatform
 
 `func (o *CartChannel) GetPlatform() string`
@@ -105,6 +115,16 @@ SetPlatform sets Platform field to given value.
 
 HasPlatform returns a boolean if a field has been set.
 
+### SetPlatformNil
+
+`func (o *CartChannel) SetPlatformNil(b bool)`
+
+ SetPlatformNil sets the value for Platform to be an explicit nil
+
+### UnsetPlatform
+`func (o *CartChannel) UnsetPlatform()`
+
+UnsetPlatform ensures that no value is present for Platform, not even an explicit nil
 ### GetIsEnabled
 
 `func (o *CartChannel) GetIsEnabled() bool`
@@ -130,6 +150,16 @@ SetIsEnabled sets IsEnabled field to given value.
 
 HasIsEnabled returns a boolean if a field has been set.
 
+### SetIsEnabledNil
+
+`func (o *CartChannel) SetIsEnabledNil(b bool)`
+
+ SetIsEnabledNil sets the value for IsEnabled to be an explicit nil
+
+### UnsetIsEnabled
+`func (o *CartChannel) UnsetIsEnabled()`
+
+UnsetIsEnabled ensures that no value is present for IsEnabled, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *CartChannel) GetAdditionalFields() map[string]interface{}`
@@ -155,6 +185,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CartChannel) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CartChannel) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CartChannel) GetCustomFields() map[string]interface{}`
@@ -180,6 +220,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CartChannel) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CartChannel) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

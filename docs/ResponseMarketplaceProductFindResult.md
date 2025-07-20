@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MarketplaceProductsCount** | Pointer to **int32** |  | [optional] 
+**MarketplaceProductsCount** | Pointer to **NullableInt32** |  | [optional] 
 **MarketplaceProduct** | Pointer to [**[]MarketplaceProduct**](MarketplaceProduct.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetMarketplaceProductsCount sets MarketplaceProductsCount field to given value.
 
 HasMarketplaceProductsCount returns a boolean if a field has been set.
 
+### SetMarketplaceProductsCountNil
+
+`func (o *ResponseMarketplaceProductFindResult) SetMarketplaceProductsCountNil(b bool)`
+
+ SetMarketplaceProductsCountNil sets the value for MarketplaceProductsCount to be an explicit nil
+
+### UnsetMarketplaceProductsCount
+`func (o *ResponseMarketplaceProductFindResult) UnsetMarketplaceProductsCount()`
+
+UnsetMarketplaceProductsCount ensures that no value is present for MarketplaceProductsCount, not even an explicit nil
 ### GetMarketplaceProduct
 
 `func (o *ResponseMarketplaceProductFindResult) GetMarketplaceProduct() []MarketplaceProduct`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseMarketplaceProductFindResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseMarketplaceProductFindResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseMarketplaceProductFindResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseMarketplaceProductFindResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseMarketplaceProductFindResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

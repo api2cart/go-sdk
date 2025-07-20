@@ -6,29 +6,29 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Phone** | Pointer to **string** |  | [optional] 
-**CreatedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**ModifiedTime** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
+**Phone** | Pointer to **NullableString** |  | [optional] 
+**CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Group** | Pointer to [**[]CustomerGroup**](CustomerGroup.md) |  | [optional] 
-**Login** | Pointer to **string** |  | [optional] 
-**LastLogin** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**BirthDay** | Pointer to [**A2CDateTime**](A2CDateTime.md) |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**IsGuest** | Pointer to **bool** |  | [optional] 
-**NewsLetterSubscription** | Pointer to **bool** |  | [optional] 
+**Login** | Pointer to **NullableString** |  | [optional] 
+**LastLogin** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**BirthDay** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**Status** | Pointer to **NullableString** |  | [optional] 
+**IsGuest** | Pointer to **NullableBool** |  | [optional] 
+**NewsLetterSubscription** | Pointer to **NullableBool** |  | [optional] 
 **Consents** | Pointer to [**[]CustomerConsent**](CustomerConsent.md) |  | [optional] 
-**Gender** | Pointer to **string** |  | [optional] 
+**Gender** | Pointer to **NullableString** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
-**Website** | Pointer to **string** |  | [optional] 
-**Fax** | Pointer to **string** |  | [optional] 
-**Company** | Pointer to **string** |  | [optional] 
-**IpAddress** | Pointer to **string** |  | [optional] 
+**Website** | Pointer to **NullableString** |  | [optional] 
+**Fax** | Pointer to **NullableString** |  | [optional] 
+**Company** | Pointer to **NullableString** |  | [optional] 
+**IpAddress** | Pointer to **NullableString** |  | [optional] 
 **AddressBook** | Pointer to [**[]CustomerAddress**](CustomerAddress.md) |  | [optional] 
-**LangId** | Pointer to **string** |  | [optional] 
-**OrdersCount** | Pointer to **int32** |  | [optional] 
-**LastOrderId** | Pointer to **string** |  | [optional] 
+**LangId** | Pointer to **NullableString** |  | [optional] 
+**OrdersCount** | Pointer to **NullableInt32** |  | [optional] 
+**LastOrderId** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -126,6 +126,16 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
+### SetFirstNameNil
+
+`func (o *Customer) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *Customer) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *Customer) GetLastName() string`
@@ -151,6 +161,16 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
+### SetLastNameNil
+
+`func (o *Customer) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *Customer) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetPhone
 
 `func (o *Customer) GetPhone() string`
@@ -176,6 +196,16 @@ SetPhone sets Phone field to given value.
 
 HasPhone returns a boolean if a field has been set.
 
+### SetPhoneNil
+
+`func (o *Customer) SetPhoneNil(b bool)`
+
+ SetPhoneNil sets the value for Phone to be an explicit nil
+
+### UnsetPhone
+`func (o *Customer) UnsetPhone()`
+
+UnsetPhone ensures that no value is present for Phone, not even an explicit nil
 ### GetCreatedTime
 
 `func (o *Customer) GetCreatedTime() A2CDateTime`
@@ -201,6 +231,16 @@ SetCreatedTime sets CreatedTime field to given value.
 
 HasCreatedTime returns a boolean if a field has been set.
 
+### SetCreatedTimeNil
+
+`func (o *Customer) SetCreatedTimeNil(b bool)`
+
+ SetCreatedTimeNil sets the value for CreatedTime to be an explicit nil
+
+### UnsetCreatedTime
+`func (o *Customer) UnsetCreatedTime()`
+
+UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
 ### GetModifiedTime
 
 `func (o *Customer) GetModifiedTime() A2CDateTime`
@@ -226,6 +266,16 @@ SetModifiedTime sets ModifiedTime field to given value.
 
 HasModifiedTime returns a boolean if a field has been set.
 
+### SetModifiedTimeNil
+
+`func (o *Customer) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *Customer) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetGroup
 
 `func (o *Customer) GetGroup() []CustomerGroup`
@@ -276,6 +326,16 @@ SetLogin sets Login field to given value.
 
 HasLogin returns a boolean if a field has been set.
 
+### SetLoginNil
+
+`func (o *Customer) SetLoginNil(b bool)`
+
+ SetLoginNil sets the value for Login to be an explicit nil
+
+### UnsetLogin
+`func (o *Customer) UnsetLogin()`
+
+UnsetLogin ensures that no value is present for Login, not even an explicit nil
 ### GetLastLogin
 
 `func (o *Customer) GetLastLogin() A2CDateTime`
@@ -301,6 +361,16 @@ SetLastLogin sets LastLogin field to given value.
 
 HasLastLogin returns a boolean if a field has been set.
 
+### SetLastLoginNil
+
+`func (o *Customer) SetLastLoginNil(b bool)`
+
+ SetLastLoginNil sets the value for LastLogin to be an explicit nil
+
+### UnsetLastLogin
+`func (o *Customer) UnsetLastLogin()`
+
+UnsetLastLogin ensures that no value is present for LastLogin, not even an explicit nil
 ### GetBirthDay
 
 `func (o *Customer) GetBirthDay() A2CDateTime`
@@ -326,6 +396,16 @@ SetBirthDay sets BirthDay field to given value.
 
 HasBirthDay returns a boolean if a field has been set.
 
+### SetBirthDayNil
+
+`func (o *Customer) SetBirthDayNil(b bool)`
+
+ SetBirthDayNil sets the value for BirthDay to be an explicit nil
+
+### UnsetBirthDay
+`func (o *Customer) UnsetBirthDay()`
+
+UnsetBirthDay ensures that no value is present for BirthDay, not even an explicit nil
 ### GetStatus
 
 `func (o *Customer) GetStatus() string`
@@ -351,6 +431,16 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
+### SetStatusNil
+
+`func (o *Customer) SetStatusNil(b bool)`
+
+ SetStatusNil sets the value for Status to be an explicit nil
+
+### UnsetStatus
+`func (o *Customer) UnsetStatus()`
+
+UnsetStatus ensures that no value is present for Status, not even an explicit nil
 ### GetIsGuest
 
 `func (o *Customer) GetIsGuest() bool`
@@ -376,6 +466,16 @@ SetIsGuest sets IsGuest field to given value.
 
 HasIsGuest returns a boolean if a field has been set.
 
+### SetIsGuestNil
+
+`func (o *Customer) SetIsGuestNil(b bool)`
+
+ SetIsGuestNil sets the value for IsGuest to be an explicit nil
+
+### UnsetIsGuest
+`func (o *Customer) UnsetIsGuest()`
+
+UnsetIsGuest ensures that no value is present for IsGuest, not even an explicit nil
 ### GetNewsLetterSubscription
 
 `func (o *Customer) GetNewsLetterSubscription() bool`
@@ -401,6 +501,16 @@ SetNewsLetterSubscription sets NewsLetterSubscription field to given value.
 
 HasNewsLetterSubscription returns a boolean if a field has been set.
 
+### SetNewsLetterSubscriptionNil
+
+`func (o *Customer) SetNewsLetterSubscriptionNil(b bool)`
+
+ SetNewsLetterSubscriptionNil sets the value for NewsLetterSubscription to be an explicit nil
+
+### UnsetNewsLetterSubscription
+`func (o *Customer) UnsetNewsLetterSubscription()`
+
+UnsetNewsLetterSubscription ensures that no value is present for NewsLetterSubscription, not even an explicit nil
 ### GetConsents
 
 `func (o *Customer) GetConsents() []CustomerConsent`
@@ -451,6 +561,16 @@ SetGender sets Gender field to given value.
 
 HasGender returns a boolean if a field has been set.
 
+### SetGenderNil
+
+`func (o *Customer) SetGenderNil(b bool)`
+
+ SetGenderNil sets the value for Gender to be an explicit nil
+
+### UnsetGender
+`func (o *Customer) UnsetGender()`
+
+UnsetGender ensures that no value is present for Gender, not even an explicit nil
 ### GetStoresIds
 
 `func (o *Customer) GetStoresIds() []string`
@@ -501,6 +621,16 @@ SetWebsite sets Website field to given value.
 
 HasWebsite returns a boolean if a field has been set.
 
+### SetWebsiteNil
+
+`func (o *Customer) SetWebsiteNil(b bool)`
+
+ SetWebsiteNil sets the value for Website to be an explicit nil
+
+### UnsetWebsite
+`func (o *Customer) UnsetWebsite()`
+
+UnsetWebsite ensures that no value is present for Website, not even an explicit nil
 ### GetFax
 
 `func (o *Customer) GetFax() string`
@@ -526,6 +656,16 @@ SetFax sets Fax field to given value.
 
 HasFax returns a boolean if a field has been set.
 
+### SetFaxNil
+
+`func (o *Customer) SetFaxNil(b bool)`
+
+ SetFaxNil sets the value for Fax to be an explicit nil
+
+### UnsetFax
+`func (o *Customer) UnsetFax()`
+
+UnsetFax ensures that no value is present for Fax, not even an explicit nil
 ### GetCompany
 
 `func (o *Customer) GetCompany() string`
@@ -551,6 +691,16 @@ SetCompany sets Company field to given value.
 
 HasCompany returns a boolean if a field has been set.
 
+### SetCompanyNil
+
+`func (o *Customer) SetCompanyNil(b bool)`
+
+ SetCompanyNil sets the value for Company to be an explicit nil
+
+### UnsetCompany
+`func (o *Customer) UnsetCompany()`
+
+UnsetCompany ensures that no value is present for Company, not even an explicit nil
 ### GetIpAddress
 
 `func (o *Customer) GetIpAddress() string`
@@ -576,6 +726,16 @@ SetIpAddress sets IpAddress field to given value.
 
 HasIpAddress returns a boolean if a field has been set.
 
+### SetIpAddressNil
+
+`func (o *Customer) SetIpAddressNil(b bool)`
+
+ SetIpAddressNil sets the value for IpAddress to be an explicit nil
+
+### UnsetIpAddress
+`func (o *Customer) UnsetIpAddress()`
+
+UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
 ### GetAddressBook
 
 `func (o *Customer) GetAddressBook() []CustomerAddress`
@@ -626,6 +786,16 @@ SetLangId sets LangId field to given value.
 
 HasLangId returns a boolean if a field has been set.
 
+### SetLangIdNil
+
+`func (o *Customer) SetLangIdNil(b bool)`
+
+ SetLangIdNil sets the value for LangId to be an explicit nil
+
+### UnsetLangId
+`func (o *Customer) UnsetLangId()`
+
+UnsetLangId ensures that no value is present for LangId, not even an explicit nil
 ### GetOrdersCount
 
 `func (o *Customer) GetOrdersCount() int32`
@@ -651,6 +821,16 @@ SetOrdersCount sets OrdersCount field to given value.
 
 HasOrdersCount returns a boolean if a field has been set.
 
+### SetOrdersCountNil
+
+`func (o *Customer) SetOrdersCountNil(b bool)`
+
+ SetOrdersCountNil sets the value for OrdersCount to be an explicit nil
+
+### UnsetOrdersCount
+`func (o *Customer) UnsetOrdersCount()`
+
+UnsetOrdersCount ensures that no value is present for OrdersCount, not even an explicit nil
 ### GetLastOrderId
 
 `func (o *Customer) GetLastOrderId() string`
@@ -676,6 +856,16 @@ SetLastOrderId sets LastOrderId field to given value.
 
 HasLastOrderId returns a boolean if a field has been set.
 
+### SetLastOrderIdNil
+
+`func (o *Customer) SetLastOrderIdNil(b bool)`
+
+ SetLastOrderIdNil sets the value for LastOrderId to be an explicit nil
+
+### UnsetLastOrderId
+`func (o *Customer) UnsetLastOrderId()`
+
+UnsetLastOrderId ensures that no value is present for LastOrderId, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Customer) GetAdditionalFields() map[string]interface{}`
@@ -701,6 +891,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *Customer) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *Customer) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *Customer) GetCustomFields() map[string]interface{}`
@@ -726,6 +926,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *Customer) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *Customer) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogPriceRulesCount** | Pointer to **int32** |  | [optional] 
+**CatalogPriceRulesCount** | Pointer to **NullableInt32** |  | [optional] 
 **CatalogPriceRules** | Pointer to [**[]CatalogPriceRule**](CatalogPriceRule.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -53,6 +53,16 @@ SetCatalogPriceRulesCount sets CatalogPriceRulesCount field to given value.
 
 HasCatalogPriceRulesCount returns a boolean if a field has been set.
 
+### SetCatalogPriceRulesCountNil
+
+`func (o *ResponseCartCatalogPriceRulesListResult) SetCatalogPriceRulesCountNil(b bool)`
+
+ SetCatalogPriceRulesCountNil sets the value for CatalogPriceRulesCount to be an explicit nil
+
+### UnsetCatalogPriceRulesCount
+`func (o *ResponseCartCatalogPriceRulesListResult) UnsetCatalogPriceRulesCount()`
+
+UnsetCatalogPriceRulesCount ensures that no value is present for CatalogPriceRulesCount, not even an explicit nil
 ### GetCatalogPriceRules
 
 `func (o *ResponseCartCatalogPriceRulesListResult) GetCatalogPriceRules() []CatalogPriceRule`
@@ -103,6 +113,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ResponseCartCatalogPriceRulesListResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ResponseCartCatalogPriceRulesListResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ResponseCartCatalogPriceRulesListResult) GetCustomFields() map[string]interface{}`
@@ -128,6 +148,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ResponseCartCatalogPriceRulesListResult) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ResponseCartCatalogPriceRulesListResult) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

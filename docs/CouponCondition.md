@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Entity** | Pointer to **string** |  | [optional] 
-**MatchItems** | Pointer to **string** |  | [optional] 
-**Key** | Pointer to **string** |  | [optional] 
-**Operator** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
-**LogicOperator** | Pointer to **string** |  | [optional] 
+**MatchItems** | Pointer to **NullableString** |  | [optional] 
+**Key** | Pointer to **NullableString** |  | [optional] 
+**Operator** | Pointer to **NullableString** |  | [optional] 
+**Value** | Pointer to **NullableString** |  | [optional] 
+**LogicOperator** | Pointer to **NullableString** |  | [optional] 
 **SubConditions** | Pointer to [**[]CouponCondition**](CouponCondition.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -109,6 +109,16 @@ SetMatchItems sets MatchItems field to given value.
 
 HasMatchItems returns a boolean if a field has been set.
 
+### SetMatchItemsNil
+
+`func (o *CouponCondition) SetMatchItemsNil(b bool)`
+
+ SetMatchItemsNil sets the value for MatchItems to be an explicit nil
+
+### UnsetMatchItems
+`func (o *CouponCondition) UnsetMatchItems()`
+
+UnsetMatchItems ensures that no value is present for MatchItems, not even an explicit nil
 ### GetKey
 
 `func (o *CouponCondition) GetKey() string`
@@ -134,6 +144,16 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### SetKeyNil
+
+`func (o *CouponCondition) SetKeyNil(b bool)`
+
+ SetKeyNil sets the value for Key to be an explicit nil
+
+### UnsetKey
+`func (o *CouponCondition) UnsetKey()`
+
+UnsetKey ensures that no value is present for Key, not even an explicit nil
 ### GetOperator
 
 `func (o *CouponCondition) GetOperator() string`
@@ -159,6 +179,16 @@ SetOperator sets Operator field to given value.
 
 HasOperator returns a boolean if a field has been set.
 
+### SetOperatorNil
+
+`func (o *CouponCondition) SetOperatorNil(b bool)`
+
+ SetOperatorNil sets the value for Operator to be an explicit nil
+
+### UnsetOperator
+`func (o *CouponCondition) UnsetOperator()`
+
+UnsetOperator ensures that no value is present for Operator, not even an explicit nil
 ### GetValue
 
 `func (o *CouponCondition) GetValue() string`
@@ -184,6 +214,16 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### SetValueNil
+
+`func (o *CouponCondition) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *CouponCondition) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetLogicOperator
 
 `func (o *CouponCondition) GetLogicOperator() string`
@@ -209,6 +249,16 @@ SetLogicOperator sets LogicOperator field to given value.
 
 HasLogicOperator returns a boolean if a field has been set.
 
+### SetLogicOperatorNil
+
+`func (o *CouponCondition) SetLogicOperatorNil(b bool)`
+
+ SetLogicOperatorNil sets the value for LogicOperator to be an explicit nil
+
+### UnsetLogicOperator
+`func (o *CouponCondition) UnsetLogicOperator()`
+
+UnsetLogicOperator ensures that no value is present for LogicOperator, not even an explicit nil
 ### GetSubConditions
 
 `func (o *CouponCondition) GetSubConditions() []CouponCondition`
@@ -259,6 +309,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *CouponCondition) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *CouponCondition) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *CouponCondition) GetCustomFields() map[string]interface{}`
@@ -284,6 +344,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *CouponCondition) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *CouponCondition) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

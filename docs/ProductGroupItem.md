@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChildItemId** | Pointer to **string** |  | [optional] 
+**ChildItemId** | Pointer to **NullableString** |  | [optional] 
 **ProductId** | Pointer to **string** |  | [optional] 
 **DefaultQtyInPack** | Pointer to **string** |  | [optional] 
-**IsQtyInPackFixed** | Pointer to **bool** |  | [optional] 
-**Price** | Pointer to **float32** |  | [optional] 
+**IsQtyInPackFixed** | Pointer to **NullableBool** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -56,6 +56,16 @@ SetChildItemId sets ChildItemId field to given value.
 
 HasChildItemId returns a boolean if a field has been set.
 
+### SetChildItemIdNil
+
+`func (o *ProductGroupItem) SetChildItemIdNil(b bool)`
+
+ SetChildItemIdNil sets the value for ChildItemId to be an explicit nil
+
+### UnsetChildItemId
+`func (o *ProductGroupItem) UnsetChildItemId()`
+
+UnsetChildItemId ensures that no value is present for ChildItemId, not even an explicit nil
 ### GetProductId
 
 `func (o *ProductGroupItem) GetProductId() string`
@@ -131,6 +141,16 @@ SetIsQtyInPackFixed sets IsQtyInPackFixed field to given value.
 
 HasIsQtyInPackFixed returns a boolean if a field has been set.
 
+### SetIsQtyInPackFixedNil
+
+`func (o *ProductGroupItem) SetIsQtyInPackFixedNil(b bool)`
+
+ SetIsQtyInPackFixedNil sets the value for IsQtyInPackFixed to be an explicit nil
+
+### UnsetIsQtyInPackFixed
+`func (o *ProductGroupItem) UnsetIsQtyInPackFixed()`
+
+UnsetIsQtyInPackFixed ensures that no value is present for IsQtyInPackFixed, not even an explicit nil
 ### GetPrice
 
 `func (o *ProductGroupItem) GetPrice() float32`
@@ -156,6 +176,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *ProductGroupItem) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *ProductGroupItem) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *ProductGroupItem) GetAdditionalFields() map[string]interface{}`
@@ -181,6 +211,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *ProductGroupItem) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *ProductGroupItem) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *ProductGroupItem) GetCustomFields() map[string]interface{}`
@@ -206,6 +246,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *ProductGroupItem) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *ProductGroupItem) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

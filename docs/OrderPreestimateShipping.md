@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MethodCode** | Pointer to **string** |  | [optional] 
-**MethodName** | Pointer to **string** |  | [optional] 
-**CarrierCode** | Pointer to **string** |  | [optional] 
-**CarrierName** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**Price** | Pointer to **float32** |  | [optional] 
-**PriceIncTax** | Pointer to **float32** |  | [optional] 
-**DeliveryTime** | Pointer to **string** |  | [optional] 
+**MethodName** | Pointer to **NullableString** |  | [optional] 
+**CarrierCode** | Pointer to **NullableString** |  | [optional] 
+**CarrierName** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
+**PriceIncTax** | Pointer to **NullableFloat32** |  | [optional] 
+**DeliveryTime** | Pointer to **NullableString** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -84,6 +84,16 @@ SetMethodName sets MethodName field to given value.
 
 HasMethodName returns a boolean if a field has been set.
 
+### SetMethodNameNil
+
+`func (o *OrderPreestimateShipping) SetMethodNameNil(b bool)`
+
+ SetMethodNameNil sets the value for MethodName to be an explicit nil
+
+### UnsetMethodName
+`func (o *OrderPreestimateShipping) UnsetMethodName()`
+
+UnsetMethodName ensures that no value is present for MethodName, not even an explicit nil
 ### GetCarrierCode
 
 `func (o *OrderPreestimateShipping) GetCarrierCode() string`
@@ -109,6 +119,16 @@ SetCarrierCode sets CarrierCode field to given value.
 
 HasCarrierCode returns a boolean if a field has been set.
 
+### SetCarrierCodeNil
+
+`func (o *OrderPreestimateShipping) SetCarrierCodeNil(b bool)`
+
+ SetCarrierCodeNil sets the value for CarrierCode to be an explicit nil
+
+### UnsetCarrierCode
+`func (o *OrderPreestimateShipping) UnsetCarrierCode()`
+
+UnsetCarrierCode ensures that no value is present for CarrierCode, not even an explicit nil
 ### GetCarrierName
 
 `func (o *OrderPreestimateShipping) GetCarrierName() string`
@@ -134,6 +154,16 @@ SetCarrierName sets CarrierName field to given value.
 
 HasCarrierName returns a boolean if a field has been set.
 
+### SetCarrierNameNil
+
+`func (o *OrderPreestimateShipping) SetCarrierNameNil(b bool)`
+
+ SetCarrierNameNil sets the value for CarrierName to be an explicit nil
+
+### UnsetCarrierName
+`func (o *OrderPreestimateShipping) UnsetCarrierName()`
+
+UnsetCarrierName ensures that no value is present for CarrierName, not even an explicit nil
 ### GetDescription
 
 `func (o *OrderPreestimateShipping) GetDescription() string`
@@ -159,6 +189,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *OrderPreestimateShipping) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *OrderPreestimateShipping) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPrice
 
 `func (o *OrderPreestimateShipping) GetPrice() float32`
@@ -184,6 +224,16 @@ SetPrice sets Price field to given value.
 
 HasPrice returns a boolean if a field has been set.
 
+### SetPriceNil
+
+`func (o *OrderPreestimateShipping) SetPriceNil(b bool)`
+
+ SetPriceNil sets the value for Price to be an explicit nil
+
+### UnsetPrice
+`func (o *OrderPreestimateShipping) UnsetPrice()`
+
+UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetPriceIncTax
 
 `func (o *OrderPreestimateShipping) GetPriceIncTax() float32`
@@ -209,6 +259,16 @@ SetPriceIncTax sets PriceIncTax field to given value.
 
 HasPriceIncTax returns a boolean if a field has been set.
 
+### SetPriceIncTaxNil
+
+`func (o *OrderPreestimateShipping) SetPriceIncTaxNil(b bool)`
+
+ SetPriceIncTaxNil sets the value for PriceIncTax to be an explicit nil
+
+### UnsetPriceIncTax
+`func (o *OrderPreestimateShipping) UnsetPriceIncTax()`
+
+UnsetPriceIncTax ensures that no value is present for PriceIncTax, not even an explicit nil
 ### GetDeliveryTime
 
 `func (o *OrderPreestimateShipping) GetDeliveryTime() string`
@@ -234,6 +294,16 @@ SetDeliveryTime sets DeliveryTime field to given value.
 
 HasDeliveryTime returns a boolean if a field has been set.
 
+### SetDeliveryTimeNil
+
+`func (o *OrderPreestimateShipping) SetDeliveryTimeNil(b bool)`
+
+ SetDeliveryTimeNil sets the value for DeliveryTime to be an explicit nil
+
+### UnsetDeliveryTime
+`func (o *OrderPreestimateShipping) UnsetDeliveryTime()`
+
+UnsetDeliveryTime ensures that no value is present for DeliveryTime, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *OrderPreestimateShipping) GetAdditionalFields() map[string]interface{}`
@@ -259,6 +329,16 @@ SetAdditionalFields sets AdditionalFields field to given value.
 
 HasAdditionalFields returns a boolean if a field has been set.
 
+### SetAdditionalFieldsNil
+
+`func (o *OrderPreestimateShipping) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderPreestimateShipping) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 ### GetCustomFields
 
 `func (o *OrderPreestimateShipping) GetCustomFields() map[string]interface{}`
@@ -284,6 +364,16 @@ SetCustomFields sets CustomFields field to given value.
 
 HasCustomFields returns a boolean if a field has been set.
 
+### SetCustomFieldsNil
+
+`func (o *OrderPreestimateShipping) SetCustomFieldsNil(b bool)`
+
+ SetCustomFieldsNil sets the value for CustomFields to be an explicit nil
+
+### UnsetCustomFields
+`func (o *OrderPreestimateShipping) UnsetCustomFields()`
+
+UnsetCustomFields ensures that no value is present for CustomFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

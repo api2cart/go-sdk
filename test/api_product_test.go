@@ -190,18 +190,6 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProductAPIService ProductFields", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ProductAPI.ProductFields(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProductAPIService ProductFind", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -502,18 +490,6 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProductAPIService ProductVariantCount", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ProductAPI.ProductVariantCount(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProductAPIService ProductVariantDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -555,30 +531,6 @@ func Test_openapi_ProductAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProductAPI.ProductVariantImageDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProductAPIService ProductVariantInfo", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ProductAPI.ProductVariantInfo(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProductAPIService ProductVariantList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ProductAPI.ProductVariantList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
