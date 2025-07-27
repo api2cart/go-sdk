@@ -94,6 +94,8 @@ type ProductUpdate struct {
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
 	// Defines the decrement changes in product quantity
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
+	// Specify the quantity threshold below which the product is considered low in stock
+	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
 	WarehouseId *string `json:"warehouse_id,omitempty"`
 	// Weight
@@ -1440,6 +1442,38 @@ func (o *ProductUpdate) HasReduceQuantity() bool {
 // SetReduceQuantity gets a reference to the given float32 and assigns it to the ReduceQuantity field.
 func (o *ProductUpdate) SetReduceQuantity(v float32) {
 	o.ReduceQuantity = &v
+}
+
+// GetLowStockThreshold returns the LowStockThreshold field value if set, zero value otherwise.
+func (o *ProductUpdate) GetLowStockThreshold() float32 {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		var ret float32
+		return ret
+	}
+	return *o.LowStockThreshold
+}
+
+// GetLowStockThresholdOk returns a tuple with the LowStockThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetLowStockThresholdOk() (*float32, bool) {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		return nil, false
+	}
+	return o.LowStockThreshold, true
+}
+
+// HasLowStockThreshold returns a boolean if a field has been set.
+func (o *ProductUpdate) HasLowStockThreshold() bool {
+	if o != nil && !IsNil(o.LowStockThreshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetLowStockThreshold gets a reference to the given float32 and assigns it to the LowStockThreshold field.
+func (o *ProductUpdate) SetLowStockThreshold(v float32) {
+	o.LowStockThreshold = &v
 }
 
 // GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
@@ -3098,6 +3132,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReduceQuantity) {
 		toSerialize["reduce_quantity"] = o.ReduceQuantity
+	}
+	if !IsNil(o.LowStockThreshold) {
+		toSerialize["low_stock_threshold"] = o.LowStockThreshold
 	}
 	if !IsNil(o.WarehouseId) {
 		toSerialize["warehouse_id"] = o.WarehouseId

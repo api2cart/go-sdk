@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
 **MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
 **MaxOrderQuantity** | Pointer to **float32** | The maximum quantity an order can contain when purchasing the product. | [optional] 
+**LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
 **Weight** | Pointer to **float32** | Weight | [optional] [default to 0]
 **WeightUnit** | Pointer to **string** | Weight Unit | [optional] 
 **Width** | Pointer to **float32** | Defines product&#39;s width | [optional] 
@@ -1044,6 +1045,31 @@ SetMaxOrderQuantity sets MaxOrderQuantity field to given value.
 `func (o *ProductAdd) HasMaxOrderQuantity() bool`
 
 HasMaxOrderQuantity returns a boolean if a field has been set.
+
+### GetLowStockThreshold
+
+`func (o *ProductAdd) GetLowStockThreshold() float32`
+
+GetLowStockThreshold returns the LowStockThreshold field if non-nil, zero value otherwise.
+
+### GetLowStockThresholdOk
+
+`func (o *ProductAdd) GetLowStockThresholdOk() (*float32, bool)`
+
+GetLowStockThresholdOk returns a tuple with the LowStockThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLowStockThreshold
+
+`func (o *ProductAdd) SetLowStockThreshold(v float32)`
+
+SetLowStockThreshold sets LowStockThreshold field to given value.
+
+### HasLowStockThreshold
+
+`func (o *ProductAdd) HasLowStockThreshold() bool`
+
+HasLowStockThreshold returns a boolean if a field has been set.
 
 ### GetWeight
 

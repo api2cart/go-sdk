@@ -46,6 +46,8 @@ type ProductVariantUpdate struct {
 	Status *string `json:"status,omitempty"`
 	// Set backorder status
 	BackorderStatus *string `json:"backorder_status,omitempty"`
+	// Specify the quantity threshold below which the product is considered low in stock
+	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`
 	// Specifies the set of visible/invisible product's variants for sale
 	AvailableForSale *bool `json:"available_for_sale,omitempty"`
 	// Defines category's visibility status
@@ -595,6 +597,38 @@ func (o *ProductVariantUpdate) HasBackorderStatus() bool {
 // SetBackorderStatus gets a reference to the given string and assigns it to the BackorderStatus field.
 func (o *ProductVariantUpdate) SetBackorderStatus(v string) {
 	o.BackorderStatus = &v
+}
+
+// GetLowStockThreshold returns the LowStockThreshold field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetLowStockThreshold() float32 {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		var ret float32
+		return ret
+	}
+	return *o.LowStockThreshold
+}
+
+// GetLowStockThresholdOk returns a tuple with the LowStockThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetLowStockThresholdOk() (*float32, bool) {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		return nil, false
+	}
+	return o.LowStockThreshold, true
+}
+
+// HasLowStockThreshold returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasLowStockThreshold() bool {
+	if o != nil && !IsNil(o.LowStockThreshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetLowStockThreshold gets a reference to the given float32 and assigns it to the LowStockThreshold field.
+func (o *ProductVariantUpdate) SetLowStockThreshold(v float32) {
+	o.LowStockThreshold = &v
 }
 
 // GetAvailableForSale returns the AvailableForSale field value if set, zero value otherwise.
@@ -1925,6 +1959,9 @@ func (o ProductVariantUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BackorderStatus) {
 		toSerialize["backorder_status"] = o.BackorderStatus
+	}
+	if !IsNil(o.LowStockThreshold) {
+		toSerialize["low_stock_threshold"] = o.LowStockThreshold
 	}
 	if !IsNil(o.AvailableForSale) {
 		toSerialize["available_for_sale"] = o.AvailableForSale

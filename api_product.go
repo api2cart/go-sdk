@@ -4159,6 +4159,7 @@ type ApiProductListRequest struct {
 	disableCache *bool
 	disableReportCache *bool
 	useLatestApiVersion *bool
+	productType *string
 }
 
 // This parameter sets the number from which you want to get entities
@@ -4365,6 +4366,12 @@ func (r ApiProductListRequest) UseLatestApiVersion(useLatestApiVersion bool) Api
 	return r
 }
 
+// A categorization for the product
+func (r ApiProductListRequest) ProductType(productType string) ApiProductListRequest {
+	r.productType = &productType
+	return r
+}
+
 func (r ApiProductListRequest) Execute() (*ModelResponseProductList, *http.Response, error) {
 	return r.ApiService.ProductListExecute(r)
 }
@@ -4544,6 +4551,9 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	} else {
 		var defaultValue bool = false
 		r.useLatestApiVersion = &defaultValue
+	}
+	if r.productType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "product_type", r.productType, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

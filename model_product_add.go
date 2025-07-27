@@ -96,6 +96,8 @@ type ProductAdd struct {
 	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
 	// The maximum quantity an order can contain when purchasing the product.
 	MaxOrderQuantity *float32 `json:"max_order_quantity,omitempty"`
+	// Specify the quantity threshold below which the product is considered low in stock
+	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`
 	// Weight
 	Weight *float32 `json:"weight,omitempty"`
 	// Weight Unit
@@ -1490,6 +1492,38 @@ func (o *ProductAdd) HasMaxOrderQuantity() bool {
 // SetMaxOrderQuantity gets a reference to the given float32 and assigns it to the MaxOrderQuantity field.
 func (o *ProductAdd) SetMaxOrderQuantity(v float32) {
 	o.MaxOrderQuantity = &v
+}
+
+// GetLowStockThreshold returns the LowStockThreshold field value if set, zero value otherwise.
+func (o *ProductAdd) GetLowStockThreshold() float32 {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		var ret float32
+		return ret
+	}
+	return *o.LowStockThreshold
+}
+
+// GetLowStockThresholdOk returns a tuple with the LowStockThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetLowStockThresholdOk() (*float32, bool) {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		return nil, false
+	}
+	return o.LowStockThreshold, true
+}
+
+// HasLowStockThreshold returns a boolean if a field has been set.
+func (o *ProductAdd) HasLowStockThreshold() bool {
+	if o != nil && !IsNil(o.LowStockThreshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetLowStockThreshold gets a reference to the given float32 and assigns it to the LowStockThreshold field.
+func (o *ProductAdd) SetLowStockThreshold(v float32) {
+	o.LowStockThreshold = &v
 }
 
 // GetWeight returns the Weight field value if set, zero value otherwise.
@@ -4132,6 +4166,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxOrderQuantity) {
 		toSerialize["max_order_quantity"] = o.MaxOrderQuantity
+	}
+	if !IsNil(o.LowStockThreshold) {
+		toSerialize["low_stock_threshold"] = o.LowStockThreshold
 	}
 	if !IsNil(o.Weight) {
 		toSerialize["weight"] = o.Weight

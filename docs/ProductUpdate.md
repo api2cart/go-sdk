@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
 **IncreaseQuantity** | Pointer to **float32** | Defines the incremental changes in product quantity | [optional] 
 **ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity | [optional] 
+**LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
 **Weight** | Pointer to **float32** | Weight | [optional] 
 **WeightUnit** | Pointer to **string** | Weight Unit | [optional] 
@@ -1033,6 +1034,31 @@ SetReduceQuantity sets ReduceQuantity field to given value.
 `func (o *ProductUpdate) HasReduceQuantity() bool`
 
 HasReduceQuantity returns a boolean if a field has been set.
+
+### GetLowStockThreshold
+
+`func (o *ProductUpdate) GetLowStockThreshold() float32`
+
+GetLowStockThreshold returns the LowStockThreshold field if non-nil, zero value otherwise.
+
+### GetLowStockThresholdOk
+
+`func (o *ProductUpdate) GetLowStockThresholdOk() (*float32, bool)`
+
+GetLowStockThresholdOk returns a tuple with the LowStockThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLowStockThreshold
+
+`func (o *ProductUpdate) SetLowStockThreshold(v float32)`
+
+SetLowStockThreshold sets LowStockThreshold field to given value.
+
+### HasLowStockThreshold
+
+`func (o *ProductUpdate) HasLowStockThreshold() bool`
+
+HasLowStockThreshold returns a boolean if a field has been set.
 
 ### GetWarehouseId
 

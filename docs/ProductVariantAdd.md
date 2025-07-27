@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **InStock** | Pointer to **bool** | Set stock status | [optional] 
 **BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
 **ManageStock** | Pointer to **bool** | Defines inventory tracking for product variant | [optional] 
+**LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
 **Weight** | Pointer to **float32** | Weight | [optional] [default to 0]
 **Width** | Pointer to **float32** | Defines product&#39;s width | [optional] 
 **Height** | Pointer to **float32** | Defines product&#39;s height | [optional] 
@@ -720,6 +721,31 @@ SetManageStock sets ManageStock field to given value.
 `func (o *ProductVariantAdd) HasManageStock() bool`
 
 HasManageStock returns a boolean if a field has been set.
+
+### GetLowStockThreshold
+
+`func (o *ProductVariantAdd) GetLowStockThreshold() float32`
+
+GetLowStockThreshold returns the LowStockThreshold field if non-nil, zero value otherwise.
+
+### GetLowStockThresholdOk
+
+`func (o *ProductVariantAdd) GetLowStockThresholdOk() (*float32, bool)`
+
+GetLowStockThresholdOk returns a tuple with the LowStockThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLowStockThreshold
+
+`func (o *ProductVariantAdd) SetLowStockThreshold(v float32)`
+
+SetLowStockThreshold sets LowStockThreshold field to given value.
+
+### HasLowStockThreshold
+
+`func (o *ProductVariantAdd) HasLowStockThreshold() bool`
+
+HasLowStockThreshold returns a boolean if a field has been set.
 
 ### GetWeight
 

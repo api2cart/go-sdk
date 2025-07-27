@@ -1583,7 +1583,7 @@ Name | Type | Description  | Notes
 
 ## ProductList
 
-> ModelResponseProductList ProductList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ModelResponseProductList ProductList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
 
 product.list
 
@@ -1636,10 +1636,11 @@ func main() {
 	disableCache := false // bool | Disable cache for current request (optional) (default to false)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
+	productType := "BICYCLE" // string | A categorization for the product (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1694,6 +1695,7 @@ Name | Type | Description  | Notes
  **disableCache** | **bool** | Disable cache for current request | [default to false]
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
+ **productType** | **string** | A categorization for the product | 
 
 ### Return type
 

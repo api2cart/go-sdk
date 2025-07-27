@@ -52,6 +52,7 @@ type Child struct {
 	InventoryLevel NullableFloat32 `json:"inventory_level,omitempty"`
 	Inventory []ProductInventory `json:"inventory,omitempty"`
 	MinQuantity NullableFloat32 `json:"min_quantity,omitempty"`
+	LowStockThreshold NullableFloat32 `json:"low_stock_threshold,omitempty"`
 	DefaultQtyInPack NullableFloat32 `json:"default_qty_in_pack,omitempty"`
 	IsQtyInPackFixed NullableBool `json:"is_qty_in_pack_fixed,omitempty"`
 	WeightUnit NullableString `json:"weight_unit,omitempty"`
@@ -1370,6 +1371,48 @@ func (o *Child) UnsetMinQuantity() {
 	o.MinQuantity.Unset()
 }
 
+// GetLowStockThreshold returns the LowStockThreshold field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Child) GetLowStockThreshold() float32 {
+	if o == nil || IsNil(o.LowStockThreshold.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.LowStockThreshold.Get()
+}
+
+// GetLowStockThresholdOk returns a tuple with the LowStockThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Child) GetLowStockThresholdOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LowStockThreshold.Get(), o.LowStockThreshold.IsSet()
+}
+
+// HasLowStockThreshold returns a boolean if a field has been set.
+func (o *Child) HasLowStockThreshold() bool {
+	if o != nil && o.LowStockThreshold.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLowStockThreshold gets a reference to the given NullableFloat32 and assigns it to the LowStockThreshold field.
+func (o *Child) SetLowStockThreshold(v float32) {
+	o.LowStockThreshold.Set(&v)
+}
+// SetLowStockThresholdNil sets the value for LowStockThreshold to be an explicit nil
+func (o *Child) SetLowStockThresholdNil() {
+	o.LowStockThreshold.Set(nil)
+}
+
+// UnsetLowStockThreshold ensures that no value is present for LowStockThreshold, not even an explicit nil
+func (o *Child) UnsetLowStockThreshold() {
+	o.LowStockThreshold.Unset()
+}
+
 // GetDefaultQtyInPack returns the DefaultQtyInPack field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Child) GetDefaultQtyInPack() float32 {
 	if o == nil || IsNil(o.DefaultQtyInPack.Get()) {
@@ -2077,6 +2120,9 @@ func (o Child) ToMap() (map[string]interface{}, error) {
 	}
 	if o.MinQuantity.IsSet() {
 		toSerialize["min_quantity"] = o.MinQuantity.Get()
+	}
+	if o.LowStockThreshold.IsSet() {
+		toSerialize["low_stock_threshold"] = o.LowStockThreshold.Get()
 	}
 	if o.DefaultQtyInPack.IsSet() {
 		toSerialize["default_qty_in_pack"] = o.DefaultQtyInPack.Get()

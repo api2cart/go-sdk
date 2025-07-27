@@ -74,6 +74,8 @@ type ProductVariantAdd struct {
 	BackorderStatus *string `json:"backorder_status,omitempty"`
 	// Defines inventory tracking for product variant
 	ManageStock *bool `json:"manage_stock,omitempty"`
+	// Specify the quantity threshold below which the product is considered low in stock
+	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`
 	// Weight
 	Weight *float32 `json:"weight,omitempty"`
 	// Defines product's width
@@ -1000,6 +1002,38 @@ func (o *ProductVariantAdd) SetManageStock(v bool) {
 	o.ManageStock = &v
 }
 
+// GetLowStockThreshold returns the LowStockThreshold field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetLowStockThreshold() float32 {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		var ret float32
+		return ret
+	}
+	return *o.LowStockThreshold
+}
+
+// GetLowStockThresholdOk returns a tuple with the LowStockThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetLowStockThresholdOk() (*float32, bool) {
+	if o == nil || IsNil(o.LowStockThreshold) {
+		return nil, false
+	}
+	return o.LowStockThreshold, true
+}
+
+// HasLowStockThreshold returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasLowStockThreshold() bool {
+	if o != nil && !IsNil(o.LowStockThreshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetLowStockThreshold gets a reference to the given float32 and assigns it to the LowStockThreshold field.
+func (o *ProductVariantAdd) SetLowStockThreshold(v float32) {
+	o.LowStockThreshold = &v
+}
+
 // GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *ProductVariantAdd) GetWeight() float32 {
 	if o == nil || IsNil(o.Weight) {
@@ -1917,6 +1951,9 @@ func (o ProductVariantAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ManageStock) {
 		toSerialize["manage_stock"] = o.ManageStock
+	}
+	if !IsNil(o.LowStockThreshold) {
+		toSerialize["low_stock_threshold"] = o.LowStockThreshold
 	}
 	if !IsNil(o.Weight) {
 		toSerialize["weight"] = o.Weight

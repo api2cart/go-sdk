@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **InventoryLevel** | Pointer to **NullableFloat32** |  | [optional] 
 **Inventory** | Pointer to [**[]ProductInventory**](ProductInventory.md) |  | [optional] 
 **MinQuantity** | Pointer to **NullableFloat32** |  | [optional] 
+**LowStockThreshold** | Pointer to **NullableFloat32** |  | [optional] 
 **DefaultQtyInPack** | Pointer to **NullableFloat32** |  | [optional] 
 **IsQtyInPackFixed** | Pointer to **NullableBool** |  | [optional] 
 **WeightUnit** | Pointer to **NullableString** |  | [optional] 
@@ -1131,6 +1132,41 @@ HasMinQuantity returns a boolean if a field has been set.
 `func (o *Child) UnsetMinQuantity()`
 
 UnsetMinQuantity ensures that no value is present for MinQuantity, not even an explicit nil
+### GetLowStockThreshold
+
+`func (o *Child) GetLowStockThreshold() float32`
+
+GetLowStockThreshold returns the LowStockThreshold field if non-nil, zero value otherwise.
+
+### GetLowStockThresholdOk
+
+`func (o *Child) GetLowStockThresholdOk() (*float32, bool)`
+
+GetLowStockThresholdOk returns a tuple with the LowStockThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLowStockThreshold
+
+`func (o *Child) SetLowStockThreshold(v float32)`
+
+SetLowStockThreshold sets LowStockThreshold field to given value.
+
+### HasLowStockThreshold
+
+`func (o *Child) HasLowStockThreshold() bool`
+
+HasLowStockThreshold returns a boolean if a field has been set.
+
+### SetLowStockThresholdNil
+
+`func (o *Child) SetLowStockThresholdNil(b bool)`
+
+ SetLowStockThresholdNil sets the value for LowStockThreshold to be an explicit nil
+
+### UnsetLowStockThreshold
+`func (o *Child) UnsetLowStockThreshold()`
+
+UnsetLowStockThreshold ensures that no value is present for LowStockThreshold, not even an explicit nil
 ### GetDefaultQtyInPack
 
 `func (o *Child) GetDefaultQtyInPack() float32`

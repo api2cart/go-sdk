@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Visible** | Pointer to **string** | Set visibility status | [optional] 
 **Status** | Pointer to **string** | Defines product variant&#39;s status | [optional] 
 **BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
+**LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
 **AvailableForSale** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for sale | [optional] [default to true]
 **Avail** | Pointer to **bool** | Defines category&#39;s visibility status | [optional] [default to true]
 **IsDefault** | Pointer to **bool** | Defines as a default variant | [optional] 
@@ -401,6 +402,31 @@ SetBackorderStatus sets BackorderStatus field to given value.
 `func (o *ProductVariantUpdate) HasBackorderStatus() bool`
 
 HasBackorderStatus returns a boolean if a field has been set.
+
+### GetLowStockThreshold
+
+`func (o *ProductVariantUpdate) GetLowStockThreshold() float32`
+
+GetLowStockThreshold returns the LowStockThreshold field if non-nil, zero value otherwise.
+
+### GetLowStockThresholdOk
+
+`func (o *ProductVariantUpdate) GetLowStockThresholdOk() (*float32, bool)`
+
+GetLowStockThresholdOk returns a tuple with the LowStockThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLowStockThreshold
+
+`func (o *ProductVariantUpdate) SetLowStockThreshold(v float32)`
+
+SetLowStockThreshold sets LowStockThreshold field to given value.
+
+### HasLowStockThreshold
+
+`func (o *ProductVariantUpdate) HasLowStockThreshold() bool`
+
+HasLowStockThreshold returns a boolean if a field has been set.
 
 ### GetAvailableForSale
 
