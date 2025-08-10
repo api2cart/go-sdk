@@ -189,6 +189,10 @@ type ProductUpdate struct {
 	// Add Shop Section Id
 	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
 	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
+	// String containing the JSON representation of the supplied data
+	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
+	// The minimum quantity an order must contain, to be eligible to purchase this product.
+	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
 }
 
 // NewProductUpdate instantiates a new ProductUpdate object
@@ -3012,6 +3016,70 @@ func (o *ProductUpdate) SetPersonalizationDetails(v ProductAddPersonalizationDet
 	o.PersonalizationDetails = &v
 }
 
+// GetMarketplaceItemProperties returns the MarketplaceItemProperties field value if set, zero value otherwise.
+func (o *ProductUpdate) GetMarketplaceItemProperties() string {
+	if o == nil || IsNil(o.MarketplaceItemProperties) {
+		var ret string
+		return ret
+	}
+	return *o.MarketplaceItemProperties
+}
+
+// GetMarketplaceItemPropertiesOk returns a tuple with the MarketplaceItemProperties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetMarketplaceItemPropertiesOk() (*string, bool) {
+	if o == nil || IsNil(o.MarketplaceItemProperties) {
+		return nil, false
+	}
+	return o.MarketplaceItemProperties, true
+}
+
+// HasMarketplaceItemProperties returns a boolean if a field has been set.
+func (o *ProductUpdate) HasMarketplaceItemProperties() bool {
+	if o != nil && !IsNil(o.MarketplaceItemProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetMarketplaceItemProperties gets a reference to the given string and assigns it to the MarketplaceItemProperties field.
+func (o *ProductUpdate) SetMarketplaceItemProperties(v string) {
+	o.MarketplaceItemProperties = &v
+}
+
+// GetMinOrderQuantity returns the MinOrderQuantity field value if set, zero value otherwise.
+func (o *ProductUpdate) GetMinOrderQuantity() float32 {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		var ret float32
+		return ret
+	}
+	return *o.MinOrderQuantity
+}
+
+// GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		return nil, false
+	}
+	return o.MinOrderQuantity, true
+}
+
+// HasMinOrderQuantity returns a boolean if a field has been set.
+func (o *ProductUpdate) HasMinOrderQuantity() bool {
+	if o != nil && !IsNil(o.MinOrderQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinOrderQuantity gets a reference to the given float32 and assigns it to the MinOrderQuantity field.
+func (o *ProductUpdate) SetMinOrderQuantity(v float32) {
+	o.MinOrderQuantity = &v
+}
+
 func (o ProductUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -3279,6 +3347,12 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PersonalizationDetails) {
 		toSerialize["personalization_details"] = o.PersonalizationDetails
+	}
+	if !IsNil(o.MarketplaceItemProperties) {
+		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
+	}
+	if !IsNil(o.MinOrderQuantity) {
+		toSerialize["min_order_quantity"] = o.MinOrderQuantity
 	}
 	return toSerialize, nil
 }

@@ -91,17 +91,17 @@ type AccountCartAdd struct {
 	// Bol Retailer ID
 	BolRetailerId *int32 `json:"bol_retailer_id,omitempty"`
 	// Subdomain of store
-	BigcartelUserName string `json:"bigcartel_user_name"`
+	BigcartelUserName *string `json:"bigcartel_user_name,omitempty"`
 	// BigCartel account password
-	BigcartelPassword string `json:"bigcartel_password"`
+	BigcartelPassword *string `json:"bigcartel_password,omitempty"`
 	// Bricklink Consumer Key
-	BricklinkConsumerKey string `json:"bricklink_consumer_key"`
+	BricklinkConsumerKey *string `json:"bricklink_consumer_key,omitempty"`
 	// Bricklink Consumer Secret
-	BricklinkConsumerSecret string `json:"bricklink_consumer_secret"`
+	BricklinkConsumerSecret *string `json:"bricklink_consumer_secret,omitempty"`
 	// Bricklink Access Token
-	BricklinkToken string `json:"bricklink_token"`
+	BricklinkToken *string `json:"bricklink_token,omitempty"`
 	// Bricklink Access Token Secret
-	BricklinkTokenSecret string `json:"bricklink_token_secret"`
+	BricklinkTokenSecret *string `json:"bricklink_token_secret,omitempty"`
 	// Demandware client id
 	DemandwareClientId *string `json:"demandware_client_id,omitempty"`
 	// Demandware api password
@@ -271,9 +271,9 @@ type AccountCartAdd struct {
 	// Prestashop webservice key
 	PrestashopWebserviceKey *string `json:"prestashop_webservice_key,omitempty"`
 	// Wix App ID
-	WixAppId string `json:"wix_app_id"`
+	WixAppId *string `json:"wix_app_id,omitempty"`
 	// Wix App Secret Key
-	WixAppSecretKey string `json:"wix_app_secret_key"`
+	WixAppSecretKey *string `json:"wix_app_secret_key,omitempty"`
 	// Wix Instance ID
 	WixInstanceId *string `json:"wix_instance_id,omitempty"`
 	// Wix refresh token
@@ -349,9 +349,9 @@ type AccountCartAdd struct {
 	// Temu App Secret
 	TemuAppSecret *string `json:"temu_app_secret,omitempty"`
 	// Temu Access Token
-	TemuAccessToken string `json:"temu_access_token"`
+	TemuAccessToken *string `json:"temu_access_token,omitempty"`
 	// Temu API endpoint Region.
-	TemuRegion string `json:"temu_region"`
+	TemuRegion *string `json:"temu_region,omitempty"`
 }
 
 type _AccountCartAdd AccountCartAdd
@@ -360,7 +360,7 @@ type _AccountCartAdd AccountCartAdd
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, bricklinkConsumerKey string, bricklinkConsumerSecret string, bricklinkToken string, bricklinkTokenSecret string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string) *AccountCartAdd {
+func NewAccountCartAdd(cartId string) *AccountCartAdd {
 	this := AccountCartAdd{}
 	this.CartId = cartId
 	var validateVersion bool = false
@@ -369,12 +369,6 @@ func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPasswor
 	this.Verify = &verify
 	var amazonSpApiEnvironment string = "production"
 	this.AmazonSpApiEnvironment = &amazonSpApiEnvironment
-	this.BigcartelUserName = bigcartelUserName
-	this.BigcartelPassword = bigcartelPassword
-	this.BricklinkConsumerKey = bricklinkConsumerKey
-	this.BricklinkConsumerSecret = bricklinkConsumerSecret
-	this.BricklinkToken = bricklinkToken
-	this.BricklinkTokenSecret = bricklinkTokenSecret
 	var ebayEnvironment string = "production"
 	this.EbayEnvironment = &ebayEnvironment
 	var ebaySiteId int32 = 0
@@ -385,14 +379,10 @@ func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPasswor
 	this.WalmartRegion = &walmartRegion
 	var shopeeEnvironment string = "production"
 	this.ShopeeEnvironment = &shopeeEnvironment
-	this.WixAppId = wixAppId
-	this.WixAppSecretKey = wixAppSecretKey
 	var allegroEnvironment string = "production"
 	this.AllegroEnvironment = &allegroEnvironment
 	var ottoEnvironment string = "production"
 	this.OttoEnvironment = &ottoEnvironment
-	this.TemuAccessToken = temuAccessToken
-	this.TemuRegion = temuRegion
 	return &this
 }
 
@@ -1504,148 +1494,196 @@ func (o *AccountCartAdd) SetBolRetailerId(v int32) {
 	o.BolRetailerId = &v
 }
 
-// GetBigcartelUserName returns the BigcartelUserName field value
+// GetBigcartelUserName returns the BigcartelUserName field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBigcartelUserName() string {
-	if o == nil {
+	if o == nil || IsNil(o.BigcartelUserName) {
 		var ret string
 		return ret
 	}
-
-	return o.BigcartelUserName
+	return *o.BigcartelUserName
 }
 
-// GetBigcartelUserNameOk returns a tuple with the BigcartelUserName field value
+// GetBigcartelUserNameOk returns a tuple with the BigcartelUserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBigcartelUserNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BigcartelUserName) {
 		return nil, false
 	}
-	return &o.BigcartelUserName, true
+	return o.BigcartelUserName, true
 }
 
-// SetBigcartelUserName sets field value
+// HasBigcartelUserName returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBigcartelUserName() bool {
+	if o != nil && !IsNil(o.BigcartelUserName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBigcartelUserName gets a reference to the given string and assigns it to the BigcartelUserName field.
 func (o *AccountCartAdd) SetBigcartelUserName(v string) {
-	o.BigcartelUserName = v
+	o.BigcartelUserName = &v
 }
 
-// GetBigcartelPassword returns the BigcartelPassword field value
+// GetBigcartelPassword returns the BigcartelPassword field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBigcartelPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.BigcartelPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.BigcartelPassword
+	return *o.BigcartelPassword
 }
 
-// GetBigcartelPasswordOk returns a tuple with the BigcartelPassword field value
+// GetBigcartelPasswordOk returns a tuple with the BigcartelPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBigcartelPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BigcartelPassword) {
 		return nil, false
 	}
-	return &o.BigcartelPassword, true
+	return o.BigcartelPassword, true
 }
 
-// SetBigcartelPassword sets field value
+// HasBigcartelPassword returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBigcartelPassword() bool {
+	if o != nil && !IsNil(o.BigcartelPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetBigcartelPassword gets a reference to the given string and assigns it to the BigcartelPassword field.
 func (o *AccountCartAdd) SetBigcartelPassword(v string) {
-	o.BigcartelPassword = v
+	o.BigcartelPassword = &v
 }
 
-// GetBricklinkConsumerKey returns the BricklinkConsumerKey field value
+// GetBricklinkConsumerKey returns the BricklinkConsumerKey field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBricklinkConsumerKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkConsumerKey) {
 		var ret string
 		return ret
 	}
-
-	return o.BricklinkConsumerKey
+	return *o.BricklinkConsumerKey
 }
 
-// GetBricklinkConsumerKeyOk returns a tuple with the BricklinkConsumerKey field value
+// GetBricklinkConsumerKeyOk returns a tuple with the BricklinkConsumerKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBricklinkConsumerKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkConsumerKey) {
 		return nil, false
 	}
-	return &o.BricklinkConsumerKey, true
+	return o.BricklinkConsumerKey, true
 }
 
-// SetBricklinkConsumerKey sets field value
+// HasBricklinkConsumerKey returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBricklinkConsumerKey() bool {
+	if o != nil && !IsNil(o.BricklinkConsumerKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetBricklinkConsumerKey gets a reference to the given string and assigns it to the BricklinkConsumerKey field.
 func (o *AccountCartAdd) SetBricklinkConsumerKey(v string) {
-	o.BricklinkConsumerKey = v
+	o.BricklinkConsumerKey = &v
 }
 
-// GetBricklinkConsumerSecret returns the BricklinkConsumerSecret field value
+// GetBricklinkConsumerSecret returns the BricklinkConsumerSecret field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBricklinkConsumerSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkConsumerSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.BricklinkConsumerSecret
+	return *o.BricklinkConsumerSecret
 }
 
-// GetBricklinkConsumerSecretOk returns a tuple with the BricklinkConsumerSecret field value
+// GetBricklinkConsumerSecretOk returns a tuple with the BricklinkConsumerSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBricklinkConsumerSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkConsumerSecret) {
 		return nil, false
 	}
-	return &o.BricklinkConsumerSecret, true
+	return o.BricklinkConsumerSecret, true
 }
 
-// SetBricklinkConsumerSecret sets field value
+// HasBricklinkConsumerSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBricklinkConsumerSecret() bool {
+	if o != nil && !IsNil(o.BricklinkConsumerSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetBricklinkConsumerSecret gets a reference to the given string and assigns it to the BricklinkConsumerSecret field.
 func (o *AccountCartAdd) SetBricklinkConsumerSecret(v string) {
-	o.BricklinkConsumerSecret = v
+	o.BricklinkConsumerSecret = &v
 }
 
-// GetBricklinkToken returns the BricklinkToken field value
+// GetBricklinkToken returns the BricklinkToken field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBricklinkToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkToken) {
 		var ret string
 		return ret
 	}
-
-	return o.BricklinkToken
+	return *o.BricklinkToken
 }
 
-// GetBricklinkTokenOk returns a tuple with the BricklinkToken field value
+// GetBricklinkTokenOk returns a tuple with the BricklinkToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBricklinkTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkToken) {
 		return nil, false
 	}
-	return &o.BricklinkToken, true
+	return o.BricklinkToken, true
 }
 
-// SetBricklinkToken sets field value
+// HasBricklinkToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBricklinkToken() bool {
+	if o != nil && !IsNil(o.BricklinkToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetBricklinkToken gets a reference to the given string and assigns it to the BricklinkToken field.
 func (o *AccountCartAdd) SetBricklinkToken(v string) {
-	o.BricklinkToken = v
+	o.BricklinkToken = &v
 }
 
-// GetBricklinkTokenSecret returns the BricklinkTokenSecret field value
+// GetBricklinkTokenSecret returns the BricklinkTokenSecret field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetBricklinkTokenSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkTokenSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.BricklinkTokenSecret
+	return *o.BricklinkTokenSecret
 }
 
-// GetBricklinkTokenSecretOk returns a tuple with the BricklinkTokenSecret field value
+// GetBricklinkTokenSecretOk returns a tuple with the BricklinkTokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetBricklinkTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BricklinkTokenSecret) {
 		return nil, false
 	}
-	return &o.BricklinkTokenSecret, true
+	return o.BricklinkTokenSecret, true
 }
 
-// SetBricklinkTokenSecret sets field value
+// HasBricklinkTokenSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasBricklinkTokenSecret() bool {
+	if o != nil && !IsNil(o.BricklinkTokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetBricklinkTokenSecret gets a reference to the given string and assigns it to the BricklinkTokenSecret field.
 func (o *AccountCartAdd) SetBricklinkTokenSecret(v string) {
-	o.BricklinkTokenSecret = v
+	o.BricklinkTokenSecret = &v
 }
 
 // GetDemandwareClientId returns the DemandwareClientId field value if set, zero value otherwise.
@@ -4336,52 +4374,68 @@ func (o *AccountCartAdd) SetPrestashopWebserviceKey(v string) {
 	o.PrestashopWebserviceKey = &v
 }
 
-// GetWixAppId returns the WixAppId field value
+// GetWixAppId returns the WixAppId field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetWixAppId() string {
-	if o == nil {
+	if o == nil || IsNil(o.WixAppId) {
 		var ret string
 		return ret
 	}
-
-	return o.WixAppId
+	return *o.WixAppId
 }
 
-// GetWixAppIdOk returns a tuple with the WixAppId field value
+// GetWixAppIdOk returns a tuple with the WixAppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetWixAppIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WixAppId) {
 		return nil, false
 	}
-	return &o.WixAppId, true
+	return o.WixAppId, true
 }
 
-// SetWixAppId sets field value
+// HasWixAppId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasWixAppId() bool {
+	if o != nil && !IsNil(o.WixAppId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWixAppId gets a reference to the given string and assigns it to the WixAppId field.
 func (o *AccountCartAdd) SetWixAppId(v string) {
-	o.WixAppId = v
+	o.WixAppId = &v
 }
 
-// GetWixAppSecretKey returns the WixAppSecretKey field value
+// GetWixAppSecretKey returns the WixAppSecretKey field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetWixAppSecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.WixAppSecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.WixAppSecretKey
+	return *o.WixAppSecretKey
 }
 
-// GetWixAppSecretKeyOk returns a tuple with the WixAppSecretKey field value
+// GetWixAppSecretKeyOk returns a tuple with the WixAppSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetWixAppSecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WixAppSecretKey) {
 		return nil, false
 	}
-	return &o.WixAppSecretKey, true
+	return o.WixAppSecretKey, true
 }
 
-// SetWixAppSecretKey sets field value
+// HasWixAppSecretKey returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasWixAppSecretKey() bool {
+	if o != nil && !IsNil(o.WixAppSecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetWixAppSecretKey gets a reference to the given string and assigns it to the WixAppSecretKey field.
 func (o *AccountCartAdd) SetWixAppSecretKey(v string) {
-	o.WixAppSecretKey = v
+	o.WixAppSecretKey = &v
 }
 
 // GetWixInstanceId returns the WixInstanceId field value if set, zero value otherwise.
@@ -5568,52 +5622,68 @@ func (o *AccountCartAdd) SetTemuAppSecret(v string) {
 	o.TemuAppSecret = &v
 }
 
-// GetTemuAccessToken returns the TemuAccessToken field value
+// GetTemuAccessToken returns the TemuAccessToken field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetTemuAccessToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.TemuAccessToken) {
 		var ret string
 		return ret
 	}
-
-	return o.TemuAccessToken
+	return *o.TemuAccessToken
 }
 
-// GetTemuAccessTokenOk returns a tuple with the TemuAccessToken field value
+// GetTemuAccessTokenOk returns a tuple with the TemuAccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetTemuAccessTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TemuAccessToken) {
 		return nil, false
 	}
-	return &o.TemuAccessToken, true
+	return o.TemuAccessToken, true
 }
 
-// SetTemuAccessToken sets field value
+// HasTemuAccessToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasTemuAccessToken() bool {
+	if o != nil && !IsNil(o.TemuAccessToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemuAccessToken gets a reference to the given string and assigns it to the TemuAccessToken field.
 func (o *AccountCartAdd) SetTemuAccessToken(v string) {
-	o.TemuAccessToken = v
+	o.TemuAccessToken = &v
 }
 
-// GetTemuRegion returns the TemuRegion field value
+// GetTemuRegion returns the TemuRegion field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetTemuRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.TemuRegion) {
 		var ret string
 		return ret
 	}
-
-	return o.TemuRegion
+	return *o.TemuRegion
 }
 
-// GetTemuRegionOk returns a tuple with the TemuRegion field value
+// GetTemuRegionOk returns a tuple with the TemuRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountCartAdd) GetTemuRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TemuRegion) {
 		return nil, false
 	}
-	return &o.TemuRegion, true
+	return o.TemuRegion, true
 }
 
-// SetTemuRegion sets field value
+// HasTemuRegion returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasTemuRegion() bool {
+	if o != nil && !IsNil(o.TemuRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemuRegion gets a reference to the given string and assigns it to the TemuRegion field.
 func (o *AccountCartAdd) SetTemuRegion(v string) {
-	o.TemuRegion = v
+	o.TemuRegion = &v
 }
 
 func (o AccountCartAdd) MarshalJSON() ([]byte, error) {
@@ -5726,12 +5796,24 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BolRetailerId) {
 		toSerialize["bol_retailer_id"] = o.BolRetailerId
 	}
-	toSerialize["bigcartel_user_name"] = o.BigcartelUserName
-	toSerialize["bigcartel_password"] = o.BigcartelPassword
-	toSerialize["bricklink_consumer_key"] = o.BricklinkConsumerKey
-	toSerialize["bricklink_consumer_secret"] = o.BricklinkConsumerSecret
-	toSerialize["bricklink_token"] = o.BricklinkToken
-	toSerialize["bricklink_token_secret"] = o.BricklinkTokenSecret
+	if !IsNil(o.BigcartelUserName) {
+		toSerialize["bigcartel_user_name"] = o.BigcartelUserName
+	}
+	if !IsNil(o.BigcartelPassword) {
+		toSerialize["bigcartel_password"] = o.BigcartelPassword
+	}
+	if !IsNil(o.BricklinkConsumerKey) {
+		toSerialize["bricklink_consumer_key"] = o.BricklinkConsumerKey
+	}
+	if !IsNil(o.BricklinkConsumerSecret) {
+		toSerialize["bricklink_consumer_secret"] = o.BricklinkConsumerSecret
+	}
+	if !IsNil(o.BricklinkToken) {
+		toSerialize["bricklink_token"] = o.BricklinkToken
+	}
+	if !IsNil(o.BricklinkTokenSecret) {
+		toSerialize["bricklink_token_secret"] = o.BricklinkTokenSecret
+	}
 	if !IsNil(o.DemandwareClientId) {
 		toSerialize["demandware_client_id"] = o.DemandwareClientId
 	}
@@ -5984,8 +6066,12 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrestashopWebserviceKey) {
 		toSerialize["prestashop_webservice_key"] = o.PrestashopWebserviceKey
 	}
-	toSerialize["wix_app_id"] = o.WixAppId
-	toSerialize["wix_app_secret_key"] = o.WixAppSecretKey
+	if !IsNil(o.WixAppId) {
+		toSerialize["wix_app_id"] = o.WixAppId
+	}
+	if !IsNil(o.WixAppSecretKey) {
+		toSerialize["wix_app_secret_key"] = o.WixAppSecretKey
+	}
 	if !IsNil(o.WixInstanceId) {
 		toSerialize["wix_instance_id"] = o.WixInstanceId
 	}
@@ -6097,8 +6183,12 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TemuAppSecret) {
 		toSerialize["temu_app_secret"] = o.TemuAppSecret
 	}
-	toSerialize["temu_access_token"] = o.TemuAccessToken
-	toSerialize["temu_region"] = o.TemuRegion
+	if !IsNil(o.TemuAccessToken) {
+		toSerialize["temu_access_token"] = o.TemuAccessToken
+	}
+	if !IsNil(o.TemuRegion) {
+		toSerialize["temu_region"] = o.TemuRegion
+	}
 	return toSerialize, nil
 }
 
@@ -6108,16 +6198,6 @@ func (o *AccountCartAdd) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"cart_id",
-		"bigcartel_user_name",
-		"bigcartel_password",
-		"bricklink_consumer_key",
-		"bricklink_consumer_secret",
-		"bricklink_token",
-		"bricklink_token_secret",
-		"wix_app_id",
-		"wix_app_secret_key",
-		"temu_access_token",
-		"temu_region",
 	}
 
 	allProperties := make(map[string]interface{})

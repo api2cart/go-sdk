@@ -34,10 +34,10 @@ Name | Type | Description | Notes
 **WeightUnit** | Pointer to **NullableString** |  | [optional] 
 **SortOrder** | Pointer to **NullableInt32** |  | [optional] 
 **InStock** | Pointer to **NullableBool** |  | [optional] 
-**OnSale** | Pointer to **NullableBool** |  | [optional] 
 **Backorders** | Pointer to **NullableString** |  | [optional] 
 **ManageStock** | Pointer to **NullableString** |  | [optional] 
 **IsStockManaged** | Pointer to **NullableBool** |  | [optional] 
+**OnSale** | Pointer to **NullableBool** |  | [optional] 
 **CreateAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **ModifiedAt** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **TaxClassId** | Pointer to **NullableString** |  | [optional] 
@@ -1071,41 +1071,6 @@ HasInStock returns a boolean if a field has been set.
 `func (o *Product) UnsetInStock()`
 
 UnsetInStock ensures that no value is present for InStock, not even an explicit nil
-### GetOnSale
-
-`func (o *Product) GetOnSale() bool`
-
-GetOnSale returns the OnSale field if non-nil, zero value otherwise.
-
-### GetOnSaleOk
-
-`func (o *Product) GetOnSaleOk() (*bool, bool)`
-
-GetOnSaleOk returns a tuple with the OnSale field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOnSale
-
-`func (o *Product) SetOnSale(v bool)`
-
-SetOnSale sets OnSale field to given value.
-
-### HasOnSale
-
-`func (o *Product) HasOnSale() bool`
-
-HasOnSale returns a boolean if a field has been set.
-
-### SetOnSaleNil
-
-`func (o *Product) SetOnSaleNil(b bool)`
-
- SetOnSaleNil sets the value for OnSale to be an explicit nil
-
-### UnsetOnSale
-`func (o *Product) UnsetOnSale()`
-
-UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
 ### GetBackorders
 
 `func (o *Product) GetBackorders() string`
@@ -1211,6 +1176,41 @@ HasIsStockManaged returns a boolean if a field has been set.
 `func (o *Product) UnsetIsStockManaged()`
 
 UnsetIsStockManaged ensures that no value is present for IsStockManaged, not even an explicit nil
+### GetOnSale
+
+`func (o *Product) GetOnSale() bool`
+
+GetOnSale returns the OnSale field if non-nil, zero value otherwise.
+
+### GetOnSaleOk
+
+`func (o *Product) GetOnSaleOk() (*bool, bool)`
+
+GetOnSaleOk returns a tuple with the OnSale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnSale
+
+`func (o *Product) SetOnSale(v bool)`
+
+SetOnSale sets OnSale field to given value.
+
+### HasOnSale
+
+`func (o *Product) HasOnSale() bool`
+
+HasOnSale returns a boolean if a field has been set.
+
+### SetOnSaleNil
+
+`func (o *Product) SetOnSaleNil(b bool)`
+
+ SetOnSaleNil sets the value for OnSale to be an explicit nil
+
+### UnsetOnSale
+`func (o *Product) UnsetOnSale()`
+
+UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
 ### GetCreateAt
 
 `func (o *Product) GetCreateAt() A2CDateTime`

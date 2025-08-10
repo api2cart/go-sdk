@@ -90,6 +90,8 @@ Name | Type | Description | Notes
 **Specifics** | Pointer to [**[]ProductAddSpecificsInner**](ProductAddSpecificsInner.md) | An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields-&gt;product_specifics).         &lt;b&gt;The structure of the parameter is different for specific platforms.&lt;/b&gt; | [optional] 
 **ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
+**MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
+**MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
 
 ## Methods
 
@@ -2259,6 +2261,56 @@ SetPersonalizationDetails sets PersonalizationDetails field to given value.
 `func (o *ProductUpdate) HasPersonalizationDetails() bool`
 
 HasPersonalizationDetails returns a boolean if a field has been set.
+
+### GetMarketplaceItemProperties
+
+`func (o *ProductUpdate) GetMarketplaceItemProperties() string`
+
+GetMarketplaceItemProperties returns the MarketplaceItemProperties field if non-nil, zero value otherwise.
+
+### GetMarketplaceItemPropertiesOk
+
+`func (o *ProductUpdate) GetMarketplaceItemPropertiesOk() (*string, bool)`
+
+GetMarketplaceItemPropertiesOk returns a tuple with the MarketplaceItemProperties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketplaceItemProperties
+
+`func (o *ProductUpdate) SetMarketplaceItemProperties(v string)`
+
+SetMarketplaceItemProperties sets MarketplaceItemProperties field to given value.
+
+### HasMarketplaceItemProperties
+
+`func (o *ProductUpdate) HasMarketplaceItemProperties() bool`
+
+HasMarketplaceItemProperties returns a boolean if a field has been set.
+
+### GetMinOrderQuantity
+
+`func (o *ProductUpdate) GetMinOrderQuantity() float32`
+
+GetMinOrderQuantity returns the MinOrderQuantity field if non-nil, zero value otherwise.
+
+### GetMinOrderQuantityOk
+
+`func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool)`
+
+GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinOrderQuantity
+
+`func (o *ProductUpdate) SetMinOrderQuantity(v float32)`
+
+SetMinOrderQuantity sets MinOrderQuantity field to given value.
+
+### HasMinOrderQuantity
+
+`func (o *ProductUpdate) HasMinOrderQuantity() bool`
+
+HasMinOrderQuantity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

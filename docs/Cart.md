@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** |  | [optional] 
 **Url** | Pointer to **NullableString** |  | [optional] 
 **Version** | Pointer to **NullableString** |  | [optional] 
+**BridgeVersion** | Pointer to **NullableString** |  | [optional] 
 **DbPrefix** | Pointer to **NullableString** |  | [optional] 
 **StoresInfo** | Pointer to [**[]CartStoreInfo**](CartStoreInfo.md) |  | [optional] 
 **Warehouses** | Pointer to [**[]CartWarehouse**](CartWarehouse.md) |  | [optional] 
@@ -138,6 +139,41 @@ HasVersion returns a boolean if a field has been set.
 `func (o *Cart) UnsetVersion()`
 
 UnsetVersion ensures that no value is present for Version, not even an explicit nil
+### GetBridgeVersion
+
+`func (o *Cart) GetBridgeVersion() string`
+
+GetBridgeVersion returns the BridgeVersion field if non-nil, zero value otherwise.
+
+### GetBridgeVersionOk
+
+`func (o *Cart) GetBridgeVersionOk() (*string, bool)`
+
+GetBridgeVersionOk returns a tuple with the BridgeVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBridgeVersion
+
+`func (o *Cart) SetBridgeVersion(v string)`
+
+SetBridgeVersion sets BridgeVersion field to given value.
+
+### HasBridgeVersion
+
+`func (o *Cart) HasBridgeVersion() bool`
+
+HasBridgeVersion returns a boolean if a field has been set.
+
+### SetBridgeVersionNil
+
+`func (o *Cart) SetBridgeVersionNil(b bool)`
+
+ SetBridgeVersionNil sets the value for BridgeVersion to be an explicit nil
+
+### UnsetBridgeVersion
+`func (o *Cart) UnsetBridgeVersion()`
+
+UnsetBridgeVersion ensures that no value is present for BridgeVersion, not even an explicit nil
 ### GetDbPrefix
 
 `func (o *Cart) GetDbPrefix() string`

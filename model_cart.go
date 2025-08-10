@@ -23,6 +23,7 @@ type Cart struct {
 	Name NullableString `json:"name,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Version NullableString `json:"version,omitempty"`
+	BridgeVersion NullableString `json:"bridge_version,omitempty"`
 	DbPrefix NullableString `json:"db_prefix,omitempty"`
 	StoresInfo []CartStoreInfo `json:"stores_info,omitempty"`
 	Warehouses []CartWarehouse `json:"warehouses,omitempty"`
@@ -172,6 +173,48 @@ func (o *Cart) SetVersionNil() {
 // UnsetVersion ensures that no value is present for Version, not even an explicit nil
 func (o *Cart) UnsetVersion() {
 	o.Version.Unset()
+}
+
+// GetBridgeVersion returns the BridgeVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Cart) GetBridgeVersion() string {
+	if o == nil || IsNil(o.BridgeVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BridgeVersion.Get()
+}
+
+// GetBridgeVersionOk returns a tuple with the BridgeVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Cart) GetBridgeVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BridgeVersion.Get(), o.BridgeVersion.IsSet()
+}
+
+// HasBridgeVersion returns a boolean if a field has been set.
+func (o *Cart) HasBridgeVersion() bool {
+	if o != nil && o.BridgeVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBridgeVersion gets a reference to the given NullableString and assigns it to the BridgeVersion field.
+func (o *Cart) SetBridgeVersion(v string) {
+	o.BridgeVersion.Set(&v)
+}
+// SetBridgeVersionNil sets the value for BridgeVersion to be an explicit nil
+func (o *Cart) SetBridgeVersionNil() {
+	o.BridgeVersion.Set(nil)
+}
+
+// UnsetBridgeVersion ensures that no value is present for BridgeVersion, not even an explicit nil
+func (o *Cart) UnsetBridgeVersion() {
+	o.BridgeVersion.Unset()
 }
 
 // GetDbPrefix returns the DbPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -396,6 +439,9 @@ func (o Cart) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
+	}
+	if o.BridgeVersion.IsSet() {
+		toSerialize["bridge_version"] = o.BridgeVersion.Get()
 	}
 	if o.DbPrefix.IsSet() {
 		toSerialize["db_prefix"] = o.DbPrefix.Get()

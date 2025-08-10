@@ -50,10 +50,10 @@ type Product struct {
 	WeightUnit NullableString `json:"weight_unit,omitempty"`
 	SortOrder NullableInt32 `json:"sort_order,omitempty"`
 	InStock NullableBool `json:"in_stock,omitempty"`
-	OnSale NullableBool `json:"on_sale,omitempty"`
 	Backorders NullableString `json:"backorders,omitempty"`
 	ManageStock NullableString `json:"manage_stock,omitempty"`
 	IsStockManaged NullableBool `json:"is_stock_managed,omitempty"`
+	OnSale NullableBool `json:"on_sale,omitempty"`
 	CreateAt NullableA2CDateTime `json:"create_at,omitempty"`
 	ModifiedAt NullableA2CDateTime `json:"modified_at,omitempty"`
 	TaxClassId NullableString `json:"tax_class_id,omitempty"`
@@ -1296,48 +1296,6 @@ func (o *Product) UnsetInStock() {
 	o.InStock.Unset()
 }
 
-// GetOnSale returns the OnSale field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Product) GetOnSale() bool {
-	if o == nil || IsNil(o.OnSale.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.OnSale.Get()
-}
-
-// GetOnSaleOk returns a tuple with the OnSale field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Product) GetOnSaleOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OnSale.Get(), o.OnSale.IsSet()
-}
-
-// HasOnSale returns a boolean if a field has been set.
-func (o *Product) HasOnSale() bool {
-	if o != nil && o.OnSale.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOnSale gets a reference to the given NullableBool and assigns it to the OnSale field.
-func (o *Product) SetOnSale(v bool) {
-	o.OnSale.Set(&v)
-}
-// SetOnSaleNil sets the value for OnSale to be an explicit nil
-func (o *Product) SetOnSaleNil() {
-	o.OnSale.Set(nil)
-}
-
-// UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
-func (o *Product) UnsetOnSale() {
-	o.OnSale.Unset()
-}
-
 // GetBackorders returns the Backorders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Product) GetBackorders() string {
 	if o == nil || IsNil(o.Backorders.Get()) {
@@ -1462,6 +1420,48 @@ func (o *Product) SetIsStockManagedNil() {
 // UnsetIsStockManaged ensures that no value is present for IsStockManaged, not even an explicit nil
 func (o *Product) UnsetIsStockManaged() {
 	o.IsStockManaged.Unset()
+}
+
+// GetOnSale returns the OnSale field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Product) GetOnSale() bool {
+	if o == nil || IsNil(o.OnSale.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.OnSale.Get()
+}
+
+// GetOnSaleOk returns a tuple with the OnSale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Product) GetOnSaleOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OnSale.Get(), o.OnSale.IsSet()
+}
+
+// HasOnSale returns a boolean if a field has been set.
+func (o *Product) HasOnSale() bool {
+	if o != nil && o.OnSale.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOnSale gets a reference to the given NullableBool and assigns it to the OnSale field.
+func (o *Product) SetOnSale(v bool) {
+	o.OnSale.Set(&v)
+}
+// SetOnSaleNil sets the value for OnSale to be an explicit nil
+func (o *Product) SetOnSaleNil() {
+	o.OnSale.Set(nil)
+}
+
+// UnsetOnSale ensures that no value is present for OnSale, not even an explicit nil
+func (o *Product) UnsetOnSale() {
+	o.OnSale.Unset()
 }
 
 // GetCreateAt returns the CreateAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2432,9 +2432,6 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	if o.InStock.IsSet() {
 		toSerialize["in_stock"] = o.InStock.Get()
 	}
-	if o.OnSale.IsSet() {
-		toSerialize["on_sale"] = o.OnSale.Get()
-	}
 	if o.Backorders.IsSet() {
 		toSerialize["backorders"] = o.Backorders.Get()
 	}
@@ -2443,6 +2440,9 @@ func (o Product) ToMap() (map[string]interface{}, error) {
 	}
 	if o.IsStockManaged.IsSet() {
 		toSerialize["is_stock_managed"] = o.IsStockManaged.Get()
+	}
+	if o.OnSale.IsSet() {
+		toSerialize["on_sale"] = o.OnSale.Get()
 	}
 	if o.CreateAt.IsSet() {
 		toSerialize["create_at"] = o.CreateAt.Get()

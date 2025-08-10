@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	accountCartAdd := *openapiclient.NewAccountCartAdd("Opencart14", "subdomain", "4GrrZCLNNoSUuhAjesKuchxo9SL", "26F6CDA087D9444EAA71AC09E7A1D39A", "a46abc3kxyinlbggy06i9g975xqo6gjq", "ktv4n9rgrj0evjuy2t6p2xlb1f8u5pmy", "a46abc3kxyinlbggy06i9g975xqo6gjq", "6b0b5b7b-7d87-45b5-bf34-ac6b438e63da", "316c0a09-f195-42be-74f6-a02cebb9cae6", "uplv3hfyt5kcwoymrgnajnbl1ow5qxlz4sqhev6hl3xosz5dejrtyl2jre6", "US") // AccountCartAdd | 
+	accountCartAdd := *openapiclient.NewAccountCartAdd("Opencart14") // AccountCartAdd | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

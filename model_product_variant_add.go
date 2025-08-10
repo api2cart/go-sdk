@@ -38,6 +38,8 @@ type ProductVariantAdd struct {
 	AvailableForView *bool `json:"available_for_view,omitempty"`
 	// Specifies the set of visible/invisible product's variants for sale
 	AvailableForSale *bool `json:"available_for_sale,omitempty"`
+	// Defines status
+	Status *string `json:"status,omitempty"`
 	// Defines whether the product is virtual
 	IsVirtual *bool `json:"is_virtual,omitempty"`
 	// Defines as a default variant
@@ -100,6 +102,8 @@ type ProductVariantAdd struct {
 	Mpn *string `json:"mpn,omitempty"`
 	// International Standard Book Number. An ISBN is a unique identifier for books.
 	Isbn *string `json:"isbn,omitempty"`
+	// Defines unique URL for SEO
+	SeoUrl *string `json:"seo_url,omitempty"`
 	// Specifies the product variant's manufacturer
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	// Defines the date of entity creation
@@ -424,6 +428,38 @@ func (o *ProductVariantAdd) HasAvailableForSale() bool {
 // SetAvailableForSale gets a reference to the given bool and assigns it to the AvailableForSale field.
 func (o *ProductVariantAdd) SetAvailableForSale(v bool) {
 	o.AvailableForSale = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ProductVariantAdd) SetStatus(v string) {
+	o.Status = &v
 }
 
 // GetIsVirtual returns the IsVirtual field value if set, zero value otherwise.
@@ -1418,6 +1454,38 @@ func (o *ProductVariantAdd) SetIsbn(v string) {
 	o.Isbn = &v
 }
 
+// GetSeoUrl returns the SeoUrl field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetSeoUrl() string {
+	if o == nil || IsNil(o.SeoUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SeoUrl
+}
+
+// GetSeoUrlOk returns a tuple with the SeoUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetSeoUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SeoUrl) {
+		return nil, false
+	}
+	return o.SeoUrl, true
+}
+
+// HasSeoUrl returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasSeoUrl() bool {
+	if o != nil && !IsNil(o.SeoUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeoUrl gets a reference to the given string and assigns it to the SeoUrl field.
+func (o *ProductVariantAdd) SetSeoUrl(v string) {
+	o.SeoUrl = &v
+}
+
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *ProductVariantAdd) GetManufacturer() string {
 	if o == nil || IsNil(o.Manufacturer) {
@@ -1898,6 +1966,9 @@ func (o ProductVariantAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AvailableForSale) {
 		toSerialize["available_for_sale"] = o.AvailableForSale
 	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if !IsNil(o.IsVirtual) {
 		toSerialize["is_virtual"] = o.IsVirtual
 	}
@@ -1990,6 +2061,9 @@ func (o ProductVariantAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Isbn) {
 		toSerialize["isbn"] = o.Isbn
+	}
+	if !IsNil(o.SeoUrl) {
+		toSerialize["seo_url"] = o.SeoUrl
 	}
 	if !IsNil(o.Manufacturer) {
 		toSerialize["manufacturer"] = o.Manufacturer

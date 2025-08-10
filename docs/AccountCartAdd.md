@@ -38,12 +38,12 @@ Name | Type | Description | Notes
 **BolApiKey** | Pointer to **string** | Bol API Key | [optional] 
 **BolApiSecret** | Pointer to **string** | Bol API Secret | [optional] 
 **BolRetailerId** | Pointer to **int32** | Bol Retailer ID | [optional] 
-**BigcartelUserName** | **string** | Subdomain of store | 
-**BigcartelPassword** | **string** | BigCartel account password | 
-**BricklinkConsumerKey** | **string** | Bricklink Consumer Key | 
-**BricklinkConsumerSecret** | **string** | Bricklink Consumer Secret | 
-**BricklinkToken** | **string** | Bricklink Access Token | 
-**BricklinkTokenSecret** | **string** | Bricklink Access Token Secret | 
+**BigcartelUserName** | Pointer to **string** | Subdomain of store | [optional] 
+**BigcartelPassword** | Pointer to **string** | BigCartel account password | [optional] 
+**BricklinkConsumerKey** | Pointer to **string** | Bricklink Consumer Key | [optional] 
+**BricklinkConsumerSecret** | Pointer to **string** | Bricklink Consumer Secret | [optional] 
+**BricklinkToken** | Pointer to **string** | Bricklink Access Token | [optional] 
+**BricklinkTokenSecret** | Pointer to **string** | Bricklink Access Token Secret | [optional] 
 **DemandwareClientId** | Pointer to **string** | Demandware client id | [optional] 
 **DemandwareApiPassword** | Pointer to **string** | Demandware api password | [optional] 
 **DemandwareUserName** | Pointer to **string** | Demandware user name | [optional] 
@@ -128,8 +128,8 @@ Name | Type | Description | Notes
 **MagentoAccessToken** | Pointer to **string** | Magento Access Token | [optional] 
 **MagentoTokenSecret** | Pointer to **string** | Magento Token Secret | [optional] 
 **PrestashopWebserviceKey** | Pointer to **string** | Prestashop webservice key | [optional] 
-**WixAppId** | **string** | Wix App ID | 
-**WixAppSecretKey** | **string** | Wix App Secret Key | 
+**WixAppId** | Pointer to **string** | Wix App ID | [optional] 
+**WixAppSecretKey** | Pointer to **string** | Wix App Secret Key | [optional] 
 **WixInstanceId** | Pointer to **string** | Wix Instance ID | [optional] 
 **WixRefreshToken** | Pointer to **string** | Wix refresh token | [optional] 
 **MercadoLibreAppId** | Pointer to **string** | Mercado Libre App ID | [optional] 
@@ -167,14 +167,14 @@ Name | Type | Description | Notes
 **SallaAccessToken** | Pointer to **string** | Salla Access Token | [optional] 
 **TemuAppKey** | Pointer to **string** | Temu App Key | [optional] 
 **TemuAppSecret** | Pointer to **string** | Temu App Secret | [optional] 
-**TemuAccessToken** | **string** | Temu Access Token | 
-**TemuRegion** | **string** | Temu API endpoint Region. | 
+**TemuAccessToken** | Pointer to **string** | Temu Access Token | [optional] 
+**TemuRegion** | Pointer to **string** | Temu API endpoint Region. | [optional] 
 
 ## Methods
 
 ### NewAccountCartAdd
 
-`func NewAccountCartAdd(cartId string, bigcartelUserName string, bigcartelPassword string, bricklinkConsumerKey string, bricklinkConsumerSecret string, bricklinkToken string, bricklinkTokenSecret string, wixAppId string, wixAppSecretKey string, temuAccessToken string, temuRegion string, ) *AccountCartAdd`
+`func NewAccountCartAdd(cartId string, ) *AccountCartAdd`
 
 NewAccountCartAdd instantiates a new AccountCartAdd object
 This constructor will assign default values to properties that have it defined,
@@ -1053,6 +1053,11 @@ and a boolean to check if the value has been set.
 
 SetBigcartelUserName sets BigcartelUserName field to given value.
 
+### HasBigcartelUserName
+
+`func (o *AccountCartAdd) HasBigcartelUserName() bool`
+
+HasBigcartelUserName returns a boolean if a field has been set.
 
 ### GetBigcartelPassword
 
@@ -1073,6 +1078,11 @@ and a boolean to check if the value has been set.
 
 SetBigcartelPassword sets BigcartelPassword field to given value.
 
+### HasBigcartelPassword
+
+`func (o *AccountCartAdd) HasBigcartelPassword() bool`
+
+HasBigcartelPassword returns a boolean if a field has been set.
 
 ### GetBricklinkConsumerKey
 
@@ -1093,6 +1103,11 @@ and a boolean to check if the value has been set.
 
 SetBricklinkConsumerKey sets BricklinkConsumerKey field to given value.
 
+### HasBricklinkConsumerKey
+
+`func (o *AccountCartAdd) HasBricklinkConsumerKey() bool`
+
+HasBricklinkConsumerKey returns a boolean if a field has been set.
 
 ### GetBricklinkConsumerSecret
 
@@ -1113,6 +1128,11 @@ and a boolean to check if the value has been set.
 
 SetBricklinkConsumerSecret sets BricklinkConsumerSecret field to given value.
 
+### HasBricklinkConsumerSecret
+
+`func (o *AccountCartAdd) HasBricklinkConsumerSecret() bool`
+
+HasBricklinkConsumerSecret returns a boolean if a field has been set.
 
 ### GetBricklinkToken
 
@@ -1133,6 +1153,11 @@ and a boolean to check if the value has been set.
 
 SetBricklinkToken sets BricklinkToken field to given value.
 
+### HasBricklinkToken
+
+`func (o *AccountCartAdd) HasBricklinkToken() bool`
+
+HasBricklinkToken returns a boolean if a field has been set.
 
 ### GetBricklinkTokenSecret
 
@@ -1153,6 +1178,11 @@ and a boolean to check if the value has been set.
 
 SetBricklinkTokenSecret sets BricklinkTokenSecret field to given value.
 
+### HasBricklinkTokenSecret
+
+`func (o *AccountCartAdd) HasBricklinkTokenSecret() bool`
+
+HasBricklinkTokenSecret returns a boolean if a field has been set.
 
 ### GetDemandwareClientId
 
@@ -3273,6 +3303,11 @@ and a boolean to check if the value has been set.
 
 SetWixAppId sets WixAppId field to given value.
 
+### HasWixAppId
+
+`func (o *AccountCartAdd) HasWixAppId() bool`
+
+HasWixAppId returns a boolean if a field has been set.
 
 ### GetWixAppSecretKey
 
@@ -3293,6 +3328,11 @@ and a boolean to check if the value has been set.
 
 SetWixAppSecretKey sets WixAppSecretKey field to given value.
 
+### HasWixAppSecretKey
+
+`func (o *AccountCartAdd) HasWixAppSecretKey() bool`
+
+HasWixAppSecretKey returns a boolean if a field has been set.
 
 ### GetWixInstanceId
 
@@ -4238,6 +4278,11 @@ and a boolean to check if the value has been set.
 
 SetTemuAccessToken sets TemuAccessToken field to given value.
 
+### HasTemuAccessToken
+
+`func (o *AccountCartAdd) HasTemuAccessToken() bool`
+
+HasTemuAccessToken returns a boolean if a field has been set.
 
 ### GetTemuRegion
 
@@ -4258,6 +4303,11 @@ and a boolean to check if the value has been set.
 
 SetTemuRegion sets TemuRegion field to given value.
 
+### HasTemuRegion
+
+`func (o *AccountCartAdd) HasTemuRegion() bool`
+
+HasTemuRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

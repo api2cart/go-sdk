@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ShortDescription** | Pointer to **string** | Defines short description | [optional] 
 **AvailableForView** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for users | [optional] [default to true]
 **AvailableForSale** | Pointer to **bool** | Specifies the set of visible/invisible product&#39;s variants for sale | [optional] [default to true]
+**Status** | Pointer to **string** | Defines status | [optional] 
 **IsVirtual** | Pointer to **bool** | Defines whether the product is virtual | [optional] [default to false]
 **IsDefault** | Pointer to **bool** | Defines as a default variant | [optional] 
 **StoreId** | Pointer to **string** | Add variants specified by store id | [optional] 
@@ -43,6 +44,7 @@ Name | Type | Description | Notes
 **Ean** | Pointer to **string** | European Article Number. An EAN is a unique 8 or 13-digit identifier that many industries (such as book publishers) use to identify products. | [optional] 
 **Mpn** | Pointer to **string** | Manufacturer Part Number. A MPN is an identifier of a particular part design or material used. | [optional] 
 **Isbn** | Pointer to **string** | International Standard Book Number. An ISBN is a unique identifier for books. | [optional] 
+**SeoUrl** | Pointer to **string** | Defines unique URL for SEO | [optional] 
 **Manufacturer** | Pointer to **string** | Specifies the product variant&#39;s manufacturer | [optional] 
 **CreatedAt** | Pointer to **string** | Defines the date of entity creation | [optional] 
 **MetaTitle** | Pointer to **string** | Defines unique meta title for each entity | [optional] 
@@ -271,6 +273,31 @@ SetAvailableForSale sets AvailableForSale field to given value.
 `func (o *ProductVariantAdd) HasAvailableForSale() bool`
 
 HasAvailableForSale returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *ProductVariantAdd) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ProductVariantAdd) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ProductVariantAdd) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ProductVariantAdd) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetIsVirtual
 
@@ -1046,6 +1073,31 @@ SetIsbn sets Isbn field to given value.
 `func (o *ProductVariantAdd) HasIsbn() bool`
 
 HasIsbn returns a boolean if a field has been set.
+
+### GetSeoUrl
+
+`func (o *ProductVariantAdd) GetSeoUrl() string`
+
+GetSeoUrl returns the SeoUrl field if non-nil, zero value otherwise.
+
+### GetSeoUrlOk
+
+`func (o *ProductVariantAdd) GetSeoUrlOk() (*string, bool)`
+
+GetSeoUrlOk returns a tuple with the SeoUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeoUrl
+
+`func (o *ProductVariantAdd) SetSeoUrl(v string)`
+
+SetSeoUrl sets SeoUrl field to given value.
+
+### HasSeoUrl
+
+`func (o *ProductVariantAdd) HasSeoUrl() bool`
+
+HasSeoUrl returns a boolean if a field has been set.
 
 ### GetManufacturer
 
