@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 ## CartCouponList
 
-> ModelResponseCartCouponList CartCouponList(ctx).Start(start).Count(count).PageCursor(pageCursor).CouponsIds(couponsIds).StoreId(storeId).LangId(langId).Avail(avail).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseCartCouponList CartCouponList(ctx).Start(start).Count(count).PageCursor(pageCursor).CouponsIds(couponsIds).StoreId(storeId).LangId(langId).Avail(avail).Status(status).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 cart.coupon.list
 
@@ -489,6 +489,7 @@ func main() {
 	storeId := "1" // string | Filter coupons by store id (optional)
 	langId := "3" // string | Language id (optional)
 	avail := false // bool | Filter coupons by avail status (optional)
+	status := "disabled" // string | Defines coupon's status (optional)
 	dateStartFrom := "2016-12-29 16:44:30" // string | Filter entity by date_start (greater or equal) (optional)
 	dateStartTo := "2016-12-29 16:44:30" // string | Filter entity by date_start (less or equal) (optional)
 	dateEndFrom := "2016-12-29 16:44:30" // string | Filter entity by date_end (greater or equal) (optional)
@@ -499,7 +500,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartCouponList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).CouponsIds(couponsIds).StoreId(storeId).LangId(langId).Avail(avail).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.CartAPI.CartCouponList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).CouponsIds(couponsIds).StoreId(storeId).LangId(langId).Avail(avail).Status(status).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartCouponList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -527,6 +528,7 @@ Name | Type | Description  | Notes
  **storeId** | **string** | Filter coupons by store id | 
  **langId** | **string** | Language id | 
  **avail** | **bool** | Filter coupons by avail status | 
+ **status** | **string** | Defines coupon&#39;s status | 
  **dateStartFrom** | **string** | Filter entity by date_start (greater or equal) | 
  **dateStartTo** | **string** | Filter entity by date_start (less or equal) | 
  **dateEndFrom** | **string** | Filter entity by date_end (greater or equal) | 

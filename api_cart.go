@@ -1073,6 +1073,7 @@ type ApiCartCouponListRequest struct {
 	storeId *string
 	langId *string
 	avail *bool
+	status *string
 	dateStartFrom *string
 	dateStartTo *string
 	dateEndFrom *string
@@ -1121,6 +1122,12 @@ func (r ApiCartCouponListRequest) LangId(langId string) ApiCartCouponListRequest
 // Filter coupons by avail status
 func (r ApiCartCouponListRequest) Avail(avail bool) ApiCartCouponListRequest {
 	r.avail = &avail
+	return r
+}
+
+// Defines coupon&#39;s status
+func (r ApiCartCouponListRequest) Status(status string) ApiCartCouponListRequest {
+	r.status = &status
 	return r
 }
 
@@ -1232,6 +1239,9 @@ func (a *CartAPIService) CartCouponListExecute(r ApiCartCouponListRequest) (*Mod
 	}
 	if r.avail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
 	}
 	if r.dateStartFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "date_start_from", r.dateStartFrom, "form", "")

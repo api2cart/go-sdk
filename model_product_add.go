@@ -126,6 +126,8 @@ type ProductAdd struct {
 	Asin *string `json:"asin,omitempty"`
 	// Groups all variations, that you want to combine into one product.
 	ProductReference *string `json:"product_reference,omitempty"`
+	// External product link
+	ExternalProductLink *string `json:"external_product_link,omitempty"`
 	// Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes
 	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
 	// The country where the inventory item was made
@@ -1972,6 +1974,38 @@ func (o *ProductAdd) HasProductReference() bool {
 // SetProductReference gets a reference to the given string and assigns it to the ProductReference field.
 func (o *ProductAdd) SetProductReference(v string) {
 	o.ProductReference = &v
+}
+
+// GetExternalProductLink returns the ExternalProductLink field value if set, zero value otherwise.
+func (o *ProductAdd) GetExternalProductLink() string {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalProductLink
+}
+
+// GetExternalProductLinkOk returns a tuple with the ExternalProductLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetExternalProductLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		return nil, false
+	}
+	return o.ExternalProductLink, true
+}
+
+// HasExternalProductLink returns a boolean if a field has been set.
+func (o *ProductAdd) HasExternalProductLink() bool {
+	if o != nil && !IsNil(o.ExternalProductLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalProductLink gets a reference to the given string and assigns it to the ExternalProductLink field.
+func (o *ProductAdd) SetExternalProductLink(v string) {
+	o.ExternalProductLink = &v
 }
 
 // GetHarmonizedSystemCode returns the HarmonizedSystemCode field value if set, zero value otherwise.
@@ -4211,6 +4245,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProductReference) {
 		toSerialize["product_reference"] = o.ProductReference
+	}
+	if !IsNil(o.ExternalProductLink) {
+		toSerialize["external_product_link"] = o.ExternalProductLink
 	}
 	if !IsNil(o.HarmonizedSystemCode) {
 		toSerialize["harmonized_system_code"] = o.HarmonizedSystemCode

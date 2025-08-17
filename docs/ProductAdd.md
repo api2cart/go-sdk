@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **Mpn** | Pointer to **string** | Manufacturer Part Number. A MPN is an identifier of a particular part design or material used. | [optional] 
 **Asin** | Pointer to **string** | Amazon Standard Identification Number. | [optional] 
 **ProductReference** | Pointer to **string** | Groups all variations, that you want to combine into one product. | [optional] 
+**ExternalProductLink** | Pointer to **string** | External product link | [optional] 
 **HarmonizedSystemCode** | Pointer to **string** | Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes | [optional] 
 **CountryOfOrigin** | Pointer to **string** | The country where the inventory item was made | [optional] 
 **Manufacturer** | Pointer to **string** | Defines product&#39;s manufacturer | [optional] 
@@ -1420,6 +1421,31 @@ SetProductReference sets ProductReference field to given value.
 `func (o *ProductAdd) HasProductReference() bool`
 
 HasProductReference returns a boolean if a field has been set.
+
+### GetExternalProductLink
+
+`func (o *ProductAdd) GetExternalProductLink() string`
+
+GetExternalProductLink returns the ExternalProductLink field if non-nil, zero value otherwise.
+
+### GetExternalProductLinkOk
+
+`func (o *ProductAdd) GetExternalProductLinkOk() (*string, bool)`
+
+GetExternalProductLinkOk returns a tuple with the ExternalProductLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalProductLink
+
+`func (o *ProductAdd) SetExternalProductLink(v string)`
+
+SetExternalProductLink sets ExternalProductLink field to given value.
+
+### HasExternalProductLink
+
+`func (o *ProductAdd) HasExternalProductLink() bool`
+
+HasExternalProductLink returns a boolean if a field has been set.
 
 ### GetHarmonizedSystemCode
 

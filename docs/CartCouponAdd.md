@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IncludeTax** | Pointer to **bool** | Indicates whether to apply a discount for taxes. | [optional] [default to false]
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **FreeCashOnDelivery** | Pointer to **bool** | Defines whether the coupon provides free cash on delivery | [optional] 
+**CustomerId** | Pointer to **string** | Retrieves orders specified by customer id | [optional] 
 
 ## Methods
 
@@ -466,6 +467,31 @@ SetFreeCashOnDelivery sets FreeCashOnDelivery field to given value.
 `func (o *CartCouponAdd) HasFreeCashOnDelivery() bool`
 
 HasFreeCashOnDelivery returns a boolean if a field has been set.
+
+### GetCustomerId
+
+`func (o *CartCouponAdd) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *CartCouponAdd) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *CartCouponAdd) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *CartCouponAdd) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

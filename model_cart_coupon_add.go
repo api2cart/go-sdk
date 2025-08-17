@@ -58,6 +58,8 @@ type CartCouponAdd struct {
 	StoreId *string `json:"store_id,omitempty"`
 	// Defines whether the coupon provides free cash on delivery
 	FreeCashOnDelivery *bool `json:"free_cash_on_delivery,omitempty"`
+	// Retrieves orders specified by customer id
+	CustomerId *string `json:"customer_id,omitempty"`
 }
 
 type _CartCouponAdd CartCouponAdd
@@ -628,6 +630,38 @@ func (o *CartCouponAdd) SetFreeCashOnDelivery(v bool) {
 	o.FreeCashOnDelivery = &v
 }
 
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *CartCouponAdd) GetCustomerId() string {
+	if o == nil || IsNil(o.CustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartCouponAdd) GetCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *CartCouponAdd) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *CartCouponAdd) SetCustomerId(v string) {
+	o.CustomerId = &v
+}
+
 func (o CartCouponAdd) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -681,6 +715,9 @@ func (o CartCouponAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FreeCashOnDelivery) {
 		toSerialize["free_cash_on_delivery"] = o.FreeCashOnDelivery
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	return toSerialize, nil
 }
