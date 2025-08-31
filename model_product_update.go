@@ -189,6 +189,8 @@ type ProductUpdate struct {
 	// Add Shop Section Id
 	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
 	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
+	// External product link
+	ExternalProductLink *string `json:"external_product_link,omitempty"`
 	// String containing the JSON representation of the supplied data
 	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
 	// The minimum quantity an order must contain, to be eligible to purchase this product.
@@ -3016,6 +3018,38 @@ func (o *ProductUpdate) SetPersonalizationDetails(v ProductAddPersonalizationDet
 	o.PersonalizationDetails = &v
 }
 
+// GetExternalProductLink returns the ExternalProductLink field value if set, zero value otherwise.
+func (o *ProductUpdate) GetExternalProductLink() string {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalProductLink
+}
+
+// GetExternalProductLinkOk returns a tuple with the ExternalProductLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetExternalProductLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		return nil, false
+	}
+	return o.ExternalProductLink, true
+}
+
+// HasExternalProductLink returns a boolean if a field has been set.
+func (o *ProductUpdate) HasExternalProductLink() bool {
+	if o != nil && !IsNil(o.ExternalProductLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalProductLink gets a reference to the given string and assigns it to the ExternalProductLink field.
+func (o *ProductUpdate) SetExternalProductLink(v string) {
+	o.ExternalProductLink = &v
+}
+
 // GetMarketplaceItemProperties returns the MarketplaceItemProperties field value if set, zero value otherwise.
 func (o *ProductUpdate) GetMarketplaceItemProperties() string {
 	if o == nil || IsNil(o.MarketplaceItemProperties) {
@@ -3347,6 +3381,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PersonalizationDetails) {
 		toSerialize["personalization_details"] = o.PersonalizationDetails
+	}
+	if !IsNil(o.ExternalProductLink) {
+		toSerialize["external_product_link"] = o.ExternalProductLink
 	}
 	if !IsNil(o.MarketplaceItemProperties) {
 		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties

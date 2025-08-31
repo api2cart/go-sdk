@@ -90,6 +90,7 @@ Name | Type | Description | Notes
 **Specifics** | Pointer to [**[]ProductAddSpecificsInner**](ProductAddSpecificsInner.md) | An array of Item Specific Name/Value pairs used by the seller to provide descriptive details of an item in a structured manner.         The list of possible specifications can be obtained using the category.info method (additional_fields-&gt;product_specifics).         &lt;b&gt;The structure of the parameter is different for specific platforms.&lt;/b&gt; | [optional] 
 **ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
+**ExternalProductLink** | Pointer to **string** | External product link | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
 **MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
 
@@ -2261,6 +2262,31 @@ SetPersonalizationDetails sets PersonalizationDetails field to given value.
 `func (o *ProductUpdate) HasPersonalizationDetails() bool`
 
 HasPersonalizationDetails returns a boolean if a field has been set.
+
+### GetExternalProductLink
+
+`func (o *ProductUpdate) GetExternalProductLink() string`
+
+GetExternalProductLink returns the ExternalProductLink field if non-nil, zero value otherwise.
+
+### GetExternalProductLinkOk
+
+`func (o *ProductUpdate) GetExternalProductLinkOk() (*string, bool)`
+
+GetExternalProductLinkOk returns a tuple with the ExternalProductLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalProductLink
+
+`func (o *ProductUpdate) SetExternalProductLink(v string)`
+
+SetExternalProductLink sets ExternalProductLink field to given value.
+
+### HasExternalProductLink
+
+`func (o *ProductUpdate) HasExternalProductLink() bool`
+
+HasExternalProductLink returns a boolean if a field has been set.
 
 ### GetMarketplaceItemProperties
 
