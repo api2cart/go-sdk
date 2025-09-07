@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**OrderAbandonedList**](OrderAPI.md#OrderAbandonedList) | **Get** /order.abandoned.list.json | order.abandoned.list
 [**OrderAdd**](OrderAPI.md#OrderAdd) | **Post** /order.add.json | order.add
+[**OrderCalculate**](OrderAPI.md#OrderCalculate) | **Post** /order.calculate.json | order.calculate
 [**OrderCount**](OrderAPI.md#OrderCount) | **Get** /order.count.json | order.count
 [**OrderFinancialStatusList**](OrderAPI.md#OrderFinancialStatusList) | **Get** /order.financial_status.list.json | order.financial_status.list
 [**OrderFulfillmentStatusList**](OrderAPI.md#OrderFulfillmentStatusList) | **Get** /order.fulfillment_status.list.json | order.fulfillment_status.list
@@ -172,6 +173,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderAdd200Response**](OrderAdd200Response.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrderCalculate
+
+> OrderCalculate200Response OrderCalculate(ctx).OrderCalculate(orderCalculate).Execute()
+
+order.calculate
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orderCalculate := *openapiclient.NewOrderCalculate("jubari@hannsgroup.com", "John", "Smith", "Green str. 35", "Chicago", "24545", "US", []openapiclient.OrderCalculateOrderItemInner{*openapiclient.NewOrderCalculateOrderItemInner("125, where {x} - 1,2,3,... etc", int32(5, where {x} - 1,2,3,... etc))}) // OrderCalculate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrderAPI.OrderCalculate(context.Background()).OrderCalculate(orderCalculate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderCalculate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrderCalculate`: OrderCalculate200Response
+	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderCalculate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrderCalculateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderCalculate** | [**OrderCalculate**](OrderCalculate.md) |  | 
+
+### Return type
+
+[**OrderCalculate200Response**](OrderCalculate200Response.md)
 
 ### Authorization
 

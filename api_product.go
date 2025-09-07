@@ -4643,6 +4643,12 @@ type ApiProductManufacturerAddRequest struct {
 	productId *string
 	manufacturer *string
 	storeId *string
+	metaTitle *string
+	metaKeywords *string
+	metaDescription *string
+	searchKeywords *string
+	imageUrl *string
+	seoUrl *string
 }
 
 // Defines products specified by product id
@@ -4660,6 +4666,42 @@ func (r ApiProductManufacturerAddRequest) Manufacturer(manufacturer string) ApiP
 // Store Id
 func (r ApiProductManufacturerAddRequest) StoreId(storeId string) ApiProductManufacturerAddRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Defines unique meta title for each entity
+func (r ApiProductManufacturerAddRequest) MetaTitle(metaTitle string) ApiProductManufacturerAddRequest {
+	r.metaTitle = &metaTitle
+	return r
+}
+
+// Defines unique meta keywords for each entity
+func (r ApiProductManufacturerAddRequest) MetaKeywords(metaKeywords string) ApiProductManufacturerAddRequest {
+	r.metaKeywords = &metaKeywords
+	return r
+}
+
+// Defines unique meta description of a entity
+func (r ApiProductManufacturerAddRequest) MetaDescription(metaDescription string) ApiProductManufacturerAddRequest {
+	r.metaDescription = &metaDescription
+	return r
+}
+
+// Defines unique search keywords
+func (r ApiProductManufacturerAddRequest) SearchKeywords(searchKeywords string) ApiProductManufacturerAddRequest {
+	r.searchKeywords = &searchKeywords
+	return r
+}
+
+// Image Url
+func (r ApiProductManufacturerAddRequest) ImageUrl(imageUrl string) ApiProductManufacturerAddRequest {
+	r.imageUrl = &imageUrl
+	return r
+}
+
+// Defines unique URL for SEO
+func (r ApiProductManufacturerAddRequest) SeoUrl(seoUrl string) ApiProductManufacturerAddRequest {
+	r.seoUrl = &seoUrl
 	return r
 }
 
@@ -4713,6 +4755,24 @@ func (a *ProductAPIService) ProductManufacturerAddExecute(r ApiProductManufactur
 	parameterAddToHeaderOrQuery(localVarQueryParams, "manufacturer", r.manufacturer, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.metaTitle != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_title", r.metaTitle, "form", "")
+	}
+	if r.metaKeywords != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_keywords", r.metaKeywords, "form", "")
+	}
+	if r.metaDescription != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_description", r.metaDescription, "form", "")
+	}
+	if r.searchKeywords != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search_keywords", r.searchKeywords, "form", "")
+	}
+	if r.imageUrl != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "image_url", r.imageUrl, "form", "")
+	}
+	if r.seoUrl != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "seo_url", r.seoUrl, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6700,7 +6760,13 @@ type ApiProductReviewListRequest struct {
 	pageCursor *string
 	ids *string
 	storeId *string
+	langId *string
 	status *string
+	createdFrom *string
+	createdTo *string
+	customerId *string
+	sortBy *string
+	sortDirection *string
 	responseFields *string
 	params *string
 	exclude *string
@@ -6742,9 +6808,45 @@ func (r ApiProductReviewListRequest) StoreId(storeId string) ApiProductReviewLis
 	return r
 }
 
+// Language id
+func (r ApiProductReviewListRequest) LangId(langId string) ApiProductReviewListRequest {
+	r.langId = &langId
+	return r
+}
+
 // Defines status
 func (r ApiProductReviewListRequest) Status(status string) ApiProductReviewListRequest {
 	r.status = &status
+	return r
+}
+
+// Retrieve entities from their creation date
+func (r ApiProductReviewListRequest) CreatedFrom(createdFrom string) ApiProductReviewListRequest {
+	r.createdFrom = &createdFrom
+	return r
+}
+
+// Retrieve entities to their creation date
+func (r ApiProductReviewListRequest) CreatedTo(createdTo string) ApiProductReviewListRequest {
+	r.createdTo = &createdTo
+	return r
+}
+
+// Retrieves orders specified by customer id
+func (r ApiProductReviewListRequest) CustomerId(customerId string) ApiProductReviewListRequest {
+	r.customerId = &customerId
+	return r
+}
+
+// Set field to sort by
+func (r ApiProductReviewListRequest) SortBy(sortBy string) ApiProductReviewListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+// Set sorting direction
+func (r ApiProductReviewListRequest) SortDirection(sortDirection string) ApiProductReviewListRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -6831,8 +6933,32 @@ func (a *ProductAPIService) ProductReviewListExecute(r ApiProductReviewListReque
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}
+	if r.langId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.customerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_by", r.sortBy, "form", "")
+	} else {
+		var defaultValue string = "id"
+		r.sortBy = &defaultValue
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort_direction", r.sortDirection, "form", "")
+	} else {
+		var defaultValue string = "asc"
+		r.sortDirection = &defaultValue
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")

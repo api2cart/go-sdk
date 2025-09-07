@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Ratings** | Pointer to [**[]ProductReviewRating**](ProductReviewRating.md) |  | [optional] 
 **Status** | Pointer to **NullableString** |  | [optional] 
 **CreatedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
+**ModifiedTime** | Pointer to [**NullableA2CDateTime**](A2CDateTime.md) |  | [optional] 
 **Medias** | Pointer to [**[]Media**](Media.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -403,6 +404,41 @@ HasCreatedTime returns a boolean if a field has been set.
 `func (o *ProductReview) UnsetCreatedTime()`
 
 UnsetCreatedTime ensures that no value is present for CreatedTime, not even an explicit nil
+### GetModifiedTime
+
+`func (o *ProductReview) GetModifiedTime() A2CDateTime`
+
+GetModifiedTime returns the ModifiedTime field if non-nil, zero value otherwise.
+
+### GetModifiedTimeOk
+
+`func (o *ProductReview) GetModifiedTimeOk() (*A2CDateTime, bool)`
+
+GetModifiedTimeOk returns a tuple with the ModifiedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModifiedTime
+
+`func (o *ProductReview) SetModifiedTime(v A2CDateTime)`
+
+SetModifiedTime sets ModifiedTime field to given value.
+
+### HasModifiedTime
+
+`func (o *ProductReview) HasModifiedTime() bool`
+
+HasModifiedTime returns a boolean if a field has been set.
+
+### SetModifiedTimeNil
+
+`func (o *ProductReview) SetModifiedTimeNil(b bool)`
+
+ SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+
+### UnsetModifiedTime
+`func (o *ProductReview) UnsetModifiedTime()`
+
+UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
 ### GetMedias
 
 `func (o *ProductReview) GetMedias() []Media`

@@ -32,6 +32,8 @@ type CustomerAdd struct {
 	Password *string `json:"password,omitempty"`
 	// Defines the group where the customer
 	Group *string `json:"group,omitempty"`
+	// Customer group_id
+	GroupId *string `json:"group_id,omitempty"`
 	// Groups that will be assigned to a customer
 	GroupIds *string `json:"group_ids,omitempty"`
 	// Defines customer's status
@@ -243,6 +245,38 @@ func (o *CustomerAdd) HasGroup() bool {
 // SetGroup gets a reference to the given string and assigns it to the Group field.
 func (o *CustomerAdd) SetGroup(v string) {
 	o.Group = &v
+}
+
+// GetGroupId returns the GroupId field value if set, zero value otherwise.
+func (o *CustomerAdd) GetGroupId() string {
+	if o == nil || IsNil(o.GroupId) {
+		var ret string
+		return ret
+	}
+	return *o.GroupId
+}
+
+// GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetGroupIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupId) {
+		return nil, false
+	}
+	return o.GroupId, true
+}
+
+// HasGroupId returns a boolean if a field has been set.
+func (o *CustomerAdd) HasGroupId() bool {
+	if o != nil && !IsNil(o.GroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupId gets a reference to the given string and assigns it to the GroupId field.
+func (o *CustomerAdd) SetGroupId(v string) {
+	o.GroupId = &v
 }
 
 // GetGroupIds returns the GroupIds field value if set, zero value otherwise.
@@ -843,6 +877,9 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["group_id"] = o.GroupId
 	}
 	if !IsNil(o.GroupIds) {
 		toSerialize["group_ids"] = o.GroupIds

@@ -31,6 +31,7 @@ type ProductReview struct {
 	Ratings []ProductReviewRating `json:"ratings,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	CreatedTime NullableA2CDateTime `json:"created_time,omitempty"`
+	ModifiedTime NullableA2CDateTime `json:"modified_time,omitempty"`
 	Medias []Media `json:"medias,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -495,6 +496,48 @@ func (o *ProductReview) UnsetCreatedTime() {
 	o.CreatedTime.Unset()
 }
 
+// GetModifiedTime returns the ModifiedTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProductReview) GetModifiedTime() A2CDateTime {
+	if o == nil || IsNil(o.ModifiedTime.Get()) {
+		var ret A2CDateTime
+		return ret
+	}
+	return *o.ModifiedTime.Get()
+}
+
+// GetModifiedTimeOk returns a tuple with the ModifiedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProductReview) GetModifiedTimeOk() (*A2CDateTime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ModifiedTime.Get(), o.ModifiedTime.IsSet()
+}
+
+// HasModifiedTime returns a boolean if a field has been set.
+func (o *ProductReview) HasModifiedTime() bool {
+	if o != nil && o.ModifiedTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedTime gets a reference to the given NullableA2CDateTime and assigns it to the ModifiedTime field.
+func (o *ProductReview) SetModifiedTime(v A2CDateTime) {
+	o.ModifiedTime.Set(&v)
+}
+// SetModifiedTimeNil sets the value for ModifiedTime to be an explicit nil
+func (o *ProductReview) SetModifiedTimeNil() {
+	o.ModifiedTime.Set(nil)
+}
+
+// UnsetModifiedTime ensures that no value is present for ModifiedTime, not even an explicit nil
+func (o *ProductReview) UnsetModifiedTime() {
+	o.ModifiedTime.Unset()
+}
+
 // GetMedias returns the Medias field value if set, zero value otherwise.
 func (o *ProductReview) GetMedias() []Media {
 	if o == nil || IsNil(o.Medias) {
@@ -635,6 +678,9 @@ func (o ProductReview) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CreatedTime.IsSet() {
 		toSerialize["created_time"] = o.CreatedTime.Get()
+	}
+	if o.ModifiedTime.IsSet() {
+		toSerialize["modified_time"] = o.ModifiedTime.Get()
 	}
 	if !IsNil(o.Medias) {
 		toSerialize["medias"] = o.Medias

@@ -1717,7 +1717,7 @@ Name | Type | Description  | Notes
 
 ## ProductManufacturerAdd
 
-> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).Execute()
+> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).Execute()
 
 product.manufacturer.add
 
@@ -1739,10 +1739,16 @@ func main() {
 	productId := "10" // string | Defines products specified by product id
 	manufacturer := "Samsung" // string | Defines product’s manufacturer's name
 	storeId := "1" // string | Store Id (optional)
+	metaTitle := "category,test" // string | Defines unique meta title for each entity (optional)
+	metaKeywords := "category,test" // string | Defines unique meta keywords for each entity (optional)
+	metaDescription := "category,test" // string | Defines unique meta description of a entity (optional)
+	searchKeywords := "key1,key2,key3" // string | Defines unique search keywords (optional)
+	imageUrl := "https://docs.api2cart.com/img/logo.png" // string | Image Url (optional)
+	seoUrl := "some seo url" // string | Defines unique URL for SEO (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductManufacturerAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1766,6 +1772,12 @@ Name | Type | Description  | Notes
  **productId** | **string** | Defines products specified by product id | 
  **manufacturer** | **string** | Defines product’s manufacturer&#39;s name | 
  **storeId** | **string** | Store Id | 
+ **metaTitle** | **string** | Defines unique meta title for each entity | 
+ **metaKeywords** | **string** | Defines unique meta keywords for each entity | 
+ **metaDescription** | **string** | Defines unique meta description of a entity | 
+ **searchKeywords** | **string** | Defines unique search keywords | 
+ **imageUrl** | **string** | Image Url | 
+ **seoUrl** | **string** | Defines unique URL for SEO | 
 
 ### Return type
 
@@ -2581,7 +2593,7 @@ Name | Type | Description  | Notes
 
 ## ProductReviewList
 
-> ModelResponseProductReviewList ProductReviewList(ctx).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).Status(status).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseProductReviewList ProductReviewList(ctx).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).LangId(langId).Status(status).CreatedFrom(createdFrom).CreatedTo(createdTo).CustomerId(customerId).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 product.review.list
 
@@ -2606,14 +2618,20 @@ func main() {
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	ids := "24,25" // string | Retrieves reviews specified by ids (optional)
 	storeId := "1" // string | Store Id (optional)
+	langId := "3" // string | Language id (optional)
 	status := "disabled" // string | Defines status (optional)
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	customerId := "5" // string | Retrieves orders specified by customer id (optional)
+	sortBy := "value_id" // string | Set field to sort by (optional) (default to "id")
+	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
 	responseFields := "{return_code,return_message,pagination,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "id,model,price,images" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,customer_id,email,message,status,product_id,nick_name,summary,rating,ratings,status,created_time")
 	exclude := "false" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductReviewList(context.Background()).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).Status(status).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductReviewList(context.Background()).ProductId(productId).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).StoreId(storeId).LangId(langId).Status(status).CreatedFrom(createdFrom).CreatedTo(createdTo).CustomerId(customerId).SortBy(sortBy).SortDirection(sortDirection).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductReviewList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2640,7 +2658,13 @@ Name | Type | Description  | Notes
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **ids** | **string** | Retrieves reviews specified by ids | 
  **storeId** | **string** | Store Id | 
+ **langId** | **string** | Language id | 
  **status** | **string** | Defines status | 
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **customerId** | **string** | Retrieves orders specified by customer id | 
+ **sortBy** | **string** | Set field to sort by | [default to &quot;id&quot;]
+ **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,customer_id,email,message,status,product_id,nick_name,summary,rating,ratings,status,created_time&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 

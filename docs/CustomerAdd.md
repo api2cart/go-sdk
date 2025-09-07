@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **LastName** | Pointer to **string** | Defines customer&#39;s last name | [optional] 
 **Password** | Pointer to **string** | Defines customer&#39;s unique password | [optional] 
 **Group** | Pointer to **string** | Defines the group where the customer | [optional] 
+**GroupId** | Pointer to **string** | Customer group_id | [optional] 
 **GroupIds** | Pointer to **string** | Groups that will be assigned to a customer | [optional] 
 **Status** | Pointer to **string** | Defines customer&#39;s status | [optional] [default to "enabled"]
 **CreatedTime** | Pointer to **string** | Entity&#39;s date creation | [optional] 
@@ -166,6 +167,31 @@ SetGroup sets Group field to given value.
 `func (o *CustomerAdd) HasGroup() bool`
 
 HasGroup returns a boolean if a field has been set.
+
+### GetGroupId
+
+`func (o *CustomerAdd) GetGroupId() string`
+
+GetGroupId returns the GroupId field if non-nil, zero value otherwise.
+
+### GetGroupIdOk
+
+`func (o *CustomerAdd) GetGroupIdOk() (*string, bool)`
+
+GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupId
+
+`func (o *CustomerAdd) SetGroupId(v string)`
+
+SetGroupId sets GroupId field to given value.
+
+### HasGroupId
+
+`func (o *CustomerAdd) HasGroupId() bool`
+
+HasGroupId returns a boolean if a field has been set.
 
 ### GetGroupIds
 

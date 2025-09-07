@@ -43,6 +43,7 @@ type ProductAddBatchPayloadInner struct {
 	ManageStock *bool `json:"manage_stock,omitempty"`
 	ProductType *string `json:"product_type,omitempty"`
 	MarketplaceItemProperties map[string]interface{} `json:"marketplace_item_properties,omitempty"`
+	Specifics map[string]interface{} `json:"specifics,omitempty"`
 	IsFreeShipping *bool `json:"is_free_shipping,omitempty"`
 	Taxable *bool `json:"taxable,omitempty"`
 	Status *string `json:"status,omitempty"`
@@ -77,6 +78,7 @@ type ProductAddBatchPayloadInner struct {
 	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
 	Url *string `json:"url,omitempty"`
 	SeoUrl *string `json:"seo_url,omitempty"`
+	ExternalProductLink *string `json:"external_product_link,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	ManufacturerId *string `json:"manufacturer_id,omitempty"`
 	BackorderStatus *string `json:"backorder_status,omitempty"`
@@ -836,6 +838,38 @@ func (o *ProductAddBatchPayloadInner) HasMarketplaceItemProperties() bool {
 // SetMarketplaceItemProperties gets a reference to the given map[string]interface{} and assigns it to the MarketplaceItemProperties field.
 func (o *ProductAddBatchPayloadInner) SetMarketplaceItemProperties(v map[string]interface{}) {
 	o.MarketplaceItemProperties = v
+}
+
+// GetSpecifics returns the Specifics field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetSpecifics() map[string]interface{} {
+	if o == nil || IsNil(o.Specifics) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Specifics
+}
+
+// GetSpecificsOk returns a tuple with the Specifics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetSpecificsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Specifics) {
+		return map[string]interface{}{}, false
+	}
+	return o.Specifics, true
+}
+
+// HasSpecifics returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasSpecifics() bool {
+	if o != nil && !IsNil(o.Specifics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpecifics gets a reference to the given map[string]interface{} and assigns it to the Specifics field.
+func (o *ProductAddBatchPayloadInner) SetSpecifics(v map[string]interface{}) {
+	o.Specifics = v
 }
 
 // GetIsFreeShipping returns the IsFreeShipping field value if set, zero value otherwise.
@@ -1926,6 +1960,38 @@ func (o *ProductAddBatchPayloadInner) SetSeoUrl(v string) {
 	o.SeoUrl = &v
 }
 
+// GetExternalProductLink returns the ExternalProductLink field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetExternalProductLink() string {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalProductLink
+}
+
+// GetExternalProductLinkOk returns a tuple with the ExternalProductLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetExternalProductLinkOk() (*string, bool) {
+	if o == nil || IsNil(o.ExternalProductLink) {
+		return nil, false
+	}
+	return o.ExternalProductLink, true
+}
+
+// HasExternalProductLink returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasExternalProductLink() bool {
+	if o != nil && !IsNil(o.ExternalProductLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalProductLink gets a reference to the given string and assigns it to the ExternalProductLink field.
+func (o *ProductAddBatchPayloadInner) SetExternalProductLink(v string) {
+	o.ExternalProductLink = &v
+}
+
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *ProductAddBatchPayloadInner) GetManufacturer() string {
 	if o == nil || IsNil(o.Manufacturer) {
@@ -2197,6 +2263,9 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MarketplaceItemProperties) {
 		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
 	}
+	if !IsNil(o.Specifics) {
+		toSerialize["specifics"] = o.Specifics
+	}
 	if !IsNil(o.IsFreeShipping) {
 		toSerialize["is_free_shipping"] = o.IsFreeShipping
 	}
@@ -2298,6 +2367,9 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SeoUrl) {
 		toSerialize["seo_url"] = o.SeoUrl
+	}
+	if !IsNil(o.ExternalProductLink) {
+		toSerialize["external_product_link"] = o.ExternalProductLink
 	}
 	if !IsNil(o.Manufacturer) {
 		toSerialize["manufacturer"] = o.Manufacturer

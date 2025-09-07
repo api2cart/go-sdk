@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **ManageStock** | Pointer to **bool** |  | [optional] 
 **ProductType** | Pointer to **string** |  | [optional] 
 **MarketplaceItemProperties** | Pointer to **map[string]interface{}** |  | [optional] 
+**Specifics** | Pointer to **map[string]interface{}** |  | [optional] 
 **IsFreeShipping** | Pointer to **bool** |  | [optional] 
 **Taxable** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
@@ -61,6 +62,7 @@ Name | Type | Description | Notes
 **HarmonizedSystemCode** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **SeoUrl** | Pointer to **string** |  | [optional] 
+**ExternalProductLink** | Pointer to **string** |  | [optional] 
 **Manufacturer** | Pointer to **string** |  | [optional] 
 **ManufacturerId** | Pointer to **string** |  | [optional] 
 **BackorderStatus** | Pointer to **string** |  | [optional] 
@@ -661,6 +663,31 @@ SetMarketplaceItemProperties sets MarketplaceItemProperties field to given value
 `func (o *ProductAddBatchPayloadInner) HasMarketplaceItemProperties() bool`
 
 HasMarketplaceItemProperties returns a boolean if a field has been set.
+
+### GetSpecifics
+
+`func (o *ProductAddBatchPayloadInner) GetSpecifics() map[string]interface{}`
+
+GetSpecifics returns the Specifics field if non-nil, zero value otherwise.
+
+### GetSpecificsOk
+
+`func (o *ProductAddBatchPayloadInner) GetSpecificsOk() (*map[string]interface{}, bool)`
+
+GetSpecificsOk returns a tuple with the Specifics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpecifics
+
+`func (o *ProductAddBatchPayloadInner) SetSpecifics(v map[string]interface{})`
+
+SetSpecifics sets Specifics field to given value.
+
+### HasSpecifics
+
+`func (o *ProductAddBatchPayloadInner) HasSpecifics() bool`
+
+HasSpecifics returns a boolean if a field has been set.
 
 ### GetIsFreeShipping
 
@@ -1511,6 +1538,31 @@ SetSeoUrl sets SeoUrl field to given value.
 `func (o *ProductAddBatchPayloadInner) HasSeoUrl() bool`
 
 HasSeoUrl returns a boolean if a field has been set.
+
+### GetExternalProductLink
+
+`func (o *ProductAddBatchPayloadInner) GetExternalProductLink() string`
+
+GetExternalProductLink returns the ExternalProductLink field if non-nil, zero value otherwise.
+
+### GetExternalProductLinkOk
+
+`func (o *ProductAddBatchPayloadInner) GetExternalProductLinkOk() (*string, bool)`
+
+GetExternalProductLinkOk returns a tuple with the ExternalProductLink field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalProductLink
+
+`func (o *ProductAddBatchPayloadInner) SetExternalProductLink(v string)`
+
+SetExternalProductLink sets ExternalProductLink field to given value.
+
+### HasExternalProductLink
+
+`func (o *ProductAddBatchPayloadInner) HasExternalProductLink() bool`
+
+HasExternalProductLink returns a boolean if a field has been set.
 
 ### GetManufacturer
 
