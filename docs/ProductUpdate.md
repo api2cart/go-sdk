@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **Avail** | Pointer to **bool** | Defines category&#39;s visibility status | [optional] [default to true]
 **AvailFrom** | Pointer to **string** | Allows to schedule a time in the future that the item becomes available. The value should be greater than the current date and time. | [optional] 
 **ProductClass** | Pointer to **string** | A categorization for the product | [optional] 
+**BrandName** | Pointer to **string** | Retrieves brands specified by brand name | [optional] 
 **AvailableForView** | Pointer to **bool** | Specifies the set of visible/invisible products for users | [optional] 
 **StoresIds** | Pointer to **string** | Assign product to the stores that is specified by comma-separated stores&#39; id | [optional] 
 **StoreId** | Pointer to **string** | Defines store id where the product should be found | [optional] 
@@ -787,6 +788,31 @@ SetProductClass sets ProductClass field to given value.
 `func (o *ProductUpdate) HasProductClass() bool`
 
 HasProductClass returns a boolean if a field has been set.
+
+### GetBrandName
+
+`func (o *ProductUpdate) GetBrandName() string`
+
+GetBrandName returns the BrandName field if non-nil, zero value otherwise.
+
+### GetBrandNameOk
+
+`func (o *ProductUpdate) GetBrandNameOk() (*string, bool)`
+
+GetBrandNameOk returns a tuple with the BrandName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrandName
+
+`func (o *ProductUpdate) SetBrandName(v string)`
+
+SetBrandName sets BrandName field to given value.
+
+### HasBrandName
+
+`func (o *ProductUpdate) HasBrandName() bool`
+
+HasBrandName returns a boolean if a field has been set.
 
 ### GetAvailableForView
 

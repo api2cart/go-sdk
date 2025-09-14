@@ -46,6 +46,7 @@ type ProductUpdateBatchPayloadInner struct {
 	Status *string `json:"status,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Condition *string `json:"condition,omitempty"`
+	ConditionDescription *string `json:"condition_description,omitempty"`
 	Visible *string `json:"visible,omitempty"`
 	AvailableForView *bool `json:"available_for_view,omitempty"`
 	AvailableForSale *bool `json:"available_for_sale,omitempty"`
@@ -838,6 +839,38 @@ func (o *ProductUpdateBatchPayloadInner) HasCondition() bool {
 // SetCondition gets a reference to the given string and assigns it to the Condition field.
 func (o *ProductUpdateBatchPayloadInner) SetCondition(v string) {
 	o.Condition = &v
+}
+
+// GetConditionDescription returns the ConditionDescription field value if set, zero value otherwise.
+func (o *ProductUpdateBatchPayloadInner) GetConditionDescription() string {
+	if o == nil || IsNil(o.ConditionDescription) {
+		var ret string
+		return ret
+	}
+	return *o.ConditionDescription
+}
+
+// GetConditionDescriptionOk returns a tuple with the ConditionDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdateBatchPayloadInner) GetConditionDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.ConditionDescription) {
+		return nil, false
+	}
+	return o.ConditionDescription, true
+}
+
+// HasConditionDescription returns a boolean if a field has been set.
+func (o *ProductUpdateBatchPayloadInner) HasConditionDescription() bool {
+	if o != nil && !IsNil(o.ConditionDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetConditionDescription gets a reference to the given string and assigns it to the ConditionDescription field.
+func (o *ProductUpdateBatchPayloadInner) SetConditionDescription(v string) {
+	o.ConditionDescription = &v
 }
 
 // GetVisible returns the Visible field value if set, zero value otherwise.
@@ -2196,6 +2229,9 @@ func (o ProductUpdateBatchPayloadInner) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
+	}
+	if !IsNil(o.ConditionDescription) {
+		toSerialize["condition_description"] = o.ConditionDescription
 	}
 	if !IsNil(o.Visible) {
 		toSerialize["visible"] = o.Visible

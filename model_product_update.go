@@ -74,6 +74,8 @@ type ProductUpdate struct {
 	AvailFrom *string `json:"avail_from,omitempty"`
 	// A categorization for the product
 	ProductClass *string `json:"product_class,omitempty"`
+	// Retrieves brands specified by brand name
+	BrandName *string `json:"brand_name,omitempty"`
 	// Specifies the set of visible/invisible products for users
 	AvailableForView *bool `json:"available_for_view,omitempty"`
 	// Assign product to the stores that is specified by comma-separated stores' id
@@ -1128,6 +1130,38 @@ func (o *ProductUpdate) HasProductClass() bool {
 // SetProductClass gets a reference to the given string and assigns it to the ProductClass field.
 func (o *ProductUpdate) SetProductClass(v string) {
 	o.ProductClass = &v
+}
+
+// GetBrandName returns the BrandName field value if set, zero value otherwise.
+func (o *ProductUpdate) GetBrandName() string {
+	if o == nil || IsNil(o.BrandName) {
+		var ret string
+		return ret
+	}
+	return *o.BrandName
+}
+
+// GetBrandNameOk returns a tuple with the BrandName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetBrandNameOk() (*string, bool) {
+	if o == nil || IsNil(o.BrandName) {
+		return nil, false
+	}
+	return o.BrandName, true
+}
+
+// HasBrandName returns a boolean if a field has been set.
+func (o *ProductUpdate) HasBrandName() bool {
+	if o != nil && !IsNil(o.BrandName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBrandName gets a reference to the given string and assigns it to the BrandName field.
+func (o *ProductUpdate) SetBrandName(v string) {
+	o.BrandName = &v
 }
 
 // GetAvailableForView returns the AvailableForView field value if set, zero value otherwise.
@@ -3204,6 +3238,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProductClass) {
 		toSerialize["product_class"] = o.ProductClass
+	}
+	if !IsNil(o.BrandName) {
+		toSerialize["brand_name"] = o.BrandName
 	}
 	if !IsNil(o.AvailableForView) {
 		toSerialize["available_for_view"] = o.AvailableForView

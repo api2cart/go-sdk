@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Condition** | Pointer to **string** |  | [optional] 
+**ConditionDescription** | Pointer to **string** |  | [optional] 
 **Visible** | Pointer to **string** |  | [optional] 
 **AvailableForView** | Pointer to **bool** |  | [optional] 
 **AvailableForSale** | Pointer to **bool** |  | [optional] 
@@ -656,6 +657,31 @@ SetCondition sets Condition field to given value.
 `func (o *ProductUpdateBatchPayloadInner) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
+
+### GetConditionDescription
+
+`func (o *ProductUpdateBatchPayloadInner) GetConditionDescription() string`
+
+GetConditionDescription returns the ConditionDescription field if non-nil, zero value otherwise.
+
+### GetConditionDescriptionOk
+
+`func (o *ProductUpdateBatchPayloadInner) GetConditionDescriptionOk() (*string, bool)`
+
+GetConditionDescriptionOk returns a tuple with the ConditionDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConditionDescription
+
+`func (o *ProductUpdateBatchPayloadInner) SetConditionDescription(v string)`
+
+SetConditionDescription sets ConditionDescription field to given value.
+
+### HasConditionDescription
+
+`func (o *ProductUpdateBatchPayloadInner) HasConditionDescription() bool`
+
+HasConditionDescription returns a boolean if a field has been set.
 
 ### GetVisible
 
