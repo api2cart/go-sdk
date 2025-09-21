@@ -97,6 +97,7 @@ Name | Type | Description | Notes
 **ShoplazzaAccessToken** | Pointer to **string** | Access token authorizing the app to access resources on behalf of a user | [optional] 
 **ShoplazzaSharedSecret** | Pointer to **string** | Shared secret | [optional] 
 **ShopwareAccessKey** | Pointer to **string** | Shopware access key | [optional] 
+**UnasApiKey** | Pointer to **string** | UNAS API Key | [optional] 
 **ShopwareApiKey** | Pointer to **string** | Shopware api key | [optional] 
 **ShopwareApiSecret** | Pointer to **string** | Shopware client secret access key | [optional] 
 **MivaAccessToken** | Pointer to **string** | Miva access token | [optional] 
@@ -2508,6 +2509,31 @@ SetShopwareAccessKey sets ShopwareAccessKey field to given value.
 `func (o *AccountCartAdd) HasShopwareAccessKey() bool`
 
 HasShopwareAccessKey returns a boolean if a field has been set.
+
+### GetUnasApiKey
+
+`func (o *AccountCartAdd) GetUnasApiKey() string`
+
+GetUnasApiKey returns the UnasApiKey field if non-nil, zero value otherwise.
+
+### GetUnasApiKeyOk
+
+`func (o *AccountCartAdd) GetUnasApiKeyOk() (*string, bool)`
+
+GetUnasApiKeyOk returns a tuple with the UnasApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnasApiKey
+
+`func (o *AccountCartAdd) SetUnasApiKey(v string)`
+
+SetUnasApiKey sets UnasApiKey field to given value.
+
+### HasUnasApiKey
+
+`func (o *AccountCartAdd) HasUnasApiKey() bool`
+
+HasUnasApiKey returns a boolean if a field has been set.
 
 ### GetShopwareApiKey
 

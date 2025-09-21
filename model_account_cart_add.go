@@ -208,6 +208,8 @@ type AccountCartAdd struct {
 	ShoplazzaSharedSecret *string `json:"shoplazza_shared_secret,omitempty"`
 	// Shopware access key
 	ShopwareAccessKey *string `json:"shopware_access_key,omitempty"`
+	// UNAS API Key
+	UnasApiKey *string `json:"unas_api_key,omitempty"`
 	// Shopware api key
 	ShopwareApiKey *string `json:"shopware_api_key,omitempty"`
 	// Shopware client secret access key
@@ -3382,6 +3384,38 @@ func (o *AccountCartAdd) SetShopwareAccessKey(v string) {
 	o.ShopwareAccessKey = &v
 }
 
+// GetUnasApiKey returns the UnasApiKey field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetUnasApiKey() string {
+	if o == nil || IsNil(o.UnasApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.UnasApiKey
+}
+
+// GetUnasApiKeyOk returns a tuple with the UnasApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetUnasApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.UnasApiKey) {
+		return nil, false
+	}
+	return o.UnasApiKey, true
+}
+
+// HasUnasApiKey returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasUnasApiKey() bool {
+	if o != nil && !IsNil(o.UnasApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnasApiKey gets a reference to the given string and assigns it to the UnasApiKey field.
+func (o *AccountCartAdd) SetUnasApiKey(v string) {
+	o.UnasApiKey = &v
+}
+
 // GetShopwareApiKey returns the ShopwareApiKey field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetShopwareApiKey() string {
 	if o == nil || IsNil(o.ShopwareApiKey) {
@@ -5972,6 +6006,9 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShopwareAccessKey) {
 		toSerialize["shopware_access_key"] = o.ShopwareAccessKey
+	}
+	if !IsNil(o.UnasApiKey) {
+		toSerialize["unas_api_key"] = o.UnasApiKey
 	}
 	if !IsNil(o.ShopwareApiKey) {
 		toSerialize["shopware_api_key"] = o.ShopwareApiKey

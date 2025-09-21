@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 
 **ReservePrice** | Pointer to **float32** | Defines reserve price value | [optional] 
 **BuyitnowPrice** | Pointer to **float32** | Defines buy it now value | [optional] 
-**Taxable** | Pointer to **bool** | Specifies whether a tax is charged | [optional] [default to true]
+**Taxable** | Pointer to **bool** | Specifies whether a tax is charged | [optional] 
 **TaxClassId** | Pointer to **string** | Defines tax classes where entity has to be added | [optional] 
 **Type** | Pointer to **string** | Defines product&#39;s type | [optional] 
 **Status** | Pointer to **string** | Defines product&#39;s status | [optional] 

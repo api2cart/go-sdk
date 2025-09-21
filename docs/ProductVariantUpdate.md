@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Avail** | Pointer to **bool** | Defines category&#39;s visibility status | [optional] [default to true]
 **IsDefault** | Pointer to **bool** | Defines as a default variant | [optional] 
 **IsFreeShipping** | Pointer to **bool** | Specifies variant&#39;s free shipping flag that has to be added | [optional] 
-**Taxable** | Pointer to **bool** | Specifies whether a tax is charged | [optional] [default to true]
+**Taxable** | Pointer to **bool** | Specifies whether a tax is charged | [optional] 
 **TaxClassId** | Pointer to **string** | Defines tax classes where entity has to be added | [optional] 
 **IsVirtual** | Pointer to **bool** | Defines whether the product is virtual | [optional] [default to false]
 **ManageStock** | Pointer to **bool** | Defines inventory tracking for product variant | [optional] 
@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **MetaTitle** | Pointer to **string** | Defines unique meta title for each entity | [optional] 
 **MetaDescription** | Pointer to **string** | Defines unique meta description of a entity | [optional] 
 **MetaKeywords** | Pointer to **string** | Defines unique meta keywords for each entity | [optional] 
+**Manufacturer** | Pointer to **string** | Specifies the product variant&#39;s manufacturer | [optional] 
 **Reindex** | Pointer to **bool** | Is reindex required | [optional] [default to true]
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 
@@ -1377,6 +1378,31 @@ SetMetaKeywords sets MetaKeywords field to given value.
 `func (o *ProductVariantUpdate) HasMetaKeywords() bool`
 
 HasMetaKeywords returns a boolean if a field has been set.
+
+### GetManufacturer
+
+`func (o *ProductVariantUpdate) GetManufacturer() string`
+
+GetManufacturer returns the Manufacturer field if non-nil, zero value otherwise.
+
+### GetManufacturerOk
+
+`func (o *ProductVariantUpdate) GetManufacturerOk() (*string, bool)`
+
+GetManufacturerOk returns a tuple with the Manufacturer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManufacturer
+
+`func (o *ProductVariantUpdate) SetManufacturer(v string)`
+
+SetManufacturer sets Manufacturer field to given value.
+
+### HasManufacturer
+
+`func (o *ProductVariantUpdate) HasManufacturer() bool`
+
+HasManufacturer returns a boolean if a field has been set.
 
 ### GetReindex
 

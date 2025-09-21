@@ -124,6 +124,8 @@ type ProductVariantUpdate struct {
 	MetaDescription *string `json:"meta_description,omitempty"`
 	// Defines unique meta keywords for each entity
 	MetaKeywords *string `json:"meta_keywords,omitempty"`
+	// Specifies the product variant's manufacturer
+	Manufacturer *string `json:"manufacturer,omitempty"`
 	// Is reindex required
 	Reindex *bool `json:"reindex,omitempty"`
 	// Is cache clear required
@@ -140,8 +142,6 @@ func NewProductVariantUpdate() *ProductVariantUpdate {
 	this.AvailableForSale = &availableForSale
 	var avail bool = true
 	this.Avail = &avail
-	var taxable bool = true
-	this.Taxable = &taxable
 	var isVirtual bool = false
 	this.IsVirtual = &isVirtual
 	var increaseQuantity float32 = 0
@@ -166,8 +166,6 @@ func NewProductVariantUpdateWithDefaults() *ProductVariantUpdate {
 	this.AvailableForSale = &availableForSale
 	var avail bool = true
 	this.Avail = &avail
-	var taxable bool = true
-	this.Taxable = &taxable
 	var isVirtual bool = false
 	this.IsVirtual = &isVirtual
 	var increaseQuantity float32 = 0
@@ -1847,6 +1845,38 @@ func (o *ProductVariantUpdate) SetMetaKeywords(v string) {
 	o.MetaKeywords = &v
 }
 
+// GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetManufacturer() string {
+	if o == nil || IsNil(o.Manufacturer) {
+		var ret string
+		return ret
+	}
+	return *o.Manufacturer
+}
+
+// GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetManufacturerOk() (*string, bool) {
+	if o == nil || IsNil(o.Manufacturer) {
+		return nil, false
+	}
+	return o.Manufacturer, true
+}
+
+// HasManufacturer returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasManufacturer() bool {
+	if o != nil && !IsNil(o.Manufacturer) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturer gets a reference to the given string and assigns it to the Manufacturer field.
+func (o *ProductVariantUpdate) SetManufacturer(v string) {
+	o.Manufacturer = &v
+}
+
 // GetReindex returns the Reindex field value if set, zero value otherwise.
 func (o *ProductVariantUpdate) GetReindex() bool {
 	if o == nil || IsNil(o.Reindex) {
@@ -2076,6 +2106,9 @@ func (o ProductVariantUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MetaKeywords) {
 		toSerialize["meta_keywords"] = o.MetaKeywords
+	}
+	if !IsNil(o.Manufacturer) {
+		toSerialize["manufacturer"] = o.Manufacturer
 	}
 	if !IsNil(o.Reindex) {
 		toSerialize["reindex"] = o.Reindex

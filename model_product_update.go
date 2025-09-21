@@ -205,8 +205,6 @@ type ProductUpdate struct {
 // will change when the set of required properties is changed
 func NewProductUpdate() *ProductUpdate {
 	this := ProductUpdate{}
-	var taxable bool = true
-	this.Taxable = &taxable
 	var avail bool = true
 	this.Avail = &avail
 	var isVirtual bool = false
@@ -239,8 +237,6 @@ func NewProductUpdate() *ProductUpdate {
 // but it doesn't guarantee that properties required by API are set
 func NewProductUpdateWithDefaults() *ProductUpdate {
 	this := ProductUpdate{}
-	var taxable bool = true
-	this.Taxable = &taxable
 	var avail bool = true
 	this.Avail = &avail
 	var isVirtual bool = false
