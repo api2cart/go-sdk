@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrderCalculateItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrderCalculateItem{}
+// checks if the OrderCalculateBundle type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrderCalculateBundle{}
 
-// OrderCalculateItem struct for OrderCalculateItem
-type OrderCalculateItem struct {
+// OrderCalculateBundle struct for OrderCalculateBundle
+type OrderCalculateBundle struct {
 	ProductId *string `json:"product_id,omitempty"`
 	Sku *string `json:"sku,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -32,31 +32,30 @@ type OrderCalculateItem struct {
 	WeightUnit NullableString `json:"weight_unit,omitempty"`
 	Barcode NullableString `json:"barcode,omitempty"`
 	VariantId NullableString `json:"variant_id,omitempty"`
-	BundleProductId NullableString `json:"bundle_product_id,omitempty"`
 	Options []OrderItemOption `json:"options,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
 
-// NewOrderCalculateItem instantiates a new OrderCalculateItem object
+// NewOrderCalculateBundle instantiates a new OrderCalculateBundle object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderCalculateItem() *OrderCalculateItem {
-	this := OrderCalculateItem{}
+func NewOrderCalculateBundle() *OrderCalculateBundle {
+	this := OrderCalculateBundle{}
 	return &this
 }
 
-// NewOrderCalculateItemWithDefaults instantiates a new OrderCalculateItem object
+// NewOrderCalculateBundleWithDefaults instantiates a new OrderCalculateBundle object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrderCalculateItemWithDefaults() *OrderCalculateItem {
-	this := OrderCalculateItem{}
+func NewOrderCalculateBundleWithDefaults() *OrderCalculateBundle {
+	this := OrderCalculateBundle{}
 	return &this
 }
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetProductId() string {
+func (o *OrderCalculateBundle) GetProductId() string {
 	if o == nil || IsNil(o.ProductId) {
 		var ret string
 		return ret
@@ -66,7 +65,7 @@ func (o *OrderCalculateItem) GetProductId() string {
 
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetProductIdOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetProductIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProductId) {
 		return nil, false
 	}
@@ -74,7 +73,7 @@ func (o *OrderCalculateItem) GetProductIdOk() (*string, bool) {
 }
 
 // HasProductId returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasProductId() bool {
+func (o *OrderCalculateBundle) HasProductId() bool {
 	if o != nil && !IsNil(o.ProductId) {
 		return true
 	}
@@ -83,12 +82,12 @@ func (o *OrderCalculateItem) HasProductId() bool {
 }
 
 // SetProductId gets a reference to the given string and assigns it to the ProductId field.
-func (o *OrderCalculateItem) SetProductId(v string) {
+func (o *OrderCalculateBundle) SetProductId(v string) {
 	o.ProductId = &v
 }
 
 // GetSku returns the Sku field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetSku() string {
+func (o *OrderCalculateBundle) GetSku() string {
 	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
@@ -98,7 +97,7 @@ func (o *OrderCalculateItem) GetSku() string {
 
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetSkuOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetSkuOk() (*string, bool) {
 	if o == nil || IsNil(o.Sku) {
 		return nil, false
 	}
@@ -106,7 +105,7 @@ func (o *OrderCalculateItem) GetSkuOk() (*string, bool) {
 }
 
 // HasSku returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasSku() bool {
+func (o *OrderCalculateBundle) HasSku() bool {
 	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
@@ -115,12 +114,12 @@ func (o *OrderCalculateItem) HasSku() bool {
 }
 
 // SetSku gets a reference to the given string and assigns it to the Sku field.
-func (o *OrderCalculateItem) SetSku(v string) {
+func (o *OrderCalculateBundle) SetSku(v string) {
 	o.Sku = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetName() string {
+func (o *OrderCalculateBundle) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -130,7 +129,7 @@ func (o *OrderCalculateItem) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetNameOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -138,7 +137,7 @@ func (o *OrderCalculateItem) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasName() bool {
+func (o *OrderCalculateBundle) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -147,12 +146,12 @@ func (o *OrderCalculateItem) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *OrderCalculateItem) SetName(v string) {
+func (o *OrderCalculateBundle) SetName(v string) {
 	o.Name = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetQuantity() int32 {
+func (o *OrderCalculateBundle) GetQuantity() int32 {
 	if o == nil || IsNil(o.Quantity) {
 		var ret int32
 		return ret
@@ -162,7 +161,7 @@ func (o *OrderCalculateItem) GetQuantity() int32 {
 
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetQuantityOk() (*int32, bool) {
+func (o *OrderCalculateBundle) GetQuantityOk() (*int32, bool) {
 	if o == nil || IsNil(o.Quantity) {
 		return nil, false
 	}
@@ -170,7 +169,7 @@ func (o *OrderCalculateItem) GetQuantityOk() (*int32, bool) {
 }
 
 // HasQuantity returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasQuantity() bool {
+func (o *OrderCalculateBundle) HasQuantity() bool {
 	if o != nil && !IsNil(o.Quantity) {
 		return true
 	}
@@ -179,12 +178,12 @@ func (o *OrderCalculateItem) HasQuantity() bool {
 }
 
 // SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
-func (o *OrderCalculateItem) SetQuantity(v int32) {
+func (o *OrderCalculateBundle) SetQuantity(v int32) {
 	o.Quantity = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetPrice() float32 {
+func (o *OrderCalculateBundle) GetPrice() float32 {
 	if o == nil || IsNil(o.Price) {
 		var ret float32
 		return ret
@@ -194,7 +193,7 @@ func (o *OrderCalculateItem) GetPrice() float32 {
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetPriceOk() (*float32, bool) {
+func (o *OrderCalculateBundle) GetPriceOk() (*float32, bool) {
 	if o == nil || IsNil(o.Price) {
 		return nil, false
 	}
@@ -202,7 +201,7 @@ func (o *OrderCalculateItem) GetPriceOk() (*float32, bool) {
 }
 
 // HasPrice returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasPrice() bool {
+func (o *OrderCalculateBundle) HasPrice() bool {
 	if o != nil && !IsNil(o.Price) {
 		return true
 	}
@@ -211,12 +210,12 @@ func (o *OrderCalculateItem) HasPrice() bool {
 }
 
 // SetPrice gets a reference to the given float32 and assigns it to the Price field.
-func (o *OrderCalculateItem) SetPrice(v float32) {
+func (o *OrderCalculateBundle) SetPrice(v float32) {
 	o.Price = &v
 }
 
 // GetPriceIncTax returns the PriceIncTax field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetPriceIncTax() float32 {
+func (o *OrderCalculateBundle) GetPriceIncTax() float32 {
 	if o == nil || IsNil(o.PriceIncTax) {
 		var ret float32
 		return ret
@@ -226,7 +225,7 @@ func (o *OrderCalculateItem) GetPriceIncTax() float32 {
 
 // GetPriceIncTaxOk returns a tuple with the PriceIncTax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetPriceIncTaxOk() (*float32, bool) {
+func (o *OrderCalculateBundle) GetPriceIncTaxOk() (*float32, bool) {
 	if o == nil || IsNil(o.PriceIncTax) {
 		return nil, false
 	}
@@ -234,7 +233,7 @@ func (o *OrderCalculateItem) GetPriceIncTaxOk() (*float32, bool) {
 }
 
 // HasPriceIncTax returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasPriceIncTax() bool {
+func (o *OrderCalculateBundle) HasPriceIncTax() bool {
 	if o != nil && !IsNil(o.PriceIncTax) {
 		return true
 	}
@@ -243,12 +242,12 @@ func (o *OrderCalculateItem) HasPriceIncTax() bool {
 }
 
 // SetPriceIncTax gets a reference to the given float32 and assigns it to the PriceIncTax field.
-func (o *OrderCalculateItem) SetPriceIncTax(v float32) {
+func (o *OrderCalculateBundle) SetPriceIncTax(v float32) {
 	o.PriceIncTax = &v
 }
 
 // GetTaxRate returns the TaxRate field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetTaxRate() float32 {
+func (o *OrderCalculateBundle) GetTaxRate() float32 {
 	if o == nil || IsNil(o.TaxRate) {
 		var ret float32
 		return ret
@@ -258,7 +257,7 @@ func (o *OrderCalculateItem) GetTaxRate() float32 {
 
 // GetTaxRateOk returns a tuple with the TaxRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetTaxRateOk() (*float32, bool) {
+func (o *OrderCalculateBundle) GetTaxRateOk() (*float32, bool) {
 	if o == nil || IsNil(o.TaxRate) {
 		return nil, false
 	}
@@ -266,7 +265,7 @@ func (o *OrderCalculateItem) GetTaxRateOk() (*float32, bool) {
 }
 
 // HasTaxRate returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasTaxRate() bool {
+func (o *OrderCalculateBundle) HasTaxRate() bool {
 	if o != nil && !IsNil(o.TaxRate) {
 		return true
 	}
@@ -275,12 +274,12 @@ func (o *OrderCalculateItem) HasTaxRate() bool {
 }
 
 // SetTaxRate gets a reference to the given float32 and assigns it to the TaxRate field.
-func (o *OrderCalculateItem) SetTaxRate(v float32) {
+func (o *OrderCalculateBundle) SetTaxRate(v float32) {
 	o.TaxRate = &v
 }
 
 // GetUnitDiscount returns the UnitDiscount field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetUnitDiscount() float32 {
+func (o *OrderCalculateBundle) GetUnitDiscount() float32 {
 	if o == nil || IsNil(o.UnitDiscount) {
 		var ret float32
 		return ret
@@ -290,7 +289,7 @@ func (o *OrderCalculateItem) GetUnitDiscount() float32 {
 
 // GetUnitDiscountOk returns a tuple with the UnitDiscount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetUnitDiscountOk() (*float32, bool) {
+func (o *OrderCalculateBundle) GetUnitDiscountOk() (*float32, bool) {
 	if o == nil || IsNil(o.UnitDiscount) {
 		return nil, false
 	}
@@ -298,7 +297,7 @@ func (o *OrderCalculateItem) GetUnitDiscountOk() (*float32, bool) {
 }
 
 // HasUnitDiscount returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasUnitDiscount() bool {
+func (o *OrderCalculateBundle) HasUnitDiscount() bool {
 	if o != nil && !IsNil(o.UnitDiscount) {
 		return true
 	}
@@ -307,12 +306,12 @@ func (o *OrderCalculateItem) HasUnitDiscount() bool {
 }
 
 // SetUnitDiscount gets a reference to the given float32 and assigns it to the UnitDiscount field.
-func (o *OrderCalculateItem) SetUnitDiscount(v float32) {
+func (o *OrderCalculateBundle) SetUnitDiscount(v float32) {
 	o.UnitDiscount = &v
 }
 
 // GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetWeight() float32 {
+func (o *OrderCalculateBundle) GetWeight() float32 {
 	if o == nil || IsNil(o.Weight.Get()) {
 		var ret float32
 		return ret
@@ -323,7 +322,7 @@ func (o *OrderCalculateItem) GetWeight() float32 {
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetWeightOk() (*float32, bool) {
+func (o *OrderCalculateBundle) GetWeightOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -331,7 +330,7 @@ func (o *OrderCalculateItem) GetWeightOk() (*float32, bool) {
 }
 
 // HasWeight returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasWeight() bool {
+func (o *OrderCalculateBundle) HasWeight() bool {
 	if o != nil && o.Weight.IsSet() {
 		return true
 	}
@@ -340,21 +339,21 @@ func (o *OrderCalculateItem) HasWeight() bool {
 }
 
 // SetWeight gets a reference to the given NullableFloat32 and assigns it to the Weight field.
-func (o *OrderCalculateItem) SetWeight(v float32) {
+func (o *OrderCalculateBundle) SetWeight(v float32) {
 	o.Weight.Set(&v)
 }
 // SetWeightNil sets the value for Weight to be an explicit nil
-func (o *OrderCalculateItem) SetWeightNil() {
+func (o *OrderCalculateBundle) SetWeightNil() {
 	o.Weight.Set(nil)
 }
 
 // UnsetWeight ensures that no value is present for Weight, not even an explicit nil
-func (o *OrderCalculateItem) UnsetWeight() {
+func (o *OrderCalculateBundle) UnsetWeight() {
 	o.Weight.Unset()
 }
 
 // GetWeightUnit returns the WeightUnit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetWeightUnit() string {
+func (o *OrderCalculateBundle) GetWeightUnit() string {
 	if o == nil || IsNil(o.WeightUnit.Get()) {
 		var ret string
 		return ret
@@ -365,7 +364,7 @@ func (o *OrderCalculateItem) GetWeightUnit() string {
 // GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetWeightUnitOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetWeightUnitOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -373,7 +372,7 @@ func (o *OrderCalculateItem) GetWeightUnitOk() (*string, bool) {
 }
 
 // HasWeightUnit returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasWeightUnit() bool {
+func (o *OrderCalculateBundle) HasWeightUnit() bool {
 	if o != nil && o.WeightUnit.IsSet() {
 		return true
 	}
@@ -382,21 +381,21 @@ func (o *OrderCalculateItem) HasWeightUnit() bool {
 }
 
 // SetWeightUnit gets a reference to the given NullableString and assigns it to the WeightUnit field.
-func (o *OrderCalculateItem) SetWeightUnit(v string) {
+func (o *OrderCalculateBundle) SetWeightUnit(v string) {
 	o.WeightUnit.Set(&v)
 }
 // SetWeightUnitNil sets the value for WeightUnit to be an explicit nil
-func (o *OrderCalculateItem) SetWeightUnitNil() {
+func (o *OrderCalculateBundle) SetWeightUnitNil() {
 	o.WeightUnit.Set(nil)
 }
 
 // UnsetWeightUnit ensures that no value is present for WeightUnit, not even an explicit nil
-func (o *OrderCalculateItem) UnsetWeightUnit() {
+func (o *OrderCalculateBundle) UnsetWeightUnit() {
 	o.WeightUnit.Unset()
 }
 
 // GetBarcode returns the Barcode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetBarcode() string {
+func (o *OrderCalculateBundle) GetBarcode() string {
 	if o == nil || IsNil(o.Barcode.Get()) {
 		var ret string
 		return ret
@@ -407,7 +406,7 @@ func (o *OrderCalculateItem) GetBarcode() string {
 // GetBarcodeOk returns a tuple with the Barcode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetBarcodeOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetBarcodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -415,7 +414,7 @@ func (o *OrderCalculateItem) GetBarcodeOk() (*string, bool) {
 }
 
 // HasBarcode returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasBarcode() bool {
+func (o *OrderCalculateBundle) HasBarcode() bool {
 	if o != nil && o.Barcode.IsSet() {
 		return true
 	}
@@ -424,21 +423,21 @@ func (o *OrderCalculateItem) HasBarcode() bool {
 }
 
 // SetBarcode gets a reference to the given NullableString and assigns it to the Barcode field.
-func (o *OrderCalculateItem) SetBarcode(v string) {
+func (o *OrderCalculateBundle) SetBarcode(v string) {
 	o.Barcode.Set(&v)
 }
 // SetBarcodeNil sets the value for Barcode to be an explicit nil
-func (o *OrderCalculateItem) SetBarcodeNil() {
+func (o *OrderCalculateBundle) SetBarcodeNil() {
 	o.Barcode.Set(nil)
 }
 
 // UnsetBarcode ensures that no value is present for Barcode, not even an explicit nil
-func (o *OrderCalculateItem) UnsetBarcode() {
+func (o *OrderCalculateBundle) UnsetBarcode() {
 	o.Barcode.Unset()
 }
 
 // GetVariantId returns the VariantId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetVariantId() string {
+func (o *OrderCalculateBundle) GetVariantId() string {
 	if o == nil || IsNil(o.VariantId.Get()) {
 		var ret string
 		return ret
@@ -449,7 +448,7 @@ func (o *OrderCalculateItem) GetVariantId() string {
 // GetVariantIdOk returns a tuple with the VariantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetVariantIdOk() (*string, bool) {
+func (o *OrderCalculateBundle) GetVariantIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -457,7 +456,7 @@ func (o *OrderCalculateItem) GetVariantIdOk() (*string, bool) {
 }
 
 // HasVariantId returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasVariantId() bool {
+func (o *OrderCalculateBundle) HasVariantId() bool {
 	if o != nil && o.VariantId.IsSet() {
 		return true
 	}
@@ -466,63 +465,21 @@ func (o *OrderCalculateItem) HasVariantId() bool {
 }
 
 // SetVariantId gets a reference to the given NullableString and assigns it to the VariantId field.
-func (o *OrderCalculateItem) SetVariantId(v string) {
+func (o *OrderCalculateBundle) SetVariantId(v string) {
 	o.VariantId.Set(&v)
 }
 // SetVariantIdNil sets the value for VariantId to be an explicit nil
-func (o *OrderCalculateItem) SetVariantIdNil() {
+func (o *OrderCalculateBundle) SetVariantIdNil() {
 	o.VariantId.Set(nil)
 }
 
 // UnsetVariantId ensures that no value is present for VariantId, not even an explicit nil
-func (o *OrderCalculateItem) UnsetVariantId() {
+func (o *OrderCalculateBundle) UnsetVariantId() {
 	o.VariantId.Unset()
 }
 
-// GetBundleProductId returns the BundleProductId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetBundleProductId() string {
-	if o == nil || IsNil(o.BundleProductId.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.BundleProductId.Get()
-}
-
-// GetBundleProductIdOk returns a tuple with the BundleProductId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetBundleProductIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BundleProductId.Get(), o.BundleProductId.IsSet()
-}
-
-// HasBundleProductId returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasBundleProductId() bool {
-	if o != nil && o.BundleProductId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBundleProductId gets a reference to the given NullableString and assigns it to the BundleProductId field.
-func (o *OrderCalculateItem) SetBundleProductId(v string) {
-	o.BundleProductId.Set(&v)
-}
-// SetBundleProductIdNil sets the value for BundleProductId to be an explicit nil
-func (o *OrderCalculateItem) SetBundleProductIdNil() {
-	o.BundleProductId.Set(nil)
-}
-
-// UnsetBundleProductId ensures that no value is present for BundleProductId, not even an explicit nil
-func (o *OrderCalculateItem) UnsetBundleProductId() {
-	o.BundleProductId.Unset()
-}
-
 // GetOptions returns the Options field value if set, zero value otherwise.
-func (o *OrderCalculateItem) GetOptions() []OrderItemOption {
+func (o *OrderCalculateBundle) GetOptions() []OrderItemOption {
 	if o == nil || IsNil(o.Options) {
 		var ret []OrderItemOption
 		return ret
@@ -532,7 +489,7 @@ func (o *OrderCalculateItem) GetOptions() []OrderItemOption {
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderCalculateItem) GetOptionsOk() ([]OrderItemOption, bool) {
+func (o *OrderCalculateBundle) GetOptionsOk() ([]OrderItemOption, bool) {
 	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
@@ -540,7 +497,7 @@ func (o *OrderCalculateItem) GetOptionsOk() ([]OrderItemOption, bool) {
 }
 
 // HasOptions returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasOptions() bool {
+func (o *OrderCalculateBundle) HasOptions() bool {
 	if o != nil && !IsNil(o.Options) {
 		return true
 	}
@@ -549,12 +506,12 @@ func (o *OrderCalculateItem) HasOptions() bool {
 }
 
 // SetOptions gets a reference to the given []OrderItemOption and assigns it to the Options field.
-func (o *OrderCalculateItem) SetOptions(v []OrderItemOption) {
+func (o *OrderCalculateBundle) SetOptions(v []OrderItemOption) {
 	o.Options = v
 }
 
 // GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetAdditionalFields() map[string]interface{} {
+func (o *OrderCalculateBundle) GetAdditionalFields() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -565,7 +522,7 @@ func (o *OrderCalculateItem) GetAdditionalFields() map[string]interface{} {
 // GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
+func (o *OrderCalculateBundle) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.AdditionalFields) {
 		return map[string]interface{}{}, false
 	}
@@ -573,7 +530,7 @@ func (o *OrderCalculateItem) GetAdditionalFieldsOk() (map[string]interface{}, bo
 }
 
 // HasAdditionalFields returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasAdditionalFields() bool {
+func (o *OrderCalculateBundle) HasAdditionalFields() bool {
 	if o != nil && !IsNil(o.AdditionalFields) {
 		return true
 	}
@@ -582,12 +539,12 @@ func (o *OrderCalculateItem) HasAdditionalFields() bool {
 }
 
 // SetAdditionalFields gets a reference to the given map[string]interface{} and assigns it to the AdditionalFields field.
-func (o *OrderCalculateItem) SetAdditionalFields(v map[string]interface{}) {
+func (o *OrderCalculateBundle) SetAdditionalFields(v map[string]interface{}) {
 	o.AdditionalFields = v
 }
 
 // GetCustomFields returns the CustomFields field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrderCalculateItem) GetCustomFields() map[string]interface{} {
+func (o *OrderCalculateBundle) GetCustomFields() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -598,7 +555,7 @@ func (o *OrderCalculateItem) GetCustomFields() map[string]interface{} {
 // GetCustomFieldsOk returns a tuple with the CustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrderCalculateItem) GetCustomFieldsOk() (map[string]interface{}, bool) {
+func (o *OrderCalculateBundle) GetCustomFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.CustomFields) {
 		return map[string]interface{}{}, false
 	}
@@ -606,7 +563,7 @@ func (o *OrderCalculateItem) GetCustomFieldsOk() (map[string]interface{}, bool) 
 }
 
 // HasCustomFields returns a boolean if a field has been set.
-func (o *OrderCalculateItem) HasCustomFields() bool {
+func (o *OrderCalculateBundle) HasCustomFields() bool {
 	if o != nil && !IsNil(o.CustomFields) {
 		return true
 	}
@@ -615,11 +572,11 @@ func (o *OrderCalculateItem) HasCustomFields() bool {
 }
 
 // SetCustomFields gets a reference to the given map[string]interface{} and assigns it to the CustomFields field.
-func (o *OrderCalculateItem) SetCustomFields(v map[string]interface{}) {
+func (o *OrderCalculateBundle) SetCustomFields(v map[string]interface{}) {
 	o.CustomFields = v
 }
 
-func (o OrderCalculateItem) MarshalJSON() ([]byte, error) {
+func (o OrderCalculateBundle) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -627,7 +584,7 @@ func (o OrderCalculateItem) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OrderCalculateItem) ToMap() (map[string]interface{}, error) {
+func (o OrderCalculateBundle) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProductId) {
 		toSerialize["product_id"] = o.ProductId
@@ -665,9 +622,6 @@ func (o OrderCalculateItem) ToMap() (map[string]interface{}, error) {
 	if o.VariantId.IsSet() {
 		toSerialize["variant_id"] = o.VariantId.Get()
 	}
-	if o.BundleProductId.IsSet() {
-		toSerialize["bundle_product_id"] = o.BundleProductId.Get()
-	}
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
@@ -680,38 +634,38 @@ func (o OrderCalculateItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableOrderCalculateItem struct {
-	value *OrderCalculateItem
+type NullableOrderCalculateBundle struct {
+	value *OrderCalculateBundle
 	isSet bool
 }
 
-func (v NullableOrderCalculateItem) Get() *OrderCalculateItem {
+func (v NullableOrderCalculateBundle) Get() *OrderCalculateBundle {
 	return v.value
 }
 
-func (v *NullableOrderCalculateItem) Set(val *OrderCalculateItem) {
+func (v *NullableOrderCalculateBundle) Set(val *OrderCalculateBundle) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrderCalculateItem) IsSet() bool {
+func (v NullableOrderCalculateBundle) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrderCalculateItem) Unset() {
+func (v *NullableOrderCalculateBundle) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrderCalculateItem(val *OrderCalculateItem) *NullableOrderCalculateItem {
-	return &NullableOrderCalculateItem{value: val, isSet: true}
+func NewNullableOrderCalculateBundle(val *OrderCalculateBundle) *NullableOrderCalculateBundle {
+	return &NullableOrderCalculateBundle{value: val, isSet: true}
 }
 
-func (v NullableOrderCalculateItem) MarshalJSON() ([]byte, error) {
+func (v NullableOrderCalculateBundle) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrderCalculateItem) UnmarshalJSON(src []byte) error {
+func (v *NullableOrderCalculateBundle) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

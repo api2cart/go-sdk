@@ -402,6 +402,7 @@ type ApiAccountConfigUpdateRequest struct {
 	mivaAccessToken *string
 	mivaSignature *string
 	shopwareAccessKey *string
+	unasApiKey *string
 	shopwareApiKey *string
 	shopwareApiSecret *string
 	bigcartelUserName *string
@@ -934,6 +935,12 @@ func (r ApiAccountConfigUpdateRequest) MivaSignature(mivaSignature string) ApiAc
 // Shopware access key
 func (r ApiAccountConfigUpdateRequest) ShopwareAccessKey(shopwareAccessKey string) ApiAccountConfigUpdateRequest {
 	r.shopwareAccessKey = &shopwareAccessKey
+	return r
+}
+
+// UNAS API Key
+func (r ApiAccountConfigUpdateRequest) UnasApiKey(unasApiKey string) ApiAccountConfigUpdateRequest {
+	r.unasApiKey = &unasApiKey
 	return r
 }
 
@@ -1705,6 +1712,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.shopwareAccessKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopware_access_key", r.shopwareAccessKey, "form", "")
+	}
+	if r.unasApiKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "unas_api_key", r.unasApiKey, "form", "")
 	}
 	if r.shopwareApiKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopware_api_key", r.shopwareApiKey, "form", "")

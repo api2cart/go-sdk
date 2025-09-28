@@ -30,6 +30,7 @@ type ProductAddBatchPayloadInner struct {
 	Ean *string `json:"ean,omitempty"`
 	Gtin *string `json:"gtin,omitempty"`
 	Mpn *string `json:"mpn,omitempty"`
+	Isbn *string `json:"isbn,omitempty"`
 	Barcode *string `json:"barcode,omitempty"`
 	Price *float32 `json:"price,omitempty"`
 	OldPrice *float32 `json:"old_price,omitempty"`
@@ -37,8 +38,12 @@ type ProductAddBatchPayloadInner struct {
 	SpecialPrice *float32 `json:"special_price,omitempty"`
 	SpriceCreate *string `json:"sprice_create,omitempty"`
 	SpriceExpire *string `json:"sprice_expire,omitempty"`
+	AvailFrom *string `json:"avail_from,omitempty"`
 	AdvancedPrices []ProductAddBatchPayloadInnerAdvancedPricesInner `json:"advanced_prices,omitempty"`
 	FixedCostShippingPrice *float32 `json:"fixed_cost_shipping_price,omitempty"`
+	BuyitnowPrice *float32 `json:"buyitnow_price,omitempty"`
+	ReservePrice *float32 `json:"reserve_price,omitempty"`
+	BestOffer *float32 `json:"best_offer,omitempty"`
 	Quantity *float32 `json:"quantity,omitempty"`
 	ManageStock *bool `json:"manage_stock,omitempty"`
 	ProductType *string `json:"product_type,omitempty"`
@@ -48,12 +53,15 @@ type ProductAddBatchPayloadInner struct {
 	Taxable *bool `json:"taxable,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Condition *string `json:"condition,omitempty"`
+	ConditionDescription *string `json:"condition_description,omitempty"`
 	Visible *string `json:"visible,omitempty"`
 	AvailableForView *bool `json:"available_for_view,omitempty"`
 	AvailableForSale *bool `json:"available_for_sale,omitempty"`
 	IsVirtual *bool `json:"is_virtual,omitempty"`
 	InStock *bool `json:"in_stock,omitempty"`
 	Type *string `json:"type,omitempty"`
+	ListingType *string `json:"listing_type,omitempty"`
+	ListingDuration *string `json:"listing_duration,omitempty"`
 	Downloadable *bool `json:"downloadable,omitempty"`
 	Weight *float32 `json:"weight,omitempty"`
 	Length *float32 `json:"length,omitempty"`
@@ -71,6 +79,7 @@ type ProductAddBatchPayloadInner struct {
 	CrossSellProductsIds []string `json:"cross_sell_products_ids,omitempty"`
 	StoresIds []string `json:"stores_ids,omitempty"`
 	TaxClassId *string `json:"tax_class_id,omitempty"`
+	SalesTax *ProductAddBatchPayloadInnerSalesTax `json:"sales_tax,omitempty"`
 	MetaTitle *string `json:"meta_title,omitempty"`
 	MetaDescription *string `json:"meta_description,omitempty"`
 	MetaKeywords []string `json:"meta_keywords,omitempty"`
@@ -424,6 +433,38 @@ func (o *ProductAddBatchPayloadInner) SetMpn(v string) {
 	o.Mpn = &v
 }
 
+// GetIsbn returns the Isbn field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetIsbn() string {
+	if o == nil || IsNil(o.Isbn) {
+		var ret string
+		return ret
+	}
+	return *o.Isbn
+}
+
+// GetIsbnOk returns a tuple with the Isbn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetIsbnOk() (*string, bool) {
+	if o == nil || IsNil(o.Isbn) {
+		return nil, false
+	}
+	return o.Isbn, true
+}
+
+// HasIsbn returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasIsbn() bool {
+	if o != nil && !IsNil(o.Isbn) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsbn gets a reference to the given string and assigns it to the Isbn field.
+func (o *ProductAddBatchPayloadInner) SetIsbn(v string) {
+	o.Isbn = &v
+}
+
 // GetBarcode returns the Barcode field value if set, zero value otherwise.
 func (o *ProductAddBatchPayloadInner) GetBarcode() string {
 	if o == nil || IsNil(o.Barcode) {
@@ -648,6 +689,38 @@ func (o *ProductAddBatchPayloadInner) SetSpriceExpire(v string) {
 	o.SpriceExpire = &v
 }
 
+// GetAvailFrom returns the AvailFrom field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetAvailFrom() string {
+	if o == nil || IsNil(o.AvailFrom) {
+		var ret string
+		return ret
+	}
+	return *o.AvailFrom
+}
+
+// GetAvailFromOk returns a tuple with the AvailFrom field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetAvailFromOk() (*string, bool) {
+	if o == nil || IsNil(o.AvailFrom) {
+		return nil, false
+	}
+	return o.AvailFrom, true
+}
+
+// HasAvailFrom returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasAvailFrom() bool {
+	if o != nil && !IsNil(o.AvailFrom) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailFrom gets a reference to the given string and assigns it to the AvailFrom field.
+func (o *ProductAddBatchPayloadInner) SetAvailFrom(v string) {
+	o.AvailFrom = &v
+}
+
 // GetAdvancedPrices returns the AdvancedPrices field value if set, zero value otherwise.
 func (o *ProductAddBatchPayloadInner) GetAdvancedPrices() []ProductAddBatchPayloadInnerAdvancedPricesInner {
 	if o == nil || IsNil(o.AdvancedPrices) {
@@ -710,6 +783,102 @@ func (o *ProductAddBatchPayloadInner) HasFixedCostShippingPrice() bool {
 // SetFixedCostShippingPrice gets a reference to the given float32 and assigns it to the FixedCostShippingPrice field.
 func (o *ProductAddBatchPayloadInner) SetFixedCostShippingPrice(v float32) {
 	o.FixedCostShippingPrice = &v
+}
+
+// GetBuyitnowPrice returns the BuyitnowPrice field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetBuyitnowPrice() float32 {
+	if o == nil || IsNil(o.BuyitnowPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.BuyitnowPrice
+}
+
+// GetBuyitnowPriceOk returns a tuple with the BuyitnowPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetBuyitnowPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.BuyitnowPrice) {
+		return nil, false
+	}
+	return o.BuyitnowPrice, true
+}
+
+// HasBuyitnowPrice returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasBuyitnowPrice() bool {
+	if o != nil && !IsNil(o.BuyitnowPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuyitnowPrice gets a reference to the given float32 and assigns it to the BuyitnowPrice field.
+func (o *ProductAddBatchPayloadInner) SetBuyitnowPrice(v float32) {
+	o.BuyitnowPrice = &v
+}
+
+// GetReservePrice returns the ReservePrice field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetReservePrice() float32 {
+	if o == nil || IsNil(o.ReservePrice) {
+		var ret float32
+		return ret
+	}
+	return *o.ReservePrice
+}
+
+// GetReservePriceOk returns a tuple with the ReservePrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetReservePriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.ReservePrice) {
+		return nil, false
+	}
+	return o.ReservePrice, true
+}
+
+// HasReservePrice returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasReservePrice() bool {
+	if o != nil && !IsNil(o.ReservePrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetReservePrice gets a reference to the given float32 and assigns it to the ReservePrice field.
+func (o *ProductAddBatchPayloadInner) SetReservePrice(v float32) {
+	o.ReservePrice = &v
+}
+
+// GetBestOffer returns the BestOffer field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetBestOffer() float32 {
+	if o == nil || IsNil(o.BestOffer) {
+		var ret float32
+		return ret
+	}
+	return *o.BestOffer
+}
+
+// GetBestOfferOk returns a tuple with the BestOffer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetBestOfferOk() (*float32, bool) {
+	if o == nil || IsNil(o.BestOffer) {
+		return nil, false
+	}
+	return o.BestOffer, true
+}
+
+// HasBestOffer returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasBestOffer() bool {
+	if o != nil && !IsNil(o.BestOffer) {
+		return true
+	}
+
+	return false
+}
+
+// SetBestOffer gets a reference to the given float32 and assigns it to the BestOffer field.
+func (o *ProductAddBatchPayloadInner) SetBestOffer(v float32) {
+	o.BestOffer = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -1000,6 +1169,38 @@ func (o *ProductAddBatchPayloadInner) SetCondition(v string) {
 	o.Condition = &v
 }
 
+// GetConditionDescription returns the ConditionDescription field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetConditionDescription() string {
+	if o == nil || IsNil(o.ConditionDescription) {
+		var ret string
+		return ret
+	}
+	return *o.ConditionDescription
+}
+
+// GetConditionDescriptionOk returns a tuple with the ConditionDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetConditionDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.ConditionDescription) {
+		return nil, false
+	}
+	return o.ConditionDescription, true
+}
+
+// HasConditionDescription returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasConditionDescription() bool {
+	if o != nil && !IsNil(o.ConditionDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetConditionDescription gets a reference to the given string and assigns it to the ConditionDescription field.
+func (o *ProductAddBatchPayloadInner) SetConditionDescription(v string) {
+	o.ConditionDescription = &v
+}
+
 // GetVisible returns the Visible field value if set, zero value otherwise.
 func (o *ProductAddBatchPayloadInner) GetVisible() string {
 	if o == nil || IsNil(o.Visible) {
@@ -1190,6 +1391,70 @@ func (o *ProductAddBatchPayloadInner) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ProductAddBatchPayloadInner) SetType(v string) {
 	o.Type = &v
+}
+
+// GetListingType returns the ListingType field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetListingType() string {
+	if o == nil || IsNil(o.ListingType) {
+		var ret string
+		return ret
+	}
+	return *o.ListingType
+}
+
+// GetListingTypeOk returns a tuple with the ListingType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetListingTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingType) {
+		return nil, false
+	}
+	return o.ListingType, true
+}
+
+// HasListingType returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasListingType() bool {
+	if o != nil && !IsNil(o.ListingType) {
+		return true
+	}
+
+	return false
+}
+
+// SetListingType gets a reference to the given string and assigns it to the ListingType field.
+func (o *ProductAddBatchPayloadInner) SetListingType(v string) {
+	o.ListingType = &v
+}
+
+// GetListingDuration returns the ListingDuration field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetListingDuration() string {
+	if o == nil || IsNil(o.ListingDuration) {
+		var ret string
+		return ret
+	}
+	return *o.ListingDuration
+}
+
+// GetListingDurationOk returns a tuple with the ListingDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetListingDurationOk() (*string, bool) {
+	if o == nil || IsNil(o.ListingDuration) {
+		return nil, false
+	}
+	return o.ListingDuration, true
+}
+
+// HasListingDuration returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasListingDuration() bool {
+	if o != nil && !IsNil(o.ListingDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetListingDuration gets a reference to the given string and assigns it to the ListingDuration field.
+func (o *ProductAddBatchPayloadInner) SetListingDuration(v string) {
+	o.ListingDuration = &v
 }
 
 // GetDownloadable returns the Downloadable field value if set, zero value otherwise.
@@ -1736,6 +2001,38 @@ func (o *ProductAddBatchPayloadInner) SetTaxClassId(v string) {
 	o.TaxClassId = &v
 }
 
+// GetSalesTax returns the SalesTax field value if set, zero value otherwise.
+func (o *ProductAddBatchPayloadInner) GetSalesTax() ProductAddBatchPayloadInnerSalesTax {
+	if o == nil || IsNil(o.SalesTax) {
+		var ret ProductAddBatchPayloadInnerSalesTax
+		return ret
+	}
+	return *o.SalesTax
+}
+
+// GetSalesTaxOk returns a tuple with the SalesTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddBatchPayloadInner) GetSalesTaxOk() (*ProductAddBatchPayloadInnerSalesTax, bool) {
+	if o == nil || IsNil(o.SalesTax) {
+		return nil, false
+	}
+	return o.SalesTax, true
+}
+
+// HasSalesTax returns a boolean if a field has been set.
+func (o *ProductAddBatchPayloadInner) HasSalesTax() bool {
+	if o != nil && !IsNil(o.SalesTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetSalesTax gets a reference to the given ProductAddBatchPayloadInnerSalesTax and assigns it to the SalesTax field.
+func (o *ProductAddBatchPayloadInner) SetSalesTax(v ProductAddBatchPayloadInnerSalesTax) {
+	o.SalesTax = &v
+}
+
 // GetMetaTitle returns the MetaTitle field value if set, zero value otherwise.
 func (o *ProductAddBatchPayloadInner) GetMetaTitle() string {
 	if o == nil || IsNil(o.MetaTitle) {
@@ -2224,6 +2521,9 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mpn) {
 		toSerialize["mpn"] = o.Mpn
 	}
+	if !IsNil(o.Isbn) {
+		toSerialize["isbn"] = o.Isbn
+	}
 	if !IsNil(o.Barcode) {
 		toSerialize["barcode"] = o.Barcode
 	}
@@ -2245,11 +2545,23 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SpriceExpire) {
 		toSerialize["sprice_expire"] = o.SpriceExpire
 	}
+	if !IsNil(o.AvailFrom) {
+		toSerialize["avail_from"] = o.AvailFrom
+	}
 	if !IsNil(o.AdvancedPrices) {
 		toSerialize["advanced_prices"] = o.AdvancedPrices
 	}
 	if !IsNil(o.FixedCostShippingPrice) {
 		toSerialize["fixed_cost_shipping_price"] = o.FixedCostShippingPrice
+	}
+	if !IsNil(o.BuyitnowPrice) {
+		toSerialize["buyitnow_price"] = o.BuyitnowPrice
+	}
+	if !IsNil(o.ReservePrice) {
+		toSerialize["reserve_price"] = o.ReservePrice
+	}
+	if !IsNil(o.BestOffer) {
+		toSerialize["best_offer"] = o.BestOffer
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
@@ -2278,6 +2590,9 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
+	if !IsNil(o.ConditionDescription) {
+		toSerialize["condition_description"] = o.ConditionDescription
+	}
 	if !IsNil(o.Visible) {
 		toSerialize["visible"] = o.Visible
 	}
@@ -2295,6 +2610,12 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.ListingType) {
+		toSerialize["listing_type"] = o.ListingType
+	}
+	if !IsNil(o.ListingDuration) {
+		toSerialize["listing_duration"] = o.ListingDuration
 	}
 	if !IsNil(o.Downloadable) {
 		toSerialize["downloadable"] = o.Downloadable
@@ -2346,6 +2667,9 @@ func (o ProductAddBatchPayloadInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TaxClassId) {
 		toSerialize["tax_class_id"] = o.TaxClassId
+	}
+	if !IsNil(o.SalesTax) {
+		toSerialize["sales_tax"] = o.SalesTax
 	}
 	if !IsNil(o.MetaTitle) {
 		toSerialize["meta_title"] = o.MetaTitle

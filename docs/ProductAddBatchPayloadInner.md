@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Ean** | Pointer to **string** |  | [optional] 
 **Gtin** | Pointer to **string** |  | [optional] 
 **Mpn** | Pointer to **string** |  | [optional] 
+**Isbn** | Pointer to **string** |  | [optional] 
 **Barcode** | Pointer to **string** |  | [optional] 
 **Price** | Pointer to **float32** |  | [optional] 
 **OldPrice** | Pointer to **float32** |  | [optional] 
@@ -21,8 +22,12 @@ Name | Type | Description | Notes
 **SpecialPrice** | Pointer to **float32** |  | [optional] 
 **SpriceCreate** | Pointer to **string** |  | [optional] 
 **SpriceExpire** | Pointer to **string** |  | [optional] 
+**AvailFrom** | Pointer to **string** |  | [optional] 
 **AdvancedPrices** | Pointer to [**[]ProductAddBatchPayloadInnerAdvancedPricesInner**](ProductAddBatchPayloadInnerAdvancedPricesInner.md) |  | [optional] 
 **FixedCostShippingPrice** | Pointer to **float32** |  | [optional] 
+**BuyitnowPrice** | Pointer to **float32** |  | [optional] 
+**ReservePrice** | Pointer to **float32** |  | [optional] 
+**BestOffer** | Pointer to **float32** |  | [optional] 
 **Quantity** | Pointer to **float32** |  | [optional] 
 **ManageStock** | Pointer to **bool** |  | [optional] 
 **ProductType** | Pointer to **string** |  | [optional] 
@@ -32,12 +37,15 @@ Name | Type | Description | Notes
 **Taxable** | Pointer to **bool** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Condition** | Pointer to **string** |  | [optional] 
+**ConditionDescription** | Pointer to **string** |  | [optional] 
 **Visible** | Pointer to **string** |  | [optional] 
 **AvailableForView** | Pointer to **bool** |  | [optional] 
 **AvailableForSale** | Pointer to **bool** |  | [optional] 
 **IsVirtual** | Pointer to **bool** |  | [optional] 
 **InStock** | Pointer to **bool** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**ListingType** | Pointer to **string** |  | [optional] 
+**ListingDuration** | Pointer to **string** |  | [optional] 
 **Downloadable** | Pointer to **bool** |  | [optional] 
 **Weight** | Pointer to **float32** |  | [optional] 
 **Length** | Pointer to **float32** |  | [optional] 
@@ -55,6 +63,7 @@ Name | Type | Description | Notes
 **CrossSellProductsIds** | Pointer to **[]string** |  | [optional] 
 **StoresIds** | Pointer to **[]string** |  | [optional] 
 **TaxClassId** | Pointer to **string** |  | [optional] 
+**SalesTax** | Pointer to [**ProductAddBatchPayloadInnerSalesTax**](ProductAddBatchPayloadInnerSalesTax.md) |  | [optional] 
 **MetaTitle** | Pointer to **string** |  | [optional] 
 **MetaDescription** | Pointer to **string** |  | [optional] 
 **MetaKeywords** | Pointer to **[]string** |  | [optional] 
@@ -339,6 +348,31 @@ SetMpn sets Mpn field to given value.
 
 HasMpn returns a boolean if a field has been set.
 
+### GetIsbn
+
+`func (o *ProductAddBatchPayloadInner) GetIsbn() string`
+
+GetIsbn returns the Isbn field if non-nil, zero value otherwise.
+
+### GetIsbnOk
+
+`func (o *ProductAddBatchPayloadInner) GetIsbnOk() (*string, bool)`
+
+GetIsbnOk returns a tuple with the Isbn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsbn
+
+`func (o *ProductAddBatchPayloadInner) SetIsbn(v string)`
+
+SetIsbn sets Isbn field to given value.
+
+### HasIsbn
+
+`func (o *ProductAddBatchPayloadInner) HasIsbn() bool`
+
+HasIsbn returns a boolean if a field has been set.
+
 ### GetBarcode
 
 `func (o *ProductAddBatchPayloadInner) GetBarcode() string`
@@ -514,6 +548,31 @@ SetSpriceExpire sets SpriceExpire field to given value.
 
 HasSpriceExpire returns a boolean if a field has been set.
 
+### GetAvailFrom
+
+`func (o *ProductAddBatchPayloadInner) GetAvailFrom() string`
+
+GetAvailFrom returns the AvailFrom field if non-nil, zero value otherwise.
+
+### GetAvailFromOk
+
+`func (o *ProductAddBatchPayloadInner) GetAvailFromOk() (*string, bool)`
+
+GetAvailFromOk returns a tuple with the AvailFrom field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailFrom
+
+`func (o *ProductAddBatchPayloadInner) SetAvailFrom(v string)`
+
+SetAvailFrom sets AvailFrom field to given value.
+
+### HasAvailFrom
+
+`func (o *ProductAddBatchPayloadInner) HasAvailFrom() bool`
+
+HasAvailFrom returns a boolean if a field has been set.
+
 ### GetAdvancedPrices
 
 `func (o *ProductAddBatchPayloadInner) GetAdvancedPrices() []ProductAddBatchPayloadInnerAdvancedPricesInner`
@@ -563,6 +622,81 @@ SetFixedCostShippingPrice sets FixedCostShippingPrice field to given value.
 `func (o *ProductAddBatchPayloadInner) HasFixedCostShippingPrice() bool`
 
 HasFixedCostShippingPrice returns a boolean if a field has been set.
+
+### GetBuyitnowPrice
+
+`func (o *ProductAddBatchPayloadInner) GetBuyitnowPrice() float32`
+
+GetBuyitnowPrice returns the BuyitnowPrice field if non-nil, zero value otherwise.
+
+### GetBuyitnowPriceOk
+
+`func (o *ProductAddBatchPayloadInner) GetBuyitnowPriceOk() (*float32, bool)`
+
+GetBuyitnowPriceOk returns a tuple with the BuyitnowPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuyitnowPrice
+
+`func (o *ProductAddBatchPayloadInner) SetBuyitnowPrice(v float32)`
+
+SetBuyitnowPrice sets BuyitnowPrice field to given value.
+
+### HasBuyitnowPrice
+
+`func (o *ProductAddBatchPayloadInner) HasBuyitnowPrice() bool`
+
+HasBuyitnowPrice returns a boolean if a field has been set.
+
+### GetReservePrice
+
+`func (o *ProductAddBatchPayloadInner) GetReservePrice() float32`
+
+GetReservePrice returns the ReservePrice field if non-nil, zero value otherwise.
+
+### GetReservePriceOk
+
+`func (o *ProductAddBatchPayloadInner) GetReservePriceOk() (*float32, bool)`
+
+GetReservePriceOk returns a tuple with the ReservePrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReservePrice
+
+`func (o *ProductAddBatchPayloadInner) SetReservePrice(v float32)`
+
+SetReservePrice sets ReservePrice field to given value.
+
+### HasReservePrice
+
+`func (o *ProductAddBatchPayloadInner) HasReservePrice() bool`
+
+HasReservePrice returns a boolean if a field has been set.
+
+### GetBestOffer
+
+`func (o *ProductAddBatchPayloadInner) GetBestOffer() float32`
+
+GetBestOffer returns the BestOffer field if non-nil, zero value otherwise.
+
+### GetBestOfferOk
+
+`func (o *ProductAddBatchPayloadInner) GetBestOfferOk() (*float32, bool)`
+
+GetBestOfferOk returns a tuple with the BestOffer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBestOffer
+
+`func (o *ProductAddBatchPayloadInner) SetBestOffer(v float32)`
+
+SetBestOffer sets BestOffer field to given value.
+
+### HasBestOffer
+
+`func (o *ProductAddBatchPayloadInner) HasBestOffer() bool`
+
+HasBestOffer returns a boolean if a field has been set.
 
 ### GetQuantity
 
@@ -789,6 +923,31 @@ SetCondition sets Condition field to given value.
 
 HasCondition returns a boolean if a field has been set.
 
+### GetConditionDescription
+
+`func (o *ProductAddBatchPayloadInner) GetConditionDescription() string`
+
+GetConditionDescription returns the ConditionDescription field if non-nil, zero value otherwise.
+
+### GetConditionDescriptionOk
+
+`func (o *ProductAddBatchPayloadInner) GetConditionDescriptionOk() (*string, bool)`
+
+GetConditionDescriptionOk returns a tuple with the ConditionDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConditionDescription
+
+`func (o *ProductAddBatchPayloadInner) SetConditionDescription(v string)`
+
+SetConditionDescription sets ConditionDescription field to given value.
+
+### HasConditionDescription
+
+`func (o *ProductAddBatchPayloadInner) HasConditionDescription() bool`
+
+HasConditionDescription returns a boolean if a field has been set.
+
 ### GetVisible
 
 `func (o *ProductAddBatchPayloadInner) GetVisible() string`
@@ -938,6 +1097,56 @@ SetType sets Type field to given value.
 `func (o *ProductAddBatchPayloadInner) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetListingType
+
+`func (o *ProductAddBatchPayloadInner) GetListingType() string`
+
+GetListingType returns the ListingType field if non-nil, zero value otherwise.
+
+### GetListingTypeOk
+
+`func (o *ProductAddBatchPayloadInner) GetListingTypeOk() (*string, bool)`
+
+GetListingTypeOk returns a tuple with the ListingType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetListingType
+
+`func (o *ProductAddBatchPayloadInner) SetListingType(v string)`
+
+SetListingType sets ListingType field to given value.
+
+### HasListingType
+
+`func (o *ProductAddBatchPayloadInner) HasListingType() bool`
+
+HasListingType returns a boolean if a field has been set.
+
+### GetListingDuration
+
+`func (o *ProductAddBatchPayloadInner) GetListingDuration() string`
+
+GetListingDuration returns the ListingDuration field if non-nil, zero value otherwise.
+
+### GetListingDurationOk
+
+`func (o *ProductAddBatchPayloadInner) GetListingDurationOk() (*string, bool)`
+
+GetListingDurationOk returns a tuple with the ListingDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetListingDuration
+
+`func (o *ProductAddBatchPayloadInner) SetListingDuration(v string)`
+
+SetListingDuration sets ListingDuration field to given value.
+
+### HasListingDuration
+
+`func (o *ProductAddBatchPayloadInner) HasListingDuration() bool`
+
+HasListingDuration returns a boolean if a field has been set.
 
 ### GetDownloadable
 
@@ -1363,6 +1572,31 @@ SetTaxClassId sets TaxClassId field to given value.
 `func (o *ProductAddBatchPayloadInner) HasTaxClassId() bool`
 
 HasTaxClassId returns a boolean if a field has been set.
+
+### GetSalesTax
+
+`func (o *ProductAddBatchPayloadInner) GetSalesTax() ProductAddBatchPayloadInnerSalesTax`
+
+GetSalesTax returns the SalesTax field if non-nil, zero value otherwise.
+
+### GetSalesTaxOk
+
+`func (o *ProductAddBatchPayloadInner) GetSalesTaxOk() (*ProductAddBatchPayloadInnerSalesTax, bool)`
+
+GetSalesTaxOk returns a tuple with the SalesTax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSalesTax
+
+`func (o *ProductAddBatchPayloadInner) SetSalesTax(v ProductAddBatchPayloadInnerSalesTax)`
+
+SetSalesTax sets SalesTax field to given value.
+
+### HasSalesTax
+
+`func (o *ProductAddBatchPayloadInner) HasSalesTax() bool`
+
+HasSalesTax returns a boolean if a field has been set.
 
 ### GetMetaTitle
 

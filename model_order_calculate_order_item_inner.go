@@ -28,6 +28,10 @@ type OrderCalculateOrderItemInner struct {
 	OrderItemQuantity int32 `json:"order_item_quantity"`
 	// Ordered product variant. Where x is order item ID
 	OrderItemVariantId *string `json:"order_item_variant_id,omitempty"`
+	// Index of the parent grouped/bundle product
+	OrderItemParent *int32 `json:"order_item_parent,omitempty"`
+	// Option name of the parent grouped/bundle product
+	OrderItemParentOptionName *string `json:"order_item_parent_option_name,omitempty"`
 	OrderItemOption []OrderCalculateOrderItemInnerOrderItemOptionInner `json:"order_item_option,omitempty"`
 }
 
@@ -132,6 +136,70 @@ func (o *OrderCalculateOrderItemInner) SetOrderItemVariantId(v string) {
 	o.OrderItemVariantId = &v
 }
 
+// GetOrderItemParent returns the OrderItemParent field value if set, zero value otherwise.
+func (o *OrderCalculateOrderItemInner) GetOrderItemParent() int32 {
+	if o == nil || IsNil(o.OrderItemParent) {
+		var ret int32
+		return ret
+	}
+	return *o.OrderItemParent
+}
+
+// GetOrderItemParentOk returns a tuple with the OrderItemParent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderCalculateOrderItemInner) GetOrderItemParentOk() (*int32, bool) {
+	if o == nil || IsNil(o.OrderItemParent) {
+		return nil, false
+	}
+	return o.OrderItemParent, true
+}
+
+// HasOrderItemParent returns a boolean if a field has been set.
+func (o *OrderCalculateOrderItemInner) HasOrderItemParent() bool {
+	if o != nil && !IsNil(o.OrderItemParent) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderItemParent gets a reference to the given int32 and assigns it to the OrderItemParent field.
+func (o *OrderCalculateOrderItemInner) SetOrderItemParent(v int32) {
+	o.OrderItemParent = &v
+}
+
+// GetOrderItemParentOptionName returns the OrderItemParentOptionName field value if set, zero value otherwise.
+func (o *OrderCalculateOrderItemInner) GetOrderItemParentOptionName() string {
+	if o == nil || IsNil(o.OrderItemParentOptionName) {
+		var ret string
+		return ret
+	}
+	return *o.OrderItemParentOptionName
+}
+
+// GetOrderItemParentOptionNameOk returns a tuple with the OrderItemParentOptionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderCalculateOrderItemInner) GetOrderItemParentOptionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.OrderItemParentOptionName) {
+		return nil, false
+	}
+	return o.OrderItemParentOptionName, true
+}
+
+// HasOrderItemParentOptionName returns a boolean if a field has been set.
+func (o *OrderCalculateOrderItemInner) HasOrderItemParentOptionName() bool {
+	if o != nil && !IsNil(o.OrderItemParentOptionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderItemParentOptionName gets a reference to the given string and assigns it to the OrderItemParentOptionName field.
+func (o *OrderCalculateOrderItemInner) SetOrderItemParentOptionName(v string) {
+	o.OrderItemParentOptionName = &v
+}
+
 // GetOrderItemOption returns the OrderItemOption field value if set, zero value otherwise.
 func (o *OrderCalculateOrderItemInner) GetOrderItemOption() []OrderCalculateOrderItemInnerOrderItemOptionInner {
 	if o == nil || IsNil(o.OrderItemOption) {
@@ -178,6 +246,12 @@ func (o OrderCalculateOrderItemInner) ToMap() (map[string]interface{}, error) {
 	toSerialize["order_item_quantity"] = o.OrderItemQuantity
 	if !IsNil(o.OrderItemVariantId) {
 		toSerialize["order_item_variant_id"] = o.OrderItemVariantId
+	}
+	if !IsNil(o.OrderItemParent) {
+		toSerialize["order_item_parent"] = o.OrderItemParent
+	}
+	if !IsNil(o.OrderItemParentOptionName) {
+		toSerialize["order_item_parent_option_name"] = o.OrderItemParentOptionName
 	}
 	if !IsNil(o.OrderItemOption) {
 		toSerialize["order_item_option"] = o.OrderItemOption

@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **OrderItemId** | **string** | Defines orders specified by order item id | 
 **OrderItemQuantity** | **int32** | Defines orders specified by order item quantity | 
 **OrderItemVariantId** | Pointer to **string** | Ordered product variant. Where x is order item ID | [optional] 
+**OrderItemParent** | Pointer to **int32** | Index of the parent grouped/bundle product | [optional] 
+**OrderItemParentOptionName** | Pointer to **string** | Option name of the parent grouped/bundle product | [optional] 
 **OrderItemOption** | Pointer to [**[]OrderCalculateOrderItemInnerOrderItemOptionInner**](OrderCalculateOrderItemInnerOrderItemOptionInner.md) |  | [optional] 
 
 ## Methods
@@ -92,6 +94,56 @@ SetOrderItemVariantId sets OrderItemVariantId field to given value.
 `func (o *OrderCalculateOrderItemInner) HasOrderItemVariantId() bool`
 
 HasOrderItemVariantId returns a boolean if a field has been set.
+
+### GetOrderItemParent
+
+`func (o *OrderCalculateOrderItemInner) GetOrderItemParent() int32`
+
+GetOrderItemParent returns the OrderItemParent field if non-nil, zero value otherwise.
+
+### GetOrderItemParentOk
+
+`func (o *OrderCalculateOrderItemInner) GetOrderItemParentOk() (*int32, bool)`
+
+GetOrderItemParentOk returns a tuple with the OrderItemParent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderItemParent
+
+`func (o *OrderCalculateOrderItemInner) SetOrderItemParent(v int32)`
+
+SetOrderItemParent sets OrderItemParent field to given value.
+
+### HasOrderItemParent
+
+`func (o *OrderCalculateOrderItemInner) HasOrderItemParent() bool`
+
+HasOrderItemParent returns a boolean if a field has been set.
+
+### GetOrderItemParentOptionName
+
+`func (o *OrderCalculateOrderItemInner) GetOrderItemParentOptionName() string`
+
+GetOrderItemParentOptionName returns the OrderItemParentOptionName field if non-nil, zero value otherwise.
+
+### GetOrderItemParentOptionNameOk
+
+`func (o *OrderCalculateOrderItemInner) GetOrderItemParentOptionNameOk() (*string, bool)`
+
+GetOrderItemParentOptionNameOk returns a tuple with the OrderItemParentOptionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderItemParentOptionName
+
+`func (o *OrderCalculateOrderItemInner) SetOrderItemParentOptionName(v string)`
+
+SetOrderItemParentOptionName sets OrderItemParentOptionName field to given value.
+
+### HasOrderItemParentOptionName
+
+`func (o *OrderCalculateOrderItemInner) HasOrderItemParentOptionName() bool`
+
+HasOrderItemParentOptionName returns a boolean if a field has been set.
 
 ### GetOrderItemOption
 
