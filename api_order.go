@@ -1197,6 +1197,7 @@ type ApiOrderInfoRequest struct {
 	exclude *string
 	enableCache *bool
 	useLatestApiVersion *bool
+	roundingPrecision *int32
 }
 
 // Retrieves order info specified by id
@@ -1244,6 +1245,12 @@ func (r ApiOrderInfoRequest) EnableCache(enableCache bool) ApiOrderInfoRequest {
 // Use the latest platform API version
 func (r ApiOrderInfoRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiOrderInfoRequest {
 	r.useLatestApiVersion = &useLatestApiVersion
+	return r
+}
+
+// &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt;
+func (r ApiOrderInfoRequest) RoundingPrecision(roundingPrecision int32) ApiOrderInfoRequest {
+	r.roundingPrecision = &roundingPrecision
 	return r
 }
 
@@ -1319,6 +1326,9 @@ func (a *OrderAPIService) OrderInfoExecute(r ApiOrderInfoRequest) (*OrderInfo200
 	} else {
 		var defaultValue bool = false
 		r.useLatestApiVersion = &defaultValue
+	}
+	if r.roundingPrecision != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rounding_precision", r.roundingPrecision, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1443,6 +1453,7 @@ type ApiOrderListRequest struct {
 	exclude *string
 	enableCache *bool
 	useLatestApiVersion *bool
+	roundingPrecision *int32
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1673,6 +1684,12 @@ func (r ApiOrderListRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiOr
 	return r
 }
 
+// &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt;
+func (r ApiOrderListRequest) RoundingPrecision(roundingPrecision int32) ApiOrderListRequest {
+	r.roundingPrecision = &roundingPrecision
+	return r
+}
+
 func (r ApiOrderListRequest) Execute() (*ModelResponseOrderList, *http.Response, error) {
 	return r.ApiService.OrderListExecute(r)
 }
@@ -1863,6 +1880,9 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 	} else {
 		var defaultValue bool = false
 		r.useLatestApiVersion = &defaultValue
+	}
+	if r.roundingPrecision != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rounding_precision", r.roundingPrecision, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -24,6 +24,7 @@ type Cart struct {
 	Url NullableString `json:"url,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	BridgeVersion NullableString `json:"bridge_version,omitempty"`
+	DefaultRoundingPrecision NullableInt32 `json:"default_rounding_precision,omitempty"`
 	DbPrefix NullableString `json:"db_prefix,omitempty"`
 	StoresInfo []CartStoreInfo `json:"stores_info,omitempty"`
 	Warehouses []CartWarehouse `json:"warehouses,omitempty"`
@@ -215,6 +216,48 @@ func (o *Cart) SetBridgeVersionNil() {
 // UnsetBridgeVersion ensures that no value is present for BridgeVersion, not even an explicit nil
 func (o *Cart) UnsetBridgeVersion() {
 	o.BridgeVersion.Unset()
+}
+
+// GetDefaultRoundingPrecision returns the DefaultRoundingPrecision field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Cart) GetDefaultRoundingPrecision() int32 {
+	if o == nil || IsNil(o.DefaultRoundingPrecision.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DefaultRoundingPrecision.Get()
+}
+
+// GetDefaultRoundingPrecisionOk returns a tuple with the DefaultRoundingPrecision field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Cart) GetDefaultRoundingPrecisionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DefaultRoundingPrecision.Get(), o.DefaultRoundingPrecision.IsSet()
+}
+
+// HasDefaultRoundingPrecision returns a boolean if a field has been set.
+func (o *Cart) HasDefaultRoundingPrecision() bool {
+	if o != nil && o.DefaultRoundingPrecision.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultRoundingPrecision gets a reference to the given NullableInt32 and assigns it to the DefaultRoundingPrecision field.
+func (o *Cart) SetDefaultRoundingPrecision(v int32) {
+	o.DefaultRoundingPrecision.Set(&v)
+}
+// SetDefaultRoundingPrecisionNil sets the value for DefaultRoundingPrecision to be an explicit nil
+func (o *Cart) SetDefaultRoundingPrecisionNil() {
+	o.DefaultRoundingPrecision.Set(nil)
+}
+
+// UnsetDefaultRoundingPrecision ensures that no value is present for DefaultRoundingPrecision, not even an explicit nil
+func (o *Cart) UnsetDefaultRoundingPrecision() {
+	o.DefaultRoundingPrecision.Unset()
 }
 
 // GetDbPrefix returns the DbPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -442,6 +485,9 @@ func (o Cart) ToMap() (map[string]interface{}, error) {
 	}
 	if o.BridgeVersion.IsSet() {
 		toSerialize["bridge_version"] = o.BridgeVersion.Get()
+	}
+	if o.DefaultRoundingPrecision.IsSet() {
+		toSerialize["default_rounding_precision"] = o.DefaultRoundingPrecision.Get()
 	}
 	if o.DbPrefix.IsSet() {
 		toSerialize["db_prefix"] = o.DbPrefix.Get()

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **NullableString** |  | [optional] 
 **Version** | Pointer to **NullableString** |  | [optional] 
 **BridgeVersion** | Pointer to **NullableString** |  | [optional] 
+**DefaultRoundingPrecision** | Pointer to **NullableInt32** |  | [optional] 
 **DbPrefix** | Pointer to **NullableString** |  | [optional] 
 **StoresInfo** | Pointer to [**[]CartStoreInfo**](CartStoreInfo.md) |  | [optional] 
 **Warehouses** | Pointer to [**[]CartWarehouse**](CartWarehouse.md) |  | [optional] 
@@ -174,6 +175,41 @@ HasBridgeVersion returns a boolean if a field has been set.
 `func (o *Cart) UnsetBridgeVersion()`
 
 UnsetBridgeVersion ensures that no value is present for BridgeVersion, not even an explicit nil
+### GetDefaultRoundingPrecision
+
+`func (o *Cart) GetDefaultRoundingPrecision() int32`
+
+GetDefaultRoundingPrecision returns the DefaultRoundingPrecision field if non-nil, zero value otherwise.
+
+### GetDefaultRoundingPrecisionOk
+
+`func (o *Cart) GetDefaultRoundingPrecisionOk() (*int32, bool)`
+
+GetDefaultRoundingPrecisionOk returns a tuple with the DefaultRoundingPrecision field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultRoundingPrecision
+
+`func (o *Cart) SetDefaultRoundingPrecision(v int32)`
+
+SetDefaultRoundingPrecision sets DefaultRoundingPrecision field to given value.
+
+### HasDefaultRoundingPrecision
+
+`func (o *Cart) HasDefaultRoundingPrecision() bool`
+
+HasDefaultRoundingPrecision returns a boolean if a field has been set.
+
+### SetDefaultRoundingPrecisionNil
+
+`func (o *Cart) SetDefaultRoundingPrecisionNil(b bool)`
+
+ SetDefaultRoundingPrecisionNil sets the value for DefaultRoundingPrecision to be an explicit nil
+
+### UnsetDefaultRoundingPrecision
+`func (o *Cart) UnsetDefaultRoundingPrecision()`
+
+UnsetDefaultRoundingPrecision ensures that no value is present for DefaultRoundingPrecision, not even an explicit nil
 ### GetDbPrefix
 
 `func (o *Cart) GetDbPrefix() string`

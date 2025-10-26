@@ -161,6 +161,8 @@ type ProductUpdate struct {
 	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
 	// The numeric ID of the shipping template associated with the products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field shipping_zones[]->id.
 	ShippingTemplateId *int32 `json:"shipping_template_id,omitempty"`
+	// The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field processing_profiles[]->readiness_state_id.
+	ProcessingProfileId *int32 `json:"processing_profile_id,omitempty"`
 	// An enumerated string for the era in which the maker made the product.
 	WhenMade *string `json:"when_made,omitempty"`
 	// If true, it indicates the product as a supply, otherwise it indicates that it is a finished product.
@@ -2536,6 +2538,38 @@ func (o *ProductUpdate) SetShippingTemplateId(v int32) {
 	o.ShippingTemplateId = &v
 }
 
+// GetProcessingProfileId returns the ProcessingProfileId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetProcessingProfileId() int32 {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		var ret int32
+		return ret
+	}
+	return *o.ProcessingProfileId
+}
+
+// GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetProcessingProfileIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		return nil, false
+	}
+	return o.ProcessingProfileId, true
+}
+
+// HasProcessingProfileId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasProcessingProfileId() bool {
+	if o != nil && !IsNil(o.ProcessingProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingProfileId gets a reference to the given int32 and assigns it to the ProcessingProfileId field.
+func (o *ProductUpdate) SetProcessingProfileId(v int32) {
+	o.ProcessingProfileId = &v
+}
+
 // GetWhenMade returns the WhenMade field value if set, zero value otherwise.
 func (o *ProductUpdate) GetWhenMade() string {
 	if o == nil || IsNil(o.WhenMade) {
@@ -3366,6 +3400,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShippingTemplateId) {
 		toSerialize["shipping_template_id"] = o.ShippingTemplateId
+	}
+	if !IsNil(o.ProcessingProfileId) {
+		toSerialize["processing_profile_id"] = o.ProcessingProfileId
 	}
 	if !IsNil(o.WhenMade) {
 		toSerialize["when_made"] = o.WhenMade

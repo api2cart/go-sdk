@@ -75,6 +75,7 @@ Name | Type | Description | Notes
 **CountryOfOrigin** | Pointer to **string** | The country where the inventory item was made | [optional] 
 **HarmonizedSystemCode** | Pointer to **string** | Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes | [optional] 
 **ShippingTemplateId** | Pointer to **int32** | The numeric ID of the shipping template associated with the products in Etsy. You can find possible values in the \&quot;cart.info\&quot; API method response, in the field shipping_zones[]-&gt;id. | [optional] [default to 0]
+**ProcessingProfileId** | Pointer to **int32** | The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \&quot;cart.info\&quot; API method response, in the field processing_profiles[]-&gt;readiness_state_id. | [optional] 
 **WhenMade** | Pointer to **string** | An enumerated string for the era in which the maker made the product. | [optional] [default to "made_to_order"]
 **IsSupply** | Pointer to **bool** | If true, it indicates the product as a supply, otherwise it indicates that it is a finished product. | [optional] [default to true]
 **Downloadable** | Pointer to **bool** | Defines whether the product is downloadable | [optional] [default to false]
@@ -1888,6 +1889,31 @@ SetShippingTemplateId sets ShippingTemplateId field to given value.
 `func (o *ProductUpdate) HasShippingTemplateId() bool`
 
 HasShippingTemplateId returns a boolean if a field has been set.
+
+### GetProcessingProfileId
+
+`func (o *ProductUpdate) GetProcessingProfileId() int32`
+
+GetProcessingProfileId returns the ProcessingProfileId field if non-nil, zero value otherwise.
+
+### GetProcessingProfileIdOk
+
+`func (o *ProductUpdate) GetProcessingProfileIdOk() (*int32, bool)`
+
+GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingProfileId
+
+`func (o *ProductUpdate) SetProcessingProfileId(v int32)`
+
+SetProcessingProfileId sets ProcessingProfileId field to given value.
+
+### HasProcessingProfileId
+
+`func (o *ProductUpdate) HasProcessingProfileId() bool`
+
+HasProcessingProfileId returns a boolean if a field has been set.
 
 ### GetWhenMade
 

@@ -209,6 +209,8 @@ type ProductAdd struct {
 	PaypalEmail *string `json:"paypal_email,omitempty"`
 	// The numeric ID of the shipping template associated with the products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field shipping_zones[]->id.
 	ShippingTemplateId *int32 `json:"shipping_template_id,omitempty"`
+	// The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field processing_profiles[]->readiness_state_id.
+	ProcessingProfileId *int32 `json:"processing_profile_id,omitempty"`
 	// The shipping details, including flat and calculated shipping costs and shipping insurance costs. Look at cart.info method response for allowed values.<hr><div style=\"font-style:normal\">Param structure:<div style=\"margin-left: 2%;\"><code style=\"padding:0; background-color:#ffffff;font-size:85%;font-family:monospace;\">shipping_details[0][<b>shipping_type</b>] = string </br>shipping_details[0][<b>shipping_service</b>] = string</br>shipping_details[0][<b>shipping_cost</b>] = decimal</br>shipping_details[1][<b>shipping_type</b>] = string </br>shipping_details[1][<b>shipping_service</b>] = string</br>shipping_details[1][<b>shipping_cost</b>] = decimal</br></code></div></div>
 	ShippingDetails []ProductAddShippingDetailsInner `json:"shipping_details,omitempty"`
 	// Specifies product's free shipping flag that has to be added
@@ -3352,6 +3354,38 @@ func (o *ProductAdd) SetShippingTemplateId(v int32) {
 	o.ShippingTemplateId = &v
 }
 
+// GetProcessingProfileId returns the ProcessingProfileId field value if set, zero value otherwise.
+func (o *ProductAdd) GetProcessingProfileId() int32 {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		var ret int32
+		return ret
+	}
+	return *o.ProcessingProfileId
+}
+
+// GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetProcessingProfileIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		return nil, false
+	}
+	return o.ProcessingProfileId, true
+}
+
+// HasProcessingProfileId returns a boolean if a field has been set.
+func (o *ProductAdd) HasProcessingProfileId() bool {
+	if o != nil && !IsNil(o.ProcessingProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingProfileId gets a reference to the given int32 and assigns it to the ProcessingProfileId field.
+func (o *ProductAdd) SetProcessingProfileId(v int32) {
+	o.ProcessingProfileId = &v
+}
+
 // GetShippingDetails returns the ShippingDetails field value if set, zero value otherwise.
 func (o *ProductAdd) GetShippingDetails() []ProductAddShippingDetailsInner {
 	if o == nil || IsNil(o.ShippingDetails) {
@@ -4374,6 +4408,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShippingTemplateId) {
 		toSerialize["shipping_template_id"] = o.ShippingTemplateId
+	}
+	if !IsNil(o.ProcessingProfileId) {
+		toSerialize["processing_profile_id"] = o.ProcessingProfileId
 	}
 	if !IsNil(o.ShippingDetails) {
 		toSerialize["shipping_details"] = o.ShippingDetails
