@@ -801,7 +801,7 @@ Name | Type | Description  | Notes
 
 ## ProductCount
 
-> ProductCount200Response ProductCount(ctx).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ProductCount200Response ProductCount(ctx).Sku(sku).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ManufacturerId(manufacturerId).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.count
 
@@ -820,6 +820,7 @@ import (
 )
 
 func main() {
+	sku := "bag_01" // string | Filter by product's sku (optional)
 	productIds := "4,5" // string | Counts products specified by product ids (optional)
 	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
 	categoriesIds := "23,56" // string | Defines product add that is specified by comma-separated categories id (optional)
@@ -833,6 +834,7 @@ func main() {
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	brandName := "Abidas" // string | Retrieves brands specified by brand name (optional)
+	manufacturerId := "1" // string | Defines product's manufacturer by manufacturer_id (optional)
 	productAttributes := []string{"Inner_example"} // []string | Defines product attributes (optional)
 	status := "disabled" // string | Defines product's status (optional)
 	type_ := "simple" // string | Defines products's type (optional)
@@ -846,7 +848,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductCount(context.Background()).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductCount(context.Background()).Sku(sku).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ManufacturerId(manufacturerId).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -867,6 +869,7 @@ Other parameters are passed through a pointer to a apiProductCountRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **sku** | **string** | Filter by product&#39;s sku | 
  **productIds** | **string** | Counts products specified by product ids | 
  **sinceId** | **string** | Retrieve entities starting from the specified id. | 
  **categoriesIds** | **string** | Defines product add that is specified by comma-separated categories id | 
@@ -880,6 +883,7 @@ Name | Type | Description  | Notes
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **brandName** | **string** | Retrieves brands specified by brand name | 
+ **manufacturerId** | **string** | Defines product&#39;s manufacturer by manufacturer_id | 
  **productAttributes** | **[]string** | Defines product attributes | 
  **status** | **string** | Defines product&#39;s status | 
  **type_** | **string** | Defines products&#39;s type | 
@@ -1583,7 +1587,7 @@ Name | Type | Description  | Notes
 
 ## ProductList
 
-> ModelResponseProductList ProductList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
+> ModelResponseProductList ProductList(ctx).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).ManufacturerId(manufacturerId).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
 
 product.list
 
@@ -1621,6 +1625,7 @@ func main() {
 	sku := "bag_01" // string | Filter by product's sku (optional)
 	brandName := "Abidas" // string | Retrieves brands specified by brand name (optional)
 	productAttributes := []string{"Inner_example"} // []string | Defines product attributes (optional)
+	manufacturerId := "1" // string | Defines product's manufacturer by manufacturer_id (optional)
 	status := "disabled" // string | Defines product's status (optional)
 	type_ := "simple" // string | Defines products's type (optional)
 	visible := "everywhere" // string | Filter items by visibility status (optional) (default to "everywhere")
@@ -1640,7 +1645,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).LangId(langId).CurrencyId(currencyId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Sku(sku).BrandName(brandName).ProductAttributes(productAttributes).ManufacturerId(manufacturerId).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReturnGlobal(returnGlobal).Params(params).ResponseFields(responseFields).Exclude(exclude).SortBy(sortBy).SortDirection(sortDirection).ReportRequestId(reportRequestId).DisableCache(disableCache).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).ProductType(productType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1680,6 +1685,7 @@ Name | Type | Description  | Notes
  **sku** | **string** | Filter by product&#39;s sku | 
  **brandName** | **string** | Retrieves brands specified by brand name | 
  **productAttributes** | **[]string** | Defines product attributes | 
+ **manufacturerId** | **string** | Defines product&#39;s manufacturer by manufacturer_id | 
  **status** | **string** | Defines product&#39;s status | 
  **type_** | **string** | Defines products&#39;s type | 
  **visible** | **string** | Filter items by visibility status | [default to &quot;everywhere&quot;]

@@ -73,6 +73,7 @@ Name | Type | Description | Notes
 **NoteAttributes** | Pointer to [**[]OrderAddNoteAttributesInner**](OrderAddNoteAttributesInner.md) | Defines note attributes | [optional] 
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **Origin** | Pointer to **string** | The source of the order | [optional] 
+**FeePrice** | Pointer to **float32** | Specifies refund&#39;s fee price | [optional] 
 **OrderItem** | [**[]OrderAddOrderItemInner**](OrderAddOrderItemInner.md) |  | 
 
 ## Methods
@@ -1773,6 +1774,31 @@ SetOrigin sets Origin field to given value.
 `func (o *OrderAdd) HasOrigin() bool`
 
 HasOrigin returns a boolean if a field has been set.
+
+### GetFeePrice
+
+`func (o *OrderAdd) GetFeePrice() float32`
+
+GetFeePrice returns the FeePrice field if non-nil, zero value otherwise.
+
+### GetFeePriceOk
+
+`func (o *OrderAdd) GetFeePriceOk() (*float32, bool)`
+
+GetFeePriceOk returns a tuple with the FeePrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeePrice
+
+`func (o *OrderAdd) SetFeePrice(v float32)`
+
+SetFeePrice sets FeePrice field to given value.
+
+### HasFeePrice
+
+`func (o *OrderAdd) HasFeePrice() bool`
+
+HasFeePrice returns a boolean if a field has been set.
 
 ### GetOrderItem
 

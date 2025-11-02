@@ -2078,6 +2078,7 @@ func (a *ProductAPIService) ProductChildItemListExecute(r ApiProductChildItemLis
 type ApiProductCountRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
+	sku *string
 	productIds *string
 	sinceId *string
 	categoriesIds *string
@@ -2091,6 +2092,7 @@ type ApiProductCountRequest struct {
 	modifiedFrom *string
 	modifiedTo *string
 	brandName *string
+	manufacturerId *string
 	productAttributes *[]string
 	status *string
 	type_ *string
@@ -2101,6 +2103,12 @@ type ApiProductCountRequest struct {
 	returnGlobal *bool
 	disableReportCache *bool
 	useLatestApiVersion *bool
+}
+
+// Filter by product&#39;s sku
+func (r ApiProductCountRequest) Sku(sku string) ApiProductCountRequest {
+	r.sku = &sku
+	return r
 }
 
 // Counts products specified by product ids
@@ -2178,6 +2186,12 @@ func (r ApiProductCountRequest) ModifiedTo(modifiedTo string) ApiProductCountReq
 // Retrieves brands specified by brand name
 func (r ApiProductCountRequest) BrandName(brandName string) ApiProductCountRequest {
 	r.brandName = &brandName
+	return r
+}
+
+// Defines product&#39;s manufacturer by manufacturer_id
+func (r ApiProductCountRequest) ManufacturerId(manufacturerId string) ApiProductCountRequest {
+	r.manufacturerId = &manufacturerId
 	return r
 }
 
@@ -2281,6 +2295,9 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.sku != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sku", r.sku, "form", "")
+	}
 	if r.productIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "product_ids", r.productIds, "form", "")
 	}
@@ -2319,6 +2336,9 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	}
 	if r.brandName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "brand_name", r.brandName, "form", "")
+	}
+	if r.manufacturerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "manufacturer_id", r.manufacturerId, "form", "")
 	}
 	if r.productAttributes != nil {
 		t := *r.productAttributes
@@ -4144,6 +4164,7 @@ type ApiProductListRequest struct {
 	sku *string
 	brandName *string
 	productAttributes *[]string
+	manufacturerId *string
 	status *string
 	type_ *string
 	visible *string
@@ -4273,6 +4294,12 @@ func (r ApiProductListRequest) BrandName(brandName string) ApiProductListRequest
 // Defines product attributes
 func (r ApiProductListRequest) ProductAttributes(productAttributes []string) ApiProductListRequest {
 	r.productAttributes = &productAttributes
+	return r
+}
+
+// Defines product&#39;s manufacturer by manufacturer_id
+func (r ApiProductListRequest) ManufacturerId(manufacturerId string) ApiProductListRequest {
+	r.manufacturerId = &manufacturerId
 	return r
 }
 
@@ -4482,6 +4509,9 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "product_attributes", t, "form", "multi")
 		}
+	}
+	if r.manufacturerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "manufacturer_id", r.manufacturerId, "form", "")
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")

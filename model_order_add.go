@@ -160,6 +160,8 @@ type OrderAdd struct {
 	ClearCache *bool `json:"clear_cache,omitempty"`
 	// The source of the order
 	Origin *string `json:"origin,omitempty"`
+	// Specifies refund's fee price
+	FeePrice *float32 `json:"fee_price,omitempty"`
 	OrderItem []OrderAddOrderItemInner `json:"order_item"`
 }
 
@@ -2360,6 +2362,38 @@ func (o *OrderAdd) SetOrigin(v string) {
 	o.Origin = &v
 }
 
+// GetFeePrice returns the FeePrice field value if set, zero value otherwise.
+func (o *OrderAdd) GetFeePrice() float32 {
+	if o == nil || IsNil(o.FeePrice) {
+		var ret float32
+		return ret
+	}
+	return *o.FeePrice
+}
+
+// GetFeePriceOk returns a tuple with the FeePrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetFeePriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.FeePrice) {
+		return nil, false
+	}
+	return o.FeePrice, true
+}
+
+// HasFeePrice returns a boolean if a field has been set.
+func (o *OrderAdd) HasFeePrice() bool {
+	if o != nil && !IsNil(o.FeePrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeePrice gets a reference to the given float32 and assigns it to the FeePrice field.
+func (o *OrderAdd) SetFeePrice(v float32) {
+	o.FeePrice = &v
+}
+
 // GetOrderItem returns the OrderItem field value
 func (o *OrderAdd) GetOrderItem() []OrderAddOrderItemInner {
 	if o == nil {
@@ -2582,6 +2616,9 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Origin) {
 		toSerialize["origin"] = o.Origin
+	}
+	if !IsNil(o.FeePrice) {
+		toSerialize["fee_price"] = o.FeePrice
 	}
 	toSerialize["order_item"] = o.OrderItem
 	return toSerialize, nil
