@@ -345,6 +345,10 @@ type ApiAccountConfigUpdateRequest struct {
 	amazonSellerId *string
 	aspdotnetstorefrontApiUser *string
 	aspdotnetstorefrontApiPass *string
+	americommerceAppId *string
+	americommerceAppSecret *string
+	americommerceAccessToken *string
+	americommerceRefreshToken *string
 	bigcommerceapiAdminAccount *string
 	bigcommerceapiApiPath *string
 	bigcommerceapiApiKey *string
@@ -593,6 +597,30 @@ func (r ApiAccountConfigUpdateRequest) AspdotnetstorefrontApiUser(aspdotnetstore
 // AspDotNetStorefront API Password
 func (r ApiAccountConfigUpdateRequest) AspdotnetstorefrontApiPass(aspdotnetstorefrontApiPass string) ApiAccountConfigUpdateRequest {
 	r.aspdotnetstorefrontApiPass = &aspdotnetstorefrontApiPass
+	return r
+}
+
+// Americommerce App ID
+func (r ApiAccountConfigUpdateRequest) AmericommerceAppId(americommerceAppId string) ApiAccountConfigUpdateRequest {
+	r.americommerceAppId = &americommerceAppId
+	return r
+}
+
+// Americommerce App Secret
+func (r ApiAccountConfigUpdateRequest) AmericommerceAppSecret(americommerceAppSecret string) ApiAccountConfigUpdateRequest {
+	r.americommerceAppSecret = &americommerceAppSecret
+	return r
+}
+
+// Americommerce Access Token
+func (r ApiAccountConfigUpdateRequest) AmericommerceAccessToken(americommerceAccessToken string) ApiAccountConfigUpdateRequest {
+	r.americommerceAccessToken = &americommerceAccessToken
+	return r
+}
+
+// Americommerce Refresh Token
+func (r ApiAccountConfigUpdateRequest) AmericommerceRefreshToken(americommerceRefreshToken string) ApiAccountConfigUpdateRequest {
+	r.americommerceRefreshToken = &americommerceRefreshToken
 	return r
 }
 
@@ -1538,6 +1566,18 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.aspdotnetstorefrontApiPass != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "aspdotnetstorefront_api_pass", r.aspdotnetstorefrontApiPass, "form", "")
+	}
+	if r.americommerceAppId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "americommerce_app_id", r.americommerceAppId, "form", "")
+	}
+	if r.americommerceAppSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "americommerce_app_secret", r.americommerceAppSecret, "form", "")
+	}
+	if r.americommerceAccessToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "americommerce_access_token", r.americommerceAccessToken, "form", "")
+	}
+	if r.americommerceRefreshToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "americommerce_refresh_token", r.americommerceRefreshToken, "form", "")
 	}
 	if r.bigcommerceapiAdminAccount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bigcommerceapi_admin_account", r.bigcommerceapiAdminAccount, "form", "")

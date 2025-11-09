@@ -30,6 +30,8 @@ type OrderCalculate struct {
 	StoreId *string `json:"store_id,omitempty"`
 	// Coupons that will be applied to order. If the order isn't eligible for any given discount code or there is no discount with such a code it will be skipped during calculation
 	Coupons []string `json:"coupons,omitempty"`
+	// <p>Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).</p> <p>Supported values range from <b>1</b> to <b>6</b>.</p> <p>The default rounding precision may vary depending on the platform. You can retrieve the default value using the <strong>cart.info</strong> method in the <code>default_rounding_precision</code> field. </p><p>Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.</p>
+	RoundingPrecision *int32 `json:"rounding_precision,omitempty"`
 	// Specifies shipping first name
 	ShippFirstName string `json:"shipp_first_name"`
 	// Specifies shipping last name
@@ -220,6 +222,38 @@ func (o *OrderCalculate) HasCoupons() bool {
 // SetCoupons gets a reference to the given []string and assigns it to the Coupons field.
 func (o *OrderCalculate) SetCoupons(v []string) {
 	o.Coupons = v
+}
+
+// GetRoundingPrecision returns the RoundingPrecision field value if set, zero value otherwise.
+func (o *OrderCalculate) GetRoundingPrecision() int32 {
+	if o == nil || IsNil(o.RoundingPrecision) {
+		var ret int32
+		return ret
+	}
+	return *o.RoundingPrecision
+}
+
+// GetRoundingPrecisionOk returns a tuple with the RoundingPrecision field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderCalculate) GetRoundingPrecisionOk() (*int32, bool) {
+	if o == nil || IsNil(o.RoundingPrecision) {
+		return nil, false
+	}
+	return o.RoundingPrecision, true
+}
+
+// HasRoundingPrecision returns a boolean if a field has been set.
+func (o *OrderCalculate) HasRoundingPrecision() bool {
+	if o != nil && !IsNil(o.RoundingPrecision) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoundingPrecision gets a reference to the given int32 and assigns it to the RoundingPrecision field.
+func (o *OrderCalculate) SetRoundingPrecision(v int32) {
+	o.RoundingPrecision = &v
 }
 
 // GetShippFirstName returns the ShippFirstName field value
@@ -889,6 +923,9 @@ func (o OrderCalculate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Coupons) {
 		toSerialize["coupons"] = o.Coupons
+	}
+	if !IsNil(o.RoundingPrecision) {
+		toSerialize["rounding_precision"] = o.RoundingPrecision
 	}
 	toSerialize["shipp_first_name"] = o.ShippFirstName
 	toSerialize["shipp_last_name"] = o.ShippLastName

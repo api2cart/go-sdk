@@ -22,6 +22,7 @@ var _ MappedNullable = &ProductAddGroupPricesInner{}
 type ProductAddGroupPricesInner struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Price *float32 `json:"price,omitempty"`
+	Qty *int32 `json:"qty,omitempty"`
 }
 
 // NewProductAddGroupPricesInner instantiates a new ProductAddGroupPricesInner object
@@ -105,6 +106,38 @@ func (o *ProductAddGroupPricesInner) SetPrice(v float32) {
 	o.Price = &v
 }
 
+// GetQty returns the Qty field value if set, zero value otherwise.
+func (o *ProductAddGroupPricesInner) GetQty() int32 {
+	if o == nil || IsNil(o.Qty) {
+		var ret int32
+		return ret
+	}
+	return *o.Qty
+}
+
+// GetQtyOk returns a tuple with the Qty field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAddGroupPricesInner) GetQtyOk() (*int32, bool) {
+	if o == nil || IsNil(o.Qty) {
+		return nil, false
+	}
+	return o.Qty, true
+}
+
+// HasQty returns a boolean if a field has been set.
+func (o *ProductAddGroupPricesInner) HasQty() bool {
+	if o != nil && !IsNil(o.Qty) {
+		return true
+	}
+
+	return false
+}
+
+// SetQty gets a reference to the given int32 and assigns it to the Qty field.
+func (o *ProductAddGroupPricesInner) SetQty(v int32) {
+	o.Qty = &v
+}
+
 func (o ProductAddGroupPricesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -120,6 +153,9 @@ func (o ProductAddGroupPricesInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
+	}
+	if !IsNil(o.Qty) {
+		toSerialize["qty"] = o.Qty
 	}
 	return toSerialize, nil
 }

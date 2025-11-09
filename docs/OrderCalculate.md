@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CurrencyId** | Pointer to **string** | Currency Id | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **Coupons** | Pointer to **[]string** | Coupons that will be applied to order. If the order isn&#39;t eligible for any given discount code or there is no discount with such a code it will be skipped during calculation | [optional] 
+**RoundingPrecision** | Pointer to **int32** | &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt; | [optional] 
 **ShippFirstName** | **string** | Specifies shipping first name | 
 **ShippLastName** | **string** | Specifies shipping last name | 
 **ShippAddress1** | **string** | Specifies first shipping address | 
@@ -144,6 +145,31 @@ SetCoupons sets Coupons field to given value.
 `func (o *OrderCalculate) HasCoupons() bool`
 
 HasCoupons returns a boolean if a field has been set.
+
+### GetRoundingPrecision
+
+`func (o *OrderCalculate) GetRoundingPrecision() int32`
+
+GetRoundingPrecision returns the RoundingPrecision field if non-nil, zero value otherwise.
+
+### GetRoundingPrecisionOk
+
+`func (o *OrderCalculate) GetRoundingPrecisionOk() (*int32, bool)`
+
+GetRoundingPrecisionOk returns a tuple with the RoundingPrecision field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoundingPrecision
+
+`func (o *OrderCalculate) SetRoundingPrecision(v int32)`
+
+SetRoundingPrecision sets RoundingPrecision field to given value.
+
+### HasRoundingPrecision
+
+`func (o *OrderCalculate) HasRoundingPrecision() bool`
+
+HasRoundingPrecision returns a boolean if a field has been set.
 
 ### GetShippFirstName
 

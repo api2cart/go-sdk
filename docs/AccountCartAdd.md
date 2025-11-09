@@ -29,6 +29,10 @@ Name | Type | Description | Notes
 **AmazonSellerId** | Pointer to **string** | Amazon Seller ID (Merchant token) | [optional] 
 **AspdotnetstorefrontApiUser** | Pointer to **string** | It&#39;s a AspDotNetStorefront account for which API is available | [optional] 
 **AspdotnetstorefrontApiPass** | Pointer to **string** | AspDotNetStorefront API Password | [optional] 
+**AmericommerceAppId** | Pointer to **string** | Americommerce App ID | [optional] 
+**AmericommerceAppSecret** | Pointer to **string** | Americommerce App Secret | [optional] 
+**AmericommerceAccessToken** | Pointer to **string** | Americommerce Access Token | [optional] 
+**AmericommerceRefreshToken** | Pointer to **string** | Americommerce Refresh Token | [optional] 
 **BigcommerceapiAdminAccount** | Pointer to **string** | It&#39;s a BigCommerce account for which API is enabled | [optional] 
 **BigcommerceapiApiPath** | Pointer to **string** | BigCommerce API URL | [optional] 
 **BigcommerceapiApiKey** | Pointer to **string** | Bigcommerce API Key | [optional] 
@@ -809,6 +813,106 @@ SetAspdotnetstorefrontApiPass sets AspdotnetstorefrontApiPass field to given val
 `func (o *AccountCartAdd) HasAspdotnetstorefrontApiPass() bool`
 
 HasAspdotnetstorefrontApiPass returns a boolean if a field has been set.
+
+### GetAmericommerceAppId
+
+`func (o *AccountCartAdd) GetAmericommerceAppId() string`
+
+GetAmericommerceAppId returns the AmericommerceAppId field if non-nil, zero value otherwise.
+
+### GetAmericommerceAppIdOk
+
+`func (o *AccountCartAdd) GetAmericommerceAppIdOk() (*string, bool)`
+
+GetAmericommerceAppIdOk returns a tuple with the AmericommerceAppId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmericommerceAppId
+
+`func (o *AccountCartAdd) SetAmericommerceAppId(v string)`
+
+SetAmericommerceAppId sets AmericommerceAppId field to given value.
+
+### HasAmericommerceAppId
+
+`func (o *AccountCartAdd) HasAmericommerceAppId() bool`
+
+HasAmericommerceAppId returns a boolean if a field has been set.
+
+### GetAmericommerceAppSecret
+
+`func (o *AccountCartAdd) GetAmericommerceAppSecret() string`
+
+GetAmericommerceAppSecret returns the AmericommerceAppSecret field if non-nil, zero value otherwise.
+
+### GetAmericommerceAppSecretOk
+
+`func (o *AccountCartAdd) GetAmericommerceAppSecretOk() (*string, bool)`
+
+GetAmericommerceAppSecretOk returns a tuple with the AmericommerceAppSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmericommerceAppSecret
+
+`func (o *AccountCartAdd) SetAmericommerceAppSecret(v string)`
+
+SetAmericommerceAppSecret sets AmericommerceAppSecret field to given value.
+
+### HasAmericommerceAppSecret
+
+`func (o *AccountCartAdd) HasAmericommerceAppSecret() bool`
+
+HasAmericommerceAppSecret returns a boolean if a field has been set.
+
+### GetAmericommerceAccessToken
+
+`func (o *AccountCartAdd) GetAmericommerceAccessToken() string`
+
+GetAmericommerceAccessToken returns the AmericommerceAccessToken field if non-nil, zero value otherwise.
+
+### GetAmericommerceAccessTokenOk
+
+`func (o *AccountCartAdd) GetAmericommerceAccessTokenOk() (*string, bool)`
+
+GetAmericommerceAccessTokenOk returns a tuple with the AmericommerceAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmericommerceAccessToken
+
+`func (o *AccountCartAdd) SetAmericommerceAccessToken(v string)`
+
+SetAmericommerceAccessToken sets AmericommerceAccessToken field to given value.
+
+### HasAmericommerceAccessToken
+
+`func (o *AccountCartAdd) HasAmericommerceAccessToken() bool`
+
+HasAmericommerceAccessToken returns a boolean if a field has been set.
+
+### GetAmericommerceRefreshToken
+
+`func (o *AccountCartAdd) GetAmericommerceRefreshToken() string`
+
+GetAmericommerceRefreshToken returns the AmericommerceRefreshToken field if non-nil, zero value otherwise.
+
+### GetAmericommerceRefreshTokenOk
+
+`func (o *AccountCartAdd) GetAmericommerceRefreshTokenOk() (*string, bool)`
+
+GetAmericommerceRefreshTokenOk returns a tuple with the AmericommerceRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmericommerceRefreshToken
+
+`func (o *AccountCartAdd) SetAmericommerceRefreshToken(v string)`
+
+SetAmericommerceRefreshToken sets AmericommerceRefreshToken field to given value.
+
+### HasAmericommerceRefreshToken
+
+`func (o *AccountCartAdd) HasAmericommerceRefreshToken() bool`
+
+HasAmericommerceRefreshToken returns a boolean if a field has been set.
 
 ### GetBigcommerceapiAdminAccount
 

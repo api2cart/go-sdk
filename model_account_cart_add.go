@@ -72,6 +72,14 @@ type AccountCartAdd struct {
 	AspdotnetstorefrontApiUser *string `json:"aspdotnetstorefront_api_user,omitempty"`
 	// AspDotNetStorefront API Password
 	AspdotnetstorefrontApiPass *string `json:"aspdotnetstorefront_api_pass,omitempty"`
+	// Americommerce App ID
+	AmericommerceAppId *string `json:"americommerce_app_id,omitempty"`
+	// Americommerce App Secret
+	AmericommerceAppSecret *string `json:"americommerce_app_secret,omitempty"`
+	// Americommerce Access Token
+	AmericommerceAccessToken *string `json:"americommerce_access_token,omitempty"`
+	// Americommerce Refresh Token
+	AmericommerceRefreshToken *string `json:"americommerce_refresh_token,omitempty"`
 	// It's a BigCommerce account for which API is enabled
 	BigcommerceapiAdminAccount *string `json:"bigcommerceapi_admin_account,omitempty"`
 	// BigCommerce API URL
@@ -1206,6 +1214,134 @@ func (o *AccountCartAdd) HasAspdotnetstorefrontApiPass() bool {
 // SetAspdotnetstorefrontApiPass gets a reference to the given string and assigns it to the AspdotnetstorefrontApiPass field.
 func (o *AccountCartAdd) SetAspdotnetstorefrontApiPass(v string) {
 	o.AspdotnetstorefrontApiPass = &v
+}
+
+// GetAmericommerceAppId returns the AmericommerceAppId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetAmericommerceAppId() string {
+	if o == nil || IsNil(o.AmericommerceAppId) {
+		var ret string
+		return ret
+	}
+	return *o.AmericommerceAppId
+}
+
+// GetAmericommerceAppIdOk returns a tuple with the AmericommerceAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetAmericommerceAppIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AmericommerceAppId) {
+		return nil, false
+	}
+	return o.AmericommerceAppId, true
+}
+
+// HasAmericommerceAppId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasAmericommerceAppId() bool {
+	if o != nil && !IsNil(o.AmericommerceAppId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmericommerceAppId gets a reference to the given string and assigns it to the AmericommerceAppId field.
+func (o *AccountCartAdd) SetAmericommerceAppId(v string) {
+	o.AmericommerceAppId = &v
+}
+
+// GetAmericommerceAppSecret returns the AmericommerceAppSecret field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetAmericommerceAppSecret() string {
+	if o == nil || IsNil(o.AmericommerceAppSecret) {
+		var ret string
+		return ret
+	}
+	return *o.AmericommerceAppSecret
+}
+
+// GetAmericommerceAppSecretOk returns a tuple with the AmericommerceAppSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetAmericommerceAppSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.AmericommerceAppSecret) {
+		return nil, false
+	}
+	return o.AmericommerceAppSecret, true
+}
+
+// HasAmericommerceAppSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasAmericommerceAppSecret() bool {
+	if o != nil && !IsNil(o.AmericommerceAppSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmericommerceAppSecret gets a reference to the given string and assigns it to the AmericommerceAppSecret field.
+func (o *AccountCartAdd) SetAmericommerceAppSecret(v string) {
+	o.AmericommerceAppSecret = &v
+}
+
+// GetAmericommerceAccessToken returns the AmericommerceAccessToken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetAmericommerceAccessToken() string {
+	if o == nil || IsNil(o.AmericommerceAccessToken) {
+		var ret string
+		return ret
+	}
+	return *o.AmericommerceAccessToken
+}
+
+// GetAmericommerceAccessTokenOk returns a tuple with the AmericommerceAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetAmericommerceAccessTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.AmericommerceAccessToken) {
+		return nil, false
+	}
+	return o.AmericommerceAccessToken, true
+}
+
+// HasAmericommerceAccessToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasAmericommerceAccessToken() bool {
+	if o != nil && !IsNil(o.AmericommerceAccessToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmericommerceAccessToken gets a reference to the given string and assigns it to the AmericommerceAccessToken field.
+func (o *AccountCartAdd) SetAmericommerceAccessToken(v string) {
+	o.AmericommerceAccessToken = &v
+}
+
+// GetAmericommerceRefreshToken returns the AmericommerceRefreshToken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetAmericommerceRefreshToken() string {
+	if o == nil || IsNil(o.AmericommerceRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.AmericommerceRefreshToken
+}
+
+// GetAmericommerceRefreshTokenOk returns a tuple with the AmericommerceRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetAmericommerceRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.AmericommerceRefreshToken) {
+		return nil, false
+	}
+	return o.AmericommerceRefreshToken, true
+}
+
+// HasAmericommerceRefreshToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasAmericommerceRefreshToken() bool {
+	if o != nil && !IsNil(o.AmericommerceRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmericommerceRefreshToken gets a reference to the given string and assigns it to the AmericommerceRefreshToken field.
+func (o *AccountCartAdd) SetAmericommerceRefreshToken(v string) {
+	o.AmericommerceRefreshToken = &v
 }
 
 // GetBigcommerceapiAdminAccount returns the BigcommerceapiAdminAccount field value if set, zero value otherwise.
@@ -5802,6 +5938,18 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AspdotnetstorefrontApiPass) {
 		toSerialize["aspdotnetstorefront_api_pass"] = o.AspdotnetstorefrontApiPass
+	}
+	if !IsNil(o.AmericommerceAppId) {
+		toSerialize["americommerce_app_id"] = o.AmericommerceAppId
+	}
+	if !IsNil(o.AmericommerceAppSecret) {
+		toSerialize["americommerce_app_secret"] = o.AmericommerceAppSecret
+	}
+	if !IsNil(o.AmericommerceAccessToken) {
+		toSerialize["americommerce_access_token"] = o.AmericommerceAccessToken
+	}
+	if !IsNil(o.AmericommerceRefreshToken) {
+		toSerialize["americommerce_refresh_token"] = o.AmericommerceRefreshToken
 	}
 	if !IsNil(o.BigcommerceapiAdminAccount) {
 		toSerialize["bigcommerceapi_admin_account"] = o.BigcommerceapiAdminAccount
