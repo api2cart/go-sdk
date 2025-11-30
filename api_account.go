@@ -490,6 +490,11 @@ type ApiAccountConfigUpdateRequest struct {
 	temuAppSecret *string
 	temuAccessToken *string
 	temuRegion *string
+	scapiClientId *string
+	scapiClientSecret *string
+	scapiOrganizationId *string
+	scapiShortCode *string
+	scapiScopes *string
 }
 
 // Identifies if there is a necessity to replace parameters
@@ -1470,6 +1475,36 @@ func (r ApiAccountConfigUpdateRequest) TemuRegion(temuRegion string) ApiAccountC
 	return r
 }
 
+// Salesforce Commerce API Client ID
+func (r ApiAccountConfigUpdateRequest) ScapiClientId(scapiClientId string) ApiAccountConfigUpdateRequest {
+	r.scapiClientId = &scapiClientId
+	return r
+}
+
+// Salesforce Commerce API Client Secret
+func (r ApiAccountConfigUpdateRequest) ScapiClientSecret(scapiClientSecret string) ApiAccountConfigUpdateRequest {
+	r.scapiClientSecret = &scapiClientSecret
+	return r
+}
+
+// Salesforce Commerce Organization ID
+func (r ApiAccountConfigUpdateRequest) ScapiOrganizationId(scapiOrganizationId string) ApiAccountConfigUpdateRequest {
+	r.scapiOrganizationId = &scapiOrganizationId
+	return r
+}
+
+// Salesforce Commerce Short Code
+func (r ApiAccountConfigUpdateRequest) ScapiShortCode(scapiShortCode string) ApiAccountConfigUpdateRequest {
+	r.scapiShortCode = &scapiShortCode
+	return r
+}
+
+// Salesforce Commerce API Scopes
+func (r ApiAccountConfigUpdateRequest) ScapiScopes(scapiScopes string) ApiAccountConfigUpdateRequest {
+	r.scapiScopes = &scapiScopes
+	return r
+}
+
 func (r ApiAccountConfigUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.AccountConfigUpdateExecute(r)
 }
@@ -2021,6 +2056,21 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.temuRegion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "temu_region", r.temuRegion, "form", "")
+	}
+	if r.scapiClientId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_client_id", r.scapiClientId, "form", "")
+	}
+	if r.scapiClientSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_client_secret", r.scapiClientSecret, "form", "")
+	}
+	if r.scapiOrganizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_organization_id", r.scapiOrganizationId, "form", "")
+	}
+	if r.scapiShortCode != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_short_code", r.scapiShortCode, "form", "")
+	}
+	if r.scapiScopes != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_scopes", r.scapiScopes, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CustomerCountry** | Pointer to **string** | Specifies customer&#39;s address ISO code or name of country | [optional] 
 **CustomerBirthday** | Pointer to **string** | Specifies customer’s birthday | [optional] 
 **CustomerFax** | Pointer to **string** | Specifies customer’s fax | [optional] 
+**IsGuest** | Pointer to **bool** | Indicates whether the customer is a guest customer | [optional] [default to false]
 **OrderPaymentMethod** | Pointer to **string** | Defines order payment method.&lt;br/&gt;Setting order_payment_method on Shopify will also change financial_status field value to &#39;paid&#39; | [optional] 
 **TransactionId** | Pointer to **string** | Payment transaction id | [optional] 
 **Currency** | Pointer to **string** | Currency code of order | [optional] 
@@ -434,6 +435,31 @@ SetCustomerFax sets CustomerFax field to given value.
 `func (o *OrderAdd) HasCustomerFax() bool`
 
 HasCustomerFax returns a boolean if a field has been set.
+
+### GetIsGuest
+
+`func (o *OrderAdd) GetIsGuest() bool`
+
+GetIsGuest returns the IsGuest field if non-nil, zero value otherwise.
+
+### GetIsGuestOk
+
+`func (o *OrderAdd) GetIsGuestOk() (*bool, bool)`
+
+GetIsGuestOk returns a tuple with the IsGuest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsGuest
+
+`func (o *OrderAdd) SetIsGuest(v bool)`
+
+SetIsGuest sets IsGuest field to given value.
+
+### HasIsGuest
+
+`func (o *OrderAdd) HasIsGuest() bool`
+
+HasIsGuest returns a boolean if a field has been set.
 
 ### GetOrderPaymentMethod
 

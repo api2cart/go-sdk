@@ -174,6 +174,11 @@ Name | Type | Description | Notes
 **TemuAppSecret** | Pointer to **string** | Temu App Secret | [optional] 
 **TemuAccessToken** | Pointer to **string** | Temu Access Token | [optional] 
 **TemuRegion** | Pointer to **string** | Temu API endpoint Region. | [optional] 
+**ScapiClientId** | Pointer to **string** | Salesforce Commerce API Client ID | [optional] 
+**ScapiClientSecret** | Pointer to **string** | Salesforce Commerce API Client Secret | [optional] 
+**ScapiOrganizationId** | Pointer to **string** | Salesforce Commerce Organization ID | [optional] 
+**ScapiShortCode** | Pointer to **string** | Salesforce Commerce Short Code | [optional] 
+**ScapiScopes** | Pointer to **string** | Salesforce Commerce API Scopes | [optional] 
 
 ## Methods
 
@@ -4438,6 +4443,131 @@ SetTemuRegion sets TemuRegion field to given value.
 `func (o *AccountCartAdd) HasTemuRegion() bool`
 
 HasTemuRegion returns a boolean if a field has been set.
+
+### GetScapiClientId
+
+`func (o *AccountCartAdd) GetScapiClientId() string`
+
+GetScapiClientId returns the ScapiClientId field if non-nil, zero value otherwise.
+
+### GetScapiClientIdOk
+
+`func (o *AccountCartAdd) GetScapiClientIdOk() (*string, bool)`
+
+GetScapiClientIdOk returns a tuple with the ScapiClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScapiClientId
+
+`func (o *AccountCartAdd) SetScapiClientId(v string)`
+
+SetScapiClientId sets ScapiClientId field to given value.
+
+### HasScapiClientId
+
+`func (o *AccountCartAdd) HasScapiClientId() bool`
+
+HasScapiClientId returns a boolean if a field has been set.
+
+### GetScapiClientSecret
+
+`func (o *AccountCartAdd) GetScapiClientSecret() string`
+
+GetScapiClientSecret returns the ScapiClientSecret field if non-nil, zero value otherwise.
+
+### GetScapiClientSecretOk
+
+`func (o *AccountCartAdd) GetScapiClientSecretOk() (*string, bool)`
+
+GetScapiClientSecretOk returns a tuple with the ScapiClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScapiClientSecret
+
+`func (o *AccountCartAdd) SetScapiClientSecret(v string)`
+
+SetScapiClientSecret sets ScapiClientSecret field to given value.
+
+### HasScapiClientSecret
+
+`func (o *AccountCartAdd) HasScapiClientSecret() bool`
+
+HasScapiClientSecret returns a boolean if a field has been set.
+
+### GetScapiOrganizationId
+
+`func (o *AccountCartAdd) GetScapiOrganizationId() string`
+
+GetScapiOrganizationId returns the ScapiOrganizationId field if non-nil, zero value otherwise.
+
+### GetScapiOrganizationIdOk
+
+`func (o *AccountCartAdd) GetScapiOrganizationIdOk() (*string, bool)`
+
+GetScapiOrganizationIdOk returns a tuple with the ScapiOrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScapiOrganizationId
+
+`func (o *AccountCartAdd) SetScapiOrganizationId(v string)`
+
+SetScapiOrganizationId sets ScapiOrganizationId field to given value.
+
+### HasScapiOrganizationId
+
+`func (o *AccountCartAdd) HasScapiOrganizationId() bool`
+
+HasScapiOrganizationId returns a boolean if a field has been set.
+
+### GetScapiShortCode
+
+`func (o *AccountCartAdd) GetScapiShortCode() string`
+
+GetScapiShortCode returns the ScapiShortCode field if non-nil, zero value otherwise.
+
+### GetScapiShortCodeOk
+
+`func (o *AccountCartAdd) GetScapiShortCodeOk() (*string, bool)`
+
+GetScapiShortCodeOk returns a tuple with the ScapiShortCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScapiShortCode
+
+`func (o *AccountCartAdd) SetScapiShortCode(v string)`
+
+SetScapiShortCode sets ScapiShortCode field to given value.
+
+### HasScapiShortCode
+
+`func (o *AccountCartAdd) HasScapiShortCode() bool`
+
+HasScapiShortCode returns a boolean if a field has been set.
+
+### GetScapiScopes
+
+`func (o *AccountCartAdd) GetScapiScopes() string`
+
+GetScapiScopes returns the ScapiScopes field if non-nil, zero value otherwise.
+
+### GetScapiScopesOk
+
+`func (o *AccountCartAdd) GetScapiScopesOk() (*string, bool)`
+
+GetScapiScopesOk returns a tuple with the ScapiScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScapiScopes
+
+`func (o *AccountCartAdd) SetScapiScopes(v string)`
+
+SetScapiScopes sets ScapiScopes field to given value.
+
+### HasScapiScopes
+
+`func (o *AccountCartAdd) HasScapiScopes() bool`
+
+HasScapiScopes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

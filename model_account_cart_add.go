@@ -362,6 +362,16 @@ type AccountCartAdd struct {
 	TemuAccessToken *string `json:"temu_access_token,omitempty"`
 	// Temu API endpoint Region.
 	TemuRegion *string `json:"temu_region,omitempty"`
+	// Salesforce Commerce API Client ID
+	ScapiClientId *string `json:"scapi_client_id,omitempty"`
+	// Salesforce Commerce API Client Secret
+	ScapiClientSecret *string `json:"scapi_client_secret,omitempty"`
+	// Salesforce Commerce Organization ID
+	ScapiOrganizationId *string `json:"scapi_organization_id,omitempty"`
+	// Salesforce Commerce Short Code
+	ScapiShortCode *string `json:"scapi_short_code,omitempty"`
+	// Salesforce Commerce API Scopes
+	ScapiScopes *string `json:"scapi_scopes,omitempty"`
 }
 
 type _AccountCartAdd AccountCartAdd
@@ -5856,6 +5866,166 @@ func (o *AccountCartAdd) SetTemuRegion(v string) {
 	o.TemuRegion = &v
 }
 
+// GetScapiClientId returns the ScapiClientId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetScapiClientId() string {
+	if o == nil || IsNil(o.ScapiClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ScapiClientId
+}
+
+// GetScapiClientIdOk returns a tuple with the ScapiClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetScapiClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScapiClientId) {
+		return nil, false
+	}
+	return o.ScapiClientId, true
+}
+
+// HasScapiClientId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasScapiClientId() bool {
+	if o != nil && !IsNil(o.ScapiClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScapiClientId gets a reference to the given string and assigns it to the ScapiClientId field.
+func (o *AccountCartAdd) SetScapiClientId(v string) {
+	o.ScapiClientId = &v
+}
+
+// GetScapiClientSecret returns the ScapiClientSecret field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetScapiClientSecret() string {
+	if o == nil || IsNil(o.ScapiClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.ScapiClientSecret
+}
+
+// GetScapiClientSecretOk returns a tuple with the ScapiClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetScapiClientSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.ScapiClientSecret) {
+		return nil, false
+	}
+	return o.ScapiClientSecret, true
+}
+
+// HasScapiClientSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasScapiClientSecret() bool {
+	if o != nil && !IsNil(o.ScapiClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetScapiClientSecret gets a reference to the given string and assigns it to the ScapiClientSecret field.
+func (o *AccountCartAdd) SetScapiClientSecret(v string) {
+	o.ScapiClientSecret = &v
+}
+
+// GetScapiOrganizationId returns the ScapiOrganizationId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetScapiOrganizationId() string {
+	if o == nil || IsNil(o.ScapiOrganizationId) {
+		var ret string
+		return ret
+	}
+	return *o.ScapiOrganizationId
+}
+
+// GetScapiOrganizationIdOk returns a tuple with the ScapiOrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetScapiOrganizationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScapiOrganizationId) {
+		return nil, false
+	}
+	return o.ScapiOrganizationId, true
+}
+
+// HasScapiOrganizationId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasScapiOrganizationId() bool {
+	if o != nil && !IsNil(o.ScapiOrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScapiOrganizationId gets a reference to the given string and assigns it to the ScapiOrganizationId field.
+func (o *AccountCartAdd) SetScapiOrganizationId(v string) {
+	o.ScapiOrganizationId = &v
+}
+
+// GetScapiShortCode returns the ScapiShortCode field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetScapiShortCode() string {
+	if o == nil || IsNil(o.ScapiShortCode) {
+		var ret string
+		return ret
+	}
+	return *o.ScapiShortCode
+}
+
+// GetScapiShortCodeOk returns a tuple with the ScapiShortCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetScapiShortCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.ScapiShortCode) {
+		return nil, false
+	}
+	return o.ScapiShortCode, true
+}
+
+// HasScapiShortCode returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasScapiShortCode() bool {
+	if o != nil && !IsNil(o.ScapiShortCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetScapiShortCode gets a reference to the given string and assigns it to the ScapiShortCode field.
+func (o *AccountCartAdd) SetScapiShortCode(v string) {
+	o.ScapiShortCode = &v
+}
+
+// GetScapiScopes returns the ScapiScopes field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetScapiScopes() string {
+	if o == nil || IsNil(o.ScapiScopes) {
+		var ret string
+		return ret
+	}
+	return *o.ScapiScopes
+}
+
+// GetScapiScopesOk returns a tuple with the ScapiScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetScapiScopesOk() (*string, bool) {
+	if o == nil || IsNil(o.ScapiScopes) {
+		return nil, false
+	}
+	return o.ScapiScopes, true
+}
+
+// HasScapiScopes returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasScapiScopes() bool {
+	if o != nil && !IsNil(o.ScapiScopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetScapiScopes gets a reference to the given string and assigns it to the ScapiScopes field.
+func (o *AccountCartAdd) SetScapiScopes(v string) {
+	o.ScapiScopes = &v
+}
+
 func (o AccountCartAdd) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -6373,6 +6543,21 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TemuRegion) {
 		toSerialize["temu_region"] = o.TemuRegion
+	}
+	if !IsNil(o.ScapiClientId) {
+		toSerialize["scapi_client_id"] = o.ScapiClientId
+	}
+	if !IsNil(o.ScapiClientSecret) {
+		toSerialize["scapi_client_secret"] = o.ScapiClientSecret
+	}
+	if !IsNil(o.ScapiOrganizationId) {
+		toSerialize["scapi_organization_id"] = o.ScapiOrganizationId
+	}
+	if !IsNil(o.ScapiShortCode) {
+		toSerialize["scapi_short_code"] = o.ScapiShortCode
+	}
+	if !IsNil(o.ScapiScopes) {
+		toSerialize["scapi_scopes"] = o.ScapiScopes
 	}
 	return toSerialize, nil
 }

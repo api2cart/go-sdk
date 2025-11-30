@@ -50,6 +50,8 @@ type OrderAdd struct {
 	CustomerBirthday *string `json:"customer_birthday,omitempty"`
 	// Specifies customer’s fax
 	CustomerFax *string `json:"customer_fax,omitempty"`
+	// Indicates whether the customer is a guest customer
+	IsGuest *bool `json:"is_guest,omitempty"`
 	// Defines order payment method.<br/>Setting order_payment_method on Shopify will also change financial_status field value to 'paid'
 	OrderPaymentMethod *string `json:"order_payment_method,omitempty"`
 	// Payment transaction id
@@ -175,6 +177,8 @@ func NewOrderAdd(orderStatus string, customerEmail string, billFirstName string,
 	this := OrderAdd{}
 	this.OrderStatus = orderStatus
 	this.CustomerEmail = customerEmail
+	var isGuest bool = false
+	this.IsGuest = &isGuest
 	this.BillFirstName = billFirstName
 	this.BillLastName = billLastName
 	this.BillAddress1 = billAddress1
@@ -207,6 +211,8 @@ func NewOrderAdd(orderStatus string, customerEmail string, billFirstName string,
 // but it doesn't guarantee that properties required by API are set
 func NewOrderAddWithDefaults() *OrderAdd {
 	this := OrderAdd{}
+	var isGuest bool = false
+	this.IsGuest = &isGuest
 	var taxPrice float32 = 0
 	this.TaxPrice = &taxPrice
 	var pricesIncTax bool = false
@@ -656,6 +662,38 @@ func (o *OrderAdd) HasCustomerFax() bool {
 // SetCustomerFax gets a reference to the given string and assigns it to the CustomerFax field.
 func (o *OrderAdd) SetCustomerFax(v string) {
 	o.CustomerFax = &v
+}
+
+// GetIsGuest returns the IsGuest field value if set, zero value otherwise.
+func (o *OrderAdd) GetIsGuest() bool {
+	if o == nil || IsNil(o.IsGuest) {
+		var ret bool
+		return ret
+	}
+	return *o.IsGuest
+}
+
+// GetIsGuestOk returns a tuple with the IsGuest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetIsGuestOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsGuest) {
+		return nil, false
+	}
+	return o.IsGuest, true
+}
+
+// HasIsGuest returns a boolean if a field has been set.
+func (o *OrderAdd) HasIsGuest() bool {
+	if o != nil && !IsNil(o.IsGuest) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsGuest gets a reference to the given bool and assigns it to the IsGuest field.
+func (o *OrderAdd) SetIsGuest(v bool) {
+	o.IsGuest = &v
 }
 
 // GetOrderPaymentMethod returns the OrderPaymentMethod field value if set, zero value otherwise.
@@ -2465,6 +2503,9 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CustomerFax) {
 		toSerialize["customer_fax"] = o.CustomerFax
+	}
+	if !IsNil(o.IsGuest) {
+		toSerialize["is_guest"] = o.IsGuest
 	}
 	if !IsNil(o.OrderPaymentMethod) {
 		toSerialize["order_payment_method"] = o.OrderPaymentMethod
