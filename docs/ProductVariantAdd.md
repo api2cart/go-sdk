@@ -57,6 +57,7 @@ Name | Type | Description | Notes
 **IsFreeShipping** | Pointer to **bool** | Specifies variant&#39;s free shipping flag that has to be added | [optional] 
 **CountryOfOrigin** | Pointer to **string** | The country where the inventory item was made | [optional] 
 **HarmonizedSystemCode** | Pointer to **string** | Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes | [optional] 
+**ProcessingProfileId** | Pointer to **int32** | The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \&quot;cart.info\&quot; API method response, in the field processing_profiles[]-&gt;readiness_state_id. | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 
@@ -1398,6 +1399,31 @@ SetHarmonizedSystemCode sets HarmonizedSystemCode field to given value.
 `func (o *ProductVariantAdd) HasHarmonizedSystemCode() bool`
 
 HasHarmonizedSystemCode returns a boolean if a field has been set.
+
+### GetProcessingProfileId
+
+`func (o *ProductVariantAdd) GetProcessingProfileId() int32`
+
+GetProcessingProfileId returns the ProcessingProfileId field if non-nil, zero value otherwise.
+
+### GetProcessingProfileIdOk
+
+`func (o *ProductVariantAdd) GetProcessingProfileIdOk() (*int32, bool)`
+
+GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingProfileId
+
+`func (o *ProductVariantAdd) SetProcessingProfileId(v int32)`
+
+SetProcessingProfileId sets ProcessingProfileId field to given value.
+
+### HasProcessingProfileId
+
+`func (o *ProductVariantAdd) HasProcessingProfileId() bool`
+
+HasProcessingProfileId returns a boolean if a field has been set.
 
 ### GetMarketplaceItemProperties
 

@@ -130,6 +130,8 @@ type ProductVariantUpdate struct {
 	Reindex *bool `json:"reindex,omitempty"`
 	// Is cache clear required
 	ClearCache *bool `json:"clear_cache,omitempty"`
+	// The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field processing_profiles[]->readiness_state_id.
+	ProcessingProfileId *int32 `json:"processing_profile_id,omitempty"`
 }
 
 // NewProductVariantUpdate instantiates a new ProductVariantUpdate object
@@ -1941,6 +1943,38 @@ func (o *ProductVariantUpdate) SetClearCache(v bool) {
 	o.ClearCache = &v
 }
 
+// GetProcessingProfileId returns the ProcessingProfileId field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetProcessingProfileId() int32 {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		var ret int32
+		return ret
+	}
+	return *o.ProcessingProfileId
+}
+
+// GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetProcessingProfileIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		return nil, false
+	}
+	return o.ProcessingProfileId, true
+}
+
+// HasProcessingProfileId returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasProcessingProfileId() bool {
+	if o != nil && !IsNil(o.ProcessingProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingProfileId gets a reference to the given int32 and assigns it to the ProcessingProfileId field.
+func (o *ProductVariantUpdate) SetProcessingProfileId(v int32) {
+	o.ProcessingProfileId = &v
+}
+
 func (o ProductVariantUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2115,6 +2149,9 @@ func (o ProductVariantUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClearCache) {
 		toSerialize["clear_cache"] = o.ClearCache
+	}
+	if !IsNil(o.ProcessingProfileId) {
+		toSerialize["processing_profile_id"] = o.ProcessingProfileId
 	}
 	return toSerialize, nil
 }

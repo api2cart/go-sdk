@@ -59,6 +59,7 @@ Name | Type | Description | Notes
 **Manufacturer** | Pointer to **string** | Specifies the product variant&#39;s manufacturer | [optional] 
 **Reindex** | Pointer to **bool** | Is reindex required | [optional] [default to true]
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
+**ProcessingProfileId** | Pointer to **int32** | The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \&quot;cart.info\&quot; API method response, in the field processing_profiles[]-&gt;readiness_state_id. | [optional] 
 
 ## Methods
 
@@ -1453,6 +1454,31 @@ SetClearCache sets ClearCache field to given value.
 `func (o *ProductVariantUpdate) HasClearCache() bool`
 
 HasClearCache returns a boolean if a field has been set.
+
+### GetProcessingProfileId
+
+`func (o *ProductVariantUpdate) GetProcessingProfileId() int32`
+
+GetProcessingProfileId returns the ProcessingProfileId field if non-nil, zero value otherwise.
+
+### GetProcessingProfileIdOk
+
+`func (o *ProductVariantUpdate) GetProcessingProfileIdOk() (*int32, bool)`
+
+GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingProfileId
+
+`func (o *ProductVariantUpdate) SetProcessingProfileId(v int32)`
+
+SetProcessingProfileId sets ProcessingProfileId field to given value.
+
+### HasProcessingProfileId
+
+`func (o *ProductVariantUpdate) HasProcessingProfileId() bool`
+
+HasProcessingProfileId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

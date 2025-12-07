@@ -128,6 +128,8 @@ type ProductVariantAdd struct {
 	CountryOfOrigin *string `json:"country_of_origin,omitempty"`
 	// Harmonized System Code. An HSC is a 6-digit identifier that allows participating countries to classify traded goods on a common basis for customs purposes
 	HarmonizedSystemCode *string `json:"harmonized_system_code,omitempty"`
+	// The numeric ID of the processing profile (readiness state) for physical products in Etsy. You can find possible values in the \"cart.info\" API method response, in the field processing_profiles[]->readiness_state_id.
+	ProcessingProfileId *int32 `json:"processing_profile_id,omitempty"`
 	// String containing the JSON representation of the supplied data
 	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
 	// Is cache clear required
@@ -1870,6 +1872,38 @@ func (o *ProductVariantAdd) SetHarmonizedSystemCode(v string) {
 	o.HarmonizedSystemCode = &v
 }
 
+// GetProcessingProfileId returns the ProcessingProfileId field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetProcessingProfileId() int32 {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		var ret int32
+		return ret
+	}
+	return *o.ProcessingProfileId
+}
+
+// GetProcessingProfileIdOk returns a tuple with the ProcessingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetProcessingProfileIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProcessingProfileId) {
+		return nil, false
+	}
+	return o.ProcessingProfileId, true
+}
+
+// HasProcessingProfileId returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasProcessingProfileId() bool {
+	if o != nil && !IsNil(o.ProcessingProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingProfileId gets a reference to the given int32 and assigns it to the ProcessingProfileId field.
+func (o *ProductVariantAdd) SetProcessingProfileId(v int32) {
+	o.ProcessingProfileId = &v
+}
+
 // GetMarketplaceItemProperties returns the MarketplaceItemProperties field value if set, zero value otherwise.
 func (o *ProductVariantAdd) GetMarketplaceItemProperties() string {
 	if o == nil || IsNil(o.MarketplaceItemProperties) {
@@ -2100,6 +2134,9 @@ func (o ProductVariantAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HarmonizedSystemCode) {
 		toSerialize["harmonized_system_code"] = o.HarmonizedSystemCode
+	}
+	if !IsNil(o.ProcessingProfileId) {
+		toSerialize["processing_profile_id"] = o.ProcessingProfileId
 	}
 	if !IsNil(o.MarketplaceItemProperties) {
 		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
