@@ -192,6 +192,8 @@ type AccountCartAdd struct {
 	ShoplineSharedSecret *string `json:"shopline_shared_secret,omitempty"`
 	// Access token authorizing the app to access resources on behalf of a user
 	ShopifyAccessToken *string `json:"shopify_access_token,omitempty"`
+	// Shopify Client ID
+	ShopifyClientId *string `json:"shopify_client_id,omitempty"`
 	// Shopify API Key
 	ShopifyApiKey *string `json:"shopify_api_key,omitempty"`
 	// Shopify API Password
@@ -3144,6 +3146,38 @@ func (o *AccountCartAdd) HasShopifyAccessToken() bool {
 // SetShopifyAccessToken gets a reference to the given string and assigns it to the ShopifyAccessToken field.
 func (o *AccountCartAdd) SetShopifyAccessToken(v string) {
 	o.ShopifyAccessToken = &v
+}
+
+// GetShopifyClientId returns the ShopifyClientId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetShopifyClientId() string {
+	if o == nil || IsNil(o.ShopifyClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ShopifyClientId
+}
+
+// GetShopifyClientIdOk returns a tuple with the ShopifyClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetShopifyClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ShopifyClientId) {
+		return nil, false
+	}
+	return o.ShopifyClientId, true
+}
+
+// HasShopifyClientId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasShopifyClientId() bool {
+	if o != nil && !IsNil(o.ShopifyClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShopifyClientId gets a reference to the given string and assigns it to the ShopifyClientId field.
+func (o *AccountCartAdd) SetShopifyClientId(v string) {
+	o.ShopifyClientId = &v
 }
 
 // GetShopifyApiKey returns the ShopifyApiKey field value if set, zero value otherwise.
@@ -6288,6 +6322,9 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShopifyAccessToken) {
 		toSerialize["shopify_access_token"] = o.ShopifyAccessToken
+	}
+	if !IsNil(o.ShopifyClientId) {
+		toSerialize["shopify_client_id"] = o.ShopifyClientId
 	}
 	if !IsNil(o.ShopifyApiKey) {
 		toSerialize["shopify_api_key"] = o.ShopifyApiKey

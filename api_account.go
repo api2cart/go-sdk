@@ -392,6 +392,7 @@ type ApiAccountConfigUpdateRequest struct {
 	shoplineAppSecret *string
 	shoplineSharedSecret *string
 	shopifyAccessToken *string
+	shopifyClientId *string
 	shopifyApiKey *string
 	shopifyApiPassword *string
 	shopifySharedSecret *string
@@ -884,6 +885,12 @@ func (r ApiAccountConfigUpdateRequest) ShoplineSharedSecret(shoplineSharedSecret
 // Access token authorizing the app to access resources on behalf of a user
 func (r ApiAccountConfigUpdateRequest) ShopifyAccessToken(shopifyAccessToken string) ApiAccountConfigUpdateRequest {
 	r.shopifyAccessToken = &shopifyAccessToken
+	return r
+}
+
+// Shopify Client ID
+func (r ApiAccountConfigUpdateRequest) ShopifyClientId(shopifyClientId string) ApiAccountConfigUpdateRequest {
+	r.shopifyClientId = &shopifyClientId
 	return r
 }
 
@@ -1745,6 +1752,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.shopifyAccessToken != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopify_access_token", r.shopifyAccessToken, "form", "")
+	}
+	if r.shopifyClientId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "shopify_client_id", r.shopifyClientId, "form", "")
 	}
 	if r.shopifyApiKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopify_api_key", r.shopifyApiKey, "form", "")
