@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **LangId** | Pointer to **string** | Language id | [optional] 
 **OldPrice** | Pointer to **float32** | Defines product&#39;s old price | [optional] 
 **SpecialPrice** | Pointer to **float32** | Defines product&#39;s model that has to be added | [optional] 
-**WholesalePrice** | Pointer to **float32** | Defines product&#39;s sale price | [optional] 
+**WholesalePrice** | Pointer to **float32** | This parameter is deprecated. Please use the &lt;strong&gt;old_price&lt;/strong&gt; parameter instead. | [optional] 
 **CostPrice** | Pointer to **float32** | Defines new product&#39;s cost price | [optional] 
 **FixedCostShippingPrice** | Pointer to **float32** | Specifies product&#39;s fixed cost shipping price | [optional] 
 **TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 

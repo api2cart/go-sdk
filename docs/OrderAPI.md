@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 ## OrderInfo
 
-> OrderInfo200Response OrderInfo(ctx).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).Execute()
+> OrderInfo200Response OrderInfo(ctx).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 
 order.info
 
@@ -515,10 +515,11 @@ func main() {
 	enableCache := true // bool | If the value is 'true' and order exist in our cache, we will return order.info response from cache (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 	roundingPrecision := int32(3) // int32 | <p>Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).</p> <p>Supported values range from <b>1</b> to <b>6</b>.</p> <p>The default rounding precision may vary depending on the platform. You can retrieve the default value using the <strong>cart.info</strong> method in the <code>default_rounding_precision</code> field. </p><p>Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.</p> (optional)
+	allowUserDefinedOrderStatuses := true // bool | Indicates whether custom (user-defined) order statuses should be included in the response. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderInfo(context.Background()).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderInfo(context.Background()).Id(id).OrderId(orderId).StoreId(storeId).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -548,6 +549,7 @@ Name | Type | Description  | Notes
  **enableCache** | **bool** | If the value is &#39;true&#39; and order exist in our cache, we will return order.info response from cache | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
  **roundingPrecision** | **int32** | &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt; | 
+ **allowUserDefinedOrderStatuses** | **bool** | Indicates whether custom (user-defined) order statuses should be included in the response. | [default to false]
 
 ### Return type
 
@@ -569,7 +571,7 @@ Name | Type | Description  | Notes
 
 ## OrderList
 
-> ModelResponseOrderList OrderList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).Execute()
+> ModelResponseOrderList OrderList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 
 order.list
 
@@ -627,10 +629,11 @@ func main() {
 	enableCache := true // bool | If the value is 'true', we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add) (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 	roundingPrecision := int32(3) // int32 | <p>Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).</p> <p>Supported values range from <b>1</b> to <b>6</b>.</p> <p>The default rounding precision may vary depending on the platform. You can retrieve the default value using the <strong>cart.info</strong> method in the <code>default_rounding_precision</code> field. </p><p>Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.</p> (optional)
+	allowUserDefinedOrderStatuses := true // bool | Indicates whether custom (user-defined) order statuses should be included in the response. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -690,6 +693,7 @@ Name | Type | Description  | Notes
  **enableCache** | **bool** | If the value is &#39;true&#39;, we will cache orders for a 15 minutes in order to increase speed and reduce requests throttling for some methods and shoping platforms (for example order.shipment.add) | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
  **roundingPrecision** | **int32** | &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt; | 
+ **allowUserDefinedOrderStatuses** | **bool** | Indicates whether custom (user-defined) order statuses should be included in the response. | [default to false]
 
 ### Return type
 
@@ -1545,7 +1549,7 @@ Name | Type | Description  | Notes
 
 ## OrderStatusList
 
-> ModelResponseOrderStatusList OrderStatusList(ctx).StoreId(storeId).Action(action).ResponseFields(responseFields).Execute()
+> ModelResponseOrderStatusList OrderStatusList(ctx).StoreId(storeId).Action(action).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).ResponseFields(responseFields).Execute()
 
 order.status.list
 
@@ -1566,11 +1570,12 @@ import (
 func main() {
 	storeId := "1" // string | Store Id (optional)
 	action := "add" // string | Available statuses for the specified action. (optional)
+	allowUserDefinedOrderStatuses := true // bool | Indicates whether custom (user-defined) order statuses should be included in the response. (optional) (default to false)
 	responseFields := "{return_code,return_message,result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderStatusList(context.Background()).StoreId(storeId).Action(action).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderStatusList(context.Background()).StoreId(storeId).Action(action).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).ResponseFields(responseFields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderStatusList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1593,6 +1598,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storeId** | **string** | Store Id | 
  **action** | **string** | Available statuses for the specified action. | 
+ **allowUserDefinedOrderStatuses** | **bool** | Indicates whether custom (user-defined) order statuses should be included in the response. | [default to false]
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
 
 ### Return type

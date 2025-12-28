@@ -68,7 +68,7 @@ type ProductAdd struct {
 	OldPrice *float32 `json:"old_price,omitempty"`
 	// Defines product's model that has to be added
 	SpecialPrice *float32 `json:"special_price,omitempty"`
-	// Defines product's sale price
+	// This parameter is deprecated. Please use the <strong>old_price</strong> parameter instead.
 	WholesalePrice *float32 `json:"wholesale_price,omitempty"`
 	// Defines new product's cost price
 	CostPrice *float32 `json:"cost_price,omitempty"`

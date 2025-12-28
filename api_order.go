@@ -1198,6 +1198,7 @@ type ApiOrderInfoRequest struct {
 	enableCache *bool
 	useLatestApiVersion *bool
 	roundingPrecision *int32
+	allowUserDefinedOrderStatuses *bool
 }
 
 // Retrieves order info specified by id
@@ -1251,6 +1252,12 @@ func (r ApiOrderInfoRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiOr
 // &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt;
 func (r ApiOrderInfoRequest) RoundingPrecision(roundingPrecision int32) ApiOrderInfoRequest {
 	r.roundingPrecision = &roundingPrecision
+	return r
+}
+
+// Indicates whether custom (user-defined) order statuses should be included in the response.
+func (r ApiOrderInfoRequest) AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses bool) ApiOrderInfoRequest {
+	r.allowUserDefinedOrderStatuses = &allowUserDefinedOrderStatuses
 	return r
 }
 
@@ -1329,6 +1336,12 @@ func (a *OrderAPIService) OrderInfoExecute(r ApiOrderInfoRequest) (*OrderInfo200
 	}
 	if r.roundingPrecision != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "rounding_precision", r.roundingPrecision, "form", "")
+	}
+	if r.allowUserDefinedOrderStatuses != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_user_defined_order_statuses", r.allowUserDefinedOrderStatuses, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.allowUserDefinedOrderStatuses = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1454,6 +1467,7 @@ type ApiOrderListRequest struct {
 	enableCache *bool
 	useLatestApiVersion *bool
 	roundingPrecision *int32
+	allowUserDefinedOrderStatuses *bool
 }
 
 // This parameter sets the number from which you want to get entities
@@ -1690,6 +1704,12 @@ func (r ApiOrderListRequest) RoundingPrecision(roundingPrecision int32) ApiOrder
 	return r
 }
 
+// Indicates whether custom (user-defined) order statuses should be included in the response.
+func (r ApiOrderListRequest) AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses bool) ApiOrderListRequest {
+	r.allowUserDefinedOrderStatuses = &allowUserDefinedOrderStatuses
+	return r
+}
+
 func (r ApiOrderListRequest) Execute() (*ModelResponseOrderList, *http.Response, error) {
 	return r.ApiService.OrderListExecute(r)
 }
@@ -1883,6 +1903,12 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 	}
 	if r.roundingPrecision != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "rounding_precision", r.roundingPrecision, "form", "")
+	}
+	if r.allowUserDefinedOrderStatuses != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_user_defined_order_statuses", r.allowUserDefinedOrderStatuses, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.allowUserDefinedOrderStatuses = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3855,6 +3881,7 @@ type ApiOrderStatusListRequest struct {
 	ApiService *OrderAPIService
 	storeId *string
 	action *string
+	allowUserDefinedOrderStatuses *bool
 	responseFields *string
 }
 
@@ -3867,6 +3894,12 @@ func (r ApiOrderStatusListRequest) StoreId(storeId string) ApiOrderStatusListReq
 // Available statuses for the specified action.
 func (r ApiOrderStatusListRequest) Action(action string) ApiOrderStatusListRequest {
 	r.action = &action
+	return r
+}
+
+// Indicates whether custom (user-defined) order statuses should be included in the response.
+func (r ApiOrderStatusListRequest) AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses bool) ApiOrderStatusListRequest {
+	r.allowUserDefinedOrderStatuses = &allowUserDefinedOrderStatuses
 	return r
 }
 
@@ -3921,6 +3954,12 @@ func (a *OrderAPIService) OrderStatusListExecute(r ApiOrderStatusListRequest) (*
 	}
 	if r.action != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
+	}
+	if r.allowUserDefinedOrderStatuses != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "allow_user_defined_order_statuses", r.allowUserDefinedOrderStatuses, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.allowUserDefinedOrderStatuses = &defaultValue
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
