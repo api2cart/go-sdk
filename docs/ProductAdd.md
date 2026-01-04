@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **GroupPrices** | Pointer to [**[]ProductAddGroupPricesInner**](ProductAddGroupPricesInner.md) | Defines product&#39;s group prices | [optional] 
 **BuyitnowPrice** | Pointer to **float32** | Defines buy it now value | [optional] 
 **ReservePrice** | Pointer to **float32** | Defines reserve price value | [optional] 
+**MeasureUnit** | Pointer to **string** | Unit for the price per unit. Must be in allowed list | [optional] 
+**UnitPrice** | Pointer to **float32** | Defines new product&#39;s unit price | [optional] 
 **Quantity** | Pointer to **float32** | Defines product&#39;s quantity that has to be added | [optional] [default to 0]
 **InStock** | Pointer to **bool** | Set stock status | [optional] 
 **ManageStock** | Pointer to **bool** | Defines inventory tracking for product | [optional] 
@@ -872,6 +874,56 @@ SetReservePrice sets ReservePrice field to given value.
 `func (o *ProductAdd) HasReservePrice() bool`
 
 HasReservePrice returns a boolean if a field has been set.
+
+### GetMeasureUnit
+
+`func (o *ProductAdd) GetMeasureUnit() string`
+
+GetMeasureUnit returns the MeasureUnit field if non-nil, zero value otherwise.
+
+### GetMeasureUnitOk
+
+`func (o *ProductAdd) GetMeasureUnitOk() (*string, bool)`
+
+GetMeasureUnitOk returns a tuple with the MeasureUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeasureUnit
+
+`func (o *ProductAdd) SetMeasureUnit(v string)`
+
+SetMeasureUnit sets MeasureUnit field to given value.
+
+### HasMeasureUnit
+
+`func (o *ProductAdd) HasMeasureUnit() bool`
+
+HasMeasureUnit returns a boolean if a field has been set.
+
+### GetUnitPrice
+
+`func (o *ProductAdd) GetUnitPrice() float32`
+
+GetUnitPrice returns the UnitPrice field if non-nil, zero value otherwise.
+
+### GetUnitPriceOk
+
+`func (o *ProductAdd) GetUnitPriceOk() (*float32, bool)`
+
+GetUnitPriceOk returns a tuple with the UnitPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnitPrice
+
+`func (o *ProductAdd) SetUnitPrice(v float32)`
+
+SetUnitPrice sets UnitPrice field to given value.
+
+### HasUnitPrice
+
+`func (o *ProductAdd) HasUnitPrice() bool`
+
+HasUnitPrice returns a boolean if a field has been set.
 
 ### GetQuantity
 

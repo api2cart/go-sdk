@@ -66,6 +66,10 @@ type ProductVariantAdd struct {
 	SpriceExpire *string `json:"sprice_expire,omitempty"`
 	// Defines product's tier prices
 	TierPrices []ProductAddTierPricesInner `json:"tier_prices,omitempty"`
+	// Unit for the price per unit. Must be in allowed list
+	MeasureUnit *string `json:"measure_unit,omitempty"`
+	// Defines new product's unit price
+	UnitPrice *float32 `json:"unit_price,omitempty"`
 	// Defines product variant's quantity that has to be added
 	Quantity *float32 `json:"quantity,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
@@ -878,6 +882,70 @@ func (o *ProductVariantAdd) HasTierPrices() bool {
 // SetTierPrices gets a reference to the given []ProductAddTierPricesInner and assigns it to the TierPrices field.
 func (o *ProductVariantAdd) SetTierPrices(v []ProductAddTierPricesInner) {
 	o.TierPrices = v
+}
+
+// GetMeasureUnit returns the MeasureUnit field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetMeasureUnit() string {
+	if o == nil || IsNil(o.MeasureUnit) {
+		var ret string
+		return ret
+	}
+	return *o.MeasureUnit
+}
+
+// GetMeasureUnitOk returns a tuple with the MeasureUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetMeasureUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.MeasureUnit) {
+		return nil, false
+	}
+	return o.MeasureUnit, true
+}
+
+// HasMeasureUnit returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasMeasureUnit() bool {
+	if o != nil && !IsNil(o.MeasureUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetMeasureUnit gets a reference to the given string and assigns it to the MeasureUnit field.
+func (o *ProductVariantAdd) SetMeasureUnit(v string) {
+	o.MeasureUnit = &v
+}
+
+// GetUnitPrice returns the UnitPrice field value if set, zero value otherwise.
+func (o *ProductVariantAdd) GetUnitPrice() float32 {
+	if o == nil || IsNil(o.UnitPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.UnitPrice
+}
+
+// GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAdd) GetUnitPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.UnitPrice) {
+		return nil, false
+	}
+	return o.UnitPrice, true
+}
+
+// HasUnitPrice returns a boolean if a field has been set.
+func (o *ProductVariantAdd) HasUnitPrice() bool {
+	if o != nil && !IsNil(o.UnitPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPrice gets a reference to the given float32 and assigns it to the UnitPrice field.
+func (o *ProductVariantAdd) SetUnitPrice(v float32) {
+	o.UnitPrice = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -2041,6 +2109,12 @@ func (o ProductVariantAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TierPrices) {
 		toSerialize["tier_prices"] = o.TierPrices
+	}
+	if !IsNil(o.MeasureUnit) {
+		toSerialize["measure_unit"] = o.MeasureUnit
+	}
+	if !IsNil(o.UnitPrice) {
+		toSerialize["unit_price"] = o.UnitPrice
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity

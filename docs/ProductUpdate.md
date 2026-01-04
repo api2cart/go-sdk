@@ -33,6 +33,8 @@ Name | Type | Description | Notes
 **ProductClass** | Pointer to **string** | A categorization for the product | [optional] 
 **BrandName** | Pointer to **string** | Retrieves brands specified by brand name | [optional] 
 **AvailableForView** | Pointer to **bool** | Specifies the set of visible/invisible products for users | [optional] 
+**MeasureUnit** | Pointer to **string** | Unit for the price per unit. Must be in allowed list | [optional] 
+**UnitPrice** | Pointer to **float32** | Defines new product&#39;s unit price | [optional] 
 **StoresIds** | Pointer to **string** | Assign product to the stores that is specified by comma-separated stores&#39; id | [optional] 
 **StoreId** | Pointer to **string** | Defines store id where the product should be found | [optional] 
 **LangId** | Pointer to **string** | Language id | [optional] 
@@ -839,6 +841,56 @@ SetAvailableForView sets AvailableForView field to given value.
 `func (o *ProductUpdate) HasAvailableForView() bool`
 
 HasAvailableForView returns a boolean if a field has been set.
+
+### GetMeasureUnit
+
+`func (o *ProductUpdate) GetMeasureUnit() string`
+
+GetMeasureUnit returns the MeasureUnit field if non-nil, zero value otherwise.
+
+### GetMeasureUnitOk
+
+`func (o *ProductUpdate) GetMeasureUnitOk() (*string, bool)`
+
+GetMeasureUnitOk returns a tuple with the MeasureUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeasureUnit
+
+`func (o *ProductUpdate) SetMeasureUnit(v string)`
+
+SetMeasureUnit sets MeasureUnit field to given value.
+
+### HasMeasureUnit
+
+`func (o *ProductUpdate) HasMeasureUnit() bool`
+
+HasMeasureUnit returns a boolean if a field has been set.
+
+### GetUnitPrice
+
+`func (o *ProductUpdate) GetUnitPrice() float32`
+
+GetUnitPrice returns the UnitPrice field if non-nil, zero value otherwise.
+
+### GetUnitPriceOk
+
+`func (o *ProductUpdate) GetUnitPriceOk() (*float32, bool)`
+
+GetUnitPriceOk returns a tuple with the UnitPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnitPrice
+
+`func (o *ProductUpdate) SetUnitPrice(v float32)`
+
+SetUnitPrice sets UnitPrice field to given value.
+
+### HasUnitPrice
+
+`func (o *ProductUpdate) HasUnitPrice() bool`
+
+HasUnitPrice returns a boolean if a field has been set.
 
 ### GetStoresIds
 

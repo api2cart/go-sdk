@@ -92,6 +92,10 @@ type ProductVariantUpdate struct {
 	SpriceCreate *string `json:"sprice_create,omitempty"`
 	// Defines the term of special price offer duration
 	SpriceExpire *string `json:"sprice_expire,omitempty"`
+	// Unit for the price per unit. Must be in allowed list
+	MeasureUnit *string `json:"measure_unit,omitempty"`
+	// Defines new product's unit price
+	UnitPrice *float32 `json:"unit_price,omitempty"`
 	// Weight
 	Weight *float32 `json:"weight,omitempty"`
 	// A barcode is a unique code composed of numbers used as a product identifier.
@@ -1335,6 +1339,70 @@ func (o *ProductVariantUpdate) SetSpriceExpire(v string) {
 	o.SpriceExpire = &v
 }
 
+// GetMeasureUnit returns the MeasureUnit field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetMeasureUnit() string {
+	if o == nil || IsNil(o.MeasureUnit) {
+		var ret string
+		return ret
+	}
+	return *o.MeasureUnit
+}
+
+// GetMeasureUnitOk returns a tuple with the MeasureUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetMeasureUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.MeasureUnit) {
+		return nil, false
+	}
+	return o.MeasureUnit, true
+}
+
+// HasMeasureUnit returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasMeasureUnit() bool {
+	if o != nil && !IsNil(o.MeasureUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetMeasureUnit gets a reference to the given string and assigns it to the MeasureUnit field.
+func (o *ProductVariantUpdate) SetMeasureUnit(v string) {
+	o.MeasureUnit = &v
+}
+
+// GetUnitPrice returns the UnitPrice field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetUnitPrice() float32 {
+	if o == nil || IsNil(o.UnitPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.UnitPrice
+}
+
+// GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetUnitPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.UnitPrice) {
+		return nil, false
+	}
+	return o.UnitPrice, true
+}
+
+// HasUnitPrice returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasUnitPrice() bool {
+	if o != nil && !IsNil(o.UnitPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPrice gets a reference to the given float32 and assigns it to the UnitPrice field.
+func (o *ProductVariantUpdate) SetUnitPrice(v float32) {
+	o.UnitPrice = &v
+}
+
 // GetWeight returns the Weight field value if set, zero value otherwise.
 func (o *ProductVariantUpdate) GetWeight() float32 {
 	if o == nil || IsNil(o.Weight) {
@@ -2092,6 +2160,12 @@ func (o ProductVariantUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpriceExpire) {
 		toSerialize["sprice_expire"] = o.SpriceExpire
+	}
+	if !IsNil(o.MeasureUnit) {
+		toSerialize["measure_unit"] = o.MeasureUnit
+	}
+	if !IsNil(o.UnitPrice) {
+		toSerialize["unit_price"] = o.UnitPrice
 	}
 	if !IsNil(o.Weight) {
 		toSerialize["weight"] = o.Weight

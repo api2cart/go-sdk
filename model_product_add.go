@@ -82,6 +82,10 @@ type ProductAdd struct {
 	BuyitnowPrice *float32 `json:"buyitnow_price,omitempty"`
 	// Defines reserve price value
 	ReservePrice *float32 `json:"reserve_price,omitempty"`
+	// Unit for the price per unit. Must be in allowed list
+	MeasureUnit *string `json:"measure_unit,omitempty"`
+	// Defines new product's unit price
+	UnitPrice *float32 `json:"unit_price,omitempty"`
 	// Defines product's quantity that has to be added
 	Quantity *float32 `json:"quantity,omitempty"`
 	// Set stock status
@@ -1272,6 +1276,70 @@ func (o *ProductAdd) HasReservePrice() bool {
 // SetReservePrice gets a reference to the given float32 and assigns it to the ReservePrice field.
 func (o *ProductAdd) SetReservePrice(v float32) {
 	o.ReservePrice = &v
+}
+
+// GetMeasureUnit returns the MeasureUnit field value if set, zero value otherwise.
+func (o *ProductAdd) GetMeasureUnit() string {
+	if o == nil || IsNil(o.MeasureUnit) {
+		var ret string
+		return ret
+	}
+	return *o.MeasureUnit
+}
+
+// GetMeasureUnitOk returns a tuple with the MeasureUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetMeasureUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.MeasureUnit) {
+		return nil, false
+	}
+	return o.MeasureUnit, true
+}
+
+// HasMeasureUnit returns a boolean if a field has been set.
+func (o *ProductAdd) HasMeasureUnit() bool {
+	if o != nil && !IsNil(o.MeasureUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetMeasureUnit gets a reference to the given string and assigns it to the MeasureUnit field.
+func (o *ProductAdd) SetMeasureUnit(v string) {
+	o.MeasureUnit = &v
+}
+
+// GetUnitPrice returns the UnitPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetUnitPrice() float32 {
+	if o == nil || IsNil(o.UnitPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.UnitPrice
+}
+
+// GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetUnitPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.UnitPrice) {
+		return nil, false
+	}
+	return o.UnitPrice, true
+}
+
+// HasUnitPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasUnitPrice() bool {
+	if o != nil && !IsNil(o.UnitPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPrice gets a reference to the given float32 and assigns it to the UnitPrice field.
+func (o *ProductAdd) SetUnitPrice(v float32) {
+	o.UnitPrice = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -4213,6 +4281,12 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReservePrice) {
 		toSerialize["reserve_price"] = o.ReservePrice
+	}
+	if !IsNil(o.MeasureUnit) {
+		toSerialize["measure_unit"] = o.MeasureUnit
+	}
+	if !IsNil(o.UnitPrice) {
+		toSerialize["unit_price"] = o.UnitPrice
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity

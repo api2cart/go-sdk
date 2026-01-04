@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Price** | Pointer to **NullableFloat32** |  | [optional] 
 **AdvancedPrice** | Pointer to [**[]ProductAdvancedPrice**](ProductAdvancedPrice.md) |  | [optional] 
 **CostPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**UnitPrice** | Pointer to **NullableFloat32** |  | [optional] 
+**MeasureUnit** | Pointer to **NullableString** |  | [optional] 
 **Quantity** | Pointer to **NullableFloat32** |  | [optional] 
 **Inventory** | Pointer to [**[]ProductInventory**](ProductInventory.md) |  | [optional] 
 **GroupItems** | Pointer to [**[]ProductGroupItem**](ProductGroupItem.md) |  | [optional] 
@@ -411,6 +413,76 @@ HasCostPrice returns a boolean if a field has been set.
 `func (o *Product) UnsetCostPrice()`
 
 UnsetCostPrice ensures that no value is present for CostPrice, not even an explicit nil
+### GetUnitPrice
+
+`func (o *Product) GetUnitPrice() float32`
+
+GetUnitPrice returns the UnitPrice field if non-nil, zero value otherwise.
+
+### GetUnitPriceOk
+
+`func (o *Product) GetUnitPriceOk() (*float32, bool)`
+
+GetUnitPriceOk returns a tuple with the UnitPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnitPrice
+
+`func (o *Product) SetUnitPrice(v float32)`
+
+SetUnitPrice sets UnitPrice field to given value.
+
+### HasUnitPrice
+
+`func (o *Product) HasUnitPrice() bool`
+
+HasUnitPrice returns a boolean if a field has been set.
+
+### SetUnitPriceNil
+
+`func (o *Product) SetUnitPriceNil(b bool)`
+
+ SetUnitPriceNil sets the value for UnitPrice to be an explicit nil
+
+### UnsetUnitPrice
+`func (o *Product) UnsetUnitPrice()`
+
+UnsetUnitPrice ensures that no value is present for UnitPrice, not even an explicit nil
+### GetMeasureUnit
+
+`func (o *Product) GetMeasureUnit() string`
+
+GetMeasureUnit returns the MeasureUnit field if non-nil, zero value otherwise.
+
+### GetMeasureUnitOk
+
+`func (o *Product) GetMeasureUnitOk() (*string, bool)`
+
+GetMeasureUnitOk returns a tuple with the MeasureUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeasureUnit
+
+`func (o *Product) SetMeasureUnit(v string)`
+
+SetMeasureUnit sets MeasureUnit field to given value.
+
+### HasMeasureUnit
+
+`func (o *Product) HasMeasureUnit() bool`
+
+HasMeasureUnit returns a boolean if a field has been set.
+
+### SetMeasureUnitNil
+
+`func (o *Product) SetMeasureUnitNil(b bool)`
+
+ SetMeasureUnitNil sets the value for MeasureUnit to be an explicit nil
+
+### UnsetMeasureUnit
+`func (o *Product) UnsetMeasureUnit()`
+
+UnsetMeasureUnit ensures that no value is present for MeasureUnit, not even an explicit nil
 ### GetQuantity
 
 `func (o *Product) GetQuantity() float32`

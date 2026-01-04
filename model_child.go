@@ -40,6 +40,8 @@ type Child struct {
 	Combination []ProductChildItemCombination `json:"combination,omitempty"`
 	DefaultPrice NullableFloat32 `json:"default_price,omitempty"`
 	CostPrice NullableFloat32 `json:"cost_price,omitempty"`
+	UnitPrice NullableFloat32 `json:"unit_price,omitempty"`
+	MeasureUnit NullableString `json:"measure_unit,omitempty"`
 	ListPrice NullableFloat32 `json:"list_price,omitempty"`
 	WholesalePrice NullableFloat32 `json:"wholesale_price,omitempty"`
 	AdvancedPrice []ProductAdvancedPrice `json:"advanced_price,omitempty"`
@@ -885,6 +887,90 @@ func (o *Child) SetCostPriceNil() {
 // UnsetCostPrice ensures that no value is present for CostPrice, not even an explicit nil
 func (o *Child) UnsetCostPrice() {
 	o.CostPrice.Unset()
+}
+
+// GetUnitPrice returns the UnitPrice field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Child) GetUnitPrice() float32 {
+	if o == nil || IsNil(o.UnitPrice.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.UnitPrice.Get()
+}
+
+// GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Child) GetUnitPriceOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UnitPrice.Get(), o.UnitPrice.IsSet()
+}
+
+// HasUnitPrice returns a boolean if a field has been set.
+func (o *Child) HasUnitPrice() bool {
+	if o != nil && o.UnitPrice.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPrice gets a reference to the given NullableFloat32 and assigns it to the UnitPrice field.
+func (o *Child) SetUnitPrice(v float32) {
+	o.UnitPrice.Set(&v)
+}
+// SetUnitPriceNil sets the value for UnitPrice to be an explicit nil
+func (o *Child) SetUnitPriceNil() {
+	o.UnitPrice.Set(nil)
+}
+
+// UnsetUnitPrice ensures that no value is present for UnitPrice, not even an explicit nil
+func (o *Child) UnsetUnitPrice() {
+	o.UnitPrice.Unset()
+}
+
+// GetMeasureUnit returns the MeasureUnit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Child) GetMeasureUnit() string {
+	if o == nil || IsNil(o.MeasureUnit.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MeasureUnit.Get()
+}
+
+// GetMeasureUnitOk returns a tuple with the MeasureUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Child) GetMeasureUnitOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MeasureUnit.Get(), o.MeasureUnit.IsSet()
+}
+
+// HasMeasureUnit returns a boolean if a field has been set.
+func (o *Child) HasMeasureUnit() bool {
+	if o != nil && o.MeasureUnit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMeasureUnit gets a reference to the given NullableString and assigns it to the MeasureUnit field.
+func (o *Child) SetMeasureUnit(v string) {
+	o.MeasureUnit.Set(&v)
+}
+// SetMeasureUnitNil sets the value for MeasureUnit to be an explicit nil
+func (o *Child) SetMeasureUnitNil() {
+	o.MeasureUnit.Set(nil)
+}
+
+// UnsetMeasureUnit ensures that no value is present for MeasureUnit, not even an explicit nil
+func (o *Child) UnsetMeasureUnit() {
+	o.MeasureUnit.Unset()
 }
 
 // GetListPrice returns the ListPrice field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -2084,6 +2170,12 @@ func (o Child) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CostPrice.IsSet() {
 		toSerialize["cost_price"] = o.CostPrice.Get()
+	}
+	if o.UnitPrice.IsSet() {
+		toSerialize["unit_price"] = o.UnitPrice.Get()
+	}
+	if o.MeasureUnit.IsSet() {
+		toSerialize["measure_unit"] = o.MeasureUnit.Get()
 	}
 	if o.ListPrice.IsSet() {
 		toSerialize["list_price"] = o.ListPrice.Get()

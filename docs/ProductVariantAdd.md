@@ -26,6 +26,8 @@ Name | Type | Description | Notes
 **SpriceModified** | Pointer to **string** | Defines the date of special price modification | [optional] 
 **SpriceExpire** | Pointer to **string** | Defines the term of special price offer duration | [optional] 
 **TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 
+**MeasureUnit** | Pointer to **string** | Unit for the price per unit. Must be in allowed list | [optional] 
+**UnitPrice** | Pointer to **float32** | Defines new product&#39;s unit price | [optional] 
 **Quantity** | Pointer to **float32** | Defines product variant&#39;s quantity that has to be added | [optional] [default to 0]
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
 **InStock** | Pointer to **bool** | Set stock status | [optional] 
@@ -624,6 +626,56 @@ SetTierPrices sets TierPrices field to given value.
 `func (o *ProductVariantAdd) HasTierPrices() bool`
 
 HasTierPrices returns a boolean if a field has been set.
+
+### GetMeasureUnit
+
+`func (o *ProductVariantAdd) GetMeasureUnit() string`
+
+GetMeasureUnit returns the MeasureUnit field if non-nil, zero value otherwise.
+
+### GetMeasureUnitOk
+
+`func (o *ProductVariantAdd) GetMeasureUnitOk() (*string, bool)`
+
+GetMeasureUnitOk returns a tuple with the MeasureUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeasureUnit
+
+`func (o *ProductVariantAdd) SetMeasureUnit(v string)`
+
+SetMeasureUnit sets MeasureUnit field to given value.
+
+### HasMeasureUnit
+
+`func (o *ProductVariantAdd) HasMeasureUnit() bool`
+
+HasMeasureUnit returns a boolean if a field has been set.
+
+### GetUnitPrice
+
+`func (o *ProductVariantAdd) GetUnitPrice() float32`
+
+GetUnitPrice returns the UnitPrice field if non-nil, zero value otherwise.
+
+### GetUnitPriceOk
+
+`func (o *ProductVariantAdd) GetUnitPriceOk() (*float32, bool)`
+
+GetUnitPriceOk returns a tuple with the UnitPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnitPrice
+
+`func (o *ProductVariantAdd) SetUnitPrice(v float32)`
+
+SetUnitPrice sets UnitPrice field to given value.
+
+### HasUnitPrice
+
+`func (o *ProductVariantAdd) HasUnitPrice() bool`
+
+HasUnitPrice returns a boolean if a field has been set.
 
 ### GetQuantity
 
