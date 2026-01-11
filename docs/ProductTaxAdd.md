@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ProductId** | Pointer to **string** | Defines products specified by product id | [optional] 
 **Name** | **string** | Defines tax class name where tax has to be added | 
 **TaxRates** | [**[]ProductTaxAddTaxRatesInner**](ProductTaxAddTaxRatesInner.md) | Defines tax rates of specified tax classes | 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ and a boolean to check if the value has been set.
 
 SetTaxRates sets TaxRates field to given value.
 
+
+### GetIdempotencyKey
+
+`func (o *ProductTaxAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *ProductTaxAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *ProductTaxAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *ProductTaxAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

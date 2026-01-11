@@ -496,6 +496,7 @@ type ApiAccountConfigUpdateRequest struct {
 	scapiOrganizationId *string
 	scapiShortCode *string
 	scapiScopes *string
+	idempotencyKey *string
 }
 
 // Identifies if there is a necessity to replace parameters
@@ -1512,6 +1513,12 @@ func (r ApiAccountConfigUpdateRequest) ScapiScopes(scapiScopes string) ApiAccoun
 	return r
 }
 
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAccountConfigUpdateRequest) IdempotencyKey(idempotencyKey string) ApiAccountConfigUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
 func (r ApiAccountConfigUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.AccountConfigUpdateExecute(r)
 }
@@ -2081,6 +2088,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.scapiScopes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "scapi_scopes", r.scapiScopes, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

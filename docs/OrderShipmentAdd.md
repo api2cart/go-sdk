@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **CheckProcessStatus** | Pointer to **bool** | Disable or enable check process status. Please note that the response will be slower due to additional requests to the store. | [optional] [default to false]
 **TrackingProvider** | Pointer to **string** | Defines name of the company which provides shipment tracking | [optional] 
 **UseLatestApiVersion** | Pointer to **bool** | Use the latest platform API version | [optional] [default to false]
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
 
@@ -413,6 +414,31 @@ SetUseLatestApiVersion sets UseLatestApiVersion field to given value.
 `func (o *OrderShipmentAdd) HasUseLatestApiVersion() bool`
 
 HasUseLatestApiVersion returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *OrderShipmentAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *OrderShipmentAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *OrderShipmentAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *OrderShipmentAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

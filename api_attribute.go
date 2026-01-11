@@ -47,6 +47,7 @@ type ApiAttributeAddRequest struct {
 	usedInProductListing *bool
 	usedForSortBy *bool
 	applyTo *string
+	idempotencyKey *string
 }
 
 // Defines attribute&#39;s type
@@ -172,6 +173,12 @@ func (r ApiAttributeAddRequest) UsedForSortBy(usedForSortBy bool) ApiAttributeAd
 // Types of products which can have this attribute
 func (r ApiAttributeAddRequest) ApplyTo(applyTo string) ApiAttributeAddRequest {
 	r.applyTo = &applyTo
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeAddRequest) IdempotencyKey(idempotencyKey string) ApiAttributeAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -325,6 +332,9 @@ func (a *AttributeAPIService) AttributeAddExecute(r ApiAttributeAddRequest) (*At
 		var defaultValue string = "all_types"
 		r.applyTo = &defaultValue
 	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -413,6 +423,7 @@ type ApiAttributeAssignGroupRequest struct {
 	id *string
 	groupId *string
 	attributeSetId *string
+	idempotencyKey *string
 }
 
 // Entity id
@@ -430,6 +441,12 @@ func (r ApiAttributeAssignGroupRequest) GroupId(groupId string) ApiAttributeAssi
 // Attribute set id
 func (r ApiAttributeAssignGroupRequest) AttributeSetId(attributeSetId string) ApiAttributeAssignGroupRequest {
 	r.attributeSetId = &attributeSetId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeAssignGroupRequest) IdempotencyKey(idempotencyKey string) ApiAttributeAssignGroupRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -483,6 +500,9 @@ func (a *AttributeAPIService) AttributeAssignGroupExecute(r ApiAttributeAssignGr
 	parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
 	if r.attributeSetId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_set_id", r.attributeSetId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -572,6 +592,7 @@ type ApiAttributeAssignSetRequest struct {
 	id *string
 	attributeSetId *string
 	groupId *string
+	idempotencyKey *string
 }
 
 // Entity id
@@ -589,6 +610,12 @@ func (r ApiAttributeAssignSetRequest) AttributeSetId(attributeSetId string) ApiA
 // Attribute group_id
 func (r ApiAttributeAssignSetRequest) GroupId(groupId string) ApiAttributeAssignSetRequest {
 	r.groupId = &groupId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeAssignSetRequest) IdempotencyKey(idempotencyKey string) ApiAttributeAssignSetRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -643,6 +670,9 @@ func (a *AttributeAPIService) AttributeAssignSetExecute(r ApiAttributeAssignSetR
 		parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_set_id", r.attributeSetId, "form", "")
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2061,6 +2091,7 @@ type ApiAttributeUnassignGroupRequest struct {
 	ApiService *AttributeAPIService
 	id *string
 	groupId *string
+	idempotencyKey *string
 }
 
 // Entity id
@@ -2072,6 +2103,12 @@ func (r ApiAttributeUnassignGroupRequest) Id(id string) ApiAttributeUnassignGrou
 // Customer group_id
 func (r ApiAttributeUnassignGroupRequest) GroupId(groupId string) ApiAttributeUnassignGroupRequest {
 	r.groupId = &groupId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeUnassignGroupRequest) IdempotencyKey(idempotencyKey string) ApiAttributeUnassignGroupRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2123,6 +2160,9 @@ func (a *AttributeAPIService) AttributeUnassignGroupExecute(r ApiAttributeUnassi
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "group_id", r.groupId, "form", "")
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2210,6 +2250,7 @@ type ApiAttributeUnassignSetRequest struct {
 	ApiService *AttributeAPIService
 	id *string
 	attributeSetId *string
+	idempotencyKey *string
 }
 
 // Entity id
@@ -2221,6 +2262,12 @@ func (r ApiAttributeUnassignSetRequest) Id(id string) ApiAttributeUnassignSetReq
 // Attribute set id
 func (r ApiAttributeUnassignSetRequest) AttributeSetId(attributeSetId string) ApiAttributeUnassignSetRequest {
 	r.attributeSetId = &attributeSetId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeUnassignSetRequest) IdempotencyKey(idempotencyKey string) ApiAttributeUnassignSetRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2272,6 +2319,9 @@ func (a *AttributeAPIService) AttributeUnassignSetExecute(r ApiAttributeUnassign
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_set_id", r.attributeSetId, "form", "")
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2361,6 +2411,7 @@ type ApiAttributeUpdateRequest struct {
 	name *string
 	storeId *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Entity id
@@ -2384,6 +2435,12 @@ func (r ApiAttributeUpdateRequest) StoreId(storeId string) ApiAttributeUpdateReq
 // Language id
 func (r ApiAttributeUpdateRequest) LangId(langId string) ApiAttributeUpdateRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeUpdateRequest) IdempotencyKey(idempotencyKey string) ApiAttributeUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2440,6 +2497,9 @@ func (a *AttributeAPIService) AttributeUpdateExecute(r ApiAttributeUpdateRequest
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2532,6 +2592,7 @@ type ApiAttributeValueAddRequest struct {
 	description *string
 	storeId *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Attribute Id
@@ -2567,6 +2628,12 @@ func (r ApiAttributeValueAddRequest) StoreId(storeId string) ApiAttributeValueAd
 // Language id
 func (r ApiAttributeValueAddRequest) LangId(langId string) ApiAttributeValueAddRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeValueAddRequest) IdempotencyKey(idempotencyKey string) ApiAttributeValueAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2629,6 +2696,9 @@ func (a *AttributeAPIService) AttributeValueAddExecute(r ApiAttributeValueAddReq
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2881,6 +2951,7 @@ type ApiAttributeValueUpdateRequest struct {
 	code *string
 	storeId *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Defines attribute value&#39;s id
@@ -2922,6 +2993,12 @@ func (r ApiAttributeValueUpdateRequest) StoreId(storeId string) ApiAttributeValu
 // Language id
 func (r ApiAttributeValueUpdateRequest) LangId(langId string) ApiAttributeValueUpdateRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiAttributeValueUpdateRequest) IdempotencyKey(idempotencyKey string) ApiAttributeValueUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2987,6 +3064,9 @@ func (a *AttributeAPIService) AttributeValueUpdateExecute(r ApiAttributeValueUpd
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

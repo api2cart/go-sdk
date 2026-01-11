@@ -780,11 +780,18 @@ type ApiCustomerDeleteRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id *string
+	storeId *string
 }
 
 // Identifies customer specified by the id
 func (r ApiCustomerDeleteRequest) Id(id string) ApiCustomerDeleteRequest {
 	r.id = &id
+	return r
+}
+
+// Store Id
+func (r ApiCustomerDeleteRequest) StoreId(storeId string) ApiCustomerDeleteRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -832,6 +839,9 @@ func (a *CustomerAPIService) CustomerDeleteExecute(r ApiCustomerDeleteRequest) (
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1107,6 +1117,7 @@ type ApiCustomerGroupAddRequest struct {
 	name *string
 	storeId *string
 	storesIds *string
+	idempotencyKey *string
 }
 
 // Customer group name
@@ -1124,6 +1135,12 @@ func (r ApiCustomerGroupAddRequest) StoreId(storeId string) ApiCustomerGroupAddR
 // Assign customer group to the stores that is specified by comma-separated stores&#39; id
 func (r ApiCustomerGroupAddRequest) StoresIds(storesIds string) ApiCustomerGroupAddRequest {
 	r.storesIds = &storesIds
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCustomerGroupAddRequest) IdempotencyKey(idempotencyKey string) ApiCustomerGroupAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -1176,6 +1193,9 @@ func (a *CustomerAPIService) CustomerGroupAddExecute(r ApiCustomerGroupAddReques
 	}
 	if r.storesIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "stores_ids", r.storesIds, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

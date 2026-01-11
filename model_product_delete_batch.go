@@ -24,6 +24,8 @@ var _ MappedNullable = &ProductDeleteBatch{}
 type ProductDeleteBatch struct {
 	// Contains an array of product deletion requests, each including the product ID.
 	Payload []ProductDeleteBatchPayloadInner `json:"payload"`
+	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
 
 type _ProductDeleteBatch ProductDeleteBatch
@@ -70,6 +72,38 @@ func (o *ProductDeleteBatch) SetPayload(v []ProductDeleteBatchPayloadInner) {
 	o.Payload = v
 }
 
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+func (o *ProductDeleteBatch) GetIdempotencyKey() string {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		var ret string
+		return ret
+	}
+	return *o.IdempotencyKey
+}
+
+// GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductDeleteBatch) GetIdempotencyKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		return nil, false
+	}
+	return o.IdempotencyKey, true
+}
+
+// HasIdempotencyKey returns a boolean if a field has been set.
+func (o *ProductDeleteBatch) HasIdempotencyKey() bool {
+	if o != nil && !IsNil(o.IdempotencyKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+func (o *ProductDeleteBatch) SetIdempotencyKey(v string) {
+	o.IdempotencyKey = &v
+}
+
 func (o ProductDeleteBatch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -81,6 +115,9 @@ func (o ProductDeleteBatch) MarshalJSON() ([]byte, error) {
 func (o ProductDeleteBatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["payload"] = o.Payload
+	if !IsNil(o.IdempotencyKey) {
+		toSerialize["idempotency_key"] = o.IdempotencyKey
+	}
 	return toSerialize, nil
 }
 

@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## CartCouponConditionAdd
 
-> BasketLiveShippingServiceDelete200Response CartCouponConditionAdd(ctx).CouponId(couponId).Entity(entity).Key(key).Operator(operator).Value(value).Target(target).IncludeTax(includeTax).IncludeShipping(includeShipping).StoreId(storeId).Execute()
+> BasketLiveShippingServiceDelete200Response CartCouponConditionAdd(ctx).CouponId(couponId).Entity(entity).Key(key).Operator(operator).Value(value).Target(target).IncludeTax(includeTax).IncludeShipping(includeShipping).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 cart.coupon.condition.add
 
@@ -265,10 +265,11 @@ func main() {
 	includeTax := true // bool | Indicates whether to apply a discount for taxes. (optional) (default to false)
 	includeShipping := true // bool | Indicates whether to apply a discount for shipping. (optional) (default to false)
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartCouponConditionAdd(context.Background()).CouponId(couponId).Entity(entity).Key(key).Operator(operator).Value(value).Target(target).IncludeTax(includeTax).IncludeShipping(includeShipping).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CartAPI.CartCouponConditionAdd(context.Background()).CouponId(couponId).Entity(entity).Key(key).Operator(operator).Value(value).Target(target).IncludeTax(includeTax).IncludeShipping(includeShipping).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartCouponConditionAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,6 +299,7 @@ Name | Type | Description  | Notes
  **includeTax** | **bool** | Indicates whether to apply a discount for taxes. | [default to false]
  **includeShipping** | **bool** | Indicates whether to apply a discount for shipping. | [default to false]
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -623,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## CartGiftcardAdd
 
-> CartGiftcardAdd200Response CartGiftcardAdd(ctx).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).Execute()
+> CartGiftcardAdd200Response CartGiftcardAdd(ctx).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).IdempotencyKey(idempotencyKey).Execute()
 
 cart.giftcard.add
 
@@ -648,10 +650,11 @@ func main() {
 	recipientEmail := "jubari@hannsgroup.com" // string | Gift card recipient email (optional)
 	recipientName := "John Doe" // string | Gift card recipient name (optional)
 	ownerName := "John Doe" // string | Gift card owner name (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartGiftcardAdd(context.Background()).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).Execute()
+	resp, r, err := apiClient.CartAPI.CartGiftcardAdd(context.Background()).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartGiftcardAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -678,6 +681,7 @@ Name | Type | Description  | Notes
  **recipientEmail** | **string** | Gift card recipient email | 
  **recipientName** | **string** | Gift card recipient name | 
  **ownerName** | **string** | Gift card owner name | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1065,7 +1069,7 @@ Name | Type | Description  | Notes
 
 ## CartMetaDataSet
 
-> AttributeAdd200Response CartMetaDataSet(ctx).EntityId(entityId).Key(key).Value(value).Namespace(namespace).Entity(entity).StoreId(storeId).LangId(langId).Execute()
+> AttributeAdd200Response CartMetaDataSet(ctx).EntityId(entityId).Key(key).Value(value).Namespace(namespace).Entity(entity).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 cart.meta_data.set
 
@@ -1091,10 +1095,11 @@ func main() {
 	entity := "order" // string | Entity (optional) (default to "product")
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartMetaDataSet(context.Background()).EntityId(entityId).Key(key).Value(value).Namespace(namespace).Entity(entity).StoreId(storeId).LangId(langId).Execute()
+	resp, r, err := apiClient.CartAPI.CartMetaDataSet(context.Background()).EntityId(entityId).Key(key).Value(value).Namespace(namespace).Entity(entity).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartMetaDataSet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1122,6 +1127,7 @@ Name | Type | Description  | Notes
  **entity** | **string** | Entity | [default to &quot;product&quot;]
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1348,7 +1354,7 @@ Name | Type | Description  | Notes
 
 ## CartScriptAdd
 
-> CartScriptAdd200Response CartScriptAdd(ctx).Name(name).Description(description).Html(html).Src(src).LoadMethod(loadMethod).Scope(scope).Events(events).StoreId(storeId).Execute()
+> CartScriptAdd200Response CartScriptAdd(ctx).Name(name).Description(description).Html(html).Src(src).LoadMethod(loadMethod).Scope(scope).Events(events).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 cart.script.add
 
@@ -1375,10 +1381,11 @@ func main() {
 	scope := "all" // string | The page or pages on the online store where the script should be included (optional) (default to "storefront")
 	events := "purchase_event" // string | Event for run scripts (optional)
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartScriptAdd(context.Background()).Name(name).Description(description).Html(html).Src(src).LoadMethod(loadMethod).Scope(scope).Events(events).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CartAPI.CartScriptAdd(context.Background()).Name(name).Description(description).Html(html).Src(src).LoadMethod(loadMethod).Scope(scope).Events(events).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartScriptAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1407,6 +1414,7 @@ Name | Type | Description  | Notes
  **scope** | **string** | The page or pages on the online store where the script should be included | [default to &quot;storefront&quot;]
  **events** | **string** | Event for run scripts | 
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

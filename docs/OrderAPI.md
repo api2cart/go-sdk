@@ -1699,7 +1699,7 @@ Name | Type | Description  | Notes
 
 ## OrderUpdate
 
-> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).Execute()
+> AccountConfigUpdate200Response OrderUpdate(ctx).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).IdempotencyKey(idempotencyKey).Execute()
 
 order.update
 
@@ -1735,10 +1735,11 @@ func main() {
 	createInvoice := true // bool | Determines whether an invoice should be created if it has not already been created (optional)
 	origin := "newsletter" // string | The source of the order (optional)
 	tags := "tag1,tag2" // string | Order tags (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderUpdate(context.Background()).OrderId(orderId).StoreId(storeId).OrderStatus(orderStatus).FinancialStatus(financialStatus).FulfillmentStatus(fulfillmentStatus).CancellationReason(cancellationReason).OrderPaymentMethod(orderPaymentMethod).Comment(comment).AdminComment(adminComment).AdminPrivateComment(adminPrivateComment).InvoiceAdminComment(invoiceAdminComment).DateModified(dateModified).DateFinished(dateFinished).SendNotifications(sendNotifications).CreateInvoice(createInvoice).Origin(origin).Tags(tags).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1776,6 +1777,7 @@ Name | Type | Description  | Notes
  **createInvoice** | **bool** | Determines whether an invoice should be created if it has not already been created | 
  **origin** | **string** | The source of the order | 
  **tags** | **string** | Order tags | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

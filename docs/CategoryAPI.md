@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CategoryAssign**](CategoryAPI.md#CategoryAssign) | **Post** /category.assign.json | category.assign
 [**CategoryCount**](CategoryAPI.md#CategoryCount) | **Get** /category.count.json | category.count
 [**CategoryDelete**](CategoryAPI.md#CategoryDelete) | **Delete** /category.delete.json | category.delete
+[**CategoryDeleteBatch**](CategoryAPI.md#CategoryDeleteBatch) | **Post** /category.delete.batch.json | category.delete.batch
 [**CategoryFind**](CategoryAPI.md#CategoryFind) | **Get** /category.find.json | category.find
 [**CategoryImageAdd**](CategoryAPI.md#CategoryImageAdd) | **Post** /category.image.add.json | category.image.add
 [**CategoryImageDelete**](CategoryAPI.md#CategoryImageDelete) | **Delete** /category.image.delete.json | category.image.delete
@@ -21,7 +22,7 @@ Method | HTTP request | Description
 
 ## CategoryAdd
 
-> CategoryAdd200Response CategoryAdd(ctx).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).CreatedTime(createdTime).ModifiedTime(modifiedTime).SortOrder(sortOrder).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).Execute()
+> CategoryAdd200Response CategoryAdd(ctx).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).CreatedTime(createdTime).ModifiedTime(modifiedTime).SortOrder(sortOrder).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 category.add
 
@@ -55,10 +56,11 @@ func main() {
 	storeId := "1" // string | Store Id (optional)
 	storesIds := "1,2" // string | Create category in the stores that is specified by comma-separated stores' id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryAdd(context.Background()).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).CreatedTime(createdTime).ModifiedTime(modifiedTime).SortOrder(sortOrder).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryAdd(context.Background()).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).CreatedTime(createdTime).ModifiedTime(modifiedTime).SortOrder(sortOrder).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -94,6 +96,7 @@ Name | Type | Description  | Notes
  **storeId** | **string** | Store Id | 
  **storesIds** | **string** | Create category in the stores that is specified by comma-separated stores&#39; id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -181,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## CategoryAssign
 
-> CategoryAssign200Response CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+> CategoryAssign200Response CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 category.assign
 
@@ -203,10 +206,11 @@ func main() {
 	categoryId := "6" // string | Defines category assign, specified by category id
 	productId := "10" // string | Defines category assign to the product, specified by product id
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryAssign(context.Background()).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryAssign(context.Background()).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -230,6 +234,7 @@ Name | Type | Description  | Notes
  **categoryId** | **string** | Defines category assign, specified by category id | 
  **productId** | **string** | Defines category assign to the product, specified by product id | 
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -407,6 +412,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CategoryDeleteBatch
+
+> CategoryAddBatch200Response CategoryDeleteBatch(ctx).CategoryDeleteBatch(categoryDeleteBatch).Execute()
+
+category.delete.batch
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	categoryDeleteBatch := *openapiclient.NewCategoryDeleteBatch([]openapiclient.CategoryDeleteBatchPayloadInner{*openapiclient.NewCategoryDeleteBatchPayloadInner("Id_example")}) // CategoryDeleteBatch | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CategoryAPI.CategoryDeleteBatch(context.Background()).CategoryDeleteBatch(categoryDeleteBatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryDeleteBatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CategoryDeleteBatch`: CategoryAddBatch200Response
+	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryDeleteBatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCategoryDeleteBatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoryDeleteBatch** | [**CategoryDeleteBatch**](CategoryDeleteBatch.md) |  | 
+
+### Return type
+
+[**CategoryAddBatch200Response**](CategoryAddBatch200Response.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CategoryFind
 
 > CategoryFind200Response CategoryFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).LangId(langId).Execute()
@@ -483,7 +554,7 @@ Name | Type | Description  | Notes
 
 ## CategoryImageAdd
 
-> CategoryImageAdd200Response CategoryImageAdd(ctx).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).Execute()
+> CategoryImageAdd200Response CategoryImageAdd(ctx).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).IdempotencyKey(idempotencyKey).Execute()
 
 category.image.add
 
@@ -510,10 +581,11 @@ func main() {
 	label := "This cool image" // string | Defines alternative text that has to be attached to the picture (optional)
 	mime := "image/jpeg" // string | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. (optional)
 	position := int32(5) // int32 | Defines image’s position in the list (optional) (default to 0)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryImageAdd(context.Background()).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryImageAdd(context.Background()).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryImageAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -542,6 +614,7 @@ Name | Type | Description  | Notes
  **label** | **string** | Defines alternative text that has to be attached to the picture | 
  **mime** | **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | 
  **position** | **int32** | Defines image’s position in the list | [default to 0]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -819,7 +892,7 @@ Name | Type | Description  | Notes
 
 ## CategoryUnassign
 
-> CategoryAssign200Response CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+> CategoryAssign200Response CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 category.unassign
 
@@ -841,10 +914,11 @@ func main() {
 	categoryId := "6" // string | Defines category unassign, specified by category id
 	productId := "10" // string | Defines category unassign to the product, specified by product id
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryUnassign(context.Background()).CategoryId(categoryId).ProductId(productId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryUnassign(context.Background()).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryUnassign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -868,6 +942,7 @@ Name | Type | Description  | Notes
  **categoryId** | **string** | Defines category unassign, specified by category id | 
  **productId** | **string** | Defines category unassign to the product, specified by product id | 
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -889,7 +964,7 @@ Name | Type | Description  | Notes
 
 ## CategoryUpdate
 
-> AccountConfigUpdate200Response CategoryUpdate(ctx).Id(id).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).SortOrder(sortOrder).ModifiedTime(modifiedTime).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).Execute()
+> AccountConfigUpdate200Response CategoryUpdate(ctx).Id(id).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).SortOrder(sortOrder).ModifiedTime(modifiedTime).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 category.update
 
@@ -923,10 +998,11 @@ func main() {
 	storeId := "1" // string | Store Id (optional)
 	storesIds := "1,2" // string | Update category in the stores that is specified by comma-separated stores' id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryUpdate(context.Background()).Id(id).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).SortOrder(sortOrder).ModifiedTime(modifiedTime).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryUpdate(context.Background()).Id(id).Name(name).Description(description).ShortDescription(shortDescription).ParentId(parentId).Avail(avail).SortOrder(sortOrder).ModifiedTime(modifiedTime).MetaTitle(metaTitle).MetaDescription(metaDescription).MetaKeywords(metaKeywords).SeoUrl(seoUrl).StoreId(storeId).StoresIds(storesIds).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -962,6 +1038,7 @@ Name | Type | Description  | Notes
  **storeId** | **string** | Store Id | 
  **storesIds** | **string** | Update category in the stores that is specified by comma-separated stores&#39; id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Mime** | Pointer to **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | [optional] 
 **Position** | Pointer to **int32** | Defines image’s position in the list | [optional] [default to 0]
 **OptionId** | Pointer to **string** | Defines option id of the product variant for which the image will be added | [optional] 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
 
@@ -294,6 +295,31 @@ SetOptionId sets OptionId field to given value.
 `func (o *ProductVariantImageAdd) HasOptionId() bool`
 
 HasOptionId returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *ProductVariantImageAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *ProductVariantImageAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *ProductVariantImageAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *ProductVariantImageAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

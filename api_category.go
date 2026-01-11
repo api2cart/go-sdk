@@ -41,6 +41,7 @@ type ApiCategoryAddRequest struct {
 	storeId *string
 	storesIds *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Defines category&#39;s name that has to be added
@@ -130,6 +131,12 @@ func (r ApiCategoryAddRequest) StoresIds(storesIds string) ApiCategoryAddRequest
 // Language id
 func (r ApiCategoryAddRequest) LangId(langId string) ApiCategoryAddRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCategoryAddRequest) IdempotencyKey(idempotencyKey string) ApiCategoryAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -224,6 +231,9 @@ func (a *CategoryAPIService) CategoryAddExecute(r ApiCategoryAddRequest) (*Categ
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -451,6 +461,7 @@ type ApiCategoryAssignRequest struct {
 	categoryId *string
 	productId *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Defines category assign, specified by category id
@@ -468,6 +479,12 @@ func (r ApiCategoryAssignRequest) ProductId(productId string) ApiCategoryAssignR
 // Store Id
 func (r ApiCategoryAssignRequest) StoreId(storeId string) ApiCategoryAssignRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCategoryAssignRequest) IdempotencyKey(idempotencyKey string) ApiCategoryAssignRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -521,6 +538,9 @@ func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1015,6 +1035,144 @@ func (a *CategoryAPIService) CategoryDeleteExecute(r ApiCategoryDeleteRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCategoryDeleteBatchRequest struct {
+	ctx context.Context
+	ApiService *CategoryAPIService
+	categoryDeleteBatch *CategoryDeleteBatch
+}
+
+func (r ApiCategoryDeleteBatchRequest) CategoryDeleteBatch(categoryDeleteBatch CategoryDeleteBatch) ApiCategoryDeleteBatchRequest {
+	r.categoryDeleteBatch = &categoryDeleteBatch
+	return r
+}
+
+func (r ApiCategoryDeleteBatchRequest) Execute() (*CategoryAddBatch200Response, *http.Response, error) {
+	return r.ApiService.CategoryDeleteBatchExecute(r)
+}
+
+/*
+CategoryDeleteBatch category.delete.batch
+
+Delete categories from the store.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCategoryDeleteBatchRequest
+*/
+func (a *CategoryAPIService) CategoryDeleteBatch(ctx context.Context) ApiCategoryDeleteBatchRequest {
+	return ApiCategoryDeleteBatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CategoryAddBatch200Response
+func (a *CategoryAPIService) CategoryDeleteBatchExecute(r ApiCategoryDeleteBatchRequest) (*CategoryAddBatch200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CategoryAddBatch200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryDeleteBatch")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/category.delete.batch.json"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.categoryDeleteBatch == nil {
+		return localVarReturnValue, nil, reportError("categoryDeleteBatch is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.categoryDeleteBatch
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["StoreKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-store-key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCategoryFindRequest struct {
 	ctx context.Context
 	ApiService *CategoryAPIService
@@ -1210,6 +1368,7 @@ type ApiCategoryImageAddRequest struct {
 	label *string
 	mime *string
 	position *int32
+	idempotencyKey *string
 }
 
 // Defines category id where the image should be added
@@ -1257,6 +1416,12 @@ func (r ApiCategoryImageAddRequest) Mime(mime string) ApiCategoryImageAddRequest
 // Defines image’s position in the list
 func (r ApiCategoryImageAddRequest) Position(position int32) ApiCategoryImageAddRequest {
 	r.position = &position
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCategoryImageAddRequest) IdempotencyKey(idempotencyKey string) ApiCategoryImageAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -1330,6 +1495,9 @@ func (a *CategoryAPIService) CategoryImageAddExecute(r ApiCategoryImageAddReques
 	} else {
 		var defaultValue int32 = 0
 		r.position = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2147,6 +2315,7 @@ type ApiCategoryUnassignRequest struct {
 	categoryId *string
 	productId *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Defines category unassign, specified by category id
@@ -2164,6 +2333,12 @@ func (r ApiCategoryUnassignRequest) ProductId(productId string) ApiCategoryUnass
 // Store Id
 func (r ApiCategoryUnassignRequest) StoreId(storeId string) ApiCategoryUnassignRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCategoryUnassignRequest) IdempotencyKey(idempotencyKey string) ApiCategoryUnassignRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2217,6 +2392,9 @@ func (a *CategoryAPIService) CategoryUnassignExecute(r ApiCategoryUnassignReques
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2318,6 +2496,7 @@ type ApiCategoryUpdateRequest struct {
 	storeId *string
 	storesIds *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Defines category update specified by category id
@@ -2410,6 +2589,12 @@ func (r ApiCategoryUpdateRequest) LangId(langId string) ApiCategoryUpdateRequest
 	return r
 }
 
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCategoryUpdateRequest) IdempotencyKey(idempotencyKey string) ApiCategoryUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
 func (r ApiCategoryUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.CategoryUpdateExecute(r)
 }
@@ -2495,6 +2680,9 @@ func (a *CategoryAPIService) CategoryUpdateExecute(r ApiCategoryUpdateRequest) (
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

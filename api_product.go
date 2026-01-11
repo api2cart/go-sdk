@@ -604,6 +604,7 @@ type ApiProductAttributeValueSetRequest struct {
 	valueId *int32
 	langId *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Defines product id where the attribute should be added
@@ -651,6 +652,12 @@ func (r ApiProductAttributeValueSetRequest) LangId(langId string) ApiProductAttr
 // Store Id
 func (r ApiProductAttributeValueSetRequest) StoreId(storeId string) ApiProductAttributeValueSetRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductAttributeValueSetRequest) IdempotencyKey(idempotencyKey string) ApiProductAttributeValueSetRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -718,6 +725,9 @@ func (a *ProductAPIService) ProductAttributeValueSetExecute(r ApiProductAttribut
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -810,6 +820,7 @@ type ApiProductAttributeValueUnsetRequest struct {
 	includeDefault *bool
 	reindex *bool
 	clearCache *bool
+	idempotencyKey *string
 }
 
 // Product id
@@ -845,6 +856,12 @@ func (r ApiProductAttributeValueUnsetRequest) Reindex(reindex bool) ApiProductAt
 // Is cache clear required
 func (r ApiProductAttributeValueUnsetRequest) ClearCache(clearCache bool) ApiProductAttributeValueUnsetRequest {
 	r.clearCache = &clearCache
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductAttributeValueUnsetRequest) IdempotencyKey(idempotencyKey string) ApiProductAttributeValueUnsetRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -916,6 +933,9 @@ func (a *ProductAPIService) ProductAttributeValueUnsetExecute(r ApiProductAttrib
 	} else {
 		var defaultValue bool = true
 		r.clearCache = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2482,6 +2502,7 @@ type ApiProductCurrencyAddRequest struct {
 	symbolLeft *string
 	symbolRight *string
 	default_ *bool
+	idempotencyKey *string
 }
 
 // Specifies standardized currency code
@@ -2523,6 +2544,12 @@ func (r ApiProductCurrencyAddRequest) SymbolRight(symbolRight string) ApiProduct
 // Specifies currency&#39;s default meaning
 func (r ApiProductCurrencyAddRequest) Default_(default_ bool) ApiProductCurrencyAddRequest {
 	r.default_ = &default_
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductCurrencyAddRequest) IdempotencyKey(idempotencyKey string) ApiProductCurrencyAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2594,6 +2621,9 @@ func (a *ProductAPIService) ProductCurrencyAddExecute(r ApiProductCurrencyAddReq
 	} else {
 		var defaultValue bool = false
 		r.default_ = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3686,6 +3716,7 @@ type ApiProductImageUpdateRequest struct {
 	label *string
 	position *int32
 	hidden *bool
+	idempotencyKey *string
 }
 
 // Defines product id where the image should be updated
@@ -3745,6 +3776,12 @@ func (r ApiProductImageUpdateRequest) Position(position int32) ApiProductImageUp
 // Define is hide image
 func (r ApiProductImageUpdateRequest) Hidden(hidden bool) ApiProductImageUpdateRequest {
 	r.hidden = &hidden
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductImageUpdateRequest) IdempotencyKey(idempotencyKey string) ApiProductImageUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -3822,6 +3859,9 @@ func (a *ProductAPIService) ProductImageUpdateExecute(r ApiProductImageUpdateReq
 	}
 	if r.hidden != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "hidden", r.hidden, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4679,6 +4719,7 @@ type ApiProductManufacturerAddRequest struct {
 	searchKeywords *string
 	imageUrl *string
 	seoUrl *string
+	idempotencyKey *string
 }
 
 // Defines products specified by product id
@@ -4732,6 +4773,12 @@ func (r ApiProductManufacturerAddRequest) ImageUrl(imageUrl string) ApiProductMa
 // Defines unique URL for SEO
 func (r ApiProductManufacturerAddRequest) SeoUrl(seoUrl string) ApiProductManufacturerAddRequest {
 	r.seoUrl = &seoUrl
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductManufacturerAddRequest) IdempotencyKey(idempotencyKey string) ApiProductManufacturerAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -4803,6 +4850,9 @@ func (a *ProductAPIService) ProductManufacturerAddExecute(r ApiProductManufactur
 	}
 	if r.seoUrl != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "seo_url", r.seoUrl, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5033,6 +5083,7 @@ type ApiProductOptionAssignRequest struct {
 	sortOrder *int32
 	optionValues *string
 	clearCache *bool
+	idempotencyKey *string
 }
 
 // Defines product id where the option should be assigned
@@ -5068,6 +5119,12 @@ func (r ApiProductOptionAssignRequest) OptionValues(optionValues string) ApiProd
 // Is cache clear required
 func (r ApiProductOptionAssignRequest) ClearCache(clearCache bool) ApiProductOptionAssignRequest {
 	r.clearCache = &clearCache
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductOptionAssignRequest) IdempotencyKey(idempotencyKey string) ApiProductOptionAssignRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -5139,6 +5196,9 @@ func (a *ProductAPIService) ProductOptionAssignExecute(r ApiProductOptionAssignR
 	} else {
 		var defaultValue bool = true
 		r.clearCache = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5607,6 +5667,7 @@ type ApiProductOptionValueAddRequest struct {
 	displayValue *string
 	isDefault *bool
 	clearCache *bool
+	idempotencyKey *string
 }
 
 // Defines product id where the option value should be added
@@ -5648,6 +5709,12 @@ func (r ApiProductOptionValueAddRequest) IsDefault(isDefault bool) ApiProductOpt
 // Is cache clear required
 func (r ApiProductOptionValueAddRequest) ClearCache(clearCache bool) ApiProductOptionValueAddRequest {
 	r.clearCache = &clearCache
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductOptionValueAddRequest) IdempotencyKey(idempotencyKey string) ApiProductOptionValueAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -5719,6 +5786,9 @@ func (a *ProductAPIService) ProductOptionValueAddExecute(r ApiProductOptionValue
 	} else {
 		var defaultValue bool = true
 		r.clearCache = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5808,6 +5878,7 @@ type ApiProductOptionValueAssignRequest struct {
 	productOptionId *int32
 	optionValueId *string
 	clearCache *bool
+	idempotencyKey *string
 }
 
 // Defines product&#39;s option id where the value has to be assigned
@@ -5825,6 +5896,12 @@ func (r ApiProductOptionValueAssignRequest) OptionValueId(optionValueId string) 
 // Is cache clear required
 func (r ApiProductOptionValueAssignRequest) ClearCache(clearCache bool) ApiProductOptionValueAssignRequest {
 	r.clearCache = &clearCache
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductOptionValueAssignRequest) IdempotencyKey(idempotencyKey string) ApiProductOptionValueAssignRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -5881,6 +5958,9 @@ func (a *ProductAPIService) ProductOptionValueAssignExecute(r ApiProductOptionVa
 	} else {
 		var defaultValue bool = true
 		r.clearCache = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -6145,6 +6225,7 @@ type ApiProductOptionValueUpdateRequest struct {
 	quantity *float32
 	displayValue *string
 	clearCache *bool
+	idempotencyKey *string
 }
 
 // Defines product id where the option value should be updated
@@ -6192,6 +6273,12 @@ func (r ApiProductOptionValueUpdateRequest) DisplayValue(displayValue string) Ap
 // Is cache clear required
 func (r ApiProductOptionValueUpdateRequest) ClearCache(clearCache bool) ApiProductOptionValueUpdateRequest {
 	r.clearCache = &clearCache
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductOptionValueUpdateRequest) IdempotencyKey(idempotencyKey string) ApiProductOptionValueUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -6264,6 +6351,9 @@ func (a *ProductAPIService) ProductOptionValueUpdateExecute(r ApiProductOptionVa
 	} else {
 		var defaultValue bool = true
 		r.clearCache = &defaultValue
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -7089,6 +7179,7 @@ type ApiProductStoreAssignRequest struct {
 	ApiService *ProductAPIService
 	productId *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Defines id of the product which should be assigned to a store
@@ -7100,6 +7191,12 @@ func (r ApiProductStoreAssignRequest) ProductId(productId string) ApiProductStor
 // Defines id of the store product should be assigned to
 func (r ApiProductStoreAssignRequest) StoreId(storeId string) ApiProductStoreAssignRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiProductStoreAssignRequest) IdempotencyKey(idempotencyKey string) ApiProductStoreAssignRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -7151,6 +7248,9 @@ func (a *ProductAPIService) ProductStoreAssignExecute(r ApiProductStoreAssignReq
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "product_id", r.productId, "form", "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

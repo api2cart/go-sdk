@@ -75,6 +75,7 @@ Name | Type | Description | Notes
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **Origin** | Pointer to **string** | The source of the order | [optional] 
 **FeePrice** | Pointer to **float32** | Specifies refund&#39;s fee price | [optional] 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderItem** | [**[]OrderAddOrderItemInner**](OrderAddOrderItemInner.md) |  | 
 
 ## Methods
@@ -1825,6 +1826,31 @@ SetFeePrice sets FeePrice field to given value.
 `func (o *OrderAdd) HasFeePrice() bool`
 
 HasFeePrice returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *OrderAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *OrderAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *OrderAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *OrderAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 ### GetOrderItem
 

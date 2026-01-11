@@ -506,6 +506,7 @@ type ApiCartCouponConditionAddRequest struct {
 	includeTax *bool
 	includeShipping *bool
 	storeId *string
+	idempotencyKey *string
 }
 
 // Coupon Id
@@ -559,6 +560,12 @@ func (r ApiCartCouponConditionAddRequest) IncludeShipping(includeShipping bool) 
 // Store Id
 func (r ApiCartCouponConditionAddRequest) StoreId(storeId string) ApiCartCouponConditionAddRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCartCouponConditionAddRequest) IdempotencyKey(idempotencyKey string) ApiCartCouponConditionAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -642,6 +649,9 @@ func (a *CartAPIService) CartCouponConditionAddExecute(r ApiCartCouponConditionA
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1498,6 +1508,7 @@ type ApiCartGiftcardAddRequest struct {
 	recipientEmail *string
 	recipientName *string
 	ownerName *string
+	idempotencyKey *string
 }
 
 // Defines the gift card amount value.
@@ -1533,6 +1544,12 @@ func (r ApiCartGiftcardAddRequest) RecipientName(recipientName string) ApiCartGi
 // Gift card owner name
 func (r ApiCartGiftcardAddRequest) OwnerName(ownerName string) ApiCartGiftcardAddRequest {
 	r.ownerName = &ownerName
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCartGiftcardAddRequest) IdempotencyKey(idempotencyKey string) ApiCartGiftcardAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -1594,6 +1611,9 @@ func (a *CartAPIService) CartGiftcardAddExecute(r ApiCartGiftcardAddRequest) (*C
 	}
 	if r.ownerName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "owner_name", r.ownerName, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2575,6 +2595,7 @@ type ApiCartMetaDataSetRequest struct {
 	entity *string
 	storeId *string
 	langId *string
+	idempotencyKey *string
 }
 
 // Entity Id
@@ -2616,6 +2637,12 @@ func (r ApiCartMetaDataSetRequest) StoreId(storeId string) ApiCartMetaDataSetReq
 // Language id
 func (r ApiCartMetaDataSetRequest) LangId(langId string) ApiCartMetaDataSetRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCartMetaDataSetRequest) IdempotencyKey(idempotencyKey string) ApiCartMetaDataSetRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -2686,6 +2713,9 @@ func (a *CartAPIService) CartMetaDataSetExecute(r ApiCartMetaDataSetRequest) (*A
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3253,6 +3283,7 @@ type ApiCartScriptAddRequest struct {
 	scope *string
 	events *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // The user-friendly script name
@@ -3300,6 +3331,12 @@ func (r ApiCartScriptAddRequest) Events(events string) ApiCartScriptAddRequest {
 // Store Id
 func (r ApiCartScriptAddRequest) StoreId(storeId string) ApiCartScriptAddRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiCartScriptAddRequest) IdempotencyKey(idempotencyKey string) ApiCartScriptAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -3369,6 +3406,9 @@ func (a *CartAPIService) CartScriptAddExecute(r ApiCartScriptAddRequest) (*CartS
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

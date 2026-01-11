@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ShippCountry** | **string** | Specifies shipping country code | 
 **Params** | Pointer to **string** | Set this parameter in order to choose which entity fields you want to retrieve | [optional] [default to "force_all"]
 **Exclude** | Pointer to **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | [optional] 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderItem** | [**[]OrderPreestimateShippingListOrderItemInner**](OrderPreestimateShippingListOrderItemInner.md) |  | 
 
 ## Methods
@@ -305,6 +306,31 @@ SetExclude sets Exclude field to given value.
 `func (o *OrderPreestimateShippingList) HasExclude() bool`
 
 HasExclude returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *OrderPreestimateShippingList) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *OrderPreestimateShippingList) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *OrderPreestimateShippingList) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *OrderPreestimateShippingList) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 ### GetOrderItem
 

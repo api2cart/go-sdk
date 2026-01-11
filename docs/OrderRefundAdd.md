@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **SendNotifications** | Pointer to **bool** | Send notifications to customer after refund was created | [optional] [default to false]
 **Date** | Pointer to **string** | Specifies an order creation date in format Y-m-d H:i:s | [optional] 
 **IsOnline** | Pointer to **bool** | Indicates whether refund type is online | [optional] [default to false]
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetIsOnline sets IsOnline field to given value.
 `func (o *OrderRefundAdd) HasIsOnline() bool`
 
 HasIsOnline returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *OrderRefundAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *OrderRefundAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *OrderRefundAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *OrderRefundAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

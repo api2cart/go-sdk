@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ## ProductAttributeValueSet
 
-> ProductAttributeValueSet200Response ProductAttributeValueSet(ctx).ProductId(productId).AttributeId(attributeId).AttributeGroupId(attributeGroupId).AttributeName(attributeName).Value(value).ValueId(valueId).LangId(langId).StoreId(storeId).Execute()
+> ProductAttributeValueSet200Response ProductAttributeValueSet(ctx).ProductId(productId).AttributeId(attributeId).AttributeGroupId(attributeGroupId).AttributeName(attributeName).Value(value).ValueId(valueId).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 product.attribute.value.set
 
@@ -310,10 +310,11 @@ func main() {
 	valueId := int32(22) // int32 | Define attribute value id (optional)
 	langId := "3" // string | Language id (optional)
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductAttributeValueSet(context.Background()).ProductId(productId).AttributeId(attributeId).AttributeGroupId(attributeGroupId).AttributeName(attributeName).Value(value).ValueId(valueId).LangId(langId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductAttributeValueSet(context.Background()).ProductId(productId).AttributeId(attributeId).AttributeGroupId(attributeGroupId).AttributeName(attributeName).Value(value).ValueId(valueId).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductAttributeValueSet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,6 +343,7 @@ Name | Type | Description  | Notes
  **valueId** | **int32** | Define attribute value id | 
  **langId** | **string** | Language id | 
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -363,7 +365,7 @@ Name | Type | Description  | Notes
 
 ## ProductAttributeValueUnset
 
-> ProductAttributeValueUnset200Response ProductAttributeValueUnset(ctx).ProductId(productId).AttributeId(attributeId).StoreId(storeId).IncludeDefault(includeDefault).Reindex(reindex).ClearCache(clearCache).Execute()
+> ProductAttributeValueUnset200Response ProductAttributeValueUnset(ctx).ProductId(productId).AttributeId(attributeId).StoreId(storeId).IncludeDefault(includeDefault).Reindex(reindex).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 
 product.attribute.value.unset
 
@@ -388,10 +390,11 @@ func main() {
 	includeDefault := true // bool | Boolean, whether or not to unset default value of the attribute, if applicable (optional) (default to false)
 	reindex := false // bool | Is reindex required (optional) (default to true)
 	clearCache := false // bool | Is cache clear required (optional) (default to true)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductAttributeValueUnset(context.Background()).ProductId(productId).AttributeId(attributeId).StoreId(storeId).IncludeDefault(includeDefault).Reindex(reindex).ClearCache(clearCache).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductAttributeValueUnset(context.Background()).ProductId(productId).AttributeId(attributeId).StoreId(storeId).IncludeDefault(includeDefault).Reindex(reindex).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductAttributeValueUnset``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -418,6 +421,7 @@ Name | Type | Description  | Notes
  **includeDefault** | **bool** | Boolean, whether or not to unset default value of the attribute, if applicable | [default to false]
  **reindex** | **bool** | Is reindex required | [default to true]
  **clearCache** | **bool** | Is cache clear required | [default to true]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -915,7 +919,7 @@ Name | Type | Description  | Notes
 
 ## ProductCurrencyAdd
 
-> ProductCurrencyAdd200Response ProductCurrencyAdd(ctx).Iso3(iso3).Rate(rate).Name(name).Avail(avail).SymbolLeft(symbolLeft).SymbolRight(symbolRight).Default_(default_).Execute()
+> ProductCurrencyAdd200Response ProductCurrencyAdd(ctx).Iso3(iso3).Rate(rate).Name(name).Avail(avail).SymbolLeft(symbolLeft).SymbolRight(symbolRight).Default_(default_).IdempotencyKey(idempotencyKey).Execute()
 
 product.currency.add
 
@@ -941,10 +945,11 @@ func main() {
 	symbolLeft := "$" // string | Defines the symbol that is located before the currency (optional)
 	symbolRight := "грн" // string | Defines the symbol that is located after the currency (optional)
 	default_ := true // bool | Specifies currency's default meaning (optional) (default to false)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductCurrencyAdd(context.Background()).Iso3(iso3).Rate(rate).Name(name).Avail(avail).SymbolLeft(symbolLeft).SymbolRight(symbolRight).Default_(default_).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductCurrencyAdd(context.Background()).Iso3(iso3).Rate(rate).Name(name).Avail(avail).SymbolLeft(symbolLeft).SymbolRight(symbolRight).Default_(default_).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductCurrencyAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -972,6 +977,7 @@ Name | Type | Description  | Notes
  **symbolLeft** | **string** | Defines the symbol that is located before the currency | 
  **symbolRight** | **string** | Defines the symbol that is located after the currency | 
  **default_** | **bool** | Specifies currency&#39;s default meaning | [default to false]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1419,7 +1425,7 @@ Name | Type | Description  | Notes
 
 ## ProductImageUpdate
 
-> ProductImageUpdate200Response ProductImageUpdate(ctx).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).Execute()
+> ProductImageUpdate200Response ProductImageUpdate(ctx).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).IdempotencyKey(idempotencyKey).Execute()
 
 product.image.update
 
@@ -1448,10 +1454,11 @@ func main() {
 	label := "This cool image" // string | Defines alternative text that has to be attached to the picture (optional)
 	position := int32(5) // int32 | Defines image’s position in the list (optional)
 	hidden := true // bool | Define is hide image (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductImageUpdate(context.Background()).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductImageUpdate(context.Background()).ProductId(productId).Id(id).VariantIds(variantIds).StoreId(storeId).LangId(langId).ImageName(imageName).Type_(type_).Label(label).Position(position).Hidden(hidden).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductImageUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1482,6 +1489,7 @@ Name | Type | Description  | Notes
  **label** | **string** | Defines alternative text that has to be attached to the picture | 
  **position** | **int32** | Defines image’s position in the list | 
  **hidden** | **bool** | Define is hide image | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1723,7 +1731,7 @@ Name | Type | Description  | Notes
 
 ## ProductManufacturerAdd
 
-> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).Execute()
+> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
 
 product.manufacturer.add
 
@@ -1751,10 +1759,11 @@ func main() {
 	searchKeywords := "key1,key2,key3" // string | Defines unique search keywords (optional)
 	imageUrl := "https://docs.api2cart.com/img/logo.png" // string | Image Url (optional)
 	seoUrl := "some seo url" // string | Defines unique URL for SEO (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductManufacturerAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1784,6 +1793,7 @@ Name | Type | Description  | Notes
  **searchKeywords** | **string** | Defines unique search keywords | 
  **imageUrl** | **string** | Image Url | 
  **seoUrl** | **string** | Defines unique URL for SEO | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1871,7 +1881,7 @@ Name | Type | Description  | Notes
 
 ## ProductOptionAssign
 
-> ProductOptionAssign200Response ProductOptionAssign(ctx).ProductId(productId).OptionId(optionId).Required(required).SortOrder(sortOrder).OptionValues(optionValues).ClearCache(clearCache).Execute()
+> ProductOptionAssign200Response ProductOptionAssign(ctx).ProductId(productId).OptionId(optionId).Required(required).SortOrder(sortOrder).OptionValues(optionValues).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 
 product.option.assign
 
@@ -1896,10 +1906,11 @@ func main() {
 	sortOrder := int32(2) // int32 | Sort number in the list (optional) (default to 0)
 	optionValues := "green,black,yellow" // string | Defines option values that has to be assigned (optional)
 	clearCache := false // bool | Is cache clear required (optional) (default to true)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductOptionAssign(context.Background()).ProductId(productId).OptionId(optionId).Required(required).SortOrder(sortOrder).OptionValues(optionValues).ClearCache(clearCache).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductOptionAssign(context.Background()).ProductId(productId).OptionId(optionId).Required(required).SortOrder(sortOrder).OptionValues(optionValues).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductOptionAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1926,6 +1937,7 @@ Name | Type | Description  | Notes
  **sortOrder** | **int32** | Sort number in the list | [default to 0]
  **optionValues** | **string** | Defines option values that has to be assigned | 
  **clearCache** | **bool** | Is cache clear required | [default to true]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -2097,7 +2109,7 @@ Name | Type | Description  | Notes
 
 ## ProductOptionValueAdd
 
-> ProductOptionValueAdd200Response ProductOptionValueAdd(ctx).ProductId(productId).OptionId(optionId).OptionValue(optionValue).SortOrder(sortOrder).DisplayValue(displayValue).IsDefault(isDefault).ClearCache(clearCache).Execute()
+> ProductOptionValueAdd200Response ProductOptionValueAdd(ctx).ProductId(productId).OptionId(optionId).OptionValue(optionValue).SortOrder(sortOrder).DisplayValue(displayValue).IsDefault(isDefault).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 
 product.option.value.add
 
@@ -2123,10 +2135,11 @@ func main() {
 	displayValue := "value" // string | Defines the value that will be displayed for the option value (optional)
 	isDefault := true // bool | Defines as a default (optional)
 	clearCache := false // bool | Is cache clear required (optional) (default to true)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductOptionValueAdd(context.Background()).ProductId(productId).OptionId(optionId).OptionValue(optionValue).SortOrder(sortOrder).DisplayValue(displayValue).IsDefault(isDefault).ClearCache(clearCache).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductOptionValueAdd(context.Background()).ProductId(productId).OptionId(optionId).OptionValue(optionValue).SortOrder(sortOrder).DisplayValue(displayValue).IsDefault(isDefault).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductOptionValueAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2154,6 +2167,7 @@ Name | Type | Description  | Notes
  **displayValue** | **string** | Defines the value that will be displayed for the option value | 
  **isDefault** | **bool** | Defines as a default | 
  **clearCache** | **bool** | Is cache clear required | [default to true]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -2175,7 +2189,7 @@ Name | Type | Description  | Notes
 
 ## ProductOptionValueAssign
 
-> ProductOptionValueAssign200Response ProductOptionValueAssign(ctx).ProductOptionId(productOptionId).OptionValueId(optionValueId).ClearCache(clearCache).Execute()
+> ProductOptionValueAssign200Response ProductOptionValueAssign(ctx).ProductOptionId(productOptionId).OptionValueId(optionValueId).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 
 product.option.value.assign
 
@@ -2197,10 +2211,11 @@ func main() {
 	productOptionId := int32(5) // int32 | Defines product's option id where the value has to be assigned
 	optionValueId := "45" // string | Defines value id that has to be assigned
 	clearCache := false // bool | Is cache clear required (optional) (default to true)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductOptionValueAssign(context.Background()).ProductOptionId(productOptionId).OptionValueId(optionValueId).ClearCache(clearCache).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductOptionValueAssign(context.Background()).ProductOptionId(productOptionId).OptionValueId(optionValueId).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductOptionValueAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2224,6 +2239,7 @@ Name | Type | Description  | Notes
  **productOptionId** | **int32** | Defines product&#39;s option id where the value has to be assigned | 
  **optionValueId** | **string** | Defines value id that has to be assigned | 
  **clearCache** | **bool** | Is cache clear required | [default to true]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -2317,7 +2333,7 @@ Name | Type | Description  | Notes
 
 ## ProductOptionValueUpdate
 
-> AccountConfigUpdate200Response ProductOptionValueUpdate(ctx).ProductId(productId).OptionId(optionId).OptionValueId(optionValueId).OptionValue(optionValue).Price(price).Quantity(quantity).DisplayValue(displayValue).ClearCache(clearCache).Execute()
+> AccountConfigUpdate200Response ProductOptionValueUpdate(ctx).ProductId(productId).OptionId(optionId).OptionValueId(optionValueId).OptionValue(optionValue).Price(price).Quantity(quantity).DisplayValue(displayValue).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 
 product.option.value.update
 
@@ -2344,10 +2360,11 @@ func main() {
 	quantity := float32(6) // float32 | Defines new products' options quantity (optional)
 	displayValue := "value" // string | Defines the value that will be displayed for the option value (optional)
 	clearCache := false // bool | Is cache clear required (optional) (default to true)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductOptionValueUpdate(context.Background()).ProductId(productId).OptionId(optionId).OptionValueId(optionValueId).OptionValue(optionValue).Price(price).Quantity(quantity).DisplayValue(displayValue).ClearCache(clearCache).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductOptionValueUpdate(context.Background()).ProductId(productId).OptionId(optionId).OptionValueId(optionValueId).OptionValue(optionValue).Price(price).Quantity(quantity).DisplayValue(displayValue).ClearCache(clearCache).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductOptionValueUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2376,6 +2393,7 @@ Name | Type | Description  | Notes
  **quantity** | **float32** | Defines new products&#39; options quantity | 
  **displayValue** | **string** | Defines the value that will be displayed for the option value | 
  **clearCache** | **bool** | Is cache clear required | [default to true]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -2695,7 +2713,7 @@ Name | Type | Description  | Notes
 
 ## ProductStoreAssign
 
-> AccountConfigUpdate200Response ProductStoreAssign(ctx).ProductId(productId).StoreId(storeId).Execute()
+> AccountConfigUpdate200Response ProductStoreAssign(ctx).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 product.store.assign
 
@@ -2716,10 +2734,11 @@ import (
 func main() {
 	productId := "10" // string | Defines id of the product which should be assigned to a store
 	storeId := "1" // string | Defines id of the store product should be assigned to
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductStoreAssign(context.Background()).ProductId(productId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductStoreAssign(context.Background()).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductStoreAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2742,6 +2761,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | **string** | Defines id of the product which should be assigned to a store | 
  **storeId** | **string** | Defines id of the store product should be assigned to | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## BasketItemAdd
 
-> BasketItemAdd200Response BasketItemAdd(ctx).CustomerId(customerId).ProductId(productId).VariantId(variantId).Quantity(quantity).StoreId(storeId).Execute()
+> BasketItemAdd200Response BasketItemAdd(ctx).CustomerId(customerId).ProductId(productId).VariantId(variantId).Quantity(quantity).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 basket.item.add
 
@@ -112,10 +112,11 @@ func main() {
 	variantId := "45" // string | Defines product's variants specified by variant id (optional)
 	quantity := float32(6) // float32 | Defines new items quantity (optional) (default to 0)
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BasketAPI.BasketItemAdd(context.Background()).CustomerId(customerId).ProductId(productId).VariantId(variantId).Quantity(quantity).StoreId(storeId).Execute()
+	resp, r, err := apiClient.BasketAPI.BasketItemAdd(context.Background()).CustomerId(customerId).ProductId(productId).VariantId(variantId).Quantity(quantity).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BasketAPI.BasketItemAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +142,7 @@ Name | Type | Description  | Notes
  **variantId** | **string** | Defines product&#39;s variants specified by variant id | 
  **quantity** | **float32** | Defines new items quantity | [default to 0]
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -162,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## BasketLiveShippingServiceCreate
 
-> BasketLiveShippingServiceCreate200Response BasketLiveShippingServiceCreate(ctx).Name(name).Callback(callback).StoreId(storeId).Execute()
+> BasketLiveShippingServiceCreate200Response BasketLiveShippingServiceCreate(ctx).Name(name).Callback(callback).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 basket.live_shipping_service.create
 
@@ -184,10 +186,11 @@ func main() {
 	name := "BestDelivery" // string | Shipping Service Name
 	callback := "https://example.com/callback" // string | Callback url that returns shipping rates. It should be able to accept POST requests with json data.
 	storeId := "1" // string | Store Id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BasketAPI.BasketLiveShippingServiceCreate(context.Background()).Name(name).Callback(callback).StoreId(storeId).Execute()
+	resp, r, err := apiClient.BasketAPI.BasketLiveShippingServiceCreate(context.Background()).Name(name).Callback(callback).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BasketAPI.BasketLiveShippingServiceCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,6 +214,7 @@ Name | Type | Description  | Notes
  **name** | **string** | Shipping Service Name | 
  **callback** | **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | 
  **storeId** | **string** | Store Id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

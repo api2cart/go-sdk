@@ -212,6 +212,7 @@ type ApiBasketItemAddRequest struct {
 	variantId *string
 	quantity *float32
 	storeId *string
+	idempotencyKey *string
 }
 
 // Retrieves orders specified by customer id
@@ -241,6 +242,12 @@ func (r ApiBasketItemAddRequest) Quantity(quantity float32) ApiBasketItemAddRequ
 // Store Id
 func (r ApiBasketItemAddRequest) StoreId(storeId string) ApiBasketItemAddRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiBasketItemAddRequest) IdempotencyKey(idempotencyKey string) ApiBasketItemAddRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -303,6 +310,9 @@ func (a *BasketAPIService) BasketItemAddExecute(r ApiBasketItemAddRequest) (*Bas
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -392,6 +402,7 @@ type ApiBasketLiveShippingServiceCreateRequest struct {
 	name *string
 	callback *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Shipping Service Name
@@ -409,6 +420,12 @@ func (r ApiBasketLiveShippingServiceCreateRequest) Callback(callback string) Api
 // Store Id
 func (r ApiBasketLiveShippingServiceCreateRequest) StoreId(storeId string) ApiBasketLiveShippingServiceCreateRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiBasketLiveShippingServiceCreateRequest) IdempotencyKey(idempotencyKey string) ApiBasketLiveShippingServiceCreateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -462,6 +479,9 @@ func (a *BasketAPIService) BasketLiveShippingServiceCreateExecute(r ApiBasketLiv
 	parameterAddToHeaderOrQuery(localVarQueryParams, "callback", r.callback, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

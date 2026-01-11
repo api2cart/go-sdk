@@ -26,6 +26,8 @@ type ProductVariantAddBatch struct {
 	Reindex *bool `json:"reindex,omitempty"`
 	// Contains an array of product variants objects. The list of properties may vary depending on the specific platform.
 	Payload []ProductVariantAddBatchPayloadInner `json:"payload"`
+	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
 
 type _ProductVariantAddBatch ProductVariantAddBatch
@@ -144,6 +146,38 @@ func (o *ProductVariantAddBatch) SetPayload(v []ProductVariantAddBatchPayloadInn
 	o.Payload = v
 }
 
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+func (o *ProductVariantAddBatch) GetIdempotencyKey() string {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		var ret string
+		return ret
+	}
+	return *o.IdempotencyKey
+}
+
+// GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantAddBatch) GetIdempotencyKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		return nil, false
+	}
+	return o.IdempotencyKey, true
+}
+
+// HasIdempotencyKey returns a boolean if a field has been set.
+func (o *ProductVariantAddBatch) HasIdempotencyKey() bool {
+	if o != nil && !IsNil(o.IdempotencyKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+func (o *ProductVariantAddBatch) SetIdempotencyKey(v string) {
+	o.IdempotencyKey = &v
+}
+
 func (o ProductVariantAddBatch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,6 +195,9 @@ func (o ProductVariantAddBatch) ToMap() (map[string]interface{}, error) {
 		toSerialize["reindex"] = o.Reindex
 	}
 	toSerialize["payload"] = o.Payload
+	if !IsNil(o.IdempotencyKey) {
+		toSerialize["idempotency_key"] = o.IdempotencyKey
+	}
 	return toSerialize, nil
 }
 

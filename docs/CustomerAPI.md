@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ## CustomerDelete
 
-> CustomerDelete200Response CustomerDelete(ctx).Id(id).Execute()
+> CustomerDelete200Response CustomerDelete(ctx).Id(id).StoreId(storeId).Execute()
 
 customer.delete
 
@@ -343,10 +343,11 @@ import (
 
 func main() {
 	id := "10" // string | Identifies customer specified by the id
+	storeId := "1" // string | Store Id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerDelete(context.Background()).Id(id).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerDelete(context.Background()).Id(id).StoreId(storeId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -368,6 +369,7 @@ Other parameters are passed through a pointer to a apiCustomerDeleteRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Identifies customer specified by the id | 
+ **storeId** | **string** | Store Id | 
 
 ### Return type
 
@@ -463,7 +465,7 @@ Name | Type | Description  | Notes
 
 ## CustomerGroupAdd
 
-> CustomerGroupAdd200Response CustomerGroupAdd(ctx).Name(name).StoreId(storeId).StoresIds(storesIds).Execute()
+> CustomerGroupAdd200Response CustomerGroupAdd(ctx).Name(name).StoreId(storeId).StoresIds(storesIds).IdempotencyKey(idempotencyKey).Execute()
 
 customer.group.add
 
@@ -485,10 +487,11 @@ func main() {
 	name := "new_group" // string | Customer group name
 	storeId := "1" // string | Store Id (optional)
 	storesIds := "1,2" // string | Assign customer group to the stores that is specified by comma-separated stores' id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerGroupAdd(context.Background()).Name(name).StoreId(storeId).StoresIds(storesIds).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerGroupAdd(context.Background()).Name(name).StoreId(storeId).StoresIds(storesIds).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerGroupAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -512,6 +515,7 @@ Name | Type | Description  | Notes
  **name** | **string** | Customer group name | 
  **storeId** | **string** | Store Id | 
  **storesIds** | **string** | Assign customer group to the stores that is specified by comma-separated stores&#39; id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

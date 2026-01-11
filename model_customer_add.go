@@ -68,6 +68,8 @@ type CustomerAdd struct {
 	Country *string `json:"country,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
+	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	Address []CustomerAddAddressInner `json:"address,omitempty"`
 }
 
@@ -823,6 +825,38 @@ func (o *CustomerAdd) SetStoreId(v string) {
 	o.StoreId = &v
 }
 
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+func (o *CustomerAdd) GetIdempotencyKey() string {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		var ret string
+		return ret
+	}
+	return *o.IdempotencyKey
+}
+
+// GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetIdempotencyKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		return nil, false
+	}
+	return o.IdempotencyKey, true
+}
+
+// HasIdempotencyKey returns a boolean if a field has been set.
+func (o *CustomerAdd) HasIdempotencyKey() bool {
+	if o != nil && !IsNil(o.IdempotencyKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+func (o *CustomerAdd) SetIdempotencyKey(v string) {
+	o.IdempotencyKey = &v
+}
+
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CustomerAdd) GetAddress() []CustomerAddAddressInner {
 	if o == nil || IsNil(o.Address) {
@@ -931,6 +965,9 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId
+	}
+	if !IsNil(o.IdempotencyKey) {
+		toSerialize["idempotency_key"] = o.IdempotencyKey
 	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address

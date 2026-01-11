@@ -4270,6 +4270,7 @@ type ApiOrderUpdateRequest struct {
 	createInvoice *bool
 	origin *string
 	tags *string
+	idempotencyKey *string
 }
 
 // Defines the orders specified by order id
@@ -4374,6 +4375,12 @@ func (r ApiOrderUpdateRequest) Tags(tags string) ApiOrderUpdateRequest {
 	return r
 }
 
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiOrderUpdateRequest) IdempotencyKey(idempotencyKey string) ApiOrderUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
 func (r ApiOrderUpdateRequest) Execute() (*AccountConfigUpdate200Response, *http.Response, error) {
 	return r.ApiService.OrderUpdateExecute(r)
 }
@@ -4468,6 +4475,9 @@ func (a *OrderAPIService) OrderUpdateExecute(r ApiOrderUpdateRequest) (*AccountC
 	}
 	if r.tags != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "tags", r.tags, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

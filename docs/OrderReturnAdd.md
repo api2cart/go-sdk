@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Specifies return comment | [optional] 
 **SendNotifications** | Pointer to **bool** | Send notifications to customer after order was created | [optional] [default to false]
 **RejectReason** | Pointer to **string** | Defines return reject reason | [optional] 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderProducts** | [**[]OrderReturnAddOrderProductsInner**](OrderReturnAddOrderProductsInner.md) |  | 
 
 ## Methods
@@ -295,6 +296,31 @@ SetRejectReason sets RejectReason field to given value.
 `func (o *OrderReturnAdd) HasRejectReason() bool`
 
 HasRejectReason returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *OrderReturnAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *OrderReturnAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *OrderReturnAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *OrderReturnAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 ### GetOrderProducts
 

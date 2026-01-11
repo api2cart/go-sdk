@@ -28,6 +28,8 @@ type ProductVariantPriceUpdate struct {
 	ProductId *string `json:"product_id,omitempty"`
 	// Defines variants's group prices
 	GroupPrices []ProductPriceUpdateGroupPricesInner `json:"group_prices"`
+	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
 
 type _ProductVariantPriceUpdate ProductVariantPriceUpdate
@@ -138,6 +140,38 @@ func (o *ProductVariantPriceUpdate) SetGroupPrices(v []ProductPriceUpdateGroupPr
 	o.GroupPrices = v
 }
 
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+func (o *ProductVariantPriceUpdate) GetIdempotencyKey() string {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		var ret string
+		return ret
+	}
+	return *o.IdempotencyKey
+}
+
+// GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantPriceUpdate) GetIdempotencyKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		return nil, false
+	}
+	return o.IdempotencyKey, true
+}
+
+// HasIdempotencyKey returns a boolean if a field has been set.
+func (o *ProductVariantPriceUpdate) HasIdempotencyKey() bool {
+	if o != nil && !IsNil(o.IdempotencyKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+func (o *ProductVariantPriceUpdate) SetIdempotencyKey(v string) {
+	o.IdempotencyKey = &v
+}
+
 func (o ProductVariantPriceUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -155,6 +189,9 @@ func (o ProductVariantPriceUpdate) ToMap() (map[string]interface{}, error) {
 		toSerialize["product_id"] = o.ProductId
 	}
 	toSerialize["group_prices"] = o.GroupPrices
+	if !IsNil(o.IdempotencyKey) {
+		toSerialize["idempotency_key"] = o.IdempotencyKey
+	}
 	return toSerialize, nil
 }
 

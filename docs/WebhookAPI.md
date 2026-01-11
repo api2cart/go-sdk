@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## WebhookCreate
 
-> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).Execute()
+> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 webhook.create
 
@@ -113,10 +113,11 @@ func main() {
 	active := true // bool | Webhook status (optional) (default to true)
 	langId := "3" // string | Language id (optional)
 	storeId := "1" // string | Defines store id where the webhook should be assigned (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,6 +147,7 @@ Name | Type | Description  | Notes
  **active** | **bool** | Webhook status | [default to true]
  **langId** | **string** | Language id | 
  **storeId** | **string** | Defines store id where the webhook should be assigned | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -372,7 +374,7 @@ Name | Type | Description  | Notes
 
 ## WebhookUpdate
 
-> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).Execute()
+> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 webhook.update
 
@@ -398,10 +400,11 @@ func main() {
 	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	active := true // bool | Webhook status (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -429,6 +432,7 @@ Name | Type | Description  | Notes
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **active** | **bool** | Webhook status | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

@@ -125,6 +125,7 @@ Name | Type | Description | Notes
 **ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
 **ReturnPolicyId** | Pointer to **int32** | Add Return Policy Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
+**IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
 
@@ -3149,6 +3150,31 @@ SetPersonalizationDetails sets PersonalizationDetails field to given value.
 `func (o *ProductAdd) HasPersonalizationDetails() bool`
 
 HasPersonalizationDetails returns a boolean if a field has been set.
+
+### GetIdempotencyKey
+
+`func (o *ProductAdd) GetIdempotencyKey() string`
+
+GetIdempotencyKey returns the IdempotencyKey field if non-nil, zero value otherwise.
+
+### GetIdempotencyKeyOk
+
+`func (o *ProductAdd) GetIdempotencyKeyOk() (*string, bool)`
+
+GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdempotencyKey
+
+`func (o *ProductAdd) SetIdempotencyKey(v string)`
+
+SetIdempotencyKey sets IdempotencyKey field to given value.
+
+### HasIdempotencyKey
+
+`func (o *ProductAdd) HasIdempotencyKey() bool`
+
+HasIdempotencyKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

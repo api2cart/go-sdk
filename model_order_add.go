@@ -164,6 +164,8 @@ type OrderAdd struct {
 	Origin *string `json:"origin,omitempty"`
 	// Specifies refund's fee price
 	FeePrice *float32 `json:"fee_price,omitempty"`
+	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
+	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	OrderItem []OrderAddOrderItemInner `json:"order_item"`
 }
 
@@ -2432,6 +2434,38 @@ func (o *OrderAdd) SetFeePrice(v float32) {
 	o.FeePrice = &v
 }
 
+// GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
+func (o *OrderAdd) GetIdempotencyKey() string {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		var ret string
+		return ret
+	}
+	return *o.IdempotencyKey
+}
+
+// GetIdempotencyKeyOk returns a tuple with the IdempotencyKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetIdempotencyKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.IdempotencyKey) {
+		return nil, false
+	}
+	return o.IdempotencyKey, true
+}
+
+// HasIdempotencyKey returns a boolean if a field has been set.
+func (o *OrderAdd) HasIdempotencyKey() bool {
+	if o != nil && !IsNil(o.IdempotencyKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdempotencyKey gets a reference to the given string and assigns it to the IdempotencyKey field.
+func (o *OrderAdd) SetIdempotencyKey(v string) {
+	o.IdempotencyKey = &v
+}
+
 // GetOrderItem returns the OrderItem field value
 func (o *OrderAdd) GetOrderItem() []OrderAddOrderItemInner {
 	if o == nil {
@@ -2660,6 +2694,9 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FeePrice) {
 		toSerialize["fee_price"] = o.FeePrice
+	}
+	if !IsNil(o.IdempotencyKey) {
+		toSerialize["idempotency_key"] = o.IdempotencyKey
 	}
 	toSerialize["order_item"] = o.OrderItem
 	return toSerialize, nil

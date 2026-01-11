@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## AttributeAdd
 
-> AttributeAdd200Response AttributeAdd(ctx).Type_(type_).Name(name).Code(code).StoreId(storeId).LangId(langId).Visible(visible).Required(required).Position(position).AttributeGroupId(attributeGroupId).IsGlobal(isGlobal).IsSearchable(isSearchable).IsFilterable(isFilterable).IsComparable(isComparable).IsHtmlAllowedOnFront(isHtmlAllowedOnFront).IsFilterableInSearch(isFilterableInSearch).IsConfigurable(isConfigurable).IsVisibleInAdvancedSearch(isVisibleInAdvancedSearch).IsUsedForPromoRules(isUsedForPromoRules).UsedInProductListing(usedInProductListing).UsedForSortBy(usedForSortBy).ApplyTo(applyTo).Execute()
+> AttributeAdd200Response AttributeAdd(ctx).Type_(type_).Name(name).Code(code).StoreId(storeId).LangId(langId).Visible(visible).Required(required).Position(position).AttributeGroupId(attributeGroupId).IsGlobal(isGlobal).IsSearchable(isSearchable).IsFilterable(isFilterable).IsComparable(isComparable).IsHtmlAllowedOnFront(isHtmlAllowedOnFront).IsFilterableInSearch(isFilterableInSearch).IsConfigurable(isConfigurable).IsVisibleInAdvancedSearch(isVisibleInAdvancedSearch).IsUsedForPromoRules(isUsedForPromoRules).UsedInProductListing(usedInProductListing).UsedForSortBy(usedForSortBy).ApplyTo(applyTo).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.add
 
@@ -65,10 +65,11 @@ func main() {
 	usedInProductListing := true // bool | Used in Product Listing (optional) (default to false)
 	usedForSortBy := true // bool | Used for Sorting in Product Listing (optional) (default to false)
 	applyTo := "Global" // string | Types of products which can have this attribute (optional) (default to "all_types")
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeAdd(context.Background()).Type_(type_).Name(name).Code(code).StoreId(storeId).LangId(langId).Visible(visible).Required(required).Position(position).AttributeGroupId(attributeGroupId).IsGlobal(isGlobal).IsSearchable(isSearchable).IsFilterable(isFilterable).IsComparable(isComparable).IsHtmlAllowedOnFront(isHtmlAllowedOnFront).IsFilterableInSearch(isFilterableInSearch).IsConfigurable(isConfigurable).IsVisibleInAdvancedSearch(isVisibleInAdvancedSearch).IsUsedForPromoRules(isUsedForPromoRules).UsedInProductListing(usedInProductListing).UsedForSortBy(usedForSortBy).ApplyTo(applyTo).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeAdd(context.Background()).Type_(type_).Name(name).Code(code).StoreId(storeId).LangId(langId).Visible(visible).Required(required).Position(position).AttributeGroupId(attributeGroupId).IsGlobal(isGlobal).IsSearchable(isSearchable).IsFilterable(isFilterable).IsComparable(isComparable).IsHtmlAllowedOnFront(isHtmlAllowedOnFront).IsFilterableInSearch(isFilterableInSearch).IsConfigurable(isConfigurable).IsVisibleInAdvancedSearch(isVisibleInAdvancedSearch).IsUsedForPromoRules(isUsedForPromoRules).UsedInProductListing(usedInProductListing).UsedForSortBy(usedForSortBy).ApplyTo(applyTo).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -110,6 +111,7 @@ Name | Type | Description  | Notes
  **usedInProductListing** | **bool** | Used in Product Listing | [default to false]
  **usedForSortBy** | **bool** | Used for Sorting in Product Listing | [default to false]
  **applyTo** | **string** | Types of products which can have this attribute | [default to &quot;all_types&quot;]
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -131,7 +133,7 @@ Name | Type | Description  | Notes
 
 ## AttributeAssignGroup
 
-> AttributeAssignGroup200Response AttributeAssignGroup(ctx).Id(id).GroupId(groupId).AttributeSetId(attributeSetId).Execute()
+> AttributeAssignGroup200Response AttributeAssignGroup(ctx).Id(id).GroupId(groupId).AttributeSetId(attributeSetId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.assign.group
 
@@ -153,10 +155,11 @@ func main() {
 	id := "10" // string | Entity id
 	groupId := "3" // string | Attribute group_id
 	attributeSetId := "4" // string | Attribute set id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeAssignGroup(context.Background()).Id(id).GroupId(groupId).AttributeSetId(attributeSetId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeAssignGroup(context.Background()).Id(id).GroupId(groupId).AttributeSetId(attributeSetId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeAssignGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -180,6 +183,7 @@ Name | Type | Description  | Notes
  **id** | **string** | Entity id | 
  **groupId** | **string** | Attribute group_id | 
  **attributeSetId** | **string** | Attribute set id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -201,7 +205,7 @@ Name | Type | Description  | Notes
 
 ## AttributeAssignSet
 
-> AttributeAssignGroup200Response AttributeAssignSet(ctx).Id(id).AttributeSetId(attributeSetId).GroupId(groupId).Execute()
+> AttributeAssignGroup200Response AttributeAssignSet(ctx).Id(id).AttributeSetId(attributeSetId).GroupId(groupId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.assign.set
 
@@ -223,10 +227,11 @@ func main() {
 	id := "10" // string | Entity id
 	attributeSetId := "4" // string | Attribute set id
 	groupId := "3" // string | Attribute group_id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeAssignSet(context.Background()).Id(id).AttributeSetId(attributeSetId).GroupId(groupId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeAssignSet(context.Background()).Id(id).AttributeSetId(attributeSetId).GroupId(groupId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeAssignSet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,6 +255,7 @@ Name | Type | Description  | Notes
  **id** | **string** | Entity id | 
  **attributeSetId** | **string** | Attribute set id | 
  **groupId** | **string** | Attribute group_id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -798,7 +804,7 @@ Other parameters are passed through a pointer to a apiAttributeTypeListRequest s
 
 ## AttributeUnassignGroup
 
-> AttributeUnassignGroup200Response AttributeUnassignGroup(ctx).Id(id).GroupId(groupId).Execute()
+> AttributeUnassignGroup200Response AttributeUnassignGroup(ctx).Id(id).GroupId(groupId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.unassign.group
 
@@ -819,10 +825,11 @@ import (
 func main() {
 	id := "10" // string | Entity id
 	groupId := "3" // string | Customer group_id
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeUnassignGroup(context.Background()).Id(id).GroupId(groupId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeUnassignGroup(context.Background()).Id(id).GroupId(groupId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeUnassignGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -845,6 +852,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Entity id | 
  **groupId** | **string** | Customer group_id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -866,7 +874,7 @@ Name | Type | Description  | Notes
 
 ## AttributeUnassignSet
 
-> AttributeUnassignGroup200Response AttributeUnassignSet(ctx).Id(id).AttributeSetId(attributeSetId).Execute()
+> AttributeUnassignGroup200Response AttributeUnassignSet(ctx).Id(id).AttributeSetId(attributeSetId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.unassign.set
 
@@ -887,10 +895,11 @@ import (
 func main() {
 	id := "10" // string | Entity id
 	attributeSetId := "4" // string | Attribute set id
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeUnassignSet(context.Background()).Id(id).AttributeSetId(attributeSetId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeUnassignSet(context.Background()).Id(id).AttributeSetId(attributeSetId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeUnassignSet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -913,6 +922,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Entity id | 
  **attributeSetId** | **string** | Attribute set id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -934,7 +944,7 @@ Name | Type | Description  | Notes
 
 ## AttributeUpdate
 
-> AttributeUpdate200Response AttributeUpdate(ctx).Id(id).Name(name).StoreId(storeId).LangId(langId).Execute()
+> AttributeUpdate200Response AttributeUpdate(ctx).Id(id).Name(name).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.update
 
@@ -957,10 +967,11 @@ func main() {
 	name := "Test name" // string | Defines new attributes's name
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeUpdate(context.Background()).Id(id).Name(name).StoreId(storeId).LangId(langId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeUpdate(context.Background()).Id(id).Name(name).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -985,6 +996,7 @@ Name | Type | Description  | Notes
  **name** | **string** | Defines new attributes&#39;s name | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1006,7 +1018,7 @@ Name | Type | Description  | Notes
 
 ## AttributeValueAdd
 
-> AttributeAdd200Response AttributeValueAdd(ctx).AttributeId(attributeId).Name(name).Code(code).Description(description).StoreId(storeId).LangId(langId).Execute()
+> AttributeAdd200Response AttributeValueAdd(ctx).AttributeId(attributeId).Name(name).Code(code).Description(description).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.value.add
 
@@ -1031,10 +1043,11 @@ func main() {
 	description := "Test value" // string | Defines attribute value's description (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeValueAdd(context.Background()).AttributeId(attributeId).Name(name).Code(code).Description(description).StoreId(storeId).LangId(langId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeValueAdd(context.Background()).AttributeId(attributeId).Name(name).Code(code).Description(description).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeValueAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1061,6 +1074,7 @@ Name | Type | Description  | Notes
  **description** | **string** | Defines attribute value&#39;s description | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -1152,7 +1166,7 @@ Name | Type | Description  | Notes
 
 ## AttributeValueUpdate
 
-> AttributeUpdate200Response AttributeValueUpdate(ctx).Id(id).AttributeId(attributeId).Name(name).Description(description).Code(code).StoreId(storeId).LangId(langId).Execute()
+> AttributeUpdate200Response AttributeValueUpdate(ctx).Id(id).AttributeId(attributeId).Name(name).Description(description).Code(code).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.value.update
 
@@ -1178,10 +1192,11 @@ func main() {
 	code := "code" // string | Entity code (optional)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeValueUpdate(context.Background()).Id(id).AttributeId(attributeId).Name(name).Description(description).Code(code).StoreId(storeId).LangId(langId).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeValueUpdate(context.Background()).Id(id).AttributeId(attributeId).Name(name).Description(description).Code(code).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeValueUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1209,6 +1224,7 @@ Name | Type | Description  | Notes
  **code** | **string** | Entity code | 
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

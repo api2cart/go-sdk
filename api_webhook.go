@@ -192,6 +192,7 @@ type ApiWebhookCreateRequest struct {
 	active *bool
 	langId *string
 	storeId *string
+	idempotencyKey *string
 }
 
 // Specify the entity that you want to enable webhooks for (e.g product, order, customer, category)
@@ -245,6 +246,12 @@ func (r ApiWebhookCreateRequest) LangId(langId string) ApiWebhookCreateRequest {
 // Defines store id where the webhook should be assigned
 func (r ApiWebhookCreateRequest) StoreId(storeId string) ApiWebhookCreateRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiWebhookCreateRequest) IdempotencyKey(idempotencyKey string) ApiWebhookCreateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -322,6 +329,9 @@ func (a *WebhookAPIService) WebhookCreateExecute(r ApiWebhookCreateRequest) (*Ba
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -886,6 +896,7 @@ type ApiWebhookUpdateRequest struct {
 	responseFields *string
 	active *bool
 	langId *string
+	idempotencyKey *string
 }
 
 // Webhook id
@@ -927,6 +938,12 @@ func (r ApiWebhookUpdateRequest) Active(active bool) ApiWebhookUpdateRequest {
 // Language id
 func (r ApiWebhookUpdateRequest) LangId(langId string) ApiWebhookUpdateRequest {
 	r.langId = &langId
+	return r
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiWebhookUpdateRequest) IdempotencyKey(idempotencyKey string) ApiWebhookUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -991,6 +1008,9 @@ func (a *WebhookAPIService) WebhookUpdateExecute(r ApiWebhookUpdateRequest) (*Pr
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
+	}
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
