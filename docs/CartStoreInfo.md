@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **StoreOwnerInfo** | Pointer to [**NullableInfo**](Info.md) |  | [optional] 
 **DefaultWarehouseId** | Pointer to **NullableString** |  | [optional] 
 **Channels** | Pointer to [**[]CartChannel**](CartChannel.md) |  | [optional] 
+**PickupLocations** | Pointer to [**[]CartPickupLocation**](CartPickupLocation.md) |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -613,6 +614,31 @@ SetChannels sets Channels field to given value.
 `func (o *CartStoreInfo) HasChannels() bool`
 
 HasChannels returns a boolean if a field has been set.
+
+### GetPickupLocations
+
+`func (o *CartStoreInfo) GetPickupLocations() []CartPickupLocation`
+
+GetPickupLocations returns the PickupLocations field if non-nil, zero value otherwise.
+
+### GetPickupLocationsOk
+
+`func (o *CartStoreInfo) GetPickupLocationsOk() (*[]CartPickupLocation, bool)`
+
+GetPickupLocationsOk returns a tuple with the PickupLocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPickupLocations
+
+`func (o *CartStoreInfo) SetPickupLocations(v []CartPickupLocation)`
+
+SetPickupLocations sets PickupLocations field to given value.
+
+### HasPickupLocations
+
+`func (o *CartStoreInfo) HasPickupLocations() bool`
+
+HasPickupLocations returns a boolean if a field has been set.
 
 ### GetAdditionalFields
 

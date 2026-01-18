@@ -1752,6 +1752,7 @@ type ApiCategoryInfoRequest struct {
 	exclude *string
 	reportRequestId *string
 	disableReportCache *bool
+	useLatestApiVersion *bool
 }
 
 // Retrieves category&#39;s info specified by category id
@@ -1805,6 +1806,12 @@ func (r ApiCategoryInfoRequest) ReportRequestId(reportRequestId string) ApiCateg
 // Disable report cache for current request
 func (r ApiCategoryInfoRequest) DisableReportCache(disableReportCache bool) ApiCategoryInfoRequest {
 	r.disableReportCache = &disableReportCache
+	return r
+}
+
+// Use the latest platform API version
+func (r ApiCategoryInfoRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiCategoryInfoRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
 	return r
 }
 
@@ -1881,6 +1888,12 @@ func (a *CategoryAPIService) CategoryInfoExecute(r ApiCategoryInfoRequest) (*Cat
 	} else {
 		var defaultValue bool = false
 		r.disableReportCache = &defaultValue
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1987,6 +2000,7 @@ type ApiCategoryListRequest struct {
 	reportRequestId *string
 	disableReportCache *bool
 	disableCache *bool
+	useLatestApiVersion *bool
 }
 
 // This parameter sets the number from which you want to get entities
@@ -2109,6 +2123,12 @@ func (r ApiCategoryListRequest) DisableCache(disableCache bool) ApiCategoryListR
 	return r
 }
 
+// Use the latest platform API version
+func (r ApiCategoryListRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiCategoryListRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
+	return r
+}
+
 func (r ApiCategoryListRequest) Execute() (*ModelResponseCategoryList, *http.Response, error) {
 	return r.ApiService.CategoryListExecute(r)
 }
@@ -2226,6 +2246,12 @@ func (a *CategoryAPIService) CategoryListExecute(r ApiCategoryListRequest) (*Mod
 	} else {
 		var defaultValue bool = false
 		r.disableCache = &defaultValue
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

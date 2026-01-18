@@ -38,6 +38,7 @@ type CartStoreInfo struct {
 	StoreOwnerInfo NullableInfo `json:"store_owner_info,omitempty"`
 	DefaultWarehouseId NullableString `json:"default_warehouse_id,omitempty"`
 	Channels []CartChannel `json:"channels,omitempty"`
+	PickupLocations []CartPickupLocation `json:"pickup_locations,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -755,6 +756,38 @@ func (o *CartStoreInfo) SetChannels(v []CartChannel) {
 	o.Channels = v
 }
 
+// GetPickupLocations returns the PickupLocations field value if set, zero value otherwise.
+func (o *CartStoreInfo) GetPickupLocations() []CartPickupLocation {
+	if o == nil || IsNil(o.PickupLocations) {
+		var ret []CartPickupLocation
+		return ret
+	}
+	return o.PickupLocations
+}
+
+// GetPickupLocationsOk returns a tuple with the PickupLocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CartStoreInfo) GetPickupLocationsOk() ([]CartPickupLocation, bool) {
+	if o == nil || IsNil(o.PickupLocations) {
+		return nil, false
+	}
+	return o.PickupLocations, true
+}
+
+// HasPickupLocations returns a boolean if a field has been set.
+func (o *CartStoreInfo) HasPickupLocations() bool {
+	if o != nil && !IsNil(o.PickupLocations) {
+		return true
+	}
+
+	return false
+}
+
+// SetPickupLocations gets a reference to the given []CartPickupLocation and assigns it to the PickupLocations field.
+func (o *CartStoreInfo) SetPickupLocations(v []CartPickupLocation) {
+	o.PickupLocations = v
+}
+
 // GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CartStoreInfo) GetAdditionalFields() map[string]interface{} {
 	if o == nil {
@@ -884,6 +917,9 @@ func (o CartStoreInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Channels) {
 		toSerialize["channels"] = o.Channels
+	}
+	if !IsNil(o.PickupLocations) {
+		toSerialize["pickup_locations"] = o.PickupLocations
 	}
 	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields

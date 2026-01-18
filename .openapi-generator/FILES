@@ -99,6 +99,7 @@ docs/CartInfo200Response.md
 docs/CartMetaData.md
 docs/CartMethods200Response.md
 docs/CartMethods200ResponseResult.md
+docs/CartPickupLocation.md
 docs/CartPluginList200Response.md
 docs/CartPluginList200ResponseResult.md
 docs/CartScriptAdd200Response.md
@@ -543,6 +544,7 @@ model_cart_info_200_response.go
 model_cart_meta_data.go
 model_cart_methods_200_response.go
 model_cart_methods_200_response_result.go
+model_cart_pickup_location.go
 model_cart_plugin_list_200_response.go
 model_cart_plugin_list_200_response_result.go
 model_cart_script_add_200_response.go

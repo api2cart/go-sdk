@@ -706,7 +706,7 @@ Name | Type | Description  | Notes
 
 ## CategoryInfo
 
-> CategoryInfo200Response CategoryInfo(ctx).Id(id).StoreId(storeId).LangId(langId).SchemaType(schemaType).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+> CategoryInfo200Response CategoryInfo(ctx).Id(id).StoreId(storeId).LangId(langId).SchemaType(schemaType).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 category.info
 
@@ -734,10 +734,11 @@ func main() {
 	exclude := "id,parent_id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryInfo(context.Background()).Id(id).StoreId(storeId).LangId(langId).SchemaType(schemaType).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryInfo(context.Background()).Id(id).StoreId(storeId).LangId(langId).SchemaType(schemaType).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -767,6 +768,7 @@ Name | Type | Description  | Notes
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 
@@ -788,7 +790,7 @@ Name | Type | Description  | Notes
 
 ## CategoryList
 
-> ModelResponseCategoryList CategoryList(ctx).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ParentId(parentId).Avail(avail).ProductType(productType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).FindValue(findValue).FindWhere(findWhere).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).DisableCache(disableCache).Execute()
+> ModelResponseCategoryList CategoryList(ctx).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ParentId(parentId).Avail(avail).ProductType(productType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).FindValue(findValue).FindWhere(findWhere).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).DisableCache(disableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 category.list
 
@@ -827,10 +829,11 @@ func main() {
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	disableCache := false // bool | Disable cache for current request (optional) (default to false)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ParentId(parentId).Avail(avail).ProductType(productType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).FindValue(findValue).FindWhere(findWhere).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).DisableCache(disableCache).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ParentId(parentId).Avail(avail).ProductType(productType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).FindValue(findValue).FindWhere(findWhere).ResponseFields(responseFields).Params(params).Exclude(exclude).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).DisableCache(disableCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -871,6 +874,7 @@ Name | Type | Description  | Notes
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **disableCache** | **bool** | Disable cache for current request | [default to false]
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 
