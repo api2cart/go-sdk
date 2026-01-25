@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** |  | [optional] 
 **StoreKey** | Pointer to **string** |  | [optional] 
 **CartId** | Pointer to **string** |  | [optional] 
+**CustomLabel** | Pointer to **string** |  | [optional] 
+**BridgeVersion** | Pointer to **string** |  | [optional] 
 **TotalCalls** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -128,6 +130,56 @@ SetCartId sets CartId field to given value.
 `func (o *AccountCartList200ResponseResultCartsInner) HasCartId() bool`
 
 HasCartId returns a boolean if a field has been set.
+
+### GetCustomLabel
+
+`func (o *AccountCartList200ResponseResultCartsInner) GetCustomLabel() string`
+
+GetCustomLabel returns the CustomLabel field if non-nil, zero value otherwise.
+
+### GetCustomLabelOk
+
+`func (o *AccountCartList200ResponseResultCartsInner) GetCustomLabelOk() (*string, bool)`
+
+GetCustomLabelOk returns a tuple with the CustomLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomLabel
+
+`func (o *AccountCartList200ResponseResultCartsInner) SetCustomLabel(v string)`
+
+SetCustomLabel sets CustomLabel field to given value.
+
+### HasCustomLabel
+
+`func (o *AccountCartList200ResponseResultCartsInner) HasCustomLabel() bool`
+
+HasCustomLabel returns a boolean if a field has been set.
+
+### GetBridgeVersion
+
+`func (o *AccountCartList200ResponseResultCartsInner) GetBridgeVersion() string`
+
+GetBridgeVersion returns the BridgeVersion field if non-nil, zero value otherwise.
+
+### GetBridgeVersionOk
+
+`func (o *AccountCartList200ResponseResultCartsInner) GetBridgeVersionOk() (*string, bool)`
+
+GetBridgeVersionOk returns a tuple with the BridgeVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBridgeVersion
+
+`func (o *AccountCartList200ResponseResultCartsInner) SetBridgeVersion(v string)`
+
+SetBridgeVersion sets BridgeVersion field to given value.
+
+### HasBridgeVersion
+
+`func (o *AccountCartList200ResponseResultCartsInner) HasBridgeVersion() bool`
+
+HasBridgeVersion returns a boolean if a field has been set.
 
 ### GetTotalCalls
 

@@ -24,6 +24,8 @@ type AccountCartList200ResponseResultCartsInner struct {
 	Url *string `json:"url,omitempty"`
 	StoreKey *string `json:"store_key,omitempty"`
 	CartId *string `json:"cart_id,omitempty"`
+	CustomLabel *string `json:"custom_label,omitempty"`
+	BridgeVersion *string `json:"bridge_version,omitempty"`
 	TotalCalls *string `json:"total_calls,omitempty"`
 }
 
@@ -172,6 +174,70 @@ func (o *AccountCartList200ResponseResultCartsInner) SetCartId(v string) {
 	o.CartId = &v
 }
 
+// GetCustomLabel returns the CustomLabel field value if set, zero value otherwise.
+func (o *AccountCartList200ResponseResultCartsInner) GetCustomLabel() string {
+	if o == nil || IsNil(o.CustomLabel) {
+		var ret string
+		return ret
+	}
+	return *o.CustomLabel
+}
+
+// GetCustomLabelOk returns a tuple with the CustomLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartList200ResponseResultCartsInner) GetCustomLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomLabel) {
+		return nil, false
+	}
+	return o.CustomLabel, true
+}
+
+// HasCustomLabel returns a boolean if a field has been set.
+func (o *AccountCartList200ResponseResultCartsInner) HasCustomLabel() bool {
+	if o != nil && !IsNil(o.CustomLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLabel gets a reference to the given string and assigns it to the CustomLabel field.
+func (o *AccountCartList200ResponseResultCartsInner) SetCustomLabel(v string) {
+	o.CustomLabel = &v
+}
+
+// GetBridgeVersion returns the BridgeVersion field value if set, zero value otherwise.
+func (o *AccountCartList200ResponseResultCartsInner) GetBridgeVersion() string {
+	if o == nil || IsNil(o.BridgeVersion) {
+		var ret string
+		return ret
+	}
+	return *o.BridgeVersion
+}
+
+// GetBridgeVersionOk returns a tuple with the BridgeVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartList200ResponseResultCartsInner) GetBridgeVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.BridgeVersion) {
+		return nil, false
+	}
+	return o.BridgeVersion, true
+}
+
+// HasBridgeVersion returns a boolean if a field has been set.
+func (o *AccountCartList200ResponseResultCartsInner) HasBridgeVersion() bool {
+	if o != nil && !IsNil(o.BridgeVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetBridgeVersion gets a reference to the given string and assigns it to the BridgeVersion field.
+func (o *AccountCartList200ResponseResultCartsInner) SetBridgeVersion(v string) {
+	o.BridgeVersion = &v
+}
+
 // GetTotalCalls returns the TotalCalls field value if set, zero value otherwise.
 func (o *AccountCartList200ResponseResultCartsInner) GetTotalCalls() string {
 	if o == nil || IsNil(o.TotalCalls) {
@@ -225,6 +291,12 @@ func (o AccountCartList200ResponseResultCartsInner) ToMap() (map[string]interfac
 	}
 	if !IsNil(o.CartId) {
 		toSerialize["cart_id"] = o.CartId
+	}
+	if !IsNil(o.CustomLabel) {
+		toSerialize["custom_label"] = o.CustomLabel
+	}
+	if !IsNil(o.BridgeVersion) {
+		toSerialize["bridge_version"] = o.BridgeVersion
 	}
 	if !IsNil(o.TotalCalls) {
 		toSerialize["total_calls"] = o.TotalCalls

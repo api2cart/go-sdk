@@ -155,6 +155,7 @@ type ApiAccountCartListRequest struct {
 	storeKey *string
 	requestFromDate *string
 	requestToDate *string
+	customLabel *string
 	params *string
 	exclude *string
 }
@@ -180,6 +181,12 @@ func (r ApiAccountCartListRequest) RequestFromDate(requestFromDate string) ApiAc
 // Retrieve entities to their creation date
 func (r ApiAccountCartListRequest) RequestToDate(requestToDate string) ApiAccountCartListRequest {
 	r.requestToDate = &requestToDate
+	return r
+}
+
+// Defines a custom label for the store in the app
+func (r ApiAccountCartListRequest) CustomLabel(customLabel string) ApiAccountCartListRequest {
+	r.customLabel = &customLabel
 	return r
 }
 
@@ -246,6 +253,9 @@ func (a *AccountAPIService) AccountCartListExecute(r ApiAccountCartListRequest) 
 	}
 	if r.requestToDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "request_to_date", r.requestToDate, "form", "")
+	}
+	if r.customLabel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "custom_label", r.customLabel, "form", "")
 	}
 	if r.params != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "params", r.params, "form", "")
@@ -330,6 +340,7 @@ type ApiAccountConfigUpdateRequest struct {
 	replaceParameters *bool
 	newStoreUrl *string
 	newStoreKey *string
+	customLabel *string
 	bridgeUrl *string
 	storeRoot *string
 	dbTablesPrefix *string
@@ -459,6 +470,11 @@ type ApiAccountConfigUpdateRequest struct {
 	zidAccessToken *string
 	zidAuthorization *string
 	zidRefreshToken *string
+	jumpsellerClientId *string
+	jumpsellerClientSecret *string
+	jumpsellerRefreshToken *string
+	jumpsellerLogin *string
+	jumpsellerAuthtoken *string
 	flipkartClientId *string
 	flipkartClientSecret *string
 	allegroClientId *string
@@ -514,6 +530,12 @@ func (r ApiAccountConfigUpdateRequest) NewStoreUrl(newStoreUrl string) ApiAccoun
 // Update store key
 func (r ApiAccountConfigUpdateRequest) NewStoreKey(newStoreKey string) ApiAccountConfigUpdateRequest {
 	r.newStoreKey = &newStoreKey
+	return r
+}
+
+// Defines a custom label for the store in the app
+func (r ApiAccountConfigUpdateRequest) CustomLabel(customLabel string) ApiAccountConfigUpdateRequest {
+	r.customLabel = &customLabel
 	return r
 }
 
@@ -1291,6 +1313,36 @@ func (r ApiAccountConfigUpdateRequest) ZidRefreshToken(zidRefreshToken string) A
 	return r
 }
 
+// Jumpseller OAuth2 Client ID
+func (r ApiAccountConfigUpdateRequest) JumpsellerClientId(jumpsellerClientId string) ApiAccountConfigUpdateRequest {
+	r.jumpsellerClientId = &jumpsellerClientId
+	return r
+}
+
+// Jumpseller OAuth2 Client Secret
+func (r ApiAccountConfigUpdateRequest) JumpsellerClientSecret(jumpsellerClientSecret string) ApiAccountConfigUpdateRequest {
+	r.jumpsellerClientSecret = &jumpsellerClientSecret
+	return r
+}
+
+// Jumpseller OAuth2 refresh token
+func (r ApiAccountConfigUpdateRequest) JumpsellerRefreshToken(jumpsellerRefreshToken string) ApiAccountConfigUpdateRequest {
+	r.jumpsellerRefreshToken = &jumpsellerRefreshToken
+	return r
+}
+
+// Jumpseller API login
+func (r ApiAccountConfigUpdateRequest) JumpsellerLogin(jumpsellerLogin string) ApiAccountConfigUpdateRequest {
+	r.jumpsellerLogin = &jumpsellerLogin
+	return r
+}
+
+// Jumpseller API auth token
+func (r ApiAccountConfigUpdateRequest) JumpsellerAuthtoken(jumpsellerAuthtoken string) ApiAccountConfigUpdateRequest {
+	r.jumpsellerAuthtoken = &jumpsellerAuthtoken
+	return r
+}
+
 // Flipkart Client ID
 func (r ApiAccountConfigUpdateRequest) FlipkartClientId(flipkartClientId string) ApiAccountConfigUpdateRequest {
 	r.flipkartClientId = &flipkartClientId
@@ -1567,6 +1619,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.newStoreKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "new_store_key", r.newStoreKey, "form", "")
+	}
+	if r.customLabel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "custom_label", r.customLabel, "form", "")
 	}
 	if r.bridgeUrl != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bridge_url", r.bridgeUrl, "form", "")
@@ -1974,6 +2029,21 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.zidRefreshToken != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "zid_refresh_token", r.zidRefreshToken, "form", "")
+	}
+	if r.jumpsellerClientId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "jumpseller_client_id", r.jumpsellerClientId, "form", "")
+	}
+	if r.jumpsellerClientSecret != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "jumpseller_client_secret", r.jumpsellerClientSecret, "form", "")
+	}
+	if r.jumpsellerRefreshToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "jumpseller_refresh_token", r.jumpsellerRefreshToken, "form", "")
+	}
+	if r.jumpsellerLogin != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "jumpseller_login", r.jumpsellerLogin, "form", "")
+	}
+	if r.jumpsellerAuthtoken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "jumpseller_authtoken", r.jumpsellerAuthtoken, "form", "")
 	}
 	if r.flipkartClientId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "flipkart_client_id", r.flipkartClientId, "form", "")

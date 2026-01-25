@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **BridgeUrl** | Pointer to **string** | This parameter allows to set up store with custom bridge url (also you must use store_root parameter if a bridge folder is not in the root folder of the store) | [optional] 
 **StoreRoot** | Pointer to **string** | Absolute path to the store root directory (used with \&quot;bridge_url\&quot; parameter) | [optional] 
 **StoreKey** | Pointer to **string** | Set this parameter if bridge is already uploaded to store | [optional] 
+**Label** | Pointer to **string** | Defines alternative text that has to be attached to the picture | [optional] 
+**CustomLabel** | Pointer to **string** | Defines a custom label for the store in the app | [optional] 
 **ValidateVersion** | Pointer to **bool** | Specify if api2cart should validate cart version | [optional] [default to false]
 **Verify** | Pointer to **bool** | Enables or disables cart&#39;s verification | [optional] [default to true]
 **DbTablesPrefix** | Pointer to **string** | DB tables prefix | [optional] 
@@ -146,6 +148,11 @@ Name | Type | Description | Notes
 **ZidAccessToken** | Pointer to **string** | Zid Access Token | [optional] 
 **ZidAuthorization** | Pointer to **string** | Zid Authorization | [optional] 
 **ZidRefreshToken** | Pointer to **string** | Zid refresh token | [optional] 
+**JumpsellerClientId** | Pointer to **string** | Jumpseller OAuth2 Client ID | [optional] 
+**JumpsellerClientSecret** | Pointer to **string** | Jumpseller OAuth2 Client Secret | [optional] 
+**JumpsellerRefreshToken** | Pointer to **string** | Jumpseller OAuth2 refresh token | [optional] 
+**JumpsellerLogin** | Pointer to **string** | Jumpseller API login | [optional] 
+**JumpsellerAuthtoken** | Pointer to **string** | Jumpseller API auth token | [optional] 
 **FlipkartClientId** | Pointer to **string** | Flipkart Client ID | [optional] 
 **FlipkartClientSecret** | Pointer to **string** | Flipkart Client Secret | [optional] 
 **AllegroClientId** | Pointer to **string** | Allegro Client ID | [optional] 
@@ -319,6 +326,56 @@ SetStoreKey sets StoreKey field to given value.
 `func (o *AccountCartAdd) HasStoreKey() bool`
 
 HasStoreKey returns a boolean if a field has been set.
+
+### GetLabel
+
+`func (o *AccountCartAdd) GetLabel() string`
+
+GetLabel returns the Label field if non-nil, zero value otherwise.
+
+### GetLabelOk
+
+`func (o *AccountCartAdd) GetLabelOk() (*string, bool)`
+
+GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabel
+
+`func (o *AccountCartAdd) SetLabel(v string)`
+
+SetLabel sets Label field to given value.
+
+### HasLabel
+
+`func (o *AccountCartAdd) HasLabel() bool`
+
+HasLabel returns a boolean if a field has been set.
+
+### GetCustomLabel
+
+`func (o *AccountCartAdd) GetCustomLabel() string`
+
+GetCustomLabel returns the CustomLabel field if non-nil, zero value otherwise.
+
+### GetCustomLabelOk
+
+`func (o *AccountCartAdd) GetCustomLabelOk() (*string, bool)`
+
+GetCustomLabelOk returns a tuple with the CustomLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomLabel
+
+`func (o *AccountCartAdd) SetCustomLabel(v string)`
+
+SetCustomLabel sets CustomLabel field to given value.
+
+### HasCustomLabel
+
+`func (o *AccountCartAdd) HasCustomLabel() bool`
+
+HasCustomLabel returns a boolean if a field has been set.
 
 ### GetValidateVersion
 
@@ -3744,6 +3801,131 @@ SetZidRefreshToken sets ZidRefreshToken field to given value.
 `func (o *AccountCartAdd) HasZidRefreshToken() bool`
 
 HasZidRefreshToken returns a boolean if a field has been set.
+
+### GetJumpsellerClientId
+
+`func (o *AccountCartAdd) GetJumpsellerClientId() string`
+
+GetJumpsellerClientId returns the JumpsellerClientId field if non-nil, zero value otherwise.
+
+### GetJumpsellerClientIdOk
+
+`func (o *AccountCartAdd) GetJumpsellerClientIdOk() (*string, bool)`
+
+GetJumpsellerClientIdOk returns a tuple with the JumpsellerClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJumpsellerClientId
+
+`func (o *AccountCartAdd) SetJumpsellerClientId(v string)`
+
+SetJumpsellerClientId sets JumpsellerClientId field to given value.
+
+### HasJumpsellerClientId
+
+`func (o *AccountCartAdd) HasJumpsellerClientId() bool`
+
+HasJumpsellerClientId returns a boolean if a field has been set.
+
+### GetJumpsellerClientSecret
+
+`func (o *AccountCartAdd) GetJumpsellerClientSecret() string`
+
+GetJumpsellerClientSecret returns the JumpsellerClientSecret field if non-nil, zero value otherwise.
+
+### GetJumpsellerClientSecretOk
+
+`func (o *AccountCartAdd) GetJumpsellerClientSecretOk() (*string, bool)`
+
+GetJumpsellerClientSecretOk returns a tuple with the JumpsellerClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJumpsellerClientSecret
+
+`func (o *AccountCartAdd) SetJumpsellerClientSecret(v string)`
+
+SetJumpsellerClientSecret sets JumpsellerClientSecret field to given value.
+
+### HasJumpsellerClientSecret
+
+`func (o *AccountCartAdd) HasJumpsellerClientSecret() bool`
+
+HasJumpsellerClientSecret returns a boolean if a field has been set.
+
+### GetJumpsellerRefreshToken
+
+`func (o *AccountCartAdd) GetJumpsellerRefreshToken() string`
+
+GetJumpsellerRefreshToken returns the JumpsellerRefreshToken field if non-nil, zero value otherwise.
+
+### GetJumpsellerRefreshTokenOk
+
+`func (o *AccountCartAdd) GetJumpsellerRefreshTokenOk() (*string, bool)`
+
+GetJumpsellerRefreshTokenOk returns a tuple with the JumpsellerRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJumpsellerRefreshToken
+
+`func (o *AccountCartAdd) SetJumpsellerRefreshToken(v string)`
+
+SetJumpsellerRefreshToken sets JumpsellerRefreshToken field to given value.
+
+### HasJumpsellerRefreshToken
+
+`func (o *AccountCartAdd) HasJumpsellerRefreshToken() bool`
+
+HasJumpsellerRefreshToken returns a boolean if a field has been set.
+
+### GetJumpsellerLogin
+
+`func (o *AccountCartAdd) GetJumpsellerLogin() string`
+
+GetJumpsellerLogin returns the JumpsellerLogin field if non-nil, zero value otherwise.
+
+### GetJumpsellerLoginOk
+
+`func (o *AccountCartAdd) GetJumpsellerLoginOk() (*string, bool)`
+
+GetJumpsellerLoginOk returns a tuple with the JumpsellerLogin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJumpsellerLogin
+
+`func (o *AccountCartAdd) SetJumpsellerLogin(v string)`
+
+SetJumpsellerLogin sets JumpsellerLogin field to given value.
+
+### HasJumpsellerLogin
+
+`func (o *AccountCartAdd) HasJumpsellerLogin() bool`
+
+HasJumpsellerLogin returns a boolean if a field has been set.
+
+### GetJumpsellerAuthtoken
+
+`func (o *AccountCartAdd) GetJumpsellerAuthtoken() string`
+
+GetJumpsellerAuthtoken returns the JumpsellerAuthtoken field if non-nil, zero value otherwise.
+
+### GetJumpsellerAuthtokenOk
+
+`func (o *AccountCartAdd) GetJumpsellerAuthtokenOk() (*string, bool)`
+
+GetJumpsellerAuthtokenOk returns a tuple with the JumpsellerAuthtoken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJumpsellerAuthtoken
+
+`func (o *AccountCartAdd) SetJumpsellerAuthtoken(v string)`
+
+SetJumpsellerAuthtoken sets JumpsellerAuthtoken field to given value.
+
+### HasJumpsellerAuthtoken
+
+`func (o *AccountCartAdd) HasJumpsellerAuthtoken() bool`
+
+HasJumpsellerAuthtoken returns a boolean if a field has been set.
 
 ### GetFlipkartClientId
 

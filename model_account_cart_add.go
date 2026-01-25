@@ -32,6 +32,10 @@ type AccountCartAdd struct {
 	StoreRoot *string `json:"store_root,omitempty"`
 	// Set this parameter if bridge is already uploaded to store
 	StoreKey *string `json:"store_key,omitempty"`
+	// Defines alternative text that has to be attached to the picture
+	Label *string `json:"label,omitempty"`
+	// Defines a custom label for the store in the app
+	CustomLabel *string `json:"custom_label,omitempty"`
 	// Specify if api2cart should validate cart version
 	ValidateVersion *bool `json:"validate_version,omitempty"`
 	// Enables or disables cart's verification
@@ -306,6 +310,16 @@ type AccountCartAdd struct {
 	ZidAuthorization *string `json:"zid_authorization,omitempty"`
 	// Zid refresh token
 	ZidRefreshToken *string `json:"zid_refresh_token,omitempty"`
+	// Jumpseller OAuth2 Client ID
+	JumpsellerClientId *string `json:"jumpseller_client_id,omitempty"`
+	// Jumpseller OAuth2 Client Secret
+	JumpsellerClientSecret *string `json:"jumpseller_client_secret,omitempty"`
+	// Jumpseller OAuth2 refresh token
+	JumpsellerRefreshToken *string `json:"jumpseller_refresh_token,omitempty"`
+	// Jumpseller API login
+	JumpsellerLogin *string `json:"jumpseller_login,omitempty"`
+	// Jumpseller API auth token
+	JumpsellerAuthtoken *string `json:"jumpseller_authtoken,omitempty"`
 	// Flipkart Client ID
 	FlipkartClientId *string `json:"flipkart_client_id,omitempty"`
 	// Flipkart Client Secret
@@ -586,6 +600,70 @@ func (o *AccountCartAdd) HasStoreKey() bool {
 // SetStoreKey gets a reference to the given string and assigns it to the StoreKey field.
 func (o *AccountCartAdd) SetStoreKey(v string) {
 	o.StoreKey = &v
+}
+
+// GetLabel returns the Label field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetLabel() string {
+	if o == nil || IsNil(o.Label) {
+		var ret string
+		return ret
+	}
+	return *o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.Label) {
+		return nil, false
+	}
+	return o.Label, true
+}
+
+// HasLabel returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasLabel() bool {
+	if o != nil && !IsNil(o.Label) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabel gets a reference to the given string and assigns it to the Label field.
+func (o *AccountCartAdd) SetLabel(v string) {
+	o.Label = &v
+}
+
+// GetCustomLabel returns the CustomLabel field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetCustomLabel() string {
+	if o == nil || IsNil(o.CustomLabel) {
+		var ret string
+		return ret
+	}
+	return *o.CustomLabel
+}
+
+// GetCustomLabelOk returns a tuple with the CustomLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetCustomLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomLabel) {
+		return nil, false
+	}
+	return o.CustomLabel, true
+}
+
+// HasCustomLabel returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasCustomLabel() bool {
+	if o != nil && !IsNil(o.CustomLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLabel gets a reference to the given string and assigns it to the CustomLabel field.
+func (o *AccountCartAdd) SetCustomLabel(v string) {
+	o.CustomLabel = &v
 }
 
 // GetValidateVersion returns the ValidateVersion field value if set, zero value otherwise.
@@ -4972,6 +5050,166 @@ func (o *AccountCartAdd) SetZidRefreshToken(v string) {
 	o.ZidRefreshToken = &v
 }
 
+// GetJumpsellerClientId returns the JumpsellerClientId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetJumpsellerClientId() string {
+	if o == nil || IsNil(o.JumpsellerClientId) {
+		var ret string
+		return ret
+	}
+	return *o.JumpsellerClientId
+}
+
+// GetJumpsellerClientIdOk returns a tuple with the JumpsellerClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetJumpsellerClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.JumpsellerClientId) {
+		return nil, false
+	}
+	return o.JumpsellerClientId, true
+}
+
+// HasJumpsellerClientId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasJumpsellerClientId() bool {
+	if o != nil && !IsNil(o.JumpsellerClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetJumpsellerClientId gets a reference to the given string and assigns it to the JumpsellerClientId field.
+func (o *AccountCartAdd) SetJumpsellerClientId(v string) {
+	o.JumpsellerClientId = &v
+}
+
+// GetJumpsellerClientSecret returns the JumpsellerClientSecret field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetJumpsellerClientSecret() string {
+	if o == nil || IsNil(o.JumpsellerClientSecret) {
+		var ret string
+		return ret
+	}
+	return *o.JumpsellerClientSecret
+}
+
+// GetJumpsellerClientSecretOk returns a tuple with the JumpsellerClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetJumpsellerClientSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.JumpsellerClientSecret) {
+		return nil, false
+	}
+	return o.JumpsellerClientSecret, true
+}
+
+// HasJumpsellerClientSecret returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasJumpsellerClientSecret() bool {
+	if o != nil && !IsNil(o.JumpsellerClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetJumpsellerClientSecret gets a reference to the given string and assigns it to the JumpsellerClientSecret field.
+func (o *AccountCartAdd) SetJumpsellerClientSecret(v string) {
+	o.JumpsellerClientSecret = &v
+}
+
+// GetJumpsellerRefreshToken returns the JumpsellerRefreshToken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetJumpsellerRefreshToken() string {
+	if o == nil || IsNil(o.JumpsellerRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.JumpsellerRefreshToken
+}
+
+// GetJumpsellerRefreshTokenOk returns a tuple with the JumpsellerRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetJumpsellerRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.JumpsellerRefreshToken) {
+		return nil, false
+	}
+	return o.JumpsellerRefreshToken, true
+}
+
+// HasJumpsellerRefreshToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasJumpsellerRefreshToken() bool {
+	if o != nil && !IsNil(o.JumpsellerRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetJumpsellerRefreshToken gets a reference to the given string and assigns it to the JumpsellerRefreshToken field.
+func (o *AccountCartAdd) SetJumpsellerRefreshToken(v string) {
+	o.JumpsellerRefreshToken = &v
+}
+
+// GetJumpsellerLogin returns the JumpsellerLogin field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetJumpsellerLogin() string {
+	if o == nil || IsNil(o.JumpsellerLogin) {
+		var ret string
+		return ret
+	}
+	return *o.JumpsellerLogin
+}
+
+// GetJumpsellerLoginOk returns a tuple with the JumpsellerLogin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetJumpsellerLoginOk() (*string, bool) {
+	if o == nil || IsNil(o.JumpsellerLogin) {
+		return nil, false
+	}
+	return o.JumpsellerLogin, true
+}
+
+// HasJumpsellerLogin returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasJumpsellerLogin() bool {
+	if o != nil && !IsNil(o.JumpsellerLogin) {
+		return true
+	}
+
+	return false
+}
+
+// SetJumpsellerLogin gets a reference to the given string and assigns it to the JumpsellerLogin field.
+func (o *AccountCartAdd) SetJumpsellerLogin(v string) {
+	o.JumpsellerLogin = &v
+}
+
+// GetJumpsellerAuthtoken returns the JumpsellerAuthtoken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetJumpsellerAuthtoken() string {
+	if o == nil || IsNil(o.JumpsellerAuthtoken) {
+		var ret string
+		return ret
+	}
+	return *o.JumpsellerAuthtoken
+}
+
+// GetJumpsellerAuthtokenOk returns a tuple with the JumpsellerAuthtoken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetJumpsellerAuthtokenOk() (*string, bool) {
+	if o == nil || IsNil(o.JumpsellerAuthtoken) {
+		return nil, false
+	}
+	return o.JumpsellerAuthtoken, true
+}
+
+// HasJumpsellerAuthtoken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasJumpsellerAuthtoken() bool {
+	if o != nil && !IsNil(o.JumpsellerAuthtoken) {
+		return true
+	}
+
+	return false
+}
+
+// SetJumpsellerAuthtoken gets a reference to the given string and assigns it to the JumpsellerAuthtoken field.
+func (o *AccountCartAdd) SetJumpsellerAuthtoken(v string) {
+	o.JumpsellerAuthtoken = &v
+}
+
 // GetFlipkartClientId returns the FlipkartClientId field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetFlipkartClientId() string {
 	if o == nil || IsNil(o.FlipkartClientId) {
@@ -6083,6 +6321,12 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StoreKey) {
 		toSerialize["store_key"] = o.StoreKey
 	}
+	if !IsNil(o.Label) {
+		toSerialize["label"] = o.Label
+	}
+	if !IsNil(o.CustomLabel) {
+		toSerialize["custom_label"] = o.CustomLabel
+	}
 	if !IsNil(o.ValidateVersion) {
 		toSerialize["validate_version"] = o.ValidateVersion
 	}
@@ -6493,6 +6737,21 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ZidRefreshToken) {
 		toSerialize["zid_refresh_token"] = o.ZidRefreshToken
+	}
+	if !IsNil(o.JumpsellerClientId) {
+		toSerialize["jumpseller_client_id"] = o.JumpsellerClientId
+	}
+	if !IsNil(o.JumpsellerClientSecret) {
+		toSerialize["jumpseller_client_secret"] = o.JumpsellerClientSecret
+	}
+	if !IsNil(o.JumpsellerRefreshToken) {
+		toSerialize["jumpseller_refresh_token"] = o.JumpsellerRefreshToken
+	}
+	if !IsNil(o.JumpsellerLogin) {
+		toSerialize["jumpseller_login"] = o.JumpsellerLogin
+	}
+	if !IsNil(o.JumpsellerAuthtoken) {
+		toSerialize["jumpseller_authtoken"] = o.JumpsellerAuthtoken
 	}
 	if !IsNil(o.FlipkartClientId) {
 		toSerialize["flipkart_client_id"] = o.FlipkartClientId
