@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ReturnStatusId** | **string** | Defines return request status | 
 **ReturnActionId** | **string** | Defines return request action | 
 **ReturnReasonId** | **string** | Defines return request reason | 
+**ReturnAction** | Pointer to **string** | Defines return request action | [optional] 
 **ReturnReason** | Pointer to **string** | Defines return request reason | [optional] 
 **ItemRestock** | Pointer to **bool** | Boolean, whether or not to add the line items back to the store inventory. | [optional] [default to false]
 **StaffNote** | Pointer to **string** | Specifies staff note | [optional] 
@@ -146,6 +147,31 @@ and a boolean to check if the value has been set.
 
 SetReturnReasonId sets ReturnReasonId field to given value.
 
+
+### GetReturnAction
+
+`func (o *OrderReturnAdd) GetReturnAction() string`
+
+GetReturnAction returns the ReturnAction field if non-nil, zero value otherwise.
+
+### GetReturnActionOk
+
+`func (o *OrderReturnAdd) GetReturnActionOk() (*string, bool)`
+
+GetReturnActionOk returns a tuple with the ReturnAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnAction
+
+`func (o *OrderReturnAdd) SetReturnAction(v string)`
+
+SetReturnAction sets ReturnAction field to given value.
+
+### HasReturnAction
+
+`func (o *OrderReturnAdd) HasReturnAction() bool`
+
+HasReturnAction returns a boolean if a field has been set.
 
 ### GetReturnReason
 

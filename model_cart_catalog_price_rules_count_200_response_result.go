@@ -20,7 +20,7 @@ var _ MappedNullable = &CartCatalogPriceRulesCount200ResponseResult{}
 
 // CartCatalogPriceRulesCount200ResponseResult struct for CartCatalogPriceRulesCount200ResponseResult
 type CartCatalogPriceRulesCount200ResponseResult struct {
-	CatalogPriceRulesCount *string `json:"catalog_price_rules_count,omitempty"`
+	CatalogPriceRulesCount *int32 `json:"catalog_price_rules_count,omitempty"`
 }
 
 // NewCartCatalogPriceRulesCount200ResponseResult instantiates a new CartCatalogPriceRulesCount200ResponseResult object
@@ -41,9 +41,9 @@ func NewCartCatalogPriceRulesCount200ResponseResultWithDefaults() *CartCatalogPr
 }
 
 // GetCatalogPriceRulesCount returns the CatalogPriceRulesCount field value if set, zero value otherwise.
-func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCount() string {
+func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCount() int32 {
 	if o == nil || IsNil(o.CatalogPriceRulesCount) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.CatalogPriceRulesCount
@@ -51,7 +51,7 @@ func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCount(
 
 // GetCatalogPriceRulesCountOk returns a tuple with the CatalogPriceRulesCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCountOk() (*string, bool) {
+func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.CatalogPriceRulesCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *CartCatalogPriceRulesCount200ResponseResult) HasCatalogPriceRulesCount(
 	return false
 }
 
-// SetCatalogPriceRulesCount gets a reference to the given string and assigns it to the CatalogPriceRulesCount field.
-func (o *CartCatalogPriceRulesCount200ResponseResult) SetCatalogPriceRulesCount(v string) {
+// SetCatalogPriceRulesCount gets a reference to the given int32 and assigns it to the CatalogPriceRulesCount field.
+func (o *CartCatalogPriceRulesCount200ResponseResult) SetCatalogPriceRulesCount(v int32) {
 	o.CatalogPriceRulesCount = &v
 }
 

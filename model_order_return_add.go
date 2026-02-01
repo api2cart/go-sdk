@@ -32,6 +32,8 @@ type OrderReturnAdd struct {
 	ReturnActionId string `json:"return_action_id"`
 	// Defines return request reason
 	ReturnReasonId string `json:"return_reason_id"`
+	// Defines return request action
+	ReturnAction *string `json:"return_action,omitempty"`
 	// Defines return request reason
 	ReturnReason *string `json:"return_reason,omitempty"`
 	// Boolean, whether or not to add the line items back to the store inventory.
@@ -214,6 +216,38 @@ func (o *OrderReturnAdd) GetReturnReasonIdOk() (*string, bool) {
 // SetReturnReasonId sets field value
 func (o *OrderReturnAdd) SetReturnReasonId(v string) {
 	o.ReturnReasonId = v
+}
+
+// GetReturnAction returns the ReturnAction field value if set, zero value otherwise.
+func (o *OrderReturnAdd) GetReturnAction() string {
+	if o == nil || IsNil(o.ReturnAction) {
+		var ret string
+		return ret
+	}
+	return *o.ReturnAction
+}
+
+// GetReturnActionOk returns a tuple with the ReturnAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnAdd) GetReturnActionOk() (*string, bool) {
+	if o == nil || IsNil(o.ReturnAction) {
+		return nil, false
+	}
+	return o.ReturnAction, true
+}
+
+// HasReturnAction returns a boolean if a field has been set.
+func (o *OrderReturnAdd) HasReturnAction() bool {
+	if o != nil && !IsNil(o.ReturnAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetReturnAction gets a reference to the given string and assigns it to the ReturnAction field.
+func (o *OrderReturnAdd) SetReturnAction(v string) {
+	o.ReturnAction = &v
 }
 
 // GetReturnReason returns the ReturnReason field value if set, zero value otherwise.
@@ -483,6 +517,9 @@ func (o OrderReturnAdd) ToMap() (map[string]interface{}, error) {
 	toSerialize["return_status_id"] = o.ReturnStatusId
 	toSerialize["return_action_id"] = o.ReturnActionId
 	toSerialize["return_reason_id"] = o.ReturnReasonId
+	if !IsNil(o.ReturnAction) {
+		toSerialize["return_action"] = o.ReturnAction
+	}
 	if !IsNil(o.ReturnReason) {
 		toSerialize["return_reason"] = o.ReturnReason
 	}

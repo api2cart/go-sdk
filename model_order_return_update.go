@@ -40,6 +40,10 @@ type OrderReturnUpdate struct {
 	SendNotifications *bool `json:"send_notifications,omitempty"`
 	// Defines return reject reason
 	RejectReason *string `json:"reject_reason,omitempty"`
+	// Defines return request action
+	ReturnAction *string `json:"return_action,omitempty"`
+	// Defines return request reason
+	ReturnReason *string `json:"return_reason,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	OrderProducts []OrderReturnUpdateOrderProductsInner `json:"order_products"`
@@ -354,6 +358,70 @@ func (o *OrderReturnUpdate) SetRejectReason(v string) {
 	o.RejectReason = &v
 }
 
+// GetReturnAction returns the ReturnAction field value if set, zero value otherwise.
+func (o *OrderReturnUpdate) GetReturnAction() string {
+	if o == nil || IsNil(o.ReturnAction) {
+		var ret string
+		return ret
+	}
+	return *o.ReturnAction
+}
+
+// GetReturnActionOk returns a tuple with the ReturnAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnUpdate) GetReturnActionOk() (*string, bool) {
+	if o == nil || IsNil(o.ReturnAction) {
+		return nil, false
+	}
+	return o.ReturnAction, true
+}
+
+// HasReturnAction returns a boolean if a field has been set.
+func (o *OrderReturnUpdate) HasReturnAction() bool {
+	if o != nil && !IsNil(o.ReturnAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetReturnAction gets a reference to the given string and assigns it to the ReturnAction field.
+func (o *OrderReturnUpdate) SetReturnAction(v string) {
+	o.ReturnAction = &v
+}
+
+// GetReturnReason returns the ReturnReason field value if set, zero value otherwise.
+func (o *OrderReturnUpdate) GetReturnReason() string {
+	if o == nil || IsNil(o.ReturnReason) {
+		var ret string
+		return ret
+	}
+	return *o.ReturnReason
+}
+
+// GetReturnReasonOk returns a tuple with the ReturnReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnUpdate) GetReturnReasonOk() (*string, bool) {
+	if o == nil || IsNil(o.ReturnReason) {
+		return nil, false
+	}
+	return o.ReturnReason, true
+}
+
+// HasReturnReason returns a boolean if a field has been set.
+func (o *OrderReturnUpdate) HasReturnReason() bool {
+	if o != nil && !IsNil(o.ReturnReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReturnReason gets a reference to the given string and assigns it to the ReturnReason field.
+func (o *OrderReturnUpdate) SetReturnReason(v string) {
+	o.ReturnReason = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *OrderReturnUpdate) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -444,6 +512,12 @@ func (o OrderReturnUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RejectReason) {
 		toSerialize["reject_reason"] = o.RejectReason
+	}
+	if !IsNil(o.ReturnAction) {
+		toSerialize["return_action"] = o.ReturnAction
+	}
+	if !IsNil(o.ReturnReason) {
+		toSerialize["return_reason"] = o.ReturnReason
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey

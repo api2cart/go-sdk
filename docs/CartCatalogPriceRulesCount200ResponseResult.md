@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CatalogPriceRulesCount** | Pointer to **string** |  | [optional] 
+**CatalogPriceRulesCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCatalogPriceRulesCount
 
-`func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCount() string`
+`func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCount() int32`
 
 GetCatalogPriceRulesCount returns the CatalogPriceRulesCount field if non-nil, zero value otherwise.
 
 ### GetCatalogPriceRulesCountOk
 
-`func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCountOk() (*string, bool)`
+`func (o *CartCatalogPriceRulesCount200ResponseResult) GetCatalogPriceRulesCountOk() (*int32, bool)`
 
 GetCatalogPriceRulesCountOk returns a tuple with the CatalogPriceRulesCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCatalogPriceRulesCount
 
-`func (o *CartCatalogPriceRulesCount200ResponseResult) SetCatalogPriceRulesCount(v string)`
+`func (o *CartCatalogPriceRulesCount200ResponseResult) SetCatalogPriceRulesCount(v int32)`
 
 SetCatalogPriceRulesCount sets CatalogPriceRulesCount field to given value.
 

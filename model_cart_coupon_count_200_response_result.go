@@ -20,7 +20,7 @@ var _ MappedNullable = &CartCouponCount200ResponseResult{}
 
 // CartCouponCount200ResponseResult struct for CartCouponCount200ResponseResult
 type CartCouponCount200ResponseResult struct {
-	CouponsCount *string `json:"coupons_count,omitempty"`
+	CouponsCount *int32 `json:"coupons_count,omitempty"`
 }
 
 // NewCartCouponCount200ResponseResult instantiates a new CartCouponCount200ResponseResult object
@@ -41,9 +41,9 @@ func NewCartCouponCount200ResponseResultWithDefaults() *CartCouponCount200Respon
 }
 
 // GetCouponsCount returns the CouponsCount field value if set, zero value otherwise.
-func (o *CartCouponCount200ResponseResult) GetCouponsCount() string {
+func (o *CartCouponCount200ResponseResult) GetCouponsCount() int32 {
 	if o == nil || IsNil(o.CouponsCount) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.CouponsCount
@@ -51,7 +51,7 @@ func (o *CartCouponCount200ResponseResult) GetCouponsCount() string {
 
 // GetCouponsCountOk returns a tuple with the CouponsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CartCouponCount200ResponseResult) GetCouponsCountOk() (*string, bool) {
+func (o *CartCouponCount200ResponseResult) GetCouponsCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.CouponsCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *CartCouponCount200ResponseResult) HasCouponsCount() bool {
 	return false
 }
 
-// SetCouponsCount gets a reference to the given string and assigns it to the CouponsCount field.
-func (o *CartCouponCount200ResponseResult) SetCouponsCount(v string) {
+// SetCouponsCount gets a reference to the given int32 and assigns it to the CouponsCount field.
+func (o *CartCouponCount200ResponseResult) SetCouponsCount(v int32) {
 	o.CouponsCount = &v
 }
 

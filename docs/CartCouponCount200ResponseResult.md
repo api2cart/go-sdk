@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CouponsCount** | Pointer to **string** |  | [optional] 
+**CouponsCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCouponsCount
 
-`func (o *CartCouponCount200ResponseResult) GetCouponsCount() string`
+`func (o *CartCouponCount200ResponseResult) GetCouponsCount() int32`
 
 GetCouponsCount returns the CouponsCount field if non-nil, zero value otherwise.
 
 ### GetCouponsCountOk
 
-`func (o *CartCouponCount200ResponseResult) GetCouponsCountOk() (*string, bool)`
+`func (o *CartCouponCount200ResponseResult) GetCouponsCountOk() (*int32, bool)`
 
 GetCouponsCountOk returns a tuple with the CouponsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCouponsCount
 
-`func (o *CartCouponCount200ResponseResult) SetCouponsCount(v string)`
+`func (o *CartCouponCount200ResponseResult) SetCouponsCount(v int32)`
 
 SetCouponsCount sets CouponsCount field to given value.
 

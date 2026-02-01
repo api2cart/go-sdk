@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Specifies return comment | [optional] 
 **SendNotifications** | Pointer to **bool** | Send notifications to customer after order was created | [optional] [default to false]
 **RejectReason** | Pointer to **string** | Defines return reject reason | [optional] 
+**ReturnAction** | Pointer to **string** | Defines return request action | [optional] 
+**ReturnReason** | Pointer to **string** | Defines return request reason | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderProducts** | [**[]OrderReturnUpdateOrderProductsInner**](OrderReturnUpdateOrderProductsInner.md) |  | 
 
@@ -254,6 +256,56 @@ SetRejectReason sets RejectReason field to given value.
 `func (o *OrderReturnUpdate) HasRejectReason() bool`
 
 HasRejectReason returns a boolean if a field has been set.
+
+### GetReturnAction
+
+`func (o *OrderReturnUpdate) GetReturnAction() string`
+
+GetReturnAction returns the ReturnAction field if non-nil, zero value otherwise.
+
+### GetReturnActionOk
+
+`func (o *OrderReturnUpdate) GetReturnActionOk() (*string, bool)`
+
+GetReturnActionOk returns a tuple with the ReturnAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnAction
+
+`func (o *OrderReturnUpdate) SetReturnAction(v string)`
+
+SetReturnAction sets ReturnAction field to given value.
+
+### HasReturnAction
+
+`func (o *OrderReturnUpdate) HasReturnAction() bool`
+
+HasReturnAction returns a boolean if a field has been set.
+
+### GetReturnReason
+
+`func (o *OrderReturnUpdate) GetReturnReason() string`
+
+GetReturnReason returns the ReturnReason field if non-nil, zero value otherwise.
+
+### GetReturnReasonOk
+
+`func (o *OrderReturnUpdate) GetReturnReasonOk() (*string, bool)`
+
+GetReturnReasonOk returns a tuple with the ReturnReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnReason
+
+`func (o *OrderReturnUpdate) SetReturnReason(v string)`
+
+SetReturnReason sets ReturnReason field to given value.
+
+### HasReturnReason
+
+`func (o *OrderReturnUpdate) HasReturnReason() bool`
+
+HasReturnReason returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

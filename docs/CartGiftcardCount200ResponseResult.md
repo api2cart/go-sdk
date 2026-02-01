@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GiftCardsCount** | Pointer to **string** |  | [optional] 
+**GiftCardsCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetGiftCardsCount
 
-`func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCount() string`
+`func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCount() int32`
 
 GetGiftCardsCount returns the GiftCardsCount field if non-nil, zero value otherwise.
 
 ### GetGiftCardsCountOk
 
-`func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCountOk() (*string, bool)`
+`func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCountOk() (*int32, bool)`
 
 GetGiftCardsCountOk returns a tuple with the GiftCardsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGiftCardsCount
 
-`func (o *CartGiftcardCount200ResponseResult) SetGiftCardsCount(v string)`
+`func (o *CartGiftcardCount200ResponseResult) SetGiftCardsCount(v int32)`
 
 SetGiftCardsCount sets GiftCardsCount field to given value.
 

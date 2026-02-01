@@ -20,7 +20,7 @@ var _ MappedNullable = &CartGiftcardCount200ResponseResult{}
 
 // CartGiftcardCount200ResponseResult struct for CartGiftcardCount200ResponseResult
 type CartGiftcardCount200ResponseResult struct {
-	GiftCardsCount *string `json:"gift_cards_count,omitempty"`
+	GiftCardsCount *int32 `json:"gift_cards_count,omitempty"`
 }
 
 // NewCartGiftcardCount200ResponseResult instantiates a new CartGiftcardCount200ResponseResult object
@@ -41,9 +41,9 @@ func NewCartGiftcardCount200ResponseResultWithDefaults() *CartGiftcardCount200Re
 }
 
 // GetGiftCardsCount returns the GiftCardsCount field value if set, zero value otherwise.
-func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCount() string {
+func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCount() int32 {
 	if o == nil || IsNil(o.GiftCardsCount) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.GiftCardsCount
@@ -51,7 +51,7 @@ func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCount() string {
 
 // GetGiftCardsCountOk returns a tuple with the GiftCardsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCountOk() (*string, bool) {
+func (o *CartGiftcardCount200ResponseResult) GetGiftCardsCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.GiftCardsCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *CartGiftcardCount200ResponseResult) HasGiftCardsCount() bool {
 	return false
 }
 
-// SetGiftCardsCount gets a reference to the given string and assigns it to the GiftCardsCount field.
-func (o *CartGiftcardCount200ResponseResult) SetGiftCardsCount(v string) {
+// SetGiftCardsCount gets a reference to the given int32 and assigns it to the GiftCardsCount field.
+func (o *CartGiftcardCount200ResponseResult) SetGiftCardsCount(v int32) {
 	o.GiftCardsCount = &v
 }
 
