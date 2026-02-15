@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Defines product&#39;s name that has to be updated | [optional] 
 **Description** | Pointer to **string** | Defines new product&#39;s description | [optional] 
 **ShortDescription** | Pointer to **string** | Defines short description | [optional] 
+**PricesIncTax** | Pointer to **bool** | Indicates whether prices include tax. | [optional] [default to false]
 **Price** | Pointer to **float32** | Defines new product&#39;s price | [optional] 
 **OldPrice** | Pointer to **float32** | Defines product&#39;s old price | [optional] 
 **SpecialPrice** | Pointer to **float32** | Defines new product&#39;s special price | [optional] 
@@ -267,6 +268,31 @@ SetShortDescription sets ShortDescription field to given value.
 `func (o *ProductUpdate) HasShortDescription() bool`
 
 HasShortDescription returns a boolean if a field has been set.
+
+### GetPricesIncTax
+
+`func (o *ProductUpdate) GetPricesIncTax() bool`
+
+GetPricesIncTax returns the PricesIncTax field if non-nil, zero value otherwise.
+
+### GetPricesIncTaxOk
+
+`func (o *ProductUpdate) GetPricesIncTaxOk() (*bool, bool)`
+
+GetPricesIncTaxOk returns a tuple with the PricesIncTax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPricesIncTax
+
+`func (o *ProductUpdate) SetPricesIncTax(v bool)`
+
+SetPricesIncTax sets PricesIncTax field to given value.
+
+### HasPricesIncTax
+
+`func (o *ProductUpdate) HasPricesIncTax() bool`
+
+HasPricesIncTax returns a boolean if a field has been set.
 
 ### GetPrice
 

@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 **TotalPrice** | Pointer to **float32** | Defines order&#39;s total price | [optional] 
 **TotalPaid** | Pointer to **float32** | Defines total paid amount for the order | [optional] 
 **TotalWeight** | Pointer to **int32** | Defines the sum of all line item weights in grams for the order | [optional] 
-**PricesIncTax** | Pointer to **bool** | Indicates whether prices and subtotal includes tax. | [optional] [default to false]
+**PricesIncTax** | Pointer to **bool** | Indicates whether prices and subtotal include tax. | [optional] [default to false]
 **ShippingPrice** | Pointer to **float32** | Specifies order&#39;s shipping price | [optional] [default to 0]
 **ShippingTax** | Pointer to **float32** | Specifies order&#39;s shipping price tax | [optional] 
 **Discount** | Pointer to **float32** | Specifies order&#39;s discount | [optional] 

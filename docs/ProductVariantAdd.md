@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **TierPrices** | Pointer to [**[]ProductAddTierPricesInner**](ProductAddTierPricesInner.md) | Defines product&#39;s tier prices | [optional] 
 **MeasureUnit** | Pointer to **string** | Unit for the price per unit. Must be in allowed list | [optional] 
 **UnitPrice** | Pointer to **float32** | Defines new product&#39;s unit price | [optional] 
+**PricesIncTax** | Pointer to **bool** | Indicates whether prices include tax. | [optional] [default to false]
 **Quantity** | Pointer to **float32** | Defines product variant&#39;s quantity that has to be added | [optional] [default to 0]
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
 **InStock** | Pointer to **bool** | Set stock status | [optional] 
@@ -677,6 +678,31 @@ SetUnitPrice sets UnitPrice field to given value.
 `func (o *ProductVariantAdd) HasUnitPrice() bool`
 
 HasUnitPrice returns a boolean if a field has been set.
+
+### GetPricesIncTax
+
+`func (o *ProductVariantAdd) GetPricesIncTax() bool`
+
+GetPricesIncTax returns the PricesIncTax field if non-nil, zero value otherwise.
+
+### GetPricesIncTaxOk
+
+`func (o *ProductVariantAdd) GetPricesIncTaxOk() (*bool, bool)`
+
+GetPricesIncTaxOk returns a tuple with the PricesIncTax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPricesIncTax
+
+`func (o *ProductVariantAdd) SetPricesIncTax(v bool)`
+
+SetPricesIncTax sets PricesIncTax field to given value.
+
+### HasPricesIncTax
+
+`func (o *ProductVariantAdd) HasPricesIncTax() bool`
+
+HasPricesIncTax returns a boolean if a field has been set.
 
 ### GetQuantity
 

@@ -86,6 +86,8 @@ type ProductAdd struct {
 	MeasureUnit *string `json:"measure_unit,omitempty"`
 	// Defines new product's unit price
 	UnitPrice *float32 `json:"unit_price,omitempty"`
+	// Indicates whether prices include tax.
+	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
 	// Defines product's quantity that has to be added
 	Quantity *float32 `json:"quantity,omitempty"`
 	// Set stock status
@@ -285,6 +287,8 @@ func NewProductAdd(name string, model string, description string, price float32)
 	this.AvailableForView = &availableForView
 	var availableForSale bool = true
 	this.AvailableForSale = &availableForSale
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var quantity float32 = 0
 	this.Quantity = &quantity
 	var weight float32 = 0
@@ -327,6 +331,8 @@ func NewProductAddWithDefaults() *ProductAdd {
 	this.AvailableForView = &availableForView
 	var availableForSale bool = true
 	this.AvailableForSale = &availableForSale
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var quantity float32 = 0
 	this.Quantity = &quantity
 	var weight float32 = 0
@@ -1342,6 +1348,38 @@ func (o *ProductAdd) HasUnitPrice() bool {
 // SetUnitPrice gets a reference to the given float32 and assigns it to the UnitPrice field.
 func (o *ProductAdd) SetUnitPrice(v float32) {
 	o.UnitPrice = &v
+}
+
+// GetPricesIncTax returns the PricesIncTax field value if set, zero value otherwise.
+func (o *ProductAdd) GetPricesIncTax() bool {
+	if o == nil || IsNil(o.PricesIncTax) {
+		var ret bool
+		return ret
+	}
+	return *o.PricesIncTax
+}
+
+// GetPricesIncTaxOk returns a tuple with the PricesIncTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetPricesIncTaxOk() (*bool, bool) {
+	if o == nil || IsNil(o.PricesIncTax) {
+		return nil, false
+	}
+	return o.PricesIncTax, true
+}
+
+// HasPricesIncTax returns a boolean if a field has been set.
+func (o *ProductAdd) HasPricesIncTax() bool {
+	if o != nil && !IsNil(o.PricesIncTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetPricesIncTax gets a reference to the given bool and assigns it to the PricesIncTax field.
+func (o *ProductAdd) SetPricesIncTax(v bool) {
+	o.PricesIncTax = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -4321,6 +4359,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UnitPrice) {
 		toSerialize["unit_price"] = o.UnitPrice
+	}
+	if !IsNil(o.PricesIncTax) {
+		toSerialize["prices_inc_tax"] = o.PricesIncTax
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity

@@ -118,7 +118,7 @@ type OrderAdd struct {
 	TotalPaid *float32 `json:"total_paid,omitempty"`
 	// Defines the sum of all line item weights in grams for the order
 	TotalWeight *int32 `json:"total_weight,omitempty"`
-	// Indicates whether prices and subtotal includes tax.
+	// Indicates whether prices and subtotal include tax.
 	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
 	// Specifies order's shipping price
 	ShippingPrice *float32 `json:"shipping_price,omitempty"`

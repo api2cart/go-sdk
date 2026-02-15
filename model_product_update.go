@@ -32,6 +32,8 @@ type ProductUpdate struct {
 	Description *string `json:"description,omitempty"`
 	// Defines short description
 	ShortDescription *string `json:"short_description,omitempty"`
+	// Indicates whether prices include tax.
+	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
 	// Defines new product's price
 	Price *float32 `json:"price,omitempty"`
 	// Defines product's old price
@@ -213,6 +215,8 @@ type ProductUpdate struct {
 // will change when the set of required properties is changed
 func NewProductUpdate() *ProductUpdate {
 	this := ProductUpdate{}
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var avail bool = true
 	this.Avail = &avail
 	var isVirtual bool = false
@@ -245,6 +249,8 @@ func NewProductUpdate() *ProductUpdate {
 // but it doesn't guarantee that properties required by API are set
 func NewProductUpdateWithDefaults() *ProductUpdate {
 	this := ProductUpdate{}
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var avail bool = true
 	this.Avail = &avail
 	var isVirtual bool = false
@@ -462,6 +468,38 @@ func (o *ProductUpdate) HasShortDescription() bool {
 // SetShortDescription gets a reference to the given string and assigns it to the ShortDescription field.
 func (o *ProductUpdate) SetShortDescription(v string) {
 	o.ShortDescription = &v
+}
+
+// GetPricesIncTax returns the PricesIncTax field value if set, zero value otherwise.
+func (o *ProductUpdate) GetPricesIncTax() bool {
+	if o == nil || IsNil(o.PricesIncTax) {
+		var ret bool
+		return ret
+	}
+	return *o.PricesIncTax
+}
+
+// GetPricesIncTaxOk returns a tuple with the PricesIncTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetPricesIncTaxOk() (*bool, bool) {
+	if o == nil || IsNil(o.PricesIncTax) {
+		return nil, false
+	}
+	return o.PricesIncTax, true
+}
+
+// HasPricesIncTax returns a boolean if a field has been set.
+func (o *ProductUpdate) HasPricesIncTax() bool {
+	if o != nil && !IsNil(o.PricesIncTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetPricesIncTax gets a reference to the given bool and assigns it to the PricesIncTax field.
+func (o *ProductUpdate) SetPricesIncTax(v bool) {
+	o.PricesIncTax = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
@@ -3307,6 +3345,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ShortDescription) {
 		toSerialize["short_description"] = o.ShortDescription
+	}
+	if !IsNil(o.PricesIncTax) {
+		toSerialize["prices_inc_tax"] = o.PricesIncTax
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price

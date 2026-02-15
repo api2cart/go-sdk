@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **Quantity** | Pointer to **float32** | Defines new products&#39; variants quantity | [optional] 
 **IncreaseQuantity** | Pointer to **float32** | Defines the incremental changes in product quantity | [optional] [default to 0]
 **ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity | [optional] [default to 0]
+**PricesIncTax** | Pointer to **bool** | Indicates whether prices include tax. | [optional] [default to false]
 **Price** | Pointer to **float32** | Defines new product&#39;s variant price | [optional] 
 **SpecialPrice** | Pointer to **float32** | Defines new product&#39;s variant special price | [optional] 
 **RetailPrice** | Pointer to **float32** | Defines new product&#39;s retail price | [optional] 
@@ -782,6 +783,31 @@ SetReduceQuantity sets ReduceQuantity field to given value.
 `func (o *ProductVariantUpdate) HasReduceQuantity() bool`
 
 HasReduceQuantity returns a boolean if a field has been set.
+
+### GetPricesIncTax
+
+`func (o *ProductVariantUpdate) GetPricesIncTax() bool`
+
+GetPricesIncTax returns the PricesIncTax field if non-nil, zero value otherwise.
+
+### GetPricesIncTaxOk
+
+`func (o *ProductVariantUpdate) GetPricesIncTaxOk() (*bool, bool)`
+
+GetPricesIncTaxOk returns a tuple with the PricesIncTax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPricesIncTax
+
+`func (o *ProductVariantUpdate) SetPricesIncTax(v bool)`
+
+SetPricesIncTax sets PricesIncTax field to given value.
+
+### HasPricesIncTax
+
+`func (o *ProductVariantUpdate) HasPricesIncTax() bool`
+
+HasPricesIncTax returns a boolean if a field has been set.
 
 ### GetPrice
 

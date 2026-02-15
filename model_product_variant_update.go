@@ -76,6 +76,8 @@ type ProductVariantUpdate struct {
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
 	// Defines the decrement changes in product quantity
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
+	// Indicates whether prices include tax.
+	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
 	// Defines new product's variant price
 	Price *float32 `json:"price,omitempty"`
 	// Defines new product's variant special price
@@ -156,6 +158,8 @@ func NewProductVariantUpdate() *ProductVariantUpdate {
 	this.IncreaseQuantity = &increaseQuantity
 	var reduceQuantity float32 = 0
 	this.ReduceQuantity = &reduceQuantity
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var weight float32 = 0
 	this.Weight = &weight
 	var reindex bool = true
@@ -180,6 +184,8 @@ func NewProductVariantUpdateWithDefaults() *ProductVariantUpdate {
 	this.IncreaseQuantity = &increaseQuantity
 	var reduceQuantity float32 = 0
 	this.ReduceQuantity = &reduceQuantity
+	var pricesIncTax bool = false
+	this.PricesIncTax = &pricesIncTax
 	var weight float32 = 0
 	this.Weight = &weight
 	var reindex bool = true
@@ -1083,6 +1089,38 @@ func (o *ProductVariantUpdate) HasReduceQuantity() bool {
 // SetReduceQuantity gets a reference to the given float32 and assigns it to the ReduceQuantity field.
 func (o *ProductVariantUpdate) SetReduceQuantity(v float32) {
 	o.ReduceQuantity = &v
+}
+
+// GetPricesIncTax returns the PricesIncTax field value if set, zero value otherwise.
+func (o *ProductVariantUpdate) GetPricesIncTax() bool {
+	if o == nil || IsNil(o.PricesIncTax) {
+		var ret bool
+		return ret
+	}
+	return *o.PricesIncTax
+}
+
+// GetPricesIncTaxOk returns a tuple with the PricesIncTax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductVariantUpdate) GetPricesIncTaxOk() (*bool, bool) {
+	if o == nil || IsNil(o.PricesIncTax) {
+		return nil, false
+	}
+	return o.PricesIncTax, true
+}
+
+// HasPricesIncTax returns a boolean if a field has been set.
+func (o *ProductVariantUpdate) HasPricesIncTax() bool {
+	if o != nil && !IsNil(o.PricesIncTax) {
+		return true
+	}
+
+	return false
+}
+
+// SetPricesIncTax gets a reference to the given bool and assigns it to the PricesIncTax field.
+func (o *ProductVariantUpdate) SetPricesIncTax(v bool) {
+	o.PricesIncTax = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
@@ -2170,6 +2208,9 @@ func (o ProductVariantUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReduceQuantity) {
 		toSerialize["reduce_quantity"] = o.ReduceQuantity
+	}
+	if !IsNil(o.PricesIncTax) {
+		toSerialize["prices_inc_tax"] = o.PricesIncTax
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
