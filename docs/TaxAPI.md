@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## TaxClassList
 
-> ModelResponseTaxClassList TaxClassList(ctx).Count(count).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
+> ModelResponseTaxClassList TaxClassList(ctx).Count(count).Start(start).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
 
 tax.class.list
 
@@ -107,6 +107,7 @@ import (
 
 func main() {
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	storeId := "1" // string | Store Id (optional)
 	findValue := "tax" // string | Entity search that is specified by some value (optional)
@@ -119,7 +120,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TaxAPI.TaxClassList(context.Background()).Count(count).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
+	resp, r, err := apiClient.TaxAPI.TaxClassList(context.Background()).Count(count).Start(start).PageCursor(pageCursor).StoreId(storeId).FindValue(findValue).FindWhere(findWhere).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).ResponseFields(responseFields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TaxAPI.TaxClassList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +142,7 @@ Other parameters are passed through a pointer to a apiTaxClassListRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **storeId** | **string** | Store Id | 
  **findValue** | **string** | Entity search that is specified by some value | 

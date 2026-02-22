@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## CustomerAttributeList
 
-> ModelResponseCustomerAttributeList CustomerAttributeList(ctx).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseCustomerAttributeList CustomerAttributeList(ctx).CustomerId(customerId).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 customer.attribute.list
 
@@ -173,6 +173,7 @@ import (
 
 func main() {
 	customerId := "5" // string | Retrieves orders specified by customer id
+	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	storeId := "1" // string | Store Id (optional)
@@ -183,7 +184,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CustomerAPI.CustomerAttributeList(context.Background()).CustomerId(customerId).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.CustomerAPI.CustomerAttributeList(context.Background()).CustomerId(customerId).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).LangId(langId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerAttributeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,6 +206,7 @@ Other parameters are passed through a pointer to a apiCustomerAttributeListReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerId** | **string** | Retrieves orders specified by customer id | 
+ **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **storeId** | **string** | Store Id | 

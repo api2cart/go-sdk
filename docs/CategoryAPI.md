@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ## CategoryImageAdd
 
-> CategoryImageAdd200Response CategoryImageAdd(ctx).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).IdempotencyKey(idempotencyKey).Execute()
+> CategoryImageAdd200Response CategoryImageAdd(ctx).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).ApplyToTranslations(applyToTranslations).IdempotencyKey(idempotencyKey).Execute()
 
 category.image.add
 
@@ -581,11 +581,12 @@ func main() {
 	label := "This cool image" // string | Defines alternative text that has to be attached to the picture (optional)
 	mime := "image/jpeg" // string | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. (optional)
 	position := int32(5) // int32 | Defines image’s position in the list (optional) (default to 0)
+	applyToTranslations := true // bool | Defines whether to add image to all category translations (optional) (default to true)
 	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryImageAdd(context.Background()).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryImageAdd(context.Background()).CategoryId(categoryId).ImageName(imageName).Url(url).Type_(type_).StoreId(storeId).Label(label).Mime(mime).Position(position).ApplyToTranslations(applyToTranslations).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryImageAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -614,6 +615,7 @@ Name | Type | Description  | Notes
  **label** | **string** | Defines alternative text that has to be attached to the picture | 
  **mime** | **string** | Mime type of image http://en.wikipedia.org/wiki/Internet_media_type. | 
  **position** | **int32** | Defines image’s position in the list | [default to 0]
+ **applyToTranslations** | **bool** | Defines whether to add image to all category translations | [default to true]
  **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
@@ -636,7 +638,7 @@ Name | Type | Description  | Notes
 
 ## CategoryImageDelete
 
-> AttributeDelete200Response CategoryImageDelete(ctx).CategoryId(categoryId).ImageId(imageId).StoreId(storeId).Execute()
+> AttributeDelete200Response CategoryImageDelete(ctx).CategoryId(categoryId).ImageId(imageId).StoreId(storeId).ApplyToTranslations(applyToTranslations).Execute()
 
 category.image.delete
 
@@ -658,10 +660,11 @@ func main() {
 	categoryId := "6" // string | Defines category id where the image should be deleted
 	imageId := "82950b84f468edff480680f99cedbe0d" // string | Define image id
 	storeId := "1" // string | Store Id (optional)
+	applyToTranslations := false // bool | Defines whether to delete image from all category translations (optional) (default to true)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CategoryAPI.CategoryImageDelete(context.Background()).CategoryId(categoryId).ImageId(imageId).StoreId(storeId).Execute()
+	resp, r, err := apiClient.CategoryAPI.CategoryImageDelete(context.Background()).CategoryId(categoryId).ImageId(imageId).StoreId(storeId).ApplyToTranslations(applyToTranslations).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryImageDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -685,6 +688,7 @@ Name | Type | Description  | Notes
  **categoryId** | **string** | Defines category id where the image should be deleted | 
  **imageId** | **string** | Define image id | 
  **storeId** | **string** | Store Id | 
+ **applyToTranslations** | **bool** | Defines whether to delete image from all category translations | [default to true]
 
 ### Return type
 

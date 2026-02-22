@@ -218,6 +218,7 @@ type ApiTaxClassListRequest struct {
 	ctx context.Context
 	ApiService *TaxAPIService
 	count *int32
+	start *int32
 	pageCursor *string
 	storeId *string
 	findValue *string
@@ -232,6 +233,12 @@ type ApiTaxClassListRequest struct {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiTaxClassListRequest) Count(count int32) ApiTaxClassListRequest {
 	r.count = &count
+	return r
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiTaxClassListRequest) Start(start int32) ApiTaxClassListRequest {
+	r.start = &start
 	return r
 }
 
@@ -334,6 +341,12 @@ func (a *TaxAPIService) TaxClassListExecute(r ApiTaxClassListRequest) (*ModelRes
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.start = &defaultValue
 	}
 	if r.pageCursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")

@@ -50,6 +50,8 @@ type CustomerUpdate struct {
 	Note *string `json:"note,omitempty"`
 	// Defines customer's status
 	Status *string `json:"status,omitempty"`
+	// Defines customer's unique password
+	Password *string `json:"password,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
@@ -554,6 +556,38 @@ func (o *CustomerUpdate) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CustomerUpdate) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetStoreId returns the StoreId field value if set, zero value otherwise.
 func (o *CustomerUpdate) GetStoreId() string {
 	if o == nil || IsNil(o.StoreId) {
@@ -704,6 +738,9 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId

@@ -1368,6 +1368,7 @@ type ApiCategoryImageAddRequest struct {
 	label *string
 	mime *string
 	position *int32
+	applyToTranslations *bool
 	idempotencyKey *string
 }
 
@@ -1416,6 +1417,12 @@ func (r ApiCategoryImageAddRequest) Mime(mime string) ApiCategoryImageAddRequest
 // Defines image’s position in the list
 func (r ApiCategoryImageAddRequest) Position(position int32) ApiCategoryImageAddRequest {
 	r.position = &position
+	return r
+}
+
+// Defines whether to add image to all category translations
+func (r ApiCategoryImageAddRequest) ApplyToTranslations(applyToTranslations bool) ApiCategoryImageAddRequest {
+	r.applyToTranslations = &applyToTranslations
 	return r
 }
 
@@ -1495,6 +1502,12 @@ func (a *CategoryAPIService) CategoryImageAddExecute(r ApiCategoryImageAddReques
 	} else {
 		var defaultValue int32 = 0
 		r.position = &defaultValue
+	}
+	if r.applyToTranslations != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "apply_to_translations", r.applyToTranslations, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.applyToTranslations = &defaultValue
 	}
 	if r.idempotencyKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
@@ -1587,6 +1600,7 @@ type ApiCategoryImageDeleteRequest struct {
 	categoryId *string
 	imageId *string
 	storeId *string
+	applyToTranslations *bool
 }
 
 // Defines category id where the image should be deleted
@@ -1604,6 +1618,12 @@ func (r ApiCategoryImageDeleteRequest) ImageId(imageId string) ApiCategoryImageD
 // Store Id
 func (r ApiCategoryImageDeleteRequest) StoreId(storeId string) ApiCategoryImageDeleteRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Defines whether to delete image from all category translations
+func (r ApiCategoryImageDeleteRequest) ApplyToTranslations(applyToTranslations bool) ApiCategoryImageDeleteRequest {
+	r.applyToTranslations = &applyToTranslations
 	return r
 }
 
@@ -1657,6 +1677,12 @@ func (a *CategoryAPIService) CategoryImageDeleteExecute(r ApiCategoryImageDelete
 	parameterAddToHeaderOrQuery(localVarQueryParams, "image_id", r.imageId, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.applyToTranslations != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "apply_to_translations", r.applyToTranslations, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.applyToTranslations = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

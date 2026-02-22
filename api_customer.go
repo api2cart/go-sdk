@@ -303,6 +303,7 @@ type ApiCustomerAttributeListRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerId *string
+	start *int32
 	count *int32
 	pageCursor *string
 	storeId *string
@@ -315,6 +316,12 @@ type ApiCustomerAttributeListRequest struct {
 // Retrieves orders specified by customer id
 func (r ApiCustomerAttributeListRequest) CustomerId(customerId string) ApiCustomerAttributeListRequest {
 	r.customerId = &customerId
+	return r
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiCustomerAttributeListRequest) Start(start int32) ApiCustomerAttributeListRequest {
+	r.start = &start
 	return r
 }
 
@@ -403,6 +410,12 @@ func (a *CustomerAPIService) CustomerAttributeListExecute(r ApiCustomerAttribute
 		return localVarReturnValue, nil, reportError("customerId is required and must be specified")
 	}
 
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.start = &defaultValue
+	}
 	if r.count != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
 	} else {
