@@ -199,6 +199,8 @@ type ProductUpdate struct {
 	// Add Shop Section Id
 	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
 	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
+	// Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with <strong>personalization_details</strong>.
+	PersonalizationQuestions []ProductAddPersonalizationQuestionsInner `json:"personalization_questions,omitempty"`
 	// External product link
 	ExternalProductLink *string `json:"external_product_link,omitempty"`
 	// String containing the JSON representation of the supplied data
@@ -3190,6 +3192,38 @@ func (o *ProductUpdate) SetPersonalizationDetails(v ProductAddPersonalizationDet
 	o.PersonalizationDetails = &v
 }
 
+// GetPersonalizationQuestions returns the PersonalizationQuestions field value if set, zero value otherwise.
+func (o *ProductUpdate) GetPersonalizationQuestions() []ProductAddPersonalizationQuestionsInner {
+	if o == nil || IsNil(o.PersonalizationQuestions) {
+		var ret []ProductAddPersonalizationQuestionsInner
+		return ret
+	}
+	return o.PersonalizationQuestions
+}
+
+// GetPersonalizationQuestionsOk returns a tuple with the PersonalizationQuestions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetPersonalizationQuestionsOk() ([]ProductAddPersonalizationQuestionsInner, bool) {
+	if o == nil || IsNil(o.PersonalizationQuestions) {
+		return nil, false
+	}
+	return o.PersonalizationQuestions, true
+}
+
+// HasPersonalizationQuestions returns a boolean if a field has been set.
+func (o *ProductUpdate) HasPersonalizationQuestions() bool {
+	if o != nil && !IsNil(o.PersonalizationQuestions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalizationQuestions gets a reference to the given []ProductAddPersonalizationQuestionsInner and assigns it to the PersonalizationQuestions field.
+func (o *ProductUpdate) SetPersonalizationQuestions(v []ProductAddPersonalizationQuestionsInner) {
+	o.PersonalizationQuestions = v
+}
+
 // GetExternalProductLink returns the ExternalProductLink field value if set, zero value otherwise.
 func (o *ProductUpdate) GetExternalProductLink() string {
 	if o == nil || IsNil(o.ExternalProductLink) {
@@ -3600,6 +3634,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PersonalizationDetails) {
 		toSerialize["personalization_details"] = o.PersonalizationDetails
+	}
+	if !IsNil(o.PersonalizationQuestions) {
+		toSerialize["personalization_questions"] = o.PersonalizationQuestions
 	}
 	if !IsNil(o.ExternalProductLink) {
 		toSerialize["external_product_link"] = o.ExternalProductLink

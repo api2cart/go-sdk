@@ -20,7 +20,7 @@ import (
 // checks if the ProductAddPersonalizationDetails type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProductAddPersonalizationDetails{}
 
-// ProductAddPersonalizationDetails Defines personalization settings for the listing. To enable personalization, is_personalizable must be set to true. When enabled, additional fields may be used to configure the personalization experience, including whether it is required (personalization_is_required), the maximum character limit (personalization_char_count_max), and buyer instructions (personalization_instructions). All related fields are only applicable if personalization is enabled.
+// ProductAddPersonalizationDetails <strong>Deprecated.</strong> Use <strong>personalization_questions</strong> instead for setting personalization questions. Defines legacy personalization settings for the listing. To enable personalization, is_personalizable must be set to true. When enabled, additional fields may be used to configure the personalization experience, including whether it is required (personalization_is_required), the maximum character limit (personalization_char_count_max), and buyer instructions (personalization_instructions). All related fields are only applicable if personalization is enabled.
 type ProductAddPersonalizationDetails struct {
 	IsPersonalizable bool `json:"is_personalizable"`
 	PersonalizationIsRequired *bool `json:"personalization_is_required,omitempty"`

@@ -126,6 +126,7 @@ Name | Type | Description | Notes
 **ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
 **ReturnPolicyId** | Pointer to **int32** | Add Return Policy Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
+**PersonalizationQuestions** | Pointer to [**[]ProductAddPersonalizationQuestionsInner**](ProductAddPersonalizationQuestionsInner.md) | Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with &lt;strong&gt;personalization_details&lt;/strong&gt;. | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
@@ -3176,6 +3177,31 @@ SetPersonalizationDetails sets PersonalizationDetails field to given value.
 `func (o *ProductAdd) HasPersonalizationDetails() bool`
 
 HasPersonalizationDetails returns a boolean if a field has been set.
+
+### GetPersonalizationQuestions
+
+`func (o *ProductAdd) GetPersonalizationQuestions() []ProductAddPersonalizationQuestionsInner`
+
+GetPersonalizationQuestions returns the PersonalizationQuestions field if non-nil, zero value otherwise.
+
+### GetPersonalizationQuestionsOk
+
+`func (o *ProductAdd) GetPersonalizationQuestionsOk() (*[]ProductAddPersonalizationQuestionsInner, bool)`
+
+GetPersonalizationQuestionsOk returns a tuple with the PersonalizationQuestions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalizationQuestions
+
+`func (o *ProductAdd) SetPersonalizationQuestions(v []ProductAddPersonalizationQuestionsInner)`
+
+SetPersonalizationQuestions sets PersonalizationQuestions field to given value.
+
+### HasPersonalizationQuestions
+
+`func (o *ProductAdd) HasPersonalizationQuestions() bool`
+
+HasPersonalizationQuestions returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

@@ -259,6 +259,8 @@ type ProductAdd struct {
 	// Add Return Policy Id
 	ReturnPolicyId *int32 `json:"return_policy_id,omitempty"`
 	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
+	// Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with <strong>personalization_details</strong>.
+	PersonalizationQuestions []ProductAddPersonalizationQuestionsInner `json:"personalization_questions,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -4230,6 +4232,38 @@ func (o *ProductAdd) SetPersonalizationDetails(v ProductAddPersonalizationDetail
 	o.PersonalizationDetails = &v
 }
 
+// GetPersonalizationQuestions returns the PersonalizationQuestions field value if set, zero value otherwise.
+func (o *ProductAdd) GetPersonalizationQuestions() []ProductAddPersonalizationQuestionsInner {
+	if o == nil || IsNil(o.PersonalizationQuestions) {
+		var ret []ProductAddPersonalizationQuestionsInner
+		return ret
+	}
+	return o.PersonalizationQuestions
+}
+
+// GetPersonalizationQuestionsOk returns a tuple with the PersonalizationQuestions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetPersonalizationQuestionsOk() ([]ProductAddPersonalizationQuestionsInner, bool) {
+	if o == nil || IsNil(o.PersonalizationQuestions) {
+		return nil, false
+	}
+	return o.PersonalizationQuestions, true
+}
+
+// HasPersonalizationQuestions returns a boolean if a field has been set.
+func (o *ProductAdd) HasPersonalizationQuestions() bool {
+	if o != nil && !IsNil(o.PersonalizationQuestions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalizationQuestions gets a reference to the given []ProductAddPersonalizationQuestionsInner and assigns it to the PersonalizationQuestions field.
+func (o *ProductAdd) SetPersonalizationQuestions(v []ProductAddPersonalizationQuestionsInner) {
+	o.PersonalizationQuestions = v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *ProductAdd) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -4629,6 +4663,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PersonalizationDetails) {
 		toSerialize["personalization_details"] = o.PersonalizationDetails
+	}
+	if !IsNil(o.PersonalizationQuestions) {
+		toSerialize["personalization_questions"] = o.PersonalizationQuestions
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
