@@ -21,6 +21,7 @@ var _ MappedNullable = &Plugin{}
 // Plugin struct for Plugin
 type Plugin struct {
 	Name *string `json:"name,omitempty"`
+	Code NullableString `json:"code,omitempty"`
 	Active NullableBool `json:"active,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
@@ -73,6 +74,48 @@ func (o *Plugin) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Plugin) SetName(v string) {
 	o.Name = &v
+}
+
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Plugin) GetCode() string {
+	if o == nil || IsNil(o.Code.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Code.Get()
+}
+
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Plugin) GetCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Code.Get(), o.Code.IsSet()
+}
+
+// HasCode returns a boolean if a field has been set.
+func (o *Plugin) HasCode() bool {
+	if o != nil && o.Code.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given NullableString and assigns it to the Code field.
+func (o *Plugin) SetCode(v string) {
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *Plugin) SetCodeNil() {
+	o.Code.Set(nil)
+}
+
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *Plugin) UnsetCode() {
+	o.Code.Unset()
 }
 
 // GetActive returns the Active field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -195,6 +238,9 @@ func (o Plugin) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
 	}
 	if o.Active.IsSet() {
 		toSerialize["active"] = o.Active.Get()

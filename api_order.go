@@ -602,6 +602,7 @@ type ApiOrderCountRequest struct {
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
+	useLatestApiVersion *bool
 }
 
 // Counts orders specified by order ids
@@ -724,6 +725,12 @@ func (r ApiOrderCountRequest) ModifiedTo(modifiedTo string) ApiOrderCountRequest
 	return r
 }
 
+// Use the latest platform API version
+func (r ApiOrderCountRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiOrderCountRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
+	return r
+}
+
 func (r ApiOrderCountRequest) Execute() (*OrderCount200Response, *http.Response, error) {
 	return r.ApiService.OrderCountExecute(r)
 }
@@ -839,6 +846,12 @@ func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

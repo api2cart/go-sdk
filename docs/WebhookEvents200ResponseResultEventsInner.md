@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **WebhookName** | Pointer to **string** |  | [optional] 
 **Entity** | Pointer to **string** |  | [optional] 
 **Action** | Pointer to **string** |  | [optional] 
+**FilterableFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetAction sets Action field to given value.
 `func (o *WebhookEvents200ResponseResultEventsInner) HasAction() bool`
 
 HasAction returns a boolean if a field has been set.
+
+### GetFilterableFields
+
+`func (o *WebhookEvents200ResponseResultEventsInner) GetFilterableFields() map[string]interface{}`
+
+GetFilterableFields returns the FilterableFields field if non-nil, zero value otherwise.
+
+### GetFilterableFieldsOk
+
+`func (o *WebhookEvents200ResponseResultEventsInner) GetFilterableFieldsOk() (*map[string]interface{}, bool)`
+
+GetFilterableFieldsOk returns a tuple with the FilterableFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilterableFields
+
+`func (o *WebhookEvents200ResponseResultEventsInner) SetFilterableFields(v map[string]interface{})`
+
+SetFilterableFields sets FilterableFields field to given value.
+
+### HasFilterableFields
+
+`func (o *WebhookEvents200ResponseResultEventsInner) HasFilterableFields() bool`
+
+HasFilterableFields returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

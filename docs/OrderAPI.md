@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## OrderCount
 
-> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
+> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 order.count
 
@@ -295,10 +295,11 @@ func main() {
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -339,6 +340,7 @@ Name | Type | Description  | Notes
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 

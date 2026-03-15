@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## WebhookCreate
 
-> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
+> BasketLiveShippingServiceCreate200Response WebhookCreate(ctx).WebhookCreate(webhookCreate).Execute()
 
 webhook.create
 
@@ -104,20 +104,11 @@ import (
 )
 
 func main() {
-	entity := "product" // string | Specify the entity that you want to enable webhooks for (e.g product, order, customer, category)
-	action := "add" // string | Specify what action (event) will trigger the webhook (e.g add, delete, or update)
-	callback := "https://example.com/callback" // string | Callback url that returns shipping rates. It should be able to accept POST requests with json data. (optional)
-	label := "Super webhook" // string | The name you give to the webhook (optional)
-	fields := "id, name, description" // string | Fields the webhook should send (optional) (default to "force_all")
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	active := true // bool | Webhook status (optional) (default to true)
-	langId := "3" // string | Language id (optional)
-	storeId := "1" // string | Defines store id where the webhook should be assigned (optional)
-	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
+	webhookCreate := *openapiclient.NewWebhookCreate("product", "add") // WebhookCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).Entity(entity).Action(action).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookCreate(context.Background()).WebhookCreate(webhookCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -138,16 +129,7 @@ Other parameters are passed through a pointer to a apiWebhookCreateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity** | **string** | Specify the entity that you want to enable webhooks for (e.g product, order, customer, category) | 
- **action** | **string** | Specify what action (event) will trigger the webhook (e.g add, delete, or update) | 
- **callback** | **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | 
- **label** | **string** | The name you give to the webhook | 
- **fields** | **string** | Fields the webhook should send | [default to &quot;force_all&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **active** | **bool** | Webhook status | [default to true]
- **langId** | **string** | Language id | 
- **storeId** | **string** | Defines store id where the webhook should be assigned | 
- **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
+ **webhookCreate** | [**WebhookCreate**](WebhookCreate.md) |  | 
 
 ### Return type
 
@@ -159,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -374,7 +356,7 @@ Name | Type | Description  | Notes
 
 ## WebhookUpdate
 
-> ProductImageUpdate200Response WebhookUpdate(ctx).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
+> ProductImageUpdate200Response WebhookUpdate(ctx).WebhookUpdate(webhookUpdate).Execute()
 
 webhook.update
 
@@ -393,18 +375,11 @@ import (
 )
 
 func main() {
-	id := "25" // string | Webhook id
-	callback := "https://example.com/callback" // string | Callback url that returns shipping rates. It should be able to accept POST requests with json data. (optional)
-	label := "Super webhook" // string | The name you give to the webhook (optional)
-	fields := "id, name, description" // string | Fields the webhook should send (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	active := true // bool | Webhook status (optional)
-	langId := "3" // string | Language id (optional)
-	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
+	webhookUpdate := *openapiclient.NewWebhookUpdate("25") // WebhookUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).Id(id).Callback(callback).Label(label).Fields(fields).ResponseFields(responseFields).Active(active).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.WebhookAPI.WebhookUpdate(context.Background()).WebhookUpdate(webhookUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -425,14 +400,7 @@ Other parameters are passed through a pointer to a apiWebhookUpdateRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string** | Webhook id | 
- **callback** | **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | 
- **label** | **string** | The name you give to the webhook | 
- **fields** | **string** | Fields the webhook should send | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **active** | **bool** | Webhook status | 
- **langId** | **string** | Language id | 
- **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
+ **webhookUpdate** | [**WebhookUpdate**](WebhookUpdate.md) |  | 
 
 ### Return type
 
@@ -444,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -32,6 +32,7 @@ type Webhook struct {
 	UpdatedAt NullableString `json:"updated_at,omitempty"`
 	Entity NullableString `json:"entity,omitempty"`
 	Action NullableString `json:"action,omitempty"`
+	FilteringConditions map[string]interface{} `json:"filtering_conditions,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 	CustomFields map[string]interface{} `json:"custom_fields,omitempty"`
 }
@@ -557,6 +558,39 @@ func (o *Webhook) UnsetAction() {
 	o.Action.Unset()
 }
 
+// GetFilteringConditions returns the FilteringConditions field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Webhook) GetFilteringConditions() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.FilteringConditions
+}
+
+// GetFilteringConditionsOk returns a tuple with the FilteringConditions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Webhook) GetFilteringConditionsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.FilteringConditions) {
+		return map[string]interface{}{}, false
+	}
+	return o.FilteringConditions, true
+}
+
+// HasFilteringConditions returns a boolean if a field has been set.
+func (o *Webhook) HasFilteringConditions() bool {
+	if o != nil && !IsNil(o.FilteringConditions) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilteringConditions gets a reference to the given map[string]interface{} and assigns it to the FilteringConditions field.
+func (o *Webhook) SetFilteringConditions(v map[string]interface{}) {
+	o.FilteringConditions = v
+}
+
 // GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webhook) GetAdditionalFields() map[string]interface{} {
 	if o == nil {
@@ -668,6 +702,9 @@ func (o Webhook) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Action.IsSet() {
 		toSerialize["action"] = o.Action.Get()
+	}
+	if o.FilteringConditions != nil {
+		toSerialize["filtering_conditions"] = o.FilteringConditions
 	}
 	if o.AdditionalFields != nil {
 		toSerialize["additional_fields"] = o.AdditionalFields

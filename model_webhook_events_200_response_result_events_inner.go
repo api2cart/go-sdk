@@ -23,6 +23,7 @@ type WebhookEvents200ResponseResultEventsInner struct {
 	WebhookName *string `json:"webhook_name,omitempty"`
 	Entity *string `json:"entity,omitempty"`
 	Action *string `json:"action,omitempty"`
+	FilterableFields map[string]interface{} `json:"filterable_fields,omitempty"`
 }
 
 // NewWebhookEvents200ResponseResultEventsInner instantiates a new WebhookEvents200ResponseResultEventsInner object
@@ -138,6 +139,38 @@ func (o *WebhookEvents200ResponseResultEventsInner) SetAction(v string) {
 	o.Action = &v
 }
 
+// GetFilterableFields returns the FilterableFields field value if set, zero value otherwise.
+func (o *WebhookEvents200ResponseResultEventsInner) GetFilterableFields() map[string]interface{} {
+	if o == nil || IsNil(o.FilterableFields) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.FilterableFields
+}
+
+// GetFilterableFieldsOk returns a tuple with the FilterableFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebhookEvents200ResponseResultEventsInner) GetFilterableFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.FilterableFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.FilterableFields, true
+}
+
+// HasFilterableFields returns a boolean if a field has been set.
+func (o *WebhookEvents200ResponseResultEventsInner) HasFilterableFields() bool {
+	if o != nil && !IsNil(o.FilterableFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterableFields gets a reference to the given map[string]interface{} and assigns it to the FilterableFields field.
+func (o *WebhookEvents200ResponseResultEventsInner) SetFilterableFields(v map[string]interface{}) {
+	o.FilterableFields = v
+}
+
 func (o WebhookEvents200ResponseResultEventsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,6 +189,9 @@ func (o WebhookEvents200ResponseResultEventsInner) ToMap() (map[string]interface
 	}
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.FilterableFields) {
+		toSerialize["filterable_fields"] = o.FilterableFields
 	}
 	return toSerialize, nil
 }

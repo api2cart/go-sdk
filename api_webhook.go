@@ -183,75 +183,11 @@ func (a *WebhookAPIService) WebhookCountExecute(r ApiWebhookCountRequest) (*Webh
 type ApiWebhookCreateRequest struct {
 	ctx context.Context
 	ApiService *WebhookAPIService
-	entity *string
-	action *string
-	callback *string
-	label *string
-	fields *string
-	responseFields *string
-	active *bool
-	langId *string
-	storeId *string
-	idempotencyKey *string
+	webhookCreate *WebhookCreate
 }
 
-// Specify the entity that you want to enable webhooks for (e.g product, order, customer, category)
-func (r ApiWebhookCreateRequest) Entity(entity string) ApiWebhookCreateRequest {
-	r.entity = &entity
-	return r
-}
-
-// Specify what action (event) will trigger the webhook (e.g add, delete, or update)
-func (r ApiWebhookCreateRequest) Action(action string) ApiWebhookCreateRequest {
-	r.action = &action
-	return r
-}
-
-// Callback url that returns shipping rates. It should be able to accept POST requests with json data.
-func (r ApiWebhookCreateRequest) Callback(callback string) ApiWebhookCreateRequest {
-	r.callback = &callback
-	return r
-}
-
-// The name you give to the webhook
-func (r ApiWebhookCreateRequest) Label(label string) ApiWebhookCreateRequest {
-	r.label = &label
-	return r
-}
-
-// Fields the webhook should send
-func (r ApiWebhookCreateRequest) Fields(fields string) ApiWebhookCreateRequest {
-	r.fields = &fields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiWebhookCreateRequest) ResponseFields(responseFields string) ApiWebhookCreateRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Webhook status
-func (r ApiWebhookCreateRequest) Active(active bool) ApiWebhookCreateRequest {
-	r.active = &active
-	return r
-}
-
-// Language id
-func (r ApiWebhookCreateRequest) LangId(langId string) ApiWebhookCreateRequest {
-	r.langId = &langId
-	return r
-}
-
-// Defines store id where the webhook should be assigned
-func (r ApiWebhookCreateRequest) StoreId(storeId string) ApiWebhookCreateRequest {
-	r.storeId = &storeId
-	return r
-}
-
-// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
-func (r ApiWebhookCreateRequest) IdempotencyKey(idempotencyKey string) ApiWebhookCreateRequest {
-	r.idempotencyKey = &idempotencyKey
+func (r ApiWebhookCreateRequest) WebhookCreate(webhookCreate WebhookCreate) ApiWebhookCreateRequest {
+	r.webhookCreate = &webhookCreate
 	return r
 }
 
@@ -294,47 +230,12 @@ func (a *WebhookAPIService) WebhookCreateExecute(r ApiWebhookCreateRequest) (*Ba
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.entity == nil {
-		return localVarReturnValue, nil, reportError("entity is required and must be specified")
-	}
-	if r.action == nil {
-		return localVarReturnValue, nil, reportError("action is required and must be specified")
+	if r.webhookCreate == nil {
+		return localVarReturnValue, nil, reportError("webhookCreate is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "entity", r.entity, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "action", r.action, "form", "")
-	if r.callback != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "callback", r.callback, "form", "")
-	}
-	if r.label != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "label", r.label, "form", "")
-	}
-	if r.fields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
-	} else {
-		var defaultValue string = "force_all"
-		r.fields = &defaultValue
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
-	} else {
-		var defaultValue bool = true
-		r.active = &defaultValue
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
-	}
-	if r.storeId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
-	}
-	if r.idempotencyKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -350,6 +251,8 @@ func (a *WebhookAPIService) WebhookCreateExecute(r ApiWebhookCreateRequest) (*Ba
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.webhookCreate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -889,61 +792,11 @@ func (a *WebhookAPIService) WebhookListExecute(r ApiWebhookListRequest) (*Webhoo
 type ApiWebhookUpdateRequest struct {
 	ctx context.Context
 	ApiService *WebhookAPIService
-	id *string
-	callback *string
-	label *string
-	fields *string
-	responseFields *string
-	active *bool
-	langId *string
-	idempotencyKey *string
+	webhookUpdate *WebhookUpdate
 }
 
-// Webhook id
-func (r ApiWebhookUpdateRequest) Id(id string) ApiWebhookUpdateRequest {
-	r.id = &id
-	return r
-}
-
-// Callback url that returns shipping rates. It should be able to accept POST requests with json data.
-func (r ApiWebhookUpdateRequest) Callback(callback string) ApiWebhookUpdateRequest {
-	r.callback = &callback
-	return r
-}
-
-// The name you give to the webhook
-func (r ApiWebhookUpdateRequest) Label(label string) ApiWebhookUpdateRequest {
-	r.label = &label
-	return r
-}
-
-// Fields the webhook should send
-func (r ApiWebhookUpdateRequest) Fields(fields string) ApiWebhookUpdateRequest {
-	r.fields = &fields
-	return r
-}
-
-// Set this parameter in order to choose which entity fields you want to retrieve
-func (r ApiWebhookUpdateRequest) ResponseFields(responseFields string) ApiWebhookUpdateRequest {
-	r.responseFields = &responseFields
-	return r
-}
-
-// Webhook status
-func (r ApiWebhookUpdateRequest) Active(active bool) ApiWebhookUpdateRequest {
-	r.active = &active
-	return r
-}
-
-// Language id
-func (r ApiWebhookUpdateRequest) LangId(langId string) ApiWebhookUpdateRequest {
-	r.langId = &langId
-	return r
-}
-
-// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
-func (r ApiWebhookUpdateRequest) IdempotencyKey(idempotencyKey string) ApiWebhookUpdateRequest {
-	r.idempotencyKey = &idempotencyKey
+func (r ApiWebhookUpdateRequest) WebhookUpdate(webhookUpdate WebhookUpdate) ApiWebhookUpdateRequest {
+	r.webhookUpdate = &webhookUpdate
 	return r
 }
 
@@ -986,34 +839,12 @@ func (a *WebhookAPIService) WebhookUpdateExecute(r ApiWebhookUpdateRequest) (*Pr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.id == nil {
-		return localVarReturnValue, nil, reportError("id is required and must be specified")
+	if r.webhookUpdate == nil {
+		return localVarReturnValue, nil, reportError("webhookUpdate is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	if r.callback != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "callback", r.callback, "form", "")
-	}
-	if r.label != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "label", r.label, "form", "")
-	}
-	if r.fields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "fields", r.fields, "form", "")
-	}
-	if r.responseFields != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
-	}
-	if r.active != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "active", r.active, "form", "")
-	}
-	if r.langId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
-	}
-	if r.idempotencyKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1029,6 +860,8 @@ func (a *WebhookAPIService) WebhookUpdateExecute(r ApiWebhookUpdateRequest) (*Pr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.webhookUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

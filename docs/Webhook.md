@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **NullableString** |  | [optional] 
 **Entity** | Pointer to **NullableString** |  | [optional] 
 **Action** | Pointer to **NullableString** |  | [optional] 
+**FilteringConditions** | Pointer to **map[string]interface{}** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 **CustomFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -458,6 +459,41 @@ HasAction returns a boolean if a field has been set.
 `func (o *Webhook) UnsetAction()`
 
 UnsetAction ensures that no value is present for Action, not even an explicit nil
+### GetFilteringConditions
+
+`func (o *Webhook) GetFilteringConditions() map[string]interface{}`
+
+GetFilteringConditions returns the FilteringConditions field if non-nil, zero value otherwise.
+
+### GetFilteringConditionsOk
+
+`func (o *Webhook) GetFilteringConditionsOk() (*map[string]interface{}, bool)`
+
+GetFilteringConditionsOk returns a tuple with the FilteringConditions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilteringConditions
+
+`func (o *Webhook) SetFilteringConditions(v map[string]interface{})`
+
+SetFilteringConditions sets FilteringConditions field to given value.
+
+### HasFilteringConditions
+
+`func (o *Webhook) HasFilteringConditions() bool`
+
+HasFilteringConditions returns a boolean if a field has been set.
+
+### SetFilteringConditionsNil
+
+`func (o *Webhook) SetFilteringConditionsNil(b bool)`
+
+ SetFilteringConditionsNil sets the value for FilteringConditions to be an explicit nil
+
+### UnsetFilteringConditions
+`func (o *Webhook) UnsetFilteringConditions()`
+
+UnsetFilteringConditions ensures that no value is present for FilteringConditions, not even an explicit nil
 ### GetAdditionalFields
 
 `func (o *Webhook) GetAdditionalFields() map[string]interface{}`
