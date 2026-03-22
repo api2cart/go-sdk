@@ -50,6 +50,7 @@ Name | Type | Description | Notes
 **BricklinkConsumerSecret** | Pointer to **string** | Bricklink Consumer Secret | [optional] 
 **BricklinkToken** | Pointer to **string** | Bricklink Access Token | [optional] 
 **BricklinkTokenSecret** | Pointer to **string** | Bricklink Access Token Secret | [optional] 
+**NopcommerceToken** | Pointer to **string** | Access token authorizing the app to access resources on behalf of a user | [optional] 
 **DemandwareClientId** | Pointer to **string** | Demandware client id | [optional] 
 **DemandwareApiPassword** | Pointer to **string** | Demandware api password | [optional] 
 **DemandwareUserName** | Pointer to **string** | Demandware user name | [optional] 
@@ -1351,6 +1352,31 @@ SetBricklinkTokenSecret sets BricklinkTokenSecret field to given value.
 `func (o *AccountCartAdd) HasBricklinkTokenSecret() bool`
 
 HasBricklinkTokenSecret returns a boolean if a field has been set.
+
+### GetNopcommerceToken
+
+`func (o *AccountCartAdd) GetNopcommerceToken() string`
+
+GetNopcommerceToken returns the NopcommerceToken field if non-nil, zero value otherwise.
+
+### GetNopcommerceTokenOk
+
+`func (o *AccountCartAdd) GetNopcommerceTokenOk() (*string, bool)`
+
+GetNopcommerceTokenOk returns a tuple with the NopcommerceToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNopcommerceToken
+
+`func (o *AccountCartAdd) SetNopcommerceToken(v string)`
+
+SetNopcommerceToken sets NopcommerceToken field to given value.
+
+### HasNopcommerceToken
+
+`func (o *AccountCartAdd) HasNopcommerceToken() bool`
+
+HasNopcommerceToken returns a boolean if a field has been set.
 
 ### GetDemandwareClientId
 

@@ -207,6 +207,10 @@ type ProductUpdate struct {
 	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
 	// The minimum quantity an order must contain, to be eligible to purchase this product.
 	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
+	// A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method.
+	ManufacturerIds *string `json:"manufacturer_ids,omitempty"`
+	// A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method.
+	ResponsiblePersonIds *string `json:"responsible_person_ids,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -3320,6 +3324,70 @@ func (o *ProductUpdate) SetMinOrderQuantity(v float32) {
 	o.MinOrderQuantity = &v
 }
 
+// GetManufacturerIds returns the ManufacturerIds field value if set, zero value otherwise.
+func (o *ProductUpdate) GetManufacturerIds() string {
+	if o == nil || IsNil(o.ManufacturerIds) {
+		var ret string
+		return ret
+	}
+	return *o.ManufacturerIds
+}
+
+// GetManufacturerIdsOk returns a tuple with the ManufacturerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetManufacturerIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.ManufacturerIds) {
+		return nil, false
+	}
+	return o.ManufacturerIds, true
+}
+
+// HasManufacturerIds returns a boolean if a field has been set.
+func (o *ProductUpdate) HasManufacturerIds() bool {
+	if o != nil && !IsNil(o.ManufacturerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturerIds gets a reference to the given string and assigns it to the ManufacturerIds field.
+func (o *ProductUpdate) SetManufacturerIds(v string) {
+	o.ManufacturerIds = &v
+}
+
+// GetResponsiblePersonIds returns the ResponsiblePersonIds field value if set, zero value otherwise.
+func (o *ProductUpdate) GetResponsiblePersonIds() string {
+	if o == nil || IsNil(o.ResponsiblePersonIds) {
+		var ret string
+		return ret
+	}
+	return *o.ResponsiblePersonIds
+}
+
+// GetResponsiblePersonIdsOk returns a tuple with the ResponsiblePersonIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetResponsiblePersonIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.ResponsiblePersonIds) {
+		return nil, false
+	}
+	return o.ResponsiblePersonIds, true
+}
+
+// HasResponsiblePersonIds returns a boolean if a field has been set.
+func (o *ProductUpdate) HasResponsiblePersonIds() bool {
+	if o != nil && !IsNil(o.ResponsiblePersonIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponsiblePersonIds gets a reference to the given string and assigns it to the ResponsiblePersonIds field.
+func (o *ProductUpdate) SetResponsiblePersonIds(v string) {
+	o.ResponsiblePersonIds = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *ProductUpdate) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -3646,6 +3714,12 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MinOrderQuantity) {
 		toSerialize["min_order_quantity"] = o.MinOrderQuantity
+	}
+	if !IsNil(o.ManufacturerIds) {
+		toSerialize["manufacturer_ids"] = o.ManufacturerIds
+	}
+	if !IsNil(o.ResponsiblePersonIds) {
+		toSerialize["responsible_person_ids"] = o.ResponsiblePersonIds
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey

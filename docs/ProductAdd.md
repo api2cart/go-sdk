@@ -127,6 +127,8 @@ Name | Type | Description | Notes
 **ReturnPolicyId** | Pointer to **int32** | Add Return Policy Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
 **PersonalizationQuestions** | Pointer to [**[]ProductAddPersonalizationQuestionsInner**](ProductAddPersonalizationQuestionsInner.md) | Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with &lt;strong&gt;personalization_details&lt;/strong&gt;. | [optional] 
+**ManufacturerIds** | Pointer to **string** | A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method. | [optional] 
+**ResponsiblePersonIds** | Pointer to **string** | A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method. | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
@@ -3202,6 +3204,56 @@ SetPersonalizationQuestions sets PersonalizationQuestions field to given value.
 `func (o *ProductAdd) HasPersonalizationQuestions() bool`
 
 HasPersonalizationQuestions returns a boolean if a field has been set.
+
+### GetManufacturerIds
+
+`func (o *ProductAdd) GetManufacturerIds() string`
+
+GetManufacturerIds returns the ManufacturerIds field if non-nil, zero value otherwise.
+
+### GetManufacturerIdsOk
+
+`func (o *ProductAdd) GetManufacturerIdsOk() (*string, bool)`
+
+GetManufacturerIdsOk returns a tuple with the ManufacturerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManufacturerIds
+
+`func (o *ProductAdd) SetManufacturerIds(v string)`
+
+SetManufacturerIds sets ManufacturerIds field to given value.
+
+### HasManufacturerIds
+
+`func (o *ProductAdd) HasManufacturerIds() bool`
+
+HasManufacturerIds returns a boolean if a field has been set.
+
+### GetResponsiblePersonIds
+
+`func (o *ProductAdd) GetResponsiblePersonIds() string`
+
+GetResponsiblePersonIds returns the ResponsiblePersonIds field if non-nil, zero value otherwise.
+
+### GetResponsiblePersonIdsOk
+
+`func (o *ProductAdd) GetResponsiblePersonIdsOk() (*string, bool)`
+
+GetResponsiblePersonIdsOk returns a tuple with the ResponsiblePersonIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponsiblePersonIds
+
+`func (o *ProductAdd) SetResponsiblePersonIds(v string)`
+
+SetResponsiblePersonIds sets ResponsiblePersonIds field to given value.
+
+### HasResponsiblePersonIds
+
+`func (o *ProductAdd) HasResponsiblePersonIds() bool`
+
+HasResponsiblePersonIds returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

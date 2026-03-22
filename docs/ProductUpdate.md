@@ -99,6 +99,8 @@ Name | Type | Description | Notes
 **ExternalProductLink** | Pointer to **string** | External product link | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
 **MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
+**ManufacturerIds** | Pointer to **string** | A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method. | [optional] 
+**ResponsiblePersonIds** | Pointer to **string** | A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method. | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
@@ -2494,6 +2496,56 @@ SetMinOrderQuantity sets MinOrderQuantity field to given value.
 `func (o *ProductUpdate) HasMinOrderQuantity() bool`
 
 HasMinOrderQuantity returns a boolean if a field has been set.
+
+### GetManufacturerIds
+
+`func (o *ProductUpdate) GetManufacturerIds() string`
+
+GetManufacturerIds returns the ManufacturerIds field if non-nil, zero value otherwise.
+
+### GetManufacturerIdsOk
+
+`func (o *ProductUpdate) GetManufacturerIdsOk() (*string, bool)`
+
+GetManufacturerIdsOk returns a tuple with the ManufacturerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManufacturerIds
+
+`func (o *ProductUpdate) SetManufacturerIds(v string)`
+
+SetManufacturerIds sets ManufacturerIds field to given value.
+
+### HasManufacturerIds
+
+`func (o *ProductUpdate) HasManufacturerIds() bool`
+
+HasManufacturerIds returns a boolean if a field has been set.
+
+### GetResponsiblePersonIds
+
+`func (o *ProductUpdate) GetResponsiblePersonIds() string`
+
+GetResponsiblePersonIds returns the ResponsiblePersonIds field if non-nil, zero value otherwise.
+
+### GetResponsiblePersonIdsOk
+
+`func (o *ProductUpdate) GetResponsiblePersonIdsOk() (*string, bool)`
+
+GetResponsiblePersonIdsOk returns a tuple with the ResponsiblePersonIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResponsiblePersonIds
+
+`func (o *ProductUpdate) SetResponsiblePersonIds(v string)`
+
+SetResponsiblePersonIds sets ResponsiblePersonIds field to given value.
+
+### HasResponsiblePersonIds
+
+`func (o *ProductUpdate) HasResponsiblePersonIds() bool`
+
+HasResponsiblePersonIds returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

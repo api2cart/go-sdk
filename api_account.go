@@ -427,6 +427,7 @@ type ApiAccountConfigUpdateRequest struct {
 	bricklinkConsumerSecret *string
 	bricklinkToken *string
 	bricklinkTokenSecret *string
+	nopcommerceToken *string
 	volusionLogin *string
 	volusionPassword *string
 	walmartClientId *string
@@ -1052,6 +1053,12 @@ func (r ApiAccountConfigUpdateRequest) BricklinkToken(bricklinkToken string) Api
 // Bricklink Access Token Secret
 func (r ApiAccountConfigUpdateRequest) BricklinkTokenSecret(bricklinkTokenSecret string) ApiAccountConfigUpdateRequest {
 	r.bricklinkTokenSecret = &bricklinkTokenSecret
+	return r
+}
+
+// Access token authorizing the app to access resources on behalf of a user
+func (r ApiAccountConfigUpdateRequest) NopcommerceToken(nopcommerceToken string) ApiAccountConfigUpdateRequest {
+	r.nopcommerceToken = &nopcommerceToken
 	return r
 }
 
@@ -1886,6 +1893,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.bricklinkTokenSecret != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bricklink_token_secret", r.bricklinkTokenSecret, "form", "")
+	}
+	if r.nopcommerceToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "nopcommerce_token", r.nopcommerceToken, "form", "")
 	}
 	if r.volusionLogin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "volusion_login", r.volusionLogin, "form", "")

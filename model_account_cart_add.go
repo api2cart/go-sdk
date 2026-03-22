@@ -114,6 +114,8 @@ type AccountCartAdd struct {
 	BricklinkToken *string `json:"bricklink_token,omitempty"`
 	// Bricklink Access Token Secret
 	BricklinkTokenSecret *string `json:"bricklink_token_secret,omitempty"`
+	// Access token authorizing the app to access resources on behalf of a user
+	NopcommerceToken *string `json:"nopcommerce_token,omitempty"`
 	// Demandware client id
 	DemandwareClientId *string `json:"demandware_client_id,omitempty"`
 	// Demandware api password
@@ -1912,6 +1914,38 @@ func (o *AccountCartAdd) HasBricklinkTokenSecret() bool {
 // SetBricklinkTokenSecret gets a reference to the given string and assigns it to the BricklinkTokenSecret field.
 func (o *AccountCartAdd) SetBricklinkTokenSecret(v string) {
 	o.BricklinkTokenSecret = &v
+}
+
+// GetNopcommerceToken returns the NopcommerceToken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetNopcommerceToken() string {
+	if o == nil || IsNil(o.NopcommerceToken) {
+		var ret string
+		return ret
+	}
+	return *o.NopcommerceToken
+}
+
+// GetNopcommerceTokenOk returns a tuple with the NopcommerceToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetNopcommerceTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.NopcommerceToken) {
+		return nil, false
+	}
+	return o.NopcommerceToken, true
+}
+
+// HasNopcommerceToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasNopcommerceToken() bool {
+	if o != nil && !IsNil(o.NopcommerceToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetNopcommerceToken gets a reference to the given string and assigns it to the NopcommerceToken field.
+func (o *AccountCartAdd) SetNopcommerceToken(v string) {
+	o.NopcommerceToken = &v
 }
 
 // GetDemandwareClientId returns the DemandwareClientId field value if set, zero value otherwise.
@@ -6443,6 +6477,9 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BricklinkTokenSecret) {
 		toSerialize["bricklink_token_secret"] = o.BricklinkTokenSecret
+	}
+	if !IsNil(o.NopcommerceToken) {
+		toSerialize["nopcommerce_token"] = o.NopcommerceToken
 	}
 	if !IsNil(o.DemandwareClientId) {
 		toSerialize["demandware_client_id"] = o.DemandwareClientId

@@ -261,6 +261,10 @@ type ProductAdd struct {
 	PersonalizationDetails *ProductAddPersonalizationDetails `json:"personalization_details,omitempty"`
 	// Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with <strong>personalization_details</strong>.
 	PersonalizationQuestions []ProductAddPersonalizationQuestionsInner `json:"personalization_questions,omitempty"`
+	// A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method.
+	ManufacturerIds *string `json:"manufacturer_ids,omitempty"`
+	// A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method.
+	ResponsiblePersonIds *string `json:"responsible_person_ids,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -4264,6 +4268,70 @@ func (o *ProductAdd) SetPersonalizationQuestions(v []ProductAddPersonalizationQu
 	o.PersonalizationQuestions = v
 }
 
+// GetManufacturerIds returns the ManufacturerIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetManufacturerIds() string {
+	if o == nil || IsNil(o.ManufacturerIds) {
+		var ret string
+		return ret
+	}
+	return *o.ManufacturerIds
+}
+
+// GetManufacturerIdsOk returns a tuple with the ManufacturerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetManufacturerIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.ManufacturerIds) {
+		return nil, false
+	}
+	return o.ManufacturerIds, true
+}
+
+// HasManufacturerIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasManufacturerIds() bool {
+	if o != nil && !IsNil(o.ManufacturerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetManufacturerIds gets a reference to the given string and assigns it to the ManufacturerIds field.
+func (o *ProductAdd) SetManufacturerIds(v string) {
+	o.ManufacturerIds = &v
+}
+
+// GetResponsiblePersonIds returns the ResponsiblePersonIds field value if set, zero value otherwise.
+func (o *ProductAdd) GetResponsiblePersonIds() string {
+	if o == nil || IsNil(o.ResponsiblePersonIds) {
+		var ret string
+		return ret
+	}
+	return *o.ResponsiblePersonIds
+}
+
+// GetResponsiblePersonIdsOk returns a tuple with the ResponsiblePersonIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetResponsiblePersonIdsOk() (*string, bool) {
+	if o == nil || IsNil(o.ResponsiblePersonIds) {
+		return nil, false
+	}
+	return o.ResponsiblePersonIds, true
+}
+
+// HasResponsiblePersonIds returns a boolean if a field has been set.
+func (o *ProductAdd) HasResponsiblePersonIds() bool {
+	if o != nil && !IsNil(o.ResponsiblePersonIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetResponsiblePersonIds gets a reference to the given string and assigns it to the ResponsiblePersonIds field.
+func (o *ProductAdd) SetResponsiblePersonIds(v string) {
+	o.ResponsiblePersonIds = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *ProductAdd) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -4666,6 +4734,12 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PersonalizationQuestions) {
 		toSerialize["personalization_questions"] = o.PersonalizationQuestions
+	}
+	if !IsNil(o.ManufacturerIds) {
+		toSerialize["manufacturer_ids"] = o.ManufacturerIds
+	}
+	if !IsNil(o.ResponsiblePersonIds) {
+		toSerialize["responsible_person_ids"] = o.ResponsiblePersonIds
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
