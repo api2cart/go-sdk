@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 ## OrderAbandonedList
 
-> ModelResponseOrderAbandonedList OrderAbandonedList(ctx).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseOrderAbandonedList OrderAbandonedList(ctx).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).RoundingPrecision(roundingPrecision).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 order.abandoned.list
 
@@ -62,13 +62,14 @@ func main() {
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	skipEmptyEmail := true // bool | Filter empty emails (optional) (default to false)
+	roundingPrecision := int32(3) // int32 | <p>Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).</p> <p>Supported values range from <b>1</b> to <b>6</b>.</p> <p>The default rounding precision may vary depending on the platform. You can retrieve the default value using the <strong>cart.info</strong> method in the <code>default_rounding_precision</code> field. </p><p>Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.</p> (optional)
 	responseFields := "{return_code,pagination,result{order{id,customer{email},created_at,totals{total},order_products}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
 	params := "force_all" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "customer,totals,items")
 	exclude := "customer" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderAbandonedList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderAbandonedList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).CustomerId(customerId).CustomerEmail(customerEmail).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).SkipEmptyEmail(skipEmptyEmail).RoundingPrecision(roundingPrecision).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderAbandonedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,6 +101,7 @@ Name | Type | Description  | Notes
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **skipEmptyEmail** | **bool** | Filter empty emails | [default to false]
+ **roundingPrecision** | **int32** | &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt; | 
  **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
  **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;customer,totals,items&quot;]
  **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 

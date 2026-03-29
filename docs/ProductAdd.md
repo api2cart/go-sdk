@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **MeasureUnit** | Pointer to **string** | Unit for the price per unit. Must be in allowed list | [optional] 
 **UnitPrice** | Pointer to **float32** | Defines new product&#39;s unit price | [optional] 
 **PricesIncTax** | Pointer to **bool** | Indicates whether prices include tax. | [optional] [default to false]
+**RetailPrice** | Pointer to **float32** | Defines new product&#39;s retail price | [optional] 
 **Quantity** | Pointer to **float32** | Defines product&#39;s quantity that has to be added | [optional] [default to 0]
 **InStock** | Pointer to **bool** | Set stock status | [optional] 
 **ManageStock** | Pointer to **bool** | Defines inventory tracking for product | [optional] 
@@ -954,6 +955,31 @@ SetPricesIncTax sets PricesIncTax field to given value.
 `func (o *ProductAdd) HasPricesIncTax() bool`
 
 HasPricesIncTax returns a boolean if a field has been set.
+
+### GetRetailPrice
+
+`func (o *ProductAdd) GetRetailPrice() float32`
+
+GetRetailPrice returns the RetailPrice field if non-nil, zero value otherwise.
+
+### GetRetailPriceOk
+
+`func (o *ProductAdd) GetRetailPriceOk() (*float32, bool)`
+
+GetRetailPriceOk returns a tuple with the RetailPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetailPrice
+
+`func (o *ProductAdd) SetRetailPrice(v float32)`
+
+SetRetailPrice sets RetailPrice field to given value.
+
+### HasRetailPrice
+
+`func (o *ProductAdd) HasRetailPrice() bool`
+
+HasRetailPrice returns a boolean if a field has been set.
 
 ### GetQuantity
 

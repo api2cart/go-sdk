@@ -38,6 +38,7 @@ type ApiOrderAbandonedListRequest struct {
 	modifiedFrom *string
 	modifiedTo *string
 	skipEmptyEmail *bool
+	roundingPrecision *int32
 	responseFields *string
 	params *string
 	exclude *string
@@ -106,6 +107,12 @@ func (r ApiOrderAbandonedListRequest) ModifiedTo(modifiedTo string) ApiOrderAban
 // Filter empty emails
 func (r ApiOrderAbandonedListRequest) SkipEmptyEmail(skipEmptyEmail bool) ApiOrderAbandonedListRequest {
 	r.skipEmptyEmail = &skipEmptyEmail
+	return r
+}
+
+// &lt;p&gt;Specifies the rounding precision for fractional numeric values (such as prices, taxes, and weights).&lt;/p&gt; &lt;p&gt;Supported values range from &lt;b&gt;1&lt;/b&gt; to &lt;b&gt;6&lt;/b&gt;.&lt;/p&gt; &lt;p&gt;The default rounding precision may vary depending on the platform. You can retrieve the default value using the &lt;strong&gt;cart.info&lt;/strong&gt; method in the &lt;code&gt;default_rounding_precision&lt;/code&gt; field. &lt;/p&gt;&lt;p&gt;Values are rounded to the nearest number at the specified precision. Fractions of .5 or higher are rounded up, while fractions lower than .5 are rounded down.&lt;/p&gt;
+func (r ApiOrderAbandonedListRequest) RoundingPrecision(roundingPrecision int32) ApiOrderAbandonedListRequest {
+	r.roundingPrecision = &roundingPrecision
 	return r
 }
 
@@ -208,6 +215,9 @@ func (a *OrderAPIService) OrderAbandonedListExecute(r ApiOrderAbandonedListReque
 	} else {
 		var defaultValue bool = false
 		r.skipEmptyEmail = &defaultValue
+	}
+	if r.roundingPrecision != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "rounding_precision", r.roundingPrecision, "form", "")
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")

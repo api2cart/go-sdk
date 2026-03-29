@@ -88,6 +88,8 @@ type ProductAdd struct {
 	UnitPrice *float32 `json:"unit_price,omitempty"`
 	// Indicates whether prices include tax.
 	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`
+	// Defines new product's retail price
+	RetailPrice *float32 `json:"retail_price,omitempty"`
 	// Defines product's quantity that has to be added
 	Quantity *float32 `json:"quantity,omitempty"`
 	// Set stock status
@@ -1386,6 +1388,38 @@ func (o *ProductAdd) HasPricesIncTax() bool {
 // SetPricesIncTax gets a reference to the given bool and assigns it to the PricesIncTax field.
 func (o *ProductAdd) SetPricesIncTax(v bool) {
 	o.PricesIncTax = &v
+}
+
+// GetRetailPrice returns the RetailPrice field value if set, zero value otherwise.
+func (o *ProductAdd) GetRetailPrice() float32 {
+	if o == nil || IsNil(o.RetailPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.RetailPrice
+}
+
+// GetRetailPriceOk returns a tuple with the RetailPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetRetailPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.RetailPrice) {
+		return nil, false
+	}
+	return o.RetailPrice, true
+}
+
+// HasRetailPrice returns a boolean if a field has been set.
+func (o *ProductAdd) HasRetailPrice() bool {
+	if o != nil && !IsNil(o.RetailPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetailPrice gets a reference to the given float32 and assigns it to the RetailPrice field.
+func (o *ProductAdd) SetRetailPrice(v float32) {
+	o.RetailPrice = &v
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
@@ -4464,6 +4498,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PricesIncTax) {
 		toSerialize["prices_inc_tax"] = o.PricesIncTax
+	}
+	if !IsNil(o.RetailPrice) {
+		toSerialize["retail_price"] = o.RetailPrice
 	}
 	if !IsNil(o.Quantity) {
 		toSerialize["quantity"] = o.Quantity
