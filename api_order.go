@@ -613,6 +613,7 @@ type ApiOrderCountRequest struct {
 	modifiedFrom *string
 	modifiedTo *string
 	useLatestApiVersion *bool
+	vendorId *string
 }
 
 // Counts orders specified by order ids
@@ -741,6 +742,12 @@ func (r ApiOrderCountRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiO
 	return r
 }
 
+// Counts orders specified by vendor id
+func (r ApiOrderCountRequest) VendorId(vendorId string) ApiOrderCountRequest {
+	r.vendorId = &vendorId
+	return r
+}
+
 func (r ApiOrderCountRequest) Execute() (*OrderCount200Response, *http.Response, error) {
 	return r.ApiService.OrderCountExecute(r)
 }
@@ -862,6 +869,9 @@ func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount
 	} else {
 		var defaultValue bool = false
 		r.useLatestApiVersion = &defaultValue
+	}
+	if r.vendorId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "vendor_id", r.vendorId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1458,6 +1468,7 @@ type ApiOrderListRequest struct {
 	orderIds *string
 	sinceId *string
 	storeId *string
+	vendorId *string
 	customerId *string
 	customerEmail *string
 	basketId *string
@@ -1532,6 +1543,12 @@ func (r ApiOrderListRequest) SinceId(sinceId string) ApiOrderListRequest {
 // Store Id
 func (r ApiOrderListRequest) StoreId(storeId string) ApiOrderListRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Retrieves orders specified by vendor id
+func (r ApiOrderListRequest) VendorId(vendorId string) ApiOrderListRequest {
+	r.vendorId = &vendorId
 	return r
 }
 
@@ -1799,6 +1816,9 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*ModelRespons
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.vendorId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "vendor_id", r.vendorId, "form", "")
 	}
 	if r.customerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "customer_id", r.customerId, "form", "")

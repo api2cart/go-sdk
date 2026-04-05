@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 
 ## OrderCount
 
-> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).Execute()
+> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).VendorId(vendorId).Execute()
 
 order.count
 
@@ -298,10 +298,11 @@ func main() {
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
+	vendorId := "1" // string | Counts orders specified by vendor id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderCount(context.Background()).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).VendorId(vendorId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,6 +344,7 @@ Name | Type | Description  | Notes
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
+ **vendorId** | **string** | Counts orders specified by vendor id | 
 
 ### Return type
 
@@ -575,7 +577,7 @@ Name | Type | Description  | Notes
 
 ## OrderList
 
-> ModelResponseOrderList OrderList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
+> ModelResponseOrderList OrderList(ctx).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).VendorId(vendorId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 
 order.list
 
@@ -601,6 +603,7 @@ func main() {
 	orderIds := "24,25" // string | Retrieves orders specified by order ids (optional)
 	sinceId := "56" // string | Retrieve entities starting from the specified id. (optional)
 	storeId := "1" // string | Store Id (optional)
+	vendorId := "1" // string | Retrieves orders specified by vendor id (optional)
 	customerId := "5" // string | Retrieves orders specified by customer id (optional)
 	customerEmail := "jubari@hannsgroup.com" // string | Retrieves orders specified by customer email (optional)
 	basketId := "1" // string | Retrieves order’s info specified by basket id. (optional)
@@ -637,7 +640,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
+	resp, r, err := apiClient.OrderAPI.OrderList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).Ids(ids).OrderIds(orderIds).SinceId(sinceId).StoreId(storeId).VendorId(vendorId).CustomerId(customerId).CustomerEmail(customerEmail).BasketId(basketId).CurrencyId(currencyId).Phone(phone).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentStatus(fulfillmentStatus).ReturnStatus(returnStatus).FulfillmentChannel(fulfillmentChannel).ShippingMethod(shippingMethod).SkipOrderIds(skipOrderIds).IsDeleted(isDeleted).ShippingCountryIso3(shippingCountryIso3).DeliveryMethod(deliveryMethod).ShipNodeType(shipNodeType).CreatedTo(createdTo).CreatedFrom(createdFrom).ModifiedTo(modifiedTo).ModifiedFrom(modifiedFrom).Tags(tags).SortBy(sortBy).SortDirection(sortDirection).Params(params).ResponseFields(responseFields).Exclude(exclude).EnableCache(enableCache).UseLatestApiVersion(useLatestApiVersion).RoundingPrecision(roundingPrecision).AllowUserDefinedOrderStatuses(allowUserDefinedOrderStatuses).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -665,6 +668,7 @@ Name | Type | Description  | Notes
  **orderIds** | **string** | Retrieves orders specified by order ids | 
  **sinceId** | **string** | Retrieve entities starting from the specified id. | 
  **storeId** | **string** | Store Id | 
+ **vendorId** | **string** | Retrieves orders specified by vendor id | 
  **customerId** | **string** | Retrieves orders specified by customer id | 
  **customerEmail** | **string** | Retrieves orders specified by customer email | 
  **basketId** | **string** | Retrieves order’s info specified by basket id. | 

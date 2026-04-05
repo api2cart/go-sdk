@@ -1036,6 +1036,7 @@ type ApiProductBrandListRequest struct {
 	createdTo *string
 	modifiedFrom *string
 	modifiedTo *string
+	avail *bool
 	responseFields *string
 	params *string
 	exclude *string
@@ -1122,6 +1123,12 @@ func (r ApiProductBrandListRequest) ModifiedFrom(modifiedFrom string) ApiProduct
 // Retrieve entities to their modification date
 func (r ApiProductBrandListRequest) ModifiedTo(modifiedTo string) ApiProductBrandListRequest {
 	r.modifiedTo = &modifiedTo
+	return r
+}
+
+// Defines category&#39;s visibility status
+func (r ApiProductBrandListRequest) Avail(avail bool) ApiProductBrandListRequest {
+	r.avail = &avail
 	return r
 }
 
@@ -1230,6 +1237,12 @@ func (a *ProductAPIService) ProductBrandListExecute(r ApiProductBrandListRequest
 	}
 	if r.modifiedTo != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.avail != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "avail", r.avail, "form", "")
+	} else {
+		var defaultValue bool = true
+		r.avail = &defaultValue
 	}
 	if r.responseFields != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
@@ -2104,6 +2117,7 @@ type ApiProductCountRequest struct {
 	categoriesIds *string
 	categoryId *string
 	storeId *string
+	vendorId *string
 	langId *string
 	availView *bool
 	availSale *bool
@@ -2158,6 +2172,12 @@ func (r ApiProductCountRequest) CategoryId(categoryId string) ApiProductCountReq
 // Counts products specified by store id
 func (r ApiProductCountRequest) StoreId(storeId string) ApiProductCountRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Counts products specified by vendor id
+func (r ApiProductCountRequest) VendorId(vendorId string) ApiProductCountRequest {
+	r.vendorId = &vendorId
 	return r
 }
 
@@ -2332,6 +2352,9 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Prod
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.vendorId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "vendor_id", r.vendorId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
@@ -3950,6 +3973,7 @@ type ApiProductInfoRequest struct {
 	ApiService *ProductAPIService
 	id *string
 	storeId *string
+	vendorId *string
 	langId *string
 	currencyId *string
 	responseFields *string
@@ -3969,6 +3993,12 @@ func (r ApiProductInfoRequest) Id(id string) ApiProductInfoRequest {
 // Retrieves product info specified by store id
 func (r ApiProductInfoRequest) StoreId(storeId string) ApiProductInfoRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Vendor Id
+func (r ApiProductInfoRequest) VendorId(vendorId string) ApiProductInfoRequest {
+	r.vendorId = &vendorId
 	return r
 }
 
@@ -4066,6 +4096,9 @@ func (a *ProductAPIService) ProductInfoExecute(r ApiProductInfoRequest) (*Produc
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.vendorId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "vendor_id", r.vendorId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
@@ -4193,6 +4226,7 @@ type ApiProductListRequest struct {
 	categoriesIds *string
 	categoryId *string
 	storeId *string
+	vendorId *string
 	langId *string
 	currencyId *string
 	availView *bool
@@ -4268,6 +4302,12 @@ func (r ApiProductListRequest) CategoryId(categoryId string) ApiProductListReque
 // Retrieves products specified by store id
 func (r ApiProductListRequest) StoreId(storeId string) ApiProductListRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Retrieves products specified by vendor id
+func (r ApiProductListRequest) VendorId(vendorId string) ApiProductListRequest {
+	r.vendorId = &vendorId
 	return r
 }
 
@@ -4508,6 +4548,9 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.vendorId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "vendor_id", r.vendorId, "form", "")
 	}
 	if r.langId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "lang_id", r.langId, "form", "")
