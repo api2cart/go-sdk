@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChildItemId** | Pointer to **NullableString** |  | [optional] 
 **ProductId** | Pointer to **string** |  | [optional] 
-**DefaultQtyInPack** | Pointer to **string** |  | [optional] 
+**DefaultQtyInPack** | Pointer to **float32** |  | [optional] 
 **IsQtyInPackFixed** | Pointer to **NullableBool** |  | [optional] 
 **Price** | Pointer to **NullableFloat32** |  | [optional] 
 **AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -93,20 +93,20 @@ HasProductId returns a boolean if a field has been set.
 
 ### GetDefaultQtyInPack
 
-`func (o *ProductGroupItem) GetDefaultQtyInPack() string`
+`func (o *ProductGroupItem) GetDefaultQtyInPack() float32`
 
 GetDefaultQtyInPack returns the DefaultQtyInPack field if non-nil, zero value otherwise.
 
 ### GetDefaultQtyInPackOk
 
-`func (o *ProductGroupItem) GetDefaultQtyInPackOk() (*string, bool)`
+`func (o *ProductGroupItem) GetDefaultQtyInPackOk() (*float32, bool)`
 
 GetDefaultQtyInPackOk returns a tuple with the DefaultQtyInPack field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultQtyInPack
 
-`func (o *ProductGroupItem) SetDefaultQtyInPack(v string)`
+`func (o *ProductGroupItem) SetDefaultQtyInPack(v float32)`
 
 SetDefaultQtyInPack sets DefaultQtyInPack field to given value.
 

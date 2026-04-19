@@ -417,6 +417,7 @@ type ApiAccountConfigUpdateRequest struct {
 	shoplazzaSharedSecret *string
 	mivaAccessToken *string
 	mivaSignature *string
+	miraklApiKey *string
 	shopwareAccessKey *string
 	unasApiKey *string
 	shopwareApiKey *string
@@ -993,6 +994,12 @@ func (r ApiAccountConfigUpdateRequest) MivaAccessToken(mivaAccessToken string) A
 // Miva signature
 func (r ApiAccountConfigUpdateRequest) MivaSignature(mivaSignature string) ApiAccountConfigUpdateRequest {
 	r.mivaSignature = &mivaSignature
+	return r
+}
+
+// Mirakl API Key
+func (r ApiAccountConfigUpdateRequest) MiraklApiKey(miraklApiKey string) ApiAccountConfigUpdateRequest {
+	r.miraklApiKey = &miraklApiKey
 	return r
 }
 
@@ -1863,6 +1870,9 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	}
 	if r.mivaSignature != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "miva_signature", r.mivaSignature, "form", "")
+	}
+	if r.miraklApiKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "mirakl_api_key", r.miraklApiKey, "form", "")
 	}
 	if r.shopwareAccessKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "shopware_access_key", r.shopwareAccessKey, "form", "")

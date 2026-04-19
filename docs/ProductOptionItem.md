@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **ProductOptionItemId** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **NullableInt32** |  | [optional] 
-**Price** | Pointer to **NullableString** |  | [optional] 
-**Weight** | Pointer to **NullableString** |  | [optional] 
+**Price** | Pointer to **NullableFloat32** |  | [optional] 
+**Weight** | Pointer to **NullableFloat32** |  | [optional] 
 **Quantity** | Pointer to **NullableInt32** |  | [optional] 
 **TypePrice** | Pointer to **NullableString** |  | [optional] 
 **Sku** | Pointer to **NullableString** |  | [optional] 
@@ -158,20 +158,20 @@ HasSortOrder returns a boolean if a field has been set.
 UnsetSortOrder ensures that no value is present for SortOrder, not even an explicit nil
 ### GetPrice
 
-`func (o *ProductOptionItem) GetPrice() string`
+`func (o *ProductOptionItem) GetPrice() float32`
 
 GetPrice returns the Price field if non-nil, zero value otherwise.
 
 ### GetPriceOk
 
-`func (o *ProductOptionItem) GetPriceOk() (*string, bool)`
+`func (o *ProductOptionItem) GetPriceOk() (*float32, bool)`
 
 GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrice
 
-`func (o *ProductOptionItem) SetPrice(v string)`
+`func (o *ProductOptionItem) SetPrice(v float32)`
 
 SetPrice sets Price field to given value.
 
@@ -193,20 +193,20 @@ HasPrice returns a boolean if a field has been set.
 UnsetPrice ensures that no value is present for Price, not even an explicit nil
 ### GetWeight
 
-`func (o *ProductOptionItem) GetWeight() string`
+`func (o *ProductOptionItem) GetWeight() float32`
 
 GetWeight returns the Weight field if non-nil, zero value otherwise.
 
 ### GetWeightOk
 
-`func (o *ProductOptionItem) GetWeightOk() (*string, bool)`
+`func (o *ProductOptionItem) GetWeightOk() (*float32, bool)`
 
 GetWeightOk returns a tuple with the Weight field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeight
 
-`func (o *ProductOptionItem) SetWeight(v string)`
+`func (o *ProductOptionItem) SetWeight(v float32)`
 
 SetWeight sets Weight field to given value.
 

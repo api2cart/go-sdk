@@ -110,6 +110,7 @@ Name | Type | Description | Notes
 **ShopwareApiSecret** | Pointer to **string** | Shopware client secret access key | [optional] 
 **MivaAccessToken** | Pointer to **string** | Miva access token | [optional] 
 **MivaSignature** | Pointer to **string** | Miva signature | [optional] 
+**MiraklApiKey** | Pointer to **string** | Mirakl API Key | [optional] 
 **TiendanubeUserId** | Pointer to **int32** | Tiendanube User ID | [optional] 
 **TiendanubeAccessToken** | Pointer to **string** | Tiendanube Access Token | [optional] 
 **TiendanubeClientSecret** | Pointer to **string** | Tiendanube Client Secret | [optional] 
@@ -2852,6 +2853,31 @@ SetMivaSignature sets MivaSignature field to given value.
 `func (o *AccountCartAdd) HasMivaSignature() bool`
 
 HasMivaSignature returns a boolean if a field has been set.
+
+### GetMiraklApiKey
+
+`func (o *AccountCartAdd) GetMiraklApiKey() string`
+
+GetMiraklApiKey returns the MiraklApiKey field if non-nil, zero value otherwise.
+
+### GetMiraklApiKeyOk
+
+`func (o *AccountCartAdd) GetMiraklApiKeyOk() (*string, bool)`
+
+GetMiraklApiKeyOk returns a tuple with the MiraklApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMiraklApiKey
+
+`func (o *AccountCartAdd) SetMiraklApiKey(v string)`
+
+SetMiraklApiKey sets MiraklApiKey field to given value.
+
+### HasMiraklApiKey
+
+`func (o *AccountCartAdd) HasMiraklApiKey() bool`
+
+HasMiraklApiKey returns a boolean if a field has been set.
 
 ### GetTiendanubeUserId
 

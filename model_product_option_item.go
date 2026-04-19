@@ -24,8 +24,8 @@ type ProductOptionItem struct {
 	ProductOptionItemId NullableString `json:"product_option_item_id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SortOrder NullableInt32 `json:"sort_order,omitempty"`
-	Price NullableString `json:"price,omitempty"`
-	Weight NullableString `json:"weight,omitempty"`
+	Price NullableFloat32 `json:"price,omitempty"`
+	Weight NullableFloat32 `json:"weight,omitempty"`
 	Quantity NullableInt32 `json:"quantity,omitempty"`
 	TypePrice NullableString `json:"type_price,omitempty"`
 	Sku NullableString `json:"sku,omitempty"`
@@ -200,9 +200,9 @@ func (o *ProductOptionItem) UnsetSortOrder() {
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductOptionItem) GetPrice() string {
+func (o *ProductOptionItem) GetPrice() float32 {
 	if o == nil || IsNil(o.Price.Get()) {
-		var ret string
+		var ret float32
 		return ret
 	}
 	return *o.Price.Get()
@@ -211,7 +211,7 @@ func (o *ProductOptionItem) GetPrice() string {
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductOptionItem) GetPriceOk() (*string, bool) {
+func (o *ProductOptionItem) GetPriceOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *ProductOptionItem) HasPrice() bool {
 	return false
 }
 
-// SetPrice gets a reference to the given NullableString and assigns it to the Price field.
-func (o *ProductOptionItem) SetPrice(v string) {
+// SetPrice gets a reference to the given NullableFloat32 and assigns it to the Price field.
+func (o *ProductOptionItem) SetPrice(v float32) {
 	o.Price.Set(&v)
 }
 // SetPriceNil sets the value for Price to be an explicit nil
@@ -242,9 +242,9 @@ func (o *ProductOptionItem) UnsetPrice() {
 }
 
 // GetWeight returns the Weight field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProductOptionItem) GetWeight() string {
+func (o *ProductOptionItem) GetWeight() float32 {
 	if o == nil || IsNil(o.Weight.Get()) {
-		var ret string
+		var ret float32
 		return ret
 	}
 	return *o.Weight.Get()
@@ -253,7 +253,7 @@ func (o *ProductOptionItem) GetWeight() string {
 // GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProductOptionItem) GetWeightOk() (*string, bool) {
+func (o *ProductOptionItem) GetWeightOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -269,8 +269,8 @@ func (o *ProductOptionItem) HasWeight() bool {
 	return false
 }
 
-// SetWeight gets a reference to the given NullableString and assigns it to the Weight field.
-func (o *ProductOptionItem) SetWeight(v string) {
+// SetWeight gets a reference to the given NullableFloat32 and assigns it to the Weight field.
+func (o *ProductOptionItem) SetWeight(v float32) {
 	o.Weight.Set(&v)
 }
 // SetWeightNil sets the value for Weight to be an explicit nil

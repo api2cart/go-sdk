@@ -22,7 +22,7 @@ var _ MappedNullable = &ProductGroupItem{}
 type ProductGroupItem struct {
 	ChildItemId NullableString `json:"child_item_id,omitempty"`
 	ProductId *string `json:"product_id,omitempty"`
-	DefaultQtyInPack *string `json:"default_qty_in_pack,omitempty"`
+	DefaultQtyInPack *float32 `json:"default_qty_in_pack,omitempty"`
 	IsQtyInPackFixed NullableBool `json:"is_qty_in_pack_fixed,omitempty"`
 	Price NullableFloat32 `json:"price,omitempty"`
 	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
@@ -121,9 +121,9 @@ func (o *ProductGroupItem) SetProductId(v string) {
 }
 
 // GetDefaultQtyInPack returns the DefaultQtyInPack field value if set, zero value otherwise.
-func (o *ProductGroupItem) GetDefaultQtyInPack() string {
+func (o *ProductGroupItem) GetDefaultQtyInPack() float32 {
 	if o == nil || IsNil(o.DefaultQtyInPack) {
-		var ret string
+		var ret float32
 		return ret
 	}
 	return *o.DefaultQtyInPack
@@ -131,7 +131,7 @@ func (o *ProductGroupItem) GetDefaultQtyInPack() string {
 
 // GetDefaultQtyInPackOk returns a tuple with the DefaultQtyInPack field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductGroupItem) GetDefaultQtyInPackOk() (*string, bool) {
+func (o *ProductGroupItem) GetDefaultQtyInPackOk() (*float32, bool) {
 	if o == nil || IsNil(o.DefaultQtyInPack) {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *ProductGroupItem) HasDefaultQtyInPack() bool {
 	return false
 }
 
-// SetDefaultQtyInPack gets a reference to the given string and assigns it to the DefaultQtyInPack field.
-func (o *ProductGroupItem) SetDefaultQtyInPack(v string) {
+// SetDefaultQtyInPack gets a reference to the given float32 and assigns it to the DefaultQtyInPack field.
+func (o *ProductGroupItem) SetDefaultQtyInPack(v float32) {
 	o.DefaultQtyInPack = &v
 }
 

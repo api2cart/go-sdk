@@ -234,6 +234,8 @@ type AccountCartAdd struct {
 	MivaAccessToken *string `json:"miva_access_token,omitempty"`
 	// Miva signature
 	MivaSignature *string `json:"miva_signature,omitempty"`
+	// Mirakl API Key
+	MiraklApiKey *string `json:"mirakl_api_key,omitempty"`
 	// Tiendanube User ID
 	TiendanubeUserId *int32 `json:"tiendanube_user_id,omitempty"`
 	// Tiendanube Access Token
@@ -3836,6 +3838,38 @@ func (o *AccountCartAdd) SetMivaSignature(v string) {
 	o.MivaSignature = &v
 }
 
+// GetMiraklApiKey returns the MiraklApiKey field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetMiraklApiKey() string {
+	if o == nil || IsNil(o.MiraklApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.MiraklApiKey
+}
+
+// GetMiraklApiKeyOk returns a tuple with the MiraklApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetMiraklApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.MiraklApiKey) {
+		return nil, false
+	}
+	return o.MiraklApiKey, true
+}
+
+// HasMiraklApiKey returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasMiraklApiKey() bool {
+	if o != nil && !IsNil(o.MiraklApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetMiraklApiKey gets a reference to the given string and assigns it to the MiraklApiKey field.
+func (o *AccountCartAdd) SetMiraklApiKey(v string) {
+	o.MiraklApiKey = &v
+}
+
 // GetTiendanubeUserId returns the TiendanubeUserId field value if set, zero value otherwise.
 func (o *AccountCartAdd) GetTiendanubeUserId() int32 {
 	if o == nil || IsNil(o.TiendanubeUserId) {
@@ -6657,6 +6691,9 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MivaSignature) {
 		toSerialize["miva_signature"] = o.MivaSignature
+	}
+	if !IsNil(o.MiraklApiKey) {
+		toSerialize["mirakl_api_key"] = o.MiraklApiKey
 	}
 	if !IsNil(o.TiendanubeUserId) {
 		toSerialize["tiendanube_user_id"] = o.TiendanubeUserId
