@@ -66,6 +66,12 @@ type CustomerAdd struct {
 	Note *string `json:"note,omitempty"`
 	// Specifies ISO code or name of country
 	Country *string `json:"country,omitempty"`
+	// Currency Id
+	CurrencyId *string `json:"currency_id,omitempty"`
+	// Marks a customer as tax-exempt (B2B/wholesale).
+	IsTaxExempt *bool `json:"is_tax_exempt,omitempty"`
+	// Vendor Id
+	VendorId *string `json:"vendor_id,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
@@ -793,6 +799,102 @@ func (o *CustomerAdd) SetCountry(v string) {
 	o.Country = &v
 }
 
+// GetCurrencyId returns the CurrencyId field value if set, zero value otherwise.
+func (o *CustomerAdd) GetCurrencyId() string {
+	if o == nil || IsNil(o.CurrencyId) {
+		var ret string
+		return ret
+	}
+	return *o.CurrencyId
+}
+
+// GetCurrencyIdOk returns a tuple with the CurrencyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetCurrencyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CurrencyId) {
+		return nil, false
+	}
+	return o.CurrencyId, true
+}
+
+// HasCurrencyId returns a boolean if a field has been set.
+func (o *CustomerAdd) HasCurrencyId() bool {
+	if o != nil && !IsNil(o.CurrencyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrencyId gets a reference to the given string and assigns it to the CurrencyId field.
+func (o *CustomerAdd) SetCurrencyId(v string) {
+	o.CurrencyId = &v
+}
+
+// GetIsTaxExempt returns the IsTaxExempt field value if set, zero value otherwise.
+func (o *CustomerAdd) GetIsTaxExempt() bool {
+	if o == nil || IsNil(o.IsTaxExempt) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaxExempt
+}
+
+// GetIsTaxExemptOk returns a tuple with the IsTaxExempt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetIsTaxExemptOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaxExempt) {
+		return nil, false
+	}
+	return o.IsTaxExempt, true
+}
+
+// HasIsTaxExempt returns a boolean if a field has been set.
+func (o *CustomerAdd) HasIsTaxExempt() bool {
+	if o != nil && !IsNil(o.IsTaxExempt) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaxExempt gets a reference to the given bool and assigns it to the IsTaxExempt field.
+func (o *CustomerAdd) SetIsTaxExempt(v bool) {
+	o.IsTaxExempt = &v
+}
+
+// GetVendorId returns the VendorId field value if set, zero value otherwise.
+func (o *CustomerAdd) GetVendorId() string {
+	if o == nil || IsNil(o.VendorId) {
+		var ret string
+		return ret
+	}
+	return *o.VendorId
+}
+
+// GetVendorIdOk returns a tuple with the VendorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetVendorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VendorId) {
+		return nil, false
+	}
+	return o.VendorId, true
+}
+
+// HasVendorId returns a boolean if a field has been set.
+func (o *CustomerAdd) HasVendorId() bool {
+	if o != nil && !IsNil(o.VendorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorId gets a reference to the given string and assigns it to the VendorId field.
+func (o *CustomerAdd) SetVendorId(v string) {
+	o.VendorId = &v
+}
+
 // GetStoreId returns the StoreId field value if set, zero value otherwise.
 func (o *CustomerAdd) GetStoreId() string {
 	if o == nil || IsNil(o.StoreId) {
@@ -962,6 +1064,15 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.CurrencyId) {
+		toSerialize["currency_id"] = o.CurrencyId
+	}
+	if !IsNil(o.IsTaxExempt) {
+		toSerialize["is_tax_exempt"] = o.IsTaxExempt
+	}
+	if !IsNil(o.VendorId) {
+		toSerialize["vendor_id"] = o.VendorId
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId

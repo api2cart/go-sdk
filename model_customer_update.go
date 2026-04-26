@@ -52,6 +52,12 @@ type CustomerUpdate struct {
 	Status *string `json:"status,omitempty"`
 	// Defines customer's unique password
 	Password *string `json:"password,omitempty"`
+	// Currency Id
+	CurrencyId *string `json:"currency_id,omitempty"`
+	// Marks a customer as tax-exempt (B2B/wholesale).
+	IsTaxExempt *bool `json:"is_tax_exempt,omitempty"`
+	// Vendor Id
+	VendorId *string `json:"vendor_id,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
@@ -588,6 +594,102 @@ func (o *CustomerUpdate) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetCurrencyId returns the CurrencyId field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetCurrencyId() string {
+	if o == nil || IsNil(o.CurrencyId) {
+		var ret string
+		return ret
+	}
+	return *o.CurrencyId
+}
+
+// GetCurrencyIdOk returns a tuple with the CurrencyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetCurrencyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CurrencyId) {
+		return nil, false
+	}
+	return o.CurrencyId, true
+}
+
+// HasCurrencyId returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasCurrencyId() bool {
+	if o != nil && !IsNil(o.CurrencyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrencyId gets a reference to the given string and assigns it to the CurrencyId field.
+func (o *CustomerUpdate) SetCurrencyId(v string) {
+	o.CurrencyId = &v
+}
+
+// GetIsTaxExempt returns the IsTaxExempt field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetIsTaxExempt() bool {
+	if o == nil || IsNil(o.IsTaxExempt) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaxExempt
+}
+
+// GetIsTaxExemptOk returns a tuple with the IsTaxExempt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetIsTaxExemptOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaxExempt) {
+		return nil, false
+	}
+	return o.IsTaxExempt, true
+}
+
+// HasIsTaxExempt returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasIsTaxExempt() bool {
+	if o != nil && !IsNil(o.IsTaxExempt) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaxExempt gets a reference to the given bool and assigns it to the IsTaxExempt field.
+func (o *CustomerUpdate) SetIsTaxExempt(v bool) {
+	o.IsTaxExempt = &v
+}
+
+// GetVendorId returns the VendorId field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetVendorId() string {
+	if o == nil || IsNil(o.VendorId) {
+		var ret string
+		return ret
+	}
+	return *o.VendorId
+}
+
+// GetVendorIdOk returns a tuple with the VendorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetVendorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VendorId) {
+		return nil, false
+	}
+	return o.VendorId, true
+}
+
+// HasVendorId returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasVendorId() bool {
+	if o != nil && !IsNil(o.VendorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorId gets a reference to the given string and assigns it to the VendorId field.
+func (o *CustomerUpdate) SetVendorId(v string) {
+	o.VendorId = &v
+}
+
 // GetStoreId returns the StoreId field value if set, zero value otherwise.
 func (o *CustomerUpdate) GetStoreId() string {
 	if o == nil || IsNil(o.StoreId) {
@@ -741,6 +843,15 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.CurrencyId) {
+		toSerialize["currency_id"] = o.CurrencyId
+	}
+	if !IsNil(o.IsTaxExempt) {
+		toSerialize["is_tax_exempt"] = o.IsTaxExempt
+	}
+	if !IsNil(o.VendorId) {
+		toSerialize["vendor_id"] = o.VendorId
 	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId

@@ -26,6 +26,9 @@ Name | Type | Description | Notes
 **Phone** | Pointer to **string** | Defines customer&#39;s phone number | [optional] 
 **Note** | Pointer to **string** | The customer note. | [optional] 
 **Country** | Pointer to **string** | Specifies ISO code or name of country | [optional] 
+**CurrencyId** | Pointer to **string** | Currency Id | [optional] 
+**IsTaxExempt** | Pointer to **bool** | Marks a customer as tax-exempt (B2B/wholesale). | [optional] 
+**VendorId** | Pointer to **string** | Vendor Id | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **Address** | Pointer to [**[]CustomerAddAddressInner**](CustomerAddAddressInner.md) |  | [optional] 
@@ -593,6 +596,81 @@ SetCountry sets Country field to given value.
 `func (o *CustomerAdd) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### GetCurrencyId
+
+`func (o *CustomerAdd) GetCurrencyId() string`
+
+GetCurrencyId returns the CurrencyId field if non-nil, zero value otherwise.
+
+### GetCurrencyIdOk
+
+`func (o *CustomerAdd) GetCurrencyIdOk() (*string, bool)`
+
+GetCurrencyIdOk returns a tuple with the CurrencyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrencyId
+
+`func (o *CustomerAdd) SetCurrencyId(v string)`
+
+SetCurrencyId sets CurrencyId field to given value.
+
+### HasCurrencyId
+
+`func (o *CustomerAdd) HasCurrencyId() bool`
+
+HasCurrencyId returns a boolean if a field has been set.
+
+### GetIsTaxExempt
+
+`func (o *CustomerAdd) GetIsTaxExempt() bool`
+
+GetIsTaxExempt returns the IsTaxExempt field if non-nil, zero value otherwise.
+
+### GetIsTaxExemptOk
+
+`func (o *CustomerAdd) GetIsTaxExemptOk() (*bool, bool)`
+
+GetIsTaxExemptOk returns a tuple with the IsTaxExempt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsTaxExempt
+
+`func (o *CustomerAdd) SetIsTaxExempt(v bool)`
+
+SetIsTaxExempt sets IsTaxExempt field to given value.
+
+### HasIsTaxExempt
+
+`func (o *CustomerAdd) HasIsTaxExempt() bool`
+
+HasIsTaxExempt returns a boolean if a field has been set.
+
+### GetVendorId
+
+`func (o *CustomerAdd) GetVendorId() string`
+
+GetVendorId returns the VendorId field if non-nil, zero value otherwise.
+
+### GetVendorIdOk
+
+`func (o *CustomerAdd) GetVendorIdOk() (*string, bool)`
+
+GetVendorIdOk returns a tuple with the VendorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorId
+
+`func (o *CustomerAdd) SetVendorId(v string)`
+
+SetVendorId sets VendorId field to given value.
+
+### HasVendorId
+
+`func (o *CustomerAdd) HasVendorId() bool`
+
+HasVendorId returns a boolean if a field has been set.
 
 ### GetStoreId
 
