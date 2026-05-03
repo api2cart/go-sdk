@@ -256,6 +256,8 @@ type ProductAdd struct {
 	ViewedCount *int32 `json:"viewed_count,omitempty"`
 	// Defines how many times the product was ordered
 	OrderedCount *int32 `json:"ordered_count,omitempty"`
+	// Vendor Id
+	VendorId *string `json:"vendor_id,omitempty"`
 	// Add Shop Section Id
 	ShopSectionId *int32 `json:"shop_section_id,omitempty"`
 	// Add Return Policy Id
@@ -4174,6 +4176,38 @@ func (o *ProductAdd) SetOrderedCount(v int32) {
 	o.OrderedCount = &v
 }
 
+// GetVendorId returns the VendorId field value if set, zero value otherwise.
+func (o *ProductAdd) GetVendorId() string {
+	if o == nil || IsNil(o.VendorId) {
+		var ret string
+		return ret
+	}
+	return *o.VendorId
+}
+
+// GetVendorIdOk returns a tuple with the VendorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetVendorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VendorId) {
+		return nil, false
+	}
+	return o.VendorId, true
+}
+
+// HasVendorId returns a boolean if a field has been set.
+func (o *ProductAdd) HasVendorId() bool {
+	if o != nil && !IsNil(o.VendorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorId gets a reference to the given string and assigns it to the VendorId field.
+func (o *ProductAdd) SetVendorId(v string) {
+	o.VendorId = &v
+}
+
 // GetShopSectionId returns the ShopSectionId field value if set, zero value otherwise.
 func (o *ProductAdd) GetShopSectionId() int32 {
 	if o == nil || IsNil(o.ShopSectionId) {
@@ -4759,6 +4793,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrderedCount) {
 		toSerialize["ordered_count"] = o.OrderedCount
+	}
+	if !IsNil(o.VendorId) {
+		toSerialize["vendor_id"] = o.VendorId
 	}
 	if !IsNil(o.ShopSectionId) {
 		toSerialize["shop_section_id"] = o.ShopSectionId

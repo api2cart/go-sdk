@@ -46,6 +46,8 @@ Name | Type | Description | Notes
 **IncreaseQuantity** | Pointer to **float32** | Defines the incremental changes in product quantity | [optional] 
 **ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity | [optional] 
 **LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
+**MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
+**MaxOrderQuantity** | Pointer to **float32** | The maximum quantity an order can contain when purchasing the product. | [optional] 
 **WarehouseId** | Pointer to **string** | This parameter is used for selecting a warehouse where you need to set/modify a product quantity. | [optional] 
 **Weight** | Pointer to **float32** | Weight | [optional] 
 **WeightUnit** | Pointer to **string** | Weight Unit | [optional] 
@@ -63,6 +65,7 @@ Name | Type | Description | Notes
 **Barcode** | Pointer to **string** | A barcode is a unique code composed of numbers used as a product identifier. | [optional] 
 **Manufacturer** | Pointer to **string** | Defines product&#39;s manufacturer | [optional] 
 **ManufacturerId** | Pointer to **string** | Defines product&#39;s manufacturer by manufacturer_id | [optional] 
+**VendorId** | Pointer to **string** | Vendor Id | [optional] 
 **CategoriesIds** | Pointer to **string** | Defines product add that is specified by comma-separated categories id | [optional] 
 **RelatedProductsIds** | Pointer to **string** | Defines product related products ids that has to be updated | [optional] 
 **UpSellProductsIds** | Pointer to **string** | Defines product up-sell products ids that has to be updated | [optional] 
@@ -98,7 +101,6 @@ Name | Type | Description | Notes
 **PersonalizationQuestions** | Pointer to [**[]ProductAddPersonalizationQuestionsInner**](ProductAddPersonalizationQuestionsInner.md) | Defines personalization questions for the listing as an array of question objects. Each question object supports the following fields: question_id (integer, nullable), question_text (string, 1-45 chars), instructions (string, nullable), question_type (string), required (boolean), max_allowed_characters (integer, nullable), max_allowed_files (integer, nullable), options (array, nullable). Cannot be used together with &lt;strong&gt;personalization_details&lt;/strong&gt;. | [optional] 
 **ExternalProductLink** | Pointer to **string** | External product link | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
-**MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
 **ManufacturerIds** | Pointer to **string** | A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method. | [optional] 
 **ResponsiblePersonIds** | Pointer to **string** | A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method. | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
@@ -1172,6 +1174,56 @@ SetLowStockThreshold sets LowStockThreshold field to given value.
 
 HasLowStockThreshold returns a boolean if a field has been set.
 
+### GetMinOrderQuantity
+
+`func (o *ProductUpdate) GetMinOrderQuantity() float32`
+
+GetMinOrderQuantity returns the MinOrderQuantity field if non-nil, zero value otherwise.
+
+### GetMinOrderQuantityOk
+
+`func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool)`
+
+GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinOrderQuantity
+
+`func (o *ProductUpdate) SetMinOrderQuantity(v float32)`
+
+SetMinOrderQuantity sets MinOrderQuantity field to given value.
+
+### HasMinOrderQuantity
+
+`func (o *ProductUpdate) HasMinOrderQuantity() bool`
+
+HasMinOrderQuantity returns a boolean if a field has been set.
+
+### GetMaxOrderQuantity
+
+`func (o *ProductUpdate) GetMaxOrderQuantity() float32`
+
+GetMaxOrderQuantity returns the MaxOrderQuantity field if non-nil, zero value otherwise.
+
+### GetMaxOrderQuantityOk
+
+`func (o *ProductUpdate) GetMaxOrderQuantityOk() (*float32, bool)`
+
+GetMaxOrderQuantityOk returns a tuple with the MaxOrderQuantity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxOrderQuantity
+
+`func (o *ProductUpdate) SetMaxOrderQuantity(v float32)`
+
+SetMaxOrderQuantity sets MaxOrderQuantity field to given value.
+
+### HasMaxOrderQuantity
+
+`func (o *ProductUpdate) HasMaxOrderQuantity() bool`
+
+HasMaxOrderQuantity returns a boolean if a field has been set.
+
 ### GetWarehouseId
 
 `func (o *ProductUpdate) GetWarehouseId() string`
@@ -1596,6 +1648,31 @@ SetManufacturerId sets ManufacturerId field to given value.
 `func (o *ProductUpdate) HasManufacturerId() bool`
 
 HasManufacturerId returns a boolean if a field has been set.
+
+### GetVendorId
+
+`func (o *ProductUpdate) GetVendorId() string`
+
+GetVendorId returns the VendorId field if non-nil, zero value otherwise.
+
+### GetVendorIdOk
+
+`func (o *ProductUpdate) GetVendorIdOk() (*string, bool)`
+
+GetVendorIdOk returns a tuple with the VendorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorId
+
+`func (o *ProductUpdate) SetVendorId(v string)`
+
+SetVendorId sets VendorId field to given value.
+
+### HasVendorId
+
+`func (o *ProductUpdate) HasVendorId() bool`
+
+HasVendorId returns a boolean if a field has been set.
 
 ### GetCategoriesIds
 
@@ -2471,31 +2548,6 @@ SetMarketplaceItemProperties sets MarketplaceItemProperties field to given value
 `func (o *ProductUpdate) HasMarketplaceItemProperties() bool`
 
 HasMarketplaceItemProperties returns a boolean if a field has been set.
-
-### GetMinOrderQuantity
-
-`func (o *ProductUpdate) GetMinOrderQuantity() float32`
-
-GetMinOrderQuantity returns the MinOrderQuantity field if non-nil, zero value otherwise.
-
-### GetMinOrderQuantityOk
-
-`func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool)`
-
-GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMinOrderQuantity
-
-`func (o *ProductUpdate) SetMinOrderQuantity(v float32)`
-
-SetMinOrderQuantity sets MinOrderQuantity field to given value.
-
-### HasMinOrderQuantity
-
-`func (o *ProductUpdate) HasMinOrderQuantity() bool`
-
-HasMinOrderQuantity returns a boolean if a field has been set.
 
 ### GetManufacturerIds
 

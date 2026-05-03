@@ -104,6 +104,10 @@ type ProductUpdate struct {
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
 	// Specify the quantity threshold below which the product is considered low in stock
 	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`
+	// The minimum quantity an order must contain, to be eligible to purchase this product.
+	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
+	// The maximum quantity an order can contain when purchasing the product.
+	MaxOrderQuantity *float32 `json:"max_order_quantity,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
 	WarehouseId *string `json:"warehouse_id,omitempty"`
 	// Weight
@@ -138,6 +142,8 @@ type ProductUpdate struct {
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	// Defines product's manufacturer by manufacturer_id
 	ManufacturerId *string `json:"manufacturer_id,omitempty"`
+	// Vendor Id
+	VendorId *string `json:"vendor_id,omitempty"`
 	// Defines product add that is specified by comma-separated categories id
 	CategoriesIds *string `json:"categories_ids,omitempty"`
 	// Defines product related products ids that has to be updated
@@ -205,8 +211,6 @@ type ProductUpdate struct {
 	ExternalProductLink *string `json:"external_product_link,omitempty"`
 	// String containing the JSON representation of the supplied data
 	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
-	// The minimum quantity an order must contain, to be eligible to purchase this product.
-	MinOrderQuantity *float32 `json:"min_order_quantity,omitempty"`
 	// A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method.
 	ManufacturerIds *string `json:"manufacturer_ids,omitempty"`
 	// A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method.
@@ -1628,6 +1632,70 @@ func (o *ProductUpdate) SetLowStockThreshold(v float32) {
 	o.LowStockThreshold = &v
 }
 
+// GetMinOrderQuantity returns the MinOrderQuantity field value if set, zero value otherwise.
+func (o *ProductUpdate) GetMinOrderQuantity() float32 {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		var ret float32
+		return ret
+	}
+	return *o.MinOrderQuantity
+}
+
+// GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.MinOrderQuantity) {
+		return nil, false
+	}
+	return o.MinOrderQuantity, true
+}
+
+// HasMinOrderQuantity returns a boolean if a field has been set.
+func (o *ProductUpdate) HasMinOrderQuantity() bool {
+	if o != nil && !IsNil(o.MinOrderQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinOrderQuantity gets a reference to the given float32 and assigns it to the MinOrderQuantity field.
+func (o *ProductUpdate) SetMinOrderQuantity(v float32) {
+	o.MinOrderQuantity = &v
+}
+
+// GetMaxOrderQuantity returns the MaxOrderQuantity field value if set, zero value otherwise.
+func (o *ProductUpdate) GetMaxOrderQuantity() float32 {
+	if o == nil || IsNil(o.MaxOrderQuantity) {
+		var ret float32
+		return ret
+	}
+	return *o.MaxOrderQuantity
+}
+
+// GetMaxOrderQuantityOk returns a tuple with the MaxOrderQuantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetMaxOrderQuantityOk() (*float32, bool) {
+	if o == nil || IsNil(o.MaxOrderQuantity) {
+		return nil, false
+	}
+	return o.MaxOrderQuantity, true
+}
+
+// HasMaxOrderQuantity returns a boolean if a field has been set.
+func (o *ProductUpdate) HasMaxOrderQuantity() bool {
+	if o != nil && !IsNil(o.MaxOrderQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxOrderQuantity gets a reference to the given float32 and assigns it to the MaxOrderQuantity field.
+func (o *ProductUpdate) SetMaxOrderQuantity(v float32) {
+	o.MaxOrderQuantity = &v
+}
+
 // GetWarehouseId returns the WarehouseId field value if set, zero value otherwise.
 func (o *ProductUpdate) GetWarehouseId() string {
 	if o == nil || IsNil(o.WarehouseId) {
@@ -2170,6 +2238,38 @@ func (o *ProductUpdate) HasManufacturerId() bool {
 // SetManufacturerId gets a reference to the given string and assigns it to the ManufacturerId field.
 func (o *ProductUpdate) SetManufacturerId(v string) {
 	o.ManufacturerId = &v
+}
+
+// GetVendorId returns the VendorId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetVendorId() string {
+	if o == nil || IsNil(o.VendorId) {
+		var ret string
+		return ret
+	}
+	return *o.VendorId
+}
+
+// GetVendorIdOk returns a tuple with the VendorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetVendorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VendorId) {
+		return nil, false
+	}
+	return o.VendorId, true
+}
+
+// HasVendorId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasVendorId() bool {
+	if o != nil && !IsNil(o.VendorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVendorId gets a reference to the given string and assigns it to the VendorId field.
+func (o *ProductUpdate) SetVendorId(v string) {
+	o.VendorId = &v
 }
 
 // GetCategoriesIds returns the CategoriesIds field value if set, zero value otherwise.
@@ -3292,38 +3392,6 @@ func (o *ProductUpdate) SetMarketplaceItemProperties(v string) {
 	o.MarketplaceItemProperties = &v
 }
 
-// GetMinOrderQuantity returns the MinOrderQuantity field value if set, zero value otherwise.
-func (o *ProductUpdate) GetMinOrderQuantity() float32 {
-	if o == nil || IsNil(o.MinOrderQuantity) {
-		var ret float32
-		return ret
-	}
-	return *o.MinOrderQuantity
-}
-
-// GetMinOrderQuantityOk returns a tuple with the MinOrderQuantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductUpdate) GetMinOrderQuantityOk() (*float32, bool) {
-	if o == nil || IsNil(o.MinOrderQuantity) {
-		return nil, false
-	}
-	return o.MinOrderQuantity, true
-}
-
-// HasMinOrderQuantity returns a boolean if a field has been set.
-func (o *ProductUpdate) HasMinOrderQuantity() bool {
-	if o != nil && !IsNil(o.MinOrderQuantity) {
-		return true
-	}
-
-	return false
-}
-
-// SetMinOrderQuantity gets a reference to the given float32 and assigns it to the MinOrderQuantity field.
-func (o *ProductUpdate) SetMinOrderQuantity(v float32) {
-	o.MinOrderQuantity = &v
-}
-
 // GetManufacturerIds returns the ManufacturerIds field value if set, zero value otherwise.
 func (o *ProductUpdate) GetManufacturerIds() string {
 	if o == nil || IsNil(o.ManufacturerIds) {
@@ -3556,6 +3624,12 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LowStockThreshold) {
 		toSerialize["low_stock_threshold"] = o.LowStockThreshold
 	}
+	if !IsNil(o.MinOrderQuantity) {
+		toSerialize["min_order_quantity"] = o.MinOrderQuantity
+	}
+	if !IsNil(o.MaxOrderQuantity) {
+		toSerialize["max_order_quantity"] = o.MaxOrderQuantity
+	}
 	if !IsNil(o.WarehouseId) {
 		toSerialize["warehouse_id"] = o.WarehouseId
 	}
@@ -3606,6 +3680,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ManufacturerId) {
 		toSerialize["manufacturer_id"] = o.ManufacturerId
+	}
+	if !IsNil(o.VendorId) {
+		toSerialize["vendor_id"] = o.VendorId
 	}
 	if !IsNil(o.CategoriesIds) {
 		toSerialize["categories_ids"] = o.CategoriesIds
@@ -3711,9 +3788,6 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MarketplaceItemProperties) {
 		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
-	}
-	if !IsNil(o.MinOrderQuantity) {
-		toSerialize["min_order_quantity"] = o.MinOrderQuantity
 	}
 	if !IsNil(o.ManufacturerIds) {
 		toSerialize["manufacturer_ids"] = o.ManufacturerIds

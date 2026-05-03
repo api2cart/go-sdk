@@ -70,7 +70,7 @@ type CustomerAdd struct {
 	CurrencyId *string `json:"currency_id,omitempty"`
 	// Marks a customer as tax-exempt (B2B/wholesale).
 	IsTaxExempt *bool `json:"is_tax_exempt,omitempty"`
-	// Vendor Id
+	// Assigns vendor id to the customer
 	VendorId *string `json:"vendor_id,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`

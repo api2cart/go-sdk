@@ -124,6 +124,7 @@ Name | Type | Description | Notes
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **ViewedCount** | Pointer to **int32** | Specifies the number of product&#39;s reviews | [optional] [default to 0]
 **OrderedCount** | Pointer to **int32** | Defines how many times the product was ordered | [optional] [default to 0]
+**VendorId** | Pointer to **string** | Vendor Id | [optional] 
 **ShopSectionId** | Pointer to **int32** | Add Shop Section Id | [optional] 
 **ReturnPolicyId** | Pointer to **int32** | Add Return Policy Id | [optional] 
 **PersonalizationDetails** | Pointer to [**ProductAddPersonalizationDetails**](ProductAddPersonalizationDetails.md) |  | [optional] 
@@ -3130,6 +3131,31 @@ SetOrderedCount sets OrderedCount field to given value.
 `func (o *ProductAdd) HasOrderedCount() bool`
 
 HasOrderedCount returns a boolean if a field has been set.
+
+### GetVendorId
+
+`func (o *ProductAdd) GetVendorId() string`
+
+GetVendorId returns the VendorId field if non-nil, zero value otherwise.
+
+### GetVendorIdOk
+
+`func (o *ProductAdd) GetVendorIdOk() (*string, bool)`
+
+GetVendorIdOk returns a tuple with the VendorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorId
+
+`func (o *ProductAdd) SetVendorId(v string)`
+
+SetVendorId sets VendorId field to given value.
+
+### HasVendorId
+
+`func (o *ProductAdd) HasVendorId() bool`
+
+HasVendorId returns a boolean if a field has been set.
 
 ### GetShopSectionId
 

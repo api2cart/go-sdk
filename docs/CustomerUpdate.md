@@ -21,8 +21,12 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | Defines customer&#39;s status | [optional] 
 **Password** | Pointer to **string** | Defines customer&#39;s unique password | [optional] 
 **CurrencyId** | Pointer to **string** | Currency Id | [optional] 
+**Company** | Pointer to **string** | Defines customer&#39;s company | [optional] 
+**Country** | Pointer to **string** | Specifies ISO code or name of country | [optional] 
+**Fax** | Pointer to **string** | Defines customer&#39;s fax | [optional] 
+**TaxId** | Pointer to **string** | Add Tax Id | [optional] 
 **IsTaxExempt** | Pointer to **bool** | Marks a customer as tax-exempt (B2B/wholesale). | [optional] 
-**VendorId** | Pointer to **string** | Vendor Id | [optional] 
+**VendorId** | Pointer to **string** | Updates vendor id of the customer | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **Address** | Pointer to [**[]CustomerUpdateAddressInner**](CustomerUpdateAddressInner.md) |  | [optional] 
@@ -470,6 +474,106 @@ SetCurrencyId sets CurrencyId field to given value.
 `func (o *CustomerUpdate) HasCurrencyId() bool`
 
 HasCurrencyId returns a boolean if a field has been set.
+
+### GetCompany
+
+`func (o *CustomerUpdate) GetCompany() string`
+
+GetCompany returns the Company field if non-nil, zero value otherwise.
+
+### GetCompanyOk
+
+`func (o *CustomerUpdate) GetCompanyOk() (*string, bool)`
+
+GetCompanyOk returns a tuple with the Company field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompany
+
+`func (o *CustomerUpdate) SetCompany(v string)`
+
+SetCompany sets Company field to given value.
+
+### HasCompany
+
+`func (o *CustomerUpdate) HasCompany() bool`
+
+HasCompany returns a boolean if a field has been set.
+
+### GetCountry
+
+`func (o *CustomerUpdate) GetCountry() string`
+
+GetCountry returns the Country field if non-nil, zero value otherwise.
+
+### GetCountryOk
+
+`func (o *CustomerUpdate) GetCountryOk() (*string, bool)`
+
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountry
+
+`func (o *CustomerUpdate) SetCountry(v string)`
+
+SetCountry sets Country field to given value.
+
+### HasCountry
+
+`func (o *CustomerUpdate) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
+
+### GetFax
+
+`func (o *CustomerUpdate) GetFax() string`
+
+GetFax returns the Fax field if non-nil, zero value otherwise.
+
+### GetFaxOk
+
+`func (o *CustomerUpdate) GetFaxOk() (*string, bool)`
+
+GetFaxOk returns a tuple with the Fax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFax
+
+`func (o *CustomerUpdate) SetFax(v string)`
+
+SetFax sets Fax field to given value.
+
+### HasFax
+
+`func (o *CustomerUpdate) HasFax() bool`
+
+HasFax returns a boolean if a field has been set.
+
+### GetTaxId
+
+`func (o *CustomerUpdate) GetTaxId() string`
+
+GetTaxId returns the TaxId field if non-nil, zero value otherwise.
+
+### GetTaxIdOk
+
+`func (o *CustomerUpdate) GetTaxIdOk() (*string, bool)`
+
+GetTaxIdOk returns a tuple with the TaxId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTaxId
+
+`func (o *CustomerUpdate) SetTaxId(v string)`
+
+SetTaxId sets TaxId field to given value.
+
+### HasTaxId
+
+`func (o *CustomerUpdate) HasTaxId() bool`
+
+HasTaxId returns a boolean if a field has been set.
 
 ### GetIsTaxExempt
 

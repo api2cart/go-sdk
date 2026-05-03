@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 
 ## AttributeList
 
-> ModelResponseAttributeList AttributeList(ctx).Start(start).Count(count).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseAttributeList AttributeList(ctx).Start(start).Count(count).PageCursor(pageCursor).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 attribute.list
 
@@ -674,6 +674,7 @@ import (
 func main() {
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
 	attributeIds := "1,2,3" // string | Filter attributes by ids (optional)
 	attributeSetId := "4" // string | Filter items by attribute set id (optional)
 	storeId := "1" // string | Store Id (optional)
@@ -688,7 +689,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeList(context.Background()).Start(start).Count(count).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).AttributeIds(attributeIds).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Type_(type_).Visible(visible).Required(required).System(system).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -711,6 +712,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
  **attributeIds** | **string** | Filter attributes by ids | 
  **attributeSetId** | **string** | Filter items by attribute set id | 
  **storeId** | **string** | Store Id | 
@@ -944,7 +946,7 @@ Name | Type | Description  | Notes
 
 ## AttributeUpdate
 
-> AttributeUpdate200Response AttributeUpdate(ctx).Id(id).Name(name).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
+> AttributeUpdate200Response AttributeUpdate(ctx).Id(id).Name(name).Visible(visible).Position(position).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 
 attribute.update
 
@@ -964,14 +966,16 @@ import (
 
 func main() {
 	id := "10" // string | Entity id
-	name := "Test name" // string | Defines new attributes's name
+	name := "Test name" // string | Defines new attributes's name (optional)
+	visible := true // bool | Set visibility status (optional)
+	position := int32(5) // int32 | Attribute`s position (optional) (default to 0)
 	storeId := "1" // string | Store Id (optional)
 	langId := "3" // string | Language id (optional)
 	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AttributeAPI.AttributeUpdate(context.Background()).Id(id).Name(name).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.AttributeAPI.AttributeUpdate(context.Background()).Id(id).Name(name).Visible(visible).Position(position).StoreId(storeId).LangId(langId).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -994,6 +998,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Entity id | 
  **name** | **string** | Defines new attributes&#39;s name | 
+ **visible** | **bool** | Set visibility status | 
+ **position** | **int32** | Attribute&#x60;s position | [default to 0]
  **storeId** | **string** | Store Id | 
  **langId** | **string** | Language id | 
  **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 

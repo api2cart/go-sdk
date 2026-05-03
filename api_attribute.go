@@ -1698,6 +1698,7 @@ type ApiAttributeListRequest struct {
 	ApiService *AttributeAPIService
 	start *int32
 	count *int32
+	pageCursor *string
 	attributeIds *string
 	attributeSetId *string
 	storeId *string
@@ -1720,6 +1721,12 @@ func (r ApiAttributeListRequest) Start(start int32) ApiAttributeListRequest {
 // This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
 func (r ApiAttributeListRequest) Count(count int32) ApiAttributeListRequest {
 	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiAttributeListRequest) PageCursor(pageCursor string) ApiAttributeListRequest {
+	r.pageCursor = &pageCursor
 	return r
 }
 
@@ -1840,6 +1847,9 @@ func (a *AttributeAPIService) AttributeListExecute(r ApiAttributeListRequest) (*
 	} else {
 		var defaultValue int32 = 10
 		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
 	}
 	if r.attributeIds != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "attribute_ids", r.attributeIds, "form", "")
@@ -2409,6 +2419,8 @@ type ApiAttributeUpdateRequest struct {
 	ApiService *AttributeAPIService
 	id *string
 	name *string
+	visible *bool
+	position *int32
 	storeId *string
 	langId *string
 	idempotencyKey *string
@@ -2423,6 +2435,18 @@ func (r ApiAttributeUpdateRequest) Id(id string) ApiAttributeUpdateRequest {
 // Defines new attributes&#39;s name
 func (r ApiAttributeUpdateRequest) Name(name string) ApiAttributeUpdateRequest {
 	r.name = &name
+	return r
+}
+
+// Set visibility status
+func (r ApiAttributeUpdateRequest) Visible(visible bool) ApiAttributeUpdateRequest {
+	r.visible = &visible
+	return r
+}
+
+// Attribute&#x60;s position
+func (r ApiAttributeUpdateRequest) Position(position int32) ApiAttributeUpdateRequest {
+	r.position = &position
 	return r
 }
 
@@ -2486,12 +2510,20 @@ func (a *AttributeAPIService) AttributeUpdateExecute(r ApiAttributeUpdateRequest
 	if r.id == nil {
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
+	if r.visible != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "visible", r.visible, "form", "")
+	}
+	if r.position != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "position", r.position, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.position = &defaultValue
+	}
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
 	}

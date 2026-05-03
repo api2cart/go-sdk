@@ -52,6 +52,8 @@ type CustomerUpdateAddressInner struct {
 	AddressBookIdentificationNumber *string `json:"address_book_identification_number,omitempty"`
 	// Specifies customer's gender
 	AddressBookGender *string `json:"address_book_gender,omitempty"`
+	// Specifies customer's region
+	AddressBookRegion *string `json:"address_book_region,omitempty"`
 	// Specifies customer's alias in the address book
 	AddressBookAlias *string `json:"address_book_alias,omitempty"`
 	// Specifies customer's address type
@@ -589,6 +591,38 @@ func (o *CustomerUpdateAddressInner) SetAddressBookGender(v string) {
 	o.AddressBookGender = &v
 }
 
+// GetAddressBookRegion returns the AddressBookRegion field value if set, zero value otherwise.
+func (o *CustomerUpdateAddressInner) GetAddressBookRegion() string {
+	if o == nil || IsNil(o.AddressBookRegion) {
+		var ret string
+		return ret
+	}
+	return *o.AddressBookRegion
+}
+
+// GetAddressBookRegionOk returns a tuple with the AddressBookRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdateAddressInner) GetAddressBookRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.AddressBookRegion) {
+		return nil, false
+	}
+	return o.AddressBookRegion, true
+}
+
+// HasAddressBookRegion returns a boolean if a field has been set.
+func (o *CustomerUpdateAddressInner) HasAddressBookRegion() bool {
+	if o != nil && !IsNil(o.AddressBookRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddressBookRegion gets a reference to the given string and assigns it to the AddressBookRegion field.
+func (o *CustomerUpdateAddressInner) SetAddressBookRegion(v string) {
+	o.AddressBookRegion = &v
+}
+
 // GetAddressBookAlias returns the AddressBookAlias field value if set, zero value otherwise.
 func (o *CustomerUpdateAddressInner) GetAddressBookAlias() string {
 	if o == nil || IsNil(o.AddressBookAlias) {
@@ -742,6 +776,9 @@ func (o CustomerUpdateAddressInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AddressBookGender) {
 		toSerialize["address_book_gender"] = o.AddressBookGender
+	}
+	if !IsNil(o.AddressBookRegion) {
+		toSerialize["address_book_region"] = o.AddressBookRegion
 	}
 	if !IsNil(o.AddressBookAlias) {
 		toSerialize["address_book_alias"] = o.AddressBookAlias

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AttributeName** | Pointer to **string** |  | [optional] 
 **AttributeValue** | Pointer to **string** |  | [optional] 
 **AttributePrice** | Pointer to **float32** |  | [optional] 
+**AttributeWeight** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetAttributePrice sets AttributePrice field to given value.
 `func (o *ProductVariantAddAttributesInner) HasAttributePrice() bool`
 
 HasAttributePrice returns a boolean if a field has been set.
+
+### GetAttributeWeight
+
+`func (o *ProductVariantAddAttributesInner) GetAttributeWeight() float32`
+
+GetAttributeWeight returns the AttributeWeight field if non-nil, zero value otherwise.
+
+### GetAttributeWeightOk
+
+`func (o *ProductVariantAddAttributesInner) GetAttributeWeightOk() (*float32, bool)`
+
+GetAttributeWeightOk returns a tuple with the AttributeWeight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributeWeight
+
+`func (o *ProductVariantAddAttributesInner) SetAttributeWeight(v float32)`
+
+SetAttributeWeight sets AttributeWeight field to given value.
+
+### HasAttributeWeight
+
+`func (o *ProductVariantAddAttributesInner) HasAttributeWeight() bool`
+
+HasAttributeWeight returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

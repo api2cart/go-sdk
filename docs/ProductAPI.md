@@ -1739,7 +1739,7 @@ Name | Type | Description  | Notes
 
 ## ProductManufacturerAdd
 
-> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
+> ProductManufacturerAdd200Response ProductManufacturerAdd(ctx).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).Description(description).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
 
 product.manufacturer.add
 
@@ -1761,6 +1761,7 @@ func main() {
 	productId := "10" // string | Defines products specified by product id
 	manufacturer := "Samsung" // string | Defines product’s manufacturer's name
 	storeId := "1" // string | Store Id (optional)
+	description := "Acme Corporation — premium tools brand" // string | Defines manufacturer's description (optional)
 	metaTitle := "category,test" // string | Defines unique meta title for each entity (optional)
 	metaKeywords := "category,test" // string | Defines unique meta keywords for each entity (optional)
 	metaDescription := "category,test" // string | Defines unique meta description of a entity (optional)
@@ -1771,7 +1772,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.ProductAPI.ProductManufacturerAdd(context.Background()).ProductId(productId).Manufacturer(manufacturer).StoreId(storeId).Description(description).MetaTitle(metaTitle).MetaKeywords(metaKeywords).MetaDescription(metaDescription).SearchKeywords(searchKeywords).ImageUrl(imageUrl).SeoUrl(seoUrl).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductManufacturerAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1795,6 +1796,7 @@ Name | Type | Description  | Notes
  **productId** | **string** | Defines products specified by product id | 
  **manufacturer** | **string** | Defines product’s manufacturer&#39;s name | 
  **storeId** | **string** | Store Id | 
+ **description** | **string** | Defines manufacturer&#39;s description | 
  **metaTitle** | **string** | Defines unique meta title for each entity | 
  **metaKeywords** | **string** | Defines unique meta keywords for each entity | 
  **metaDescription** | **string** | Defines unique meta description of a entity | 

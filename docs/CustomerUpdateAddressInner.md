@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **AddressBookTaxId** | Pointer to **string** | Add Tax Id | [optional] 
 **AddressBookIdentificationNumber** | Pointer to **string** | The national ID card number of this person, or a unique tax identification number. | [optional] 
 **AddressBookGender** | Pointer to **string** | Specifies customer&#39;s gender | [optional] 
+**AddressBookRegion** | Pointer to **string** | Specifies customer&#39;s region | [optional] 
 **AddressBookAlias** | Pointer to **string** | Specifies customer&#39;s alias in the address book | [optional] 
 **AddressBookType** | Pointer to **string** | Specifies customer&#39;s address type | [optional] 
 **AddressBookDefault** | Pointer to **bool** | Defines whether the address is used by default | [optional] 
@@ -442,6 +443,31 @@ SetAddressBookGender sets AddressBookGender field to given value.
 `func (o *CustomerUpdateAddressInner) HasAddressBookGender() bool`
 
 HasAddressBookGender returns a boolean if a field has been set.
+
+### GetAddressBookRegion
+
+`func (o *CustomerUpdateAddressInner) GetAddressBookRegion() string`
+
+GetAddressBookRegion returns the AddressBookRegion field if non-nil, zero value otherwise.
+
+### GetAddressBookRegionOk
+
+`func (o *CustomerUpdateAddressInner) GetAddressBookRegionOk() (*string, bool)`
+
+GetAddressBookRegionOk returns a tuple with the AddressBookRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddressBookRegion
+
+`func (o *CustomerUpdateAddressInner) SetAddressBookRegion(v string)`
+
+SetAddressBookRegion sets AddressBookRegion field to given value.
+
+### HasAddressBookRegion
+
+`func (o *CustomerUpdateAddressInner) HasAddressBookRegion() bool`
+
+HasAddressBookRegion returns a boolean if a field has been set.
 
 ### GetAddressBookAlias
 

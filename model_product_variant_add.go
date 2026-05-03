@@ -24,7 +24,7 @@ var _ MappedNullable = &ProductVariantAdd{}
 type ProductVariantAdd struct {
 	// Defines product's id where the variant has to be added
 	ProductId *string `json:"product_id,omitempty"`
-	// Defines variant's attributes list
+	// Defines variant's attributes list with optional per-option price and weight modifiers
 	Attributes []ProductVariantAddAttributesInner `json:"attributes,omitempty"`
 	// Defines variant's name that has to be added
 	Name *string `json:"name,omitempty"`

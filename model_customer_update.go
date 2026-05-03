@@ -54,9 +54,17 @@ type CustomerUpdate struct {
 	Password *string `json:"password,omitempty"`
 	// Currency Id
 	CurrencyId *string `json:"currency_id,omitempty"`
+	// Defines customer's company
+	Company *string `json:"company,omitempty"`
+	// Specifies ISO code or name of country
+	Country *string `json:"country,omitempty"`
+	// Defines customer's fax
+	Fax *string `json:"fax,omitempty"`
+	// Add Tax Id
+	TaxId *string `json:"tax_id,omitempty"`
 	// Marks a customer as tax-exempt (B2B/wholesale).
 	IsTaxExempt *bool `json:"is_tax_exempt,omitempty"`
-	// Vendor Id
+	// Updates vendor id of the customer
 	VendorId *string `json:"vendor_id,omitempty"`
 	// Store Id
 	StoreId *string `json:"store_id,omitempty"`
@@ -626,6 +634,134 @@ func (o *CustomerUpdate) SetCurrencyId(v string) {
 	o.CurrencyId = &v
 }
 
+// GetCompany returns the Company field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetCompany() string {
+	if o == nil || IsNil(o.Company) {
+		var ret string
+		return ret
+	}
+	return *o.Company
+}
+
+// GetCompanyOk returns a tuple with the Company field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetCompanyOk() (*string, bool) {
+	if o == nil || IsNil(o.Company) {
+		return nil, false
+	}
+	return o.Company, true
+}
+
+// HasCompany returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasCompany() bool {
+	if o != nil && !IsNil(o.Company) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompany gets a reference to the given string and assigns it to the Company field.
+func (o *CustomerUpdate) SetCompany(v string) {
+	o.Company = &v
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetCountry() string {
+	if o == nil || IsNil(o.Country) {
+		var ret string
+		return ret
+	}
+	return *o.Country
+}
+
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.Country) {
+		return nil, false
+	}
+	return o.Country, true
+}
+
+// HasCountry returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
+func (o *CustomerUpdate) SetCountry(v string) {
+	o.Country = &v
+}
+
+// GetFax returns the Fax field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetFax() string {
+	if o == nil || IsNil(o.Fax) {
+		var ret string
+		return ret
+	}
+	return *o.Fax
+}
+
+// GetFaxOk returns a tuple with the Fax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetFaxOk() (*string, bool) {
+	if o == nil || IsNil(o.Fax) {
+		return nil, false
+	}
+	return o.Fax, true
+}
+
+// HasFax returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasFax() bool {
+	if o != nil && !IsNil(o.Fax) {
+		return true
+	}
+
+	return false
+}
+
+// SetFax gets a reference to the given string and assigns it to the Fax field.
+func (o *CustomerUpdate) SetFax(v string) {
+	o.Fax = &v
+}
+
+// GetTaxId returns the TaxId field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetTaxId() string {
+	if o == nil || IsNil(o.TaxId) {
+		var ret string
+		return ret
+	}
+	return *o.TaxId
+}
+
+// GetTaxIdOk returns a tuple with the TaxId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetTaxIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TaxId) {
+		return nil, false
+	}
+	return o.TaxId, true
+}
+
+// HasTaxId returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasTaxId() bool {
+	if o != nil && !IsNil(o.TaxId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaxId gets a reference to the given string and assigns it to the TaxId field.
+func (o *CustomerUpdate) SetTaxId(v string) {
+	o.TaxId = &v
+}
+
 // GetIsTaxExempt returns the IsTaxExempt field value if set, zero value otherwise.
 func (o *CustomerUpdate) GetIsTaxExempt() bool {
 	if o == nil || IsNil(o.IsTaxExempt) {
@@ -846,6 +982,18 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CurrencyId) {
 		toSerialize["currency_id"] = o.CurrencyId
+	}
+	if !IsNil(o.Company) {
+		toSerialize["company"] = o.Company
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.Fax) {
+		toSerialize["fax"] = o.Fax
+	}
+	if !IsNil(o.TaxId) {
+		toSerialize["tax_id"] = o.TaxId
 	}
 	if !IsNil(o.IsTaxExempt) {
 		toSerialize["is_tax_exempt"] = o.IsTaxExempt

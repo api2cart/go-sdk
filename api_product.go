@@ -4756,6 +4756,7 @@ type ApiProductManufacturerAddRequest struct {
 	productId *string
 	manufacturer *string
 	storeId *string
+	description *string
 	metaTitle *string
 	metaKeywords *string
 	metaDescription *string
@@ -4780,6 +4781,12 @@ func (r ApiProductManufacturerAddRequest) Manufacturer(manufacturer string) ApiP
 // Store Id
 func (r ApiProductManufacturerAddRequest) StoreId(storeId string) ApiProductManufacturerAddRequest {
 	r.storeId = &storeId
+	return r
+}
+
+// Defines manufacturer&#39;s description
+func (r ApiProductManufacturerAddRequest) Description(description string) ApiProductManufacturerAddRequest {
+	r.description = &description
 	return r
 }
 
@@ -4875,6 +4882,9 @@ func (a *ProductAPIService) ProductManufacturerAddExecute(r ApiProductManufactur
 	parameterAddToHeaderOrQuery(localVarQueryParams, "manufacturer", r.manufacturer, "form", "")
 	if r.storeId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.description != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "description", r.description, "form", "")
 	}
 	if r.metaTitle != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "meta_title", r.metaTitle, "form", "")

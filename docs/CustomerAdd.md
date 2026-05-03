@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** | Specifies ISO code or name of country | [optional] 
 **CurrencyId** | Pointer to **string** | Currency Id | [optional] 
 **IsTaxExempt** | Pointer to **bool** | Marks a customer as tax-exempt (B2B/wholesale). | [optional] 
-**VendorId** | Pointer to **string** | Vendor Id | [optional] 
+**VendorId** | Pointer to **string** | Assigns vendor id to the customer | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **Address** | Pointer to [**[]CustomerAddAddressInner**](CustomerAddAddressInner.md) |  | [optional] 
