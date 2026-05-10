@@ -197,6 +197,7 @@ docs/ModelResponseMarketplaceProductFind.md
 docs/ModelResponseOrderAbandonedList.md
 docs/ModelResponseOrderList.md
 docs/ModelResponseOrderPreestimateShippingList.md
+docs/ModelResponseOrderShipmentEventList.md
 docs/ModelResponseOrderShipmentList.md
 docs/ModelResponseOrderStatusList.md
 docs/ModelResponseOrderTransactionList.md
@@ -267,6 +268,7 @@ docs/OrderShipmentAddItemsInner.md
 docs/OrderShipmentAddTrackingNumbersInner.md
 docs/OrderShipmentDelete200Response.md
 docs/OrderShipmentDelete200ResponseResult.md
+docs/OrderShipmentEventAdd.md
 docs/OrderShipmentInfo200Response.md
 docs/OrderShipmentTrackingAdd.md
 docs/OrderShipmentTrackingAdd200Response.md
@@ -416,6 +418,7 @@ docs/ResponseMarketplaceProductFindResult.md
 docs/ResponseOrderAbandonedListResult.md
 docs/ResponseOrderListResult.md
 docs/ResponseOrderPreestimateShippingListResult.md
+docs/ResponseOrderShipmentEventListResult.md
 docs/ResponseOrderShipmentListResult.md
 docs/ResponseOrderStatusListResult.md
 docs/ResponseOrderTransactionListResult.md
@@ -447,6 +450,7 @@ docs/ReturnStatusList200Response.md
 docs/ReturnStatusList200ResponseResult.md
 docs/Script.md
 docs/Shipment.md
+docs/ShipmentEvent.md
 docs/ShipmentItem.md
 docs/ShipmentTrackingNumber.md
 docs/SpecialPrice.md
@@ -646,6 +650,7 @@ model_model_response_marketplace_product_find.go
 model_model_response_order_abandoned_list.go
 model_model_response_order_list.go
 model_model_response_order_preestimate_shipping_list.go
+model_model_response_order_shipment_event_list.go
 model_model_response_order_shipment_list.go
 model_model_response_order_status_list.go
 model_model_response_order_transaction_list.go
@@ -715,6 +720,7 @@ model_order_shipment_add_items_inner.go
 model_order_shipment_add_tracking_numbers_inner.go
 model_order_shipment_delete_200_response.go
 model_order_shipment_delete_200_response_result.go
+model_order_shipment_event_add.go
 model_order_shipment_info_200_response.go
 model_order_shipment_tracking_add.go
 model_order_shipment_tracking_add_200_response.go
@@ -863,6 +869,7 @@ model_response_marketplace_product_find_result.go
 model_response_order_abandoned_list_result.go
 model_response_order_list_result.go
 model_response_order_preestimate_shipping_list_result.go
+model_response_order_shipment_event_list_result.go
 model_response_order_shipment_list_result.go
 model_response_order_status_list_result.go
 model_response_order_transaction_list_result.go
@@ -893,6 +900,7 @@ model_return_status_list_200_response.go
 model_return_status_list_200_response_result.go
 model_script.go
 model_shipment.go
+model_shipment_event.go
 model_shipment_item.go
 model_shipment_tracking_number.go
 model_special_price.go

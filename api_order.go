@@ -3181,6 +3181,348 @@ func (a *OrderAPIService) OrderShipmentDeleteExecute(r ApiOrderShipmentDeleteReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiOrderShipmentEventAddRequest struct {
+	ctx context.Context
+	ApiService *OrderAPIService
+	orderShipmentEventAdd *OrderShipmentEventAdd
+}
+
+func (r ApiOrderShipmentEventAddRequest) OrderShipmentEventAdd(orderShipmentEventAdd OrderShipmentEventAdd) ApiOrderShipmentEventAddRequest {
+	r.orderShipmentEventAdd = &orderShipmentEventAdd
+	return r
+}
+
+func (r ApiOrderShipmentEventAddRequest) Execute() (*AttributeAdd200Response, *http.Response, error) {
+	return r.ApiService.OrderShipmentEventAddExecute(r)
+}
+
+/*
+OrderShipmentEventAdd order.shipment.event.add
+
+Add a tracking event to the shipment.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrderShipmentEventAddRequest
+*/
+func (a *OrderAPIService) OrderShipmentEventAdd(ctx context.Context) ApiOrderShipmentEventAddRequest {
+	return ApiOrderShipmentEventAddRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AttributeAdd200Response
+func (a *OrderAPIService) OrderShipmentEventAddExecute(r ApiOrderShipmentEventAddRequest) (*AttributeAdd200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AttributeAdd200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderShipmentEventAdd")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/order.shipment.event.add.json"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.orderShipmentEventAdd == nil {
+		return localVarReturnValue, nil, reportError("orderShipmentEventAdd is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orderShipmentEventAdd
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["StoreKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-store-key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiOrderShipmentEventListRequest struct {
+	ctx context.Context
+	ApiService *OrderAPIService
+	shipmentId *string
+	orderId *string
+	storeId *string
+	start *int32
+	count *int32
+	pageCursor *string
+	responseFields *string
+}
+
+// Defines the shipment for which tracking events will be retrieved
+func (r ApiOrderShipmentEventListRequest) ShipmentId(shipmentId string) ApiOrderShipmentEventListRequest {
+	r.shipmentId = &shipmentId
+	return r
+}
+
+// Defines the order to which the shipment belongs
+func (r ApiOrderShipmentEventListRequest) OrderId(orderId string) ApiOrderShipmentEventListRequest {
+	r.orderId = &orderId
+	return r
+}
+
+// Store Id
+func (r ApiOrderShipmentEventListRequest) StoreId(storeId string) ApiOrderShipmentEventListRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// This parameter sets the number from which you want to get entities
+func (r ApiOrderShipmentEventListRequest) Start(start int32) ApiOrderShipmentEventListRequest {
+	r.start = &start
+	return r
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiOrderShipmentEventListRequest) Count(count int32) ApiOrderShipmentEventListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderShipmentEventListRequest) PageCursor(pageCursor string) ApiOrderShipmentEventListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Set this parameter in order to choose which entity fields you want to retrieve
+func (r ApiOrderShipmentEventListRequest) ResponseFields(responseFields string) ApiOrderShipmentEventListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+func (r ApiOrderShipmentEventListRequest) Execute() (*ModelResponseOrderShipmentEventList, *http.Response, error) {
+	return r.ApiService.OrderShipmentEventListExecute(r)
+}
+
+/*
+OrderShipmentEventList order.shipment.event.list
+
+Get list of shipment tracking events.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrderShipmentEventListRequest
+*/
+func (a *OrderAPIService) OrderShipmentEventList(ctx context.Context) ApiOrderShipmentEventListRequest {
+	return ApiOrderShipmentEventListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ModelResponseOrderShipmentEventList
+func (a *OrderAPIService) OrderShipmentEventListExecute(r ApiOrderShipmentEventListRequest) (*ModelResponseOrderShipmentEventList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelResponseOrderShipmentEventList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderShipmentEventList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/order.shipment.event.list.json"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.shipmentId == nil {
+		return localVarReturnValue, nil, reportError("shipmentId is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "shipment_id", r.shipmentId, "form", "")
+	if r.orderId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_id", r.orderId, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.start != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.start = &defaultValue
+	}
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["StoreKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-store-key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiOrderShipmentInfoRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService

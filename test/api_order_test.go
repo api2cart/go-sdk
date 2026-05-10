@@ -214,6 +214,30 @@ func Test_openapi_OrderAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrderAPIService OrderShipmentEventAdd", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.OrderAPI.OrderShipmentEventAdd(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrderAPIService OrderShipmentEventList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.OrderAPI.OrderShipmentEventList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrderAPIService OrderShipmentInfo", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

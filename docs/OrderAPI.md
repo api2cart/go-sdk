@@ -20,6 +20,8 @@ Method | HTTP request | Description
 [**OrderShipmentAdd**](OrderAPI.md#OrderShipmentAdd) | **Post** /order.shipment.add.json | order.shipment.add
 [**OrderShipmentAddBatch**](OrderAPI.md#OrderShipmentAddBatch) | **Post** /order.shipment.add.batch.json | order.shipment.add.batch
 [**OrderShipmentDelete**](OrderAPI.md#OrderShipmentDelete) | **Delete** /order.shipment.delete.json | order.shipment.delete
+[**OrderShipmentEventAdd**](OrderAPI.md#OrderShipmentEventAdd) | **Post** /order.shipment.event.add.json | order.shipment.event.add
+[**OrderShipmentEventList**](OrderAPI.md#OrderShipmentEventList) | **Get** /order.shipment.event.list.json | order.shipment.event.list
 [**OrderShipmentInfo**](OrderAPI.md#OrderShipmentInfo) | **Get** /order.shipment.info.json | order.shipment.info
 [**OrderShipmentList**](OrderAPI.md#OrderShipmentList) | **Get** /order.shipment.list.json | order.shipment.list
 [**OrderShipmentTrackingAdd**](OrderAPI.md#OrderShipmentTrackingAdd) | **Post** /order.shipment.tracking.add.json | order.shipment.tracking.add
@@ -1242,6 +1244,150 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderShipmentDelete200Response**](OrderShipmentDelete200Response.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrderShipmentEventAdd
+
+> AttributeAdd200Response OrderShipmentEventAdd(ctx).OrderShipmentEventAdd(orderShipmentEventAdd).Execute()
+
+order.shipment.event.add
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orderShipmentEventAdd := *openapiclient.NewOrderShipmentEventAdd("200000002", "disabled") // OrderShipmentEventAdd | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrderAPI.OrderShipmentEventAdd(context.Background()).OrderShipmentEventAdd(orderShipmentEventAdd).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderShipmentEventAdd``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrderShipmentEventAdd`: AttributeAdd200Response
+	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderShipmentEventAdd`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrderShipmentEventAddRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderShipmentEventAdd** | [**OrderShipmentEventAdd**](OrderShipmentEventAdd.md) |  | 
+
+### Return type
+
+[**AttributeAdd200Response**](AttributeAdd200Response.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrderShipmentEventList
+
+> ModelResponseOrderShipmentEventList OrderShipmentEventList(ctx).ShipmentId(shipmentId).OrderId(orderId).StoreId(storeId).Start(start).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+
+order.shipment.event.list
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	shipmentId := "200000002" // string | Defines the shipment for which tracking events will be retrieved
+	orderId := "25" // string | Defines the order to which the shipment belongs (optional)
+	storeId := "1" // string | Store Id (optional)
+	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
+	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrderAPI.OrderShipmentEventList(context.Background()).ShipmentId(shipmentId).OrderId(orderId).StoreId(storeId).Start(start).Count(count).PageCursor(pageCursor).ResponseFields(responseFields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderShipmentEventList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrderShipmentEventList`: ModelResponseOrderShipmentEventList
+	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderShipmentEventList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrderShipmentEventListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipmentId** | **string** | Defines the shipment for which tracking events will be retrieved | 
+ **orderId** | **string** | Defines the order to which the shipment belongs | 
+ **storeId** | **string** | Store Id | 
+ **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
+ **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+
+### Return type
+
+[**ModelResponseOrderShipmentEventList**](ModelResponseOrderShipmentEventList.md)
 
 ### Authorization
 
