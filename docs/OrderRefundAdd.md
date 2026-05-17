@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ItemRestock** | Pointer to **bool** | Boolean, whether or not to add the line items back to the store inventory. | [optional] [default to false]
 **SendNotifications** | Pointer to **bool** | Send notifications to customer after refund was created | [optional] [default to false]
 **Date** | Pointer to **string** | Specifies an order creation date in format Y-m-d H:i:s | [optional] 
+**StoreId** | Pointer to **string** | Store Id | [optional] 
 **IsOnline** | Pointer to **bool** | Indicates whether refund type is online | [optional] [default to false]
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
@@ -259,6 +260,31 @@ SetDate sets Date field to given value.
 `func (o *OrderRefundAdd) HasDate() bool`
 
 HasDate returns a boolean if a field has been set.
+
+### GetStoreId
+
+`func (o *OrderRefundAdd) GetStoreId() string`
+
+GetStoreId returns the StoreId field if non-nil, zero value otherwise.
+
+### GetStoreIdOk
+
+`func (o *OrderRefundAdd) GetStoreIdOk() (*string, bool)`
+
+GetStoreIdOk returns a tuple with the StoreId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreId
+
+`func (o *OrderRefundAdd) SetStoreId(v string)`
+
+SetStoreId sets StoreId field to given value.
+
+### HasStoreId
+
+`func (o *OrderRefundAdd) HasStoreId() bool`
+
+HasStoreId returns a boolean if a field has been set.
 
 ### GetIsOnline
 

@@ -38,6 +38,8 @@ type OrderRefundAdd struct {
 	SendNotifications *bool `json:"send_notifications,omitempty"`
 	// Specifies an order creation date in format Y-m-d H:i:s
 	Date *string `json:"date,omitempty"`
+	// Store Id
+	StoreId *string `json:"store_id,omitempty"`
 	// Indicates whether refund type is online
 	IsOnline *bool `json:"is_online,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
@@ -361,6 +363,38 @@ func (o *OrderRefundAdd) SetDate(v string) {
 	o.Date = &v
 }
 
+// GetStoreId returns the StoreId field value if set, zero value otherwise.
+func (o *OrderRefundAdd) GetStoreId() string {
+	if o == nil || IsNil(o.StoreId) {
+		var ret string
+		return ret
+	}
+	return *o.StoreId
+}
+
+// GetStoreIdOk returns a tuple with the StoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderRefundAdd) GetStoreIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StoreId) {
+		return nil, false
+	}
+	return o.StoreId, true
+}
+
+// HasStoreId returns a boolean if a field has been set.
+func (o *OrderRefundAdd) HasStoreId() bool {
+	if o != nil && !IsNil(o.StoreId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoreId gets a reference to the given string and assigns it to the StoreId field.
+func (o *OrderRefundAdd) SetStoreId(v string) {
+	o.StoreId = &v
+}
+
 // GetIsOnline returns the IsOnline field value if set, zero value otherwise.
 func (o *OrderRefundAdd) GetIsOnline() bool {
 	if o == nil || IsNil(o.IsOnline) {
@@ -461,6 +495,9 @@ func (o OrderRefundAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
+	}
+	if !IsNil(o.StoreId) {
+		toSerialize["store_id"] = o.StoreId
 	}
 	if !IsNil(o.IsOnline) {
 		toSerialize["is_online"] = o.IsOnline
