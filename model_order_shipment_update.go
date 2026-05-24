@@ -46,6 +46,8 @@ type OrderShipmentUpdate struct {
 	TrackingProvider *string `json:"tracking_provider,omitempty"`
 	// Defines items in the order that will be shipped
 	Items []OrderShipmentAddItemsInner `json:"items,omitempty"`
+	// Specifies admin's order comment
+	AdminComment *string `json:"admin_comment,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -458,6 +460,38 @@ func (o *OrderShipmentUpdate) SetItems(v []OrderShipmentAddItemsInner) {
 	o.Items = v
 }
 
+// GetAdminComment returns the AdminComment field value if set, zero value otherwise.
+func (o *OrderShipmentUpdate) GetAdminComment() string {
+	if o == nil || IsNil(o.AdminComment) {
+		var ret string
+		return ret
+	}
+	return *o.AdminComment
+}
+
+// GetAdminCommentOk returns a tuple with the AdminComment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentUpdate) GetAdminCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.AdminComment) {
+		return nil, false
+	}
+	return o.AdminComment, true
+}
+
+// HasAdminComment returns a boolean if a field has been set.
+func (o *OrderShipmentUpdate) HasAdminComment() bool {
+	if o != nil && !IsNil(o.AdminComment) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminComment gets a reference to the given string and assigns it to the AdminComment field.
+func (o *OrderShipmentUpdate) SetAdminComment(v string) {
+	o.AdminComment = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *OrderShipmentUpdate) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -533,6 +567,9 @@ func (o OrderShipmentUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
+	}
+	if !IsNil(o.AdminComment) {
+		toSerialize["admin_comment"] = o.AdminComment
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomerEmail** | **string** | Defines the customer specified by email for whom the order needs to be calculated | 
+**Currency** | Pointer to **string** | Currency code of order | [optional] 
 **CurrencyId** | Pointer to **string** | Currency Id | [optional] 
 **StoreId** | Pointer to **string** | Store Id | [optional] 
 **Coupons** | Pointer to **[]string** | Coupons that will be applied to order. If the order isn&#39;t eligible for any given discount code or there is no discount with such a code it will be skipped during calculation | [optional] 
@@ -71,6 +72,31 @@ and a boolean to check if the value has been set.
 
 SetCustomerEmail sets CustomerEmail field to given value.
 
+
+### GetCurrency
+
+`func (o *OrderCalculate) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *OrderCalculate) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *OrderCalculate) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
+
+### HasCurrency
+
+`func (o *OrderCalculate) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
 
 ### GetCurrencyId
 

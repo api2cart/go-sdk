@@ -42,10 +42,18 @@ type OrderReturnAdd struct {
 	StaffNote *string `json:"staff_note,omitempty"`
 	// Specifies return comment
 	Comment *string `json:"comment,omitempty"`
+	// Customer-visible message attached to the return request.
+	Message *string `json:"message,omitempty"`
 	// Send notifications to customer after order was created
 	SendNotifications *bool `json:"send_notifications,omitempty"`
 	// Defines return reject reason
 	RejectReason *string `json:"reject_reason,omitempty"`
+	// Indicates whether refund type is online
+	IsOnline *bool `json:"is_online,omitempty"`
+	// Specifies refund's fee price
+	FeePrice *float32 `json:"fee_price,omitempty"`
+	// Specifies order's shipping price
+	ShippingPrice *float32 `json:"shipping_price,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	OrderProducts []OrderReturnAddOrderProductsInner `json:"order_products"`
@@ -66,6 +74,10 @@ func NewOrderReturnAdd(returnStatusId string, returnActionId string, returnReaso
 	this.ItemRestock = &itemRestock
 	var sendNotifications bool = false
 	this.SendNotifications = &sendNotifications
+	var isOnline bool = false
+	this.IsOnline = &isOnline
+	var shippingPrice float32 = 0
+	this.ShippingPrice = &shippingPrice
 	this.OrderProducts = orderProducts
 	return &this
 }
@@ -79,6 +91,10 @@ func NewOrderReturnAddWithDefaults() *OrderReturnAdd {
 	this.ItemRestock = &itemRestock
 	var sendNotifications bool = false
 	this.SendNotifications = &sendNotifications
+	var isOnline bool = false
+	this.IsOnline = &isOnline
+	var shippingPrice float32 = 0
+	this.ShippingPrice = &shippingPrice
 	return &this
 }
 
@@ -378,6 +394,38 @@ func (o *OrderReturnAdd) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *OrderReturnAdd) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnAdd) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *OrderReturnAdd) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *OrderReturnAdd) SetMessage(v string) {
+	o.Message = &v
+}
+
 // GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
 func (o *OrderReturnAdd) GetSendNotifications() bool {
 	if o == nil || IsNil(o.SendNotifications) {
@@ -440,6 +488,102 @@ func (o *OrderReturnAdd) HasRejectReason() bool {
 // SetRejectReason gets a reference to the given string and assigns it to the RejectReason field.
 func (o *OrderReturnAdd) SetRejectReason(v string) {
 	o.RejectReason = &v
+}
+
+// GetIsOnline returns the IsOnline field value if set, zero value otherwise.
+func (o *OrderReturnAdd) GetIsOnline() bool {
+	if o == nil || IsNil(o.IsOnline) {
+		var ret bool
+		return ret
+	}
+	return *o.IsOnline
+}
+
+// GetIsOnlineOk returns a tuple with the IsOnline field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnAdd) GetIsOnlineOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsOnline) {
+		return nil, false
+	}
+	return o.IsOnline, true
+}
+
+// HasIsOnline returns a boolean if a field has been set.
+func (o *OrderReturnAdd) HasIsOnline() bool {
+	if o != nil && !IsNil(o.IsOnline) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsOnline gets a reference to the given bool and assigns it to the IsOnline field.
+func (o *OrderReturnAdd) SetIsOnline(v bool) {
+	o.IsOnline = &v
+}
+
+// GetFeePrice returns the FeePrice field value if set, zero value otherwise.
+func (o *OrderReturnAdd) GetFeePrice() float32 {
+	if o == nil || IsNil(o.FeePrice) {
+		var ret float32
+		return ret
+	}
+	return *o.FeePrice
+}
+
+// GetFeePriceOk returns a tuple with the FeePrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnAdd) GetFeePriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.FeePrice) {
+		return nil, false
+	}
+	return o.FeePrice, true
+}
+
+// HasFeePrice returns a boolean if a field has been set.
+func (o *OrderReturnAdd) HasFeePrice() bool {
+	if o != nil && !IsNil(o.FeePrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeePrice gets a reference to the given float32 and assigns it to the FeePrice field.
+func (o *OrderReturnAdd) SetFeePrice(v float32) {
+	o.FeePrice = &v
+}
+
+// GetShippingPrice returns the ShippingPrice field value if set, zero value otherwise.
+func (o *OrderReturnAdd) GetShippingPrice() float32 {
+	if o == nil || IsNil(o.ShippingPrice) {
+		var ret float32
+		return ret
+	}
+	return *o.ShippingPrice
+}
+
+// GetShippingPriceOk returns a tuple with the ShippingPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderReturnAdd) GetShippingPriceOk() (*float32, bool) {
+	if o == nil || IsNil(o.ShippingPrice) {
+		return nil, false
+	}
+	return o.ShippingPrice, true
+}
+
+// HasShippingPrice returns a boolean if a field has been set.
+func (o *OrderReturnAdd) HasShippingPrice() bool {
+	if o != nil && !IsNil(o.ShippingPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingPrice gets a reference to the given float32 and assigns it to the ShippingPrice field.
+func (o *OrderReturnAdd) SetShippingPrice(v float32) {
+	o.ShippingPrice = &v
 }
 
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
@@ -532,11 +676,23 @@ func (o OrderReturnAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if !IsNil(o.SendNotifications) {
 		toSerialize["send_notifications"] = o.SendNotifications
 	}
 	if !IsNil(o.RejectReason) {
 		toSerialize["reject_reason"] = o.RejectReason
+	}
+	if !IsNil(o.IsOnline) {
+		toSerialize["is_online"] = o.IsOnline
+	}
+	if !IsNil(o.FeePrice) {
+		toSerialize["fee_price"] = o.FeePrice
+	}
+	if !IsNil(o.ShippingPrice) {
+		toSerialize["shipping_price"] = o.ShippingPrice
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey

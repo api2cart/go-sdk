@@ -24,6 +24,8 @@ var _ MappedNullable = &OrderCalculate{}
 type OrderCalculate struct {
 	// Defines the customer specified by email for whom the order needs to be calculated
 	CustomerEmail string `json:"customer_email"`
+	// Currency code of order
+	Currency *string `json:"currency,omitempty"`
 	// Currency Id
 	CurrencyId *string `json:"currency_id,omitempty"`
 	// Store Id
@@ -128,6 +130,38 @@ func (o *OrderCalculate) GetCustomerEmailOk() (*string, bool) {
 // SetCustomerEmail sets field value
 func (o *OrderCalculate) SetCustomerEmail(v string) {
 	o.CustomerEmail = v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *OrderCalculate) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderCalculate) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *OrderCalculate) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *OrderCalculate) SetCurrency(v string) {
+	o.Currency = &v
 }
 
 // GetCurrencyId returns the CurrencyId field value if set, zero value otherwise.
@@ -949,6 +983,9 @@ func (o OrderCalculate) MarshalJSON() ([]byte, error) {
 func (o OrderCalculate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["customer_email"] = o.CustomerEmail
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
 	if !IsNil(o.CurrencyId) {
 		toSerialize["currency_id"] = o.CurrencyId
 	}

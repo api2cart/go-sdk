@@ -23,7 +23,6 @@ type ProductVariantAddAttributesInner struct {
 	AttributeName *string `json:"attribute_name,omitempty"`
 	AttributeValue *string `json:"attribute_value,omitempty"`
 	AttributePrice *float32 `json:"attribute_price,omitempty"`
-	AttributeWeight *float32 `json:"attribute_weight,omitempty"`
 }
 
 // NewProductVariantAddAttributesInner instantiates a new ProductVariantAddAttributesInner object
@@ -139,38 +138,6 @@ func (o *ProductVariantAddAttributesInner) SetAttributePrice(v float32) {
 	o.AttributePrice = &v
 }
 
-// GetAttributeWeight returns the AttributeWeight field value if set, zero value otherwise.
-func (o *ProductVariantAddAttributesInner) GetAttributeWeight() float32 {
-	if o == nil || IsNil(o.AttributeWeight) {
-		var ret float32
-		return ret
-	}
-	return *o.AttributeWeight
-}
-
-// GetAttributeWeightOk returns a tuple with the AttributeWeight field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProductVariantAddAttributesInner) GetAttributeWeightOk() (*float32, bool) {
-	if o == nil || IsNil(o.AttributeWeight) {
-		return nil, false
-	}
-	return o.AttributeWeight, true
-}
-
-// HasAttributeWeight returns a boolean if a field has been set.
-func (o *ProductVariantAddAttributesInner) HasAttributeWeight() bool {
-	if o != nil && !IsNil(o.AttributeWeight) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttributeWeight gets a reference to the given float32 and assigns it to the AttributeWeight field.
-func (o *ProductVariantAddAttributesInner) SetAttributeWeight(v float32) {
-	o.AttributeWeight = &v
-}
-
 func (o ProductVariantAddAttributesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -189,9 +156,6 @@ func (o ProductVariantAddAttributesInner) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.AttributePrice) {
 		toSerialize["attribute_price"] = o.AttributePrice
-	}
-	if !IsNil(o.AttributeWeight) {
-		toSerialize["attribute_weight"] = o.AttributeWeight
 	}
 	return toSerialize, nil
 }

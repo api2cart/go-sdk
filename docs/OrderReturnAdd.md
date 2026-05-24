@@ -14,8 +14,12 @@ Name | Type | Description | Notes
 **ItemRestock** | Pointer to **bool** | Boolean, whether or not to add the line items back to the store inventory. | [optional] [default to false]
 **StaffNote** | Pointer to **string** | Specifies staff note | [optional] 
 **Comment** | Pointer to **string** | Specifies return comment | [optional] 
+**Message** | Pointer to **string** | Customer-visible message attached to the return request. | [optional] 
 **SendNotifications** | Pointer to **bool** | Send notifications to customer after order was created | [optional] [default to false]
 **RejectReason** | Pointer to **string** | Defines return reject reason | [optional] 
+**IsOnline** | Pointer to **bool** | Indicates whether refund type is online | [optional] [default to false]
+**FeePrice** | Pointer to **float32** | Specifies refund&#39;s fee price | [optional] 
+**ShippingPrice** | Pointer to **float32** | Specifies order&#39;s shipping price | [optional] [default to 0]
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderProducts** | [**[]OrderReturnAddOrderProductsInner**](OrderReturnAddOrderProductsInner.md) |  | 
 
@@ -273,6 +277,31 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### GetMessage
+
+`func (o *OrderReturnAdd) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *OrderReturnAdd) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *OrderReturnAdd) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *OrderReturnAdd) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
 ### GetSendNotifications
 
 `func (o *OrderReturnAdd) GetSendNotifications() bool`
@@ -322,6 +351,81 @@ SetRejectReason sets RejectReason field to given value.
 `func (o *OrderReturnAdd) HasRejectReason() bool`
 
 HasRejectReason returns a boolean if a field has been set.
+
+### GetIsOnline
+
+`func (o *OrderReturnAdd) GetIsOnline() bool`
+
+GetIsOnline returns the IsOnline field if non-nil, zero value otherwise.
+
+### GetIsOnlineOk
+
+`func (o *OrderReturnAdd) GetIsOnlineOk() (*bool, bool)`
+
+GetIsOnlineOk returns a tuple with the IsOnline field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsOnline
+
+`func (o *OrderReturnAdd) SetIsOnline(v bool)`
+
+SetIsOnline sets IsOnline field to given value.
+
+### HasIsOnline
+
+`func (o *OrderReturnAdd) HasIsOnline() bool`
+
+HasIsOnline returns a boolean if a field has been set.
+
+### GetFeePrice
+
+`func (o *OrderReturnAdd) GetFeePrice() float32`
+
+GetFeePrice returns the FeePrice field if non-nil, zero value otherwise.
+
+### GetFeePriceOk
+
+`func (o *OrderReturnAdd) GetFeePriceOk() (*float32, bool)`
+
+GetFeePriceOk returns a tuple with the FeePrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeePrice
+
+`func (o *OrderReturnAdd) SetFeePrice(v float32)`
+
+SetFeePrice sets FeePrice field to given value.
+
+### HasFeePrice
+
+`func (o *OrderReturnAdd) HasFeePrice() bool`
+
+HasFeePrice returns a boolean if a field has been set.
+
+### GetShippingPrice
+
+`func (o *OrderReturnAdd) GetShippingPrice() float32`
+
+GetShippingPrice returns the ShippingPrice field if non-nil, zero value otherwise.
+
+### GetShippingPriceOk
+
+`func (o *OrderReturnAdd) GetShippingPriceOk() (*float32, bool)`
+
+GetShippingPriceOk returns a tuple with the ShippingPrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShippingPrice
+
+`func (o *OrderReturnAdd) SetShippingPrice(v float32)`
+
+SetShippingPrice sets ShippingPrice field to given value.
+
+### HasShippingPrice
+
+`func (o *OrderReturnAdd) HasShippingPrice() bool`
+
+HasShippingPrice returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

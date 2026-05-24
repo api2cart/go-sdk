@@ -156,6 +156,8 @@ type OrderAdd struct {
 	InventoryBehaviour *string `json:"inventory_behaviour,omitempty"`
 	// Defines whether the invoice is created automatically along with the order
 	CreateInvoice *bool `json:"create_invoice,omitempty"`
+	// Specifies admin's order invoice comment
+	InvoiceAdminComment *string `json:"invoice_admin_comment,omitempty"`
 	// Defines note attributes
 	NoteAttributes []OrderAddNoteAttributesInner `json:"note_attributes,omitempty"`
 	// Is cache clear required
@@ -2306,6 +2308,38 @@ func (o *OrderAdd) SetCreateInvoice(v bool) {
 	o.CreateInvoice = &v
 }
 
+// GetInvoiceAdminComment returns the InvoiceAdminComment field value if set, zero value otherwise.
+func (o *OrderAdd) GetInvoiceAdminComment() string {
+	if o == nil || IsNil(o.InvoiceAdminComment) {
+		var ret string
+		return ret
+	}
+	return *o.InvoiceAdminComment
+}
+
+// GetInvoiceAdminCommentOk returns a tuple with the InvoiceAdminComment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetInvoiceAdminCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.InvoiceAdminComment) {
+		return nil, false
+	}
+	return o.InvoiceAdminComment, true
+}
+
+// HasInvoiceAdminComment returns a boolean if a field has been set.
+func (o *OrderAdd) HasInvoiceAdminComment() bool {
+	if o != nil && !IsNil(o.InvoiceAdminComment) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceAdminComment gets a reference to the given string and assigns it to the InvoiceAdminComment field.
+func (o *OrderAdd) SetInvoiceAdminComment(v string) {
+	o.InvoiceAdminComment = &v
+}
+
 // GetNoteAttributes returns the NoteAttributes field value if set, zero value otherwise.
 func (o *OrderAdd) GetNoteAttributes() []OrderAddNoteAttributesInner {
 	if o == nil || IsNil(o.NoteAttributes) {
@@ -2682,6 +2716,9 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreateInvoice) {
 		toSerialize["create_invoice"] = o.CreateInvoice
+	}
+	if !IsNil(o.InvoiceAdminComment) {
+		toSerialize["invoice_admin_comment"] = o.InvoiceAdminComment
 	}
 	if !IsNil(o.NoteAttributes) {
 		toSerialize["note_attributes"] = o.NoteAttributes

@@ -71,6 +71,7 @@ Name | Type | Description | Notes
 **ExternalSource** | Pointer to **string** | Identifying the system used to generate the order | [optional] 
 **InventoryBehaviour** | Pointer to **string** | The behaviour to use when updating inventory.&lt;hr&gt;&lt;div style&#x3D;\&quot;font-style:normal\&quot;&gt;Values description:&lt;div style&#x3D;\&quot;margin-left: 2%; padding-top: 2%\&quot;&gt;&lt;div style&#x3D;\&quot;font-size:85%\&quot;&gt;&lt;b&gt;bypass&lt;/b&gt; &#x3D; Do not claim inventory &lt;/br&gt;&lt;/br&gt;&lt;b&gt;decrement_ignoring_policy&lt;/b&gt; &#x3D; Ignore the product&#39;s &lt;/br&gt; inventory policy and claim amounts&lt;/br&gt;&lt;/br&gt;&lt;b&gt;decrement_obeying_policy&lt;/b&gt; &#x3D;  Obey the product&#39;s &lt;/br&gt; inventory policy.&lt;/br&gt;&lt;/br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; | [optional] [default to "bypass"]
 **CreateInvoice** | Pointer to **bool** | Defines whether the invoice is created automatically along with the order | [optional] [default to false]
+**InvoiceAdminComment** | Pointer to **string** | Specifies admin&#39;s order invoice comment | [optional] 
 **NoteAttributes** | Pointer to [**[]OrderAddNoteAttributesInner**](OrderAddNoteAttributesInner.md) | Defines note attributes | [optional] 
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **Origin** | Pointer to **string** | The source of the order | [optional] 
@@ -1726,6 +1727,31 @@ SetCreateInvoice sets CreateInvoice field to given value.
 `func (o *OrderAdd) HasCreateInvoice() bool`
 
 HasCreateInvoice returns a boolean if a field has been set.
+
+### GetInvoiceAdminComment
+
+`func (o *OrderAdd) GetInvoiceAdminComment() string`
+
+GetInvoiceAdminComment returns the InvoiceAdminComment field if non-nil, zero value otherwise.
+
+### GetInvoiceAdminCommentOk
+
+`func (o *OrderAdd) GetInvoiceAdminCommentOk() (*string, bool)`
+
+GetInvoiceAdminCommentOk returns a tuple with the InvoiceAdminComment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvoiceAdminComment
+
+`func (o *OrderAdd) SetInvoiceAdminComment(v string)`
+
+SetInvoiceAdminComment sets InvoiceAdminComment field to given value.
+
+### HasInvoiceAdminComment
+
+`func (o *OrderAdd) HasInvoiceAdminComment() bool`
+
+HasInvoiceAdminComment returns a boolean if a field has been set.
 
 ### GetNoteAttributes
 
