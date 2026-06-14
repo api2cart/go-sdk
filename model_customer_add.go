@@ -50,6 +50,8 @@ type CustomerAdd struct {
 	BirthDay *string `json:"birth_day,omitempty"`
 	// Defines whether the newsletter subscription is available for the user
 	NewsLetterSubscription *bool `json:"news_letter_subscription,omitempty"`
+	// Defines whether the customer agreed to receive offers from partners
+	PartnerOffersSubscription *bool `json:"partner_offers_subscription,omitempty"`
 	// Defines consents to notifications
 	Consents []CustomerAddConsentsInner `json:"consents,omitempty"`
 	// Defines customer's gender
@@ -541,6 +543,38 @@ func (o *CustomerAdd) HasNewsLetterSubscription() bool {
 // SetNewsLetterSubscription gets a reference to the given bool and assigns it to the NewsLetterSubscription field.
 func (o *CustomerAdd) SetNewsLetterSubscription(v bool) {
 	o.NewsLetterSubscription = &v
+}
+
+// GetPartnerOffersSubscription returns the PartnerOffersSubscription field value if set, zero value otherwise.
+func (o *CustomerAdd) GetPartnerOffersSubscription() bool {
+	if o == nil || IsNil(o.PartnerOffersSubscription) {
+		var ret bool
+		return ret
+	}
+	return *o.PartnerOffersSubscription
+}
+
+// GetPartnerOffersSubscriptionOk returns a tuple with the PartnerOffersSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerAdd) GetPartnerOffersSubscriptionOk() (*bool, bool) {
+	if o == nil || IsNil(o.PartnerOffersSubscription) {
+		return nil, false
+	}
+	return o.PartnerOffersSubscription, true
+}
+
+// HasPartnerOffersSubscription returns a boolean if a field has been set.
+func (o *CustomerAdd) HasPartnerOffersSubscription() bool {
+	if o != nil && !IsNil(o.PartnerOffersSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerOffersSubscription gets a reference to the given bool and assigns it to the PartnerOffersSubscription field.
+func (o *CustomerAdd) SetPartnerOffersSubscription(v bool) {
+	o.PartnerOffersSubscription = &v
 }
 
 // GetConsents returns the Consents field value if set, zero value otherwise.
@@ -1040,6 +1074,9 @@ func (o CustomerAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NewsLetterSubscription) {
 		toSerialize["news_letter_subscription"] = o.NewsLetterSubscription
+	}
+	if !IsNil(o.PartnerOffersSubscription) {
+		toSerialize["partner_offers_subscription"] = o.PartnerOffersSubscription
 	}
 	if !IsNil(o.Consents) {
 		toSerialize["consents"] = o.Consents

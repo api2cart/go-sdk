@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LastName** | Pointer to **string** | Defines customer&#39;s last name | [optional] 
 **BirthDay** | Pointer to **string** | Defines customer&#39;s birthday | [optional] 
 **NewsLetterSubscription** | Pointer to **bool** | Defines whether the newsletter subscription is available for the user | [optional] 
+**PartnerOffersSubscription** | Pointer to **bool** | Defines whether the customer agreed to receive offers from partners | [optional] 
 **Consents** | Pointer to [**[]CustomerAddConsentsInner**](CustomerAddConsentsInner.md) | Defines consents to notifications | [optional] 
 **Tags** | Pointer to **string** | Customer tags | [optional] 
 **Gender** | Pointer to **string** | Defines customer&#39;s gender | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** | Defines customer&#39;s unique password | [optional] 
 **CurrencyId** | Pointer to **string** | Currency Id | [optional] 
 **Company** | Pointer to **string** | Defines customer&#39;s company | [optional] 
+**Website** | Pointer to **string** | Link to customer website | [optional] 
 **Country** | Pointer to **string** | Specifies ISO code or name of country | [optional] 
 **Fax** | Pointer to **string** | Defines customer&#39;s fax | [optional] 
 **TaxId** | Pointer to **string** | Add Tax Id | [optional] 
@@ -300,6 +302,31 @@ SetNewsLetterSubscription sets NewsLetterSubscription field to given value.
 
 HasNewsLetterSubscription returns a boolean if a field has been set.
 
+### GetPartnerOffersSubscription
+
+`func (o *CustomerUpdate) GetPartnerOffersSubscription() bool`
+
+GetPartnerOffersSubscription returns the PartnerOffersSubscription field if non-nil, zero value otherwise.
+
+### GetPartnerOffersSubscriptionOk
+
+`func (o *CustomerUpdate) GetPartnerOffersSubscriptionOk() (*bool, bool)`
+
+GetPartnerOffersSubscriptionOk returns a tuple with the PartnerOffersSubscription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnerOffersSubscription
+
+`func (o *CustomerUpdate) SetPartnerOffersSubscription(v bool)`
+
+SetPartnerOffersSubscription sets PartnerOffersSubscription field to given value.
+
+### HasPartnerOffersSubscription
+
+`func (o *CustomerUpdate) HasPartnerOffersSubscription() bool`
+
+HasPartnerOffersSubscription returns a boolean if a field has been set.
+
 ### GetConsents
 
 `func (o *CustomerUpdate) GetConsents() []CustomerAddConsentsInner`
@@ -499,6 +526,31 @@ SetCompany sets Company field to given value.
 `func (o *CustomerUpdate) HasCompany() bool`
 
 HasCompany returns a boolean if a field has been set.
+
+### GetWebsite
+
+`func (o *CustomerUpdate) GetWebsite() string`
+
+GetWebsite returns the Website field if non-nil, zero value otherwise.
+
+### GetWebsiteOk
+
+`func (o *CustomerUpdate) GetWebsiteOk() (*string, bool)`
+
+GetWebsiteOk returns a tuple with the Website field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebsite
+
+`func (o *CustomerUpdate) SetWebsite(v string)`
+
+SetWebsite sets Website field to given value.
+
+### HasWebsite
+
+`func (o *CustomerUpdate) HasWebsite() bool`
+
+HasWebsite returns a boolean if a field has been set.
 
 ### GetCountry
 

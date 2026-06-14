@@ -40,6 +40,8 @@ type CustomerUpdate struct {
 	BirthDay *string `json:"birth_day,omitempty"`
 	// Defines whether the newsletter subscription is available for the user
 	NewsLetterSubscription *bool `json:"news_letter_subscription,omitempty"`
+	// Defines whether the customer agreed to receive offers from partners
+	PartnerOffersSubscription *bool `json:"partner_offers_subscription,omitempty"`
 	// Defines consents to notifications
 	Consents []CustomerAddConsentsInner `json:"consents,omitempty"`
 	// Customer tags
@@ -56,6 +58,8 @@ type CustomerUpdate struct {
 	CurrencyId *string `json:"currency_id,omitempty"`
 	// Defines customer's company
 	Company *string `json:"company,omitempty"`
+	// Link to customer website
+	Website *string `json:"website,omitempty"`
 	// Specifies ISO code or name of country
 	Country *string `json:"country,omitempty"`
 	// Defines customer's fax
@@ -410,6 +414,38 @@ func (o *CustomerUpdate) SetNewsLetterSubscription(v bool) {
 	o.NewsLetterSubscription = &v
 }
 
+// GetPartnerOffersSubscription returns the PartnerOffersSubscription field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetPartnerOffersSubscription() bool {
+	if o == nil || IsNil(o.PartnerOffersSubscription) {
+		var ret bool
+		return ret
+	}
+	return *o.PartnerOffersSubscription
+}
+
+// GetPartnerOffersSubscriptionOk returns a tuple with the PartnerOffersSubscription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetPartnerOffersSubscriptionOk() (*bool, bool) {
+	if o == nil || IsNil(o.PartnerOffersSubscription) {
+		return nil, false
+	}
+	return o.PartnerOffersSubscription, true
+}
+
+// HasPartnerOffersSubscription returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasPartnerOffersSubscription() bool {
+	if o != nil && !IsNil(o.PartnerOffersSubscription) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerOffersSubscription gets a reference to the given bool and assigns it to the PartnerOffersSubscription field.
+func (o *CustomerUpdate) SetPartnerOffersSubscription(v bool) {
+	o.PartnerOffersSubscription = &v
+}
+
 // GetConsents returns the Consents field value if set, zero value otherwise.
 func (o *CustomerUpdate) GetConsents() []CustomerAddConsentsInner {
 	if o == nil || IsNil(o.Consents) {
@@ -664,6 +700,38 @@ func (o *CustomerUpdate) HasCompany() bool {
 // SetCompany gets a reference to the given string and assigns it to the Company field.
 func (o *CustomerUpdate) SetCompany(v string) {
 	o.Company = &v
+}
+
+// GetWebsite returns the Website field value if set, zero value otherwise.
+func (o *CustomerUpdate) GetWebsite() string {
+	if o == nil || IsNil(o.Website) {
+		var ret string
+		return ret
+	}
+	return *o.Website
+}
+
+// GetWebsiteOk returns a tuple with the Website field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerUpdate) GetWebsiteOk() (*string, bool) {
+	if o == nil || IsNil(o.Website) {
+		return nil, false
+	}
+	return o.Website, true
+}
+
+// HasWebsite returns a boolean if a field has been set.
+func (o *CustomerUpdate) HasWebsite() bool {
+	if o != nil && !IsNil(o.Website) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebsite gets a reference to the given string and assigns it to the Website field.
+func (o *CustomerUpdate) SetWebsite(v string) {
+	o.Website = &v
 }
 
 // GetCountry returns the Country field value if set, zero value otherwise.
@@ -962,6 +1030,9 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NewsLetterSubscription) {
 		toSerialize["news_letter_subscription"] = o.NewsLetterSubscription
 	}
+	if !IsNil(o.PartnerOffersSubscription) {
+		toSerialize["partner_offers_subscription"] = o.PartnerOffersSubscription
+	}
 	if !IsNil(o.Consents) {
 		toSerialize["consents"] = o.Consents
 	}
@@ -985,6 +1056,9 @@ func (o CustomerUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Company) {
 		toSerialize["company"] = o.Company
+	}
+	if !IsNil(o.Website) {
+		toSerialize["website"] = o.Website
 	}
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
