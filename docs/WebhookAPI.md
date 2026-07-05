@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## WebhookCount
 
-> WebhookCount200Response WebhookCount(ctx).Entity(entity).Action(action).Active(active).Execute()
+> ModelResponseWebhookCount WebhookCount(ctx).Entity(entity).Action(action).Active(active).Execute()
 
 webhook.count
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `WebhookCount`: WebhookCount200Response
+	// response from `WebhookCount`: ModelResponseWebhookCount
 	fmt.Fprintf(os.Stdout, "Response from `WebhookAPI.WebhookCount`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WebhookCount200Response**](WebhookCount200Response.md)
+[**ModelResponseWebhookCount**](ModelResponseWebhookCount.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## WebhookEvents
 
-> WebhookEvents200Response WebhookEvents(ctx).Execute()
+> ModelResponseWebhookEvents WebhookEvents(ctx).Execute()
 
 webhook.events
 
@@ -244,7 +244,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.WebhookEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `WebhookEvents`: WebhookEvents200Response
+	// response from `WebhookEvents`: ModelResponseWebhookEvents
 	fmt.Fprintf(os.Stdout, "Response from `WebhookAPI.WebhookEvents`: %v\n", resp)
 }
 ```
@@ -260,7 +260,7 @@ Other parameters are passed through a pointer to a apiWebhookEventsRequest struc
 
 ### Return type
 
-[**WebhookEvents200Response**](WebhookEvents200Response.md)
+[**ModelResponseWebhookEvents**](ModelResponseWebhookEvents.md)
 
 ### Authorization
 

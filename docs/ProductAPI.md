@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ## ProductChildItemFind
 
-> ProductChildItemFind200Response ProductChildItemFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).Execute()
+> ModelResponseProductChildItemFind ProductChildItemFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).Execute()
 
 product.child_item.find
 
@@ -574,7 +574,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductChildItemFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProductChildItemFind`: ProductChildItemFind200Response
+	// response from `ProductChildItemFind`: ModelResponseProductChildItemFind
 	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductChildItemFind`: %v\n", resp)
 }
 ```
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductChildItemFind200Response**](ProductChildItemFind200Response.md)
+[**ModelResponseProductChildItemFind**](ModelResponseProductChildItemFind.md)
 
 ### Authorization
 
@@ -807,7 +807,7 @@ Name | Type | Description  | Notes
 
 ## ProductCount
 
-> ProductCount200Response ProductCount(ctx).Sku(sku).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).VendorId(vendorId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ManufacturerId(manufacturerId).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
+> ModelResponseProductCount ProductCount(ctx).Sku(sku).ProductIds(productIds).SinceId(sinceId).CategoriesIds(categoriesIds).CategoryId(categoryId).StoreId(storeId).VendorId(vendorId).LangId(langId).AvailView(availView).AvailSale(availSale).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).BrandName(brandName).ManufacturerId(manufacturerId).ProductAttributes(productAttributes).Status(status).Type_(type_).Visible(visible).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).ReturnGlobal(returnGlobal).DisableReportCache(disableReportCache).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 product.count
 
@@ -860,7 +860,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProductCount`: ProductCount200Response
+	// response from `ProductCount`: ModelResponseProductCount
 	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductCount`: %v\n", resp)
 }
 ```
@@ -905,7 +905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductCount200Response**](ProductCount200Response.md)
+[**ModelResponseProductCount**](ModelResponseProductCount.md)
 
 ### Authorization
 
@@ -1217,7 +1217,7 @@ Name | Type | Description  | Notes
 
 ## ProductFind
 
-> ProductFind200Response ProductFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).FindWhat(findWhat).LangId(langId).StoreId(storeId).Execute()
+> ModelResponseProductFind ProductFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).FindWhat(findWhat).LangId(langId).StoreId(storeId).Execute()
 
 product.find
 
@@ -1250,7 +1250,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProductAPI.ProductFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProductFind`: ProductFind200Response
+	// response from `ProductFind`: ModelResponseProductFind
 	fmt.Fprintf(os.Stdout, "Response from `ProductAPI.ProductFind`: %v\n", resp)
 }
 ```
@@ -1275,7 +1275,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProductFind200Response**](ProductFind200Response.md)
+[**ModelResponseProductFind**](ModelResponseProductFind.md)
 
 ### Authorization
 

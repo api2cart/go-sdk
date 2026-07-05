@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 ## CartCatalogPriceRulesCount
 
-> CartCatalogPriceRulesCount200Response CartCatalogPriceRulesCount(ctx).Execute()
+> ModelResponseCartCatalogPriceRulesCount CartCatalogPriceRulesCount(ctx).Execute()
 
 cart.catalog_price_rules.count
 
@@ -59,7 +59,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartCatalogPriceRulesCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CartCatalogPriceRulesCount`: CartCatalogPriceRulesCount200Response
+	// response from `CartCatalogPriceRulesCount`: ModelResponseCartCatalogPriceRulesCount
 	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartCatalogPriceRulesCount`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Other parameters are passed through a pointer to a apiCartCatalogPriceRulesCount
 
 ### Return type
 
-[**CartCatalogPriceRulesCount200Response**](CartCatalogPriceRulesCount200Response.md)
+[**ModelResponseCartCatalogPriceRulesCount**](ModelResponseCartCatalogPriceRulesCount.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## CartCouponCount
 
-> CartCouponCount200Response CartCouponCount(ctx).StoreId(storeId).Avail(avail).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).Execute()
+> ModelResponseCartCouponCount CartCouponCount(ctx).StoreId(storeId).Avail(avail).DateStartFrom(dateStartFrom).DateStartTo(dateStartTo).DateEndFrom(dateEndFrom).DateEndTo(dateEndTo).Execute()
 
 cart.coupon.count
 
@@ -354,7 +354,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartCouponCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CartCouponCount`: CartCouponCount200Response
+	// response from `CartCouponCount`: ModelResponseCartCouponCount
 	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartCouponCount`: %v\n", resp)
 }
 ```
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CartCouponCount200Response**](CartCouponCount200Response.md)
+[**ModelResponseCartCouponCount**](ModelResponseCartCouponCount.md)
 
 ### Authorization
 
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## CartGiftcardAdd
 
-> CartGiftcardAdd200Response CartGiftcardAdd(ctx).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).IdempotencyKey(idempotencyKey).Execute()
+> CartGiftcardAdd200Response CartGiftcardAdd(ctx).Amount(amount).Currency(currency).StoreId(storeId).Code(code).Name(name).OwnerEmail(ownerEmail).OwnerName(ownerName).RecipientEmail(recipientEmail).RecipientName(recipientName).Message(message).IdempotencyKey(idempotencyKey).Execute()
 
 cart.giftcard.add
 
@@ -645,16 +645,20 @@ import (
 
 func main() {
 	amount := float32(15.5) // float32 | Defines the gift card amount value.
+	currency := "USD" // string | Defines currency code (optional)
+	storeId := "1" // string | Store Id (optional)
 	code := "GFT1 A4S5 AA11 RD61" // string | Gift card code (optional)
+	name := "Test name" // string | Entity name (optional)
 	ownerEmail := "jubari@hannsgroup.com" // string | Gift card owner email (optional)
+	ownerName := "John Doe" // string | Gift card owner name (optional)
 	recipientEmail := "jubari@hannsgroup.com" // string | Gift card recipient email (optional)
 	recipientName := "John Doe" // string | Gift card recipient name (optional)
-	ownerName := "John Doe" // string | Gift card owner name (optional)
+	message := "Received item is not like in the photo, get my money back." // string | Free-form message attached to the entity. (optional)
 	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartGiftcardAdd(context.Background()).Amount(amount).Code(code).OwnerEmail(ownerEmail).RecipientEmail(recipientEmail).RecipientName(recipientName).OwnerName(ownerName).IdempotencyKey(idempotencyKey).Execute()
+	resp, r, err := apiClient.CartAPI.CartGiftcardAdd(context.Background()).Amount(amount).Currency(currency).StoreId(storeId).Code(code).Name(name).OwnerEmail(ownerEmail).OwnerName(ownerName).RecipientEmail(recipientEmail).RecipientName(recipientName).Message(message).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartGiftcardAdd``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -676,11 +680,15 @@ Other parameters are passed through a pointer to a apiCartGiftcardAddRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **amount** | **float32** | Defines the gift card amount value. | 
+ **currency** | **string** | Defines currency code | 
+ **storeId** | **string** | Store Id | 
  **code** | **string** | Gift card code | 
+ **name** | **string** | Entity name | 
  **ownerEmail** | **string** | Gift card owner email | 
+ **ownerName** | **string** | Gift card owner name | 
  **recipientEmail** | **string** | Gift card recipient email | 
  **recipientName** | **string** | Gift card recipient name | 
- **ownerName** | **string** | Gift card owner name | 
+ **message** | **string** | Free-form message attached to the entity. | 
  **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
@@ -703,7 +711,7 @@ Name | Type | Description  | Notes
 
 ## CartGiftcardCount
 
-> CartGiftcardCount200Response CartGiftcardCount(ctx).StoreId(storeId).Execute()
+> ModelResponseCartGiftcardCount CartGiftcardCount(ctx).StoreId(storeId).Execute()
 
 cart.giftcard.count
 
@@ -731,7 +739,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartGiftcardCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CartGiftcardCount`: CartGiftcardCount200Response
+	// response from `CartGiftcardCount`: ModelResponseCartGiftcardCount
 	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartGiftcardCount`: %v\n", resp)
 }
 ```
@@ -751,7 +759,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CartGiftcardCount200Response**](CartGiftcardCount200Response.md)
+[**ModelResponseCartGiftcardCount**](ModelResponseCartGiftcardCount.md)
 
 ### Authorization
 
@@ -769,7 +777,7 @@ Name | Type | Description  | Notes
 
 ## CartGiftcardDelete
 
-> AttributeDelete200Response CartGiftcardDelete(ctx).Id(id).Execute()
+> AttributeDelete200Response CartGiftcardDelete(ctx).Id(id).StoreId(storeId).Execute()
 
 cart.giftcard.delete
 
@@ -789,10 +797,11 @@ import (
 
 func main() {
 	id := "10" // string | Entity id
+	storeId := "1" // string | Store Id (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartGiftcardDelete(context.Background()).Id(id).Execute()
+	resp, r, err := apiClient.CartAPI.CartGiftcardDelete(context.Background()).Id(id).StoreId(storeId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartGiftcardDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -814,6 +823,7 @@ Other parameters are passed through a pointer to a apiCartGiftcardDeleteRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string** | Entity id | 
+ **storeId** | **string** | Store Id | 
 
 ### Return type
 
@@ -835,7 +845,7 @@ Name | Type | Description  | Notes
 
 ## CartGiftcardList
 
-> ModelResponseCartGiftCardList CartGiftcardList(ctx).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> ModelResponseCartGiftCardList CartGiftcardList(ctx).Ids(ids).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 
 cart.giftcard.list
 
@@ -854,6 +864,7 @@ import (
 )
 
 func main() {
+	ids := "24,25" // string | Retrieves gift cards specified by ids (optional)
 	start := int32(0) // int32 | This parameter sets the number from which you want to get entities (optional) (default to 0)
 	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
@@ -864,7 +875,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartGiftcardList(context.Background()).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.CartAPI.CartGiftcardList(context.Background()).Ids(ids).Start(start).Count(count).PageCursor(pageCursor).StoreId(storeId).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartGiftcardList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -885,6 +896,7 @@ Other parameters are passed through a pointer to a apiCartGiftcardListRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ids** | **string** | Retrieves gift cards specified by ids | 
  **start** | **int32** | This parameter sets the number from which you want to get entities | [default to 0]
  **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
@@ -1223,7 +1235,7 @@ Name | Type | Description  | Notes
 
 ## CartMethods
 
-> CartMethods200Response CartMethods(ctx).Execute()
+> ModelResponseCartMethods CartMethods(ctx).Execute()
 
 cart.methods
 
@@ -1250,7 +1262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartMethods``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CartMethods`: CartMethods200Response
+	// response from `CartMethods`: ModelResponseCartMethods
 	fmt.Fprintf(os.Stdout, "Response from `CartAPI.CartMethods`: %v\n", resp)
 }
 ```
@@ -1266,7 +1278,7 @@ Other parameters are passed through a pointer to a apiCartMethodsRequest struct 
 
 ### Return type
 
-[**CartMethods200Response**](CartMethods200Response.md)
+[**ModelResponseCartMethods**](ModelResponseCartMethods.md)
 
 ### Authorization
 

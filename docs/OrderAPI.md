@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ## OrderCount
 
-> OrderCount200Response OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).VendorId(vendorId).Execute()
+> ModelResponseOrderCount OrderCount(ctx).OrderIds(orderIds).Ids(ids).CustomerId(customerId).StoreId(storeId).CustomerEmail(customerEmail).OrderStatus(orderStatus).OrderStatusIds(orderStatusIds).EbayOrderStatus(ebayOrderStatus).FinancialStatus(financialStatus).FinancialStatusIds(financialStatusIds).FulfillmentChannel(fulfillmentChannel).FulfillmentStatus(fulfillmentStatus).ShippingMethod(shippingMethod).DeliveryMethod(deliveryMethod).Tags(tags).ShipNodeType(shipNodeType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).UseLatestApiVersion(useLatestApiVersion).VendorId(vendorId).Execute()
 
 order.count
 
@@ -309,7 +309,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrderCount`: OrderCount200Response
+	// response from `OrderCount`: ModelResponseOrderCount
 	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderCount`: %v\n", resp)
 }
 ```
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderCount200Response**](OrderCount200Response.md)
+[**ModelResponseOrderCount**](ModelResponseOrderCount.md)
 
 ### Authorization
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 ## OrderFinancialStatusList
 
-> OrderFinancialStatusList200Response OrderFinancialStatusList(ctx).Execute()
+> ModelResponseOrderFinancialStatusList OrderFinancialStatusList(ctx).Execute()
 
 order.financial_status.list
 
@@ -395,7 +395,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderFinancialStatusList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrderFinancialStatusList`: OrderFinancialStatusList200Response
+	// response from `OrderFinancialStatusList`: ModelResponseOrderFinancialStatusList
 	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderFinancialStatusList`: %v\n", resp)
 }
 ```
@@ -411,7 +411,7 @@ Other parameters are passed through a pointer to a apiOrderFinancialStatusListRe
 
 ### Return type
 
-[**OrderFinancialStatusList200Response**](OrderFinancialStatusList200Response.md)
+[**ModelResponseOrderFinancialStatusList**](ModelResponseOrderFinancialStatusList.md)
 
 ### Authorization
 
@@ -429,7 +429,7 @@ Other parameters are passed through a pointer to a apiOrderFinancialStatusListRe
 
 ## OrderFulfillmentStatusList
 
-> OrderFulfillmentStatusList200Response OrderFulfillmentStatusList(ctx).Action(action).Execute()
+> ModelResponseOrderFulfillmentStatusList OrderFulfillmentStatusList(ctx).Action(action).Execute()
 
 order.fulfillment_status.list
 
@@ -457,7 +457,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderFulfillmentStatusList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrderFulfillmentStatusList`: OrderFulfillmentStatusList200Response
+	// response from `OrderFulfillmentStatusList`: ModelResponseOrderFulfillmentStatusList
 	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderFulfillmentStatusList`: %v\n", resp)
 }
 ```
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderFulfillmentStatusList200Response**](OrderFulfillmentStatusList200Response.md)
+[**ModelResponseOrderFulfillmentStatusList**](ModelResponseOrderFulfillmentStatusList.md)
 
 ### Authorization
 

@@ -28,7 +28,7 @@ type ApiReturnActionListRequest struct {
 	ApiService *ReturnAPIService
 }
 
-func (r ApiReturnActionListRequest) Execute() (*ReturnActionList200Response, *http.Response, error) {
+func (r ApiReturnActionListRequest) Execute() (*ModelResponseReturnActionList, *http.Response, error) {
 	return r.ApiService.ReturnActionListExecute(r)
 }
 
@@ -48,13 +48,13 @@ func (a *ReturnAPIService) ReturnActionList(ctx context.Context) ApiReturnAction
 }
 
 // Execute executes the request
-//  @return ReturnActionList200Response
-func (a *ReturnAPIService) ReturnActionListExecute(r ApiReturnActionListRequest) (*ReturnActionList200Response, *http.Response, error) {
+//  @return ModelResponseReturnActionList
+func (a *ReturnAPIService) ReturnActionListExecute(r ApiReturnActionListRequest) (*ModelResponseReturnActionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ReturnActionList200Response
+		localVarReturnValue  *ModelResponseReturnActionList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReturnAPIService.ReturnActionList")
@@ -232,7 +232,7 @@ func (r ApiReturnCountRequest) DisableReportCache(disableReportCache bool) ApiRe
 	return r
 }
 
-func (r ApiReturnCountRequest) Execute() (*ReturnCount200Response, *http.Response, error) {
+func (r ApiReturnCountRequest) Execute() (*ModelResponseReturnCount, *http.Response, error) {
 	return r.ApiService.ReturnCountExecute(r)
 }
 
@@ -252,13 +252,13 @@ func (a *ReturnAPIService) ReturnCount(ctx context.Context) ApiReturnCountReques
 }
 
 // Execute executes the request
-//  @return ReturnCount200Response
-func (a *ReturnAPIService) ReturnCountExecute(r ApiReturnCountRequest) (*ReturnCount200Response, *http.Response, error) {
+//  @return ModelResponseReturnCount
+func (a *ReturnAPIService) ReturnCountExecute(r ApiReturnCountRequest) (*ModelResponseReturnCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ReturnCount200Response
+		localVarReturnValue  *ModelResponseReturnCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReturnAPIService.ReturnCount")
@@ -912,7 +912,7 @@ func (r ApiReturnReasonListRequest) StoreId(storeId string) ApiReturnReasonListR
 	return r
 }
 
-func (r ApiReturnReasonListRequest) Execute() (*ReturnReasonList200Response, *http.Response, error) {
+func (r ApiReturnReasonListRequest) Execute() (*ModelResponseReturnReasonList, *http.Response, error) {
 	return r.ApiService.ReturnReasonListExecute(r)
 }
 
@@ -932,13 +932,13 @@ func (a *ReturnAPIService) ReturnReasonList(ctx context.Context) ApiReturnReason
 }
 
 // Execute executes the request
-//  @return ReturnReasonList200Response
-func (a *ReturnAPIService) ReturnReasonListExecute(r ApiReturnReasonListRequest) (*ReturnReasonList200Response, *http.Response, error) {
+//  @return ModelResponseReturnReasonList
+func (a *ReturnAPIService) ReturnReasonListExecute(r ApiReturnReasonListRequest) (*ModelResponseReturnReasonList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ReturnReasonList200Response
+		localVarReturnValue  *ModelResponseReturnReasonList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReturnAPIService.ReturnReasonList")
@@ -1042,7 +1042,7 @@ type ApiReturnStatusListRequest struct {
 	ApiService *ReturnAPIService
 }
 
-func (r ApiReturnStatusListRequest) Execute() (*ReturnStatusList200Response, *http.Response, error) {
+func (r ApiReturnStatusListRequest) Execute() (*ModelResponseReturnStatusList, *http.Response, error) {
 	return r.ApiService.ReturnStatusListExecute(r)
 }
 
@@ -1062,13 +1062,13 @@ func (a *ReturnAPIService) ReturnStatusList(ctx context.Context) ApiReturnStatus
 }
 
 // Execute executes the request
-//  @return ReturnStatusList200Response
-func (a *ReturnAPIService) ReturnStatusListExecute(r ApiReturnStatusListRequest) (*ReturnStatusList200Response, *http.Response, error) {
+//  @return ModelResponseReturnStatusList
+func (a *ReturnAPIService) ReturnStatusListExecute(r ApiReturnStatusListRequest) (*ModelResponseReturnStatusList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ReturnStatusList200Response
+		localVarReturnValue  *ModelResponseReturnStatusList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReturnAPIService.ReturnStatusList")

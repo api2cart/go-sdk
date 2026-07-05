@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## ReturnActionList
 
-> ReturnActionList200Response ReturnActionList(ctx).Execute()
+> ModelResponseReturnActionList ReturnActionList(ctx).Execute()
 
 return.action.list
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnActionList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReturnActionList`: ReturnActionList200Response
+	// response from `ReturnActionList`: ModelResponseReturnActionList
 	fmt.Fprintf(os.Stdout, "Response from `ReturnAPI.ReturnActionList`: %v\n", resp)
 }
 ```
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiReturnActionListRequest st
 
 ### Return type
 
-[**ReturnActionList200Response**](ReturnActionList200Response.md)
+[**ModelResponseReturnActionList**](ModelResponseReturnActionList.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ Other parameters are passed through a pointer to a apiReturnActionListRequest st
 
 ## ReturnCount
 
-> ReturnCount200Response ReturnCount(ctx).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+> ModelResponseReturnCount ReturnCount(ctx).OrderIds(orderIds).CustomerId(customerId).StoreId(storeId).Status(status).ReturnType(returnType).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
 
 return.count
 
@@ -114,7 +114,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReturnCount`: ReturnCount200Response
+	// response from `ReturnCount`: ModelResponseReturnCount
 	fmt.Fprintf(os.Stdout, "Response from `ReturnAPI.ReturnCount`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReturnCount200Response**](ReturnCount200Response.md)
+[**ModelResponseReturnCount**](ModelResponseReturnCount.md)
 
 ### Authorization
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ## ReturnReasonList
 
-> ReturnReasonList200Response ReturnReasonList(ctx).StoreId(storeId).Execute()
+> ModelResponseReturnReasonList ReturnReasonList(ctx).StoreId(storeId).Execute()
 
 return.reason.list
 
@@ -366,7 +366,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnReasonList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReturnReasonList`: ReturnReasonList200Response
+	// response from `ReturnReasonList`: ModelResponseReturnReasonList
 	fmt.Fprintf(os.Stdout, "Response from `ReturnAPI.ReturnReasonList`: %v\n", resp)
 }
 ```
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReturnReasonList200Response**](ReturnReasonList200Response.md)
+[**ModelResponseReturnReasonList**](ModelResponseReturnReasonList.md)
 
 ### Authorization
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ## ReturnStatusList
 
-> ReturnStatusList200Response ReturnStatusList(ctx).Execute()
+> ModelResponseReturnStatusList ReturnStatusList(ctx).Execute()
 
 return.status.list
 
@@ -431,7 +431,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReturnAPI.ReturnStatusList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReturnStatusList`: ReturnStatusList200Response
+	// response from `ReturnStatusList`: ModelResponseReturnStatusList
 	fmt.Fprintf(os.Stdout, "Response from `ReturnAPI.ReturnStatusList`: %v\n", resp)
 }
 ```
@@ -447,7 +447,7 @@ Other parameters are passed through a pointer to a apiReturnStatusListRequest st
 
 ### Return type
 
-[**ReturnStatusList200Response**](ReturnStatusList200Response.md)
+[**ModelResponseReturnStatusList**](ModelResponseReturnStatusList.md)
 
 ### Authorization
 

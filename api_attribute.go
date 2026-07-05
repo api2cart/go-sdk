@@ -995,7 +995,7 @@ func (r ApiAttributeCountRequest) System(system bool) ApiAttributeCountRequest {
 	return r
 }
 
-func (r ApiAttributeCountRequest) Execute() (*AttributeCount200Response, *http.Response, error) {
+func (r ApiAttributeCountRequest) Execute() (*ModelResponseAttributeCount, *http.Response, error) {
 	return r.ApiService.AttributeCountExecute(r)
 }
 
@@ -1015,13 +1015,13 @@ func (a *AttributeAPIService) AttributeCount(ctx context.Context) ApiAttributeCo
 }
 
 // Execute executes the request
-//  @return AttributeCount200Response
-func (a *AttributeAPIService) AttributeCountExecute(r ApiAttributeCountRequest) (*AttributeCount200Response, *http.Response, error) {
+//  @return ModelResponseAttributeCount
+func (a *AttributeAPIService) AttributeCountExecute(r ApiAttributeCountRequest) (*ModelResponseAttributeCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AttributeCount200Response
+		localVarReturnValue  *ModelResponseAttributeCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributeAPIService.AttributeCount")
@@ -1974,7 +1974,7 @@ type ApiAttributeTypeListRequest struct {
 	ApiService *AttributeAPIService
 }
 
-func (r ApiAttributeTypeListRequest) Execute() (*AttributeTypeList200Response, *http.Response, error) {
+func (r ApiAttributeTypeListRequest) Execute() (*ModelResponseAttributeTypeList, *http.Response, error) {
 	return r.ApiService.AttributeTypeListExecute(r)
 }
 
@@ -1994,13 +1994,13 @@ func (a *AttributeAPIService) AttributeTypeList(ctx context.Context) ApiAttribut
 }
 
 // Execute executes the request
-//  @return AttributeTypeList200Response
-func (a *AttributeAPIService) AttributeTypeListExecute(r ApiAttributeTypeListRequest) (*AttributeTypeList200Response, *http.Response, error) {
+//  @return ModelResponseAttributeTypeList
+func (a *AttributeAPIService) AttributeTypeListExecute(r ApiAttributeTypeListRequest) (*ModelResponseAttributeTypeList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AttributeTypeList200Response
+		localVarReturnValue  *ModelResponseAttributeTypeList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AttributeAPIService.AttributeTypeList")

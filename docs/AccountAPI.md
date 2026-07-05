@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ## AccountSupportedPlatforms
 
-> AccountSupportedPlatforms200Response AccountSupportedPlatforms(ctx).Execute()
+> ModelResponseAccountSupportedPlatforms AccountSupportedPlatforms(ctx).Execute()
 
 account.supported_platforms
 
@@ -682,7 +682,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.AccountSupportedPlatforms``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccountSupportedPlatforms`: AccountSupportedPlatforms200Response
+	// response from `AccountSupportedPlatforms`: ModelResponseAccountSupportedPlatforms
 	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.AccountSupportedPlatforms`: %v\n", resp)
 }
 ```
@@ -698,7 +698,7 @@ Other parameters are passed through a pointer to a apiAccountSupportedPlatformsR
 
 ### Return type
 
-[**AccountSupportedPlatforms200Response**](AccountSupportedPlatforms200Response.md)
+[**ModelResponseAccountSupportedPlatforms**](ModelResponseAccountSupportedPlatforms.md)
 
 ### Authorization
 

@@ -622,7 +622,7 @@ func (r ApiCustomerCountRequest) ModifiedTo(modifiedTo string) ApiCustomerCountR
 	return r
 }
 
-func (r ApiCustomerCountRequest) Execute() (*CustomerCount200Response, *http.Response, error) {
+func (r ApiCustomerCountRequest) Execute() (*ModelResponseCustomerCount, *http.Response, error) {
 	return r.ApiService.CustomerCountExecute(r)
 }
 
@@ -642,13 +642,13 @@ func (a *CustomerAPIService) CustomerCount(ctx context.Context) ApiCustomerCount
 }
 
 // Execute executes the request
-//  @return CustomerCount200Response
-func (a *CustomerAPIService) CustomerCountExecute(r ApiCustomerCountRequest) (*CustomerCount200Response, *http.Response, error) {
+//  @return ModelResponseCustomerCount
+func (a *CustomerAPIService) CustomerCountExecute(r ApiCustomerCountRequest) (*ModelResponseCustomerCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerCount200Response
+		localVarReturnValue  *ModelResponseCustomerCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerCount")
@@ -977,7 +977,7 @@ func (r ApiCustomerFindRequest) IncludeGuests(includeGuests bool) ApiCustomerFin
 	return r
 }
 
-func (r ApiCustomerFindRequest) Execute() (*CustomerFind200Response, *http.Response, error) {
+func (r ApiCustomerFindRequest) Execute() (*ModelResponseCustomerFind, *http.Response, error) {
 	return r.ApiService.CustomerFindExecute(r)
 }
 
@@ -997,13 +997,13 @@ func (a *CustomerAPIService) CustomerFind(ctx context.Context) ApiCustomerFindRe
 }
 
 // Execute executes the request
-//  @return CustomerFind200Response
-func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*CustomerFind200Response, *http.Response, error) {
+//  @return ModelResponseCustomerFind
+func (a *CustomerAPIService) CustomerFindExecute(r ApiCustomerFindRequest) (*ModelResponseCustomerFind, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CustomerFind200Response
+		localVarReturnValue  *ModelResponseCustomerFind
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomerAPIService.CustomerFind")

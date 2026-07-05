@@ -2428,7 +2428,7 @@ type ApiAccountSupportedPlatformsRequest struct {
 	ApiService *AccountAPIService
 }
 
-func (r ApiAccountSupportedPlatformsRequest) Execute() (*AccountSupportedPlatforms200Response, *http.Response, error) {
+func (r ApiAccountSupportedPlatformsRequest) Execute() (*ModelResponseAccountSupportedPlatforms, *http.Response, error) {
 	return r.ApiService.AccountSupportedPlatformsExecute(r)
 }
 
@@ -2448,13 +2448,13 @@ func (a *AccountAPIService) AccountSupportedPlatforms(ctx context.Context) ApiAc
 }
 
 // Execute executes the request
-//  @return AccountSupportedPlatforms200Response
-func (a *AccountAPIService) AccountSupportedPlatformsExecute(r ApiAccountSupportedPlatformsRequest) (*AccountSupportedPlatforms200Response, *http.Response, error) {
+//  @return ModelResponseAccountSupportedPlatforms
+func (a *AccountAPIService) AccountSupportedPlatformsExecute(r ApiAccountSupportedPlatformsRequest) (*ModelResponseAccountSupportedPlatforms, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AccountSupportedPlatforms200Response
+		localVarReturnValue  *ModelResponseAccountSupportedPlatforms
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.AccountSupportedPlatforms")

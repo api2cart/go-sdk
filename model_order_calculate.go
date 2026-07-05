@@ -24,7 +24,7 @@ var _ MappedNullable = &OrderCalculate{}
 type OrderCalculate struct {
 	// Defines the customer specified by email for whom the order needs to be calculated
 	CustomerEmail string `json:"customer_email"`
-	// Currency code of order
+	// Defines currency code
 	Currency *string `json:"currency,omitempty"`
 	// Currency Id
 	CurrencyId *string `json:"currency_id,omitempty"`

@@ -1371,7 +1371,7 @@ func (r ApiProductChildItemFindRequest) StoreId(storeId string) ApiProductChildI
 	return r
 }
 
-func (r ApiProductChildItemFindRequest) Execute() (*ProductChildItemFind200Response, *http.Response, error) {
+func (r ApiProductChildItemFindRequest) Execute() (*ModelResponseProductChildItemFind, *http.Response, error) {
 	return r.ApiService.ProductChildItemFindExecute(r)
 }
 
@@ -1391,13 +1391,13 @@ func (a *ProductAPIService) ProductChildItemFind(ctx context.Context) ApiProduct
 }
 
 // Execute executes the request
-//  @return ProductChildItemFind200Response
-func (a *ProductAPIService) ProductChildItemFindExecute(r ApiProductChildItemFindRequest) (*ProductChildItemFind200Response, *http.Response, error) {
+//  @return ModelResponseProductChildItemFind
+func (a *ProductAPIService) ProductChildItemFindExecute(r ApiProductChildItemFindRequest) (*ModelResponseProductChildItemFind, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductChildItemFind200Response
+		localVarReturnValue  *ModelResponseProductChildItemFind
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductChildItemFind")
@@ -2295,7 +2295,7 @@ func (r ApiProductCountRequest) UseLatestApiVersion(useLatestApiVersion bool) Ap
 	return r
 }
 
-func (r ApiProductCountRequest) Execute() (*ProductCount200Response, *http.Response, error) {
+func (r ApiProductCountRequest) Execute() (*ModelResponseProductCount, *http.Response, error) {
 	return r.ApiService.ProductCountExecute(r)
 }
 
@@ -2315,13 +2315,13 @@ func (a *ProductAPIService) ProductCount(ctx context.Context) ApiProductCountReq
 }
 
 // Execute executes the request
-//  @return ProductCount200Response
-func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*ProductCount200Response, *http.Response, error) {
+//  @return ModelResponseProductCount
+func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*ModelResponseProductCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductCount200Response
+		localVarReturnValue  *ModelResponseProductCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductCount")
@@ -3279,7 +3279,7 @@ func (r ApiProductFindRequest) StoreId(storeId string) ApiProductFindRequest {
 	return r
 }
 
-func (r ApiProductFindRequest) Execute() (*ProductFind200Response, *http.Response, error) {
+func (r ApiProductFindRequest) Execute() (*ModelResponseProductFind, *http.Response, error) {
 	return r.ApiService.ProductFindExecute(r)
 }
 
@@ -3299,13 +3299,13 @@ func (a *ProductAPIService) ProductFind(ctx context.Context) ApiProductFindReque
 }
 
 // Execute executes the request
-//  @return ProductFind200Response
-func (a *ProductAPIService) ProductFindExecute(r ApiProductFindRequest) (*ProductFind200Response, *http.Response, error) {
+//  @return ModelResponseProductFind
+func (a *ProductAPIService) ProductFindExecute(r ApiProductFindRequest) (*ModelResponseProductFind, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProductFind200Response
+		localVarReturnValue  *ModelResponseProductFind
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductFind")

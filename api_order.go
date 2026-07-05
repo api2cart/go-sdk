@@ -748,7 +748,7 @@ func (r ApiOrderCountRequest) VendorId(vendorId string) ApiOrderCountRequest {
 	return r
 }
 
-func (r ApiOrderCountRequest) Execute() (*OrderCount200Response, *http.Response, error) {
+func (r ApiOrderCountRequest) Execute() (*ModelResponseOrderCount, *http.Response, error) {
 	return r.ApiService.OrderCountExecute(r)
 }
 
@@ -768,13 +768,13 @@ func (a *OrderAPIService) OrderCount(ctx context.Context) ApiOrderCountRequest {
 }
 
 // Execute executes the request
-//  @return OrderCount200Response
-func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*OrderCount200Response, *http.Response, error) {
+//  @return ModelResponseOrderCount
+func (a *OrderAPIService) OrderCountExecute(r ApiOrderCountRequest) (*ModelResponseOrderCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrderCount200Response
+		localVarReturnValue  *ModelResponseOrderCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderCount")
@@ -960,7 +960,7 @@ type ApiOrderFinancialStatusListRequest struct {
 	ApiService *OrderAPIService
 }
 
-func (r ApiOrderFinancialStatusListRequest) Execute() (*OrderFinancialStatusList200Response, *http.Response, error) {
+func (r ApiOrderFinancialStatusListRequest) Execute() (*ModelResponseOrderFinancialStatusList, *http.Response, error) {
 	return r.ApiService.OrderFinancialStatusListExecute(r)
 }
 
@@ -980,13 +980,13 @@ func (a *OrderAPIService) OrderFinancialStatusList(ctx context.Context) ApiOrder
 }
 
 // Execute executes the request
-//  @return OrderFinancialStatusList200Response
-func (a *OrderAPIService) OrderFinancialStatusListExecute(r ApiOrderFinancialStatusListRequest) (*OrderFinancialStatusList200Response, *http.Response, error) {
+//  @return ModelResponseOrderFinancialStatusList
+func (a *OrderAPIService) OrderFinancialStatusListExecute(r ApiOrderFinancialStatusListRequest) (*ModelResponseOrderFinancialStatusList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrderFinancialStatusList200Response
+		localVarReturnValue  *ModelResponseOrderFinancialStatusList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderFinancialStatusList")
@@ -1094,7 +1094,7 @@ func (r ApiOrderFulfillmentStatusListRequest) Action(action string) ApiOrderFulf
 	return r
 }
 
-func (r ApiOrderFulfillmentStatusListRequest) Execute() (*OrderFulfillmentStatusList200Response, *http.Response, error) {
+func (r ApiOrderFulfillmentStatusListRequest) Execute() (*ModelResponseOrderFulfillmentStatusList, *http.Response, error) {
 	return r.ApiService.OrderFulfillmentStatusListExecute(r)
 }
 
@@ -1114,13 +1114,13 @@ func (a *OrderAPIService) OrderFulfillmentStatusList(ctx context.Context) ApiOrd
 }
 
 // Execute executes the request
-//  @return OrderFulfillmentStatusList200Response
-func (a *OrderAPIService) OrderFulfillmentStatusListExecute(r ApiOrderFulfillmentStatusListRequest) (*OrderFulfillmentStatusList200Response, *http.Response, error) {
+//  @return ModelResponseOrderFulfillmentStatusList
+func (a *OrderAPIService) OrderFulfillmentStatusListExecute(r ApiOrderFulfillmentStatusListRequest) (*ModelResponseOrderFulfillmentStatusList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrderFulfillmentStatusList200Response
+		localVarReturnValue  *ModelResponseOrderFulfillmentStatusList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderFulfillmentStatusList")

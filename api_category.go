@@ -488,7 +488,7 @@ func (r ApiCategoryAssignRequest) IdempotencyKey(idempotencyKey string) ApiCateg
 	return r
 }
 
-func (r ApiCategoryAssignRequest) Execute() (*CategoryAssign200Response, *http.Response, error) {
+func (r ApiCategoryAssignRequest) Execute() (*ModelResponseCategoryAssign, *http.Response, error) {
 	return r.ApiService.CategoryAssignExecute(r)
 }
 
@@ -508,13 +508,13 @@ func (a *CategoryAPIService) CategoryAssign(ctx context.Context) ApiCategoryAssi
 }
 
 // Execute executes the request
-//  @return CategoryAssign200Response
-func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (*CategoryAssign200Response, *http.Response, error) {
+//  @return ModelResponseCategoryAssign
+func (a *CategoryAPIService) CategoryAssignExecute(r ApiCategoryAssignRequest) (*ModelResponseCategoryAssign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CategoryAssign200Response
+		localVarReturnValue  *ModelResponseCategoryAssign
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryAssign")
@@ -720,7 +720,7 @@ func (r ApiCategoryCountRequest) DisableReportCache(disableReportCache bool) Api
 	return r
 }
 
-func (r ApiCategoryCountRequest) Execute() (*CategoryCount200Response, *http.Response, error) {
+func (r ApiCategoryCountRequest) Execute() (*ModelResponseCategoryCount, *http.Response, error) {
 	return r.ApiService.CategoryCountExecute(r)
 }
 
@@ -740,13 +740,13 @@ func (a *CategoryAPIService) CategoryCount(ctx context.Context) ApiCategoryCount
 }
 
 // Execute executes the request
-//  @return CategoryCount200Response
-func (a *CategoryAPIService) CategoryCountExecute(r ApiCategoryCountRequest) (*CategoryCount200Response, *http.Response, error) {
+//  @return ModelResponseCategoryCount
+func (a *CategoryAPIService) CategoryCountExecute(r ApiCategoryCountRequest) (*ModelResponseCategoryCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CategoryCount200Response
+		localVarReturnValue  *ModelResponseCategoryCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryCount")
@@ -1213,7 +1213,7 @@ func (r ApiCategoryFindRequest) LangId(langId string) ApiCategoryFindRequest {
 	return r
 }
 
-func (r ApiCategoryFindRequest) Execute() (*CategoryFind200Response, *http.Response, error) {
+func (r ApiCategoryFindRequest) Execute() (*ModelResponseCategoryFind, *http.Response, error) {
 	return r.ApiService.CategoryFindExecute(r)
 }
 
@@ -1233,13 +1233,13 @@ func (a *CategoryAPIService) CategoryFind(ctx context.Context) ApiCategoryFindRe
 }
 
 // Execute executes the request
-//  @return CategoryFind200Response
-func (a *CategoryAPIService) CategoryFindExecute(r ApiCategoryFindRequest) (*CategoryFind200Response, *http.Response, error) {
+//  @return ModelResponseCategoryFind
+func (a *CategoryAPIService) CategoryFindExecute(r ApiCategoryFindRequest) (*ModelResponseCategoryFind, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CategoryFind200Response
+		localVarReturnValue  *ModelResponseCategoryFind
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryFind")
@@ -2394,7 +2394,7 @@ func (r ApiCategoryUnassignRequest) IdempotencyKey(idempotencyKey string) ApiCat
 	return r
 }
 
-func (r ApiCategoryUnassignRequest) Execute() (*CategoryAssign200Response, *http.Response, error) {
+func (r ApiCategoryUnassignRequest) Execute() (*ModelResponseCategoryUnassign, *http.Response, error) {
 	return r.ApiService.CategoryUnassignExecute(r)
 }
 
@@ -2414,13 +2414,13 @@ func (a *CategoryAPIService) CategoryUnassign(ctx context.Context) ApiCategoryUn
 }
 
 // Execute executes the request
-//  @return CategoryAssign200Response
-func (a *CategoryAPIService) CategoryUnassignExecute(r ApiCategoryUnassignRequest) (*CategoryAssign200Response, *http.Response, error) {
+//  @return ModelResponseCategoryUnassign
+func (a *CategoryAPIService) CategoryUnassignExecute(r ApiCategoryUnassignRequest) (*ModelResponseCategoryUnassign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CategoryAssign200Response
+		localVarReturnValue  *ModelResponseCategoryUnassign
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CategoryAPIService.CategoryUnassign")

@@ -28,7 +28,7 @@ type ApiCartCatalogPriceRulesCountRequest struct {
 	ApiService *CartAPIService
 }
 
-func (r ApiCartCatalogPriceRulesCountRequest) Execute() (*CartCatalogPriceRulesCount200Response, *http.Response, error) {
+func (r ApiCartCatalogPriceRulesCountRequest) Execute() (*ModelResponseCartCatalogPriceRulesCount, *http.Response, error) {
 	return r.ApiService.CartCatalogPriceRulesCountExecute(r)
 }
 
@@ -48,13 +48,13 @@ func (a *CartAPIService) CartCatalogPriceRulesCount(ctx context.Context) ApiCart
 }
 
 // Execute executes the request
-//  @return CartCatalogPriceRulesCount200Response
-func (a *CartAPIService) CartCatalogPriceRulesCountExecute(r ApiCartCatalogPriceRulesCountRequest) (*CartCatalogPriceRulesCount200Response, *http.Response, error) {
+//  @return ModelResponseCartCatalogPriceRulesCount
+func (a *CartAPIService) CartCatalogPriceRulesCountExecute(r ApiCartCatalogPriceRulesCountRequest) (*ModelResponseCartCatalogPriceRulesCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartCatalogPriceRulesCount200Response
+		localVarReturnValue  *ModelResponseCartCatalogPriceRulesCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartAPIService.CartCatalogPriceRulesCount")
@@ -782,7 +782,7 @@ func (r ApiCartCouponCountRequest) DateEndTo(dateEndTo string) ApiCartCouponCoun
 	return r
 }
 
-func (r ApiCartCouponCountRequest) Execute() (*CartCouponCount200Response, *http.Response, error) {
+func (r ApiCartCouponCountRequest) Execute() (*ModelResponseCartCouponCount, *http.Response, error) {
 	return r.ApiService.CartCouponCountExecute(r)
 }
 
@@ -802,13 +802,13 @@ func (a *CartAPIService) CartCouponCount(ctx context.Context) ApiCartCouponCount
 }
 
 // Execute executes the request
-//  @return CartCouponCount200Response
-func (a *CartAPIService) CartCouponCountExecute(r ApiCartCouponCountRequest) (*CartCouponCount200Response, *http.Response, error) {
+//  @return ModelResponseCartCouponCount
+func (a *CartAPIService) CartCouponCountExecute(r ApiCartCouponCountRequest) (*ModelResponseCartCouponCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartCouponCount200Response
+		localVarReturnValue  *ModelResponseCartCouponCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartAPIService.CartCouponCount")
@@ -1503,11 +1503,15 @@ type ApiCartGiftcardAddRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
 	amount *float32
+	currency *string
+	storeId *string
 	code *string
+	name *string
 	ownerEmail *string
+	ownerName *string
 	recipientEmail *string
 	recipientName *string
-	ownerName *string
+	message *string
 	idempotencyKey *string
 }
 
@@ -1517,15 +1521,39 @@ func (r ApiCartGiftcardAddRequest) Amount(amount float32) ApiCartGiftcardAddRequ
 	return r
 }
 
+// Defines currency code
+func (r ApiCartGiftcardAddRequest) Currency(currency string) ApiCartGiftcardAddRequest {
+	r.currency = &currency
+	return r
+}
+
+// Store Id
+func (r ApiCartGiftcardAddRequest) StoreId(storeId string) ApiCartGiftcardAddRequest {
+	r.storeId = &storeId
+	return r
+}
+
 // Gift card code
 func (r ApiCartGiftcardAddRequest) Code(code string) ApiCartGiftcardAddRequest {
 	r.code = &code
 	return r
 }
 
+// Entity name
+func (r ApiCartGiftcardAddRequest) Name(name string) ApiCartGiftcardAddRequest {
+	r.name = &name
+	return r
+}
+
 // Gift card owner email
 func (r ApiCartGiftcardAddRequest) OwnerEmail(ownerEmail string) ApiCartGiftcardAddRequest {
 	r.ownerEmail = &ownerEmail
+	return r
+}
+
+// Gift card owner name
+func (r ApiCartGiftcardAddRequest) OwnerName(ownerName string) ApiCartGiftcardAddRequest {
+	r.ownerName = &ownerName
 	return r
 }
 
@@ -1541,9 +1569,9 @@ func (r ApiCartGiftcardAddRequest) RecipientName(recipientName string) ApiCartGi
 	return r
 }
 
-// Gift card owner name
-func (r ApiCartGiftcardAddRequest) OwnerName(ownerName string) ApiCartGiftcardAddRequest {
-	r.ownerName = &ownerName
+// Free-form message attached to the entity.
+func (r ApiCartGiftcardAddRequest) Message(message string) ApiCartGiftcardAddRequest {
+	r.message = &message
 	return r
 }
 
@@ -1597,11 +1625,23 @@ func (a *CartAPIService) CartGiftcardAddExecute(r ApiCartGiftcardAddRequest) (*C
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "amount", r.amount, "form", "")
+	if r.currency != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	if r.code != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "code", r.code, "form", "")
 	}
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "form", "")
+	}
 	if r.ownerEmail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "owner_email", r.ownerEmail, "form", "")
+	}
+	if r.ownerName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "owner_name", r.ownerName, "form", "")
 	}
 	if r.recipientEmail != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient_email", r.recipientEmail, "form", "")
@@ -1609,8 +1649,8 @@ func (a *CartAPIService) CartGiftcardAddExecute(r ApiCartGiftcardAddRequest) (*C
 	if r.recipientName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "recipient_name", r.recipientName, "form", "")
 	}
-	if r.ownerName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "owner_name", r.ownerName, "form", "")
+	if r.message != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "message", r.message, "form", "")
 	}
 	if r.idempotencyKey != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
@@ -1709,7 +1749,7 @@ func (r ApiCartGiftcardCountRequest) StoreId(storeId string) ApiCartGiftcardCoun
 	return r
 }
 
-func (r ApiCartGiftcardCountRequest) Execute() (*CartGiftcardCount200Response, *http.Response, error) {
+func (r ApiCartGiftcardCountRequest) Execute() (*ModelResponseCartGiftcardCount, *http.Response, error) {
 	return r.ApiService.CartGiftcardCountExecute(r)
 }
 
@@ -1729,13 +1769,13 @@ func (a *CartAPIService) CartGiftcardCount(ctx context.Context) ApiCartGiftcardC
 }
 
 // Execute executes the request
-//  @return CartGiftcardCount200Response
-func (a *CartAPIService) CartGiftcardCountExecute(r ApiCartGiftcardCountRequest) (*CartGiftcardCount200Response, *http.Response, error) {
+//  @return ModelResponseCartGiftcardCount
+func (a *CartAPIService) CartGiftcardCountExecute(r ApiCartGiftcardCountRequest) (*ModelResponseCartGiftcardCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartGiftcardCount200Response
+		localVarReturnValue  *ModelResponseCartGiftcardCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartAPIService.CartGiftcardCount")
@@ -1838,11 +1878,18 @@ type ApiCartGiftcardDeleteRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
 	id *string
+	storeId *string
 }
 
 // Entity id
 func (r ApiCartGiftcardDeleteRequest) Id(id string) ApiCartGiftcardDeleteRequest {
 	r.id = &id
+	return r
+}
+
+// Store Id
+func (r ApiCartGiftcardDeleteRequest) StoreId(storeId string) ApiCartGiftcardDeleteRequest {
+	r.storeId = &storeId
 	return r
 }
 
@@ -1890,6 +1937,9 @@ func (a *CartAPIService) CartGiftcardDeleteExecute(r ApiCartGiftcardDeleteReques
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1975,6 +2025,7 @@ func (a *CartAPIService) CartGiftcardDeleteExecute(r ApiCartGiftcardDeleteReques
 type ApiCartGiftcardListRequest struct {
 	ctx context.Context
 	ApiService *CartAPIService
+	ids *string
 	start *int32
 	count *int32
 	pageCursor *string
@@ -1982,6 +2033,12 @@ type ApiCartGiftcardListRequest struct {
 	responseFields *string
 	params *string
 	exclude *string
+}
+
+// Retrieves gift cards specified by ids
+func (r ApiCartGiftcardListRequest) Ids(ids string) ApiCartGiftcardListRequest {
+	r.ids = &ids
+	return r
 }
 
 // This parameter sets the number from which you want to get entities
@@ -2066,6 +2123,9 @@ func (a *CartAPIService) CartGiftcardListExecute(r ApiCartGiftcardListRequest) (
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
 	if r.start != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start", r.start, "form", "")
 	} else {
@@ -2430,7 +2490,7 @@ func (r ApiCartMetaDataListRequest) Execute() (*ModelResponseCartMetaDataList, *
 /*
 CartMetaDataList cart.meta_data.list
 
-Using this method, you can get a list of metadata for various entities (products, options, customers, orders). Usually this is data created by third-party plugins.
+Using this method, you can get a list of metadata for various entities. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCartMetaDataListRequest
@@ -2653,7 +2713,7 @@ func (r ApiCartMetaDataSetRequest) Execute() (*AttributeAdd200Response, *http.Re
 /*
 CartMetaDataSet cart.meta_data.set
 
-Set meta data for a specific entity
+Set metadata for a specific entity. Entities supported may differ across platforms. To get the list of supported entities, pass an invalid value in the <code>entity</code> parameter. The response will contain the list of entities supported by the specific platform. Usually this is data created by third-party plugins.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCartMetaDataSetRequest
@@ -2987,7 +3047,7 @@ type ApiCartMethodsRequest struct {
 	ApiService *CartAPIService
 }
 
-func (r ApiCartMethodsRequest) Execute() (*CartMethods200Response, *http.Response, error) {
+func (r ApiCartMethodsRequest) Execute() (*ModelResponseCartMethods, *http.Response, error) {
 	return r.ApiService.CartMethodsExecute(r)
 }
 
@@ -3007,13 +3067,13 @@ func (a *CartAPIService) CartMethods(ctx context.Context) ApiCartMethodsRequest 
 }
 
 // Execute executes the request
-//  @return CartMethods200Response
-func (a *CartAPIService) CartMethodsExecute(r ApiCartMethodsRequest) (*CartMethods200Response, *http.Response, error) {
+//  @return ModelResponseCartMethods
+func (a *CartAPIService) CartMethodsExecute(r ApiCartMethodsRequest) (*ModelResponseCartMethods, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CartMethods200Response
+		localVarReturnValue  *ModelResponseCartMethods
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CartAPIService.CartMethods")

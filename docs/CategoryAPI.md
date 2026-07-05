@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## CategoryAssign
 
-> CategoryAssign200Response CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
+> ModelResponseCategoryAssign CategoryAssign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 category.assign
 
@@ -215,7 +215,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryAssign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryAssign`: CategoryAssign200Response
+	// response from `CategoryAssign`: ModelResponseCategoryAssign
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryAssign`: %v\n", resp)
 }
 ```
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CategoryAssign200Response**](CategoryAssign200Response.md)
+[**ModelResponseCategoryAssign**](ModelResponseCategoryAssign.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## CategoryCount
 
-> CategoryCount200Response CategoryCount(ctx).ParentId(parentId).StoreId(storeId).LangId(langId).Avail(avail).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ProductType(productType).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
+> ModelResponseCategoryCount CategoryCount(ctx).ParentId(parentId).StoreId(storeId).LangId(langId).Avail(avail).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ProductType(productType).FindValue(findValue).FindWhere(findWhere).ReportRequestId(reportRequestId).DisableReportCache(disableReportCache).Execute()
 
 category.count
 
@@ -296,7 +296,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryCount`: CategoryCount200Response
+	// response from `CategoryCount`: ModelResponseCategoryCount
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryCount`: %v\n", resp)
 }
 ```
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CategoryCount200Response**](CategoryCount200Response.md)
+[**ModelResponseCategoryCount**](ModelResponseCategoryCount.md)
 
 ### Authorization
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ## CategoryFind
 
-> CategoryFind200Response CategoryFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).LangId(langId).Execute()
+> ModelResponseCategoryFind CategoryFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).LangId(langId).Execute()
 
 category.find
 
@@ -512,7 +512,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryFind`: CategoryFind200Response
+	// response from `CategoryFind`: ModelResponseCategoryFind
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryFind`: %v\n", resp)
 }
 ```
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CategoryFind200Response**](CategoryFind200Response.md)
+[**ModelResponseCategoryFind**](ModelResponseCategoryFind.md)
 
 ### Authorization
 
@@ -900,7 +900,7 @@ Name | Type | Description  | Notes
 
 ## CategoryUnassign
 
-> CategoryAssign200Response CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
+> ModelResponseCategoryUnassign CategoryUnassign(ctx).CategoryId(categoryId).ProductId(productId).StoreId(storeId).IdempotencyKey(idempotencyKey).Execute()
 
 category.unassign
 
@@ -931,7 +931,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CategoryAPI.CategoryUnassign``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CategoryUnassign`: CategoryAssign200Response
+	// response from `CategoryUnassign`: ModelResponseCategoryUnassign
 	fmt.Fprintf(os.Stdout, "Response from `CategoryAPI.CategoryUnassign`: %v\n", resp)
 }
 ```
@@ -954,7 +954,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CategoryAssign200Response**](CategoryAssign200Response.md)
+[**ModelResponseCategoryUnassign**](ModelResponseCategoryUnassign.md)
 
 ### Authorization
 

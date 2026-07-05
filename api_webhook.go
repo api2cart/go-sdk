@@ -49,7 +49,7 @@ func (r ApiWebhookCountRequest) Active(active bool) ApiWebhookCountRequest {
 	return r
 }
 
-func (r ApiWebhookCountRequest) Execute() (*WebhookCount200Response, *http.Response, error) {
+func (r ApiWebhookCountRequest) Execute() (*ModelResponseWebhookCount, *http.Response, error) {
 	return r.ApiService.WebhookCountExecute(r)
 }
 
@@ -69,13 +69,13 @@ func (a *WebhookAPIService) WebhookCount(ctx context.Context) ApiWebhookCountReq
 }
 
 // Execute executes the request
-//  @return WebhookCount200Response
-func (a *WebhookAPIService) WebhookCountExecute(r ApiWebhookCountRequest) (*WebhookCount200Response, *http.Response, error) {
+//  @return ModelResponseWebhookCount
+func (a *WebhookAPIService) WebhookCountExecute(r ApiWebhookCountRequest) (*ModelResponseWebhookCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *WebhookCount200Response
+		localVarReturnValue  *ModelResponseWebhookCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhookAPIService.WebhookCount")
@@ -461,7 +461,7 @@ type ApiWebhookEventsRequest struct {
 	ApiService *WebhookAPIService
 }
 
-func (r ApiWebhookEventsRequest) Execute() (*WebhookEvents200Response, *http.Response, error) {
+func (r ApiWebhookEventsRequest) Execute() (*ModelResponseWebhookEvents, *http.Response, error) {
 	return r.ApiService.WebhookEventsExecute(r)
 }
 
@@ -481,13 +481,13 @@ func (a *WebhookAPIService) WebhookEvents(ctx context.Context) ApiWebhookEventsR
 }
 
 // Execute executes the request
-//  @return WebhookEvents200Response
-func (a *WebhookAPIService) WebhookEventsExecute(r ApiWebhookEventsRequest) (*WebhookEvents200Response, *http.Response, error) {
+//  @return ModelResponseWebhookEvents
+func (a *WebhookAPIService) WebhookEventsExecute(r ApiWebhookEventsRequest) (*ModelResponseWebhookEvents, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *WebhookEvents200Response
+		localVarReturnValue  *ModelResponseWebhookEvents
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhookAPIService.WebhookEvents")

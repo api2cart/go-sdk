@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ## AttributeCount
 
-> AttributeCount200Response AttributeCount(ctx).Type_(type_).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Visible(visible).Required(required).System(system).Execute()
+> ModelResponseAttributeCount AttributeCount(ctx).Type_(type_).AttributeSetId(attributeSetId).StoreId(storeId).LangId(langId).Visible(visible).Required(required).System(system).Execute()
 
 attribute.count
 
@@ -385,7 +385,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AttributeCount`: AttributeCount200Response
+	// response from `AttributeCount`: ModelResponseAttributeCount
 	fmt.Fprintf(os.Stdout, "Response from `AttributeAPI.AttributeCount`: %v\n", resp)
 }
 ```
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AttributeCount200Response**](AttributeCount200Response.md)
+[**ModelResponseAttributeCount**](ModelResponseAttributeCount.md)
 
 ### Authorization
 
@@ -745,7 +745,7 @@ Name | Type | Description  | Notes
 
 ## AttributeTypeList
 
-> AttributeTypeList200Response AttributeTypeList(ctx).Execute()
+> ModelResponseAttributeTypeList AttributeTypeList(ctx).Execute()
 
 attribute.type.list
 
@@ -772,7 +772,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AttributeAPI.AttributeTypeList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AttributeTypeList`: AttributeTypeList200Response
+	// response from `AttributeTypeList`: ModelResponseAttributeTypeList
 	fmt.Fprintf(os.Stdout, "Response from `AttributeAPI.AttributeTypeList`: %v\n", resp)
 }
 ```
@@ -788,7 +788,7 @@ Other parameters are passed through a pointer to a apiAttributeTypeListRequest s
 
 ### Return type
 
-[**AttributeTypeList200Response**](AttributeTypeList200Response.md)
+[**ModelResponseAttributeTypeList**](ModelResponseAttributeTypeList.md)
 
 ### Authorization
 

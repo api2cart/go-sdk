@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## CustomerCount
 
-> CustomerCount200Response CustomerCount(ctx).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
+> ModelResponseCustomerCount CustomerCount(ctx).Ids(ids).SinceId(sinceId).CustomerListId(customerListId).GroupId(groupId).StoreId(storeId).Avail(avail).IncludeGuests(includeGuests).FindValue(findValue).FindWhere(findWhere).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).Execute()
 
 customer.count
 
@@ -275,7 +275,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerCount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CustomerCount`: CustomerCount200Response
+	// response from `CustomerCount`: ModelResponseCustomerCount
 	fmt.Fprintf(os.Stdout, "Response from `CustomerAPI.CustomerCount`: %v\n", resp)
 }
 ```
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerCount200Response**](CustomerCount200Response.md)
+[**ModelResponseCustomerCount**](ModelResponseCustomerCount.md)
 
 ### Authorization
 
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ## CustomerFind
 
-> CustomerFind200Response CustomerFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).IncludeGuests(includeGuests).Execute()
+> ModelResponseCustomerFind CustomerFind(ctx).FindValue(findValue).FindWhere(findWhere).FindParams(findParams).StoreId(storeId).IncludeGuests(includeGuests).Execute()
 
 customer.find
 
@@ -425,7 +425,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CustomerAPI.CustomerFind``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CustomerFind`: CustomerFind200Response
+	// response from `CustomerFind`: ModelResponseCustomerFind
 	fmt.Fprintf(os.Stdout, "Response from `CustomerAPI.CustomerFind`: %v\n", resp)
 }
 ```
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerFind200Response**](CustomerFind200Response.md)
+[**ModelResponseCustomerFind**](ModelResponseCustomerFind.md)
 
 ### Authorization
 
