@@ -52,6 +52,8 @@ type APIClient struct {
 
 	AccountAPI *AccountAPIService
 
+	AnalyticsAPI *AnalyticsAPIService
+
 	AttributeAPI *AttributeAPIService
 
 	BasketAPI *BasketAPIService
@@ -98,6 +100,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AccountAPI = (*AccountAPIService)(&c.common)
+	c.AnalyticsAPI = (*AnalyticsAPIService)(&c.common)
 	c.AttributeAPI = (*AttributeAPIService)(&c.common)
 	c.BasketAPI = (*BasketAPIService)(&c.common)
 	c.BatchAPI = (*BatchAPIService)(&c.common)

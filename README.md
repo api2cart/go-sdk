@@ -83,6 +83,9 @@ Class | Method | HTTP request | Description
 *AccountAPI* | [**AccountConfigUpdate**](docs/AccountAPI.md#accountconfigupdate) | **Put** /account.config.update.json | account.config.update
 *AccountAPI* | [**AccountFailedWebhooks**](docs/AccountAPI.md#accountfailedwebhooks) | **Get** /account.failed_webhooks.json | account.failed_webhooks
 *AccountAPI* | [**AccountSupportedPlatforms**](docs/AccountAPI.md#accountsupportedplatforms) | **Get** /account.supported_platforms.json | account.supported_platforms
+*AnalyticsAPI* | [**AnalyticsCustomerReport**](docs/AnalyticsAPI.md#analyticscustomerreport) | **Get** /analytics.customer_report.json | analytics.customer_report
+*AnalyticsAPI* | [**AnalyticsProductReport**](docs/AnalyticsAPI.md#analyticsproductreport) | **Get** /analytics.product_report.json | analytics.product_report
+*AnalyticsAPI* | [**AnalyticsReport**](docs/AnalyticsAPI.md#analyticsreport) | **Get** /analytics.report.json | analytics.report
 *AttributeAPI* | [**AttributeAdd**](docs/AttributeAPI.md#attributeadd) | **Post** /attribute.add.json | attribute.add
 *AttributeAPI* | [**AttributeAssignGroup**](docs/AttributeAPI.md#attributeassigngroup) | **Post** /attribute.assign.group.json | attribute.assign.group
 *AttributeAPI* | [**AttributeAssignSet**](docs/AttributeAPI.md#attributeassignset) | **Post** /attribute.assign.set.json | attribute.assign.set
@@ -266,6 +269,13 @@ Class | Method | HTTP request | Description
  - [AccountSupportedPlatform](docs/AccountSupportedPlatform.md)
  - [AccountSupportedPlatformParams](docs/AccountSupportedPlatformParams.md)
  - [AccountSupportedPlatformParamsRequiredInnerInner](docs/AccountSupportedPlatformParamsRequiredInnerInner.md)
+ - [AnalyticsCustomer](docs/AnalyticsCustomer.md)
+ - [AnalyticsCustomerMetric](docs/AnalyticsCustomerMetric.md)
+ - [AnalyticsInterval](docs/AnalyticsInterval.md)
+ - [AnalyticsMetric](docs/AnalyticsMetric.md)
+ - [AnalyticsPeriod](docs/AnalyticsPeriod.md)
+ - [AnalyticsProduct](docs/AnalyticsProduct.md)
+ - [AnalyticsProductMetric](docs/AnalyticsProductMetric.md)
  - [AttributeAdd200Response](docs/AttributeAdd200Response.md)
  - [AttributeAdd200ResponseResult](docs/AttributeAdd200ResponseResult.md)
  - [AttributeAssignGroup200Response](docs/AttributeAssignGroup200Response.md)
@@ -605,6 +615,9 @@ Class | Method | HTTP request | Description
  - [ProductVariantUpdateBatchPayloadInner](docs/ProductVariantUpdateBatchPayloadInner.md)
  - [ProductVariantUpdateOptionsInner](docs/ProductVariantUpdateOptionsInner.md)
  - [ResponseAccountSupportedPlatformsResult](docs/ResponseAccountSupportedPlatformsResult.md)
+ - [ResponseAnalyticsCustomerReportResult](docs/ResponseAnalyticsCustomerReportResult.md)
+ - [ResponseAnalyticsProductReportResult](docs/ResponseAnalyticsProductReportResult.md)
+ - [ResponseAnalyticsReportResult](docs/ResponseAnalyticsReportResult.md)
  - [ResponseAttributeAttributesetListResult](docs/ResponseAttributeAttributesetListResult.md)
  - [ResponseAttributeCountResult](docs/ResponseAttributeCountResult.md)
  - [ResponseAttributeGroupListResult](docs/ResponseAttributeGroupListResult.md)

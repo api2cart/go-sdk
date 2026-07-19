@@ -4,6 +4,7 @@
 README.md
 api/openapi.yaml
 api_account.go
+api_analytics.go
 api_attribute.go
 api_basket.go
 api_batch.go
@@ -37,6 +38,14 @@ docs/AccountFailedWebhooks200ResponseResultWebhookInner.md
 docs/AccountSupportedPlatform.md
 docs/AccountSupportedPlatformParams.md
 docs/AccountSupportedPlatformParamsRequiredInnerInner.md
+docs/AnalyticsAPI.md
+docs/AnalyticsCustomer.md
+docs/AnalyticsCustomerMetric.md
+docs/AnalyticsInterval.md
+docs/AnalyticsMetric.md
+docs/AnalyticsPeriod.md
+docs/AnalyticsProduct.md
+docs/AnalyticsProductMetric.md
 docs/AttributeAPI.md
 docs/AttributeAdd200Response.md
 docs/AttributeAdd200ResponseResult.md
@@ -386,6 +395,9 @@ docs/ProductVariantUpdateBatch.md
 docs/ProductVariantUpdateBatchPayloadInner.md
 docs/ProductVariantUpdateOptionsInner.md
 docs/ResponseAccountSupportedPlatformsResult.md
+docs/ResponseAnalyticsCustomerReportResult.md
+docs/ResponseAnalyticsProductReportResult.md
+docs/ResponseAnalyticsReportResult.md
 docs/ResponseAttributeAttributesetListResult.md
 docs/ResponseAttributeCountResult.md
 docs/ResponseAttributeGroupListResult.md
@@ -498,6 +510,13 @@ model_account_failed_webhooks_200_response_result_webhook_inner.go
 model_account_supported_platform.go
 model_account_supported_platform_params.go
 model_account_supported_platform_params_required_inner_inner.go
+model_analytics_customer.go
+model_analytics_customer_metric.go
+model_analytics_interval.go
+model_analytics_metric.go
+model_analytics_period.go
+model_analytics_product.go
+model_analytics_product_metric.go
 model_attribute_add_200_response.go
 model_attribute_add_200_response_result.go
 model_attribute_assign_group_200_response.go
@@ -837,6 +856,9 @@ model_product_variant_update_batch.go
 model_product_variant_update_batch_payload_inner.go
 model_product_variant_update_options_inner.go
 model_response_account_supported_platforms_result.go
+model_response_analytics_customer_report_result.go
+model_response_analytics_product_report_result.go
+model_response_analytics_report_result.go
 model_response_attribute_attributeset_list_result.go
 model_response_attribute_count_result.go
 model_response_attribute_group_list_result.go
@@ -928,6 +950,7 @@ model_webhook_list_200_response_result.go
 model_webhook_update.go
 response.go
 test/api_account_test.go
+test/api_analytics_test.go
 test/api_attribute_test.go
 test/api_basket_test.go
 test/api_batch_test.go
