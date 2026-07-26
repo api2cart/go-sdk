@@ -41,7 +41,7 @@ func main() {
 	sortBy := "total_spend" // string | Set field to sort by (optional) (default to "total_spend")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "desc")
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	responseFields := "{result}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
  **sortBy** | **string** | Set field to sort by | [default to &quot;total_spend&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;desc&quot;]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
 
 ### Return type
 
@@ -127,7 +127,7 @@ func main() {
 	sortBy := "items_sold" // string | Set field to sort by (optional) (default to "items_sold")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "desc")
 	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	responseFields := "{result}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
  **sortBy** | **string** | Set field to sort by | [default to &quot;items_sold&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;desc&quot;]
  **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
 
 ### Return type
 
@@ -212,7 +212,7 @@ func main() {
 	storeId := "1" // string | Store Id (optional)
 	sortBy := "date" // string | Set field to sort by (optional) (default to "date")
 	sortDirection := "asc" // string | Set sorting direction (optional) (default to "asc")
-	responseFields := "{result}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
+	responseFields := "{result}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
  **storeId** | **string** | Store Id | 
  **sortBy** | **string** | Set field to sort by | [default to &quot;date&quot;]
  **sortDirection** | **string** | Set sorting direction | [default to &quot;asc&quot;]
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
 
 ### Return type
 

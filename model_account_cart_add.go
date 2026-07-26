@@ -22,7 +22,7 @@ var _ MappedNullable = &AccountCartAdd{}
 
 // AccountCartAdd struct for AccountCartAdd
 type AccountCartAdd struct {
-	// Store’s identifier which you can get from cart_list method
+	// Integration identifier
 	CartId string `json:"cart_id"`
 	// A web address of a store that you would like to connect to API2Cart
 	StoreUrl *string `json:"store_url,omitempty"`
@@ -30,7 +30,7 @@ type AccountCartAdd struct {
 	BridgeUrl *string `json:"bridge_url,omitempty"`
 	// Absolute path to the store root directory (used with \"bridge_url\" parameter)
 	StoreRoot *string `json:"store_root,omitempty"`
-	// Set this parameter if bridge is already uploaded to store
+	// If a bridge connector is already installed on the store, you MUST pass here the store key it generated during installation, to connect via the bridge-based integration. Omit it only when connecting via an API-based integration, which uses API credentials instead.
 	StoreKey *string `json:"store_key,omitempty"`
 	// Defines alternative text that has to be attached to the picture
 	Label *string `json:"label,omitempty"`

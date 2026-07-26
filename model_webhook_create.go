@@ -26,13 +26,13 @@ type WebhookCreate struct {
 	Entity string `json:"entity"`
 	// Specify what action (event) will trigger the webhook (e.g add, delete, or update)
 	Action string `json:"action"`
-	// Callback url that returns shipping rates. It should be able to accept POST requests with json data.
-	Callback *string `json:"callback,omitempty"`
+	// Callback where the webhook should send the POST request when the event occurs
+	Callback string `json:"callback"`
 	// The name you give to the webhook
 	Label *string `json:"label,omitempty"`
 	// Fields the webhook should send
 	Fields *string `json:"fields,omitempty"`
-	// Set this parameter in order to choose which entity fields you want to retrieve
+	// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 	ResponseFields *string `json:"response_fields,omitempty"`
 	// Webhook status
 	Active *bool `json:"active,omitempty"`
@@ -52,10 +52,11 @@ type _WebhookCreate WebhookCreate
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhookCreate(entity string, action string) *WebhookCreate {
+func NewWebhookCreate(entity string, action string, callback string) *WebhookCreate {
 	this := WebhookCreate{}
 	this.Entity = entity
 	this.Action = action
+	this.Callback = callback
 	var fields string = "force_all"
 	this.Fields = &fields
 	var active bool = true
@@ -123,36 +124,28 @@ func (o *WebhookCreate) SetAction(v string) {
 	o.Action = v
 }
 
-// GetCallback returns the Callback field value if set, zero value otherwise.
+// GetCallback returns the Callback field value
 func (o *WebhookCreate) GetCallback() string {
-	if o == nil || IsNil(o.Callback) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Callback
+
+	return o.Callback
 }
 
-// GetCallbackOk returns a tuple with the Callback field value if set, nil otherwise
+// GetCallbackOk returns a tuple with the Callback field value
 // and a boolean to check if the value has been set.
 func (o *WebhookCreate) GetCallbackOk() (*string, bool) {
-	if o == nil || IsNil(o.Callback) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Callback, true
+	return &o.Callback, true
 }
 
-// HasCallback returns a boolean if a field has been set.
-func (o *WebhookCreate) HasCallback() bool {
-	if o != nil && !IsNil(o.Callback) {
-		return true
-	}
-
-	return false
-}
-
-// SetCallback gets a reference to the given string and assigns it to the Callback field.
+// SetCallback sets field value
 func (o *WebhookCreate) SetCallback(v string) {
-	o.Callback = &v
+	o.Callback = v
 }
 
 // GetLabel returns the Label field value if set, zero value otherwise.
@@ -423,9 +416,7 @@ func (o WebhookCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["entity"] = o.Entity
 	toSerialize["action"] = o.Action
-	if !IsNil(o.Callback) {
-		toSerialize["callback"] = o.Callback
-	}
+	toSerialize["callback"] = o.Callback
 	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
@@ -460,6 +451,7 @@ func (o *WebhookCreate) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"entity",
 		"action",
+		"callback",
 	}
 
 	allProperties := make(map[string]interface{})

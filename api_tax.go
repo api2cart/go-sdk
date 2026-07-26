@@ -52,19 +52,19 @@ func (r ApiTaxClassInfoRequest) LangId(langId string) ApiTaxClassInfoRequest {
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiTaxClassInfoRequest) ResponseFields(responseFields string) ApiTaxClassInfoRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiTaxClassInfoRequest) Params(params string) ApiTaxClassInfoRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiTaxClassInfoRequest) Exclude(exclude string) ApiTaxClassInfoRequest {
 	r.exclude = &exclude
 	return r
@@ -290,7 +290,7 @@ func (r ApiTaxClassListRequest) ModifiedFrom(modifiedFrom string) ApiTaxClassLis
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiTaxClassListRequest) ResponseFields(responseFields string) ApiTaxClassListRequest {
 	r.responseFields = &responseFields
 	return r

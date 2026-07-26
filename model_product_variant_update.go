@@ -62,19 +62,19 @@ type ProductVariantUpdate struct {
 	TaxClassId *string `json:"tax_class_id,omitempty"`
 	// Defines whether the product is virtual
 	IsVirtual *bool `json:"is_virtual,omitempty"`
-	// Defines inventory tracking for product variant
+	// Defines inventory tracking for product variant. When true, quantity sets the stock level and the stock status is derived from it; when false, quantity is ignored and in_stock sets the status directly.
 	ManageStock *bool `json:"manage_stock,omitempty"`
-	// Set stock status
+	// Set stock status. Effective only when manage_stock is false — when stock is managed, the status is derived from quantity automatically and this parameter is ignored.
 	InStock *bool `json:"in_stock,omitempty"`
 	// This parameter is used for selecting a warehouse where you need to set/modify a product quantity.
 	WarehouseId *string `json:"warehouse_id,omitempty"`
 	// This parameter allows to reserve/unreserve product variants quantity.
 	ReserveQuantity *float32 `json:"reserve_quantity,omitempty"`
-	// Defines new products' variants quantity
+	// Defines new products' variants quantity. Effective only when manage_stock is true — otherwise the value is ignored. To enable stock tracking and set a quantity in one call, pass manage_stock=true together with quantity.
 	Quantity *float32 `json:"quantity,omitempty"`
-	// Defines the incremental changes in product quantity
+	// Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
-	// Defines the decrement changes in product quantity
+	// Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
 	// Indicates whether prices include tax.
 	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`

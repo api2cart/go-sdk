@@ -733,9 +733,9 @@ func main() {
 	storeId := "1" // string | Retrieves category info  specified by store id (optional)
 	langId := "3" // string | Retrieves category info  specified by language id (optional)
 	schemaType := "LISTING" // string | The name of the requirements set for the provided schema. (optional)
-	responseFields := "{result{id,name,parent_id,modified_at{value},images}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	params := "id,parent_id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,parent_id,name,description")
-	exclude := "id,parent_id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	responseFields := "{result{id,name,parent_id,modified_at{value},images}}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
+	params := "id,parent_id,name" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,parent_id,name,description")
+	exclude := "id,parent_id,name" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
@@ -767,9 +767,9 @@ Name | Type | Description  | Notes
  **storeId** | **string** | Retrieves category info  specified by store id | 
  **langId** | **string** | Retrieves category info  specified by language id | 
  **schemaType** | **string** | The name of the requirements set for the provided schema. | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,parent_id,name,description&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
+ **params** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,parent_id,name,description&quot;]
+ **exclude** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
@@ -827,9 +827,9 @@ func main() {
 	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
 	findValue := "Demo category 1" // string | Entity search that is specified by some value (optional)
 	findWhere := "name" // string | Category search that is specified by field (optional)
-	responseFields := "{result{categories_count,category{id,parent_id,modified_at{value},images}}}" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional)
-	params := "id,parent_id,name" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,parent_id,name,description")
-	exclude := "id,parent_id,name" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	responseFields := "{result{categories_count,category{id,parent_id,modified_at{value},images}}}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
+	params := "id,parent_id,name" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,parent_id,name,description")
+	exclude := "id,parent_id,name" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 	reportRequestId := "105245017661" // string | Report request id (optional)
 	disableReportCache := false // bool | Disable report cache for current request (optional) (default to false)
 	disableCache := false // bool | Disable cache for current request (optional) (default to false)
@@ -872,9 +872,9 @@ Name | Type | Description  | Notes
  **modifiedTo** | **string** | Retrieve entities to their modification date | 
  **findValue** | **string** | Entity search that is specified by some value | 
  **findWhere** | **string** | Category search that is specified by field | 
- **responseFields** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,parent_id,name,description&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
+ **params** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,parent_id,name,description&quot;]
+ **exclude** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
  **reportRequestId** | **string** | Report request id | 
  **disableReportCache** | **bool** | Disable report cache for current request | [default to false]
  **disableCache** | **bool** | Disable cache for current request | [default to false]

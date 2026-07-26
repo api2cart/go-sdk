@@ -392,19 +392,19 @@ func (r ApiProductAttributeListRequest) SortDirection(sortDirection string) ApiP
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductAttributeListRequest) ResponseFields(responseFields string) ApiProductAttributeListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductAttributeListRequest) Params(params string) ApiProductAttributeListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductAttributeListRequest) Exclude(exclude string) ApiProductAttributeListRequest {
 	r.exclude = &exclude
 	return r
@@ -1132,19 +1132,19 @@ func (r ApiProductBrandListRequest) Avail(avail bool) ApiProductBrandListRequest
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductBrandListRequest) ResponseFields(responseFields string) ApiProductBrandListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductBrandListRequest) Params(params string) ApiProductBrandListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductBrandListRequest) Exclude(exclude string) ApiProductBrandListRequest {
 	r.exclude = &exclude
 	return r
@@ -1552,19 +1552,19 @@ func (r ApiProductChildItemInfoRequest) CurrencyId(currencyId string) ApiProduct
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductChildItemInfoRequest) ResponseFields(responseFields string) ApiProductChildItemInfoRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductChildItemInfoRequest) Params(params string) ApiProductChildItemInfoRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductChildItemInfoRequest) Exclude(exclude string) ApiProductChildItemInfoRequest {
 	r.exclude = &exclude
 	return r
@@ -1863,19 +1863,19 @@ func (r ApiProductChildItemListRequest) ReturnGlobal(returnGlobal bool) ApiProdu
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductChildItemListRequest) ResponseFields(responseFields string) ApiProductChildItemListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductChildItemListRequest) Params(params string) ApiProductChildItemListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductChildItemListRequest) Exclude(exclude string) ApiProductChildItemListRequest {
 	r.exclude = &exclude
 	return r
@@ -2773,19 +2773,19 @@ func (r ApiProductCurrencyListRequest) Avail(avail bool) ApiProductCurrencyListR
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductCurrencyListRequest) ResponseFields(responseFields string) ApiProductCurrencyListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductCurrencyListRequest) Params(params string) ApiProductCurrencyListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductCurrencyListRequest) Exclude(exclude string) ApiProductCurrencyListRequest {
 	r.exclude = &exclude
 	return r
@@ -4014,19 +4014,19 @@ func (r ApiProductInfoRequest) CurrencyId(currencyId string) ApiProductInfoReque
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductInfoRequest) ResponseFields(responseFields string) ApiProductInfoRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductInfoRequest) Params(params string) ApiProductInfoRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductInfoRequest) Exclude(exclude string) ApiProductInfoRequest {
 	r.exclude = &exclude
 	return r
@@ -4419,19 +4419,19 @@ func (r ApiProductListRequest) ReturnGlobal(returnGlobal bool) ApiProductListReq
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductListRequest) Params(params string) ApiProductListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductListRequest) ResponseFields(responseFields string) ApiProductListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductListRequest) Exclude(exclude string) ApiProductListRequest {
 	r.exclude = &exclude
 	return r
@@ -5537,19 +5537,19 @@ func (r ApiProductOptionListRequest) StoreId(storeId string) ApiProductOptionLis
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductOptionListRequest) ResponseFields(responseFields string) ApiProductOptionListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductOptionListRequest) Params(params string) ApiProductOptionListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductOptionListRequest) Exclude(exclude string) ApiProductOptionListRequest {
 	r.exclude = &exclude
 	return r
@@ -7023,19 +7023,19 @@ func (r ApiProductReviewListRequest) SortDirection(sortDirection string) ApiProd
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiProductReviewListRequest) ResponseFields(responseFields string) ApiProductReviewListRequest {
 	r.responseFields = &responseFields
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiProductReviewListRequest) Params(params string) ApiProductReviewListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiProductReviewListRequest) Exclude(exclude string) ApiProductReviewListRequest {
 	r.exclude = &exclude
 	return r

@@ -68,7 +68,7 @@ type ProductUpdate struct {
 	Condition *string `json:"condition,omitempty"`
 	// Set visibility status
 	Visible *string `json:"visible,omitempty"`
-	// Set stock status
+	// Set stock status. Effective only when manage_stock is false — when stock is managed, the status is derived from quantity automatically and this parameter is ignored.
 	InStock *bool `json:"in_stock,omitempty"`
 	// Defines category's visibility status
 	Avail *bool `json:"avail,omitempty"`
@@ -90,17 +90,17 @@ type ProductUpdate struct {
 	StoreId *string `json:"store_id,omitempty"`
 	// Language id
 	LangId *string `json:"lang_id,omitempty"`
-	// Defines new product's quantity
+	// Defines new product's quantity. Effective only when manage_stock is true — otherwise the value is ignored. To enable stock tracking and set a quantity in one call, pass manage_stock=true together with quantity.
 	Quantity *float32 `json:"quantity,omitempty"`
 	// This parameter allows to reserve/unreserve product quantity.
 	ReserveQuantity *float32 `json:"reserve_quantity,omitempty"`
-	// Defines inventory tracking for product
+	// Defines inventory tracking for product. When true, quantity sets the stock level and the stock status is derived from it; when false, quantity is ignored and in_stock sets the status directly.
 	ManageStock *bool `json:"manage_stock,omitempty"`
 	// Set backorder status
 	BackorderStatus *string `json:"backorder_status,omitempty"`
-	// Defines the incremental changes in product quantity
+	// Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
-	// Defines the decrement changes in product quantity
+	// Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
 	// Specify the quantity threshold below which the product is considered low in stock
 	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`

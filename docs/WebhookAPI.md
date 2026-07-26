@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	webhookCreate := *openapiclient.NewWebhookCreate("product", "add") // WebhookCreate | 
+	webhookCreate := *openapiclient.NewWebhookCreate("product", "add", "https://example.com/callback") // WebhookCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -303,7 +303,7 @@ func main() {
 	action := "add" // string | The action you want to filter webhooks by (e.g. add, update, or delete) (optional)
 	active := true // bool | The webhook status you want to filter webhooks by (optional)
 	ids := "3,14,25" // string | List of сomma-separated webhook ids (optional)
-	params := "id,entity,callback,fields" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,entity,action,callback")
+	params := "id,entity,callback,fields" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "id,entity,action,callback")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
  **action** | **string** | The action you want to filter webhooks by (e.g. add, update, or delete) | 
  **active** | **bool** | The webhook status you want to filter webhooks by | 
  **ids** | **string** | List of сomma-separated webhook ids | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,entity,action,callback&quot;]
+ **params** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;id,entity,action,callback&quot;]
 
 ### Return type
 

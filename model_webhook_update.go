@@ -24,13 +24,13 @@ var _ MappedNullable = &WebhookUpdate{}
 type WebhookUpdate struct {
 	// Webhook id
 	Id string `json:"id"`
-	// Callback url that returns shipping rates. It should be able to accept POST requests with json data.
+	// Callback where the webhook should send the POST request when the event occurs
 	Callback *string `json:"callback,omitempty"`
 	// The name you give to the webhook
 	Label *string `json:"label,omitempty"`
 	// Fields the webhook should send
 	Fields *string `json:"fields,omitempty"`
-	// Set this parameter in order to choose which entity fields you want to retrieve
+	// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 	ResponseFields *string `json:"response_fields,omitempty"`
 	// Webhook status
 	Active *bool `json:"active,omitempty"`

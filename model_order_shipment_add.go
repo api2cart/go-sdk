@@ -42,16 +42,48 @@ type OrderShipmentAdd struct {
 	SendNotifications *bool `json:"send_notifications,omitempty"`
 	// This parameter is used for adjust stock.
 	AdjustStock *bool `json:"adjust_stock,omitempty"`
-	// If the value is 'true' and order exist in our cache, we will use order.info from cache to prepare shipment items.
-	EnableCache *bool `json:"enable_cache,omitempty"`
 	// Disable or enable check process status. Please note that the response will be slower due to additional requests to the store.
 	CheckProcessStatus *bool `json:"check_process_status,omitempty"`
 	// Defines name of the company which provides shipment tracking
 	TrackingProvider *string `json:"tracking_provider,omitempty"`
-	// Use the latest platform API version
-	UseLatestApiVersion *bool `json:"use_latest_api_version,omitempty"`
 	// Specifies admin's order comment
 	AdminComment *string `json:"admin_comment,omitempty"`
+	// Mail class for the shipment (e.g., priority, express).
+	MailClass *string `json:"mail_class,omitempty"`
+	// Ship date.
+	ShipDate *string `json:"ship_date,omitempty"`
+	// Weight
+	Weight *float32 `json:"weight,omitempty"`
+	// Weight Unit
+	WeightUnit *string `json:"weight_unit,omitempty"`
+	// Defines product's length
+	Length *float32 `json:"length,omitempty"`
+	// Defines product's width
+	Width *float32 `json:"width,omitempty"`
+	// Defines product's height
+	Height *float32 `json:"height,omitempty"`
+	// Weight Unit
+	DimensionsUnit *string `json:"dimensions_unit,omitempty"`
+	// Cost of the shipping label.
+	ShippingLabelCost *float32 `json:"shipping_label_cost,omitempty"`
+	// Currency code for the shipping label cost (3-letter ISO code).
+	ShippingLabelCurrency *string `json:"shipping_label_currency,omitempty"`
+	// Revenue eligibility flag.
+	RevenueEligibility *bool `json:"revenue_eligibility,omitempty"`
+	// Country code the shipment is sent from (2-letter ISO code).
+	ShipFromCountry *string `json:"ship_from_country,omitempty"`
+	// Country code the shipment is sent to (2-letter ISO code).
+	ShipToCountry *string `json:"ship_to_country,omitempty"`
+	// International commercial term for the shipment (e.g., DAP, DDP).
+	Incoterm *string `json:"incoterm,omitempty"`
+	// Duty amount for international shipment.
+	DutyAmount *float32 `json:"duty_amount,omitempty"`
+	// Currency code for the duty amount (3-letter ISO code).
+	DutyCurrency *string `json:"duty_currency,omitempty"`
+	// If the value is 'true' and order exist in our cache, we will use order.info from cache to prepare shipment items.
+	EnableCache *bool `json:"enable_cache,omitempty"`
+	// Use the latest platform API version
+	UseLatestApiVersion *bool `json:"use_latest_api_version,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -68,10 +100,10 @@ func NewOrderShipmentAdd() *OrderShipmentAdd {
 	this.SendNotifications = &sendNotifications
 	var adjustStock bool = false
 	this.AdjustStock = &adjustStock
-	var enableCache bool = false
-	this.EnableCache = &enableCache
 	var checkProcessStatus bool = false
 	this.CheckProcessStatus = &checkProcessStatus
+	var enableCache bool = false
+	this.EnableCache = &enableCache
 	var useLatestApiVersion bool = false
 	this.UseLatestApiVersion = &useLatestApiVersion
 	return &this
@@ -88,10 +120,10 @@ func NewOrderShipmentAddWithDefaults() *OrderShipmentAdd {
 	this.SendNotifications = &sendNotifications
 	var adjustStock bool = false
 	this.AdjustStock = &adjustStock
-	var enableCache bool = false
-	this.EnableCache = &enableCache
 	var checkProcessStatus bool = false
 	this.CheckProcessStatus = &checkProcessStatus
+	var enableCache bool = false
+	this.EnableCache = &enableCache
 	var useLatestApiVersion bool = false
 	this.UseLatestApiVersion = &useLatestApiVersion
 	return &this
@@ -449,38 +481,6 @@ func (o *OrderShipmentAdd) SetAdjustStock(v bool) {
 	o.AdjustStock = &v
 }
 
-// GetEnableCache returns the EnableCache field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetEnableCache() bool {
-	if o == nil || IsNil(o.EnableCache) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableCache
-}
-
-// GetEnableCacheOk returns a tuple with the EnableCache field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableCache) {
-		return nil, false
-	}
-	return o.EnableCache, true
-}
-
-// HasEnableCache returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasEnableCache() bool {
-	if o != nil && !IsNil(o.EnableCache) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableCache gets a reference to the given bool and assigns it to the EnableCache field.
-func (o *OrderShipmentAdd) SetEnableCache(v bool) {
-	o.EnableCache = &v
-}
-
 // GetCheckProcessStatus returns the CheckProcessStatus field value if set, zero value otherwise.
 func (o *OrderShipmentAdd) GetCheckProcessStatus() bool {
 	if o == nil || IsNil(o.CheckProcessStatus) {
@@ -545,38 +545,6 @@ func (o *OrderShipmentAdd) SetTrackingProvider(v string) {
 	o.TrackingProvider = &v
 }
 
-// GetUseLatestApiVersion returns the UseLatestApiVersion field value if set, zero value otherwise.
-func (o *OrderShipmentAdd) GetUseLatestApiVersion() bool {
-	if o == nil || IsNil(o.UseLatestApiVersion) {
-		var ret bool
-		return ret
-	}
-	return *o.UseLatestApiVersion
-}
-
-// GetUseLatestApiVersionOk returns a tuple with the UseLatestApiVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderShipmentAdd) GetUseLatestApiVersionOk() (*bool, bool) {
-	if o == nil || IsNil(o.UseLatestApiVersion) {
-		return nil, false
-	}
-	return o.UseLatestApiVersion, true
-}
-
-// HasUseLatestApiVersion returns a boolean if a field has been set.
-func (o *OrderShipmentAdd) HasUseLatestApiVersion() bool {
-	if o != nil && !IsNil(o.UseLatestApiVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetUseLatestApiVersion gets a reference to the given bool and assigns it to the UseLatestApiVersion field.
-func (o *OrderShipmentAdd) SetUseLatestApiVersion(v bool) {
-	o.UseLatestApiVersion = &v
-}
-
 // GetAdminComment returns the AdminComment field value if set, zero value otherwise.
 func (o *OrderShipmentAdd) GetAdminComment() string {
 	if o == nil || IsNil(o.AdminComment) {
@@ -607,6 +575,582 @@ func (o *OrderShipmentAdd) HasAdminComment() bool {
 // SetAdminComment gets a reference to the given string and assigns it to the AdminComment field.
 func (o *OrderShipmentAdd) SetAdminComment(v string) {
 	o.AdminComment = &v
+}
+
+// GetMailClass returns the MailClass field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetMailClass() string {
+	if o == nil || IsNil(o.MailClass) {
+		var ret string
+		return ret
+	}
+	return *o.MailClass
+}
+
+// GetMailClassOk returns a tuple with the MailClass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetMailClassOk() (*string, bool) {
+	if o == nil || IsNil(o.MailClass) {
+		return nil, false
+	}
+	return o.MailClass, true
+}
+
+// HasMailClass returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasMailClass() bool {
+	if o != nil && !IsNil(o.MailClass) {
+		return true
+	}
+
+	return false
+}
+
+// SetMailClass gets a reference to the given string and assigns it to the MailClass field.
+func (o *OrderShipmentAdd) SetMailClass(v string) {
+	o.MailClass = &v
+}
+
+// GetShipDate returns the ShipDate field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetShipDate() string {
+	if o == nil || IsNil(o.ShipDate) {
+		var ret string
+		return ret
+	}
+	return *o.ShipDate
+}
+
+// GetShipDateOk returns a tuple with the ShipDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetShipDateOk() (*string, bool) {
+	if o == nil || IsNil(o.ShipDate) {
+		return nil, false
+	}
+	return o.ShipDate, true
+}
+
+// HasShipDate returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasShipDate() bool {
+	if o != nil && !IsNil(o.ShipDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetShipDate gets a reference to the given string and assigns it to the ShipDate field.
+func (o *OrderShipmentAdd) SetShipDate(v string) {
+	o.ShipDate = &v
+}
+
+// GetWeight returns the Weight field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetWeight() float32 {
+	if o == nil || IsNil(o.Weight) {
+		var ret float32
+		return ret
+	}
+	return *o.Weight
+}
+
+// GetWeightOk returns a tuple with the Weight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetWeightOk() (*float32, bool) {
+	if o == nil || IsNil(o.Weight) {
+		return nil, false
+	}
+	return o.Weight, true
+}
+
+// HasWeight returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasWeight() bool {
+	if o != nil && !IsNil(o.Weight) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeight gets a reference to the given float32 and assigns it to the Weight field.
+func (o *OrderShipmentAdd) SetWeight(v float32) {
+	o.Weight = &v
+}
+
+// GetWeightUnit returns the WeightUnit field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetWeightUnit() string {
+	if o == nil || IsNil(o.WeightUnit) {
+		var ret string
+		return ret
+	}
+	return *o.WeightUnit
+}
+
+// GetWeightUnitOk returns a tuple with the WeightUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetWeightUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.WeightUnit) {
+		return nil, false
+	}
+	return o.WeightUnit, true
+}
+
+// HasWeightUnit returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasWeightUnit() bool {
+	if o != nil && !IsNil(o.WeightUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetWeightUnit gets a reference to the given string and assigns it to the WeightUnit field.
+func (o *OrderShipmentAdd) SetWeightUnit(v string) {
+	o.WeightUnit = &v
+}
+
+// GetLength returns the Length field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetLength() float32 {
+	if o == nil || IsNil(o.Length) {
+		var ret float32
+		return ret
+	}
+	return *o.Length
+}
+
+// GetLengthOk returns a tuple with the Length field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetLengthOk() (*float32, bool) {
+	if o == nil || IsNil(o.Length) {
+		return nil, false
+	}
+	return o.Length, true
+}
+
+// HasLength returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasLength() bool {
+	if o != nil && !IsNil(o.Length) {
+		return true
+	}
+
+	return false
+}
+
+// SetLength gets a reference to the given float32 and assigns it to the Length field.
+func (o *OrderShipmentAdd) SetLength(v float32) {
+	o.Length = &v
+}
+
+// GetWidth returns the Width field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetWidth() float32 {
+	if o == nil || IsNil(o.Width) {
+		var ret float32
+		return ret
+	}
+	return *o.Width
+}
+
+// GetWidthOk returns a tuple with the Width field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetWidthOk() (*float32, bool) {
+	if o == nil || IsNil(o.Width) {
+		return nil, false
+	}
+	return o.Width, true
+}
+
+// HasWidth returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasWidth() bool {
+	if o != nil && !IsNil(o.Width) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidth gets a reference to the given float32 and assigns it to the Width field.
+func (o *OrderShipmentAdd) SetWidth(v float32) {
+	o.Width = &v
+}
+
+// GetHeight returns the Height field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetHeight() float32 {
+	if o == nil || IsNil(o.Height) {
+		var ret float32
+		return ret
+	}
+	return *o.Height
+}
+
+// GetHeightOk returns a tuple with the Height field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetHeightOk() (*float32, bool) {
+	if o == nil || IsNil(o.Height) {
+		return nil, false
+	}
+	return o.Height, true
+}
+
+// HasHeight returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasHeight() bool {
+	if o != nil && !IsNil(o.Height) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeight gets a reference to the given float32 and assigns it to the Height field.
+func (o *OrderShipmentAdd) SetHeight(v float32) {
+	o.Height = &v
+}
+
+// GetDimensionsUnit returns the DimensionsUnit field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetDimensionsUnit() string {
+	if o == nil || IsNil(o.DimensionsUnit) {
+		var ret string
+		return ret
+	}
+	return *o.DimensionsUnit
+}
+
+// GetDimensionsUnitOk returns a tuple with the DimensionsUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetDimensionsUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.DimensionsUnit) {
+		return nil, false
+	}
+	return o.DimensionsUnit, true
+}
+
+// HasDimensionsUnit returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasDimensionsUnit() bool {
+	if o != nil && !IsNil(o.DimensionsUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensionsUnit gets a reference to the given string and assigns it to the DimensionsUnit field.
+func (o *OrderShipmentAdd) SetDimensionsUnit(v string) {
+	o.DimensionsUnit = &v
+}
+
+// GetShippingLabelCost returns the ShippingLabelCost field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetShippingLabelCost() float32 {
+	if o == nil || IsNil(o.ShippingLabelCost) {
+		var ret float32
+		return ret
+	}
+	return *o.ShippingLabelCost
+}
+
+// GetShippingLabelCostOk returns a tuple with the ShippingLabelCost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetShippingLabelCostOk() (*float32, bool) {
+	if o == nil || IsNil(o.ShippingLabelCost) {
+		return nil, false
+	}
+	return o.ShippingLabelCost, true
+}
+
+// HasShippingLabelCost returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasShippingLabelCost() bool {
+	if o != nil && !IsNil(o.ShippingLabelCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingLabelCost gets a reference to the given float32 and assigns it to the ShippingLabelCost field.
+func (o *OrderShipmentAdd) SetShippingLabelCost(v float32) {
+	o.ShippingLabelCost = &v
+}
+
+// GetShippingLabelCurrency returns the ShippingLabelCurrency field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetShippingLabelCurrency() string {
+	if o == nil || IsNil(o.ShippingLabelCurrency) {
+		var ret string
+		return ret
+	}
+	return *o.ShippingLabelCurrency
+}
+
+// GetShippingLabelCurrencyOk returns a tuple with the ShippingLabelCurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetShippingLabelCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippingLabelCurrency) {
+		return nil, false
+	}
+	return o.ShippingLabelCurrency, true
+}
+
+// HasShippingLabelCurrency returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasShippingLabelCurrency() bool {
+	if o != nil && !IsNil(o.ShippingLabelCurrency) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippingLabelCurrency gets a reference to the given string and assigns it to the ShippingLabelCurrency field.
+func (o *OrderShipmentAdd) SetShippingLabelCurrency(v string) {
+	o.ShippingLabelCurrency = &v
+}
+
+// GetRevenueEligibility returns the RevenueEligibility field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetRevenueEligibility() bool {
+	if o == nil || IsNil(o.RevenueEligibility) {
+		var ret bool
+		return ret
+	}
+	return *o.RevenueEligibility
+}
+
+// GetRevenueEligibilityOk returns a tuple with the RevenueEligibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetRevenueEligibilityOk() (*bool, bool) {
+	if o == nil || IsNil(o.RevenueEligibility) {
+		return nil, false
+	}
+	return o.RevenueEligibility, true
+}
+
+// HasRevenueEligibility returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasRevenueEligibility() bool {
+	if o != nil && !IsNil(o.RevenueEligibility) {
+		return true
+	}
+
+	return false
+}
+
+// SetRevenueEligibility gets a reference to the given bool and assigns it to the RevenueEligibility field.
+func (o *OrderShipmentAdd) SetRevenueEligibility(v bool) {
+	o.RevenueEligibility = &v
+}
+
+// GetShipFromCountry returns the ShipFromCountry field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetShipFromCountry() string {
+	if o == nil || IsNil(o.ShipFromCountry) {
+		var ret string
+		return ret
+	}
+	return *o.ShipFromCountry
+}
+
+// GetShipFromCountryOk returns a tuple with the ShipFromCountry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetShipFromCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.ShipFromCountry) {
+		return nil, false
+	}
+	return o.ShipFromCountry, true
+}
+
+// HasShipFromCountry returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasShipFromCountry() bool {
+	if o != nil && !IsNil(o.ShipFromCountry) {
+		return true
+	}
+
+	return false
+}
+
+// SetShipFromCountry gets a reference to the given string and assigns it to the ShipFromCountry field.
+func (o *OrderShipmentAdd) SetShipFromCountry(v string) {
+	o.ShipFromCountry = &v
+}
+
+// GetShipToCountry returns the ShipToCountry field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetShipToCountry() string {
+	if o == nil || IsNil(o.ShipToCountry) {
+		var ret string
+		return ret
+	}
+	return *o.ShipToCountry
+}
+
+// GetShipToCountryOk returns a tuple with the ShipToCountry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetShipToCountryOk() (*string, bool) {
+	if o == nil || IsNil(o.ShipToCountry) {
+		return nil, false
+	}
+	return o.ShipToCountry, true
+}
+
+// HasShipToCountry returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasShipToCountry() bool {
+	if o != nil && !IsNil(o.ShipToCountry) {
+		return true
+	}
+
+	return false
+}
+
+// SetShipToCountry gets a reference to the given string and assigns it to the ShipToCountry field.
+func (o *OrderShipmentAdd) SetShipToCountry(v string) {
+	o.ShipToCountry = &v
+}
+
+// GetIncoterm returns the Incoterm field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetIncoterm() string {
+	if o == nil || IsNil(o.Incoterm) {
+		var ret string
+		return ret
+	}
+	return *o.Incoterm
+}
+
+// GetIncotermOk returns a tuple with the Incoterm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetIncotermOk() (*string, bool) {
+	if o == nil || IsNil(o.Incoterm) {
+		return nil, false
+	}
+	return o.Incoterm, true
+}
+
+// HasIncoterm returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasIncoterm() bool {
+	if o != nil && !IsNil(o.Incoterm) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncoterm gets a reference to the given string and assigns it to the Incoterm field.
+func (o *OrderShipmentAdd) SetIncoterm(v string) {
+	o.Incoterm = &v
+}
+
+// GetDutyAmount returns the DutyAmount field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetDutyAmount() float32 {
+	if o == nil || IsNil(o.DutyAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.DutyAmount
+}
+
+// GetDutyAmountOk returns a tuple with the DutyAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetDutyAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.DutyAmount) {
+		return nil, false
+	}
+	return o.DutyAmount, true
+}
+
+// HasDutyAmount returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasDutyAmount() bool {
+	if o != nil && !IsNil(o.DutyAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDutyAmount gets a reference to the given float32 and assigns it to the DutyAmount field.
+func (o *OrderShipmentAdd) SetDutyAmount(v float32) {
+	o.DutyAmount = &v
+}
+
+// GetDutyCurrency returns the DutyCurrency field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetDutyCurrency() string {
+	if o == nil || IsNil(o.DutyCurrency) {
+		var ret string
+		return ret
+	}
+	return *o.DutyCurrency
+}
+
+// GetDutyCurrencyOk returns a tuple with the DutyCurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetDutyCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.DutyCurrency) {
+		return nil, false
+	}
+	return o.DutyCurrency, true
+}
+
+// HasDutyCurrency returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasDutyCurrency() bool {
+	if o != nil && !IsNil(o.DutyCurrency) {
+		return true
+	}
+
+	return false
+}
+
+// SetDutyCurrency gets a reference to the given string and assigns it to the DutyCurrency field.
+func (o *OrderShipmentAdd) SetDutyCurrency(v string) {
+	o.DutyCurrency = &v
+}
+
+// GetEnableCache returns the EnableCache field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetEnableCache() bool {
+	if o == nil || IsNil(o.EnableCache) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCache
+}
+
+// GetEnableCacheOk returns a tuple with the EnableCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetEnableCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableCache) {
+		return nil, false
+	}
+	return o.EnableCache, true
+}
+
+// HasEnableCache returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasEnableCache() bool {
+	if o != nil && !IsNil(o.EnableCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCache gets a reference to the given bool and assigns it to the EnableCache field.
+func (o *OrderShipmentAdd) SetEnableCache(v bool) {
+	o.EnableCache = &v
+}
+
+// GetUseLatestApiVersion returns the UseLatestApiVersion field value if set, zero value otherwise.
+func (o *OrderShipmentAdd) GetUseLatestApiVersion() bool {
+	if o == nil || IsNil(o.UseLatestApiVersion) {
+		var ret bool
+		return ret
+	}
+	return *o.UseLatestApiVersion
+}
+
+// GetUseLatestApiVersionOk returns a tuple with the UseLatestApiVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderShipmentAdd) GetUseLatestApiVersionOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseLatestApiVersion) {
+		return nil, false
+	}
+	return o.UseLatestApiVersion, true
+}
+
+// HasUseLatestApiVersion returns a boolean if a field has been set.
+func (o *OrderShipmentAdd) HasUseLatestApiVersion() bool {
+	if o != nil && !IsNil(o.UseLatestApiVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLatestApiVersion gets a reference to the given bool and assigns it to the UseLatestApiVersion field.
+func (o *OrderShipmentAdd) SetUseLatestApiVersion(v bool) {
+	o.UseLatestApiVersion = &v
 }
 
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
@@ -684,20 +1228,68 @@ func (o OrderShipmentAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdjustStock) {
 		toSerialize["adjust_stock"] = o.AdjustStock
 	}
-	if !IsNil(o.EnableCache) {
-		toSerialize["enable_cache"] = o.EnableCache
-	}
 	if !IsNil(o.CheckProcessStatus) {
 		toSerialize["check_process_status"] = o.CheckProcessStatus
 	}
 	if !IsNil(o.TrackingProvider) {
 		toSerialize["tracking_provider"] = o.TrackingProvider
 	}
-	if !IsNil(o.UseLatestApiVersion) {
-		toSerialize["use_latest_api_version"] = o.UseLatestApiVersion
-	}
 	if !IsNil(o.AdminComment) {
 		toSerialize["admin_comment"] = o.AdminComment
+	}
+	if !IsNil(o.MailClass) {
+		toSerialize["mail_class"] = o.MailClass
+	}
+	if !IsNil(o.ShipDate) {
+		toSerialize["ship_date"] = o.ShipDate
+	}
+	if !IsNil(o.Weight) {
+		toSerialize["weight"] = o.Weight
+	}
+	if !IsNil(o.WeightUnit) {
+		toSerialize["weight_unit"] = o.WeightUnit
+	}
+	if !IsNil(o.Length) {
+		toSerialize["length"] = o.Length
+	}
+	if !IsNil(o.Width) {
+		toSerialize["width"] = o.Width
+	}
+	if !IsNil(o.Height) {
+		toSerialize["height"] = o.Height
+	}
+	if !IsNil(o.DimensionsUnit) {
+		toSerialize["dimensions_unit"] = o.DimensionsUnit
+	}
+	if !IsNil(o.ShippingLabelCost) {
+		toSerialize["shipping_label_cost"] = o.ShippingLabelCost
+	}
+	if !IsNil(o.ShippingLabelCurrency) {
+		toSerialize["shipping_label_currency"] = o.ShippingLabelCurrency
+	}
+	if !IsNil(o.RevenueEligibility) {
+		toSerialize["revenue_eligibility"] = o.RevenueEligibility
+	}
+	if !IsNil(o.ShipFromCountry) {
+		toSerialize["ship_from_country"] = o.ShipFromCountry
+	}
+	if !IsNil(o.ShipToCountry) {
+		toSerialize["ship_to_country"] = o.ShipToCountry
+	}
+	if !IsNil(o.Incoterm) {
+		toSerialize["incoterm"] = o.Incoterm
+	}
+	if !IsNil(o.DutyAmount) {
+		toSerialize["duty_amount"] = o.DutyAmount
+	}
+	if !IsNil(o.DutyCurrency) {
+		toSerialize["duty_currency"] = o.DutyCurrency
+	}
+	if !IsNil(o.EnableCache) {
+		toSerialize["enable_cache"] = o.EnableCache
+	}
+	if !IsNil(o.UseLatestApiVersion) {
+		toSerialize["use_latest_api_version"] = o.UseLatestApiVersion
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey

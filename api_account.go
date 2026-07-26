@@ -166,19 +166,19 @@ func (r ApiAccountCartListRequest) StoreUrl(storeUrl string) ApiAccountCartListR
 	return r
 }
 
-// Find store by store key
+// Optional filter: return only the connected store whose store key matches this value. A store key is the unique 32-character identifier of a connected store, returned as store_key here and by account.cart.add.
 func (r ApiAccountCartListRequest) StoreKey(storeKey string) ApiAccountCartListRequest {
 	r.storeKey = &storeKey
 	return r
 }
 
-// Retrieve entities from their creation date
+// Start date of the period for counting API requests made to each connection. Set together with request_to_date to include each store&#39;s total_calls (number of API requests in that period) in the response.
 func (r ApiAccountCartListRequest) RequestFromDate(requestFromDate string) ApiAccountCartListRequest {
 	r.requestFromDate = &requestFromDate
 	return r
 }
 
-// Retrieve entities to their creation date
+// End date of the period for counting API requests made to each connection. Set together with request_from_date to include each store&#39;s total_calls (number of API requests in that period) in the response.
 func (r ApiAccountCartListRequest) RequestToDate(requestToDate string) ApiAccountCartListRequest {
 	r.requestToDate = &requestToDate
 	return r
@@ -190,13 +190,13 @@ func (r ApiAccountCartListRequest) CustomLabel(customLabel string) ApiAccountCar
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiAccountCartListRequest) Params(params string) ApiAccountCartListRequest {
 	r.params = &params
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiAccountCartListRequest) Exclude(exclude string) ApiAccountCartListRequest {
 	r.exclude = &exclude
 	return r
@@ -2426,6 +2426,13 @@ func (a *AccountAPIService) AccountFailedWebhooksExecute(r ApiAccountFailedWebho
 type ApiAccountSupportedPlatformsRequest struct {
 	ctx context.Context
 	ApiService *AccountAPIService
+	cartId *string
+}
+
+// Filter by integration identifier (e.g. &#39;Shopify&#39;). If omitted, the method returns all integrations.
+func (r ApiAccountSupportedPlatformsRequest) CartId(cartId string) ApiAccountSupportedPlatformsRequest {
+	r.cartId = &cartId
+	return r
 }
 
 func (r ApiAccountSupportedPlatformsRequest) Execute() (*ModelResponseAccountSupportedPlatforms, *http.Response, error) {
@@ -2468,6 +2475,9 @@ func (a *AccountAPIService) AccountSupportedPlatformsExecute(r ApiAccountSupport
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.cartId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cart_id", r.cartId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

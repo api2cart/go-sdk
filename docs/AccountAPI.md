@@ -100,12 +100,12 @@ import (
 
 func main() {
 	storeUrl := "http://mystore.com" // string | A web address of a store (optional)
-	storeKey := "ab37fc230bc5df63a5be1b11220949be" // string | Find store by store key (optional)
-	requestFromDate := "2010-07-29" // string | Retrieve entities from their creation date (optional)
-	requestToDate := "2100-08-29" // string | Retrieve entities to their creation date (optional)
+	storeKey := "ab37fc230bc5df63a5be1b11220949be" // string | Optional filter: return only the connected store whose store key matches this value. A store key is the unique 32-character identifier of a connected store, returned as store_key here and by account.cart.add. (optional)
+	requestFromDate := "2010-07-29" // string | Start date of the period for counting API requests made to each connection. Set together with request_to_date to include each store's total_calls (number of API requests in that period) in the response. (optional)
+	requestToDate := "2100-08-29" // string | End date of the period for counting API requests made to each connection. Set together with request_from_date to include each store's total_calls (number of API requests in that period) in the response. (optional)
 	customLabel := "This is test store" // string | Defines a custom label for the store in the app (optional)
-	params := "url,store_key" // string | Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
-	exclude := "url,store_key" // string | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	params := "url,store_key" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "force_all")
+	exclude := "url,store_key" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -131,12 +131,12 @@ Other parameters are passed through a pointer to a apiAccountCartListRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storeUrl** | **string** | A web address of a store | 
- **storeKey** | **string** | Find store by store key | 
- **requestFromDate** | **string** | Retrieve entities from their creation date | 
- **requestToDate** | **string** | Retrieve entities to their creation date | 
+ **storeKey** | **string** | Optional filter: return only the connected store whose store key matches this value. A store key is the unique 32-character identifier of a connected store, returned as store_key here and by account.cart.add. | 
+ **requestFromDate** | **string** | Start date of the period for counting API requests made to each connection. Set together with request_to_date to include each store&#39;s total_calls (number of API requests in that period) in the response. | 
+ **requestToDate** | **string** | End date of the period for counting API requests made to each connection. Set together with request_from_date to include each store&#39;s total_calls (number of API requests in that period) in the response. | 
  **customLabel** | **string** | Defines a custom label for the store in the app | 
- **params** | **string** | Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
- **exclude** | **string** | Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **params** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;force_all&quot;]
+ **exclude** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
 
 ### Return type
 
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ## AccountSupportedPlatforms
 
-> ModelResponseAccountSupportedPlatforms AccountSupportedPlatforms(ctx).Execute()
+> ModelResponseAccountSupportedPlatforms AccountSupportedPlatforms(ctx).CartId(cartId).Execute()
 
 account.supported_platforms
 
@@ -674,10 +674,11 @@ import (
 )
 
 func main() {
+	cartId := "Opencart14" // string | Filter by integration identifier (e.g. 'Shopify'). If omitted, the method returns all integrations. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountAPI.AccountSupportedPlatforms(context.Background()).Execute()
+	resp, r, err := apiClient.AccountAPI.AccountSupportedPlatforms(context.Background()).CartId(cartId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.AccountSupportedPlatforms``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -689,12 +690,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAccountSupportedPlatformsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cartId** | **string** | Filter by integration identifier (e.g. &#39;Shopify&#39;). If omitted, the method returns all integrations. | 
 
 ### Return type
 

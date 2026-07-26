@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Entity** | **string** | Specify the entity that you want to enable webhooks for (e.g product, order, customer, category) | 
 **Action** | **string** | Specify what action (event) will trigger the webhook (e.g add, delete, or update) | 
-**Callback** | Pointer to **string** | Callback url that returns shipping rates. It should be able to accept POST requests with json data. | [optional] 
+**Callback** | **string** | Callback where the webhook should send the POST request when the event occurs | 
 **Label** | Pointer to **string** | The name you give to the webhook | [optional] 
 **Fields** | Pointer to **string** | Fields the webhook should send | [optional] [default to "force_all"]
-**ResponseFields** | Pointer to **string** | Set this parameter in order to choose which entity fields you want to retrieve | [optional] 
+**ResponseFields** | Pointer to **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | [optional] 
 **Active** | Pointer to **bool** | Webhook status | [optional] [default to true]
 **LangId** | Pointer to **string** | Language id | [optional] 
 **StoreId** | Pointer to **string** | Defines store id where the webhook should be assigned | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewWebhookCreate
 
-`func NewWebhookCreate(entity string, action string, ) *WebhookCreate`
+`func NewWebhookCreate(entity string, action string, callback string, ) *WebhookCreate`
 
 NewWebhookCreate instantiates a new WebhookCreate object
 This constructor will assign default values to properties that have it defined,
@@ -94,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetCallback sets Callback field to given value.
 
-### HasCallback
-
-`func (o *WebhookCreate) HasCallback() bool`
-
-HasCallback returns a boolean if a field has been set.
 
 ### GetLabel
 

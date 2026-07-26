@@ -631,7 +631,7 @@ func (r ApiWebhookListRequest) Ids(ids string) ApiWebhookListRequest {
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve
 func (r ApiWebhookListRequest) Params(params string) ApiWebhookListRequest {
 	r.params = &params
 	return r

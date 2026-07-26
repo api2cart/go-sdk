@@ -99,7 +99,7 @@ func (r ApiAnalyticsCustomerReportRequest) PageCursor(pageCursor string) ApiAnal
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiAnalyticsCustomerReportRequest) ResponseFields(responseFields string) ApiAnalyticsCustomerReportRequest {
 	r.responseFields = &responseFields
 	return r
@@ -345,7 +345,7 @@ func (r ApiAnalyticsProductReportRequest) PageCursor(pageCursor string) ApiAnaly
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiAnalyticsProductReportRequest) ResponseFields(responseFields string) ApiAnalyticsProductReportRequest {
 	r.responseFields = &responseFields
 	return r
@@ -584,7 +584,7 @@ func (r ApiAnalyticsReportRequest) SortDirection(sortDirection string) ApiAnalyt
 	return r
 }
 
-// Set this parameter in order to choose which entity fields you want to retrieve
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
 func (r ApiAnalyticsReportRequest) ResponseFields(responseFields string) ApiAnalyticsReportRequest {
 	r.responseFields = &responseFields
 	return r
