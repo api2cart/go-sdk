@@ -437,6 +437,8 @@ type ApiAccountConfigUpdateRequest struct {
 	walmartEnvironment *string
 	walmartChannelType *string
 	walmartRegion *string
+	walmartRefreshToken *string
+	walmartSellerId *string
 	squareClientId *string
 	squareClientSecret *string
 	squareRefreshToken *string
@@ -1115,6 +1117,18 @@ func (r ApiAccountConfigUpdateRequest) WalmartChannelType(walmartChannelType str
 // Walmart region
 func (r ApiAccountConfigUpdateRequest) WalmartRegion(walmartRegion string) ApiAccountConfigUpdateRequest {
 	r.walmartRegion = &walmartRegion
+	return r
+}
+
+// Walmart refresh token received by a Solution Provider application through the Walmart App Store authorization. When it is set, walmart_client_id and walmart_client_secret are the credentials of that application, not of the seller. Must be used together with walmart_seller_id and is supported only for walmart_region &#x3D; &#39;us&#39;
+func (r ApiAccountConfigUpdateRequest) WalmartRefreshToken(walmartRefreshToken string) ApiAccountConfigUpdateRequest {
+	r.walmartRefreshToken = &walmartRefreshToken
+	return r
+}
+
+// Walmart seller id the refresh token was issued for, sent as the WM_PARTNER.ID header. Must be used together with walmart_refresh_token and is supported only for walmart_region &#x3D; &#39;us&#39;
+func (r ApiAccountConfigUpdateRequest) WalmartSellerId(walmartSellerId string) ApiAccountConfigUpdateRequest {
+	r.walmartSellerId = &walmartSellerId
 	return r
 }
 
@@ -1943,6 +1957,12 @@ func (a *AccountAPIService) AccountConfigUpdateExecute(r ApiAccountConfigUpdateR
 	} else {
 		var defaultValue string = "us"
 		r.walmartRegion = &defaultValue
+	}
+	if r.walmartRefreshToken != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "walmart_refresh_token", r.walmartRefreshToken, "form", "")
+	}
+	if r.walmartSellerId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "walmart_seller_id", r.walmartSellerId, "form", "")
 	}
 	if r.squareClientId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "square_client_id", r.squareClientId, "form", "")

@@ -23,6 +23,7 @@ type ParamDefinitionFilteringConditionsFilterRule struct {
 	Field *string `json:"field,omitempty"`
 	Operator *string `json:"operator,omitempty"`
 	Value *ParamDefinitionFilteringConditionsFilterRuleValue `json:"value,omitempty"`
+	MatchItems NullableString `json:"match_items,omitempty"`
 }
 
 // NewParamDefinitionFilteringConditionsFilterRule instantiates a new ParamDefinitionFilteringConditionsFilterRule object
@@ -138,6 +139,48 @@ func (o *ParamDefinitionFilteringConditionsFilterRule) SetValue(v ParamDefinitio
 	o.Value = &v
 }
 
+// GetMatchItems returns the MatchItems field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ParamDefinitionFilteringConditionsFilterRule) GetMatchItems() string {
+	if o == nil || IsNil(o.MatchItems.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MatchItems.Get()
+}
+
+// GetMatchItemsOk returns a tuple with the MatchItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ParamDefinitionFilteringConditionsFilterRule) GetMatchItemsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MatchItems.Get(), o.MatchItems.IsSet()
+}
+
+// HasMatchItems returns a boolean if a field has been set.
+func (o *ParamDefinitionFilteringConditionsFilterRule) HasMatchItems() bool {
+	if o != nil && o.MatchItems.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMatchItems gets a reference to the given NullableString and assigns it to the MatchItems field.
+func (o *ParamDefinitionFilteringConditionsFilterRule) SetMatchItems(v string) {
+	o.MatchItems.Set(&v)
+}
+// SetMatchItemsNil sets the value for MatchItems to be an explicit nil
+func (o *ParamDefinitionFilteringConditionsFilterRule) SetMatchItemsNil() {
+	o.MatchItems.Set(nil)
+}
+
+// UnsetMatchItems ensures that no value is present for MatchItems, not even an explicit nil
+func (o *ParamDefinitionFilteringConditionsFilterRule) UnsetMatchItems() {
+	o.MatchItems.Unset()
+}
+
 func (o ParamDefinitionFilteringConditionsFilterRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,6 +199,9 @@ func (o ParamDefinitionFilteringConditionsFilterRule) ToMap() (map[string]interf
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if o.MatchItems.IsSet() {
+		toSerialize["match_items"] = o.MatchItems.Get()
 	}
 	return toSerialize, nil
 }

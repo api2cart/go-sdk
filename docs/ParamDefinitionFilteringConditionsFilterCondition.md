@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Field** | Pointer to **string** |  | [optional] 
 **Operator** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to [**ParamDefinitionFilteringConditionsFilterRuleValue**](ParamDefinitionFilteringConditionsFilterRuleValue.md) |  | [optional] 
+**MatchItems** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetValue sets Value field to given value.
 `func (o *ParamDefinitionFilteringConditionsFilterCondition) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterCondition) GetMatchItems() string`
+
+GetMatchItems returns the MatchItems field if non-nil, zero value otherwise.
+
+### GetMatchItemsOk
+
+`func (o *ParamDefinitionFilteringConditionsFilterCondition) GetMatchItemsOk() (*string, bool)`
+
+GetMatchItemsOk returns a tuple with the MatchItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterCondition) SetMatchItems(v string)`
+
+SetMatchItems sets MatchItems field to given value.
+
+### HasMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterCondition) HasMatchItems() bool`
+
+HasMatchItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

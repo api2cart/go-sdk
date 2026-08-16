@@ -68,6 +68,8 @@ Name | Type | Description | Notes
 **WalmartEnvironment** | Pointer to **string** | Walmart environment | [optional] [default to "production"]
 **WalmartChannelType** | Pointer to **string** | Walmart WM_CONSUMER.CHANNEL.TYPE header | [optional] 
 **WalmartRegion** | Pointer to **string** | Walmart region | [optional] [default to "us"]
+**WalmartRefreshToken** | Pointer to **string** | Walmart refresh token received by a Solution Provider application through the Walmart App Store authorization. When it is set, walmart_client_id and walmart_client_secret are the credentials of that application, not of the seller. Must be used together with walmart_seller_id and is supported only for walmart_region &#x3D; &#39;us&#39; | [optional] 
+**WalmartSellerId** | Pointer to **string** | Walmart seller id the refresh token was issued for, sent as the WM_PARTNER.ID header. Must be used together with walmart_refresh_token and is supported only for walmart_region &#x3D; &#39;us&#39; | [optional] 
 **EcwidAcessToken** | Pointer to **string** | Access token authorizing the app to access resources on behalf of a user | [optional] 
 **EcwidStoreId** | Pointer to **string** | Store Id | [optional] 
 **LazadaAppId** | Pointer to **string** | Lazada App ID | [optional] 
@@ -1804,6 +1806,56 @@ SetWalmartRegion sets WalmartRegion field to given value.
 `func (o *AccountCartAdd) HasWalmartRegion() bool`
 
 HasWalmartRegion returns a boolean if a field has been set.
+
+### GetWalmartRefreshToken
+
+`func (o *AccountCartAdd) GetWalmartRefreshToken() string`
+
+GetWalmartRefreshToken returns the WalmartRefreshToken field if non-nil, zero value otherwise.
+
+### GetWalmartRefreshTokenOk
+
+`func (o *AccountCartAdd) GetWalmartRefreshTokenOk() (*string, bool)`
+
+GetWalmartRefreshTokenOk returns a tuple with the WalmartRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalmartRefreshToken
+
+`func (o *AccountCartAdd) SetWalmartRefreshToken(v string)`
+
+SetWalmartRefreshToken sets WalmartRefreshToken field to given value.
+
+### HasWalmartRefreshToken
+
+`func (o *AccountCartAdd) HasWalmartRefreshToken() bool`
+
+HasWalmartRefreshToken returns a boolean if a field has been set.
+
+### GetWalmartSellerId
+
+`func (o *AccountCartAdd) GetWalmartSellerId() string`
+
+GetWalmartSellerId returns the WalmartSellerId field if non-nil, zero value otherwise.
+
+### GetWalmartSellerIdOk
+
+`func (o *AccountCartAdd) GetWalmartSellerIdOk() (*string, bool)`
+
+GetWalmartSellerIdOk returns a tuple with the WalmartSellerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalmartSellerId
+
+`func (o *AccountCartAdd) SetWalmartSellerId(v string)`
+
+SetWalmartSellerId sets WalmartSellerId field to given value.
+
+### HasWalmartSellerId
+
+`func (o *AccountCartAdd) HasWalmartSellerId() bool`
+
+HasWalmartSellerId returns a boolean if a field has been set.
 
 ### GetEcwidAcessToken
 

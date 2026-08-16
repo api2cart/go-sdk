@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Field** | Pointer to **string** |  | [optional] 
 **Operator** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to [**ParamDefinitionFilteringConditionsFilterRuleValue**](ParamDefinitionFilteringConditionsFilterRuleValue.md) |  | [optional] 
+**MatchItems** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -102,6 +103,41 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### GetMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterRule) GetMatchItems() string`
+
+GetMatchItems returns the MatchItems field if non-nil, zero value otherwise.
+
+### GetMatchItemsOk
+
+`func (o *ParamDefinitionFilteringConditionsFilterRule) GetMatchItemsOk() (*string, bool)`
+
+GetMatchItemsOk returns a tuple with the MatchItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterRule) SetMatchItems(v string)`
+
+SetMatchItems sets MatchItems field to given value.
+
+### HasMatchItems
+
+`func (o *ParamDefinitionFilteringConditionsFilterRule) HasMatchItems() bool`
+
+HasMatchItems returns a boolean if a field has been set.
+
+### SetMatchItemsNil
+
+`func (o *ParamDefinitionFilteringConditionsFilterRule) SetMatchItemsNil(b bool)`
+
+ SetMatchItemsNil sets the value for MatchItems to be an explicit nil
+
+### UnsetMatchItems
+`func (o *ParamDefinitionFilteringConditionsFilterRule) UnsetMatchItems()`
+
+UnsetMatchItems ensures that no value is present for MatchItems, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

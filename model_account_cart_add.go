@@ -150,6 +150,10 @@ type AccountCartAdd struct {
 	WalmartChannelType *string `json:"walmart_channel_type,omitempty"`
 	// Walmart region
 	WalmartRegion *string `json:"walmart_region,omitempty"`
+	// Walmart refresh token received by a Solution Provider application through the Walmart App Store authorization. When it is set, walmart_client_id and walmart_client_secret are the credentials of that application, not of the seller. Must be used together with walmart_seller_id and is supported only for walmart_region = 'us'
+	WalmartRefreshToken *string `json:"walmart_refresh_token,omitempty"`
+	// Walmart seller id the refresh token was issued for, sent as the WM_PARTNER.ID header. Must be used together with walmart_refresh_token and is supported only for walmart_region = 'us'
+	WalmartSellerId *string `json:"walmart_seller_id,omitempty"`
 	// Access token authorizing the app to access resources on behalf of a user
 	EcwidAcessToken *string `json:"ecwid_acess_token,omitempty"`
 	// Store Id
@@ -2494,6 +2498,70 @@ func (o *AccountCartAdd) HasWalmartRegion() bool {
 // SetWalmartRegion gets a reference to the given string and assigns it to the WalmartRegion field.
 func (o *AccountCartAdd) SetWalmartRegion(v string) {
 	o.WalmartRegion = &v
+}
+
+// GetWalmartRefreshToken returns the WalmartRefreshToken field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetWalmartRefreshToken() string {
+	if o == nil || IsNil(o.WalmartRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.WalmartRefreshToken
+}
+
+// GetWalmartRefreshTokenOk returns a tuple with the WalmartRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetWalmartRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.WalmartRefreshToken) {
+		return nil, false
+	}
+	return o.WalmartRefreshToken, true
+}
+
+// HasWalmartRefreshToken returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasWalmartRefreshToken() bool {
+	if o != nil && !IsNil(o.WalmartRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetWalmartRefreshToken gets a reference to the given string and assigns it to the WalmartRefreshToken field.
+func (o *AccountCartAdd) SetWalmartRefreshToken(v string) {
+	o.WalmartRefreshToken = &v
+}
+
+// GetWalmartSellerId returns the WalmartSellerId field value if set, zero value otherwise.
+func (o *AccountCartAdd) GetWalmartSellerId() string {
+	if o == nil || IsNil(o.WalmartSellerId) {
+		var ret string
+		return ret
+	}
+	return *o.WalmartSellerId
+}
+
+// GetWalmartSellerIdOk returns a tuple with the WalmartSellerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountCartAdd) GetWalmartSellerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WalmartSellerId) {
+		return nil, false
+	}
+	return o.WalmartSellerId, true
+}
+
+// HasWalmartSellerId returns a boolean if a field has been set.
+func (o *AccountCartAdd) HasWalmartSellerId() bool {
+	if o != nil && !IsNil(o.WalmartSellerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWalmartSellerId gets a reference to the given string and assigns it to the WalmartSellerId field.
+func (o *AccountCartAdd) SetWalmartSellerId(v string) {
+	o.WalmartSellerId = &v
 }
 
 // GetEcwidAcessToken returns the EcwidAcessToken field value if set, zero value otherwise.
@@ -6599,6 +6667,12 @@ func (o AccountCartAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WalmartRegion) {
 		toSerialize["walmart_region"] = o.WalmartRegion
+	}
+	if !IsNil(o.WalmartRefreshToken) {
+		toSerialize["walmart_refresh_token"] = o.WalmartRefreshToken
+	}
+	if !IsNil(o.WalmartSellerId) {
+		toSerialize["walmart_seller_id"] = o.WalmartSellerId
 	}
 	if !IsNil(o.EcwidAcessToken) {
 		toSerialize["ecwid_acess_token"] = o.EcwidAcessToken
