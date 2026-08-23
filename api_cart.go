@@ -2244,6 +2244,7 @@ type ApiCartInfoRequest struct {
 	responseFields *string
 	params *string
 	exclude *string
+	useLatestApiVersion *bool
 }
 
 // Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
@@ -2261,6 +2262,12 @@ func (r ApiCartInfoRequest) Params(params string) ApiCartInfoRequest {
 // Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all
 func (r ApiCartInfoRequest) Exclude(exclude string) ApiCartInfoRequest {
 	r.exclude = &exclude
+	return r
+}
+
+// Use the latest platform API version
+func (r ApiCartInfoRequest) UseLatestApiVersion(useLatestApiVersion bool) ApiCartInfoRequest {
+	r.useLatestApiVersion = &useLatestApiVersion
 	return r
 }
 
@@ -2315,6 +2322,12 @@ func (a *CartAPIService) CartInfoExecute(r ApiCartInfoRequest) (*CartInfo200Resp
 	}
 	if r.exclude != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "exclude", r.exclude, "form", "")
+	}
+	if r.useLatestApiVersion != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "use_latest_api_version", r.useLatestApiVersion, "form", "")
+	} else {
+		var defaultValue bool = false
+		r.useLatestApiVersion = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

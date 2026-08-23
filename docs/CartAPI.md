@@ -925,7 +925,7 @@ Name | Type | Description  | Notes
 
 ## CartInfo
 
-> CartInfo200Response CartInfo(ctx).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+> CartInfo200Response CartInfo(ctx).ResponseFields(responseFields).Params(params).Exclude(exclude).UseLatestApiVersion(useLatestApiVersion).Execute()
 
 cart.info
 
@@ -947,10 +947,11 @@ func main() {
 	responseFields := "{result{name,url,stores_info{store_id,name,currency{id,iso3},store_owner_info}}}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional)
 	params := "name,url" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve (optional) (default to "store_name,store_url,db_prefix")
 	exclude := "name,url" // string | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter `params` equal force_all (optional)
+	useLatestApiVersion := true // bool | Use the latest platform API version (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CartAPI.CartInfo(context.Background()).ResponseFields(responseFields).Params(params).Exclude(exclude).Execute()
+	resp, r, err := apiClient.CartAPI.CartInfo(context.Background()).ResponseFields(responseFields).Params(params).Exclude(exclude).UseLatestApiVersion(useLatestApiVersion).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CartAPI.CartInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -974,6 +975,7 @@ Name | Type | Description  | Notes
  **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | 
  **params** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to retrieve | [default to &quot;store_name,store_url,db_prefix&quot;]
  **exclude** | **string** | Important! Parameter deprecated, use response_fields instead. Set this parameter in order to choose which entity fields you want to ignore. Works only if parameter &#x60;params&#x60; equal force_all | 
+ **useLatestApiVersion** | **bool** | Use the latest platform API version | [default to false]
 
 ### Return type
 
