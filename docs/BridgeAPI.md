@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## BridgeDelete
 
-> AttributeValueDelete200Response BridgeDelete(ctx).Execute()
+> AttributeValueDelete200Response BridgeDelete(ctx).IdempotencyKey(idempotencyKey).Execute()
 
 bridge.delete
 
@@ -31,10 +31,11 @@ import (
 )
 
 func main() {
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BridgeAPI.BridgeDelete(context.Background()).Execute()
+	resp, r, err := apiClient.BridgeAPI.BridgeDelete(context.Background()).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BridgeAPI.BridgeDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -46,12 +47,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBridgeDeleteRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 
@@ -139,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## BridgeUpdate
 
-> AttributeUpdate200Response BridgeUpdate(ctx).Execute()
+> AttributeUpdate200Response BridgeUpdate(ctx).IdempotencyKey(idempotencyKey).Execute()
 
 bridge.update
 
@@ -158,10 +163,11 @@ import (
 )
 
 func main() {
+	idempotencyKey := "098f6bcd4621d373cade4e832627b4f6" // string | A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong> (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BridgeAPI.BridgeUpdate(context.Background()).Execute()
+	resp, r, err := apiClient.BridgeAPI.BridgeUpdate(context.Background()).IdempotencyKey(idempotencyKey).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BridgeAPI.BridgeUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -173,12 +179,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBridgeUpdateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **idempotencyKey** | **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | 
 
 ### Return type
 

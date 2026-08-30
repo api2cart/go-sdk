@@ -27,6 +27,13 @@ type BridgeAPIService service
 type ApiBridgeDeleteRequest struct {
 	ctx context.Context
 	ApiService *BridgeAPIService
+	idempotencyKey *string
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiBridgeDeleteRequest) IdempotencyKey(idempotencyKey string) ApiBridgeDeleteRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiBridgeDeleteRequest) Execute() (*AttributeValueDelete200Response, *http.Response, error) {
@@ -69,6 +76,9 @@ func (a *BridgeAPIService) BridgeDeleteExecute(r ApiBridgeDeleteRequest) (*Attri
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -294,6 +304,13 @@ func (a *BridgeAPIService) BridgeDownloadExecute(r ApiBridgeDownloadRequest) (*o
 type ApiBridgeUpdateRequest struct {
 	ctx context.Context
 	ApiService *BridgeAPIService
+	idempotencyKey *string
+}
+
+// A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt;
+func (r ApiBridgeUpdateRequest) IdempotencyKey(idempotencyKey string) ApiBridgeUpdateRequest {
+	r.idempotencyKey = &idempotencyKey
+	return r
 }
 
 func (r ApiBridgeUpdateRequest) Execute() (*AttributeUpdate200Response, *http.Response, error) {
@@ -336,6 +353,9 @@ func (a *BridgeAPIService) BridgeUpdateExecute(r ApiBridgeUpdateRequest) (*Attri
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.idempotencyKey != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idempotency_key", r.idempotencyKey, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
