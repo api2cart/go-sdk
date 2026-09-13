@@ -76,6 +76,9 @@ Name | Type | Description | Notes
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **Origin** | Pointer to **string** | The source of the order | [optional] 
 **FeePrice** | Pointer to **float32** | Specifies refund&#39;s fee price | [optional] 
+**ShippNationalAddress** | Pointer to **string** | Specifies short national address code of a shipping address | [optional] 
+**ShippBuildingNumber** | Pointer to **string** | Specifies building number of a shipping address | [optional] 
+**ShippAdditionalNumber** | Pointer to **string** | Specifies additional number of a shipping address | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 **OrderItem** | [**[]OrderAddOrderItemInner**](OrderAddOrderItemInner.md) |  | 
 
@@ -1852,6 +1855,81 @@ SetFeePrice sets FeePrice field to given value.
 `func (o *OrderAdd) HasFeePrice() bool`
 
 HasFeePrice returns a boolean if a field has been set.
+
+### GetShippNationalAddress
+
+`func (o *OrderAdd) GetShippNationalAddress() string`
+
+GetShippNationalAddress returns the ShippNationalAddress field if non-nil, zero value otherwise.
+
+### GetShippNationalAddressOk
+
+`func (o *OrderAdd) GetShippNationalAddressOk() (*string, bool)`
+
+GetShippNationalAddressOk returns a tuple with the ShippNationalAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShippNationalAddress
+
+`func (o *OrderAdd) SetShippNationalAddress(v string)`
+
+SetShippNationalAddress sets ShippNationalAddress field to given value.
+
+### HasShippNationalAddress
+
+`func (o *OrderAdd) HasShippNationalAddress() bool`
+
+HasShippNationalAddress returns a boolean if a field has been set.
+
+### GetShippBuildingNumber
+
+`func (o *OrderAdd) GetShippBuildingNumber() string`
+
+GetShippBuildingNumber returns the ShippBuildingNumber field if non-nil, zero value otherwise.
+
+### GetShippBuildingNumberOk
+
+`func (o *OrderAdd) GetShippBuildingNumberOk() (*string, bool)`
+
+GetShippBuildingNumberOk returns a tuple with the ShippBuildingNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShippBuildingNumber
+
+`func (o *OrderAdd) SetShippBuildingNumber(v string)`
+
+SetShippBuildingNumber sets ShippBuildingNumber field to given value.
+
+### HasShippBuildingNumber
+
+`func (o *OrderAdd) HasShippBuildingNumber() bool`
+
+HasShippBuildingNumber returns a boolean if a field has been set.
+
+### GetShippAdditionalNumber
+
+`func (o *OrderAdd) GetShippAdditionalNumber() string`
+
+GetShippAdditionalNumber returns the ShippAdditionalNumber field if non-nil, zero value otherwise.
+
+### GetShippAdditionalNumberOk
+
+`func (o *OrderAdd) GetShippAdditionalNumberOk() (*string, bool)`
+
+GetShippAdditionalNumberOk returns a tuple with the ShippAdditionalNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShippAdditionalNumber
+
+`func (o *OrderAdd) SetShippAdditionalNumber(v string)`
+
+SetShippAdditionalNumber sets ShippAdditionalNumber field to given value.
+
+### HasShippAdditionalNumber
+
+`func (o *OrderAdd) HasShippAdditionalNumber() bool`
+
+HasShippAdditionalNumber returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

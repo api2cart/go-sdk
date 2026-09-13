@@ -166,6 +166,12 @@ type OrderAdd struct {
 	Origin *string `json:"origin,omitempty"`
 	// Specifies refund's fee price
 	FeePrice *float32 `json:"fee_price,omitempty"`
+	// Specifies short national address code of a shipping address
+	ShippNationalAddress *string `json:"shipp_national_address,omitempty"`
+	// Specifies building number of a shipping address
+	ShippBuildingNumber *string `json:"shipp_building_number,omitempty"`
+	// Specifies additional number of a shipping address
+	ShippAdditionalNumber *string `json:"shipp_additional_number,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 	OrderItem []OrderAddOrderItemInner `json:"order_item"`
@@ -2468,6 +2474,102 @@ func (o *OrderAdd) SetFeePrice(v float32) {
 	o.FeePrice = &v
 }
 
+// GetShippNationalAddress returns the ShippNationalAddress field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippNationalAddress() string {
+	if o == nil || IsNil(o.ShippNationalAddress) {
+		var ret string
+		return ret
+	}
+	return *o.ShippNationalAddress
+}
+
+// GetShippNationalAddressOk returns a tuple with the ShippNationalAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippNationalAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippNationalAddress) {
+		return nil, false
+	}
+	return o.ShippNationalAddress, true
+}
+
+// HasShippNationalAddress returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippNationalAddress() bool {
+	if o != nil && !IsNil(o.ShippNationalAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippNationalAddress gets a reference to the given string and assigns it to the ShippNationalAddress field.
+func (o *OrderAdd) SetShippNationalAddress(v string) {
+	o.ShippNationalAddress = &v
+}
+
+// GetShippBuildingNumber returns the ShippBuildingNumber field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippBuildingNumber() string {
+	if o == nil || IsNil(o.ShippBuildingNumber) {
+		var ret string
+		return ret
+	}
+	return *o.ShippBuildingNumber
+}
+
+// GetShippBuildingNumberOk returns a tuple with the ShippBuildingNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippBuildingNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippBuildingNumber) {
+		return nil, false
+	}
+	return o.ShippBuildingNumber, true
+}
+
+// HasShippBuildingNumber returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippBuildingNumber() bool {
+	if o != nil && !IsNil(o.ShippBuildingNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippBuildingNumber gets a reference to the given string and assigns it to the ShippBuildingNumber field.
+func (o *OrderAdd) SetShippBuildingNumber(v string) {
+	o.ShippBuildingNumber = &v
+}
+
+// GetShippAdditionalNumber returns the ShippAdditionalNumber field value if set, zero value otherwise.
+func (o *OrderAdd) GetShippAdditionalNumber() string {
+	if o == nil || IsNil(o.ShippAdditionalNumber) {
+		var ret string
+		return ret
+	}
+	return *o.ShippAdditionalNumber
+}
+
+// GetShippAdditionalNumberOk returns a tuple with the ShippAdditionalNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderAdd) GetShippAdditionalNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.ShippAdditionalNumber) {
+		return nil, false
+	}
+	return o.ShippAdditionalNumber, true
+}
+
+// HasShippAdditionalNumber returns a boolean if a field has been set.
+func (o *OrderAdd) HasShippAdditionalNumber() bool {
+	if o != nil && !IsNil(o.ShippAdditionalNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetShippAdditionalNumber gets a reference to the given string and assigns it to the ShippAdditionalNumber field.
+func (o *OrderAdd) SetShippAdditionalNumber(v string) {
+	o.ShippAdditionalNumber = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *OrderAdd) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -2731,6 +2833,15 @@ func (o OrderAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FeePrice) {
 		toSerialize["fee_price"] = o.FeePrice
+	}
+	if !IsNil(o.ShippNationalAddress) {
+		toSerialize["shipp_national_address"] = o.ShippNationalAddress
+	}
+	if !IsNil(o.ShippBuildingNumber) {
+		toSerialize["shipp_building_number"] = o.ShippBuildingNumber
+	}
+	if !IsNil(o.ShippAdditionalNumber) {
+		toSerialize["shipp_additional_number"] = o.ShippAdditionalNumber
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
