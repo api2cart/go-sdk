@@ -4736,7 +4736,7 @@ func (r ApiOrderUpdateRequest) DateFinished(dateFinished string) ApiOrderUpdateR
 	return r
 }
 
-// Send notifications to customer after order was created
+// Send notifications to customer after order status was changed
 func (r ApiOrderUpdateRequest) SendNotifications(sendNotifications bool) ApiOrderUpdateRequest {
 	r.sendNotifications = &sendNotifications
 	return r

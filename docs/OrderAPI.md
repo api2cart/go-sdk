@@ -1885,7 +1885,7 @@ func main() {
 	invoiceAdminComment := "Test admin comment" // string | Specifies admin's order invoice comment (optional)
 	dateModified := "2014-05-05 05:05:00" // string | Specifies order's  modification date (optional)
 	dateFinished := "2014-06-05 05:05:00" // string | Specifies order's  finished date (optional)
-	sendNotifications := true // bool | Send notifications to customer after order was created (optional) (default to false)
+	sendNotifications := true // bool | Send notifications to customer after order status was changed (optional) (default to false)
 	createInvoice := true // bool | Determines whether an invoice should be created if it has not already been created (optional)
 	origin := "newsletter" // string | The source of the order (optional)
 	tags := "tag1,tag2" // string | Order tags (optional)
@@ -1927,7 +1927,7 @@ Name | Type | Description  | Notes
  **invoiceAdminComment** | **string** | Specifies admin&#39;s order invoice comment | 
  **dateModified** | **string** | Specifies order&#39;s  modification date | 
  **dateFinished** | **string** | Specifies order&#39;s  finished date | 
- **sendNotifications** | **bool** | Send notifications to customer after order was created | [default to false]
+ **sendNotifications** | **bool** | Send notifications to customer after order status was changed | [default to false]
  **createInvoice** | **bool** | Determines whether an invoice should be created if it has not already been created | 
  **origin** | **string** | The source of the order | 
  **tags** | **string** | Order tags | 
