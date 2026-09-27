@@ -2193,7 +2193,7 @@ func (r ApiProductCountRequest) AvailView(availView bool) ApiProductCountRequest
 	return r
 }
 
-// Specifies the set of available/not available products for sale
+// Specifies the set of available/not available products for sale.&lt;br/&gt;On BigCommerce the count checks only whether the product is set as purchasable and ignores stock (pre-order products are counted neither as true nor as false), so it can differ from product.list with the same value, which also checks stock at all inventory locations
 func (r ApiProductCountRequest) AvailSale(availSale bool) ApiProductCountRequest {
 	r.availSale = &availSale
 	return r

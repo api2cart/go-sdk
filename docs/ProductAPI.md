@@ -835,7 +835,7 @@ func main() {
 	vendorId := "1" // string | Counts products specified by vendor id (optional)
 	langId := "3" // string | Counts products specified by language id (optional)
 	availView := true // bool | Specifies the set of visible/invisible products (optional)
-	availSale := false // bool | Specifies the set of available/not available products for sale (optional)
+	availSale := false // bool | Specifies the set of available/not available products for sale.<br/>On BigCommerce the count checks only whether the product is set as purchasable and ignores stock (pre-order products are counted neither as true nor as false), so it can differ from product.list with the same value, which also checks stock at all inventory locations (optional)
 	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
 	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
 	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
@@ -885,7 +885,7 @@ Name | Type | Description  | Notes
  **vendorId** | **string** | Counts products specified by vendor id | 
  **langId** | **string** | Counts products specified by language id | 
  **availView** | **bool** | Specifies the set of visible/invisible products | 
- **availSale** | **bool** | Specifies the set of available/not available products for sale | 
+ **availSale** | **bool** | Specifies the set of available/not available products for sale.&lt;br/&gt;On BigCommerce the count checks only whether the product is set as purchasable and ignores stock (pre-order products are counted neither as true nor as false), so it can differ from product.list with the same value, which also checks stock at all inventory locations | 
  **createdFrom** | **string** | Retrieve entities from their creation date | 
  **createdTo** | **string** | Retrieve entities to their creation date | 
  **modifiedFrom** | **string** | Retrieve entities from their modification date | 
