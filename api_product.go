@@ -2121,6 +2121,7 @@ type ApiProductCountRequest struct {
 	langId *string
 	availView *bool
 	availSale *bool
+	isPartialOrFullOutOfStock *bool
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
@@ -2196,6 +2197,12 @@ func (r ApiProductCountRequest) AvailView(availView bool) ApiProductCountRequest
 // Specifies the set of available/not available products for sale.&lt;br/&gt;On BigCommerce the count checks only whether the product is set as purchasable and ignores stock (pre-order products are counted neither as true nor as false), so it can differ from product.list with the same value, which also checks stock at all inventory locations
 func (r ApiProductCountRequest) AvailSale(availSale bool) ApiProductCountRequest {
 	r.availSale = &availSale
+	return r
+}
+
+// Specifies the set of products that are out of stock completely or partially. Only true is supported: it returns products tracked per product that have no stock, and products tracked per variant that have at least one out-of-stock variant, even while other variants of the same product still have stock. Stock is checked at the default inventory location only, so a product that still has stock at another location can be returned, and a product whose only variant is the base one is not matched. Unlike avail_sale, which answers for the product as a whole, this catches a product that still sells overall because some of its variants do
+func (r ApiProductCountRequest) IsPartialOrFullOutOfStock(isPartialOrFullOutOfStock bool) ApiProductCountRequest {
+	r.isPartialOrFullOutOfStock = &isPartialOrFullOutOfStock
 	return r
 }
 
@@ -2364,6 +2371,9 @@ func (a *ProductAPIService) ProductCountExecute(r ApiProductCountRequest) (*Mode
 	}
 	if r.availSale != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
+	}
+	if r.isPartialOrFullOutOfStock != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_partial_or_full_out_of_stock", r.isPartialOrFullOutOfStock, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
@@ -4231,6 +4241,7 @@ type ApiProductListRequest struct {
 	currencyId *string
 	availView *bool
 	availSale *bool
+	isPartialOrFullOutOfStock *bool
 	createdFrom *string
 	createdTo *string
 	modifiedFrom *string
@@ -4332,6 +4343,12 @@ func (r ApiProductListRequest) AvailView(availView bool) ApiProductListRequest {
 // Specifies the set of available/not available products for sale
 func (r ApiProductListRequest) AvailSale(availSale bool) ApiProductListRequest {
 	r.availSale = &availSale
+	return r
+}
+
+// Specifies the set of products that are out of stock completely or partially. Only true is supported: it returns products tracked per product that have no stock, and products tracked per variant that have at least one out-of-stock variant, even while other variants of the same product still have stock. Stock is checked at the default inventory location only, so a product that still has stock at another location can be returned, and a product whose only variant is the base one is not matched. Unlike avail_sale, which answers for the product as a whole, this catches a product that still sells overall because some of its variants do
+func (r ApiProductListRequest) IsPartialOrFullOutOfStock(isPartialOrFullOutOfStock bool) ApiProductListRequest {
+	r.isPartialOrFullOutOfStock = &isPartialOrFullOutOfStock
 	return r
 }
 
@@ -4563,6 +4580,9 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ModelR
 	}
 	if r.availSale != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "avail_sale", r.availSale, "form", "")
+	}
+	if r.isPartialOrFullOutOfStock != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "is_partial_or_full_out_of_stock", r.isPartialOrFullOutOfStock, "form", "")
 	}
 	if r.createdFrom != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
