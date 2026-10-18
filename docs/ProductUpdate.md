@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **ManageStock** | Pointer to **bool** | Defines inventory tracking for product. When true, quantity sets the stock level and the stock status is derived from it; when false, quantity is ignored and in_stock sets the status directly. | [optional] 
 **BackorderStatus** | Pointer to **string** | Set backorder status | [optional] 
 **IncreaseQuantity** | Pointer to **float32** | Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored. | [optional] 
-**ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored. | [optional] 
+**ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity. Effective only when manage_stock is true. | [optional] 
 **LowStockThreshold** | Pointer to **float32** | Specify the quantity threshold below which the product is considered low in stock | [optional] 
 **MinOrderQuantity** | Pointer to **float32** | The minimum quantity an order must contain, to be eligible to purchase this product. | [optional] 
 **MaxOrderQuantity** | Pointer to **float32** | The maximum quantity an order can contain when purchasing the product. | [optional] 

@@ -74,7 +74,7 @@ type ProductVariantUpdate struct {
 	Quantity *float32 `json:"quantity,omitempty"`
 	// Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
-	// Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
+	// Defines the decrement changes in product quantity. Effective only when manage_stock is true.
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
 	// Indicates whether prices include tax.
 	PricesIncTax *bool `json:"prices_inc_tax,omitempty"`

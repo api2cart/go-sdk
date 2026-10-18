@@ -100,7 +100,7 @@ type ProductUpdate struct {
 	BackorderStatus *string `json:"backorder_status,omitempty"`
 	// Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
 	IncreaseQuantity *float32 `json:"increase_quantity,omitempty"`
-	// Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored.
+	// Defines the decrement changes in product quantity. Effective only when manage_stock is true.
 	ReduceQuantity *float32 `json:"reduce_quantity,omitempty"`
 	// Specify the quantity threshold below which the product is considered low in stock
 	LowStockThreshold *float32 `json:"low_stock_threshold,omitempty"`

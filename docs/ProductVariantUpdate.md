@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **ReserveQuantity** | Pointer to **float32** | This parameter allows to reserve/unreserve product variants quantity. | [optional] 
 **Quantity** | Pointer to **float32** | Defines new products&#39; variants quantity. Effective only when manage_stock is true — otherwise the value is ignored. To enable stock tracking and set a quantity in one call, pass manage_stock&#x3D;true together with quantity. | [optional] 
 **IncreaseQuantity** | Pointer to **float32** | Defines the incremental changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored. | [optional] [default to 0]
-**ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity. Effective only when manage_stock is true — otherwise the value is ignored. | [optional] [default to 0]
+**ReduceQuantity** | Pointer to **float32** | Defines the decrement changes in product quantity. Effective only when manage_stock is true. | [optional] [default to 0]
 **PricesIncTax** | Pointer to **bool** | Indicates whether prices include tax. | [optional] [default to false]
 **Price** | Pointer to **float32** | Defines new product&#39;s variant price | [optional] 
 **SpecialPrice** | Pointer to **float32** | Defines new product&#39;s variant special price | [optional] 
