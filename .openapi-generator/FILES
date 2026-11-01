@@ -243,6 +243,7 @@ docs/OrderCalculateShippingRate.md
 docs/OrderCalculateSubtotal.md
 docs/OrderCalculateTax.md
 docs/OrderInfo200Response.md
+docs/OrderInvoiceAdd.md
 docs/OrderItem.md
 docs/OrderItemOption.md
 docs/OrderPaymentMethod.md
@@ -705,6 +706,7 @@ model_order_calculate_shipping_rate.go
 model_order_calculate_subtotal.go
 model_order_calculate_tax.go
 model_order_info_200_response.go
+model_order_invoice_add.go
 model_order_item.go
 model_order_item_option.go
 model_order_payment_method.go

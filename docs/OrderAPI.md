@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**OrderFinancialStatusList**](OrderAPI.md#OrderFinancialStatusList) | **Get** /order.financial_status.list.json | order.financial_status.list
 [**OrderFulfillmentStatusList**](OrderAPI.md#OrderFulfillmentStatusList) | **Get** /order.fulfillment_status.list.json | order.fulfillment_status.list
 [**OrderInfo**](OrderAPI.md#OrderInfo) | **Get** /order.info.json | order.info
+[**OrderInvoiceAdd**](OrderAPI.md#OrderInvoiceAdd) | **Post** /order.invoice.add.json | order.invoice.add
 [**OrderList**](OrderAPI.md#OrderList) | **Get** /order.list.json | order.list
 [**OrderPreestimateShippingList**](OrderAPI.md#OrderPreestimateShippingList) | **Post** /order.preestimate_shipping.list.json | order.preestimate_shipping.list
 [**OrderRefundAdd**](OrderAPI.md#OrderRefundAdd) | **Post** /order.refund.add.json | order.refund.add
@@ -570,6 +571,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrderInvoiceAdd
+
+> AttributeAdd200Response OrderInvoiceAdd(ctx).OrderInvoiceAdd(orderInvoiceAdd).Execute()
+
+order.invoice.add
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	orderInvoiceAdd := *openapiclient.NewOrderInvoiceAdd("INV-2026-0001") // OrderInvoiceAdd | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrderAPI.OrderInvoiceAdd(context.Background()).OrderInvoiceAdd(orderInvoiceAdd).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderInvoiceAdd``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrderInvoiceAdd`: AttributeAdd200Response
+	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderInvoiceAdd`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrderInvoiceAddRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderInvoiceAdd** | [**OrderInvoiceAdd**](OrderInvoiceAdd.md) |  | 
+
+### Return type
+
+[**AttributeAdd200Response**](AttributeAdd200Response.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

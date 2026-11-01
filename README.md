@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *OrderAPI* | [**OrderFinancialStatusList**](docs/OrderAPI.md#orderfinancialstatuslist) | **Get** /order.financial_status.list.json | order.financial_status.list
 *OrderAPI* | [**OrderFulfillmentStatusList**](docs/OrderAPI.md#orderfulfillmentstatuslist) | **Get** /order.fulfillment_status.list.json | order.fulfillment_status.list
 *OrderAPI* | [**OrderInfo**](docs/OrderAPI.md#orderinfo) | **Get** /order.info.json | order.info
+*OrderAPI* | [**OrderInvoiceAdd**](docs/OrderAPI.md#orderinvoiceadd) | **Post** /order.invoice.add.json | order.invoice.add
 *OrderAPI* | [**OrderList**](docs/OrderAPI.md#orderlist) | **Get** /order.list.json | order.list
 *OrderAPI* | [**OrderPreestimateShippingList**](docs/OrderAPI.md#orderpreestimateshippinglist) | **Post** /order.preestimate_shipping.list.json | order.preestimate_shipping.list
 *OrderAPI* | [**OrderRefundAdd**](docs/OrderAPI.md#orderrefundadd) | **Post** /order.refund.add.json | order.refund.add
@@ -464,6 +465,7 @@ Class | Method | HTTP request | Description
  - [OrderCalculateSubtotal](docs/OrderCalculateSubtotal.md)
  - [OrderCalculateTax](docs/OrderCalculateTax.md)
  - [OrderInfo200Response](docs/OrderInfo200Response.md)
+ - [OrderInvoiceAdd](docs/OrderInvoiceAdd.md)
  - [OrderItem](docs/OrderItem.md)
  - [OrderItemOption](docs/OrderItemOption.md)
  - [OrderPaymentMethod](docs/OrderPaymentMethod.md)
