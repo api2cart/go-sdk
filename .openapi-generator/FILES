@@ -196,6 +196,7 @@ docs/ModelResponseOrderAbandonedList.md
 docs/ModelResponseOrderCount.md
 docs/ModelResponseOrderFinancialStatusList.md
 docs/ModelResponseOrderFulfillmentStatusList.md
+docs/ModelResponseOrderInvoiceList.md
 docs/ModelResponseOrderList.md
 docs/ModelResponseOrderPreestimateShippingList.md
 docs/ModelResponseOrderShipmentEventList.md
@@ -243,7 +244,11 @@ docs/OrderCalculateShippingRate.md
 docs/OrderCalculateSubtotal.md
 docs/OrderCalculateTax.md
 docs/OrderInfo200Response.md
+docs/OrderInvoice.md
 docs/OrderInvoiceAdd.md
+docs/OrderInvoiceComment.md
+docs/OrderInvoiceItem.md
+docs/OrderInvoiceTotals.md
 docs/OrderItem.md
 docs/OrderItemOption.md
 docs/OrderPaymentMethod.md
@@ -432,6 +437,7 @@ docs/ResponseOrderAbandonedListResult.md
 docs/ResponseOrderCountResult.md
 docs/ResponseOrderFinancialStatusListResult.md
 docs/ResponseOrderFulfillmentStatusListResult.md
+docs/ResponseOrderInvoiceListResult.md
 docs/ResponseOrderListResult.md
 docs/ResponseOrderPreestimateShippingListResult.md
 docs/ResponseOrderShipmentEventListResult.md
@@ -660,6 +666,7 @@ model_model_response_order_abandoned_list.go
 model_model_response_order_count.go
 model_model_response_order_financial_status_list.go
 model_model_response_order_fulfillment_status_list.go
+model_model_response_order_invoice_list.go
 model_model_response_order_list.go
 model_model_response_order_preestimate_shipping_list.go
 model_model_response_order_shipment_event_list.go
@@ -706,7 +713,11 @@ model_order_calculate_shipping_rate.go
 model_order_calculate_subtotal.go
 model_order_calculate_tax.go
 model_order_info_200_response.go
+model_order_invoice.go
 model_order_invoice_add.go
+model_order_invoice_comment.go
+model_order_invoice_item.go
+model_order_invoice_totals.go
 model_order_item.go
 model_order_item_option.go
 model_order_payment_method.go
@@ -894,6 +905,7 @@ model_response_order_abandoned_list_result.go
 model_response_order_count_result.go
 model_response_order_financial_status_list_result.go
 model_response_order_fulfillment_status_list_result.go
+model_response_order_invoice_list_result.go
 model_response_order_list_result.go
 model_response_order_preestimate_shipping_list_result.go
 model_response_order_shipment_event_list_result.go

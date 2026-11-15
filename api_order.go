@@ -1596,6 +1596,239 @@ func (a *OrderAPIService) OrderInvoiceAddExecute(r ApiOrderInvoiceAddRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiOrderInvoiceListRequest struct {
+	ctx context.Context
+	ApiService *OrderAPIService
+	count *int32
+	pageCursor *string
+	orderIds *string
+	ids *string
+	storeId *string
+	createdFrom *string
+	createdTo *string
+	modifiedFrom *string
+	modifiedTo *string
+	responseFields *string
+}
+
+// This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250
+func (r ApiOrderInvoiceListRequest) Count(count int32) ApiOrderInvoiceListRequest {
+	r.count = &count
+	return r
+}
+
+// Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter)
+func (r ApiOrderInvoiceListRequest) PageCursor(pageCursor string) ApiOrderInvoiceListRequest {
+	r.pageCursor = &pageCursor
+	return r
+}
+
+// Retrieves invoices of the orders specified by order ids
+func (r ApiOrderInvoiceListRequest) OrderIds(orderIds string) ApiOrderInvoiceListRequest {
+	r.orderIds = &orderIds
+	return r
+}
+
+// Retrieves invoices specified by ids
+func (r ApiOrderInvoiceListRequest) Ids(ids string) ApiOrderInvoiceListRequest {
+	r.ids = &ids
+	return r
+}
+
+// Retrieves invoices of the store specified by store id. The default store is taken when not specified
+func (r ApiOrderInvoiceListRequest) StoreId(storeId string) ApiOrderInvoiceListRequest {
+	r.storeId = &storeId
+	return r
+}
+
+// Retrieve entities from their creation date
+func (r ApiOrderInvoiceListRequest) CreatedFrom(createdFrom string) ApiOrderInvoiceListRequest {
+	r.createdFrom = &createdFrom
+	return r
+}
+
+// Retrieve entities to their creation date
+func (r ApiOrderInvoiceListRequest) CreatedTo(createdTo string) ApiOrderInvoiceListRequest {
+	r.createdTo = &createdTo
+	return r
+}
+
+// Retrieve entities from their modification date
+func (r ApiOrderInvoiceListRequest) ModifiedFrom(modifiedFrom string) ApiOrderInvoiceListRequest {
+	r.modifiedFrom = &modifiedFrom
+	return r
+}
+
+// Retrieve entities to their modification date
+func (r ApiOrderInvoiceListRequest) ModifiedTo(modifiedTo string) ApiOrderInvoiceListRequest {
+	r.modifiedTo = &modifiedTo
+	return r
+}
+
+// Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields.
+func (r ApiOrderInvoiceListRequest) ResponseFields(responseFields string) ApiOrderInvoiceListRequest {
+	r.responseFields = &responseFields
+	return r
+}
+
+func (r ApiOrderInvoiceListRequest) Execute() (*ModelResponseOrderInvoiceList, *http.Response, error) {
+	return r.ApiService.OrderInvoiceListExecute(r)
+}
+
+/*
+OrderInvoiceList order.invoice.list
+
+Get list of invoices the store issued for orders. Only the invoices of one store are returned, also when filtered by order_ids or ids: the store given in store_id, or the default store when store_id is not given.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrderInvoiceListRequest
+*/
+func (a *OrderAPIService) OrderInvoiceList(ctx context.Context) ApiOrderInvoiceListRequest {
+	return ApiOrderInvoiceListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ModelResponseOrderInvoiceList
+func (a *OrderAPIService) OrderInvoiceListExecute(r ApiOrderInvoiceListRequest) (*ModelResponseOrderInvoiceList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModelResponseOrderInvoiceList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderInvoiceList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/order.invoice.list.json"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.count != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "count", r.count, "form", "")
+	} else {
+		var defaultValue int32 = 10
+		r.count = &defaultValue
+	}
+	if r.pageCursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page_cursor", r.pageCursor, "form", "")
+	}
+	if r.orderIds != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "order_ids", r.orderIds, "form", "")
+	}
+	if r.ids != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ids", r.ids, "form", "")
+	}
+	if r.storeId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "store_id", r.storeId, "form", "")
+	}
+	if r.createdFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_from", r.createdFrom, "form", "")
+	}
+	if r.createdTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_to", r.createdTo, "form", "")
+	}
+	if r.modifiedFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_from", r.modifiedFrom, "form", "")
+	}
+	if r.modifiedTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "modified_to", r.modifiedTo, "form", "")
+	}
+	if r.responseFields != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "response_fields", r.responseFields, "form", "")
+	} else {
+		var defaultValue string = "{return_code,return_message,pagination,result}"
+		r.responseFields = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["StoreKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-store-key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiOrderListRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService

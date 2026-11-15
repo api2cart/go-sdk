@@ -21,6 +21,7 @@ var _ MappedNullable = &OrderShipmentAdd200ResponseResult{}
 // OrderShipmentAdd200ResponseResult struct for OrderShipmentAdd200ResponseResult
 type OrderShipmentAdd200ResponseResult struct {
 	ShipmentId *string `json:"shipment_id,omitempty"`
+	AdditionalFields map[string]interface{} `json:"additional_fields,omitempty"`
 }
 
 // NewOrderShipmentAdd200ResponseResult instantiates a new OrderShipmentAdd200ResponseResult object
@@ -72,6 +73,39 @@ func (o *OrderShipmentAdd200ResponseResult) SetShipmentId(v string) {
 	o.ShipmentId = &v
 }
 
+// GetAdditionalFields returns the AdditionalFields field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrderShipmentAdd200ResponseResult) GetAdditionalFields() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.AdditionalFields
+}
+
+// GetAdditionalFieldsOk returns a tuple with the AdditionalFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrderShipmentAdd200ResponseResult) GetAdditionalFieldsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.AdditionalFields) {
+		return map[string]interface{}{}, false
+	}
+	return o.AdditionalFields, true
+}
+
+// HasAdditionalFields returns a boolean if a field has been set.
+func (o *OrderShipmentAdd200ResponseResult) HasAdditionalFields() bool {
+	if o != nil && !IsNil(o.AdditionalFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalFields gets a reference to the given map[string]interface{} and assigns it to the AdditionalFields field.
+func (o *OrderShipmentAdd200ResponseResult) SetAdditionalFields(v map[string]interface{}) {
+	o.AdditionalFields = v
+}
+
 func (o OrderShipmentAdd200ResponseResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +118,9 @@ func (o OrderShipmentAdd200ResponseResult) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ShipmentId) {
 		toSerialize["shipment_id"] = o.ShipmentId
+	}
+	if o.AdditionalFields != nil {
+		toSerialize["additional_fields"] = o.AdditionalFields
 	}
 	return toSerialize, nil
 }

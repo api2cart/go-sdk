@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ShipmentId** | Pointer to **string** |  | [optional] 
+**AdditionalFields** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -50,6 +51,41 @@ SetShipmentId sets ShipmentId field to given value.
 
 HasShipmentId returns a boolean if a field has been set.
 
+### GetAdditionalFields
+
+`func (o *OrderShipmentAdd200ResponseResult) GetAdditionalFields() map[string]interface{}`
+
+GetAdditionalFields returns the AdditionalFields field if non-nil, zero value otherwise.
+
+### GetAdditionalFieldsOk
+
+`func (o *OrderShipmentAdd200ResponseResult) GetAdditionalFieldsOk() (*map[string]interface{}, bool)`
+
+GetAdditionalFieldsOk returns a tuple with the AdditionalFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdditionalFields
+
+`func (o *OrderShipmentAdd200ResponseResult) SetAdditionalFields(v map[string]interface{})`
+
+SetAdditionalFields sets AdditionalFields field to given value.
+
+### HasAdditionalFields
+
+`func (o *OrderShipmentAdd200ResponseResult) HasAdditionalFields() bool`
+
+HasAdditionalFields returns a boolean if a field has been set.
+
+### SetAdditionalFieldsNil
+
+`func (o *OrderShipmentAdd200ResponseResult) SetAdditionalFieldsNil(b bool)`
+
+ SetAdditionalFieldsNil sets the value for AdditionalFields to be an explicit nil
+
+### UnsetAdditionalFields
+`func (o *OrderShipmentAdd200ResponseResult) UnsetAdditionalFields()`
+
+UnsetAdditionalFields ensures that no value is present for AdditionalFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

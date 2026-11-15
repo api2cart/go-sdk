@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**OrderFulfillmentStatusList**](OrderAPI.md#OrderFulfillmentStatusList) | **Get** /order.fulfillment_status.list.json | order.fulfillment_status.list
 [**OrderInfo**](OrderAPI.md#OrderInfo) | **Get** /order.info.json | order.info
 [**OrderInvoiceAdd**](OrderAPI.md#OrderInvoiceAdd) | **Post** /order.invoice.add.json | order.invoice.add
+[**OrderInvoiceList**](OrderAPI.md#OrderInvoiceList) | **Get** /order.invoice.list.json | order.invoice.list
 [**OrderList**](OrderAPI.md#OrderList) | **Get** /order.list.json | order.list
 [**OrderPreestimateShippingList**](OrderAPI.md#OrderPreestimateShippingList) | **Post** /order.preestimate_shipping.list.json | order.preestimate_shipping.list
 [**OrderRefundAdd**](OrderAPI.md#OrderRefundAdd) | **Post** /order.refund.add.json | order.refund.add
@@ -637,6 +638,90 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrderInvoiceList
+
+> ModelResponseOrderInvoiceList OrderInvoiceList(ctx).Count(count).PageCursor(pageCursor).OrderIds(orderIds).Ids(ids).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Execute()
+
+order.invoice.list
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	count := int32(20) // int32 | This parameter sets the entity amount that has to be retrieved. Max allowed count=250 (optional) (default to 10)
+	pageCursor := "pageCursor_example" // string | Used to retrieve entities via cursor-based pagination (it can't be used with any other filtering parameter) (optional)
+	orderIds := "24,25" // string | Retrieves invoices of the orders specified by order ids (optional)
+	ids := "24,25" // string | Retrieves invoices specified by ids (optional)
+	storeId := "1" // string | Retrieves invoices of the store specified by store id. The default store is taken when not specified (optional)
+	createdFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their creation date (optional)
+	createdTo := "2100-08-29 13:45:52" // string | Retrieve entities to their creation date (optional)
+	modifiedFrom := "2010-07-29 13:45:52" // string | Retrieve entities from their modification date (optional)
+	modifiedTo := "2100-08-29 13:45:52" // string | Retrieve entities to their modification date (optional)
+	responseFields := "{return_code,pagination,result{invoice_count,invoice{id,order_id,number,created_at,currency}}}" // string | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. (optional) (default to "{return_code,return_message,pagination,result}")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrderAPI.OrderInvoiceList(context.Background()).Count(count).PageCursor(pageCursor).OrderIds(orderIds).Ids(ids).StoreId(storeId).CreatedFrom(createdFrom).CreatedTo(createdTo).ModifiedFrom(modifiedFrom).ModifiedTo(modifiedTo).ResponseFields(responseFields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrderAPI.OrderInvoiceList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrderInvoiceList`: ModelResponseOrderInvoiceList
+	fmt.Fprintf(os.Stdout, "Response from `OrderAPI.OrderInvoiceList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrderInvoiceListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **count** | **int32** | This parameter sets the entity amount that has to be retrieved. Max allowed count&#x3D;250 | [default to 10]
+ **pageCursor** | **string** | Used to retrieve entities via cursor-based pagination (it can&#39;t be used with any other filtering parameter) | 
+ **orderIds** | **string** | Retrieves invoices of the orders specified by order ids | 
+ **ids** | **string** | Retrieves invoices specified by ids | 
+ **storeId** | **string** | Retrieves invoices of the store specified by store id. The default store is taken when not specified | 
+ **createdFrom** | **string** | Retrieve entities from their creation date | 
+ **createdTo** | **string** | Retrieve entities to their creation date | 
+ **modifiedFrom** | **string** | Retrieve entities from their modification date | 
+ **modifiedTo** | **string** | Retrieve entities to their modification date | 
+ **responseFields** | **string** | Set this parameter to choose which entity fields to retrieve. Use comma-separated field names in curly braces, nested to match the response structure, e.g. {result{product{id,name}}}. The wildcard * returns every field at a level: {*} gives the whole response, {result{product{*}}} all product fields. | [default to &quot;{return_code,return_message,pagination,result}&quot;]
+
+### Return type
+
+[**ModelResponseOrderInvoiceList**](ModelResponseOrderInvoiceList.md)
+
+### Authorization
+
+[StoreKeyAuth](../README.md#StoreKeyAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
