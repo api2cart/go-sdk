@@ -246,6 +246,7 @@ docs/OrderCalculateTax.md
 docs/OrderInfo200Response.md
 docs/OrderInvoice.md
 docs/OrderInvoiceAdd.md
+docs/OrderInvoiceAddItemsInner.md
 docs/OrderInvoiceComment.md
 docs/OrderInvoiceItem.md
 docs/OrderInvoiceTotals.md
@@ -715,6 +716,7 @@ model_order_calculate_tax.go
 model_order_info_200_response.go
 model_order_invoice.go
 model_order_invoice_add.go
+model_order_invoice_add_items_inner.go
 model_order_invoice_comment.go
 model_order_invoice_item.go
 model_order_invoice_totals.go

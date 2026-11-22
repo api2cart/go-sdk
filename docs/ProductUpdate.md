@@ -103,6 +103,7 @@ Name | Type | Description | Notes
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
 **ManufacturerIds** | Pointer to **string** | A comma-separated list of manufacturer IDs. Retrieve the IDs from the cart.info method. | [optional] 
 **ResponsiblePersonIds** | Pointer to **string** | A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method. | [optional] 
+**EconomicOperatorId** | Pointer to **string** | The ID of the economic operator (the manufacturer, importer or another party responsible for the product in the EU) to link to the offer: the &#x60;id&#x60; field of an item in additional_fields.economic_operators, which the cart.info method returns when called with api_version 1.1 or higher and additional_fields in params. If omitted, the economic operator linked to the offer is not changed. If the passed economic operator does not have the VALID status, it is linked anyway and the response contains a warning. | [optional] 
 **IdempotencyKey** | Pointer to **string** | A unique identifier associated with a specific request. Repeated requests with the same &lt;strong&gt;idempotency_key&lt;/strong&gt; return a cached response without re-executing the business logic. &lt;strong&gt;Please note that the cache lifetime is 15 minutes.&lt;/strong&gt; | [optional] 
 
 ## Methods
@@ -2598,6 +2599,31 @@ SetResponsiblePersonIds sets ResponsiblePersonIds field to given value.
 `func (o *ProductUpdate) HasResponsiblePersonIds() bool`
 
 HasResponsiblePersonIds returns a boolean if a field has been set.
+
+### GetEconomicOperatorId
+
+`func (o *ProductUpdate) GetEconomicOperatorId() string`
+
+GetEconomicOperatorId returns the EconomicOperatorId field if non-nil, zero value otherwise.
+
+### GetEconomicOperatorIdOk
+
+`func (o *ProductUpdate) GetEconomicOperatorIdOk() (*string, bool)`
+
+GetEconomicOperatorIdOk returns a tuple with the EconomicOperatorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEconomicOperatorId
+
+`func (o *ProductUpdate) SetEconomicOperatorId(v string)`
+
+SetEconomicOperatorId sets EconomicOperatorId field to given value.
+
+### HasEconomicOperatorId
+
+`func (o *ProductUpdate) HasEconomicOperatorId() bool`
+
+HasEconomicOperatorId returns a boolean if a field has been set.
 
 ### GetIdempotencyKey
 

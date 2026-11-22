@@ -4,10 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderId** | Pointer to **string** | Defines the order the document is uploaded for | [optional] 
-**ShipmentId** | Pointer to **string** | Defines the shipment of the order the document is for. Required when the order was shipped in several shipments | [optional] 
+**OrderId** | Pointer to **string** | Defines the order to invoice | [optional] 
 **StoreId** | Pointer to **string** | Defines the store of the order. The store of the order is taken when not specified | [optional] 
-**Number** | **string** | Defines the number of the invoice or credit note as printed on the document | 
+**Items** | Pointer to [**[]OrderInvoiceAddItemsInner**](OrderInvoiceAddItemsInner.md) | Defines the items of the order to invoice and their quantities. Everything not invoiced yet is invoiced when not specified | [optional] 
+**Comment** | Pointer to **string** | Defines the comment of the invoice | [optional] 
+**SendNotifications** | Pointer to **bool** | Send the invoice to the customer by email | [optional] [default to false]
+**IsOnline** | Pointer to **bool** | Defines whether the invoice captures the payment online, through the payment method, when the method supports it. The payment is captured offline when false | [optional] [default to true]
+**OrderStatus** | Pointer to **string** | Defines the order status that creates the invoice. Only a status that creates an invoice is accepted. The status of an accepted payment is taken when not specified | [optional] 
+**ShipmentId** | Pointer to **string** | Defines the shipment of the order the document is for. Required when the order was shipped in several shipments | [optional] 
+**Number** | Pointer to **string** | Defines the number of the invoice or credit note as printed on the document | [optional] 
 **DocumentType** | Pointer to **string** | Defines whether the document is an invoice or a credit note for a refund or return | [optional] [default to "invoice"]
 **TransactionId** | Pointer to **string** | Defines the refund or return transaction the credit note is issued for. Required when document_type is credit_note | [optional] 
 **TotalPrice** | Pointer to **float32** | Defines the total amount of the document, VAT included. When specified, it must match the total the store calculated for the order or shipment. For sellers with VAT Calculation Service Option 2 Amazon requires both total_price and tax_price, otherwise it rejects the feed after processing | [optional] 
@@ -20,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewOrderInvoiceAdd
 
-`func NewOrderInvoiceAdd(number string, ) *OrderInvoiceAdd`
+`func NewOrderInvoiceAdd() *OrderInvoiceAdd`
 
 NewOrderInvoiceAdd instantiates a new OrderInvoiceAdd object
 This constructor will assign default values to properties that have it defined,
@@ -60,31 +65,6 @@ SetOrderId sets OrderId field to given value.
 
 HasOrderId returns a boolean if a field has been set.
 
-### GetShipmentId
-
-`func (o *OrderInvoiceAdd) GetShipmentId() string`
-
-GetShipmentId returns the ShipmentId field if non-nil, zero value otherwise.
-
-### GetShipmentIdOk
-
-`func (o *OrderInvoiceAdd) GetShipmentIdOk() (*string, bool)`
-
-GetShipmentIdOk returns a tuple with the ShipmentId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShipmentId
-
-`func (o *OrderInvoiceAdd) SetShipmentId(v string)`
-
-SetShipmentId sets ShipmentId field to given value.
-
-### HasShipmentId
-
-`func (o *OrderInvoiceAdd) HasShipmentId() bool`
-
-HasShipmentId returns a boolean if a field has been set.
-
 ### GetStoreId
 
 `func (o *OrderInvoiceAdd) GetStoreId() string`
@@ -110,6 +90,156 @@ SetStoreId sets StoreId field to given value.
 
 HasStoreId returns a boolean if a field has been set.
 
+### GetItems
+
+`func (o *OrderInvoiceAdd) GetItems() []OrderInvoiceAddItemsInner`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *OrderInvoiceAdd) GetItemsOk() (*[]OrderInvoiceAddItemsInner, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *OrderInvoiceAdd) SetItems(v []OrderInvoiceAddItemsInner)`
+
+SetItems sets Items field to given value.
+
+### HasItems
+
+`func (o *OrderInvoiceAdd) HasItems() bool`
+
+HasItems returns a boolean if a field has been set.
+
+### GetComment
+
+`func (o *OrderInvoiceAdd) GetComment() string`
+
+GetComment returns the Comment field if non-nil, zero value otherwise.
+
+### GetCommentOk
+
+`func (o *OrderInvoiceAdd) GetCommentOk() (*string, bool)`
+
+GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComment
+
+`func (o *OrderInvoiceAdd) SetComment(v string)`
+
+SetComment sets Comment field to given value.
+
+### HasComment
+
+`func (o *OrderInvoiceAdd) HasComment() bool`
+
+HasComment returns a boolean if a field has been set.
+
+### GetSendNotifications
+
+`func (o *OrderInvoiceAdd) GetSendNotifications() bool`
+
+GetSendNotifications returns the SendNotifications field if non-nil, zero value otherwise.
+
+### GetSendNotificationsOk
+
+`func (o *OrderInvoiceAdd) GetSendNotificationsOk() (*bool, bool)`
+
+GetSendNotificationsOk returns a tuple with the SendNotifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendNotifications
+
+`func (o *OrderInvoiceAdd) SetSendNotifications(v bool)`
+
+SetSendNotifications sets SendNotifications field to given value.
+
+### HasSendNotifications
+
+`func (o *OrderInvoiceAdd) HasSendNotifications() bool`
+
+HasSendNotifications returns a boolean if a field has been set.
+
+### GetIsOnline
+
+`func (o *OrderInvoiceAdd) GetIsOnline() bool`
+
+GetIsOnline returns the IsOnline field if non-nil, zero value otherwise.
+
+### GetIsOnlineOk
+
+`func (o *OrderInvoiceAdd) GetIsOnlineOk() (*bool, bool)`
+
+GetIsOnlineOk returns a tuple with the IsOnline field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsOnline
+
+`func (o *OrderInvoiceAdd) SetIsOnline(v bool)`
+
+SetIsOnline sets IsOnline field to given value.
+
+### HasIsOnline
+
+`func (o *OrderInvoiceAdd) HasIsOnline() bool`
+
+HasIsOnline returns a boolean if a field has been set.
+
+### GetOrderStatus
+
+`func (o *OrderInvoiceAdd) GetOrderStatus() string`
+
+GetOrderStatus returns the OrderStatus field if non-nil, zero value otherwise.
+
+### GetOrderStatusOk
+
+`func (o *OrderInvoiceAdd) GetOrderStatusOk() (*string, bool)`
+
+GetOrderStatusOk returns a tuple with the OrderStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderStatus
+
+`func (o *OrderInvoiceAdd) SetOrderStatus(v string)`
+
+SetOrderStatus sets OrderStatus field to given value.
+
+### HasOrderStatus
+
+`func (o *OrderInvoiceAdd) HasOrderStatus() bool`
+
+HasOrderStatus returns a boolean if a field has been set.
+
+### GetShipmentId
+
+`func (o *OrderInvoiceAdd) GetShipmentId() string`
+
+GetShipmentId returns the ShipmentId field if non-nil, zero value otherwise.
+
+### GetShipmentIdOk
+
+`func (o *OrderInvoiceAdd) GetShipmentIdOk() (*string, bool)`
+
+GetShipmentIdOk returns a tuple with the ShipmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShipmentId
+
+`func (o *OrderInvoiceAdd) SetShipmentId(v string)`
+
+SetShipmentId sets ShipmentId field to given value.
+
+### HasShipmentId
+
+`func (o *OrderInvoiceAdd) HasShipmentId() bool`
+
+HasShipmentId returns a boolean if a field has been set.
+
 ### GetNumber
 
 `func (o *OrderInvoiceAdd) GetNumber() string`
@@ -129,6 +259,11 @@ and a boolean to check if the value has been set.
 
 SetNumber sets Number field to given value.
 
+### HasNumber
+
+`func (o *OrderInvoiceAdd) HasNumber() bool`
+
+HasNumber returns a boolean if a field has been set.
 
 ### GetDocumentType
 

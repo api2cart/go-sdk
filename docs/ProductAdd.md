@@ -121,6 +121,7 @@ Name | Type | Description | Notes
 **BestOffer** | Pointer to [**ProductAddBestOffer**](ProductAddBestOffer.md) |  | [optional] 
 **ProductionPartnerIds** | Pointer to **string** | Defines product&#39;s production partner ids that has to be added | [optional] 
 **MarketplaceItemProperties** | Pointer to **string** | String containing the JSON representation of the supplied data | [optional] 
+**EconomicOperatorId** | Pointer to **string** | The ID of the economic operator (the manufacturer, importer or another party responsible for the product in the EU) to link to the offer: the &#x60;id&#x60; field of an item in additional_fields.economic_operators, which the cart.info method returns when called with api_version 1.1 or higher and additional_fields in params. If omitted, the first economic operator with the VALID status is linked, in the order the store returns them, so pass the ID explicitly when there are several economic operators. If there is none, the offer is created without an economic operator and the response contains a warning. If the passed economic operator does not have the VALID status, it is linked anyway and the response contains a warning. | [optional] 
 **ClearCache** | Pointer to **bool** | Is cache clear required | [optional] [default to true]
 **ViewedCount** | Pointer to **int32** | Specifies the number of product&#39;s reviews | [optional] [default to 0]
 **OrderedCount** | Pointer to **int32** | Defines how many times the product was ordered | [optional] [default to 0]
@@ -3056,6 +3057,31 @@ SetMarketplaceItemProperties sets MarketplaceItemProperties field to given value
 `func (o *ProductAdd) HasMarketplaceItemProperties() bool`
 
 HasMarketplaceItemProperties returns a boolean if a field has been set.
+
+### GetEconomicOperatorId
+
+`func (o *ProductAdd) GetEconomicOperatorId() string`
+
+GetEconomicOperatorId returns the EconomicOperatorId field if non-nil, zero value otherwise.
+
+### GetEconomicOperatorIdOk
+
+`func (o *ProductAdd) GetEconomicOperatorIdOk() (*string, bool)`
+
+GetEconomicOperatorIdOk returns a tuple with the EconomicOperatorId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEconomicOperatorId
+
+`func (o *ProductAdd) SetEconomicOperatorId(v string)`
+
+SetEconomicOperatorId sets EconomicOperatorId field to given value.
+
+### HasEconomicOperatorId
+
+`func (o *ProductAdd) HasEconomicOperatorId() bool`
+
+HasEconomicOperatorId returns a boolean if a field has been set.
 
 ### GetClearCache
 

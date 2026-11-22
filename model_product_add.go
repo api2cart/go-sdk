@@ -250,6 +250,8 @@ type ProductAdd struct {
 	ProductionPartnerIds *string `json:"production_partner_ids,omitempty"`
 	// String containing the JSON representation of the supplied data
 	MarketplaceItemProperties *string `json:"marketplace_item_properties,omitempty"`
+	// The ID of the economic operator (the manufacturer, importer or another party responsible for the product in the EU) to link to the offer: the `id` field of an item in additional_fields.economic_operators, which the cart.info method returns when called with api_version 1.1 or higher and additional_fields in params. If omitted, the first economic operator with the VALID status is linked, in the order the store returns them, so pass the ID explicitly when there are several economic operators. If there is none, the offer is created without an economic operator and the response contains a warning. If the passed economic operator does not have the VALID status, it is linked anyway and the response contains a warning.
+	EconomicOperatorId *string `json:"economic_operator_id,omitempty"`
 	// Is cache clear required
 	ClearCache *bool `json:"clear_cache,omitempty"`
 	// Specifies the number of product's reviews
@@ -4080,6 +4082,38 @@ func (o *ProductAdd) SetMarketplaceItemProperties(v string) {
 	o.MarketplaceItemProperties = &v
 }
 
+// GetEconomicOperatorId returns the EconomicOperatorId field value if set, zero value otherwise.
+func (o *ProductAdd) GetEconomicOperatorId() string {
+	if o == nil || IsNil(o.EconomicOperatorId) {
+		var ret string
+		return ret
+	}
+	return *o.EconomicOperatorId
+}
+
+// GetEconomicOperatorIdOk returns a tuple with the EconomicOperatorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductAdd) GetEconomicOperatorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.EconomicOperatorId) {
+		return nil, false
+	}
+	return o.EconomicOperatorId, true
+}
+
+// HasEconomicOperatorId returns a boolean if a field has been set.
+func (o *ProductAdd) HasEconomicOperatorId() bool {
+	if o != nil && !IsNil(o.EconomicOperatorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetEconomicOperatorId gets a reference to the given string and assigns it to the EconomicOperatorId field.
+func (o *ProductAdd) SetEconomicOperatorId(v string) {
+	o.EconomicOperatorId = &v
+}
+
 // GetClearCache returns the ClearCache field value if set, zero value otherwise.
 func (o *ProductAdd) GetClearCache() bool {
 	if o == nil || IsNil(o.ClearCache) {
@@ -4784,6 +4818,9 @@ func (o ProductAdd) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MarketplaceItemProperties) {
 		toSerialize["marketplace_item_properties"] = o.MarketplaceItemProperties
+	}
+	if !IsNil(o.EconomicOperatorId) {
+		toSerialize["economic_operator_id"] = o.EconomicOperatorId
 	}
 	if !IsNil(o.ClearCache) {
 		toSerialize["clear_cache"] = o.ClearCache

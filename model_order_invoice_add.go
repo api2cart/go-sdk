@@ -13,8 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OrderInvoiceAdd type satisfies the MappedNullable interface at compile time
@@ -22,14 +20,24 @@ var _ MappedNullable = &OrderInvoiceAdd{}
 
 // OrderInvoiceAdd struct for OrderInvoiceAdd
 type OrderInvoiceAdd struct {
-	// Defines the order the document is uploaded for
+	// Defines the order to invoice
 	OrderId *string `json:"order_id,omitempty"`
-	// Defines the shipment of the order the document is for. Required when the order was shipped in several shipments
-	ShipmentId *string `json:"shipment_id,omitempty"`
 	// Defines the store of the order. The store of the order is taken when not specified
 	StoreId *string `json:"store_id,omitempty"`
+	// Defines the items of the order to invoice and their quantities. Everything not invoiced yet is invoiced when not specified
+	Items []OrderInvoiceAddItemsInner `json:"items,omitempty"`
+	// Defines the comment of the invoice
+	Comment *string `json:"comment,omitempty"`
+	// Send the invoice to the customer by email
+	SendNotifications *bool `json:"send_notifications,omitempty"`
+	// Defines whether the invoice captures the payment online, through the payment method, when the method supports it. The payment is captured offline when false
+	IsOnline *bool `json:"is_online,omitempty"`
+	// Defines the order status that creates the invoice. Only a status that creates an invoice is accepted. The status of an accepted payment is taken when not specified
+	OrderStatus *string `json:"order_status,omitempty"`
+	// Defines the shipment of the order the document is for. Required when the order was shipped in several shipments
+	ShipmentId *string `json:"shipment_id,omitempty"`
 	// Defines the number of the invoice or credit note as printed on the document
-	Number string `json:"number"`
+	Number *string `json:"number,omitempty"`
 	// Defines whether the document is an invoice or a credit note for a refund or return
 	DocumentType *string `json:"document_type,omitempty"`
 	// Defines the refund or return transaction the credit note is issued for. Required when document_type is credit_note
@@ -46,15 +54,16 @@ type OrderInvoiceAdd struct {
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
 
-type _OrderInvoiceAdd OrderInvoiceAdd
-
 // NewOrderInvoiceAdd instantiates a new OrderInvoiceAdd object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrderInvoiceAdd(number string) *OrderInvoiceAdd {
+func NewOrderInvoiceAdd() *OrderInvoiceAdd {
 	this := OrderInvoiceAdd{}
-	this.Number = number
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
+	var isOnline bool = true
+	this.IsOnline = &isOnline
 	var documentType string = "invoice"
 	this.DocumentType = &documentType
 	return &this
@@ -65,6 +74,10 @@ func NewOrderInvoiceAdd(number string) *OrderInvoiceAdd {
 // but it doesn't guarantee that properties required by API are set
 func NewOrderInvoiceAddWithDefaults() *OrderInvoiceAdd {
 	this := OrderInvoiceAdd{}
+	var sendNotifications bool = false
+	this.SendNotifications = &sendNotifications
+	var isOnline bool = true
+	this.IsOnline = &isOnline
 	var documentType string = "invoice"
 	this.DocumentType = &documentType
 	return &this
@@ -102,38 +115,6 @@ func (o *OrderInvoiceAdd) SetOrderId(v string) {
 	o.OrderId = &v
 }
 
-// GetShipmentId returns the ShipmentId field value if set, zero value otherwise.
-func (o *OrderInvoiceAdd) GetShipmentId() string {
-	if o == nil || IsNil(o.ShipmentId) {
-		var ret string
-		return ret
-	}
-	return *o.ShipmentId
-}
-
-// GetShipmentIdOk returns a tuple with the ShipmentId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrderInvoiceAdd) GetShipmentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ShipmentId) {
-		return nil, false
-	}
-	return o.ShipmentId, true
-}
-
-// HasShipmentId returns a boolean if a field has been set.
-func (o *OrderInvoiceAdd) HasShipmentId() bool {
-	if o != nil && !IsNil(o.ShipmentId) {
-		return true
-	}
-
-	return false
-}
-
-// SetShipmentId gets a reference to the given string and assigns it to the ShipmentId field.
-func (o *OrderInvoiceAdd) SetShipmentId(v string) {
-	o.ShipmentId = &v
-}
-
 // GetStoreId returns the StoreId field value if set, zero value otherwise.
 func (o *OrderInvoiceAdd) GetStoreId() string {
 	if o == nil || IsNil(o.StoreId) {
@@ -166,28 +147,228 @@ func (o *OrderInvoiceAdd) SetStoreId(v string) {
 	o.StoreId = &v
 }
 
-// GetNumber returns the Number field value
-func (o *OrderInvoiceAdd) GetNumber() string {
-	if o == nil {
+// GetItems returns the Items field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetItems() []OrderInvoiceAddItemsInner {
+	if o == nil || IsNil(o.Items) {
+		var ret []OrderInvoiceAddItemsInner
+		return ret
+	}
+	return o.Items
+}
+
+// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetItemsOk() ([]OrderInvoiceAddItemsInner, bool) {
+	if o == nil || IsNil(o.Items) {
+		return nil, false
+	}
+	return o.Items, true
+}
+
+// HasItems returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasItems() bool {
+	if o != nil && !IsNil(o.Items) {
+		return true
+	}
+
+	return false
+}
+
+// SetItems gets a reference to the given []OrderInvoiceAddItemsInner and assigns it to the Items field.
+func (o *OrderInvoiceAdd) SetItems(v []OrderInvoiceAddItemsInner) {
+	o.Items = v
+}
+
+// GetComment returns the Comment field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetComment() string {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
-
-	return o.Number
+	return *o.Comment
 }
 
-// GetNumberOk returns a tuple with the Number field value
+// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrderInvoiceAdd) GetNumberOk() (*string, bool) {
-	if o == nil {
+func (o *OrderInvoiceAdd) GetCommentOk() (*string, bool) {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
-	return &o.Number, true
+	return o.Comment, true
 }
 
-// SetNumber sets field value
+// HasComment returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasComment() bool {
+	if o != nil && !IsNil(o.Comment) {
+		return true
+	}
+
+	return false
+}
+
+// SetComment gets a reference to the given string and assigns it to the Comment field.
+func (o *OrderInvoiceAdd) SetComment(v string) {
+	o.Comment = &v
+}
+
+// GetSendNotifications returns the SendNotifications field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetSendNotifications() bool {
+	if o == nil || IsNil(o.SendNotifications) {
+		var ret bool
+		return ret
+	}
+	return *o.SendNotifications
+}
+
+// GetSendNotificationsOk returns a tuple with the SendNotifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetSendNotificationsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendNotifications) {
+		return nil, false
+	}
+	return o.SendNotifications, true
+}
+
+// HasSendNotifications returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasSendNotifications() bool {
+	if o != nil && !IsNil(o.SendNotifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendNotifications gets a reference to the given bool and assigns it to the SendNotifications field.
+func (o *OrderInvoiceAdd) SetSendNotifications(v bool) {
+	o.SendNotifications = &v
+}
+
+// GetIsOnline returns the IsOnline field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetIsOnline() bool {
+	if o == nil || IsNil(o.IsOnline) {
+		var ret bool
+		return ret
+	}
+	return *o.IsOnline
+}
+
+// GetIsOnlineOk returns a tuple with the IsOnline field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetIsOnlineOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsOnline) {
+		return nil, false
+	}
+	return o.IsOnline, true
+}
+
+// HasIsOnline returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasIsOnline() bool {
+	if o != nil && !IsNil(o.IsOnline) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsOnline gets a reference to the given bool and assigns it to the IsOnline field.
+func (o *OrderInvoiceAdd) SetIsOnline(v bool) {
+	o.IsOnline = &v
+}
+
+// GetOrderStatus returns the OrderStatus field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetOrderStatus() string {
+	if o == nil || IsNil(o.OrderStatus) {
+		var ret string
+		return ret
+	}
+	return *o.OrderStatus
+}
+
+// GetOrderStatusOk returns a tuple with the OrderStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetOrderStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.OrderStatus) {
+		return nil, false
+	}
+	return o.OrderStatus, true
+}
+
+// HasOrderStatus returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasOrderStatus() bool {
+	if o != nil && !IsNil(o.OrderStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderStatus gets a reference to the given string and assigns it to the OrderStatus field.
+func (o *OrderInvoiceAdd) SetOrderStatus(v string) {
+	o.OrderStatus = &v
+}
+
+// GetShipmentId returns the ShipmentId field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetShipmentId() string {
+	if o == nil || IsNil(o.ShipmentId) {
+		var ret string
+		return ret
+	}
+	return *o.ShipmentId
+}
+
+// GetShipmentIdOk returns a tuple with the ShipmentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetShipmentIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ShipmentId) {
+		return nil, false
+	}
+	return o.ShipmentId, true
+}
+
+// HasShipmentId returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasShipmentId() bool {
+	if o != nil && !IsNil(o.ShipmentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShipmentId gets a reference to the given string and assigns it to the ShipmentId field.
+func (o *OrderInvoiceAdd) SetShipmentId(v string) {
+	o.ShipmentId = &v
+}
+
+// GetNumber returns the Number field value if set, zero value otherwise.
+func (o *OrderInvoiceAdd) GetNumber() string {
+	if o == nil || IsNil(o.Number) {
+		var ret string
+		return ret
+	}
+	return *o.Number
+}
+
+// GetNumberOk returns a tuple with the Number field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderInvoiceAdd) GetNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.Number) {
+		return nil, false
+	}
+	return o.Number, true
+}
+
+// HasNumber returns a boolean if a field has been set.
+func (o *OrderInvoiceAdd) HasNumber() bool {
+	if o != nil && !IsNil(o.Number) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumber gets a reference to the given string and assigns it to the Number field.
 func (o *OrderInvoiceAdd) SetNumber(v string) {
-	o.Number = v
+	o.Number = &v
 }
 
 // GetDocumentType returns the DocumentType field value if set, zero value otherwise.
@@ -427,13 +608,30 @@ func (o OrderInvoiceAdd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrderId) {
 		toSerialize["order_id"] = o.OrderId
 	}
-	if !IsNil(o.ShipmentId) {
-		toSerialize["shipment_id"] = o.ShipmentId
-	}
 	if !IsNil(o.StoreId) {
 		toSerialize["store_id"] = o.StoreId
 	}
-	toSerialize["number"] = o.Number
+	if !IsNil(o.Items) {
+		toSerialize["items"] = o.Items
+	}
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.SendNotifications) {
+		toSerialize["send_notifications"] = o.SendNotifications
+	}
+	if !IsNil(o.IsOnline) {
+		toSerialize["is_online"] = o.IsOnline
+	}
+	if !IsNil(o.OrderStatus) {
+		toSerialize["order_status"] = o.OrderStatus
+	}
+	if !IsNil(o.ShipmentId) {
+		toSerialize["shipment_id"] = o.ShipmentId
+	}
+	if !IsNil(o.Number) {
+		toSerialize["number"] = o.Number
+	}
 	if !IsNil(o.DocumentType) {
 		toSerialize["document_type"] = o.DocumentType
 	}
@@ -456,43 +654,6 @@ func (o OrderInvoiceAdd) ToMap() (map[string]interface{}, error) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
 	}
 	return toSerialize, nil
-}
-
-func (o *OrderInvoiceAdd) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"number",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrderInvoiceAdd := _OrderInvoiceAdd{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrderInvoiceAdd)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrderInvoiceAdd(varOrderInvoiceAdd)
-
-	return err
 }
 
 type NullableOrderInvoiceAdd struct {

@@ -600,7 +600,7 @@ import (
 )
 
 func main() {
-	orderInvoiceAdd := *openapiclient.NewOrderInvoiceAdd("INV-2026-0001") // OrderInvoiceAdd | 
+	orderInvoiceAdd := *openapiclient.NewOrderInvoiceAdd() // OrderInvoiceAdd | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

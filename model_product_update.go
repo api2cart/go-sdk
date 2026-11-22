@@ -215,6 +215,8 @@ type ProductUpdate struct {
 	ManufacturerIds *string `json:"manufacturer_ids,omitempty"`
 	// A comma-separated list of responsible person IDs. Retrieve the IDs from the cart.info method.
 	ResponsiblePersonIds *string `json:"responsible_person_ids,omitempty"`
+	// The ID of the economic operator (the manufacturer, importer or another party responsible for the product in the EU) to link to the offer: the `id` field of an item in additional_fields.economic_operators, which the cart.info method returns when called with api_version 1.1 or higher and additional_fields in params. If omitted, the economic operator linked to the offer is not changed. If the passed economic operator does not have the VALID status, it is linked anyway and the response contains a warning.
+	EconomicOperatorId *string `json:"economic_operator_id,omitempty"`
 	// A unique identifier associated with a specific request. Repeated requests with the same <strong>idempotency_key</strong> return a cached response without re-executing the business logic. <strong>Please note that the cache lifetime is 15 minutes.</strong>
 	IdempotencyKey *string `json:"idempotency_key,omitempty"`
 }
@@ -3456,6 +3458,38 @@ func (o *ProductUpdate) SetResponsiblePersonIds(v string) {
 	o.ResponsiblePersonIds = &v
 }
 
+// GetEconomicOperatorId returns the EconomicOperatorId field value if set, zero value otherwise.
+func (o *ProductUpdate) GetEconomicOperatorId() string {
+	if o == nil || IsNil(o.EconomicOperatorId) {
+		var ret string
+		return ret
+	}
+	return *o.EconomicOperatorId
+}
+
+// GetEconomicOperatorIdOk returns a tuple with the EconomicOperatorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductUpdate) GetEconomicOperatorIdOk() (*string, bool) {
+	if o == nil || IsNil(o.EconomicOperatorId) {
+		return nil, false
+	}
+	return o.EconomicOperatorId, true
+}
+
+// HasEconomicOperatorId returns a boolean if a field has been set.
+func (o *ProductUpdate) HasEconomicOperatorId() bool {
+	if o != nil && !IsNil(o.EconomicOperatorId) {
+		return true
+	}
+
+	return false
+}
+
+// SetEconomicOperatorId gets a reference to the given string and assigns it to the EconomicOperatorId field.
+func (o *ProductUpdate) SetEconomicOperatorId(v string) {
+	o.EconomicOperatorId = &v
+}
+
 // GetIdempotencyKey returns the IdempotencyKey field value if set, zero value otherwise.
 func (o *ProductUpdate) GetIdempotencyKey() string {
 	if o == nil || IsNil(o.IdempotencyKey) {
@@ -3794,6 +3828,9 @@ func (o ProductUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ResponsiblePersonIds) {
 		toSerialize["responsible_person_ids"] = o.ResponsiblePersonIds
+	}
+	if !IsNil(o.EconomicOperatorId) {
+		toSerialize["economic_operator_id"] = o.EconomicOperatorId
 	}
 	if !IsNil(o.IdempotencyKey) {
 		toSerialize["idempotency_key"] = o.IdempotencyKey
